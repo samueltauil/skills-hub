@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.svg" alt="SkillPilot Logo" width="200" height="200">
+</p>
+
 # SkillPilot — One skill to rule them all.
 
 > A universal meta-skill that orchestrates GitHub Copilot SDK to perform any development task.
