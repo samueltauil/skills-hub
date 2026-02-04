@@ -63,25 +63,40 @@ flowchart TD
 
 ## Quick Start
 
-### 1. Use as Template
+### Option A: From Template (New Projects)
 
-Click **"Use this template"** → **"Create a new repository"**
+1. Click **"Use this template"** → **"Create a new repository"**
+2. Clone your new repository:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/your-repo-name.git
+   cd your-repo-name
+   ```
+3. Install dependencies:
+   ```bash
+   cd .github/skills/copilot-orchestrator/scripts
+   uv sync
+   ```
 
-### 2. Clone Your New Repository
+### Option B: As Submodule (Existing Projects)
 
-```bash
-git clone https://github.com/YOUR_USERNAME/your-repo-name.git
-cd your-repo-name
-```
+1. Add to your existing repo:
+   ```bash
+   git submodule add https://github.com/samueltauil/skillpilot.git .github/skills/skillpilot
+   git submodule update --init --recursive
+   ```
+2. Install dependencies:
+   ```bash
+   cd .github/skills/skillpilot/.github/skills/copilot-orchestrator/scripts
+   uv sync
+   ```
+3. Commit the changes:
+   ```bash
+   cd ../../../../../..
+   git add .gitmodules .github/skills/skillpilot
+   git commit -m "Add SkillPilot as submodule"
+   ```
 
-### 3. Install Dependencies
-
-```bash
-cd .github/skills/copilot-orchestrator/scripts
-uv sync
-```
-
-### 4. Use Copilot Normally
+### Using Copilot
 
 Now when you ask Copilot questions in VS Code, the meta-skill will handle them:
 
@@ -433,7 +448,18 @@ export COPILOT_STREAMING=true         # Enable streaming
 export COPILOT_DEBUG=false            # Debug logging
 ```
 
-## Using as a GitHub Template
+## Installation Options
+
+You have two options for adding SkillPilot to your project:
+
+| Method | Best For | Updates | Complexity |
+|--------|----------|---------|------------|
+| **Template** | New projects, full customization | Manual (copy changes) | Simple |
+| **Submodule** | Existing projects, automatic updates | `git pull` | Moderate |
+
+---
+
+## Option 1: Using as a GitHub Template
 
 This repository is configured as a **GitHub Template**. To use it:
 
@@ -449,6 +475,215 @@ This repository is configured as a **GitHub Template**. To use it:
 - ✅ Configuration files
 - ❌ Git history (starts fresh)
 - ❌ Stars, watchers, forks counts
+
+---
+
+## Option 2: Using as a Git Submodule
+
+For existing repositories or when you want automatic updates, add SkillPilot as a **git submodule**.
+
+### Quick Setup
+
+```bash
+# Navigate to your existing repository
+cd your-project
+
+# Add SkillPilot as a submodule in .github/skills/
+git submodule add https://github.com/samueltauil/skillpilot.git .github/skills/skillpilot
+
+# Initialize and clone the submodule content
+git submodule update --init --recursive
+
+# Install the orchestrator dependencies
+cd .github/skills/skillpilot/.github/skills/copilot-orchestrator/scripts
+uv sync
+
+# Commit the submodule reference
+cd ../../../../../..  # back to project root
+git add .gitmodules .github/skills/skillpilot
+git commit -m "Add SkillPilot as submodule"
+```
+
+### Alternative: Add Only the Skill (Sparse Checkout)
+
+If you only want the `copilot-orchestrator` skill (not the full repo), use sparse checkout:
+
+```bash
+# Add submodule with no checkout initially
+git submodule add --no-checkout https://github.com/samueltauil/skillpilot.git .github/skills/skillpilot
+
+# Navigate into the submodule directory
+cd .github/skills/skillpilot
+
+# Enable sparse checkout
+git sparse-checkout init --cone
+
+# Only pull the copilot-orchestrator skill
+git sparse-checkout set .github/skills/copilot-orchestrator
+
+# Checkout the filtered content
+git checkout main
+
+# Install dependencies
+cd .github/skills/copilot-orchestrator/scripts
+uv sync
+```
+
+### Project Structure with Submodule
+
+After adding the submodule, your project structure will look like:
+
+```
+your-project/
+├── .git/
+├── .gitmodules                          # Submodule configuration
+├── .github/
+│   └── skills/
+│       └── skillpilot/                  # ← Submodule root
+│           ├── .github/
+│           │   └── skills/
+│           │       └── copilot-orchestrator/
+│           │           ├── SKILL.md
+│           │           └── scripts/
+│           ├── README.md
+│           └── LICENSE
+├── src/                                 # Your project code
+└── README.md
+```
+
+> **Note**: The skill path becomes `.github/skills/skillpilot/.github/skills/copilot-orchestrator/SKILL.md`. GitHub Copilot will discover it automatically through recursive skill scanning.
+
+### Updating the Submodule
+
+Pull the latest changes from SkillPilot:
+
+```bash
+# Update to latest version
+cd .github/skills/skillpilot
+git pull origin main
+
+# Back to your project root
+cd ../../..
+
+# Commit the updated submodule reference
+git add .github/skills/skillpilot
+git commit -m "Update SkillPilot to latest version"
+```
+
+Or update all submodules at once:
+
+```bash
+git submodule update --remote --merge
+git commit -am "Update all submodules"
+```
+
+### Pin to a Specific Version
+
+For stability, pin the submodule to a specific tag or commit:
+
+```bash
+cd .github/skills/skillpilot
+
+# Pin to a specific tag (recommended for production)
+git checkout v1.0.0
+
+# Or pin to a specific commit
+git checkout abc123def456
+
+cd ../../..
+git add .github/skills/skillpilot
+git commit -m "Pin SkillPilot to v1.0.0"
+```
+
+### CI/CD Configuration
+
+When using submodules, update your CI/CD workflows to initialize them:
+
+#### GitHub Actions
+
+```yaml
+- uses: actions/checkout@v4
+  with:
+    submodules: recursive  # ← Important: fetch submodules
+    
+- name: Setup Python
+  uses: actions/setup-python@v5
+  with:
+    python-version: '3.11'
+    
+- name: Install uv
+  uses: astral-sh/setup-uv@v5
+  
+- name: Install SkillPilot dependencies
+  run: |
+    cd .github/skills/skillpilot/.github/skills/copilot-orchestrator/scripts
+    uv sync
+```
+
+#### Azure Pipelines
+
+```yaml
+steps:
+- checkout: self
+  submodules: recursive  # ← Fetch submodules
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.11'
+
+- script: |
+    pip install uv
+    cd .github/skills/skillpilot/.github/skills/copilot-orchestrator/scripts
+    uv sync
+  displayName: 'Install SkillPilot dependencies'
+```
+
+### Cloning a Project with Submodules
+
+When others clone your repository, they need to initialize submodules:
+
+```bash
+# Clone with submodules in one command
+git clone --recurse-submodules https://github.com/YOUR_USERNAME/your-project.git
+
+# Or if already cloned without submodules
+git clone https://github.com/YOUR_USERNAME/your-project.git
+cd your-project
+git submodule update --init --recursive
+```
+
+### Submodule vs Template: When to Use Which
+
+**Use Template when:**
+- Starting a brand new project
+- You want to heavily customize the orchestrator
+- You don't need automatic updates
+- You want complete ownership of all code
+
+**Use Submodule when:**
+- Adding to an existing project
+- You want automatic updates from upstream
+- You want to keep your repo clean and focused
+- Multiple projects need the same skill
+- You want to pin to stable versions
+
+### Removing the Submodule
+
+If you need to remove the submodule later:
+
+```bash
+# Remove the submodule entry from .git/config
+git submodule deinit -f .github/skills/skillpilot
+
+# Remove the submodule directory from .git/modules
+rm -rf .git/modules/.github/skills/skillpilot
+
+# Remove the submodule directory from working tree
+git rm -f .github/skills/skillpilot
+
+# Commit the removal
+git commit -m "Remove SkillPilot submodule"
+```
 
 ## Extending SkillPilot
 
@@ -472,6 +707,66 @@ async def my_tool(params: MyParams) -> dict:
 ### Add Capability Mappings
 
 Edit `references/CAPABILITY_REGISTRY.md` to map new intents to SDK configurations.
+
+## Troubleshooting
+
+### Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| "Copilot CLI not found" | Install CLI: `gh extension install github/gh-copilot` |
+| "Authentication failed" | Run `gh auth login` and `gh copilot` |
+| "Token budget exceeded" | Reduce context with `--max-context 4000` |
+| "Tool execution failed" | Check logs in `.github/skills/copilot-orchestrator/logs/` |
+| "Session timeout" | Increase timeout with `--timeout 120` |
+| "uv not found" | Install uv: `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
+
+### Submodule Issues
+
+| Issue | Solution |
+|-------|----------|
+| "Submodule not initialized" | Run `git submodule update --init --recursive` |
+| "Empty submodule directory" | Ensure checkout succeeded: `cd .github/skills/skillpilot && git status` |
+| "Skill not detected by Copilot" | Check the path is correct and SKILL.md exists |
+| "Permission denied" on Windows | Run terminal as Administrator or check file permissions |
+| "Detached HEAD in submodule" | This is normal; submodules point to specific commits |
+| "Submodule conflicts during merge" | Accept ours: `git checkout --ours .github/skills/skillpilot` then re-update |
+
+### Submodule Update Fails
+
+If `git submodule update` fails:
+
+```bash
+# Force re-sync submodule configuration
+git submodule sync --recursive
+
+# Clear and re-clone the submodule
+rm -rf .github/skills/skillpilot
+git submodule update --init --force --recursive
+```
+
+### Copilot Doesn't Find the Skill
+
+If GitHub Copilot doesn't recognize the skill:
+
+1. **Verify SKILL.md exists:**
+   ```bash
+   # For template installation
+   cat .github/skills/copilot-orchestrator/SKILL.md
+   
+   # For submodule installation
+   cat .github/skills/skillpilot/.github/skills/copilot-orchestrator/SKILL.md
+   ```
+
+2. **Check SKILL.md YAML frontmatter is valid:**
+   ```bash
+   # Install yq if needed: brew install yq (macOS) or choco install yq (Windows)
+   yq '.name' .github/skills/copilot-orchestrator/SKILL.md
+   ```
+
+3. **Restart VS Code** after adding skills
+
+4. **Ensure GitHub Copilot extension is up to date**
 
 ## Contributing
 
