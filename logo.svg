@@ -1,36 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
   <defs>
-    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#6366F1"/>
+    <!-- Background gradient -->
+    <radialGradient id="bg" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#16162a"/>
+      <stop offset="100%" stop-color="#09090f"/>
+    </radialGradient>
+    
+    <!-- Purple metallic gradient -->
+    <linearGradient id="purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c4b5fd"/>
+      <stop offset="30%" stop-color="#a78bfa"/>
+      <stop offset="60%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
     </linearGradient>
+    
+    <!-- Coral metallic gradient -->
+    <linearGradient id="coral" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fecdd3"/>
+      <stop offset="30%" stop-color="#fda4af"/>
+      <stop offset="60%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#9f1239"/>
+    </linearGradient>
+    
+    <!-- Drop shadow -->
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
   </defs>
   
-  <!-- Clean rounded square background -->
-  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#brand)"/>
+  <!-- Background -->
+  <rect width="400" height="400" rx="56" fill="url(#bg)"/>
   
-  <!-- Stylized SP monogram - S with integrated pilot arrow -->
-  <path 
-    d="M42 38
-       C42 38 72 38 78 38
-       C88 38 92 46 92 52
-       C92 60 86 66 76 68
-       L52 72
-       C42 74 36 80 36 88
-       C36 96 42 102 52 102
-       L86 102"
-    fill="none" 
-    stroke="#fff" 
-    stroke-width="10" 
-    stroke-linecap="round"
-    stroke-linejoin="round"/>
+  <!-- Ambient glow -->
+  <ellipse cx="145" cy="160" rx="60" ry="40" fill="#7c3aed" opacity="0.06"/>
+  <ellipse cx="255" cy="240" rx="60" ry="40" fill="#f43f5e" opacity="0.05"/>
   
-  <!-- Pilot arrow at the top of the S -->
-  <path 
-    d="M42 38 L30 28 L42 38 L32 46"
-    fill="none"
-    stroke="#fff"
-    stroke-width="6"
-    stroke-linecap="round"
-    stroke-linejoin="round"/>
+  <!-- Link 1 (purple) - back half that goes behind link 2 -->
+  <ellipse cx="145" cy="160" rx="85" ry="100" 
+           fill="none" stroke="url(#purple)" stroke-width="32"
+           opacity="0.35"/>
+  
+  <!-- Link 2 (coral) - middle, interlocks with both -->
+  <ellipse cx="200" cy="200" rx="85" ry="100" 
+           fill="none" stroke="url(#coral)" stroke-width="32"
+           filter="url(#shadow)"/>
+  
+  <!-- Link 3 (purple) - back half that goes behind link 2 -->
+  <ellipse cx="255" cy="240" rx="85" ry="100" 
+           fill="none" stroke="url(#purple)" stroke-width="32"
+           opacity="0.35"/>
+  
+  <!-- Link 1 (purple) - front half that goes over link 2 -->
+  <path d="M145 60 
+           A85 100 0 0 1 145 260"
+        fill="none" stroke="url(#purple)" stroke-width="32"
+        stroke-linecap="round"
+        filter="url(#shadow)"/>
+  
+  <!-- Link 3 (purple) - front half that goes over link 2 -->
+  <path d="M255 140 
+           A85 100 0 0 1 255 340"
+        fill="none" stroke="url(#purple)" stroke-width="32"
+        stroke-linecap="round"
+        filter="url(#shadow)"/>
 </svg>
