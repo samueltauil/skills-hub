@@ -125,11 +125,11 @@ These use full Copilot SDK sessions with context gathering, tool execution, and 
 You: "implement a REST API endpoint for user registration with email validation"
 
 SkillPilot:
-┌─────────────────────────────────────────────────────────────────┐
-│ 🎯 Task: IMPLEMENT                                              │
-│ 📊 Confidence: 95%                                              │
-│ 🔧 Tools: read_file, write_file, search_code, run_command       │
-└─────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────┐
+│  Task: IMPLEMENT                                              │
+│  Confidence: 95%                                              │
+│  Tools: read_file, write_file, search_code, run_command       │
+└───────────────────────────────────────────────────────────────┘
 
 1. Gathering context...
    ✓ Found existing routes in src/routes/
@@ -177,11 +177,11 @@ SkillPilot:
 You: "why is my test test_user_creation failing with AttributeError?"
 
 SkillPilot:
-┌─────────────────────────────────────────────────────────────────┐
-│ 🎯 Task: DEBUG                                                  │
-│ 📊 Confidence: 92%                                              │
-│ 🔧 Tools: read_file, search_code, run_command, analyze_code     │
-└─────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────┐
+│  Task: DEBUG                                                  │
+│  Confidence: 92%                                              │
+│  Tools: read_file, search_code, run_command, analyze_code     │
+└───────────────────────────────────────────────────────────────┘
 
 1. Running failing test to capture error...
    $ pytest tests/test_user.py::test_user_creation -v
@@ -218,11 +218,11 @@ SkillPilot:
 You: "refactor the PaymentService to use the strategy pattern for different payment providers"
 
 SkillPilot:
-┌─────────────────────────────────────────────────────────────────┐
-│ 🎯 Task: REFACTOR                                               │
-│ 📊 Confidence: 88%                                              │
-│ 🔧 Tools: read_file, write_file, search_code, analyze_code      │
-└─────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────┐
+│  Task: REFACTOR                                               │
+│  Confidence: 88%                                              │
+│  Tools: read_file, write_file, search_code, analyze_code      │
+└───────────────────────────────────────────────────────────────┘
 
 1. Analyzing current implementation...
    ✓ Found PaymentService in src/services/payment.py
@@ -285,11 +285,11 @@ SkillPilot:
 You: "analyze the authentication module for security vulnerabilities"
 
 SkillPilot:
-┌─────────────────────────────────────────────────────────────────┐
-│ 🎯 Task: ANALYZE                                                │
-│ 📊 Confidence: 90%                                              │
-│ 🔧 Tools: read_file, search_code, analyze_code                  │
-└─────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────┐
+│  Task: ANALYZE                                                │
+│  Confidence: 90%                                              │
+│  Tools: read_file, search_code, analyze_code                  │
+└───────────────────────────────────────────────────────────────┘
 
 1. Scanning authentication module...
    ✓ src/auth/login.py
@@ -378,15 +378,16 @@ your-repo/
 ├── .github/
 │   └── skills/
 │       └── copilot-orchestrator/
-│           ├── SKILL.md              # Triggers when Copilot sees your request
+│           ├── SKILL.md               # Triggers when Copilot sees your request
 │           ├── scripts/
-│           │   ├── orchestrator.py   # Main handler (decides SDK vs ephemeral)
+│           │   ├── __init__.py        # Package initializer
+│           │   ├── orchestrator.py    # Main handler (decides SDK vs ephemeral)
 │           │   ├── context_manager.py # Token budgeting & compression
-│           │   ├── tool_factory.py   # Dynamic tool assembly
-│           │   ├── models.py         # Pydantic data models
-│           │   └── pyproject.toml    # Dependencies (uv)
-│           ├── references/           # Orchestrator documentation
-│           └── templates/            # Ephemeral skill templates
+│           │   ├── tool_factory.py    # Dynamic tool assembly
+│           │   ├── models.py          # Pydantic data models
+│           │   └── pyproject.toml     # Dependencies (uv)
+│           ├── references/            # Protocol specs & capability registry
+│           └── templates/             # Ephemeral skill templates
 ├── README.md
 └── LICENSE
 ```
