@@ -1,90 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
   <defs>
-    <linearGradient id="primary" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#6366F1"/>
     </linearGradient>
-    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F59E0B"/>
-      <stop offset="50%" stop-color="#FBBF24"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
-    <linearGradient id="dark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E1B4B"/>
-      <stop offset="100%" stop-color="#312E81"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="shadow">
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
-    </filter>
   </defs>
-
-  <!-- Background circle -->
-  <circle cx="256" cy="256" r="240" fill="url(#dark)" filter="url(#shadow)"/>
   
-  <!-- The One Ring - tilted ellipse orbit -->
-  <g filter="url(#glow)">
-    <ellipse cx="256" cy="256" rx="190" ry="70" 
-             fill="none" stroke="url(#gold)" stroke-width="8"
-             transform="rotate(-25 256 256)"/>
-    <ellipse cx="256" cy="256" rx="195" ry="73" 
-             fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.5"
-             transform="rotate(-25 256 256)"/>
-  </g>
-
-  <!-- Central pilot wheel / compass rose -->
-  <g transform="translate(256 256)">
-    <!-- Outer compass ring -->
-    <circle cx="0" cy="0" r="100" fill="none" stroke="url(#primary)" stroke-width="4" opacity="0.3"/>
-    
-    <!-- Inner filled circle -->
-    <circle cx="0" cy="0" r="85" fill="#0F172A"/>
-    <circle cx="0" cy="0" r="85" fill="none" stroke="url(#primary)" stroke-width="2"/>
-    
-    <!-- Compass cardinal points -->
-    <g fill="url(#primary)">
-      <!-- North arrow - prominent -->
-      <polygon points="0,-75 12,-45 0,-55 -12,-45" filter="url(#glow)"/>
-      <!-- South -->
-      <polygon points="0,75 8,50 0,58 -8,50" opacity="0.5"/>
-      <!-- East -->
-      <polygon points="75,0 50,8 58,0 50,-8" opacity="0.5"/>
-      <!-- West -->
-      <polygon points="-75,0 -50,8 -58,0 -50,-8" opacity="0.5"/>
-    </g>
-    
-    <!-- Stylized S in the center -->
-    <text x="0" y="22" 
-          font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" 
-          font-size="90" 
-          font-weight="800"
-          fill="url(#primary)" 
-          text-anchor="middle"
-          filter="url(#glow)">S</text>
-  </g>
-
-  <!-- Skill nodes on the ring -->
-  <g filter="url(#glow)">
-    <!-- Top-right of ring -->
-    <circle cx="400" cy="140" r="14" fill="#22D3EE"/>
-    <circle cx="400" cy="140" r="6" fill="#fff"/>
-    
-    <!-- Bottom-left of ring -->
-    <circle cx="112" cy="372" r="14" fill="#A78BFA"/>
-    <circle cx="112" cy="372" r="6" fill="#fff"/>
-    
-    <!-- Top-left -->
-    <circle cx="130" cy="175" r="10" fill="#34D399"/>
-    <circle cx="130" cy="175" r="4" fill="#fff"/>
-    
-    <!-- Bottom-right -->
-    <circle cx="382" cy="337" r="10" fill="#FB7185"/>
-    <circle cx="382" cy="337" r="4" fill="#fff"/>
-  </g>
+  <!-- Clean rounded square background -->
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#brand)"/>
+  
+  <!-- Stylized SP monogram - S with integrated pilot arrow -->
+  <path 
+    d="M42 38
+       C42 38 72 38 78 38
+       C88 38 92 46 92 52
+       C92 60 86 66 76 68
+       L52 72
+       C42 74 36 80 36 88
+       C36 96 42 102 52 102
+       L86 102"
+    fill="none" 
+    stroke="#fff" 
+    stroke-width="10" 
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+  
+  <!-- Pilot arrow at the top of the S -->
+  <path 
+    d="M42 38 L30 28 L42 38 L32 46"
+    fill="none"
+    stroke="#fff"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
 </svg>
