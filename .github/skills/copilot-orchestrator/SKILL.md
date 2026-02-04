@@ -156,6 +156,242 @@ uv run python orchestrator.py --resume session_abc123xyz
 uv run python orchestrator.py --verbose --output-json "list files"
 ```
 
+## Mother of All Skills - The Skill Factory
+
+The copilot-orchestrator is the **mother of all skills** - a meta-skill that dynamically creates specialized, lightweight skills using the Copilot SDK. This enables:
+
+1. **Minimal context consumption** - Generated skills are 500-1500 tokens vs ~8K for full orchestrator
+2. **Intelligent generation** - SDK produces expert-level, comprehensive skill content
+3. **Pattern recognition** - Auto-detects repeated tasks and suggests skill creation
+4. **Template library** - Pre-built templates for common development patterns
+
+### Philosophy: Skills as Context Compression
+
+| Approach | Context Loaded | Use When |
+|----------|---------------|----------|
+| Full Orchestrator | ~8,000 tokens | First-time or complex varied tasks |
+| Generated Skill | ~500-1,500 tokens | Repeated, specific task patterns |
+| Auto-Generated | ~800-2,000 tokens | SDK-enhanced for expert coverage |
+
+**Key Insight:** Instead of loading the full orchestrator every time, generate dedicated skills for patterns you repeat. The SDK generates comprehensive instructions, edge cases, and troubleshooting.
+
+### SDK-Powered Intelligent Generation
+
+When you use `--use-sdk`, the Copilot SDK acts as an **expert skill designer**:
+
+```bash
+# SDK generates comprehensive, production-ready skill with:
+# - Expert-level step-by-step instructions
+# - Complete edge case handling
+# - Domain-specific troubleshooting
+# - Optimal tool selection
+uv run python orchestrator.py --generate-skill \
+  --skill-name "graphql-resolver" \
+  --use-sdk \
+  --workspace /path/to/project \
+  "Create GraphQL resolvers with proper error handling, caching, and N+1 prevention"
+```
+
+The SDK prompt instructs it to think like a senior developer who has done this task hundreds of times - producing skills with the depth of experience.
+
+### Built-in Skill Templates
+
+Templates provide a starting point for common patterns. Inspired by [awesome-copilot skills](https://github.com/github/awesome-copilot/tree/main/skills). Use `--list-templates` to see all:
+
+```bash
+uv run python orchestrator.py --list-templates
+```
+
+**Available Templates (30+):**
+
+**Git & Version Control:**
+| Template | Description |
+|----------|-------------|
+| `git-commit` | Conventional commits with auto-detection of type/scope from diff |
+| `gh-cli` | GitHub CLI operations: repos, issues, PRs, actions, releases |
+| `github-issues` | Create and manage GitHub issues with labels and milestones |
+
+**Code Quality & Refactoring:**
+| Template | Description |
+|----------|-------------|
+| `refactor` | Code smell elimination, extract methods, improve maintainability |
+| `code-review` | Thorough code reviews for bugs, style, performance, security |
+
+**Documentation & Requirements:**
+| Template | Description |
+|----------|-------------|
+| `prd` | Product Requirements Documents with user stories and specs |
+| `meeting-minutes` | Structured meeting notes with action items and decisions |
+| `documentation` | Technical docs, READMEs, API documentation |
+| `markdown-to-html` | Convert Markdown to styled HTML with syntax highlighting |
+
+**Diagrams & Visualization:**
+| Template | Description |
+|----------|-------------|
+| `excalidraw-diagram` | Flowcharts, architecture diagrams, mind maps (.excalidraw) |
+| `plantuml` | UML diagrams: sequence, class, component, state |
+
+**Testing:**
+| Template | Description |
+|----------|-------------|
+| `test-suite` | Unit and integration tests with mocking |
+| `webapp-testing` | Playwright browser automation and E2E testing |
+| `agentic-eval` | AI agent output evaluation and benchmarking |
+
+**API & Backend:**
+| Template | Description |
+|----------|-------------|
+| `api-endpoint` | REST API endpoints with validation and error handling |
+| `database-migration` | Safe schema migrations with rollback support |
+
+**Frontend & UI:**
+| Template | Description |
+|----------|-------------|
+| `react-component` | React components with TypeScript and hooks |
+| `web-design-review` | UX, accessibility (WCAG), and design feedback |
+
+**DevOps & CI/CD:**
+| Template | Description |
+|----------|-------------|
+| `ci-pipeline` | GitHub Actions workflows for build/test/deploy |
+| `azure-deployment` | Deploy to Azure: App Service, Functions, Container Apps |
+| `azure-devops` | Azure DevOps pipelines, boards, repos |
+| `terraform` | Infrastructure as Code with Terraform |
+
+**Security & Performance:**
+| Template | Description |
+|----------|-------------|
+| `security-audit` | Vulnerability scanning, secrets detection, OWASP checks |
+| `performance-optimizer` | Latency, memory, bundle size optimization |
+
+**Tools & Debugging:**
+| Template | Description |
+|----------|-------------|
+| `chrome-devtools` | Browser debugging: elements, network, performance |
+| `vscode-extension` | VS Code extension development |
+| `mcp-server` | Model Context Protocol servers for AI integrations |
+
+**Data & Analytics:**
+| Template | Description |
+|----------|-------------|
+| `powerbi` | Power BI data models, DAX measures, reports |
+| `data-pipeline` | ETL pipelines with Airflow, Spark, dbt |
+
+**Package & Image:**
+| Template | Description |
+|----------|-------------|
+| `nuget` | NuGet package management for .NET |
+| `image-manipulation` | ImageMagick image processing and optimization |
+
+**Meta (Skill Creation):**
+| Template | Description |
+|----------|-------------|
+| `skill-template` | Create new Copilot skills with SKILL.md structure |
+| `copilot-sdk` | AI-powered generation using Copilot SDK |
+
+Generate from a template:
+
+```bash
+# Start from template, SDK enhances for your specific use case
+uv run python orchestrator.py --generate-skill \
+  --skill-name "user-api" \
+  --from-template api-endpoint \
+  --use-sdk \
+  --workspace /path/to/project \
+  "User registration and profile management endpoints"
+```
+
+### Auto-Skill: Intelligent Creation on Demand
+
+The `--auto-skill` command analyzes your request, checks for existing matching skills, and creates a new specialized skill only if needed:
+
+```bash
+# Checks existing skills first, creates only if no good match
+uv run python orchestrator.py --auto-skill \
+  "Create React form components with Formik validation and error handling" \
+  --workspace /path/to/project
+```
+
+The system will:
+1. Search existing skills for matches (shows best match if found)
+2. Suggest relevant templates
+3. Auto-generate name from your request
+4. Use SDK for intelligent, comprehensive content
+
+### Skill Discovery
+
+Find skills that match a request:
+
+```bash
+# Find existing skills that match
+uv run python orchestrator.py --find-skill "create api endpoint" --workspace /path/to/project
+
+# Output:
+# Matching Skills for 'create api endpoint'
+# 
+# api-creator (67% match)
+#   Create REST API endpoints with validation and error handling
+#   Matched: api, endpoint, create
+```
+
+Suggest templates for new skills:
+
+```bash
+uv run python orchestrator.py --suggest-template "write unit tests for React hooks"
+
+# Output:
+# Suggested Template: test-suite
+# Description: Write comprehensive test suites with proper mocking...
+# To generate: --generate-skill --skill-name my-skill --from-template test-suite
+```
+
+### Basic Skill Management
+
+```bash
+# Generate a skill (standard)
+uv run python orchestrator.py --generate-skill \
+  --skill-name "api-creator" \
+  --workspace /path/to/project \
+  "Create REST API endpoints with validation and error handling"
+
+# Generate with SDK (recommended for comprehensive skills)
+uv run python orchestrator.py --generate-skill \
+  --skill-name "api-creator" \
+  --use-sdk \
+  --workspace /path/to/project \
+  "Create REST API endpoints with validation and error handling"
+
+# List all skills in workspace
+uv run python orchestrator.py --list-skills --workspace /path/to/project
+
+# Delete a skill
+uv run python orchestrator.py --delete-skill api-creator --workspace /path/to/project
+```
+
+### Generated Skill Structure
+
+SDK-generated skills include:
+
+| Section | Content |
+|---------|---------|
+| **Frontmatter** | Name, rich description with triggers, license |
+| **When to Use** | Specific use cases with examples |
+| **Prerequisites** | Tools, dependencies, setup requirements |
+| **Step-by-Step Workflow** | 8-12 detailed, expert-level instructions |
+| **Allowed Tools** | Optimal tools for the task type |
+| **Validation Criteria** | Measurable success criteria |
+| **Edge Cases** | Common scenarios and handling |
+| **Troubleshooting** | Issue/solution pairs |
+
+### Best Practices
+
+1. **Use SDK generation for production skills** - `--use-sdk` produces expert-level content
+2. **Start from templates when applicable** - `--from-template` + `--use-sdk` combines structure with intelligence
+3. **Use auto-skill for exploratory work** - Let the system decide if a skill is needed
+4. **Keep skills focused** - One skill = one specific task pattern
+5. **Provide detailed descriptions** - More context = better SDK generation
+6. **Review and refine** - SDK output is excellent but may need project-specific adjustments
+
 ## Configuration
 
 The orchestrator respects environment variables:

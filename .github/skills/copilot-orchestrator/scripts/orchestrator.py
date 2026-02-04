@@ -1197,6 +1197,1568 @@ This skill was spawned from an ephemeral skill of type `{skill_type}`.
 
 
 # =============================================================================
+# SKILL CATALOG - Mother of All Skills Management
+# =============================================================================
+
+
+# Pre-built skill templates for common development patterns
+# Inspired by awesome-copilot skills: https://github.com/github/awesome-copilot/tree/main/skills
+SKILL_TEMPLATES: dict[str, dict[str, Any]] = {
+    # ==========================================================================
+    # GIT & VERSION CONTROL
+    # ==========================================================================
+    "git-commit": {
+        "description": "Execute git commits with conventional commit message analysis, intelligent staging, and message generation. Use when committing changes, creating standardized commits, or '/commit'. Supports auto-detecting type/scope from changes.",
+        "triggers": ["commit", "git commit", "conventional commit", "feat", "fix", "chore", "stage", "/commit", "commit message"],
+        "tools": ["run_in_terminal", "read_file", "grep_search"],
+        "instructions": [
+            "Analyze git diff (staged or unstaged) to understand changes",
+            "Determine conventional commit type (feat/fix/docs/style/refactor/perf/test/build/ci/chore/revert)",
+            "Identify scope from changed files (module, component, area)",
+            "Generate concise description (<72 chars, imperative mood)",
+            "Stage files if needed (never commit secrets)",
+            "Execute: git commit -m '<type>[scope]: <description>'",
+            "SAFETY: Never run --force, --no-verify, or force push to main/master"
+        ]
+    },
+    "gh-cli": {
+        "description": "Comprehensive GitHub CLI operations: repos, issues, PRs, actions, releases, gists, codespaces. Use when interacting with GitHub via command line.",
+        "triggers": ["gh", "github cli", "gh pr", "gh issue", "gh repo", "gh release", "gh workflow", "gh run", "gh auth", "pull request", "issue create"],
+        "tools": ["run_in_terminal", "read_file", "grep_search"],
+        "instructions": [
+            "Verify gh authentication: gh auth status",
+            "For repos: gh repo create/clone/view/list/fork/sync",
+            "For issues: gh issue create/list/view/edit/close --labels --assignee",
+            "For PRs: gh pr create/list/checkout/merge/review --draft --reviewer",
+            "For actions: gh run list/view/watch, gh workflow run/list",
+            "For releases: gh release create/list/download",
+            "Use --json and --jq for scripting; --web to open in browser"
+        ]
+    },
+    "github-issues": {
+        "description": "Create, manage, and track GitHub issues with labels, milestones, and assignees. Use when organizing work, bug reports, or feature requests.",
+        "triggers": ["issue", "github issue", "bug report", "feature request", "issue tracker", "label", "milestone", "assignee"],
+        "tools": ["run_in_terminal", "read_file", "create_file"],
+        "instructions": [
+            "Check existing issues: gh issue list --search 'keyword'",
+            "Create issue: gh issue create --title 'Title' --body 'Description' --labels bug,enhancement",
+            "Add templates: Create .github/ISSUE_TEMPLATE/ folder",
+            "Link issues to PRs: Add 'Closes #123' or 'Fixes #456' in PR body",
+            "Manage with milestones: gh issue edit 123 --milestone 'v1.0'",
+            "Use projects: gh project item-add for project board integration"
+        ]
+    },
+    
+    # ==========================================================================
+    # CODE QUALITY & REFACTORING
+    # ==========================================================================
+    "refactor": {
+        "description": "Surgical code refactoring to improve maintainability without changing behavior. Covers extracting functions, renaming, breaking down god functions, improving type safety, eliminating code smells.",
+        "triggers": ["refactor", "clean up", "improve code", "code smell", "extract method", "rename", "god function", "technical debt", "maintainability"],
+        "tools": ["read_file", "replace_string_in_file", "grep_search", "runTests", "get_errors"],
+        "instructions": [
+            "GOLDEN RULES: Behavior preserved, small steps, commit before/after, tests essential",
+            "Identify code smells: long method, duplication, large class, long params, feature envy",
+            "Extract methods for 50+ line functions into focused units",
+            "Replace magic numbers with named constants",
+            "Use guard clauses to flatten nested conditionals (early returns)",
+            "Remove dead code (git has history if needed)",
+            "Run tests after each small change",
+            "Document the refactoring rationale"
+        ]
+    },
+    "code-review": {
+        "description": "Perform thorough code reviews checking for bugs, style, performance, and security. Use when reviewing PRs or providing feedback on code.",
+        "triggers": ["code review", "review", "pr review", "feedback", "approve", "request changes", "lgtm"],
+        "tools": ["read_file", "grep_search", "semantic_search", "get_errors"],
+        "instructions": [
+            "Check for correctness: Does the code do what it claims?",
+            "Verify test coverage: Are edge cases handled?",
+            "Review style: Consistent with codebase conventions?",
+            "Check performance: Any N+1 queries, unnecessary loops?",
+            "Security scan: Input validation, auth checks, secrets exposure?",
+            "Provide constructive feedback with specific suggestions",
+            "Use gh pr review for GitHub integration"
+        ]
+    },
+    
+    # ==========================================================================
+    # DOCUMENTATION & REQUIREMENTS
+    # ==========================================================================
+    "prd": {
+        "description": "Generate high-quality Product Requirements Documents for software systems and AI features. Includes executive summary, user stories, technical specs, and risk analysis.",
+        "triggers": ["prd", "product requirements", "requirements document", "feature spec", "specification", "user stories", "acceptance criteria"],
+        "tools": ["read_file", "create_file", "semantic_search", "ask_questions"],
+        "instructions": [
+            "PHASE 1 - Discovery: Ask about core problem, success metrics, constraints",
+            "PHASE 2 - Analysis: Map user flow, define non-goals, identify dependencies",
+            "PHASE 3 - Draft using schema: Executive Summary, User Experience, Technical Specs, Risks",
+            "Include measurable criteria (not 'fast' but '200ms response time')",
+            "Define acceptance criteria for each user story",
+            "List technical risks with mitigation strategies",
+            "Create phased rollout plan: MVP → v1.1 → v2.0"
+        ]
+    },
+    "meeting-minutes": {
+        "description": "Generate concise, actionable meeting minutes for internal meetings. Includes metadata, attendees, agenda, decisions, action items (owner + due date), and follow-up steps.",
+        "triggers": ["meeting minutes", "meeting notes", "minutes", "action items", "standup", "sync", "retro"],
+        "tools": ["read_file", "create_file", "ask_questions"],
+        "instructions": [
+            "Gather metadata: title, date, organizer, attendees",
+            "Structure: Metadata → Attendance → Summary → Decisions → Action Items → Notes",
+            "Every action item MUST have: Owner, Due Date, Acceptance Criteria",
+            "Decisions include: statement, who decided, rationale (1-2 sentences)",
+            "Parking lot for unresolved items with suggested owner/next steps",
+            "Keep concise: <1 page for 30min, <2 pages for 60min meetings",
+            "Use ISO 8601 dates (YYYY-MM-DD)"
+        ]
+    },
+    "documentation": {
+        "description": "Write technical documentation, README files, and API docs. Use when creating guides, updating README, or documenting code.",
+        "triggers": ["docs", "readme", "documentation", "guide", "explain", "jsdoc", "markdown", "api docs", "tutorial"],
+        "tools": ["read_file", "create_file", "replace_string_in_file", "semantic_search", "file_search"],
+        "instructions": [
+            "Analyze the code/feature to be documented",
+            "Determine documentation scope and audience",
+            "Create or update the appropriate doc file",
+            "Include clear examples and code samples",
+            "Add installation/setup instructions where relevant",
+            "Include troubleshooting section for common issues",
+            "Cross-reference related documentation"
+        ]
+    },
+    "markdown-to-html": {
+        "description": "Convert Markdown documents to styled HTML with syntax highlighting, tables, and responsive design. Use for documentation sites, reports, or publishing.",
+        "triggers": ["markdown to html", "md to html", "convert markdown", "static html", "markdown render"],
+        "tools": ["read_file", "create_file", "run_in_terminal"],
+        "instructions": [
+            "Parse markdown content including frontmatter",
+            "Convert to HTML with proper semantic tags",
+            "Add syntax highlighting for code blocks (Prism.js/highlight.js)",
+            "Style tables with responsive CSS",
+            "Include table of contents for long docs",
+            "Output standalone HTML with embedded CSS or external stylesheet"
+        ]
+    },
+    
+    # ==========================================================================
+    # DIAGRAMS & VISUALIZATION
+    # ==========================================================================
+    "excalidraw-diagram": {
+        "description": "Generate Excalidraw diagrams from natural language descriptions. Use when asked to create diagrams, flowcharts, mind maps, architecture diagrams, or visualize processes.",
+        "triggers": ["diagram", "flowchart", "architecture diagram", "mind map", "excalidraw", "visualize", "draw", "chart", "system design"],
+        "tools": ["create_file", "read_file"],
+        "instructions": [
+            "Determine diagram type: flowchart, relationship, mind map, architecture, DFD, sequence, ER",
+            "Extract key elements: entities, steps, relationships",
+            "Layout guidelines: 200-300px horizontal gap, 100-150px vertical gap",
+            "Use consistent colors: primary (#a5d8ff), secondary (#b2f2bb), important (#ffd43b)",
+            "Element types: rectangle (entities), diamond (decisions), arrow (flow)",
+            "Font: Always use fontFamily: 5 (Excalifont)",
+            "Save as .excalidraw JSON file",
+            "Limit: 20 elements max per diagram for clarity"
+        ]
+    },
+    "plantuml": {
+        "description": "Generate PlantUML diagrams for sequence diagrams, class diagrams, and system architecture. Use for technical documentation and design.",
+        "triggers": ["plantuml", "sequence diagram", "class diagram", "uml", "component diagram", "state diagram"],
+        "tools": ["create_file", "read_file", "run_in_terminal"],
+        "instructions": [
+            "Choose diagram type: @startuml/@startmindmap/@startgantt",
+            "Sequence: actor -> participant : message",
+            "Class: class Name { +method() -field }",
+            "Use proper arrow types: --> (dependency), --|> (inheritance), ..> (realization)",
+            "Add notes: note right of X : description",
+            "Group related elements: package/namespace",
+            "Export to PNG/SVG using plantuml.jar or server"
+        ]
+    },
+    
+    # ==========================================================================
+    # TESTING
+    # ==========================================================================
+    "test-suite": {
+        "description": "Write comprehensive test suites with proper mocking and assertions. Use when adding unit tests, integration tests, or improving coverage.",
+        "triggers": ["test", "spec", "coverage", "jest", "pytest", "vitest", "mock", "assert", "describe", "it", "unit test"],
+        "tools": ["read_file", "create_file", "replace_string_in_file", "runTests", "get_errors"],
+        "instructions": [
+            "Analyze the code to be tested and identify test cases",
+            "Review existing test patterns and frameworks used",
+            "Create test file with proper describe/it blocks",
+            "Write tests for happy path scenarios first",
+            "Add edge cases and error handling tests",
+            "Set up necessary mocks and fixtures",
+            "Run tests and verify coverage improvement"
+        ]
+    },
+    "webapp-testing": {
+        "description": "Test web applications using Playwright automation. Use for verifying UI behavior, capturing screenshots, debugging web apps, and validating user flows.",
+        "triggers": ["playwright", "e2e test", "browser test", "ui test", "web test", "screenshot", "automation test", "selenium"],
+        "tools": ["run_in_terminal", "create_file", "read_file"],
+        "instructions": [
+            "Verify app is running before tests",
+            "Navigation: await page.goto('url')",
+            "Interactions: page.click(), page.fill(), page.selectOption()",
+            "Assertions: expect(page.locator('#el')).toBeVisible()",
+            "Wait properly: page.waitForSelector(), page.waitForURL()",
+            "Capture screenshots on failure: page.screenshot({ path: 'error.png' })",
+            "Clean up: always close browser when done",
+            "Use data-testid selectors over CSS classes"
+        ]
+    },
+    "agentic-eval": {
+        "description": "Evaluate AI agent outputs for quality, accuracy, and safety. Use when testing LLM responses, validating agent behavior, or building evaluation pipelines.",
+        "triggers": ["eval", "evaluation", "llm eval", "agent eval", "benchmark", "quality check", "accuracy test"],
+        "tools": ["run_in_terminal", "read_file", "create_file", "runTests"],
+        "instructions": [
+            "Define evaluation criteria: accuracy, relevance, safety, format",
+            "Create test cases with expected outputs",
+            "Use structured grading rubrics (1-5 scale)",
+            "Implement automated checkers where possible",
+            "Track metrics: precision, recall, F1 for classification",
+            "Include edge cases and adversarial inputs",
+            "Log and analyze failure patterns"
+        ]
+    },
+    
+    # ==========================================================================
+    # API & BACKEND
+    # ==========================================================================
+    "api-endpoint": {
+        "description": "Create REST API endpoints with validation, error handling, and proper HTTP methods. Use when building backend APIs, creating CRUD operations, or adding new routes.",
+        "triggers": ["api", "endpoint", "route", "rest", "crud", "http", "get", "post", "put", "delete", "controller"],
+        "tools": ["read_file", "create_file", "replace_string_in_file", "grep_search", "runTests"],
+        "instructions": [
+            "Analyze existing API patterns and conventions in the codebase",
+            "Determine the appropriate HTTP method(s) and URL structure",
+            "Create the endpoint handler with request validation",
+            "Add proper error handling and response formatting",
+            "Update route registration if needed",
+            "Add or update API documentation",
+            "Create integration tests for the endpoint"
+        ]
+    },
+    "database-migration": {
+        "description": "Create database migrations and schema changes safely. Use when modifying tables, adding columns, creating indexes, or seeding data.",
+        "triggers": ["migration", "database", "schema", "table", "column", "index", "sql", "prisma", "knex", "typeorm", "alembic"],
+        "tools": ["read_file", "create_file", "run_in_terminal", "grep_search"],
+        "instructions": [
+            "Review existing schema and migrations for patterns",
+            "Plan the migration with rollback strategy",
+            "Create the migration file following project conventions",
+            "Write both up and down migration logic",
+            "Test migration on local database first",
+            "Update any affected model/entity files",
+            "Document breaking changes if applicable"
+        ]
+    },
+    
+    # ==========================================================================
+    # FRONTEND & UI
+    # ==========================================================================
+    "react-component": {
+        "description": "Build React components with TypeScript, hooks, and proper state management. Use when creating UI components, forms, or interactive elements.",
+        "triggers": ["react", "component", "tsx", "jsx", "hook", "useState", "useEffect", "props", "ui", "form", "button"],
+        "tools": ["read_file", "create_file", "replace_string_in_file", "file_search", "runTests"],
+        "instructions": [
+            "Analyze existing component patterns and styling conventions",
+            "Create the component file with TypeScript types/interfaces",
+            "Implement component logic with appropriate React hooks",
+            "Add proper prop types and default values",
+            "Include necessary styling (CSS modules, Tailwind, etc.)",
+            "Create unit tests for the component",
+            "Export the component and update barrel files if needed"
+        ]
+    },
+    "web-design-review": {
+        "description": "Review web designs for UX, accessibility, and implementation feasibility. Use when evaluating mockups, providing design feedback, or auditing UI.",
+        "triggers": ["design review", "ux review", "accessibility", "a11y", "wcag", "ui audit", "design feedback", "usability"],
+        "tools": ["read_file", "semantic_search", "grep_search"],
+        "instructions": [
+            "Check accessibility: color contrast, focus states, alt text, keyboard nav",
+            "Review information hierarchy and visual flow",
+            "Verify responsive breakpoints and mobile experience",
+            "Check loading states and error handling UI",
+            "Validate against WCAG 2.1 AA standards",
+            "Document implementation concerns for engineering",
+            "Provide specific, actionable improvement suggestions"
+        ]
+    },
+    
+    # ==========================================================================
+    # DEVOPS & CI/CD
+    # ==========================================================================
+    "ci-pipeline": {
+        "description": "Create CI/CD pipelines with GitHub Actions, testing, and deployment. Use when setting up automation, build processes, or release workflows.",
+        "triggers": ["ci", "cd", "pipeline", "github actions", "workflow", "deploy", "build", "release", "automation"],
+        "tools": ["read_file", "create_file", "replace_string_in_file", "run_in_terminal", "file_search"],
+        "instructions": [
+            "Analyze project structure and deployment requirements",
+            "Review existing workflows for patterns and secrets",
+            "Create .github/workflows YAML file",
+            "Define triggers (push, PR, schedule)",
+            "Add build and test jobs",
+            "Configure deployment steps and environments",
+            "Add caching for dependencies where beneficial",
+            "Test workflow with a dry run if possible"
+        ]
+    },
+    "azure-deployment": {
+        "description": "Deploy applications to Azure: App Service, Functions, Static Web Apps, Container Apps. Use when deploying to Azure cloud infrastructure.",
+        "triggers": ["azure", "deploy to azure", "app service", "azure functions", "container apps", "aks", "azure static web app"],
+        "tools": ["run_in_terminal", "read_file", "create_file", "file_search"],
+        "instructions": [
+            "Verify Azure CLI: az account show",
+            "Choose deployment target: App Service, Functions, Static Web Apps, Container Apps",
+            "Configure app settings and environment variables",
+            "Set up deployment slots for staging",
+            "Configure CI/CD with GitHub Actions or Azure DevOps",
+            "Enable Application Insights for monitoring",
+            "Configure scaling and alerts",
+            "Document deployment process"
+        ]
+    },
+    "azure-devops": {
+        "description": "Work with Azure DevOps: pipelines, repos, boards, artifacts. Use when managing work items, builds, or deployments in Azure DevOps.",
+        "triggers": ["azure devops", "ado", "azure pipeline", "azure boards", "work item", "azure repos", "artifacts"],
+        "tools": ["run_in_terminal", "read_file", "create_file"],
+        "instructions": [
+            "Authenticate: az devops login",
+            "Configure organization and project: az devops configure --defaults",
+            "Create pipelines: az pipelines create",
+            "Manage work items: az boards work-item create/update",
+            "Use azure-pipelines.yml for YAML pipelines",
+            "Configure service connections for deployments",
+            "Set up artifact feeds for packages"
+        ]
+    },
+    "terraform": {
+        "description": "Infrastructure as Code with Terraform: create, plan, apply infrastructure. Use when managing cloud infrastructure declaratively.",
+        "triggers": ["terraform", "iac", "infrastructure as code", "tf", "hcl", "terraform plan", "terraform apply"],
+        "tools": ["run_in_terminal", "read_file", "create_file", "grep_search"],
+        "instructions": [
+            "Initialize: terraform init",
+            "Structure: main.tf, variables.tf, outputs.tf, terraform.tfvars",
+            "Use modules for reusable components",
+            "Plan before apply: terraform plan -out=tfplan",
+            "Apply with approval: terraform apply tfplan",
+            "State management: Use remote backend (S3, Azure Blob)",
+            "Use terraform fmt and terraform validate",
+            "Never commit .tfvars with secrets"
+        ]
+    },
+    
+    # ==========================================================================
+    # SECURITY & AUDIT
+    # ==========================================================================
+    "security-audit": {
+        "description": "Perform security audits checking for vulnerabilities and best practices. Use when reviewing code security, checking dependencies, or hardening apps.",
+        "triggers": ["security", "audit", "vulnerability", "xss", "csrf", "injection", "auth", "secrets", "owasp"],
+        "tools": ["read_file", "grep_search", "semantic_search", "run_in_terminal", "get_errors"],
+        "instructions": [
+            "Scan for hardcoded secrets and credentials",
+            "Check for common vulnerability patterns (injection, XSS)",
+            "Review authentication and authorization logic",
+            "Audit dependencies for known vulnerabilities",
+            "Check for proper input validation",
+            "Review error handling (no sensitive info leaks)",
+            "Compile findings with severity ratings and remediation steps"
+        ]
+    },
+    
+    # ==========================================================================
+    # PERFORMANCE
+    # ==========================================================================
+    "performance-optimizer": {
+        "description": "Optimize code for performance: reduce latency, memory usage, and bundle size. Use when improving load times, query performance, or resource usage.",
+        "triggers": ["optimize", "performance", "speed", "slow", "latency", "memory", "bundle", "cache", "lazy load"],
+        "tools": ["read_file", "replace_string_in_file", "grep_search", "run_in_terminal", "runTests"],
+        "instructions": [
+            "Profile and identify performance bottlenecks",
+            "Analyze algorithms for time/space complexity",
+            "Check for unnecessary re-renders or computations",
+            "Implement caching where beneficial",
+            "Optimize database queries and indexes",
+            "Consider lazy loading and code splitting",
+            "Benchmark before and after changes",
+            "Document performance improvements achieved"
+        ]
+    },
+    
+    # ==========================================================================
+    # TOOLS & DEBUGGING
+    # ==========================================================================
+    "chrome-devtools": {
+        "description": "Debug web applications using Chrome DevTools: inspect elements, network, performance, console. Use when debugging frontend issues.",
+        "triggers": ["devtools", "chrome devtools", "debug", "inspect", "network tab", "console", "performance profile", "memory leak"],
+        "tools": ["run_in_terminal", "read_file"],
+        "instructions": [
+            "Elements: Inspect and modify DOM/CSS in real-time",
+            "Console: Execute JS, log statements, filter errors",
+            "Network: Analyze requests, response times, payload sizes",
+            "Performance: Record and analyze runtime performance",
+            "Memory: Find leaks with heap snapshots",
+            "Application: Inspect storage, service workers, cache",
+            "Use Lighthouse for automated audits"
+        ]
+    },
+    "vscode-extension": {
+        "description": "Create and configure VS Code extensions: commands, settings, keybindings, language support. Use when building or customizing VS Code.",
+        "triggers": ["vscode extension", "vscode", "extension", "keybinding", "command palette", "extension api"],
+        "tools": ["run_in_terminal", "read_file", "create_file", "grep_search"],
+        "instructions": [
+            "Generate extension: yo code",
+            "Define in package.json: contributes.commands, keybindings, configuration",
+            "Implement in extension.ts: activate(), deactivate()",
+            "Register commands: vscode.commands.registerCommand()",
+            "Access workspace: vscode.workspace.fs, vscode.window.activeTextEditor",
+            "Debug: F5 launches Extension Development Host",
+            "Package: vsce package, publish: vsce publish"
+        ]
+    },
+    "mcp-server": {
+        "description": "Create Model Context Protocol (MCP) servers for extending AI assistants with custom tools. Use when building integrations for Copilot or Claude.",
+        "triggers": ["mcp", "model context protocol", "mcp server", "mcp tool", "copilot extension", "ai tool"],
+        "tools": ["run_in_terminal", "read_file", "create_file"],
+        "instructions": [
+            "Structure: Use @modelcontextprotocol/sdk",
+            "Define tools with JSON Schema for parameters",
+            "Implement tool handlers with proper error handling",
+            "Use stdio or HTTP transport",
+            "Configure in mcp.json for VS Code",
+            "Test with MCP inspector",
+            "Handle timeouts and rate limits"
+        ]
+    },
+    
+    # ==========================================================================
+    # DATA & ANALYTICS
+    # ==========================================================================
+    "powerbi": {
+        "description": "Create Power BI data models, DAX measures, and reports. Use when building business intelligence solutions.",
+        "triggers": ["powerbi", "power bi", "dax", "data model", "measure", "calculated column", "report", "dashboard"],
+        "tools": ["read_file", "create_file"],
+        "instructions": [
+            "Design star schema: fact tables, dimension tables",
+            "Create relationships with proper cardinality",
+            "Write DAX measures: SUM, CALCULATE, FILTER, RELATED",
+            "Time intelligence: DATEADD, SAMEPERIODLASTYEAR",
+            "Optimize model: Remove unused columns, use integer keys",
+            "Build visualizations: charts, tables, cards, slicers",
+            "Configure row-level security if needed"
+        ]
+    },
+    "data-pipeline": {
+        "description": "Build data pipelines for ETL, streaming, and analytics. Use when moving, transforming, or processing data at scale.",
+        "triggers": ["etl", "data pipeline", "airflow", "spark", "data engineering", "batch processing", "streaming"],
+        "tools": ["run_in_terminal", "read_file", "create_file"],
+        "instructions": [
+            "Design pipeline: Source → Transform → Destination",
+            "Choose tool: Airflow (orchestration), Spark (processing), dbt (transform)",
+            "Implement idempotent operations",
+            "Add data quality checks and validation",
+            "Handle failures with retries and dead-letter queues",
+            "Monitor with logging and alerting",
+            "Document data lineage and schema"
+        ]
+    },
+    
+    # ==========================================================================
+    # PACKAGE MANAGEMENT
+    # ==========================================================================
+    "nuget": {
+        "description": "Manage NuGet packages: install, update, create, publish. Use when working with .NET dependencies.",
+        "triggers": ["nuget", "dotnet package", "package reference", "nuspec", "pack", "push"],
+        "tools": ["run_in_terminal", "read_file", "create_file"],
+        "instructions": [
+            "Search: dotnet search <package>",
+            "Install: dotnet add package <name> --version <ver>",
+            "Update: dotnet list package --outdated, then update",
+            "Create: dotnet pack with proper .csproj metadata",
+            "Publish: dotnet nuget push to nuget.org or private feed",
+            "Restore: dotnet restore",
+            "Use Directory.Packages.props for central package management"
+        ]
+    },
+    
+    # ==========================================================================
+    # IMAGE & MEDIA
+    # ==========================================================================
+    "image-manipulation": {
+        "description": "Process images with ImageMagick: resize, convert, optimize, composite. Use when batch processing images or generating thumbnails.",
+        "triggers": ["imagemagick", "image resize", "convert image", "image processing", "thumbnail", "optimize image"],
+        "tools": ["run_in_terminal", "read_file"],
+        "instructions": [
+            "Install: apt/brew install imagemagick",
+            "Resize: magick input.jpg -resize 800x600 output.jpg",
+            "Convert: magick input.png output.webp",
+            "Optimize: magick input.jpg -quality 85 -strip output.jpg",
+            "Batch: magick mogrify -resize 50% *.jpg",
+            "Composite: magick background.jpg overlay.png -composite result.jpg",
+            "Info: magick identify -verbose image.jpg"
+        ]
+    },
+    
+    # ==========================================================================
+    # SKILL CREATION (META)
+    # ==========================================================================
+    "skill-template": {
+        "description": "Create new GitHub Copilot skills with proper SKILL.md structure. Use when building reusable AI assistant capabilities.",
+        "triggers": ["create skill", "skill template", "new skill", "copilot skill", "skill.md"],
+        "tools": ["create_file", "read_file", "file_search"],
+        "instructions": [
+            "Create folder: .github/skills/<skill-name>/",
+            "Create SKILL.md with YAML frontmatter: name, description",
+            "Define triggers: when should this skill activate",
+            "List allowed-tools: what tools can the skill use",
+            "Write clear instructions: step-by-step guidance",
+            "Include examples for common use cases",
+            "Add references to documentation or templates"
+        ]
+    },
+    "copilot-sdk": {
+        "description": "Use GitHub Copilot SDK for AI-powered code generation and chat. Use when building AI features with Copilot integration.",
+        "triggers": ["copilot sdk", "copilot api", "copilot chat", "ai completions", "lm api"],
+        "tools": ["run_in_terminal", "read_file", "create_file"],
+        "instructions": [
+            "Install: pip install copilot-sdk or npm install @anthropic-ai/sdk",
+            "Initialize: client = CopilotClient()",
+            "Chat: response = await client.chat(messages=[...])",
+            "Completions: client.complete(prompt=..., max_tokens=...)",
+            "Stream responses for long outputs",
+            "Handle rate limits with exponential backoff",
+            "Use system prompts for role/behavior definition"
+        ]
+    }
+}
+
+
+@dataclass
+class SkillMatch:
+    """Result of skill matching/discovery."""
+    name: str
+    path: Path
+    description: str
+    match_score: float  # 0.0 to 1.0
+    matched_keywords: list[str]
+
+
+class SkillCatalog:
+    """
+    Catalog and discovery system for generated skills.
+    
+    The Mother of All Skills - manages skill lifecycle:
+    - Discovery: Find existing skills that match a request
+    - Generation: Create new skills when none exist
+    - Evolution: Improve skills based on usage patterns
+    - Templates: Quick-start from common patterns
+    
+    Usage:
+        catalog = SkillCatalog(workspace)
+        
+        # Find matching skills
+        matches = await catalog.find_matching_skills("create a REST API endpoint")
+        
+        # Auto-generate if no good match
+        if not matches or matches[0].match_score < 0.5:
+            skill = await catalog.generate_specialized_skill(
+                request="create REST API endpoint with validation",
+                use_sdk=True
+            )
+    """
+    
+    def __init__(self, workspace: Path) -> None:
+        """Initialize the skill catalog."""
+        self.workspace = workspace.resolve()
+        self.skills_dir = self.workspace / ".github" / "skills"
+        self.generator = SkillGenerator(workspace)
+        self._cache: dict[str, dict] = {}  # skill name -> parsed content
+        logger.debug("skill_catalog_init", workspace=str(self.workspace))
+    
+    def _parse_skill_content(self, skill_path: Path) -> dict[str, Any]:
+        """Parse a SKILL.md file into structured data."""
+        if not skill_path.exists():
+            return {}
+        
+        content = skill_path.read_text(encoding="utf-8")
+        result: dict[str, Any] = {
+            "name": skill_path.parent.name,
+            "path": str(skill_path),
+            "raw_content": content,
+            "description": "",
+            "triggers": [],
+            "instructions": [],
+            "tools": []
+        }
+        
+        # Parse YAML frontmatter
+        import re
+        fm_match = re.search(r'^---\s*\n(.*?)\n---', content, re.DOTALL)
+        if fm_match:
+            for line in fm_match.group(1).split('\n'):
+                if line.startswith('description:'):
+                    result["description"] = line.replace('description:', '').strip().strip("'\"")
+                elif line.startswith('name:'):
+                    result["name"] = line.replace('name:', '').strip()
+        
+        # Extract keywords from content
+        keywords = []
+        # Look for trigger sections
+        trigger_match = re.search(r'(?:Triggers?|Keywords?|Activation).*?(?=##|\Z)', content, re.IGNORECASE | re.DOTALL)
+        if trigger_match:
+            for match in re.finditer(r'`([^`]+)`', trigger_match.group(0)):
+                keywords.append(match.group(1).lower())
+        
+        # Also extract from description
+        desc_words = re.findall(r'\b\w+\b', result["description"].lower())
+        keywords.extend(desc_words)
+        result["triggers"] = list(set(keywords))[:50]
+        
+        # Extract tools
+        tools_match = re.search(r'allowed-tools:\s*(.*?)(?:\n```|\Z)', content, re.DOTALL)
+        if tools_match:
+            for line in tools_match.group(1).split('\n'):
+                tool = line.strip().lstrip('-').strip()
+                if tool:
+                    result["tools"].append(tool)
+        
+        return result
+    
+    def refresh_cache(self) -> None:
+        """Refresh the skill cache from disk."""
+        self._cache.clear()
+        
+        if not self.skills_dir.exists():
+            return
+        
+        for skill_dir in self.skills_dir.iterdir():
+            if skill_dir.is_dir():
+                skill_md = skill_dir / "SKILL.md"
+                if skill_md.exists():
+                    try:
+                        self._cache[skill_dir.name] = self._parse_skill_content(skill_md)
+                    except Exception as e:
+                        logger.warning("skill_parse_error", skill=skill_dir.name, error=str(e))
+    
+    def get_all_skills(self) -> list[dict[str, Any]]:
+        """Get all available skills."""
+        if not self._cache:
+            self.refresh_cache()
+        return list(self._cache.values())
+    
+    async def find_matching_skills(
+        self,
+        request: str,
+        min_score: float = 0.1
+    ) -> list[SkillMatch]:
+        """
+        Find skills that match a user request.
+        
+        Uses keyword matching and semantic similarity to rank skills.
+        
+        Args:
+            request: User's natural language request
+            min_score: Minimum score to include in results (0.0-1.0)
+            
+        Returns:
+            List of SkillMatch objects sorted by match_score descending
+        """
+        import re
+        
+        if not self._cache:
+            self.refresh_cache()
+        
+        request_lower = request.lower()
+        request_words = set(re.findall(r'\b\w{3,}\b', request_lower))
+        
+        matches: list[SkillMatch] = []
+        
+        for skill_name, skill_data in self._cache.items():
+            skill_keywords = set(skill_data.get("triggers", []))
+            skill_desc_words = set(re.findall(r'\b\w{3,}\b', skill_data.get("description", "").lower()))
+            all_skill_words = skill_keywords | skill_desc_words
+            
+            # Calculate match score
+            matched = request_words & all_skill_words
+            if not all_skill_words:
+                score = 0.0
+            else:
+                # Jaccard-like similarity with boost for keyword matches
+                keyword_matches = request_words & skill_keywords
+                total_possible = len(request_words | all_skill_words)
+                score = (len(matched) + len(keyword_matches) * 0.5) / max(total_possible, 1)
+            
+            if score >= min_score:
+                matches.append(SkillMatch(
+                    name=skill_name,
+                    path=Path(skill_data.get("path", "")),
+                    description=skill_data.get("description", ""),
+                    match_score=min(score, 1.0),
+                    matched_keywords=list(matched)
+                ))
+        
+        # Sort by score descending
+        matches.sort(key=lambda m: m.match_score, reverse=True)
+        return matches
+    
+    def suggest_template(self, request: str) -> str | None:
+        """
+        Suggest a skill template based on the request.
+        
+        Returns template key or None if no good match.
+        """
+        request_lower = request.lower()
+        
+        best_template = None
+        best_score = 0.0
+        
+        for template_key, template_data in SKILL_TEMPLATES.items():
+            triggers = template_data.get("triggers", [])
+            matches = sum(1 for t in triggers if t in request_lower)
+            score = matches / len(triggers) if triggers else 0
+            
+            if score > best_score:
+                best_score = score
+                best_template = template_key
+        
+        return best_template if best_score >= 0.2 else None
+    
+    async def generate_specialized_skill(
+        self,
+        request: str,
+        name: str | None = None,
+        use_sdk: bool = True,
+        from_template: str | None = None
+    ) -> GeneratedSkill:
+        """
+        Generate a specialized skill based on request.
+        
+        This is the core "skill factory" method. It:
+        1. Optionally starts from a template
+        2. Uses SDK to generate comprehensive, tailored content
+        3. Creates a production-ready SKILL.md
+        
+        Args:
+            request: Natural language description of what the skill should do
+            name: Optional skill name (auto-generated if not provided)
+            use_sdk: Whether to use Copilot SDK for intelligent generation
+            from_template: Optional template key to start from
+            
+        Returns:
+            GeneratedSkill with the created skill details
+        """
+        import re
+        
+        # Auto-generate name from request if not provided
+        if not name:
+            # Extract key nouns/verbs for name
+            words = re.findall(r'\b[a-z]{3,}\b', request.lower())
+            common = {"the", "and", "for", "with", "that", "this", "create", "make", "build", "write", "need", "want", "should", "would", "could"}
+            meaningful = [w for w in words if w not in common][:3]
+            name = "-".join(meaningful) if meaningful else f"skill-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        
+        # Get template boost if available
+        template_data: dict[str, Any] = {}
+        if from_template and from_template in SKILL_TEMPLATES:
+            template_data = SKILL_TEMPLATES[from_template]
+        elif not from_template:
+            # Auto-detect template
+            suggested = self.suggest_template(request)
+            if suggested:
+                template_data = SKILL_TEMPLATES[suggested]
+                logger.info("template_auto_selected", template=suggested)
+        
+        # Generate using SDK or standard method
+        if use_sdk:
+            return await self.generator.generate_with_sdk(
+                name=name,
+                task_description=request,
+                template_boost=template_data
+            )
+        else:
+            return await self.generator.generate(
+                name=name,
+                description=request,
+                task_description=request,
+                triggers=template_data.get("triggers"),
+                instructions=template_data.get("instructions"),
+                tools=template_data.get("tools")
+            )
+    
+    async def should_create_skill(
+        self,
+        request: str,
+        threshold: float = 0.4
+    ) -> tuple[bool, str]:
+        """
+        Determine if a new skill should be created for this request.
+        
+        Returns (should_create, reason).
+        
+        Criteria for creating a new skill:
+        - No existing skill matches well (score < threshold)
+        - Request describes a repeatable task pattern
+        - Request is specific enough to be useful
+        """
+        import re
+        
+        matches = await self.find_matching_skills(request)
+        
+        if matches and matches[0].match_score >= threshold:
+            return False, f"Existing skill '{matches[0].name}' matches well (score: {matches[0].match_score:.2f})"
+        
+        # Check if request is specific enough
+        words = re.findall(r'\b\w+\b', request.lower())
+        if len(words) < 5:
+            return False, "Request too vague - provide more details for skill generation"
+        
+        # Check for repeatable patterns
+        repeatable_indicators = [
+            "whenever", "always", "every time", "frequently", "often", 
+            "standardize", "pattern", "consistently", "template"
+        ]
+        has_repeatable = any(ind in request.lower() for ind in repeatable_indicators)
+        
+        if has_repeatable:
+            return True, "Request indicates a repeatable pattern"
+        
+        # Check for specific task type
+        if self.suggest_template(request):
+            return True, "Request matches a common development pattern"
+        
+        return True, "No matching skill found - creating specialized skill"
+
+
+# =============================================================================
+# SKILL GENERATOR - Creates reusable SKILL.md files
+# =============================================================================
+
+
+@dataclass
+class GeneratedSkill:
+    """Result of skill generation."""
+    
+    name: str
+    path: Path
+    description: str
+    task_type: str
+    triggers: list[str]
+    instructions: list[str]
+    context_files: list[str]
+    created_at: datetime = field(default_factory=datetime.now)
+
+
+class SkillGenerator:
+    """
+    Generate reusable SKILL.md files from task descriptions.
+    
+    The core value of skills is **minimizing context consumption**:
+    - Instead of loading the full orchestrator (~8K tokens) every time,
+    - Generate a focused skill (~500-1500 tokens) for specific tasks.
+    
+    Follows the Agent Skills specification from awesome-copilot:
+    - name: 1-64 chars, lowercase letters/numbers/hyphens, matches folder
+    - description: 1-1024 chars, WHAT it does + WHEN to use + keywords
+    
+    Usage:
+        generator = SkillGenerator(workspace)
+        skill = await generator.generate(
+            name="api-endpoint-creator",
+            description="Create REST API endpoints with validation",
+            task_description="I frequently need to create REST endpoints..."
+        )
+        # Creates .github/skills/api-endpoint-creator/SKILL.md
+    """
+    
+    # Template follows awesome-copilot/make-skill-template spec
+    SKILL_TEMPLATE = '''---
+name: {name}
+description: '{description}'
+license: MIT
+---
+
+# {title}
+
+{summary}
+
+## When to Use This Skill
+
+{use_cases}
+
+## Prerequisites
+
+{prerequisites}
+
+## Step-by-Step Workflow
+
+{instructions_section}
+
+## Allowed Tools
+
+```yaml
+allowed-tools: {tools_inline}
+```
+
+## Validation
+
+{validation_section}
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Skill not matching | Ensure your prompt contains relevant keywords |
+| Tool not available | Check that the tool is enabled in your Copilot settings |
+
+## References
+
+- [copilot-orchestrator skill](.github/skills/copilot-orchestrator/SKILL.md)
+- [Agent Skills specification](https://agentskills.io/specification)
+'''
+    
+    def __init__(self, workspace: Path) -> None:
+        """
+        Initialize the skill generator.
+        
+        Args:
+            workspace: Project root directory (must contain .github folder or it will be created)
+        """
+        # Ensure workspace is resolved to absolute path
+        self.workspace = workspace.resolve()
+        self.skills_dir = self.workspace / ".github" / "skills"
+        
+        logger.debug("skill_generator_init", workspace=str(self.workspace), skills_dir=str(self.skills_dir))
+        
+    def _slugify(self, name: str) -> str:
+        """Convert name to valid skill directory name."""
+        import re
+        slug = name.lower().strip()
+        slug = re.sub(r'[^\w\s-]', '', slug)
+        slug = re.sub(r'[-\s]+', '-', slug)
+        return slug
+    
+    def _analyze_task(self, task_description: str) -> dict[str, Any]:
+        """
+        Analyze task description to determine skill parameters.
+        
+        Returns task type, keywords, tools needed, etc.
+        """
+        desc_lower = task_description.lower()
+        
+        # Determine task type - order matters! More specific checks first
+        task_type = "general"
+        
+        # Test should be checked early - test descriptions often mention "error handling"
+        if any(w in desc_lower for w in ["test", "coverage", "spec", "assert", "unit test", "unittest"]):
+            task_type = "test"
+        elif any(w in desc_lower for w in ["implement", "create", "build", "add", "make", "develop"]):
+            task_type = "implement"
+        elif any(w in desc_lower for w in ["fix", "debug", "bug", "issue", "problem", "broken", "not working"]):
+            # Removed "error" since it's too general (appears in "error handling")
+            task_type = "debug"
+        elif any(w in desc_lower for w in ["refactor", "restructure", "improve", "clean", "optimize"]):
+            task_type = "refactor"
+        elif any(w in desc_lower for w in ["deploy", "pipeline", "ci", "cd", "release", "ci/cd"]):
+            task_type = "deploy"
+        elif any(w in desc_lower for w in ["document", "readme", "doc", "explain", "documentation"]):
+            task_type = "document"
+        elif any(w in desc_lower for w in ["analyze", "review", "audit", "check", "scan"]):
+            task_type = "analyze"
+        
+        # Extract keywords for triggers
+        import re
+        words = re.findall(r'\b[a-z]{3,}\b', desc_lower)
+        common_words = {"the", "and", "for", "with", "that", "this", "from", "have", "are", "was", "will", "can", "should", "would", "could", "need", "want"}
+        keywords = [w for w in words if w not in common_words][:10]
+        
+        # Determine tools needed based on task type
+        tools_map = {
+            "implement": ["create_file", "replace_string_in_file", "read_file", "run_in_terminal"],
+            "debug": ["read_file", "grep_search", "get_errors", "run_in_terminal"],
+            "test": ["runTests", "read_file", "create_file", "get_errors"],
+            "refactor": ["read_file", "replace_string_in_file", "file_search", "list_code_usages"],
+            "deploy": ["run_in_terminal", "create_file", "read_file", "file_search"],
+            "document": ["read_file", "create_file", "replace_string_in_file", "semantic_search"],
+            "analyze": ["read_file", "grep_search", "file_search", "semantic_search", "get_errors"],
+            "general": ["read_file", "create_file", "replace_string_in_file", "run_in_terminal", "file_search"]
+        }
+        
+        return {
+            "task_type": task_type,
+            "keywords": keywords,
+            "tools": tools_map.get(task_type, tools_map["general"])
+        }
+    
+    def _generate_triggers_section(self, keywords: list[str], task_type: str) -> str:
+        """Generate the triggers/keywords section."""
+        lines = []
+        for kw in keywords:
+            lines.append(f"- `{kw}`")
+        
+        # Add task-type specific triggers
+        type_triggers = {
+            "implement": ["create", "build", "add", "implement", "make"],
+            "debug": ["fix", "debug", "error", "bug", "problem", "issue"],
+            "test": ["test", "coverage", "spec", "assert", "verify"],
+            "refactor": ["refactor", "restructure", "improve", "clean", "optimize"],
+            "deploy": ["deploy", "pipeline", "release", "ci/cd"],
+            "document": ["document", "readme", "explain", "describe"],
+            "analyze": ["analyze", "review", "audit", "check"]
+        }
+        for t in type_triggers.get(task_type, []):
+            if t not in keywords:
+                lines.append(f"- `{t}`")
+        
+        return "\n".join(lines[:15])  # Limit to 15 triggers
+    
+    def _generate_instructions_section(
+        self, 
+        task_description: str,
+        task_type: str,
+        custom_instructions: list[str] | None
+    ) -> str:
+        """Generate step-by-step instructions."""
+        if custom_instructions:
+            lines = [f"{i+1}. {inst}" for i, inst in enumerate(custom_instructions)]
+            return "\n".join(lines)
+        
+        # Generate default instructions based on task type
+        default_instructions = {
+            "implement": [
+                "Understand the requirements from the user's request",
+                "Search for existing related code patterns in the codebase",
+                "Create or modify files as needed to implement the feature",
+                "Add appropriate error handling and validation",
+                "Run tests to verify the implementation works",
+                "Provide a summary of changes made"
+            ],
+            "debug": [
+                "Analyze the error message or symptoms described",
+                "Search for the relevant code causing the issue",
+                "Identify the root cause of the problem",
+                "Implement the fix with minimal changes",
+                "Test to verify the fix resolves the issue",
+                "Explain what caused the bug and how it was fixed"
+            ],
+            "test": [
+                "Identify the code that needs test coverage",
+                "Analyze existing test patterns in the project",
+                "Create test file(s) with appropriate structure",
+                "Write test cases covering happy path and edge cases",
+                "Run tests to verify they pass",
+                "Check coverage if possible"
+            ],
+            "refactor": [
+                "Understand the current code structure",
+                "Identify code smells and improvement opportunities",
+                "Plan the refactoring approach",
+                "Make incremental changes preserving behavior",
+                "Run tests after each change to ensure no regressions",
+                "Document any significant architectural changes"
+            ],
+            "deploy": [
+                "Review deployment target requirements",
+                "Create or update deployment configuration",
+                "Set up CI/CD pipeline if needed",
+                "Configure environment variables and secrets",
+                "Test the deployment process",
+                "Document the deployment procedure"
+            ],
+            "document": [
+                "Analyze the code/feature to be documented",
+                "Identify the target audience for the documentation",
+                "Create clear, concise documentation with examples",
+                "Include installation/setup instructions if applicable",
+                "Add code samples and usage examples",
+                "Review for clarity and completeness"
+            ],
+            "analyze": [
+                "Scan the codebase for relevant patterns",
+                "Identify areas of concern or improvement",
+                "Check for common issues (security, performance)",
+                "Review code against best practices",
+                "Compile findings into a clear report",
+                "Prioritize recommendations by impact"
+            ],
+            "general": [
+                "Parse and understand the user's request",
+                "Gather necessary context from the codebase",
+                "Execute the required operations",
+                "Verify the results meet expectations",
+                "Provide clear feedback on what was done"
+            ]
+        }
+        
+        instructions = default_instructions.get(task_type, default_instructions["general"])
+        return "\n".join(f"{i+1}. {inst}" for i, inst in enumerate(instructions))
+    
+    def _generate_context_section(self, context_files: list[str] | None) -> str:
+        """Generate the context requirements section."""
+        if context_files:
+            lines = [f"- `{f}`" for f in context_files]
+            return "\n".join(lines)
+        
+        return """- Relevant source files in the workspace
+- Configuration files (if applicable)
+- Related test files (if available)"""
+    
+    def _generate_tools_yaml(self, tools: list[str]) -> str:
+        """Generate YAML list of allowed tools."""
+        return "\n".join(f"  - {tool}" for tool in tools)
+    
+    def _generate_execution_section(self, task_type: str) -> str:
+        """Generate execution guidance."""
+        return f"""When this skill is triggered, it will:
+
+1. **Analyze** the request to understand specific requirements
+2. **Gather** relevant context from the workspace
+3. **Execute** using the appropriate tools for {task_type} tasks
+4. **Validate** results and provide feedback"""
+
+    def _generate_validation_section(self, task_type: str) -> str:
+        """Generate validation criteria."""
+        validations = {
+            "implement": "- [ ] Code compiles/runs without errors\n- [ ] Feature works as expected\n- [ ] Tests pass (if applicable)",
+            "debug": "- [ ] Error no longer occurs\n- [ ] No regressions introduced\n- [ ] Root cause was addressed",
+            "test": "- [ ] Tests pass\n- [ ] Tests cover the target code\n- [ ] Edge cases are covered",
+            "refactor": "- [ ] All tests still pass\n- [ ] Code quality improved\n- [ ] No behavior changes",
+            "deploy": "- [ ] Deployment succeeds\n- [ ] Application runs correctly\n- [ ] Configuration is correct",
+            "document": "- [ ] Documentation is clear and complete\n- [ ] Examples work correctly\n- [ ] Covers all key features",
+            "analyze": "- [ ] Analysis is thorough\n- [ ] Findings are actionable\n- [ ] Recommendations are prioritized",
+            "general": "- [ ] Task completed successfully\n- [ ] Results match expectations"
+        }
+        return validations.get(task_type, validations["general"])
+    
+    async def generate(
+        self,
+        name: str,
+        description: str,
+        task_description: str | None = None,
+        instructions: list[str] | None = None,
+        context_files: list[str] | None = None,
+        triggers: list[str] | None = None,
+        tools: list[str] | None = None
+    ) -> GeneratedSkill:
+        """
+        Generate a new SKILL.md file following Agent Skills specification.
+        
+        Args:
+            name: Skill name (will be slugified - lowercase, hyphens)
+            description: One-line description (1-1024 chars, includes WHAT + WHEN + keywords)
+            task_description: Detailed description of what this skill does
+            instructions: Custom step-by-step instructions (auto-generated if not provided)
+            context_files: Files this skill typically needs
+            triggers: Keywords/phrases that activate this skill
+            tools: Tools this skill uses (auto-detected if not provided)
+            
+        Returns:
+            GeneratedSkill with path to created SKILL.md
+        """
+        slug = self._slugify(name)
+        skill_dir = self.skills_dir / slug
+        skill_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Analyze task if description provided
+        analysis = self._analyze_task(task_description or description)
+        task_type = analysis["task_type"]
+        
+        # Use provided values or defaults from analysis
+        final_triggers = triggers or analysis["keywords"]
+        final_tools = tools or analysis["tools"]
+        
+        # Build rich description with triggers (per awesome-copilot spec)
+        # Format: "<WHAT it does>. Use when <triggers/scenarios>. Triggers on <keywords>."
+        trigger_words = ", ".join(final_triggers[:7])
+        rich_description = description
+        if not any(phrase in description.lower() for phrase in ["use when", "trigger"]):
+            rich_description = f"{description}. Triggers on {trigger_words}."
+        
+        # Generate use cases as bullet list
+        use_cases_list = []
+        for desc in (task_description or description).split("."):
+            desc = desc.strip()
+            if desc and len(desc) > 10:
+                use_cases_list.append(f"- {desc}")
+        use_cases = "\n".join(use_cases_list[:5]) if use_cases_list else f"- {description}"
+        
+        # Generate prerequisites based on task type
+        prerequisites_map = {
+            "implement": "- Code editor with workspace access\n- Understanding of the target codebase structure",
+            "debug": "- Access to error logs or stack traces\n- Reproducible test case (if possible)",
+            "test": "- Testing framework configured (pytest, jest, etc.)\n- Code to be tested is accessible",
+            "refactor": "- Existing test suite (recommended)\n- Understanding of current code behavior",
+            "deploy": "- Deployment target credentials configured\n- Required CLI tools installed",
+            "document": "- Access to code/feature being documented\n- Knowledge of target audience",
+            "analyze": "- Full codebase access\n- Understanding of what to analyze",
+            "general": "- Workspace with relevant files\n- Clear task description"
+        }
+        prerequisites = prerequisites_map.get(task_type, prerequisites_map["general"])
+        
+        # Summary paragraph for body
+        summary = (task_description or description).split(".")[0].strip() + "."
+        
+        # Tools as space-delimited inline list
+        tools_inline = " ".join(final_tools)
+        
+        # Generate skill content using updated template
+        content = self.SKILL_TEMPLATE.format(
+            name=slug,
+            title=name.title().replace("-", " ").replace("_", " "),
+            description=rich_description,
+            summary=summary,
+            use_cases=use_cases,
+            prerequisites=prerequisites,
+            instructions_section=self._generate_instructions_section(
+                task_description or description, task_type, instructions
+            ),
+            tools_inline=tools_inline,
+            validation_section=self._generate_validation_section(task_type)
+        )
+        
+        # Write SKILL.md
+        skill_path = skill_dir / "SKILL.md"
+        skill_path.write_text(content)
+        
+        logger.info(
+            "skill_generated",
+            name=slug,
+            path=str(skill_path),
+            task_type=task_type,
+            triggers_count=len(final_triggers),
+            tools_count=len(final_tools)
+        )
+        
+        return GeneratedSkill(
+            name=slug,
+            path=skill_path,
+            description=rich_description,
+            task_type=task_type,
+            triggers=final_triggers,
+            instructions=instructions or [],
+            context_files=context_files or []
+        )
+    
+    def list_generated_skills(self) -> list[dict[str, Any]]:
+        """List all generated skills in the workspace."""
+        skills = []
+        if not self.skills_dir.exists():
+            return skills
+        
+        for skill_dir in self.skills_dir.iterdir():
+            if skill_dir.is_dir():
+                skill_md = skill_dir / "SKILL.md"
+                if skill_md.exists():
+                    content = skill_md.read_text()
+                    # Parse basic info from SKILL.md
+                    name = skill_dir.name
+                    desc = ""
+                    for line in content.split("\n"):
+                        if line.startswith("description:"):
+                            desc = line.replace("description:", "").strip()
+                            break
+                    skills.append({
+                        "name": name,
+                        "path": str(skill_md),
+                        "description": desc
+                    })
+        
+        return skills
+    
+    def delete_skill(self, name: str) -> bool:
+        """Delete a generated skill."""
+        import shutil
+        slug = self._slugify(name)
+        skill_dir = self.skills_dir / slug
+        
+        if skill_dir.exists():
+            shutil.rmtree(skill_dir)
+            logger.info("skill_deleted", name=slug)
+            return True
+        return False
+    
+    async def generate_with_sdk(
+        self,
+        name: str,
+        task_description: str,
+        client: "CopilotClient | None" = None,
+        template_boost: dict[str, Any] | None = None
+    ) -> GeneratedSkill:
+        """
+        Generate a comprehensive skill using Copilot SDK for intelligent content creation.
+        
+        This is the core "skill factory" method - the SDK acts as an expert skill designer
+        that creates production-ready, highly detailed SKILL.md files.
+        
+        The SDK analyzes:
+        1. The task description to understand intent and scope
+        2. Common patterns and best practices for this task type
+        3. Optimal tool selection and sequencing
+        4. Edge cases and error handling strategies
+        
+        Args:
+            name: Skill name (will be slugified)
+            task_description: Detailed description of what the skill should do
+            client: Optional CopilotClient instance (creates one if not provided)
+            template_boost: Optional template data to guide generation
+            
+        Returns:
+            GeneratedSkill with path to created SKILL.md
+        """
+        own_client = client is None
+        
+        if own_client:
+            client = CopilotClient()
+        
+        try:
+            # Build template context if available
+            template_context = ""
+            if template_boost:
+                template_context = f"""
+I have a starting template that provides some context:
+- Suggested triggers: {', '.join(template_boost.get('triggers', []))}
+- Recommended tools: {', '.join(template_boost.get('tools', []))}
+- Base instructions: {template_boost.get('instructions', [])}
+
+Use this as inspiration but feel free to enhance and adapt based on the specific task description.
+"""
+
+            # Build comprehensive prompt for expert skill generation
+            prompt = f"""You are an expert Agent Skill designer for GitHub Copilot. Your job is to create comprehensive, production-ready skills that minimize context consumption while maximizing utility.
+
+## Task: Create a skill named "{name}"
+
+## User's Task Description:
+{task_description}
+{template_context}
+
+## Your Mission:
+Create a COMPLETE skill specification that will enable Copilot to handle this task type autonomously and expertly. Think like a senior developer who has done this task hundreds of times - what are ALL the steps, edge cases, and best practices?
+
+## Required Output (JSON format):
+
+{{
+    "description": "A rich description (150-250 chars) that explains WHAT the skill does, WHEN to use it, and includes key TRIGGER WORDS. Format: '<What it does>. Use when <trigger conditions>. Keywords: <key terms>.'",
+    
+    "summary": "A 2-3 sentence overview for the skill documentation explaining the skill's purpose and value.",
+    
+    "use_cases": [
+        "Specific use case 1 with example",
+        "Specific use case 2 with example", 
+        "Specific use case 3 with example"
+    ],
+    
+    "triggers": [
+        "keyword1",
+        "keyword2",
+        "action phrase",
+        "problem indicator",
+        "domain term"
+    ],
+    
+    "prerequisites": [
+        "Required tool, dependency, or setup 1",
+        "Required tool, dependency, or setup 2"
+    ],
+    
+    "instructions": [
+        "Step 1: [Specific action with details]",
+        "Step 2: [Specific action with details]",
+        "Step 3: Continue with comprehensive steps...",
+        "...Include 8-12 detailed steps covering the ENTIRE workflow"
+    ],
+    
+    "tools": [
+        "tool_name_1",
+        "tool_name_2"
+    ],
+    
+    "validation": [
+        "Specific success criterion 1",
+        "Specific success criterion 2",
+        "How to verify the task completed correctly"
+    ],
+    
+    "troubleshooting": [
+        {{"issue": "Common problem 1", "solution": "How to fix it"}},
+        {{"issue": "Common problem 2", "solution": "How to fix it"}}
+    ],
+    
+    "edge_cases": [
+        "Edge case 1 and how to handle it",
+        "Edge case 2 and how to handle it"
+    ]
+}}
+
+## Available Tools (choose the most appropriate):
+- read_file: Read file contents
+- create_file: Create new files  
+- replace_string_in_file: Edit existing files
+- run_in_terminal: Execute shell commands
+- grep_search: Search for text patterns
+- file_search: Find files by path/glob
+- semantic_search: Semantic code search
+- get_errors: Get compile/lint errors
+- runTests: Run test suites
+- list_code_usages: Find symbol references
+- fetch_webpage: Fetch web documentation
+
+## Quality Guidelines:
+1. Instructions should be SPECIFIC and ACTIONABLE, not generic
+2. Include error handling and validation steps
+3. Consider the user's workflow and minimize friction
+4. Triggers should include verbs, nouns, and problem phrases
+5. Use_cases should be concrete scenarios developers actually face
+6. Validation criteria should be measurable
+
+Respond with ONLY the JSON object, no additional text."""
+
+            response_text = ""
+            
+            async for chunk in client.send_message(content=prompt):
+                if chunk.get("type") == "text":
+                    response_text += chunk.get("content", "")
+                elif chunk.get("type") == "done":
+                    break
+            
+            # Parse SDK response
+            sdk_content = self._parse_sdk_skill_response(response_text)
+            
+            # Build enhanced content from SDK response
+            enhanced_description = sdk_content.get("description", task_description[:200])
+            summary = sdk_content.get("summary", "")
+            use_cases = sdk_content.get("use_cases", [])
+            triggers = sdk_content.get("triggers", [])
+            prerequisites = sdk_content.get("prerequisites", [])
+            instructions = sdk_content.get("instructions", [])
+            tools = sdk_content.get("tools", [])
+            validation = sdk_content.get("validation", [])
+            troubleshooting = sdk_content.get("troubleshooting", [])
+            edge_cases = sdk_content.get("edge_cases", [])
+            
+            # Generate skill using enhanced content
+            skill = await self.generate(
+                name=name,
+                description=enhanced_description,
+                task_description=task_description,
+                triggers=triggers if triggers else None,
+                instructions=instructions if instructions else None,
+                tools=tools if tools else None
+            )
+            
+            # If we got rich content from SDK, enhance the generated SKILL.md
+            if summary or use_cases or troubleshooting:
+                await self._enhance_skill_md(
+                    skill.path,
+                    summary=summary,
+                    use_cases=use_cases,
+                    prerequisites=prerequisites,
+                    validation=validation,
+                    troubleshooting=troubleshooting,
+                    edge_cases=edge_cases
+                )
+            
+            return skill
+            
+        finally:
+            if own_client and client:
+                await client.close()
+    
+    async def _enhance_skill_md(
+        self,
+        skill_path: Path,
+        summary: str = "",
+        use_cases: list[str] | None = None,
+        prerequisites: list[str] | None = None, 
+        validation: list[str] | None = None,
+        troubleshooting: list[dict] | None = None,
+        edge_cases: list[str] | None = None
+    ) -> None:
+        """
+        Enhance a generated SKILL.md with additional SDK-generated content.
+        """
+        if not skill_path.exists():
+            return
+        
+        content = skill_path.read_text(encoding="utf-8")
+        
+        # Build enhanced sections
+        enhancements = []
+        
+        if use_cases:
+            use_case_section = "## Use Cases\n\n"
+            for uc in use_cases:
+                use_case_section += f"- {uc}\n"
+            enhancements.append(("## When to Use", use_case_section + "\n## When to Use"))
+        
+        if prerequisites and "## Prerequisites" in content:
+            prereq_section = "## Prerequisites\n\n"
+            for pr in prerequisites:
+                prereq_section += f"- {pr}\n"
+            content = content.replace("## Prerequisites", prereq_section)
+        
+        if validation:
+            validation_section = "\n## Validation Criteria\n\n"
+            for v in validation:
+                validation_section += f"- [ ] {v}\n"
+            # Insert before Troubleshooting
+            if "## Troubleshooting" in content:
+                content = content.replace("## Troubleshooting", validation_section + "\n## Troubleshooting")
+        
+        if troubleshooting:
+            # Find and replace troubleshooting section
+            import re
+            trouble_section = "## Troubleshooting\n\n| Issue | Solution |\n|-------|----------|\n"
+            for t in troubleshooting:
+                issue = t.get("issue", "")
+                solution = t.get("solution", "")
+                trouble_section += f"| {issue} | {solution} |\n"
+            
+            # Replace existing troubleshooting
+            content = re.sub(
+                r'## Troubleshooting.*?(?=## |\Z)',
+                trouble_section + "\n",
+                content,
+                flags=re.DOTALL
+            )
+        
+        if edge_cases:
+            edge_section = "\n## Edge Cases\n\n"
+            for ec in edge_cases:
+                edge_section += f"- {ec}\n"
+            # Insert before References
+            if "## References" in content:
+                content = content.replace("## References", edge_section + "\n## References")
+        
+        # Write enhanced content
+        skill_path.write_text(content, encoding="utf-8")
+        logger.info("skill_enhanced", path=str(skill_path))
+    
+    def _parse_sdk_skill_response(self, response: str) -> dict[str, Any]:
+        """Parse SDK response to extract skill content."""
+        import json
+        import re
+        
+        # Try to extract JSON from response
+        # Handle markdown code blocks
+        json_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', response, re.DOTALL)
+        if json_match:
+            try:
+                return json.loads(json_match.group(1))
+            except json.JSONDecodeError:
+                pass
+        
+        # Try direct JSON parse
+        try:
+            return json.loads(response)
+        except json.JSONDecodeError:
+            pass
+        
+        # Fallback: return empty dict (will use defaults)
+        logger.warning("sdk_response_parse_failed", response_preview=response[:200])
+        return {}
+
+
+# =============================================================================
 # RESPONSE RENDERER
 # =============================================================================
 
@@ -1745,6 +3307,7 @@ def parse_args() -> argparse.Namespace:
 Invocation Modes:
   Skill Handler:  Invoked by Copilot when SKILL.md matches
   CLI:            Direct command-line usage for testing
+  Skill Factory:  Generate reusable SKILL.md files
   
 Examples:
   # Skill handler mode (used by Copilot)
@@ -1755,6 +3318,17 @@ Examples:
   %(prog)s "list files in current directory"
   %(prog)s --task-type debug "fix the login error"
   %(prog)s --workspace /path/to/project "add unit tests"
+  
+  # Skill factory mode - generate reusable skills
+  %(prog)s --generate-skill --skill-name "api-creator" "Create REST API endpoints with validation and error handling"
+  %(prog)s --generate-skill --skill-name "test-writer" --skill-description "Write comprehensive unit tests"
+  %(prog)s --list-skills
+  %(prog)s --delete-skill api-creator
+
+The value of generating skills is MINIMIZING CONTEXT CONSUMPTION:
+- Full orchestrator: ~8K tokens loaded every time
+- Generated skill: ~500-1500 tokens, focused on specific task
+- Copilot can match lightweight skills for common operations
         """
     )
     
@@ -1820,6 +3394,72 @@ Examples:
         version="%(prog)s 1.0.0"
     )
     
+    # Skill generation arguments
+    parser.add_argument(
+        "--generate-skill",
+        action="store_true",
+        help="Generate a new SKILL.md file instead of executing a task"
+    )
+    
+    parser.add_argument(
+        "--skill-name",
+        help="Name for the generated skill (required with --generate-skill)"
+    )
+    
+    parser.add_argument(
+        "--skill-description",
+        help="One-line description for the generated skill"
+    )
+    
+    parser.add_argument(
+        "--list-skills",
+        action="store_true",
+        help="List all generated skills in the workspace"
+    )
+    
+    parser.add_argument(
+        "--delete-skill",
+        metavar="SKILL_NAME",
+        help="Delete a generated skill"
+    )
+    
+    parser.add_argument(
+        "--use-sdk",
+        action="store_true",
+        help="Use Copilot SDK to generate intelligent skill content (requires SDK setup)"
+    )
+    
+    # Skill Catalog features (mother of all skills)
+    parser.add_argument(
+        "--find-skill",
+        metavar="REQUEST",
+        help="Find existing skills that match a request"
+    )
+    
+    parser.add_argument(
+        "--suggest-template",
+        metavar="REQUEST",
+        help="Suggest a skill template for a request"
+    )
+    
+    parser.add_argument(
+        "--list-templates",
+        action="store_true",
+        help="List all available skill templates"
+    )
+    
+    parser.add_argument(
+        "--from-template",
+        metavar="TEMPLATE_NAME",
+        help="Generate skill starting from a template (use with --generate-skill)"
+    )
+    
+    parser.add_argument(
+        "--auto-skill",
+        metavar="REQUEST",
+        help="Auto-generate a specialized skill if no matching skill exists"
+    )
+    
     return parser.parse_args()
 
 
@@ -1827,17 +3467,237 @@ async def main() -> int:
     """Main entry point."""
     args = parse_args()
     
+    workspace = args.workspace.resolve()
+    
+    # =========================================================================
+    # SKILL MANAGEMENT MODES
+    # =========================================================================
+    
+    # List skills mode
+    if args.list_skills:
+        generator = SkillGenerator(workspace)
+        skills = generator.list_generated_skills()
+        
+        if not skills:
+            console.print("[yellow]No skills found in workspace[/yellow]")
+            return 0
+        
+        console.print(Panel(
+            "\n".join(
+                f"[bold cyan]{s['name']}[/bold cyan]\n  {s['description']}\n  [dim]{s['path']}[/dim]"
+                for s in skills
+            ),
+            title="Generated Skills"
+        ))
+        return 0
+    
+    # Delete skill mode
+    if args.delete_skill:
+        generator = SkillGenerator(workspace)
+        if generator.delete_skill(args.delete_skill):
+            console.print(f"[green]✓ Deleted skill: {args.delete_skill}[/green]")
+            return 0
+        else:
+            console.print(f"[red]Skill not found: {args.delete_skill}[/red]")
+            return 1
+    
+    # =========================================================================
+    # SKILL CATALOG MODES (Mother of All Skills)
+    # =========================================================================
+    
+    # List templates mode
+    if args.list_templates:
+        console.print(Panel(
+            "\n".join(
+                f"[bold cyan]{key}[/bold cyan]\n"
+                f"  {data['description'][:100]}{'...' if len(data['description']) > 100 else ''}\n"
+                f"  [dim]Triggers: {', '.join(data['triggers'][:5])}{'...' if len(data['triggers']) > 5 else ''}[/dim]"
+                for key, data in SKILL_TEMPLATES.items()
+            ),
+            title="Available Skill Templates"
+        ))
+        return 0
+    
+    # Find matching skills mode
+    if args.find_skill:
+        catalog = SkillCatalog(workspace)
+        matches = await catalog.find_matching_skills(args.find_skill)
+        
+        if not matches:
+            console.print(f"[yellow]No skills match: '{args.find_skill}'[/yellow]")
+            
+            # Suggest template
+            template = catalog.suggest_template(args.find_skill)
+            if template:
+                console.print(f"\n[dim]Suggested template: [bold]{template}[/bold][/dim]")
+                console.print(f"[dim]Generate with: --auto-skill \"{args.find_skill}\"[/dim]")
+            return 0
+        
+        console.print(Panel(
+            "\n".join(
+                f"[bold cyan]{m.name}[/bold cyan] [dim]({m.match_score:.0%} match)[/dim]\n"
+                f"  {m.description[:80]}{'...' if len(m.description) > 80 else ''}\n"
+                f"  [dim]Matched: {', '.join(m.matched_keywords[:5])}[/dim]"
+                for m in matches[:5]
+            ),
+            title=f"Matching Skills for '{args.find_skill[:40]}...'" if len(args.find_skill) > 40 else f"Matching Skills for '{args.find_skill}'"
+        ))
+        return 0
+    
+    # Suggest template mode
+    if args.suggest_template:
+        catalog = SkillCatalog(workspace)
+        template = catalog.suggest_template(args.suggest_template)
+        
+        if template:
+            data = SKILL_TEMPLATES[template]
+            console.print(Panel(
+                f"[bold]Template:[/bold] {template}\n\n"
+                f"[bold]Description:[/bold]\n{data['description']}\n\n"
+                f"[bold]Triggers:[/bold] {', '.join(data['triggers'])}\n\n"
+                f"[bold]Tools:[/bold] {', '.join(data['tools'])}\n\n"
+                f"[bold]To generate:[/bold]\n"
+                f"  --generate-skill --skill-name my-skill --from-template {template} \"Your description\"",
+                title=f"Suggested Template: {template}"
+            ))
+        else:
+            console.print(f"[yellow]No template matches: '{args.suggest_template}'[/yellow]")
+            console.print("[dim]Available templates: " + ", ".join(SKILL_TEMPLATES.keys()) + "[/dim]")
+        return 0
+    
+    # Auto-skill mode (intelligent skill creation)
+    if args.auto_skill:
+        catalog = SkillCatalog(workspace)
+        
+        # Check if we should create a skill
+        should_create, reason = await catalog.should_create_skill(args.auto_skill)
+        
+        if not should_create:
+            console.print(f"[yellow]{reason}[/yellow]")
+            matches = await catalog.find_matching_skills(args.auto_skill)
+            if matches:
+                console.print(f"\n[dim]Best match: {matches[0].name} ({matches[0].match_score:.0%})[/dim]")
+            return 0
+        
+        console.print(f"[dim]{reason}[/dim]\n")
+        
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            console=console
+        ) as progress:
+            progress.add_task("Creating specialized skill with SDK...", total=None)
+            
+            skill = await catalog.generate_specialized_skill(
+                request=args.auto_skill,
+                use_sdk=True
+            )
+        
+        console.print(Panel(
+            f"[bold green]✓ Specialized Skill Created[/bold green]\n\n"
+            f"[bold]Name:[/bold] {skill.name}\n"
+            f"[bold]Path:[/bold] {skill.path}\n"
+            f"[bold]Type:[/bold] {skill.task_type}\n"
+            f"[bold]Triggers:[/bold] {', '.join(skill.triggers[:5])}{'...' if len(skill.triggers) > 5 else ''}\n\n"
+            f"[dim]This skill was auto-generated from your request and will be matched automatically.[/dim]",
+            title="Skill Factory"
+        ))
+        
+        if args.output_json:
+            print(json.dumps({
+                "name": skill.name,
+                "path": str(skill.path),
+                "description": skill.description,
+                "task_type": skill.task_type,
+                "triggers": skill.triggers
+            }, indent=2))
+        
+        return 0
+    
+    # Generate skill mode
+    if args.generate_skill:
+        if not args.skill_name:
+            console.print("[red]Error: --skill-name is required with --generate-skill[/red]")
+            return 1
+        
+        # Use request as task description
+        request = args.request or args.request_flag or ""
+        description = args.skill_description or request or f"Skill for {args.skill_name}"
+        
+        # Get template boost if specified
+        template_boost = None
+        if hasattr(args, 'from_template') and args.from_template:
+            if args.from_template in SKILL_TEMPLATES:
+                template_boost = SKILL_TEMPLATES[args.from_template]
+                console.print(f"[dim]Using template: {args.from_template}[/dim]")
+            else:
+                console.print(f"[yellow]Template '{args.from_template}' not found. Available: {', '.join(SKILL_TEMPLATES.keys())}[/yellow]")
+        
+        generator = SkillGenerator(workspace)
+        
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            console=console
+        ) as progress:
+            if args.use_sdk:
+                progress.add_task("Generating skill with SDK...", total=None)
+                skill = await generator.generate_with_sdk(
+                    name=args.skill_name,
+                    task_description=description,
+                    template_boost=template_boost
+                )
+            else:
+                progress.add_task("Generating skill...", total=None)
+                skill = await generator.generate(
+                    name=args.skill_name,
+                    description=description,
+                    task_description=request if request else None,
+                    triggers=template_boost.get("triggers") if template_boost else None,
+                    instructions=template_boost.get("instructions") if template_boost else None,
+                    tools=template_boost.get("tools") if template_boost else None
+                )
+        
+        console.print(Panel(
+            f"[bold green]✓ Skill Generated[/bold green]\n\n"
+            f"[bold]Name:[/bold] {skill.name}\n"
+            f"[bold]Path:[/bold] {skill.path}\n"
+            f"[bold]Type:[/bold] {skill.task_type}\n"
+            f"[bold]Triggers:[/bold] {', '.join(skill.triggers[:5])}{'...' if len(skill.triggers) > 5 else ''}\n\n"
+            f"[dim]The skill is ready to use. Copilot will automatically match it based on triggers.[/dim]",
+            title="Skill Generator"
+        ))
+        
+        if args.output_json:
+            print(json.dumps({
+                "name": skill.name,
+                "path": str(skill.path),
+                "description": skill.description,
+                "task_type": skill.task_type,
+                "triggers": skill.triggers
+            }, indent=2))
+        
+        return 0
+    
+    # =========================================================================
+    # TASK EXECUTION MODE
+    # =========================================================================
+    
     # Get request from either positional arg or --request flag
     request = args.request or args.request_flag
     
     # Validate arguments
     if not args.resume and not request:
         console.print("[red]Error: Either request or --resume is required[/red]")
+        console.print("\n[dim]Usage examples:[/dim]")
+        console.print("  orchestrator.py \"implement user authentication\"")
+        console.print("  orchestrator.py --generate-skill --skill-name my-skill \"description of what it does\"")
+        console.print("  orchestrator.py --list-skills")
         return 1
     
     # Configure
     config = OrchestratorConfig(
-        workspace=args.workspace.resolve(),
+        workspace=workspace,
         max_tokens=args.max_tokens,
         verbose=args.verbose
     )
