@@ -12,23 +12,9 @@ GitHub Copilot SDK calls. Instead of maintaining dozens of specialized skills,
 this orchestrator interprets your intent, manages context efficiently, and
 delegates execution to the appropriate SDK configuration.
 
-```mermaid
-flowchart LR
-    subgraph orchestrator["COPILOT ORCHESTRATOR"]
-        A["📝 REQUEST<br/>(any task)"] --> B{"🎯 CLASSIFIER<br/>Decide Path"}
-        
-        B -->|"Simple task"| C["⚡ EPHEMERAL SKILL<br/>• Shell executor<br/>• File operations<br/>• Test runner"]
-        
-        B -->|"Complex task"| D["📦 CONTEXT MANAGER<br/>• Compression<br/>• Token budget<br/>• Prioritization"]
-        
-        D --> E["🔧 TOOL FACTORY<br/>• File ops<br/>• Code analysis<br/>• System commands"]
-        
-        E --> F["🤖 COPILOT SDK SESSION<br/>• Streaming responses<br/>• Dynamic tools"]
-        
-        C --> G["📁 RESULTS"]
-        F --> G
-    end
-```
+**Execution Paths:**
+- **Simple tasks** (list files, run tests, git status) → Ephemeral skill spawned instantly
+- **Complex tasks** (implement, refactor, debug) → Full SDK session with context compression
 
 ## When to Use This Skill
 
