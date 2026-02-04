@@ -48,6 +48,9 @@ dependencies = [
     
     # UUID generation - For task tracking
     "uuid7>=0.1.0",
+    
+    # Microsoft Agent Framework for GitHub Copilot integration
+    "agent-framework-github-copilot>=1.0.0b260130",
 ]
 
 [project.optional-dependencies]
@@ -67,9 +70,8 @@ build-backend = "hatchling.build"
 # Include all Python files in the current directory as the package
 packages = ["."]
 
-[tool.uv]
-# uv-specific configuration for fast dependency resolution
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest>=8.0.0",
     "pytest-asyncio>=0.23.0",
     "pytest-cov>=4.1.0",
