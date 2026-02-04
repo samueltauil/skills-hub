@@ -229,7 +229,8 @@ class TaskClassifier:
 # Auto-detect Copilot CLI path if not set
 def _find_copilot_cli() -> str | None:
     """Find the GitHub Copilot CLI executable."""
-    cli_path = os.environ.get("GITHUB_COPILOT_CLI_PATH")
+    # Check official SDK env var first
+    cli_path = os.environ.get("COPILOT_CLI_PATH")
     if cli_path and Path(cli_path).exists():
         return cli_path
     
@@ -258,38 +259,45 @@ def _find_copilot_cli() -> str | None:
     
     return None
 
-# Set CLI path if found
+# Set CLI path if found (using official SDK env var name)
 _cli_path = _find_copilot_cli()
-if _cli_path and not os.environ.get("GITHUB_COPILOT_CLI_PATH"):
-    os.environ["GITHUB_COPILOT_CLI_PATH"] = _cli_path
+if _cli_path and not os.environ.get("COPILOT_CLI_PATH"):
+    os.environ["COPILOT_CLI_PATH"] = _cli_path
     logger.debug("copilot_cli_found", path=_cli_path)
 
-# Check if the real SDK is available
+# Check if the official GitHub Copilot SDK is available
+# See: https://github.com/github/copilot-sdk
 try:
-    from agent_framework.github import GitHubCopilotAgent, GitHubCopilotOptions
+    from copilot import CopilotClient as SDKCopilotClient, define_tool, Tool
     _SDK_AVAILABLE = True
 except ImportError:
     _SDK_AVAILABLE = False
-    logger.debug("agent_framework_not_available", message="Running in mock mode")
+    SDKCopilotClient = None
+    define_tool = None
+    Tool = None
+    logger.debug("github_copilot_sdk_not_available", message="Running in mock mode")
 
 
 class CopilotClient:
     """
-    Wrapper around GitHub Copilot SDK.
+    Wrapper around the official GitHub Copilot SDK.
+    
+    Uses the SDK from https://github.com/github/copilot-sdk which provides:
+    - JSON-RPC communication with Copilot CLI
+    - Session management with streaming support
+    - Tool definition and execution
     
     Handles:
+    - SDK client lifecycle (start/stop)
     - Session creation and management
-    - Tool registration
-    - Message streaming
-    - Error recovery with retries
-    
-    Supports both real SDK mode (via agent-framework-github-copilot)
-    and mock mode for development/testing.
+    - Tool registration via @define_tool or Tool class
+    - Event-based streaming with async iteration
+    - Error recovery with fallback to mock mode
     
     Environment Variables:
         COPILOT_MOCK_MODE: Set to "true" to force mock mode
         GITHUB_COPILOT_MODEL: Model to use (default: gpt-4o)
-        GITHUB_COPILOT_TIMEOUT: Request timeout in seconds
+        COPILOT_CLI_PATH: Path to Copilot CLI executable
     """
     
     def __init__(self, mock_mode: bool | None = None) -> None:
@@ -304,7 +312,10 @@ class CopilotClient:
         self._tool_handlers: dict[str, Callable[..., Any]] = {}
         self._history: list[dict[str, Any]] = []
         self._system_prompt: str | None = None
-        self._agent: Any = None  # GitHubCopilotAgent when using real SDK
+        
+        # Official SDK objects
+        self._sdk_client: Any = None  # SDKCopilotClient instance
+        self._sdk_session: Any = None  # Session from create_session()
         
         # Determine mode
         if mock_mode is not None:
@@ -321,7 +332,7 @@ class CopilotClient:
     
     def set_tool_handlers(self, handlers: dict[str, Callable[..., Any]]) -> None:
         """
-        Set tool execution handlers for real SDK mode.
+        Set tool execution handlers for SDK mode.
         
         Args:
             handlers: Dict mapping tool names to async handler functions
@@ -334,7 +345,7 @@ class CopilotClient:
         system_prompt: str | None = None
     ) -> str:
         """
-        Create a new Copilot session.
+        Create a new Copilot SDK session.
         
         Args:
             tools: Tool definitions in SDK format
@@ -355,27 +366,61 @@ class CopilotClient:
                 "content": system_prompt
             })
         
-        if not self._mock_mode and _SDK_AVAILABLE:
-            # Create real SDK agent with tools as functions
-            sdk_tools = self._create_sdk_tool_functions()
-            
-            model_name = os.environ.get("GITHUB_COPILOT_MODEL", "gpt-4o")
-            options = GitHubCopilotOptions(
-                instructions=system_prompt or "You are a helpful coding assistant.",
-                model=model_name,
-            )
-            
-            self._agent = GitHubCopilotAgent(
-                default_options=options,
-                tools=sdk_tools if sdk_tools else None,
-            )
-            
-            logger.info(
-                "sdk_session_created",
-                session_id=self._session_id,
-                tool_count=len(sdk_tools),
-                model=model_name
-            )
+        if not self._mock_mode and _SDK_AVAILABLE and SDKCopilotClient is not None:
+            try:
+                # Create SDK tools from tool definitions
+                sdk_tools = self._create_sdk_tools()
+                
+                model_name = os.environ.get("GITHUB_COPILOT_MODEL", "gpt-4o")
+                
+                # Initialize the SDK client with CLI path
+                sdk_config: dict[str, Any] = {
+                    "log_level": "warning" if not os.environ.get("COPILOT_DEBUG") else "debug",
+                }
+                
+                # Pass CLI path explicitly if found
+                if _cli_path:
+                    sdk_config["cli_path"] = _cli_path
+                
+                self._sdk_client = SDKCopilotClient(sdk_config)
+                await self._sdk_client.start()
+                
+                # Create session with configuration
+                session_config: dict[str, Any] = {
+                    "model": model_name,
+                    "streaming": True,
+                }
+                
+                # Add system message if provided
+                if system_prompt:
+                    session_config["system_message"] = {
+                        "content": system_prompt
+                    }
+                
+                # Add tools if any registered
+                if sdk_tools:
+                    session_config["tools"] = sdk_tools
+                
+                self._sdk_session = await self._sdk_client.create_session(session_config)
+                
+                logger.info(
+                    "sdk_session_created",
+                    session_id=self._session_id,
+                    tool_count=len(sdk_tools),
+                    model=model_name
+                )
+                
+            except Exception as e:
+                logger.error("sdk_session_creation_failed", error=str(e))
+                # Fall back to mock mode
+                self._mock_mode = True
+                self._sdk_client = None
+                self._sdk_session = None
+                logger.info(
+                    "fallback_to_mock_session",
+                    session_id=self._session_id,
+                    tool_count=len(tools)
+                )
         else:
             logger.info(
                 "mock_session_created",
@@ -385,41 +430,62 @@ class CopilotClient:
         
         return self._session_id
     
-    def _create_sdk_tool_functions(self) -> list[Callable[..., Any]]:
+    def _create_sdk_tools(self) -> list[Any]:
         """
-        Create SDK-compatible tool functions from registered tools.
+        Create SDK-compatible Tool objects from registered tools.
         
-        The SDK expects tool functions with type hints that it introspects
-        to generate schemas. We create wrapper functions for each tool.
+        The official SDK supports two ways to define tools:
+        1. @define_tool decorator with Pydantic models
+        2. Tool class with manual schema definition
+        
+        We use the Tool class for flexibility.
         """
-        sdk_tools: list[Callable[..., Any]] = []
+        if Tool is None:
+            return []
+            
+        sdk_tools: list[Any] = []
         
         for tool_def in self._tools:
             name = tool_def["name"]
             description = tool_def["description"]
+            parameters = tool_def.get("parameters", {})
             
             if name in self._tool_handlers:
                 handler = self._tool_handlers[name]
                 
-                # Create a wrapper that matches SDK expectations
-                async def tool_wrapper(
+                # Create handler wrapper for SDK
+                async def tool_handler(
+                    invocation: dict[str, Any],
                     _handler: Callable = handler,
-                    _name: str = name,
-                    **kwargs: Any
+                    _name: str = name
                 ) -> dict[str, Any]:
-                    """Wrapper to execute tool via handler."""
+                    """Execute tool via registered handler."""
                     try:
-                        result = await _handler(kwargs)
-                        return result
+                        args = invocation.get("arguments", {})
+                        result = await _handler(args)
+                        return {
+                            "textResultForLlm": json.dumps(result) if isinstance(result, dict) else str(result),
+                            "resultType": "success",
+                            "sessionLog": f"Executed {_name}",
+                        }
                     except Exception as e:
                         logger.error("tool_execution_error", tool=_name, error=str(e))
-                        return {"error": str(e), "success": False}
+                        return {
+                            "textResultForLlm": f"Error: {str(e)}",
+                            "resultType": "error",
+                        }
                 
-                # Set function metadata for SDK introspection
-                tool_wrapper.__name__ = name
-                tool_wrapper.__doc__ = description
-                
-                sdk_tools.append(tool_wrapper)
+                # Create SDK Tool object
+                sdk_tool = Tool(
+                    name=name,
+                    description=description,
+                    parameters=parameters if parameters else {
+                        "type": "object",
+                        "properties": {},
+                    },
+                    handler=tool_handler,
+                )
+                sdk_tools.append(sdk_tool)
         
         return sdk_tools
     
@@ -430,6 +496,9 @@ class CopilotClient:
     ) -> AsyncIterator[dict[str, Any]]:
         """
         Send a message and stream the response.
+        
+        Uses the SDK's event-based streaming when available,
+        falling back to mock responses in development.
         
         Args:
             content: User message
@@ -450,8 +519,8 @@ class CopilotClient:
         
         logger.info("message_sent", content_length=len(full_content))
         
-        if not self._mock_mode and self._agent is not None:
-            # Use real SDK streaming
+        if not self._mock_mode and self._sdk_session is not None:
+            # Use official SDK streaming
             async for chunk in self._stream_real_sdk(full_content):
                 yield chunk
         else:
@@ -466,38 +535,116 @@ class CopilotClient:
     
     async def _stream_real_sdk(self, content: str) -> AsyncIterator[dict[str, Any]]:
         """
-        Stream response from real SDK.
+        Stream response from the official GitHub Copilot SDK.
         
-        The GitHubCopilotAgent handles tool calls internally, so we
-        yield text chunks as they arrive. Tool calls are handled
-        automatically by the wrapped tool functions.
+        Uses event-based streaming with session.on() callbacks.
+        Events are collected into an async queue for iteration.
         
         Falls back to mock mode if SDK fails (e.g., CLI not installed).
         """
-        if self._agent is None:
+        if self._sdk_session is None:
             yield {"type": "done"}
             return
-            
-        try:
-            async with self._agent:
-                async for chunk in self._agent.run_stream(content):
-                    if hasattr(chunk, 'text') and chunk.text:
-                        yield {"type": "text", "content": chunk.text}
-                    elif hasattr(chunk, 'tool_call') and chunk.tool_call:
-                        # Emit tool call for UI rendering (tool is auto-executed by SDK)
-                        yield {
+        
+        import asyncio
+        
+        # Create an async queue to collect events
+        event_queue: asyncio.Queue[dict[str, Any]] = asyncio.Queue()
+        done_event = asyncio.Event()
+        
+        def on_event(event: Any) -> None:
+            """Handle SDK events and put them in the queue."""
+            try:
+                event_type = event.type.value if hasattr(event.type, 'value') else str(event.type)
+                
+                if event_type == "assistant.message_delta":
+                    # Streaming text chunk
+                    delta = getattr(event.data, 'delta_content', None) or ""
+                    if delta:
+                        asyncio.get_event_loop().call_soon_threadsafe(
+                            event_queue.put_nowait,
+                            {"type": "text", "content": delta}
+                        )
+                        
+                elif event_type == "assistant.message":
+                    # Final complete message (we already got deltas, so just log)
+                    final_content = getattr(event.data, 'content', None) or ""
+                    logger.debug("sdk_message_complete", length=len(final_content))
+                    
+                elif event_type == "assistant.reasoning_delta":
+                    # Reasoning chunk (for models that support it)
+                    delta = getattr(event.data, 'delta_content', None) or ""
+                    if delta:
+                        asyncio.get_event_loop().call_soon_threadsafe(
+                            event_queue.put_nowait,
+                            {"type": "reasoning", "content": delta}
+                        )
+                        
+                elif event_type == "tool.call":
+                    # Tool is being called
+                    tool_name = getattr(event.data, 'name', 'unknown')
+                    tool_args = getattr(event.data, 'arguments', {})
+                    asyncio.get_event_loop().call_soon_threadsafe(
+                        event_queue.put_nowait,
+                        {
                             "type": "tool_call",
-                            "tool": chunk.tool_call.name,
-                            "parameters": chunk.tool_call.arguments,
+                            "tool": tool_name,
+                            "parameters": tool_args,
                             "auto_executed": True  # SDK handles execution
                         }
-                    elif hasattr(chunk, 'tool_result') and chunk.tool_result:
-                        # Tool result from SDK-executed tool
-                        yield {
+                    )
+                    
+                elif event_type == "tool.result":
+                    # Tool result returned
+                    tool_name = getattr(event.data, 'name', 'unknown')
+                    tool_result = getattr(event.data, 'result', None)
+                    asyncio.get_event_loop().call_soon_threadsafe(
+                        event_queue.put_nowait,
+                        {
                             "type": "tool_result",
-                            "tool": chunk.tool_result.name,
-                            "result": chunk.tool_result.output
+                            "tool": tool_name,
+                            "result": tool_result
                         }
+                    )
+                    
+                elif event_type == "session.idle":
+                    # Session finished processing
+                    done_event.set()
+                    
+                elif event_type == "error":
+                    error_msg = getattr(event.data, 'message', str(event.data))
+                    asyncio.get_event_loop().call_soon_threadsafe(
+                        event_queue.put_nowait,
+                        {"type": "error", "content": error_msg}
+                    )
+                    done_event.set()
+                    
+            except Exception as e:
+                logger.error("event_handler_error", error=str(e), event_type=str(event.type))
+        
+        try:
+            # Register event handler
+            self._sdk_session.on(on_event)
+            
+            # Send the message
+            await self._sdk_session.send({"prompt": content})
+            
+            # Yield events as they arrive
+            while not done_event.is_set():
+                try:
+                    # Wait for events with timeout to check done_event
+                    event = await asyncio.wait_for(event_queue.get(), timeout=0.1)
+                    yield event
+                except asyncio.TimeoutError:
+                    continue
+            
+            # Drain any remaining events in the queue
+            while not event_queue.empty():
+                try:
+                    event = event_queue.get_nowait()
+                    yield event
+                except asyncio.QueueEmpty:
+                    break
             
             yield {"type": "done"}
             
@@ -506,10 +653,10 @@ class CopilotClient:
             logger.error("sdk_stream_error", error=error_msg)
             
             # Check if it's a CLI-not-found error - fall back to mock mode
-            if "Failed to start GitHub Copilot client" in error_msg or "cannot find the file" in error_msg.lower():
+            if "Failed to start" in error_msg or "cannot find" in error_msg.lower() or "WinError 2" in error_msg:
                 logger.warning(
                     "sdk_fallback_to_mock",
-                    reason="GitHub Copilot CLI not found. See: https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line"
+                    reason="GitHub Copilot CLI not found. Install via: gh extension install github/gh-copilot"
                 )
                 # Fall back to mock response
                 for chunk in self._generate_mock_response(content):
@@ -519,6 +666,21 @@ class CopilotClient:
             else:
                 yield {"type": "error", "content": error_msg}
                 yield {"type": "done"}
+    
+    async def close(self) -> None:
+        """Clean up SDK resources."""
+        try:
+            if self._sdk_session is not None:
+                await self._sdk_session.destroy()
+                self._sdk_session = None
+                
+            if self._sdk_client is not None:
+                await self._sdk_client.stop()
+                self._sdk_client = None
+                
+            logger.debug("sdk_client_closed")
+        except Exception as e:
+            logger.error("sdk_close_error", error=str(e))
     
     def _generate_mock_response(self, content: str) -> list[dict[str, Any]]:
         """Generate mock response chunks for development."""

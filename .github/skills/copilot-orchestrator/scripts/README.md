@@ -38,7 +38,7 @@ uv run python orchestrator.py --verbose --output-json "list files"
 ## Dependencies
 
 See `pyproject.toml` for the full list of dependencies including:
-- `github-copilot-sdk` - Core SDK integration
+- `github-copilot-sdk` - Official SDK from https://github.com/github/copilot-sdk
 - `pydantic` - Type-safe data validation
 - `structlog` - Structured logging
 - `httpx` - Async HTTP client

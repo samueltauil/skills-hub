@@ -59,7 +59,8 @@ This skill responds to these common development terms and phrases:
 
 1. **Python 3.11+** installed and available in PATH
 2. **uv** package manager ([installation](https://docs.astral.sh/uv/getting-started/installation/))
-3. **GitHub Copilot CLI** authenticated (`copilot --version`)
+3. **GitHub Copilot CLI** installed via `gh extension install github/gh-copilot` or standalone
+4. **GitHub Copilot SDK** (`pip install github-copilot-sdk`) - [GitHub Repo](https://github.com/github/copilot-sdk)
 
 ## How It Works
 

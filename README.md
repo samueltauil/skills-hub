@@ -436,6 +436,7 @@ Whether via ephemeral skill or SDK session, results are returned to you through 
 - **Python 3.11+** — [Download](https://www.python.org/downloads/)
 - **uv** — [Installation Guide](https://docs.astral.sh/uv/getting-started/installation/)
 - **GitHub Copilot** — Active subscription with VS Code extension
+- **GitHub Copilot CLI** — Install via `gh extension install github/gh-copilot` or see [SDK docs](https://github.com/github/copilot-sdk)
 
 ## Configuration
 
@@ -446,6 +447,7 @@ export COPILOT_MODEL=gpt-4.1          # Model selection
 export COPILOT_TOKEN_BUDGET=8000      # Max input tokens
 export COPILOT_STREAMING=true         # Enable streaming
 export COPILOT_DEBUG=false            # Debug logging
+export COPILOT_CLI_PATH=/path/to/cli  # Custom CLI path (auto-detected if not set)
 ```
 
 ## Installation Options
@@ -784,7 +786,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- [GitHub Copilot SDK](https://docs.github.com/en/copilot) for the AI foundation
+- [GitHub Copilot SDK](https://github.com/github/copilot-sdk) - Official multi-language SDK for GitHub Copilot CLI
 - [Agent Skills](https://agentskills.io/) for the skill file format specification
 - [uv](https://docs.astral.sh/uv/) for blazing fast Python package management
 

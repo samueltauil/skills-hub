@@ -49,8 +49,8 @@ dependencies = [
     # UUID generation - For task tracking
     "uuid7>=0.1.0",
     
-    # Microsoft Agent Framework for GitHub Copilot integration
-    "agent-framework-github-copilot>=1.0.0b260130",
+    # Official GitHub Copilot SDK (https://github.com/github/copilot-sdk)
+    "github-copilot-sdk>=0.1.21",
 ]
 
 [project.optional-dependencies]
