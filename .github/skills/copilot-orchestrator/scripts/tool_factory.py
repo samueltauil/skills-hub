@@ -190,10 +190,10 @@ class ToolEntry:
             ValueError: If parameter validation fails
         """
         # Validate parameters if model exists
+        validated_params: Any = params
         if self.param_model:
             try:
-                validated = self.param_model.model_validate(params)
-                params = validated.model_dump()
+                validated_params = self.param_model.model_validate(params)
             except Exception as e:
                 logger.error(
                     "tool_param_validation_failed",
@@ -211,11 +211,11 @@ class ToolEntry:
         
         try:
             if asyncio.iscoroutinefunction(self.handler):
-                result = await self.handler(params)
+                result = await self.handler(validated_params)
             else:
                 # Run sync handler in executor
                 loop = asyncio.get_event_loop()
-                result = await loop.run_in_executor(None, lambda: self.handler(params))
+                result = await loop.run_in_executor(None, lambda: self.handler(validated_params))
             
             logger.info("tool_executed", tool=self.definition.name)
             return result
@@ -318,8 +318,20 @@ def register_tool(
 
 
 def _extract_param_model(func: Callable[..., Any]) -> type[BaseModel] | None:
-    """Extract Pydantic model from function's first parameter type hint."""
+    """Extract Pydantic model from function's first parameter type hint.
+    
+    Note: With 'from __future__ import annotations', all annotations become
+    strings at runtime. We use typing.get_type_hints() to resolve them.
+    """
     import inspect
+    import typing
+    
+    try:
+        # get_type_hints resolves string annotations to actual types
+        hints = typing.get_type_hints(func)
+    except Exception:
+        # If resolution fails, fall back to direct inspection
+        hints = {}
     
     sig = inspect.signature(func)
     params = list(sig.parameters.values())
@@ -328,10 +340,15 @@ def _extract_param_model(func: Callable[..., Any]) -> type[BaseModel] | None:
         return None
     
     first_param = params[0]
-    annotation = first_param.annotation
     
-    if annotation is inspect.Parameter.empty:
-        return None
+    # Try resolved type hint first
+    annotation = hints.get(first_param.name)
+    
+    # Fall back to raw annotation if needed
+    if annotation is None:
+        annotation = first_param.annotation
+        if annotation is inspect.Parameter.empty:
+            return None
     
     # Check if it's a Pydantic model
     if isinstance(annotation, type) and issubclass(annotation, BaseModel):

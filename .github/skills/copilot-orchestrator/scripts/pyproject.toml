@@ -28,9 +28,6 @@ classifiers = [
 ]
 
 dependencies = [
-    # GitHub Copilot SDK - Core dependency for SDK integration
-    "github-copilot-sdk>=0.1.0",
-    
     # Pydantic v2 - Type-safe data validation and serialization
     "pydantic>=2.5.0",
     
@@ -62,12 +59,13 @@ dev = [
     "ruff>=0.2.0",
 ]
 
-[project.scripts]
-orchestrate = "orchestrator:main"
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# Include all Python files in the current directory as the package
+packages = ["."]
 
 [tool.uv]
 # uv-specific configuration for fast dependency resolution

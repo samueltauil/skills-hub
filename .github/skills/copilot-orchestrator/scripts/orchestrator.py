@@ -1004,8 +1004,7 @@ class Orchestrator:
         # Initialize components
         self.classifier = TaskClassifier()
         self.context_manager = ContextManager(
-            workspace=self.config.workspace,
-            max_tokens=self.config.max_tokens
+            workspace=self.config.workspace
         )
         self.tool_factory = ToolFactory(workspace=self.config.workspace)
         self.client = CopilotClient()
@@ -1083,8 +1082,7 @@ class Orchestrator:
                 state=SessionState.COMPLETED,
                 task=TaskEnvelope(
                     task_type=TaskType.AUTOMATE,
-                    user_request=request,
-                    original_input=request
+                    original_request=request
                 ),
                 started_at=datetime.now(),
                 ended_at=datetime.now(),
@@ -1102,8 +1100,7 @@ class Orchestrator:
         # Create task envelope
         envelope = TaskEnvelope(
             task_type=task_type,
-            user_request=request,
-            original_input=request
+            original_request=request
         )
         
         # Initialize session
@@ -1118,7 +1115,7 @@ class Orchestrator:
             # Gather context
             self.renderer.render_status("Gathering context...")
             context = await self._gather_context(envelope)
-            envelope.context = context
+            envelope.compressed_context = context
             
             # Get tools for task
             tools = self.tool_factory.get_tools_for_task(task_type)
@@ -1132,7 +1129,7 @@ class Orchestrator:
             system_prompt = self._build_system_prompt(envelope)
             await self.client.create_session(tool_defs, system_prompt)
             
-            self.session_info.state = SessionState.RUNNING
+            self.session_info.state = SessionState.ACTIVE
             
             # Execute conversation loop
             await self._conversation_loop(envelope)
@@ -1149,7 +1146,7 @@ class Orchestrator:
             self.renderer.render_error(str(e))
             
             if self.session_info:
-                self.session_info.state = SessionState.FAILED
+                self.session_info.state = SessionState.ERROR
                 self.session_info.ended_at = datetime.now()
             
             raise
@@ -1166,7 +1163,11 @@ class Orchestrator:
         2. Add relevant files based on task
         3. Compress to fit token budget
         """
-        return await self.context_manager.prepare_context(envelope)
+        return await self.context_manager.prepare_context(
+            task_type=envelope.task_type,
+            request=envelope.original_request,
+            budget=envelope.token_budget
+        )
     
     def _build_system_prompt(self, envelope: TaskEnvelope) -> str:
         """
@@ -1257,7 +1258,7 @@ Important:
             # Stream response
             async for chunk in self.client.send_message(
                 content=prompt if iteration == 1 else "",
-                context=envelope.context if iteration == 1 else None
+                context=envelope.compressed_context if iteration == 1 else None
             ):
                 if chunk["type"] == "text":
                     self.renderer.render_text(chunk["content"])
@@ -1309,11 +1310,12 @@ Important:
         
         # Track file artifacts
         if tool_name == "write_file" and result.get("success"):
+            from models import ArtifactType
             self._artifacts.append(Artifact(
-                artifact_type="file",
-                path=result.get("path"),
-                content=params.get("content"),
-                generated_at=datetime.now()
+                artifact_type=ArtifactType.CODE,
+                path=Path(result.get("path", "")),
+                content=params.get("content", ""),
+                created_at=datetime.now()
             ))
         
         return result
@@ -1346,12 +1348,11 @@ Important:
         # Re-create envelope from checkpoint
         envelope = TaskEnvelope(
             task_type=TaskType(state["task_type"]),
-            user_request=state["user_request"],
-            original_input=state["original_input"]
+            original_request=state["original_request"]
         )
         
         return await self.execute(
-            request=envelope.user_request,
+            request=envelope.original_request,
             task_type=envelope.task_type,
             session_id=session_id
         )

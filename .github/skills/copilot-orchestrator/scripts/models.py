@@ -31,7 +31,7 @@ from pathlib import Path
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field, field_validator
-from uuid7 import uuid7
+from uuid_extensions import uuid7
 
 
 # =============================================================================
@@ -450,25 +450,31 @@ class SessionInfo(BaseModel):
     Attributes:
         session_id: SDK session identifier
         state: Current lifecycle state
+        task: Associated task envelope
         task_id: Associated task envelope ID
         model: LLM model in use
         turn_count: Number of message exchanges
         total_input_tokens: Cumulative input tokens
         total_output_tokens: Cumulative output tokens
         started_at: Session creation time
+        ended_at: Session end time
         last_activity: Last message timestamp
+        artifacts: Output artifacts from the session
         error_message: Last error (if state is ERROR)
     """
     
     session_id: str
     state: SessionState = Field(default=SessionState.INITIALIZING)
+    task: "TaskEnvelope | None" = Field(default=None)
     task_id: str | None = Field(default=None)
     model: str = Field(default="gpt-4.1")
     turn_count: int = Field(default=0, ge=0)
     total_input_tokens: int = Field(default=0, ge=0)
     total_output_tokens: int = Field(default=0, ge=0)
     started_at: datetime = Field(default_factory=datetime.utcnow)
+    ended_at: datetime | None = Field(default=None)
     last_activity: datetime = Field(default_factory=datetime.utcnow)
+    artifacts: list["Artifact"] | None = Field(default=None)
     error_message: str | None = Field(default=None)
     
     def update_activity(self) -> None:
