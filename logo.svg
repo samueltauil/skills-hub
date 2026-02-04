@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Gradient for the ring -->
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for inner glow -->
+    <radialGradient id="innerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#c4b5fd;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Gradient for the S -->
+    <linearGradient id="sGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#6366f1" flood-opacity="0.4"/>
+    </filter>
+    
+    <!-- Glow filter for orbiting elements -->
+    <filter id="orbitGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle (subtle) -->
+  <circle cx="200" cy="200" r="180" fill="url(#innerGlow)" />
+  
+  <!-- Outer orbital ring -->
+  <circle cx="200" cy="200" r="160" fill="none" stroke="url(#ringGradient)" stroke-width="3" opacity="0.3"/>
+  
+  <!-- Main ring - "One ring to rule them all" -->
+  <circle cx="200" cy="200" r="130" fill="none" stroke="url(#ringGradient)" stroke-width="8" filter="url(#shadow)"/>
+  
+  <!-- Inner decorative ring -->
+  <circle cx="200" cy="200" r="115" fill="none" stroke="url(#ringGradient)" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Orbiting skill nodes - representing multiple skills unified -->
+  <g filter="url(#orbitGlow)">
+    <!-- Top node -->
+    <circle cx="200" cy="50" r="12" fill="#22d3ee"/>
+    <circle cx="200" cy="50" r="6" fill="#ffffff"/>
+    
+    <!-- Right node -->
+    <circle cx="330" cy="150" r="10" fill="#34d399"/>
+    <circle cx="330" cy="150" r="5" fill="#ffffff"/>
+    
+    <!-- Bottom right node -->
+    <circle cx="310" cy="290" r="11" fill="#fbbf24"/>
+    <circle cx="310" cy="290" r="5.5" fill="#ffffff"/>
+    
+    <!-- Bottom left node -->
+    <circle cx="90" cy="290" r="10" fill="#f472b6"/>
+    <circle cx="90" cy="290" r="5" fill="#ffffff"/>
+    
+    <!-- Left node -->
+    <circle cx="70" cy="150" r="11" fill="#fb7185"/>
+    <circle cx="70" cy="150" r="5.5" fill="#ffffff"/>
+  </g>
+  
+  <!-- Connecting lines from nodes to center (subtle) -->
+  <g stroke="url(#ringGradient)" stroke-width="1" opacity="0.2">
+    <line x1="200" y1="62" x2="200" y2="140"/>
+    <line x1="320" y1="155" x2="250" y2="175"/>
+    <line x1="300" y1="280" x2="240" y2="230"/>
+    <line x1="100" y1="280" x2="160" y2="230"/>
+    <line x1="81" y1="155" x2="150" y2="175"/>
+  </g>
+  
+  <!-- Central "S" for SkillPilot - stylized as compass/navigation -->
+  <g transform="translate(200, 200)">
+    <!-- Compass background -->
+    <circle cx="0" cy="0" r="70" fill="#1e1b4b" opacity="0.9"/>
+    <circle cx="0" cy="0" r="65" fill="none" stroke="url(#ringGradient)" stroke-width="2"/>
+    
+    <!-- Stylized S that looks like a path/route -->
+    <path d="M-25,-35 
+             C-25,-35 25,-35 25,-15 
+             C25,0 -25,0 -25,15 
+             C-25,35 25,35 25,35"
+          fill="none" 
+          stroke="url(#sGradient)" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+    
+    <!-- Navigation arrow overlay on S -->
+    <polygon points="0,-50 8,-35 0,-40 -8,-35" fill="#22d3ee" opacity="0.9"/>
+  </g>
+  
+  <!-- Small decorative dots around the ring -->
+  <g fill="#8b5cf6" opacity="0.6">
+    <circle cx="200" cy="70" r="3"/>
+    <circle cx="280" cy="90" r="2"/>
+    <circle cx="330" cy="200" r="3"/>
+    <circle cx="280" cy="310" r="2"/>
+    <circle cx="200" cy="330" r="3"/>
+    <circle cx="120" cy="310" r="2"/>
+    <circle cx="70" cy="200" r="3"/>
+    <circle cx="120" cy="90" r="2"/>
+  </g>
+</svg>
