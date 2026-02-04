@@ -105,7 +105,7 @@ These spawn lightweight, specialized skills:
 
 ### Complex Operations (SDK Sessions)
 
-These use full Copilot SDK sessions:
+These use full Copilot SDK sessions with context gathering, tool execution, and multi-step reasoning:
 
 | You Ask | Task Type | What Happens |
 |---------|-----------|--------------|
@@ -114,6 +114,219 @@ These use full Copilot SDK sessions:
 | "refactor UserService" | REFACTOR | Restructures with best practices |
 | "why is this test failing" | DEBUG | Diagnoses, explains, and fixes |
 | "add integration tests" | TEST | Creates comprehensive test suite |
+
+#### Example: Implementing a Feature
+
+```
+You: "implement a REST API endpoint for user registration with email validation"
+
+SkillPilot:
+┌─────────────────────────────────────────────────────────────────┐
+│ 🎯 Task: IMPLEMENT                                              │
+│ 📊 Confidence: 95%                                              │
+│ 🔧 Tools: read_file, write_file, search_code, run_command       │
+└─────────────────────────────────────────────────────────────────┘
+
+1. Gathering context...
+   ✓ Found existing routes in src/routes/
+   ✓ Found User model in src/models/user.py
+   ✓ Found validation patterns in src/utils/validators.py
+
+2. Creating implementation plan...
+   • Add POST /api/users/register endpoint
+   • Create email validation utility
+   • Add request/response schemas
+   • Write unit tests
+
+3. Generating code...
+
+   Created: src/routes/auth.py
+   ─────────────────────────────
+   from fastapi import APIRouter, HTTPException
+   from pydantic import BaseModel, EmailStr
+   from src.models.user import User
+   from src.utils.validators import validate_email
+   
+   router = APIRouter(prefix="/api/users")
+   
+   class RegisterRequest(BaseModel):
+       email: EmailStr
+       password: str
+       name: str
+   
+   @router.post("/register")
+   async def register_user(request: RegisterRequest):
+       if not validate_email(request.email):
+           raise HTTPException(400, "Invalid email format")
+       # ... implementation continues
+
+   Created: tests/test_auth.py
+   ─────────────────────────────
+   # Unit tests for registration endpoint...
+
+✅ Implementation complete. Created 2 files, modified 1 file.
+```
+
+#### Example: Debugging an Issue
+
+```
+You: "why is my test test_user_creation failing with AttributeError?"
+
+SkillPilot:
+┌─────────────────────────────────────────────────────────────────┐
+│ 🎯 Task: DEBUG                                                  │
+│ 📊 Confidence: 92%                                              │
+│ 🔧 Tools: read_file, search_code, run_command, analyze_code     │
+└─────────────────────────────────────────────────────────────────┘
+
+1. Running failing test to capture error...
+   $ pytest tests/test_user.py::test_user_creation -v
+   
+   AttributeError: 'User' object has no attribute 'full_name'
+   at tests/test_user.py:15
+
+2. Analyzing the error...
+   ✓ Reading tests/test_user.py (line 15)
+   ✓ Reading src/models/user.py
+   ✓ Checking recent changes with git diff
+
+3. Root cause identified:
+   
+   The User model was refactored to use 'name' instead of 'full_name',
+   but the test still references the old attribute.
+   
+   Commit abc123 (2 hours ago) renamed:
+   - self.full_name → self.name
+
+4. Suggested fix:
+
+   tests/test_user.py (line 15)
+   ─────────────────────────────
+   - assert user.full_name == "John Doe"
+   + assert user.name == "John Doe"
+
+   Apply this fix? [Yes/No]
+```
+
+#### Example: Refactoring Code
+
+```
+You: "refactor the PaymentService to use the strategy pattern for different payment providers"
+
+SkillPilot:
+┌─────────────────────────────────────────────────────────────────┐
+│ 🎯 Task: REFACTOR                                               │
+│ 📊 Confidence: 88%                                              │
+│ 🔧 Tools: read_file, write_file, search_code, analyze_code      │
+└─────────────────────────────────────────────────────────────────┘
+
+1. Analyzing current implementation...
+   ✓ Found PaymentService in src/services/payment.py
+   ✓ Found 3 payment providers: Stripe, PayPal, Square
+   ✓ Current approach: if/elif chain (47 lines)
+   ✓ Found 12 files that import PaymentService
+
+2. Refactoring plan:
+   
+   Current structure:
+   └── src/services/payment.py (monolithic)
+   
+   Proposed structure:
+   └── src/services/payment/
+       ├── __init__.py
+       ├── base.py           # Abstract PaymentStrategy
+       ├── stripe.py         # StripePaymentStrategy
+       ├── paypal.py         # PayPalPaymentStrategy
+       ├── square.py         # SquarePaymentStrategy
+       └── service.py        # PaymentService (uses strategies)
+
+3. Benefits:
+   • Adding new providers requires only a new strategy file
+   • Each provider's logic is isolated and testable
+   • Open/Closed principle: open for extension, closed for modification
+
+4. Generating refactored code...
+   
+   Created: src/services/payment/base.py
+   ─────────────────────────────────────
+   from abc import ABC, abstractmethod
+   
+   class PaymentStrategy(ABC):
+       @abstractmethod
+       async def charge(self, amount: float, token: str) -> dict:
+           pass
+       
+       @abstractmethod
+       async def refund(self, transaction_id: str) -> dict:
+           pass
+
+   [... continues with full implementation ...]
+
+5. Updating imports in dependent files...
+   ✓ Updated src/routes/checkout.py
+   ✓ Updated src/routes/subscriptions.py
+   ✓ Updated tests/test_payment.py
+
+✅ Refactoring complete. 
+   Created: 6 files
+   Modified: 4 files  
+   Deleted: 1 file (old monolithic service)
+   
+   Run tests to verify: pytest tests/test_payment.py -v
+```
+
+#### Example: Code Analysis
+
+```
+You: "analyze the authentication module for security vulnerabilities"
+
+SkillPilot:
+┌─────────────────────────────────────────────────────────────────┐
+│ 🎯 Task: ANALYZE                                                │
+│ 📊 Confidence: 90%                                              │
+│ 🔧 Tools: read_file, search_code, analyze_code                  │
+└─────────────────────────────────────────────────────────────────┘
+
+1. Scanning authentication module...
+   ✓ src/auth/login.py
+   ✓ src/auth/tokens.py
+   ✓ src/auth/middleware.py
+   ✓ src/auth/password.py
+
+2. Security Analysis Results:
+
+   🔴 CRITICAL (1 issue)
+   ─────────────────────
+   src/auth/password.py:23
+   Password hashing uses MD5 - cryptographically broken
+   
+   Current:  hashlib.md5(password.encode()).hexdigest()
+   Fix:      Use bcrypt or argon2 instead
+   
+   🟡 WARNING (2 issues)
+   ─────────────────────
+   src/auth/tokens.py:45
+   JWT secret loaded from code, not environment variable
+   Risk: Secret could be committed to version control
+   
+   src/auth/login.py:67
+   No rate limiting on login attempts
+   Risk: Vulnerable to brute force attacks
+   
+   🟢 GOOD PRACTICES FOUND
+   ───────────────────────
+   ✓ HTTPS enforced in middleware
+   ✓ Secure cookie flags set correctly
+   ✓ CSRF protection enabled
+
+3. Recommendations:
+   
+   Priority 1: Replace MD5 with bcrypt
+   Priority 2: Move JWT secret to environment variable
+   Priority 3: Add rate limiting (suggest: slowapi or redis-based)
+   
+   Would you like me to implement any of these fixes?
+```
 
 ## Ephemeral Skills
 
