@@ -1,66 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
   <defs>
-    <!-- Background gradient -->
-    <radialGradient id="bg" cx="50%" cy="30%" r="80%">
-      <stop offset="0%" stop-color="#16162a"/>
-      <stop offset="100%" stop-color="#09090f"/>
-    </radialGradient>
-    
     <!-- Purple metallic gradient -->
     <linearGradient id="purple" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#c4b5fd"/>
-      <stop offset="30%" stop-color="#a78bfa"/>
-      <stop offset="60%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#4c1d95"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
     </linearGradient>
     
     <!-- Coral metallic gradient -->
     <linearGradient id="coral" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fecdd3"/>
-      <stop offset="30%" stop-color="#fda4af"/>
-      <stop offset="60%" stop-color="#f43f5e"/>
-      <stop offset="100%" stop-color="#9f1239"/>
+      <stop offset="0%" stop-color="#fda4af"/>
+      <stop offset="50%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
     </linearGradient>
-    
-    <!-- Drop shadow -->
-    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.35"/>
-    </filter>
   </defs>
   
-  <!-- Background -->
-  <rect width="400" height="400" rx="56" fill="url(#bg)"/>
+  <!-- Link 1 (purple) - back half -->
+  <ellipse cx="145" cy="165" rx="80" ry="95" 
+           fill="none" stroke="url(#purple)" stroke-width="28"
+           opacity="0.4"/>
   
-  <!-- Ambient glow -->
-  <ellipse cx="145" cy="160" rx="60" ry="40" fill="#7c3aed" opacity="0.06"/>
-  <ellipse cx="255" cy="240" rx="60" ry="40" fill="#f43f5e" opacity="0.05"/>
+  <!-- Link 2 (coral) - full middle link -->
+  <ellipse cx="200" cy="200" rx="80" ry="95" 
+           fill="none" stroke="url(#coral)" stroke-width="28"/>
   
-  <!-- Link 1 (purple) - back half that goes behind link 2 -->
-  <ellipse cx="145" cy="160" rx="85" ry="100" 
-           fill="none" stroke="url(#purple)" stroke-width="32"
-           opacity="0.35"/>
+  <!-- Link 3 (purple) - back half -->
+  <ellipse cx="255" cy="235" rx="80" ry="95" 
+           fill="none" stroke="url(#purple)" stroke-width="28"
+           opacity="0.4"/>
   
-  <!-- Link 2 (coral) - middle, interlocks with both -->
-  <ellipse cx="200" cy="200" rx="85" ry="100" 
-           fill="none" stroke="url(#coral)" stroke-width="32"
-           filter="url(#shadow)"/>
+  <!-- Link 1 (purple) - front half -->
+  <path d="M145 70 A80 95 0 0 1 145 260"
+        fill="none" stroke="url(#purple)" stroke-width="28"
+        stroke-linecap="round"/>
   
-  <!-- Link 3 (purple) - back half that goes behind link 2 -->
-  <ellipse cx="255" cy="240" rx="85" ry="100" 
-           fill="none" stroke="url(#purple)" stroke-width="32"
-           opacity="0.35"/>
-  
-  <!-- Link 1 (purple) - front half that goes over link 2 -->
-  <path d="M145 60 
-           A85 100 0 0 1 145 260"
-        fill="none" stroke="url(#purple)" stroke-width="32"
-        stroke-linecap="round"
-        filter="url(#shadow)"/>
-  
-  <!-- Link 3 (purple) - front half that goes over link 2 -->
-  <path d="M255 140 
-           A85 100 0 0 1 255 340"
-        fill="none" stroke="url(#purple)" stroke-width="32"
-        stroke-linecap="round"
-        filter="url(#shadow)"/>
+  <!-- Link 3 (purple) - front half -->
+  <path d="M255 140 A80 95 0 0 1 255 330"
+        fill="none" stroke="url(#purple)" stroke-width="28"
+        stroke-linecap="round"/>
 </svg>
