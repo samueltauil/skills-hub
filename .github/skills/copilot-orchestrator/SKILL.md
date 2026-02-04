@@ -1,4 +1,3 @@
-```skill
 ---
 name: copilot-orchestrator
 description: Universal meta-skill that orchestrates GitHub Copilot SDK to perform any development task. Acts as a skill factory that dynamically adapts to implement features, analyze code, generate documentation, refactor systems, debug issues, write tests, deploy applications, automate workflows, scaffold projects, migrate codebases, and optimize performance.
@@ -30,7 +29,7 @@ flowchart LR
 This skill activates automatically when you need to:
 
 | Intent Category | Example Prompts |
-|-----------------|------------------|
+|-----------------|-----------------|
 | **Implement** | "build a REST API", "create a login form", "add caching layer" |
 | **Analyze** | "review this code", "find security issues", "audit dependencies" |
 | **Generate** | "write documentation", "create README", "generate API specs" |
@@ -223,5 +222,3 @@ scripts/
 
 The orchestrator is designed for transparency - all code is heavily commented
 to enable understanding, debugging, and extension.
-
-```

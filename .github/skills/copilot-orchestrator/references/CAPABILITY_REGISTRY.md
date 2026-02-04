@@ -59,7 +59,8 @@ capability:
 **ID:** `implement_code`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Create new code, features, or functionality |
+|--------|---------|
+| **Description** | Create new code, features, or functionality |
 | **Task Type** | `IMPLEMENT` |
 | **Required Tools** | `read_file`, `write_file`, `list_directory` |
 | **Optional Tools** | `search_code`, `analyze_code`, `run_command` |
@@ -97,7 +98,8 @@ build component, make module
 **ID:** `analyze_code`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Understand, review, or explain existing code |
+|--------|---------|
+| **Description** | Understand, review, or explain existing code |
 | **Task Type** | `ANALYZE` |
 | **Required Tools** | `read_file`, `list_directory`, `analyze_code` |
 | **Optional Tools** | `search_code` |
@@ -134,7 +136,8 @@ what does, how does, check, examine, find issues
 **ID:** `debug_fix`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Find and fix bugs, errors, or issues |
+|--------|---------|
+| **Description** | Find and fix bugs, errors, or issues |
 | **Task Type** | `DEBUG` |
 | **Required Tools** | `read_file`, `write_file`, `search_code` |
 | **Optional Tools** | `run_command`, `analyze_code` |
@@ -172,7 +175,8 @@ why is, doesn't work
 **ID:** `refactor_code`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Improve code structure without changing behavior |
+|--------|---------|
+| **Description** | Improve code structure without changing behavior |
 | **Task Type** | `REFACTOR` |
 | **Required Tools** | `read_file`, `write_file`, `search_code` |
 | **Optional Tools** | `analyze_code`, `run_command` |
@@ -210,7 +214,8 @@ clean up, make better
 **ID:** `write_tests`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Create or improve tests |
+|--------|---------|
+| **Description** | Create or improve tests |
 | **Task Type** | `TEST` |
 | **Required Tools** | `read_file`, `write_file`, `run_command` |
 | **Optional Tools** | `search_code`, `list_directory` |
@@ -248,7 +253,8 @@ assert, verify, validate
 **ID:** `generate_scaffold`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Generate boilerplate, templates, or project structure |
+|--------|---------|
+| **Description** | Generate boilerplate, templates, or project structure |
 | **Task Type** | `GENERATE` / `SCAFFOLD` |
 | **Required Tools** | `write_file`, `list_directory` |
 | **Optional Tools** | `read_file`, `run_command` |
@@ -285,7 +291,8 @@ structure, skeleton
 **ID:** `deploy_cicd`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Configure deployment, CI/CD pipelines |
+|--------|---------|
+| **Description** | Configure deployment, CI/CD pipelines |
 | **Task Type** | `DEPLOY` |
 | **Required Tools** | `read_file`, `write_file` |
 | **Optional Tools** | `run_command`, `list_directory` |
@@ -323,7 +330,8 @@ kubernetes, github actions, azure devops
 **ID:** `automate_script`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Create scripts, automate tasks |
+|--------|---------|
+| **Description** | Create scripts, automate tasks |
 | **Task Type** | `AUTOMATE` |
 | **Required Tools** | `write_file`, `run_command` |
 | **Optional Tools** | `read_file`, `list_directory` |
@@ -360,7 +368,8 @@ run automatically
 **ID:** `migrate_upgrade`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Migrate to new versions, frameworks, or patterns |
+|--------|---------|
+| **Description** | Migrate to new versions, frameworks, or patterns |
 | **Task Type** | `MIGRATE` |
 | **Required Tools** | `read_file`, `write_file`, `search_code` |
 | **Optional Tools** | `run_command`, `analyze_code` |
@@ -398,7 +407,8 @@ deprecate
 **ID:** `optimize_performance`
 
 | Aspect | Details |
-|--------|---------|n| **Description** | Improve performance, reduce resource usage |
+|--------|---------|
+| **Description** | Improve performance, reduce resource usage |
 | **Task Type** | `OPTIMIZE` |
 | **Required Tools** | `read_file`, `write_file`, `analyze_code` |
 | **Optional Tools** | `run_command`, `search_code` |

@@ -1,4 +1,4 @@
-# SkillPilot
+# SkillPilot — One skill to rule them all.
 
 > A universal meta-skill that orchestrates GitHub Copilot SDK to perform any development task.
 
@@ -197,30 +197,6 @@ The orchestrator receives your natural language request and decides the best exe
 
 ### Step 4: Results Returned
 Whether via ephemeral skill or SDK session, results are returned to you through Copilot's interface.
-
-## Testing (CLI Mode)
-
-Run the orchestrator directly for debugging:
-
-## Testing (CLI Mode)
-
-Run the orchestrator directly for debugging:
-
-```bash
-cd .github/skills/copilot-orchestrator/scripts
-
-# Simple operations (uses ephemeral skills)
-uv run python orchestrator.py "list files in current directory"
-uv run python orchestrator.py "what's my git status"
-uv run python orchestrator.py "run the tests"
-
-# Complex operations (uses SDK sessions)
-uv run python orchestrator.py "implement user authentication with JWT"
-uv run python orchestrator.py --task-type debug "why is my test failing"
-
-# Skill handler mode (how Copilot invokes it)
-uv run python orchestrator.py --skill-handler --request "list files" --output-json
-```
 
 ## Prerequisites
 
