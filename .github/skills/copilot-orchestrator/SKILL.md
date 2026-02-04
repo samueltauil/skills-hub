@@ -15,12 +15,18 @@ delegates execution to the appropriate SDK configuration.
 ```mermaid
 flowchart LR
     subgraph orchestrator["COPILOT ORCHESTRATOR"]
-        A["📝 REQUEST<br/>(any task)"] --> B["📦 CONTEXT MANAGER<br/>• Compression<br/>• Token budget<br/>• State mgmt"]
-        B --> C["🤖 COPILOT SDK SESSION<br/>• Streaming responses<br/>• Dynamic tools<br/>• MCP integration"]
+        A["📝 REQUEST<br/>(any task)"] --> B{"🎯 CLASSIFIER<br/>Decide Path"}
         
-        B --> D["🔧 TOOL FACTORY<br/>• File ops<br/>• Code analysis<br/>• Web fetch<br/>• Testing"]
+        B -->|"Simple task"| C["⚡ EPHEMERAL SKILL<br/>• Shell executor<br/>• File operations<br/>• Test runner"]
         
-        C --> E["📁 ARTIFACTS<br/>• Generated code<br/>• Documentation<br/>• Test suites<br/>• Deployment configs"]
+        B -->|"Complex task"| D["📦 CONTEXT MANAGER<br/>• Compression<br/>• Token budget<br/>• Prioritization"]
+        
+        D --> E["🔧 TOOL FACTORY<br/>• File ops<br/>• Code analysis<br/>• System commands"]
+        
+        E --> F["🤖 COPILOT SDK SESSION<br/>• Streaming responses<br/>• Dynamic tools"]
+        
+        C --> G["📁 RESULTS"]
+        F --> G
     end
 ```
 
@@ -67,10 +73,11 @@ Large contexts are semantically compressed to fit within token budgets:
 ```python
 # Before: 50,000 tokens of codebase context
 # After: 8,000 tokens of relevant, compressed context
-compressed = context_manager.compress(
-    context=workspace_context,
+compressed = await context_manager.prepare_context(
     task_type=task_type,
-    budget=TokenBudget(input=8000, output=4000)
+    request="add user authentication",
+    focus_files=["models.py", "routes.py"],
+    budget=TokenBudget(input_max=8000, output_max=4000)
 )
 ```
 
@@ -105,11 +112,15 @@ response = await session.send_and_wait({
 
 ### Step 5: Artifact Collection
 
-Generated artifacts (code, docs, configs) are collected and presented:
+Generated artifacts (code, docs, configs) are tracked during tool execution and returned in the session info:
 
 ```python
-artifacts = collect_artifacts(response)
-# → [CodeFile("src/auth.py"), TestFile("tests/test_auth.py"), Doc("AUTH.md")]
+# Artifacts are automatically tracked when write_file tool executes
+result = await orchestrator.execute(request)
+for artifact in result.artifacts:
+    print(f"Created: {artifact.path} ({artifact.artifact_type})")
+# → Created: src/auth.py (code)
+# → Created: tests/test_auth.py (test)
 ```
 
 ## Execution
@@ -124,11 +135,17 @@ uv sync
 # Execute with a task
 uv run python orchestrator.py "implement a REST endpoint for user registration"
 
-# With explicit context file
-uv run python orchestrator.py --context ./src/models.py "add validation to User model"
+# Override task classification
+uv run python orchestrator.py --task-type implement "add validation to User model"
 
-# Debug mode with verbose logging
-uv run python orchestrator.py --debug "why is my test failing"
+# Specify workspace directory
+uv run python orchestrator.py --workspace /path/to/project "why is my test failing"
+
+# Resume a previous session
+uv run python orchestrator.py --resume session_abc123xyz
+
+# Verbose mode with JSON output (for skill handler)
+uv run python orchestrator.py --verbose --output-json "list files"
 ```
 
 ## Configuration
@@ -148,12 +165,14 @@ The orchestrator uses a structured context envelope for SDK communication:
 
 ```json
 {
-  "task_id": "550e8400-e29b-41d4-a716-446655440000",
+  "task_id": "01919e17-7c9f-7f0c-8d9a-3b4c5d6e7f8a",
   "task_type": "implement",
-  "compressed_context": "...",
-  "token_budget": {"input": 8000, "output": 4000},
-  "artifacts": ["src/models.py", "src/routes.py"],
-  "restoration_point": {"session_id": "...", "turn": 3}
+  "original_request": "add user authentication",
+  "compressed_context": { "chunks": [...], "total_tokens": 4500 },
+  "token_budget": {"input_max": 8000, "output_max": 4000, "input_used": 4500},
+  "selected_tools": ["read_file", "write_file", "search_code"],
+  "model": "gpt-4.1",
+  "created_at": "2026-02-04T10:30:00Z"
 }
 ```
 
@@ -213,11 +232,12 @@ intents to SDK configurations.
 
 ```
 scripts/
-├── orchestrator.py      # Main entry point and SDK bridge
+├── __init__.py          # Package initializer
+├── orchestrator.py      # Main entry point, CLI, and SDK bridge
 ├── context_manager.py   # Semantic compression and token budgeting
-├── tool_factory.py      # Dynamic tool schema generation
+├── tool_factory.py      # Dynamic tool schema generation and built-in tools
 ├── models.py            # Pydantic models for type safety
-└── tests/               # Unit and integration tests
+└── pyproject.toml       # Dependencies (uv)
 ```
 
 The orchestrator is designed for transparency - all code is heavily commented
