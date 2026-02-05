@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2026-02-05T00:00:00Z",
+  "version": "1.1.0",
+  "lastUpdated": "2026-02-05T12:00:00Z",
   "categories": [
     {
       "id": "git-version-control",
@@ -61,219 +61,66 @@
       "name": "Data & Analytics",
       "description": "Skills for data pipelines, SQL, Power BI, and data analysis",
       "icon": "📈"
+    },
+    {
+      "id": "office-documents",
+      "name": "Office Documents",
+      "description": "Skills for creating and editing Word, Excel, PowerPoint, and PDF files",
+      "icon": "📄"
+    },
+    {
+      "id": "mcp-development",
+      "name": "MCP Development",
+      "description": "Skills for building Model Context Protocol servers and apps",
+      "icon": "🔧"
     }
   ],
   "skills": [
     {
-      "id": "conventional-commits",
-      "name": "Conventional Commits",
-      "description": "Generate standardized commit messages following the Conventional Commits specification. Analyzes staged changes and produces semantic commit messages with type, scope, and description.",
+      "id": "git-commit",
+      "name": "git-commit",
+      "description": "Execute git commit with conventional commit message analysis, intelligent staging, and message generation. Supports auto-detecting type and scope from changes, generating conventional commit messages from diff, and intelligent file staging for logical grouping.",
       "shortDescription": "Generate standardized commit messages",
       "category": "git-version-control",
       "author": "github",
       "license": "MIT",
-      "triggers": ["commit", "git commit", "commit message", "conventional commit"],
+      "triggers": ["commit", "git commit", "commit message", "conventional commit", "/commit"],
       "complexity": "beginner",
       "platforms": ["windows", "macos", "linux"],
       "source": {
         "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/git-commit/SKILL.md",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/git-commit",
+        "skillFile": "SKILL.md",
         "branch": "main"
       },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot && mkdir -p .github/skills/conventional-commits && cp .github/skills/awesome-copilot/skills/git-commit/* .github/skills/conventional-commits/",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/git-commit/SKILL.md"
-      },
       "featured": true,
-      "tags": ["git", "commits", "semantic", "changelog"]
+      "tags": ["git", "commits", "semantic", "changelog", "conventional-commits"]
     },
     {
-      "id": "code-review",
-      "name": "Code Review",
-      "description": "Perform thorough code reviews with expert-level feedback. Analyzes code for bugs, security issues, performance problems, and style violations. Provides actionable suggestions.",
-      "shortDescription": "Expert code review with actionable feedback",
+      "id": "refactor",
+      "name": "refactor",
+      "description": "Perform code refactoring with best practices. Analyzes code structure and suggests improvements for readability, maintainability, and performance.",
+      "shortDescription": "Refactor code with best practices",
       "category": "code-quality",
       "author": "github",
       "license": "MIT",
-      "triggers": ["review", "code review", "review this", "check this code"],
+      "triggers": ["refactor", "refactoring", "clean code", "improve code"],
       "complexity": "intermediate",
       "platforms": ["windows", "macos", "linux"],
       "source": {
         "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/code-review/SKILL.md",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/refactor",
+        "skillFile": "SKILL.md",
         "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/code-review/SKILL.md"
       },
       "featured": true,
-      "tags": ["review", "quality", "feedback", "bugs"]
+      "tags": ["refactor", "clean-code", "quality", "maintainability"]
     },
     {
-      "id": "test-suite",
-      "name": "Test Suite Generator",
-      "description": "Generate comprehensive test suites for your code. Creates unit tests, integration tests, and edge case coverage. Supports multiple testing frameworks.",
-      "shortDescription": "Generate comprehensive test suites",
-      "category": "testing",
-      "author": "github",
-      "license": "MIT",
-      "triggers": ["test", "write tests", "unit test", "create tests", "test coverage"],
-      "complexity": "intermediate",
-      "platforms": ["windows", "macos", "linux"],
-      "source": {
-        "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/test-suite/SKILL.md",
-        "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/test-suite/SKILL.md"
-      },
-      "featured": true,
-      "tags": ["testing", "unit tests", "coverage", "tdd"]
-    },
-    {
-      "id": "ci-pipeline",
-      "name": "CI/CD Pipeline",
-      "description": "Create and configure CI/CD pipelines for GitHub Actions, Azure DevOps, or other platforms. Generates workflows for testing, building, and deploying applications.",
-      "shortDescription": "Create CI/CD pipelines and workflows",
-      "category": "devops-cicd",
-      "author": "github",
-      "license": "MIT",
-      "triggers": ["ci", "cd", "pipeline", "github actions", "workflow", "deploy"],
-      "complexity": "intermediate",
-      "platforms": ["windows", "macos", "linux"],
-      "source": {
-        "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/ci-pipeline/SKILL.md",
-        "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/ci-pipeline/SKILL.md"
-      },
-      "featured": true,
-      "tags": ["ci", "cd", "github-actions", "automation", "deployment"]
-    },
-    {
-      "id": "api-endpoint",
-      "name": "REST API Endpoint",
-      "description": "Design and implement REST API endpoints with proper HTTP methods, validation, error handling, and documentation. Follows RESTful best practices.",
-      "shortDescription": "Design and implement REST API endpoints",
-      "category": "api-backend",
-      "author": "github",
-      "license": "MIT",
-      "triggers": ["api", "rest", "endpoint", "route", "controller"],
-      "complexity": "intermediate",
-      "platforms": ["windows", "macos", "linux"],
-      "source": {
-        "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/api-endpoint/SKILL.md",
-        "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/api-endpoint/SKILL.md"
-      },
-      "featured": false,
-      "tags": ["api", "rest", "http", "backend"]
-    },
-    {
-      "id": "security-audit",
-      "name": "Security Audit",
-      "description": "Perform security audits on your codebase. Identifies vulnerabilities, insecure patterns, and provides remediation guidance following OWASP guidelines.",
-      "shortDescription": "Security audit with vulnerability detection",
-      "category": "security",
-      "author": "github",
-      "license": "MIT",
-      "triggers": ["security", "audit", "vulnerability", "secure", "owasp"],
-      "complexity": "advanced",
-      "platforms": ["windows", "macos", "linux"],
-      "source": {
-        "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/security-audit/SKILL.md",
-        "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/security-audit/SKILL.md"
-      },
-      "featured": true,
-      "tags": ["security", "owasp", "vulnerabilities", "audit"]
-    },
-    {
-      "id": "mermaid-diagrams",
-      "name": "Mermaid Diagrams",
-      "description": "Create professional diagrams using Mermaid syntax. Generates flowcharts, sequence diagrams, class diagrams, ER diagrams, and more from natural language descriptions.",
-      "shortDescription": "Create diagrams with Mermaid syntax",
-      "category": "diagrams",
-      "author": "github",
-      "license": "MIT",
-      "triggers": ["diagram", "mermaid", "flowchart", "sequence diagram", "visualize"],
-      "complexity": "beginner",
-      "platforms": ["windows", "macos", "linux"],
-      "source": {
-        "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/mermaid-diagrams/SKILL.md",
-        "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/mermaid-diagrams/SKILL.md"
-      },
-      "featured": false,
-      "tags": ["diagrams", "mermaid", "flowchart", "visualization"]
-    },
-    {
-      "id": "react-component",
-      "name": "React Component",
-      "description": "Create React components with TypeScript, hooks, proper state management, and accessibility. Follows React best practices and modern patterns.",
-      "shortDescription": "Create React components with best practices",
-      "category": "frontend-ui",
-      "author": "github",
-      "license": "MIT",
-      "triggers": ["react", "component", "jsx", "tsx", "hooks"],
-      "complexity": "intermediate",
-      "platforms": ["windows", "macos", "linux"],
-      "source": {
-        "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/react-component/SKILL.md",
-        "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/react-component/SKILL.md"
-      },
-      "featured": false,
-      "tags": ["react", "frontend", "typescript", "components"]
-    },
-    {
-      "id": "dockerfile",
-      "name": "Dockerfile Generator",
-      "description": "Create optimized Dockerfiles for your applications. Generates multi-stage builds, proper caching, security hardening, and follows Docker best practices.",
-      "shortDescription": "Create optimized Dockerfiles",
-      "category": "devops-cicd",
-      "author": "github",
-      "license": "MIT",
-      "triggers": ["docker", "dockerfile", "container", "containerize"],
-      "complexity": "intermediate",
-      "platforms": ["windows", "macos", "linux"],
-      "source": {
-        "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/dockerfile/SKILL.md",
-        "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/dockerfile/SKILL.md"
-      },
-      "featured": false,
-      "tags": ["docker", "containers", "devops", "deployment"]
-    },
-    {
-      "id": "prd-generator",
-      "name": "PRD Generator",
+      "id": "prd",
+      "name": "prd",
       "description": "Generate Product Requirements Documents from feature descriptions. Creates structured PRDs with user stories, acceptance criteria, and technical requirements.",
       "shortDescription": "Generate Product Requirements Documents",
       "category": "documentation",
@@ -284,15 +131,412 @@
       "platforms": ["windows", "macos", "linux"],
       "source": {
         "repo": "https://github.com/github/awesome-copilot",
-        "path": "skills/prd/SKILL.md",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/prd",
+        "skillFile": "SKILL.md",
         "branch": "main"
-      },
-      "install": {
-        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
-        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/prd/SKILL.md"
       },
       "featured": false,
       "tags": ["documentation", "prd", "requirements", "product"]
+    },
+    {
+      "id": "excalidraw-diagram-generator",
+      "name": "excalidraw-diagram-generator",
+      "description": "Create professional diagrams using Excalidraw. Generates flowcharts, architecture diagrams, and visual documentation from natural language descriptions.",
+      "shortDescription": "Create Excalidraw diagrams",
+      "category": "diagrams",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["excalidraw", "diagram", "flowchart", "architecture diagram", "visualize"],
+      "complexity": "beginner",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/excalidraw-diagram-generator",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": true,
+      "tags": ["diagrams", "excalidraw", "flowchart", "visualization", "architecture"]
+    },
+    {
+      "id": "plantuml-ascii",
+      "name": "plantuml-ascii",
+      "description": "Create PlantUML diagrams with ASCII output. Generates sequence diagrams, class diagrams, and more in text format.",
+      "shortDescription": "Create PlantUML ASCII diagrams",
+      "category": "diagrams",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["plantuml", "uml", "sequence diagram", "class diagram", "ascii diagram"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/plantuml-ascii",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["diagrams", "plantuml", "uml", "ascii", "sequence"]
+    },
+    {
+      "id": "gh-cli",
+      "name": "gh-cli",
+      "description": "Use GitHub CLI (gh) for repository management, issues, pull requests, and GitHub operations directly from the command line.",
+      "shortDescription": "GitHub CLI operations",
+      "category": "git-version-control",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["gh", "github cli", "gh pr", "gh issue", "github command"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/gh-cli",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["github", "cli", "gh", "pull-request", "issues"]
+    },
+    {
+      "id": "github-issues",
+      "name": "github-issues",
+      "description": "Create, manage, and organize GitHub issues. Includes templates, labels, and best practices for issue tracking.",
+      "shortDescription": "Manage GitHub issues",
+      "category": "git-version-control",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["issue", "github issue", "create issue", "bug report", "feature request"],
+      "complexity": "beginner",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/github-issues",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["github", "issues", "tracking", "project-management"]
+    },
+    {
+      "id": "azure-static-web-apps",
+      "name": "azure-static-web-apps",
+      "description": "Create, test, deploy, and update Azure Static Web Apps. Full lifecycle management for static web applications on Azure.",
+      "shortDescription": "Azure Static Web Apps deployment",
+      "category": "devops-cicd",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["azure static web app", "swa", "static site", "azure deploy"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/azure-static-web-apps",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["azure", "static-web-apps", "deployment", "cloud"]
+    },
+    {
+      "id": "azure-devops-cli",
+      "name": "azure-devops-cli",
+      "description": "Use Azure DevOps CLI for pipeline management, work items, and Azure DevOps operations from the command line.",
+      "shortDescription": "Azure DevOps CLI operations",
+      "category": "devops-cicd",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["azure devops", "az devops", "ado", "azure pipelines"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/azure-devops-cli",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["azure", "devops", "cli", "pipelines", "ado"]
+    },
+    {
+      "id": "copilot-sdk",
+      "name": "copilot-sdk",
+      "description": "Build applications with the GitHub Copilot SDK. Create AI-powered applications using the Copilot API across multiple programming languages.",
+      "shortDescription": "Build with GitHub Copilot SDK",
+      "category": "api-backend",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["copilot sdk", "copilot api", "ai application", "copilot integration"],
+      "complexity": "advanced",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/copilot-sdk",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": true,
+      "tags": ["copilot", "sdk", "api", "ai", "integration"]
+    },
+    {
+      "id": "meeting-minutes",
+      "name": "meeting-minutes",
+      "description": "Generate structured meeting minutes from notes or transcripts. Creates organized summaries with action items, decisions, and follow-ups.",
+      "shortDescription": "Generate meeting minutes",
+      "category": "documentation",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["meeting minutes", "meeting notes", "action items", "meeting summary"],
+      "complexity": "beginner",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/meeting-minutes",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["meeting", "minutes", "documentation", "notes"]
+    },
+    {
+      "id": "agentic-eval",
+      "name": "agentic-eval",
+      "description": "Evaluate AI agent performance with structured patterns. Create test cases, metrics, and evaluation frameworks for agent-based systems.",
+      "shortDescription": "Evaluate AI agent performance",
+      "category": "testing",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["agent evaluation", "ai testing", "agent metrics", "eval"],
+      "complexity": "advanced",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "repoName": "github/awesome-copilot",
+        "path": "skills/agentic-eval",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["agent", "evaluation", "testing", "ai", "metrics"]
+    },
+    {
+      "id": "docx",
+      "name": "docx",
+      "description": "Create, read, edit, or manipulate Word documents (.docx files). Includes formatting, tables of contents, headings, page numbers, tracked changes, and comments. Supports extracting and reorganizing document content.",
+      "shortDescription": "Create and edit Word documents",
+      "category": "office-documents",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["word doc", "word document", ".docx", "report", "memo", "letter", "template"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/docx",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": true,
+      "tags": ["word", "docx", "document", "office", "formatting"]
+    },
+    {
+      "id": "xlsx",
+      "name": "xlsx",
+      "description": "Create, read, edit, or fix spreadsheet files (.xlsx, .xlsm, .csv, .tsv). Includes formulas, formatting, charts, and data cleaning. Supports financial modeling with proper Excel best practices.",
+      "shortDescription": "Create and edit Excel spreadsheets",
+      "category": "office-documents",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["excel", "spreadsheet", ".xlsx", "csv", "financial model", "data analysis"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/xlsx",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": true,
+      "tags": ["excel", "xlsx", "spreadsheet", "data", "formulas"]
+    },
+    {
+      "id": "pptx",
+      "name": "pptx",
+      "description": "Create, read, edit, or manipulate PowerPoint presentations (.pptx). Includes slide design, templates, layouts, speaker notes, and professional formatting guidance.",
+      "shortDescription": "Create and edit PowerPoint presentations",
+      "category": "office-documents",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["powerpoint", "presentation", "slides", ".pptx", "deck", "pitch deck"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/pptx",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": true,
+      "tags": ["powerpoint", "pptx", "presentation", "slides", "design"]
+    },
+    {
+      "id": "pdf",
+      "name": "pdf",
+      "description": "Process PDF files - read, extract text/tables, merge, split, rotate, watermark, create, fill forms, encrypt/decrypt, extract images, and OCR scanned documents.",
+      "shortDescription": "Process and manipulate PDF files",
+      "category": "office-documents",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["pdf", ".pdf", "merge pdf", "split pdf", "pdf form", "ocr"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/pdf",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": true,
+      "tags": ["pdf", "document", "merge", "extract", "ocr"]
+    },
+    {
+      "id": "mcp-builder",
+      "name": "mcp-builder",
+      "description": "Create high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Includes TypeScript and Python implementation guides.",
+      "shortDescription": "Build MCP servers for LLM integration",
+      "category": "mcp-development",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["mcp server", "model context protocol", "llm integration", "tool server"],
+      "complexity": "advanced",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/mcp-builder",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": true,
+      "tags": ["mcp", "server", "llm", "api", "integration"]
+    },
+    {
+      "id": "frontend-design",
+      "name": "frontend-design",
+      "description": "Design and implement frontend user interfaces with modern best practices. Covers layout, accessibility, responsive design, and user experience.",
+      "shortDescription": "Frontend design best practices",
+      "category": "frontend-ui",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["frontend design", "ui design", "web design", "responsive", "accessibility"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/frontend-design",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["frontend", "design", "ui", "ux", "responsive"]
+    },
+    {
+      "id": "canvas-design",
+      "name": "canvas-design",
+      "description": "Create canvas-based graphics and visualizations. Design interactive graphics, animations, and visual elements using HTML5 Canvas API.",
+      "shortDescription": "HTML5 Canvas graphics design",
+      "category": "frontend-ui",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["canvas", "graphics", "animation", "html5 canvas", "visualization"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/canvas-design",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["canvas", "graphics", "animation", "html5", "visualization"]
+    },
+    {
+      "id": "webapp-testing",
+      "name": "webapp-testing",
+      "description": "Test web applications with comprehensive testing strategies. Includes unit testing, integration testing, E2E testing, and test automation patterns.",
+      "shortDescription": "Web application testing strategies",
+      "category": "testing",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["webapp testing", "e2e testing", "integration test", "test automation"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/webapp-testing",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["testing", "webapp", "e2e", "automation", "qa"]
+    },
+    {
+      "id": "skill-creator",
+      "name": "skill-creator",
+      "description": "Create new AI agent skills with proper structure and best practices. Generate SKILL.md files, reference documentation, and skill configurations.",
+      "shortDescription": "Create AI agent skills",
+      "category": "mcp-development",
+      "author": "anthropic",
+      "license": "Proprietary",
+      "triggers": ["create skill", "skill template", "agent skill", "new skill"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "repoName": "anthropics/skills",
+        "path": "skills/skill-creator",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["skill", "template", "agent", "creation", "meta"]
+    },
+    {
+      "id": "create-mcp-app",
+      "name": "create-mcp-app",
+      "description": "Build interactive UIs that run inside MCP-enabled hosts like Claude Desktop. An MCP App combines an MCP tool with an HTML resource to display rich, interactive content with React, Vue, or vanilla JS.",
+      "shortDescription": "Create MCP Apps with interactive UIs",
+      "category": "mcp-development",
+      "author": "modelcontextprotocol",
+      "license": "MIT",
+      "triggers": ["create mcp app", "mcp ui", "mcp view", "scaffold mcp app", "interactive mcp"],
+      "complexity": "advanced",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/modelcontextprotocol/ext-apps",
+        "repoName": "modelcontextprotocol/ext-apps",
+        "path": "plugins/mcp-apps/skills/create-mcp-app",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": true,
+      "tags": ["mcp", "app", "ui", "interactive", "react", "claude-desktop"]
     }
   ]
 }

@@ -23,9 +23,25 @@ const complexityColors = {
   advanced: 'badge-primary'
 };
 
-// Generate install commands
-const submodulePath = `.github/skills/${skill.id}`;
-const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
+// Generate install commands - skills are in subdirectories, so we need sparse checkout
+const skillName = skill.name; // folder name must match frontmatter name
+const skillPath = `.github/skills/${skillName}`;
+const repoName = skill.source.repoName || skill.source.repo.replace('https://github.com/', '');
+const sourcePath = skill.source.path;
+const rawSkillUrl = `https://raw.githubusercontent.com/${repoName}/main/${sourcePath}/SKILL.md`;
+
+// Method 1: Git sparse checkout (preferred for keeping in sync)
+const sparseCloneCmd = `git clone --filter=blob:none --sparse ${skill.source.repo} temp-skill
+cd temp-skill
+git sparse-checkout set ${sourcePath}
+cd ..
+mkdir -p ${skillPath}
+cp -r temp-skill/${sourcePath}/* ${skillPath}/
+rm -rf temp-skill`;
+
+// Method 2: Direct download (simplest)
+const directDownloadCmd = `mkdir -p ${skillPath}
+curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
 ---
 
 <Layout title={skill.name} description={skill.description}>
@@ -59,8 +75,36 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
             </svg>
             <span>View Source</span>
           </a>
+          <span class="meta-item license-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+            <span>{skill.license}</span>
+          </span>
         </div>
       </header>
+
+      <!-- Attribution Banner -->
+      <div class="attribution-banner">
+        <div class="attribution-content">
+          <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          <span>
+            This skill is from <a href={skill.source.repo} target="_blank" rel="noopener noreferrer"><strong>{repoName}</strong></a>
+            — give them a star!
+          </span>
+        </div>
+        <a href={`${skill.source.repo}/tree/main/${sourcePath}`} target="_blank" rel="noopener noreferrer" class="attribution-link">
+          View SKILL.md
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </div>
 
       <div class="skill-content">
         <div class="main-content">
@@ -78,13 +122,14 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
 
           <section class="content-section">
             <h2>Installation</h2>
-            <p class="text-secondary" style="margin-bottom: 1rem;">Skills are auto-discovered from <code>.github/skills/</code> — no configuration needed!</p>
+            <p class="text-secondary" style="margin-bottom: 1rem;">Skills are auto-discovered from <code>.github/skills/</code> — the folder name must match <code>{skillName}</code>.</p>
             
             <div class="install-method">
-              <h3>1. Add as Git Submodule</h3>
+              <h3>Option 1: Direct Download (Recommended)</h3>
+              <p class="method-description">Quick one-time setup — download the skill file directly:</p>
               <div class="code-block">
-                <pre><code>{submoduleCmd}</code></pre>
-                <button class="copy-btn" data-copy={submoduleCmd} title="Copy to clipboard">
+                <pre><code>{directDownloadCmd}</code></pre>
+                <button class="copy-btn" data-copy={directDownloadCmd} title="Copy to clipboard">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -94,14 +139,21 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
             </div>
 
             <div class="install-method">
-              <h3>2. Initialize Submodule (for cloned repos)</h3>
+              <h3>Option 2: Git Sparse Checkout (For Updates)</h3>
+              <p class="method-description">Clone only this skill from the source repo:</p>
               <div class="code-block">
-                <pre><code>git submodule update --init --recursive</code></pre>
+                <pre><code>{sparseCloneCmd}</code></pre>
+                <button class="copy-btn" data-copy={sparseCloneCmd} title="Copy to clipboard">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
               </div>
             </div>
 
             <div class="install-note">
-              <p><strong>That's it!</strong> Copilot automatically discovers skills based on their <code>name</code> and <code>description</code> frontmatter and loads them when relevant to your request.</p>
+              <p><strong>Important:</strong> The folder name (<code>{skillName}</code>) must match the skill's <code>name</code> frontmatter for Copilot to discover it correctly.</p>
             </div>
           </section>
         </div>
@@ -110,15 +162,30 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
           <div class="sidebar-card">
             <h3>Quick Info</h3>
             <dl class="info-list">
+              <dt>Author</dt>
+              <dd>{skill.author}</dd>
+              
+              <dt>License</dt>
+              <dd>{skill.license}</dd>
+              
               <dt>Category</dt>
               <dd>{category?.name || skill.category}</dd>
               
               <dt>Complexity</dt>
               <dd class="capitalize">{skill.complexity}</dd>
               
-              <dt>Source Path</dt>
-              <dd><code>{skill.source.path}</code></dd>
+              <dt>Install Path</dt>
+              <dd><code>{skillPath}</code></dd>
             </dl>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Tags</h3>
+            <div class="tags-list">
+              {skill.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
           </div>
 
           <div class="sidebar-card">
@@ -165,7 +232,7 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
   }
 
   .skill-header {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--color-border);
   }
@@ -190,6 +257,7 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
 
   .skill-meta {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
   }
 
@@ -207,6 +275,69 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
 
   .meta-icon {
     font-size: 1.25rem;
+  }
+
+  .license-badge {
+    cursor: default;
+  }
+
+  .license-badge:hover {
+    color: var(--color-text-secondary);
+  }
+
+  /* Attribution Banner */
+  .attribution-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-tertiary));
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .attribution-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+  }
+
+  .attribution-content svg {
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+  }
+
+  .attribution-content a {
+    color: var(--color-accent);
+  }
+
+  .attribution-content a:hover {
+    text-decoration: underline;
+  }
+
+  .attribution-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    color: var(--color-text);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .attribution-link:hover {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
   }
 
   .skill-content {
@@ -243,6 +374,12 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
   .install-method h3 {
     font-size: 1rem;
     font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .method-description {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
     margin-bottom: 0.75rem;
   }
 
@@ -252,6 +389,8 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
 
   .code-block pre {
     padding-right: 3rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
   }
 
   .copy-btn {
@@ -320,6 +459,21 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
     text-transform: capitalize;
   }
 
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+
   .related-list {
     list-style: none;
     margin-top: 0.75rem;
@@ -345,6 +499,11 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
 
     .sidebar {
       order: -1;
+    }
+
+    .attribution-banner {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 
