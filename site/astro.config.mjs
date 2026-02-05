@@ -6,6 +6,7 @@ export default defineConfig({
   site: 'https://samueltauil.github.io',
   base: '/skills-hub',
   output: 'static',
+  trailingSlash: 'always',
   build: {
     assets: 'assets'
   }

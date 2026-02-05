@@ -11,7 +11,7 @@ const { id, name, description, icon = '📦', count } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<a href={`${baseUrl}categories/${id}`} class="category-card card">
+<a href={`${baseUrl}categories/${id}/`} class="category-card card">
   <div class="category-icon">{icon}</div>
   <div class="category-content">
     <h3 class="category-name">{name}</h3>

@@ -32,9 +32,9 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
   <section class="skill-detail">
     <div class="container">
       <nav class="breadcrumb">
-        <a href={baseUrl}>Home</a>
+        <a href={`${baseUrl}`}>Home</a>
         <span>/</span>
-        <a href={`${baseUrl}skills`}>Skills</a>
+        <a href={`${baseUrl}skills/`}>Skills</a>
         <span>/</span>
         <span>{skill.name}</span>
       </nav>
@@ -48,7 +48,7 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
         
         <div class="skill-meta">
           {category && (
-            <a href={`${baseUrl}categories/${category.id}`} class="meta-item">
+            <a href={`${baseUrl}categories/${category.id}/`} class="meta-item">
               <span class="meta-icon">{category.icon}</span>
               <span>{category.name}</span>
             </a>
@@ -134,7 +134,7 @@ instructions:
                 .slice(0, 3)
                 .map(related => (
                   <li>
-                    <a href={`${baseUrl}skills/${related.id}`}>{related.name}</a>
+                    <a href={`${baseUrl}skills/${related.id}/`}>{related.name}</a>
                   </li>
                 ))
               }

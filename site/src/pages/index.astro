@@ -42,7 +42,7 @@ const categories = registry.categories.map(cat => ({
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Featured Skills</h2>
-        <a href={`${import.meta.env.BASE_URL}skills`} class="btn btn-secondary btn-sm">View All →</a>
+        <a href={`${import.meta.env.BASE_URL}skills/`} class="btn btn-secondary btn-sm">View All →</a>
       </div>
       <div class="grid grid-3">
         {featuredSkills.map(skill => (
@@ -64,7 +64,7 @@ const categories = registry.categories.map(cat => ({
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Browse by Category</h2>
-        <a href={`${import.meta.env.BASE_URL}categories`} class="btn btn-secondary btn-sm">All Categories →</a>
+        <a href={`${import.meta.env.BASE_URL}categories/`} class="btn btn-secondary btn-sm">All Categories →</a>
       </div>
       <div class="grid grid-2">
         {categories.slice(0, 6).map(category => (

@@ -23,9 +23,9 @@ const skills = registry.skills.filter(s => s.category === category.id);
   <section class="page-header">
     <div class="container">
       <nav class="breadcrumb">
-        <a href={baseUrl}>Home</a>
+        <a href={`${baseUrl}`}>Home</a>
         <span>/</span>
-        <a href={`${baseUrl}categories`}>Categories</a>
+        <a href={`${baseUrl}categories/`}>Categories</a>
         <span>/</span>
         <span>{category.name}</span>
       </nav>
