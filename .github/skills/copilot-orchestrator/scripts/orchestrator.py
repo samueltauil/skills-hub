@@ -807,14 +807,19 @@ Let me start by examining the workspace..."""
 
 class EphemeralSkillSpawner:
     """
-    Dynamically create and execute specialized skills.
+    Dynamically create and execute specialized skills for CLI mode.
     
-    When the orchestrator determines a task needs a specialized skill
-    (like shell execution), it spawns an ephemeral skill that:
-    1. Is created on-the-fly from templates
-    2. Executes the specific operation
-    3. Returns results to the orchestrator
-    4. Can be persisted for reuse if useful
+    NOTE: This class is NOT auto-triggered when running as a Copilot skill.
+    Copilot chat already has native tools for simple operations:
+    - run_in_terminal → shell commands
+    - read_file → file reading
+    - grep_search → file searching
+    - runTests → test execution
+    
+    The ephemeral skill spawner remains available for:
+    - CLI mode (orchestrator.py command line)
+    - Explicit invocation via --ephemeral flag
+    - Standalone SDK sessions without Copilot context
     
     Built-in ephemeral skill types:
     - shell: Execute bash/powershell commands
@@ -2972,7 +2977,8 @@ class Orchestrator:
         self.client = CopilotClient()
         self.renderer = ResponseRenderer()
         
-        # Ephemeral skill spawner - key for "skill factory" behavior
+        # Ephemeral skill spawner - available for CLI mode only (explicit --ephemeral flag)
+        # Not auto-triggered since Copilot chat has native tools for simple operations
         self.skill_spawner = EphemeralSkillSpawner(workspace=self.config.workspace)
         
         # Skill catalog - provides template-first execution path
@@ -2998,10 +3004,14 @@ class Orchestrator:
         """
         Execute a user request — Mother of All Skills main entry point.
         
-        Execution priority:
-        1. Ephemeral skills for simple operations (list files, run tests, git status)
-        2. Template match from 30+ awesome-copilot patterns (REST API, testing, etc.)
-        3. Full SDK session with expert-level guidance (fallback for complex tasks)
+        Execution flow:
+        1. Template match from 30+ awesome-copilot patterns (REST API, testing, etc.)
+        2. Full SDK session with expert-level guidance
+        
+        Note: Simple operations (list files, run tests, git status) are NOT handled
+        by ephemeral skills. When running inside Copilot chat, these are handled
+        natively by Copilot's built-in tools (run_in_terminal, read_file, grep_search,
+        runTests). This avoids redundant abstraction layers.
         
         Args:
             request: User's request in natural language
@@ -3013,50 +3023,7 @@ class Orchestrator:
             SessionInfo or dict with results
         """
         # =========================================================
-        # PATH 1: Ephemeral skills for simple, immediate operations
-        # =========================================================
-        ephemeral_type = self.skill_spawner.select_skill_type(request)
-        
-        if ephemeral_type:
-            self.renderer.render_status(
-                f"⚡ Ephemeral skill: {ephemeral_type}"
-            )
-            
-            result = await self.skill_spawner.spawn_and_execute(
-                skill_type=ephemeral_type,
-                request=request
-            )
-            
-            if skill_handler_mode:
-                return result
-            
-            # Render result for CLI mode
-            if result.get("success"):
-                if "stdout" in result:
-                    self.renderer.render_code(result["stdout"], "text")
-                elif "items" in result:
-                    for item in result["items"]:
-                        icon = "📁" if item["is_dir"] else "📄"
-                        self.renderer.render_status(f"{icon} {item['name']}")
-                elif "content" in result:
-                    self.renderer.render_code(result["content"], "text")
-            else:
-                self.renderer.render_error(result.get("error", "Unknown error"))
-            
-            return SessionInfo(
-                session_id=self._generate_session_id(),
-                state=SessionState.COMPLETED,
-                task=TaskEnvelope(
-                    task_type=TaskType.AUTOMATE,
-                    original_request=request
-                ),
-                started_at=datetime.now(),
-                ended_at=datetime.now(),
-                artifacts=[]
-            )
-        
-        # =========================================================
-        # PATH 2: Template match from 30+ awesome-copilot patterns
+        # Template match from 30+ awesome-copilot patterns
         # =========================================================
         matched_template = self.skill_catalog.suggest_template(request)
         template_data: dict[str, Any] = {}

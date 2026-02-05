@@ -26,7 +26,7 @@ patterns), it uses that template. Otherwise, it dynamically generates expert gui
 **How it works:**
 1. **Template Match** — Checks 30+ built-in templates (from awesome-copilot patterns)
 2. **SDK Fallback** — If no template matches, uses Copilot SDK for expert-level guidance
-3. **Ephemeral Skills** — Spawns lightweight skills for simple operations (list files, git status)
+3. **Native Tools** — Simple operations (list files, git status) are handled by Copilot's built-in tools
 4. **Full Sessions** — Creates SDK sessions for complex tasks (implement, refactor, debug)
 
 ## When to Use This Skill

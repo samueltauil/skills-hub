@@ -12,10 +12,11 @@
 
 ## What is SkillPilot?
 
-SkillPilot is a **"skill factory"** for GitHub Copilot. When you use a repository created from this template, the meta-skill intercepts your requests to Copilot and dynamically handles them by:
+SkillPilot is the **"Mother of All Skills"** for GitHub Copilot. When you use a repository with this skill, it transforms **any** development request into expert-level action by:
 
-1. **Spawning ephemeral skills** for simple operations (list files, run commands)
-2. **Using the Copilot SDK** for complex tasks (implement features, refactor code)
+1. **Template matching** — Checks 30+ built-in templates from awesome-copilot patterns
+2. **SDK sessions** — Uses GitHub Copilot SDK for complex tasks with expert-level guidance
+3. **Native tools** — Simple operations (list files, run commands) use Copilot's built-in tools
 
 ```mermaid
 flowchart LR
@@ -28,11 +29,11 @@ flowchart LR
     end
     
     subgraph output["SkillPilot Handles It"]
-        B1["Shell skill → ls/dir"]
-        B2["Test runner → pytest/jest"]
-        B3["SDK session → generates code"]
+        B1["Native tool → run_in_terminal"]
+        B2["Native tool → runTests"]
+        B3["Template + SDK → REST API pattern"]
         B4["SDK session → restructures app"]
-        B5["SDK session → diagnoses & fixes"]
+        B5["Template + SDK → debug pattern"]
     end
     
     A1 --> B1
@@ -50,11 +51,11 @@ When you ask Copilot something in a repository using SkillPilot:
 flowchart TD
     A["🗣️ You ask Copilot"] --> B["🤖 Copilot<br/>(VS Code)"]
     B --> C{"SKILL.md<br/>matches request"}
-    C --> D["🎯 Orchestrator<br/>decides how"]
+    C --> D["🎯 Orchestrator<br/>classifies intent"]
     
-    D --> E["⚡ Ephemeral Skill<br/>(shell, files)"]
-    D --> F["🔧 SDK Session<br/>(complex tasks)"]
-    D --> G["📦 Delegate<br/>(existing skill)"]
+    D --> E["📋 Template Match<br/>(30+ patterns)"]
+    D --> F["🔧 SDK Session<br/>(expert guidance)"]
+    D --> G["🛠️ Native Tools<br/>(simple operations)"]
     
     E --> H["✅ Result<br/>returned to you"]
     F --> H
@@ -120,17 +121,17 @@ Copilot: [uses skill] → generates full implementation
 
 ## Example Interactions
 
-### Simple Operations (Ephemeral Skills)
+### Simple Operations (Native Tools)
 
-These spawn lightweight, specialized skills:
+These use Copilot's built-in tools directly — no extra abstraction layer:
 
-| You Ask | Skill Spawned | Action |
-|---------|---------------|--------|
-| "list files in src/" | shell-executor | Runs `ls` or `Get-ChildItem` |
-| "find all TODO comments" | shell-executor | Runs `grep -r TODO` |
-| "run the tests" | test-runner | Executes pytest/jest |
-| "show me package.json" | file-operations | Reads and displays file |
-| "what's my git status" | shell-executor | Runs `git status` |
+| You Ask | Native Tool | Action |
+|---------|-------------|--------|
+| "list files in src/" | `run_in_terminal` | Runs `ls` or `Get-ChildItem` |
+| "find all TODO comments" | `grep_search` | Searches for pattern in files |
+| "run the tests" | `runTests` | Executes pytest/jest |
+| "show me package.json" | `read_file` | Reads and displays file |
+| "what's my git status" | `run_in_terminal` | Runs `git status` |
 
 ### Complex Operations (SDK Sessions)
 
@@ -357,44 +358,39 @@ SkillPilot:
    Would you like me to implement any of these fixes?
 ```
 
-## Ephemeral Skills
+## Built-in Templates (30+)
 
-The orchestrator can spawn these specialized skills on-demand:
+The orchestrator includes 30+ expert templates from awesome-copilot patterns:
 
-### Shell Executor
-Runs bash/PowerShell commands based on natural language:
-- "list files" → `ls -la` / `Get-ChildItem`
-- "find Python files" → `find . -name '*.py'` / `Get-ChildItem -Filter *.py`
-- "git status" → `git status`
+| Category | Templates |
+|----------|----------|
+| **Git Operations** | conventional-commits, branch-management |
+| **Code Quality** | code-review, linting-setup, type-checking |
+| **Documentation** | readme-generator, api-docs, jsdoc-comments |
+| **Diagrams** | mermaid-diagrams, architecture-diagrams |
+| **Testing** | unit-tests, integration-tests, e2e-tests, test-coverage |
+| **API Development** | rest-api, graphql-api, openapi-spec |
+| **Frontend** | react-components, state-management, css-styling |
+| **DevOps** | dockerfile, kubernetes, github-actions, ci-cd-pipeline |
+| **Security** | security-audit, dependency-scan, secrets-management |
+| **Data** | database-schema, data-migration, orm-setup |
 
-### File Operations
-Direct file manipulation:
-- Read file contents
-- List directory contents
-- Search within files
+When a request matches a template, the orchestrator uses its expert instructions and recommended tools to guide the SDK session.
 
-### Test Runner
-Execute test suites:
-- Auto-detects pytest, jest, unittest
-- Collects and reports results
+## CLI Mode (Ephemeral Skills)
 
-### Code Runner
-Execute code snippets:
-- Python execution
-- JavaScript execution
+When running the orchestrator from command line (not as a Copilot skill), ephemeral skills are available for direct execution:
 
-## Persisting Ephemeral Skills
-
-If you find yourself using a certain ephemeral skill pattern repeatedly, you can persist it as a permanent skill:
-
-```python
-from orchestrator import EphemeralSkillSpawner
-
-spawner = EphemeralSkillSpawner(workspace=Path.cwd())
-# After using an ephemeral skill...
-spawner.persist_skill("shell", "my-shell-commands")
-# Creates .github/skills/my-shell-commands/SKILL.md
+```bash
+# Run with explicit ephemeral skill
+uv run python orchestrator.py --ephemeral shell "list all Python files"
+uv run python orchestrator.py --ephemeral test "run pytest with coverage"
 ```
+
+This is useful for:
+- Standalone automation scripts
+- CI/CD pipelines without Copilot context
+- Testing the orchestrator outside VS Code
 
 ## Project Structure
 
@@ -427,16 +423,23 @@ The orchestrator receives your natural language request and decides the best exe
 
 ### Step 3: Execution Path Selection
 
-**Fast Path (Ephemeral Skills):**
-- Triggered by keywords like "list", "run", "execute", "git", "test"
-- Spawns a lightweight, specialized skill
-- Returns results immediately
+**Template Match Path:**
+- Checks 30+ built-in templates for matching patterns
+- If matched, uses template's expert instructions and tools
+- Enhances SDK prompts with domain-specific guidance
 
-**Full Path (SDK Session):**
-- Triggered by complex tasks: implement, refactor, debug, analyze
+**SDK Session Path:**
+- All complex tasks: implement, refactor, debug, analyze, test, deploy
 - Creates a Copilot SDK session with appropriate tools
 - Manages context compression and token budgeting
 - Streams results with rich formatting
+
+**Native Tools (Simple Operations):**
+- Copilot's built-in tools handle simple operations directly
+- `run_in_terminal` for shell commands
+- `read_file` and `grep_search` for file operations
+- `runTests` for test execution
+- No extra abstraction layer needed
 
 ### Step 4: Results Returned
 Whether via ephemeral skill or SDK session, results are returned to you through Copilot's interface.
@@ -757,6 +760,573 @@ If GitHub Copilot doesn't recognize the skill:
 3. **Restart VS Code** after adding skills
 
 4. **Ensure GitHub Copilot extension is up to date**
+
+---
+
+## 📚 Educational Deep Dives
+
+This section provides educational insights into the technologies powering SkillPilot.
+
+### Understanding GitHub Copilot SDK
+
+The [GitHub Copilot SDK](https://github.com/github/copilot-sdk) is the foundation of SkillPilot. Here's how it works:
+
+#### SDK Architecture
+
+```mermaid
+flowchart TB
+    subgraph client["Your Application"]
+        A["SDK Client"] --> B["Session Manager"]
+        B --> C["Tool Registry"]
+        B --> D["Message Handler"]
+    end
+    
+    subgraph copilot["GitHub Copilot"]
+        E["LLM (GPT-4.1)"]
+        F["Tool Executor"]
+    end
+    
+    A <-->|"WebSocket/HTTP"| E
+    C <-->|"Tool Calls"| F
+```
+
+#### Key Concepts
+
+| Concept | Description | SkillPilot Usage |
+|---------|-------------|------------------|
+| **Session** | A conversation context with the LLM | Created per complex task |
+| **Tools** | Functions the LLM can call | `read_file`, `write_file`, `run_command` |
+| **Streaming** | Real-time response chunks | Enabled for interactive feedback |
+| **Context Window** | Maximum tokens per request | Managed by `ContextManager` |
+
+#### Best Practices for SDK Usage
+
+```python
+# ✅ Good: Use async/await for non-blocking operations
+async def execute_task(request: str):
+    async with CopilotClient() as client:
+        async for chunk in client.stream(request):
+            yield chunk
+
+# ❌ Bad: Blocking synchronous calls
+def execute_task_sync(request: str):
+    client = CopilotClient()
+    return client.send(request)  # Blocks entire thread
+```
+
+#### Token Budget Management
+
+The SDK has a context window limit (typically 8K-128K tokens). SkillPilot manages this through progressive compression:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Token Budget (8000)                       │
+├─────────────────────────────────────────────────────────────┤
+│ System Prompt (500)  │ Context (5500)  │ Response (2000)    │
+│ ████████████████████ │ ██████████████████████████████████████│
+│   Fixed overhead     │ Compressed code │  Reserved for LLM  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Tips:**
+- Keep system prompts concise (~500 tokens)
+- Compress context by removing comments and whitespace
+- Use `COPILOT_TOKEN_BUDGET` env var to adjust limits
+
+---
+
+### The Agent Skills Specification
+
+SkillPilot follows the [Agent Skills specification](https://agentskills.io/) for skill file format.
+
+#### SKILL.md Anatomy
+
+```yaml
+---
+# REQUIRED: Must match folder name (1-64 chars, lowercase, hyphens)
+name: my-skill-name
+
+# REQUIRED: What it does + when to use + keywords (1-1024 chars)
+# This is the MOST IMPORTANT field - it determines when Copilot triggers your skill
+description: "Action description. Use when X, Y, Z. Keywords: a, b, c."
+
+# OPTIONAL: License identifier
+license: MIT
+
+# OPTIONAL: Requirements and compatibility notes
+compatibility: Requires Python 3.11+
+---
+
+# Human-readable content below the frontmatter
+Instructions, examples, and documentation...
+```
+
+#### Writing Effective Descriptions
+
+The `description` field is **critical** — it's what Copilot uses to match user requests to your skill.
+
+**Formula for effective descriptions:**
+```
+[What it does] + [When to use] + [Keywords/triggers]
+```
+
+**Examples:**
+
+```yaml
+# ❌ Too vague - won't match specific requests
+description: "A helpful coding assistant."
+
+# ❌ Too narrow - misses related requests  
+description: "Creates Python REST APIs with FastAPI."
+
+# ✅ Comprehensive - matches many related requests
+description: "Creates REST APIs with any framework. Use for: build API, 
+  create endpoint, add route, implement CRUD, HTTP handlers, request 
+  validation, response schemas. Supports: FastAPI, Flask, Express, Django."
+```
+
+**Keyword Categories to Include:**
+| Category | Examples |
+|----------|----------|
+| **Action verbs** | create, build, implement, add, write, generate |
+| **Synonyms** | API/endpoint/route, test/spec/check, fix/debug/solve |
+| **Frameworks** | React, FastAPI, Django, Express, Spring |
+| **Patterns** | CRUD, REST, GraphQL, microservices, serverless |
+
+---
+
+### Python Async Patterns
+
+SkillPilot uses Python's `asyncio` extensively. Here's what you need to know:
+
+#### Why Async?
+
+```python
+# Synchronous: Each operation blocks
+def sync_gather():
+    file1 = read_file("a.py")      # Wait 100ms
+    file2 = read_file("b.py")      # Wait 100ms  
+    file3 = read_file("c.py")      # Wait 100ms
+    return [file1, file2, file3]   # Total: 300ms
+
+# Asynchronous: Operations run concurrently
+async def async_gather():
+    results = await asyncio.gather(
+        read_file("a.py"),         # Start immediately
+        read_file("b.py"),         # Start immediately
+        read_file("c.py"),         # Start immediately
+    )
+    return results                  # Total: ~100ms
+```
+
+#### Common Patterns in SkillPilot
+
+```python
+# Pattern 1: Async context manager for resources
+async with CopilotClient() as client:
+    response = await client.send(message)
+
+# Pattern 2: Async generator for streaming
+async def stream_response():
+    async for chunk in client.stream(request):
+        yield process(chunk)
+
+# Pattern 3: Timeout handling
+try:
+    result = await asyncio.wait_for(
+        long_operation(),
+        timeout=30.0
+    )
+except asyncio.TimeoutError:
+    logger.warning("Operation timed out")
+```
+
+#### Debugging Async Code
+
+```python
+# Enable asyncio debug mode
+import asyncio
+asyncio.get_event_loop().set_debug(True)
+
+# Common issues:
+# 1. Forgetting 'await' - returns coroutine object instead of result
+# 2. Blocking calls in async code - use run_in_executor()
+# 3. Not closing resources - use async context managers
+```
+
+---
+
+### Pydantic for Data Validation
+
+SkillPilot uses [Pydantic v2](https://docs.pydantic.dev/) for all data models.
+
+#### Why Pydantic?
+
+| Feature | Benefit |
+|---------|---------|
+| **Runtime validation** | Catch errors early, not in production |
+| **Type coercion** | Automatically convert `"123"` → `123` |
+| **JSON schema** | Auto-generate OpenAPI specs |
+| **Serialization** | Easy `.model_dump()` and `.model_dump_json()` |
+
+#### Model Examples from SkillPilot
+
+```python
+from pydantic import BaseModel, Field, field_validator
+
+class TaskEnvelope(BaseModel):
+    """The central data structure for context transfer."""
+    
+    task_id: str = Field(default_factory=lambda: str(uuid7()))
+    task_type: TaskType = Field(default=TaskType.UNKNOWN)
+    original_request: str = Field(min_length=1)  # Validation!
+    token_budget: TokenBudget = Field(default_factory=TokenBudget)
+    
+    # Custom validation
+    @field_validator("original_request")
+    @classmethod
+    def clean_request(cls, v: str) -> str:
+        return v.strip()
+    
+    # Computed properties
+    @property
+    def is_complex(self) -> bool:
+        return self.task_type in {TaskType.IMPLEMENT, TaskType.REFACTOR}
+```
+
+#### Validation Tips
+
+```python
+# Use Field() for constraints
+class Config(BaseModel):
+    max_tokens: int = Field(default=8000, ge=1000, le=128000)
+    timeout: float = Field(default=30.0, gt=0)
+    model: str = Field(pattern=r"^(gpt|claude)-")
+
+# Use Literal for fixed choices
+from typing import Literal
+class ApiResponse(BaseModel):
+    status: Literal["success", "error", "pending"]
+
+# Use discriminated unions for polymorphism
+from typing import Union
+from pydantic import Discriminator
+
+class TextChunk(BaseModel):
+    type: Literal["text"] = "text"
+    content: str
+
+class ToolCall(BaseModel):
+    type: Literal["tool_call"] = "tool_call"
+    name: str
+    args: dict
+
+ResponseChunk = Union[TextChunk, ToolCall]
+```
+
+---
+
+### uv Package Manager
+
+[uv](https://docs.astral.sh/uv/) is a blazing-fast Python package manager written in Rust.
+
+#### Why uv?
+
+| Feature | pip | uv |
+|---------|-----|-----|
+| Install speed | ~30s | ~2s |
+| Lock file | ❌ (needs pip-tools) | ✅ Built-in |
+| Resolution | Basic | PubGrub (optimal) |
+| Virtual envs | Manual | Automatic |
+
+#### Essential Commands
+
+```bash
+# Create project with uv
+uv init my-project
+cd my-project
+
+# Add dependencies
+uv add pydantic structlog rich
+
+# Add dev dependencies
+uv add --dev pytest pytest-asyncio
+
+# Sync environment (install all deps)
+uv sync
+
+# Run Python with uv-managed environment
+uv run python script.py
+
+# Run tests
+uv run pytest
+
+# Update all dependencies
+uv lock --upgrade
+uv sync
+```
+
+#### pyproject.toml Best Practices
+
+```toml
+[project]
+name = "copilot-orchestrator"
+version = "1.0.0"
+requires-python = ">=3.11"
+
+dependencies = [
+    "pydantic>=2.0",      # Pin major version
+    "structlog>=24.0",    # Allow minor updates
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "mypy>=1.8",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+```
+
+#### Tips
+
+```bash
+# Speed up CI with cache
+- uses: astral-sh/setup-uv@v5
+  with:
+    enable-cache: true
+
+# Use uv pip for compatibility
+uv pip install package-name
+
+# Generate requirements.txt for legacy systems
+uv pip compile pyproject.toml -o requirements.txt
+```
+
+---
+
+### Git Submodules Mastery
+
+Submodules let you include external repositories in your project.
+
+#### Mental Model
+
+```
+your-project/
+├── .git/                    # Your project's git database
+│   └── modules/
+│       └── skill/           # Submodule's git database (separate!)
+├── .gitmodules              # Submodule URL mappings
+└── .github/skills/skill/    # Submodule working directory
+                             # Points to specific commit in submodule repo
+```
+
+#### Key Insight: Submodules Are Commit Pointers
+
+Your main repo stores a **commit SHA**, not the submodule contents:
+
+```bash
+# See what commit your submodule points to
+git ls-tree HEAD .github/skills/copilot-orchestrator
+# 160000 commit abc123... .github/skills/copilot-orchestrator
+#   ↑ mode for submodules    ↑ the specific commit
+```
+
+#### Common Workflows
+
+```bash
+# 1. Update submodule to latest
+cd .github/skills/copilot-orchestrator
+git fetch origin
+git checkout origin/main
+cd ../../..
+git add .github/skills/copilot-orchestrator
+git commit -m "Update skill to latest"
+
+# 2. Pin to specific version
+cd .github/skills/copilot-orchestrator
+git checkout v1.2.3  # Tag
+cd ../../..
+git add .github/skills/copilot-orchestrator
+git commit -m "Pin skill to v1.2.3"
+
+# 3. Make changes in submodule (for contributors)
+cd .github/skills/copilot-orchestrator
+git checkout -b my-feature
+# ... make changes ...
+git commit -m "Add feature"
+git push origin my-feature
+# Then open PR in submodule repo
+```
+
+#### .gitmodules File
+
+```ini
+[submodule ".github/skills/copilot-orchestrator"]
+    path = .github/skills/copilot-orchestrator
+    url = https://github.com/samueltauil/skillpilot.git
+    branch = main
+    # Optional: shallow clone for faster fetches
+    shallow = true
+```
+
+---
+
+### Structured Logging with structlog
+
+SkillPilot uses [structlog](https://www.structlog.org/) for JSON-formatted logging.
+
+#### Why Structured Logging?
+
+```python
+# ❌ Traditional logging - hard to parse
+logger.info(f"Processing task {task_id} of type {task_type}")
+# Output: "Processing task abc123 of type implement"
+
+# ✅ Structured logging - machine-readable
+logger.info("processing_task", task_id=task_id, task_type=task_type)
+# Output: {"event": "processing_task", "task_id": "abc123", "task_type": "implement", "timestamp": "..."}
+```
+
+#### Configuration in SkillPilot
+
+```python
+import structlog
+
+structlog.configure(
+    processors=[
+        structlog.stdlib.filter_by_level,
+        structlog.stdlib.add_logger_name,
+        structlog.stdlib.add_log_level,
+        structlog.processors.TimeStamper(fmt="iso"),
+        structlog.processors.JSONRenderer()  # JSON output
+    ],
+    wrapper_class=structlog.stdlib.BoundLogger,
+    context_class=dict,
+    logger_factory=structlog.stdlib.LoggerFactory(),
+    cache_logger_on_first_use=True,
+)
+```
+
+#### Usage Patterns
+
+```python
+logger = structlog.get_logger()
+
+# Add context that persists across log calls
+logger = logger.bind(session_id="abc123")
+logger.info("session_started")  # Includes session_id
+logger.info("task_received", task_type="implement")  # Still has session_id
+
+# Temporary context
+with structlog.contextvars.tmp_bind(logger, request_id="req-456"):
+    logger.info("processing")  # Has request_id
+logger.info("done")  # No request_id
+```
+
+---
+
+### Rich Terminal Output
+
+[Rich](https://rich.readthedocs.io/) provides beautiful terminal formatting.
+
+#### Used in SkillPilot
+
+```python
+from rich.console import Console
+from rich.panel import Panel
+from rich.syntax import Syntax
+from rich.progress import Progress
+
+console = Console()
+
+# Syntax-highlighted code
+code = Syntax(python_code, "python", theme="monokai", line_numbers=True)
+console.print(code)
+
+# Informational panels
+console.print(Panel("Task completed!", title="Success", style="green"))
+
+# Progress bars
+with Progress() as progress:
+    task = progress.add_task("Processing...", total=100)
+    for i in range(100):
+        progress.update(task, advance=1)
+```
+
+#### Rendering Markdown
+
+```python
+from rich.markdown import Markdown
+
+md = Markdown("""
+# Results
+
+- ✅ Tests passed
+- 📁 Files created: 3
+- ⏱️ Duration: 2.3s
+""")
+console.print(md)
+```
+
+---
+
+### Performance Tips
+
+#### 1. Lazy Loading
+
+```python
+# ❌ Load everything at import
+from heavy_module import expensive_function  # Slow startup
+
+# ✅ Load when needed
+def process():
+    from heavy_module import expensive_function
+    return expensive_function()
+```
+
+#### 2. Caching
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=100)
+def parse_skill_file(path: str) -> dict:
+    """Cache parsed SKILL.md files."""
+    return yaml.safe_load(Path(path).read_text())
+```
+
+#### 3. Parallel I/O
+
+```python
+import asyncio
+
+async def gather_context(files: list[str]) -> list[str]:
+    """Read multiple files concurrently."""
+    tasks = [read_file_async(f) for f in files]
+    return await asyncio.gather(*tasks)
+```
+
+#### 4. Token Estimation
+
+```python
+def estimate_tokens(text: str) -> int:
+    """Fast approximation: ~4 chars per token for English."""
+    return len(text) // 4
+
+# For accuracy, use tiktoken:
+# import tiktoken
+# enc = tiktoken.get_encoding("cl100k_base")
+# tokens = len(enc.encode(text))
+```
+
+---
 
 ## Contributing
 
