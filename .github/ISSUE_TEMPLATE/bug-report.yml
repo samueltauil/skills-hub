@@ -1,0 +1,66 @@
+name: Report a Bug
+description: Report an issue with the Skills Hub website or registry
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please fill out the details below.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: What part of Skills Hub is affected?
+      options:
+        - Website
+        - Registry (skills/registry.json)
+        - GitHub Actions
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear description of what's wrong
+      placeholder: "The search bar doesn't filter results when..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Go to the skills page
+        2. Type "test" in the search bar
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happens?
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser (if website issue)
+      placeholder: "e.g., Chrome 120, Firefox 121"

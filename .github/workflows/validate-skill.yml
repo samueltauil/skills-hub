@@ -1,0 +1,73 @@
+name: Validate Skill Submission
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'skills/registry.json'
+      - 'skills/submissions/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install ajv-cli for JSON validation
+        run: npm install -g ajv-cli ajv-formats
+
+      - name: Validate registry.json against schema
+        run: |
+          ajv validate -s skills/schema.json -d skills/registry.json --spec=draft2020 --strict=false
+          echo "✅ Registry JSON is valid"
+
+      - name: Check for duplicate skill IDs
+        run: |
+          node -e "
+            const registry = require('./skills/registry.json');
+            const ids = registry.skills.map(s => s.id);
+            const duplicates = ids.filter((id, i) => ids.indexOf(id) !== i);
+            if (duplicates.length > 0) {
+              console.error('❌ Duplicate skill IDs found:', duplicates);
+              process.exit(1);
+            }
+            console.log('✅ No duplicate skill IDs');
+          "
+
+      - name: Validate skill source URLs
+        run: |
+          node -e "
+            const registry = require('./skills/registry.json');
+            const errors = [];
+            for (const skill of registry.skills) {
+              if (!skill.source?.repo?.startsWith('https://github.com/')) {
+                errors.push(skill.id + ': Invalid repo URL (must be https://github.com/...)');
+              }
+              if (!skill.source?.path?.endsWith('.md')) {
+                errors.push(skill.id + ': Invalid path (must end with .md)');
+              }
+            }
+            if (errors.length > 0) {
+              console.error('❌ Validation errors:');
+              errors.forEach(e => console.error('  - ' + e));
+              process.exit(1);
+            }
+            console.log('✅ All skill source URLs are valid');
+          "
+
+      - name: Post validation summary
+        if: always()
+        run: |
+          echo "## Skill Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ ${{ job.status }} == 'success' ]; then
+            echo "✅ All validations passed!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Validation failed. Please check the errors above." >> $GITHUB_STEP_SUMMARY
+          fi

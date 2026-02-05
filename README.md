@@ -1,322 +1,173 @@
 <p align="center">
-  <img src="logo.svg" alt="SkillPilot Logo" width="200" height="200">
+  <img src="logo.svg" alt="Copilot Skills Hub Logo" width="200" height="200">
 </p>
 
-# SkillPilot — One skill to rule them all.
+# Copilot Skills Hub
 
-> The **Mother of All Skills** — a universal meta-skill for GitHub Copilot Chat that intelligently routes any development request to the right solution.
+> Discover, browse, and install GitHub Copilot skills for your projects.
 
-[![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-Skill-blue?logo=github)](https://docs.github.com/en/copilot)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success?logo=github)](https://samueltauil.github.io/skillpilot)
+[![Skills Count](https://img.shields.io/badge/Skills-10+-blue)](./skills/registry.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## What is SkillPilot?
+## What is this?
 
-SkillPilot is the **"Mother of All Skills"** for GitHub Copilot Chat. It acts as an intelligent router that transforms **any** development request into expert-level action by deciding the best approach:
+**Copilot Skills Hub** is a curated catalog of GitHub Copilot skills. Skills are instruction files (SKILL.md) that teach Copilot how to handle specific development tasks — from generating commit messages to performing security audits.
 
-1. **Template Lookup** — Searches 30+ expert templates from the [awesome-copilot](https://github.com/github/awesome-copilot) repository
-2. **SDK Skill Generation** — When no template exists, requests the Copilot SDK to generate a highly technical, expert-level skill for that specific use case
-3. **Native Tools** — Simple operations (list files, run commands) delegate to Copilot's built-in tools
+### Features
 
-> **Important:** This is NOT a command-line tool. SkillPilot is designed to work **exclusively through GitHub Copilot Chat** in VS Code. You interact with it by asking Copilot questions naturally.
+- **Browse by Category** — Skills organized into 10+ categories (Testing, DevOps, Security, etc.)
+- **Search** — Find skills by name, description, or trigger keywords
+- **One-Click Install** — Copy commands to add skills to your project
+- **Skill Details** — See what each skill does, its triggers, and example usage
 
-```mermaid
-flowchart LR
-    subgraph input["You Ask Copilot Chat"]
-        A1["list files here"]
-        A2["run the tests"]
-        A3["implement OAuth login"]
-        A4["refactor to microservices"]
-        A5["create Kubernetes deployment"]
-    end
-    
-    subgraph output["SkillPilot Routes To"]
-        B1["Native tool → file listing"]
-        B2["Native tool → runTests"]
-        B3["Template → REST API auth pattern"]
-        B4["SDK generates → restructuring skill"]
-        B5["Template → kubernetes deployment"]
-    end
-    
-    A1 --> B1
-    A2 --> B2
-    A3 --> B3
-    A4 --> B4
-    A5 --> B5
-```
+## Browse Skills
 
-## How It Works
+Visit the live site: **[skills-hub.dev](https://skills-hub.dev)** *(or [samueltauil.github.io/skillpilot](https://samueltauil.github.io/skillpilot))*
 
-When you ask Copilot Chat something in a repository with SkillPilot installed:
+Or explore the [skills registry](./skills/registry.json) directly.
 
-```mermaid
-flowchart TD
-    A["🗣️ You ask Copilot Chat"] --> B["🤖 Copilot matches SKILL.md"]
-    B --> C{"copilot-orchestrator<br/>classifies intent"}
-    
-    C -->|Simple operation| D["🛠️ Native Tools<br/>(file ops, terminal, tests)"]
-    C -->|Complex task| E{"Template exists?"}
-    
-    E -->|Yes| F["📋 Use Template<br/>(from awesome-copilot)"]
-    E -->|No| G["🔧 Request SDK<br/>to generate expert skill"]
-    
-    D --> H["✅ Result in Copilot Chat"]
-    F --> H
-    G --> H
-```
+### Categories
 
-### The Three Execution Paths
+| Category | Description |
+|----------|-------------|
+| 🔀 Git & Version Control | Commits, branching, GitHub operations |
+| ✨ Code Quality | Reviews, refactoring, linting |
+| 📝 Documentation | READMEs, PRDs, technical writing |
+| 📊 Diagrams | Mermaid, PlantUML, visualizations |
+| 🧪 Testing | Unit tests, E2E, test automation |
+| 🔌 API & Backend | REST APIs, GraphQL, databases |
+| 🎨 Frontend & UI | React, Vue, components, design |
+| 🚀 DevOps & CI/CD | Pipelines, Docker, Kubernetes |
+| 🔒 Security | Audits, vulnerabilities, secure coding |
+| 📈 Data & Analytics | Data pipelines, SQL, analytics |
 
-| Request Type | Path | Example |
-|--------------|------|---------|
-| **Simple Operations** | Native Copilot Tools | "list files", "show git status", "run tests" |
-| **Known Patterns** | Template from awesome-copilot | "create REST API", "write unit tests", "setup CI/CD" |
-| **Complex/Novel Tasks** | SDK generates expert skill | "refactor to hexagonal architecture", "implement CQRS pattern" |
+## Install a Skill
 
-## Getting Started
-
-### Prerequisites
-
-- **VS Code** with GitHub Copilot extension
-- **GitHub Copilot** subscription (Chat enabled)
-- **Python 3.11+** and **uv** package manager (for skill dependencies)
-
-### Installation
-
-Choose **one** of the following methods:
-
-#### Option A: Use as GitHub Template (New Projects)
-
-1. Click **"Use this template"** → **"Create a new repository"**
-2. Clone your new repository
-3. Install dependencies:
-   ```bash
-   cd scripts
-   uv sync
-   ```
-4. Open the project in VS Code and start using Copilot Chat
-
-#### Option B: Add to Existing Project (Submodule)
-
-Add SkillPilot as a Git submodule:
+### Option 1: Git Submodule (Recommended)
 
 ```bash
-# From your project root
-git submodule add https://github.com/samueltauil/skillpilot.git .github/skills/copilot-orchestrator
-cd .github/skills/copilot-orchestrator/scripts
-uv sync
+# Example: Install the conventional-commits skill
+git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot
 ```
 
-To update later:
+### Option 2: Direct Copy
+
+1. Find the skill on the website
+2. Click "View Raw" to see the SKILL.md
+3. Copy the content to `.github/skills/<skill-name>/SKILL.md` in your project
+
+### Option 3: Manual Download
 
 ```bash
-git submodule update --remote .github/skills/copilot-orchestrator
+# Download a single skill file
+curl -o .github/skills/conventional-commits/SKILL.md \
+  https://raw.githubusercontent.com/github/awesome-copilot/main/skills/git-commit/SKILL.md
 ```
-
-> **Note:** The folder name `copilot-orchestrator` must match the `name` field in SKILL.md for Copilot to discover the skill.
-
-### Using SkillPilot
-
-Once installed, simply **ask Copilot Chat anything** in VS Code. SkillPilot automatically activates for development tasks:
-
-```
-You: "implement user authentication with JWT"
-Copilot: [SkillPilot activates] → finds REST API auth template → generates implementation
-
-You: "refactor this service to use the repository pattern"
-Copilot: [SkillPilot activates] → no template found → SDK generates expert refactoring skill → applies pattern
-
-You: "list all Python files"
-Copilot: [SkillPilot activates] → delegates to native file listing tool
-```
-
-## Example Interactions
-
-### Simple Operations (Native Tools)
-
-| You Ask | What Happens |
-|---------|--------------|
-| "list files in src/" | Copilot's native file listing |
-| "find all TODO comments" | Copilot's grep_search tool |
-| "run the tests" | Copilot's runTests tool |
-| "show me package.json" | Copilot's read_file tool |
-| "what's my git status" | Terminal execution |
-
-### Complex Operations (Template or SDK)
-
-| You Ask | Approach | Result |
-|---------|----------|--------|
-| "implement user authentication" | Template: `api-endpoint` | Auth code with tests |
-| "create CI/CD pipeline" | Template: `ci-pipeline` | GitHub Actions workflow |
-| "refactor to microservices" | SDK generates skill | Architecture transformation |
-| "add GraphQL subscriptions" | SDK generates skill | Expert GraphQL guidance |
-| "analyze code for security issues" | Template: `security-audit` | Vulnerability report |
-
-### Template Match Example
-
-```
-You: "create a REST API endpoint for user registration with email validation"
-
-SkillPilot:
-├─ Intent: IMPLEMENT API endpoint
-├─ Template Found: api-endpoint (from awesome-copilot)
-└─ Action: Apply template with your specifications
-
-Result:
-✓ Created src/routes/auth.py
-✓ Created tests/test_auth.py  
-✓ Added validation utilities
-```
-
-### SDK Generation Example
-
-```
-You: "implement event sourcing for the Order aggregate"
-
-SkillPilot:
-├─ Intent: IMPLEMENT advanced pattern
-├─ Template Found: None (event sourcing not in templates)
-├─ Action: Request SDK to generate expert skill
-└─ SDK generates: event-sourcing-skill with domain expertise
-
-Result:
-✓ Generated comprehensive event sourcing implementation
-✓ Includes event store, projections, snapshots
-✓ Domain-specific best practices applied
-```
-
-## Built-in Templates (30+)
-
-Templates are sourced from [awesome-copilot](https://github.com/github/awesome-copilot) patterns:
-
-| Category | Templates |
-|----------|-----------|
-| **Git & Version Control** | conventional-commits, branch-management, gh-cli |
-| **Code Quality** | code-review, refactor, linting-setup |
-| **Documentation** | prd, documentation, api-docs |
-| **Diagrams** | mermaid-diagrams, plantuml, excalidraw |
-| **Testing** | test-suite, webapp-testing, agentic-eval |
-| **API Development** | api-endpoint, graphql, openapi-spec |
-| **Frontend** | react-component, web-design-review |
-| **DevOps** | ci-pipeline, dockerfile, kubernetes, terraform |
-| **Security** | security-audit, secrets-management |
-| **Data** | database-migration, data-pipeline, powerbi |
-
-When your request matches a template, SkillPilot uses its expert instructions. When no template matches, the SDK generates a custom expert skill for your specific use case.
 
 ## Project Structure
 
 ```
-your-repo/
+skillpilot/
 ├── .github/
-│   └── skills/
-│       └── copilot-orchestrator/
-│           ├── SKILL.md               # Copilot skill definition
-│           ├── scripts/
-│           │   ├── orchestrator.py    # Routing logic
-│           │   ├── context_manager.py # Token management
-│           │   ├── tool_factory.py    # Tool assembly
-│           │   ├── models.py          # Data models
-│           │   └── pyproject.toml     # Dependencies
-│           ├── references/            # Protocol specs
-│           └── templates/             # Local template cache
-└── (your project files)
+│   ├── workflows/        # CI/CD for deployment & validation
+│   ├── ISSUE_TEMPLATE/   # Issue templates
+│   └── PULL_REQUEST_TEMPLATE/
+├── site/                 # Astro static site
+│   ├── src/
+│   │   ├── pages/        # Site pages
+│   │   ├── components/   # UI components
+│   │   └── layouts/      # Page layouts
+│   └── public/           # Static assets
+├── skills/
+│   ├── schema.json       # Skill metadata schema
+│   └── registry.json     # Skills catalog
+├── indexer/              # Python skill scraper (future)
+├── CONTRIBUTING.md       # How to add skills
+└── archive/              # Legacy orchestrator code
 ```
 
-## Configuration
+## Hosting / Deployment
 
-Environment variables for customization:
+The site deploys automatically via GitHub Actions when changes are pushed to `main`.
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `COPILOT_TOKEN_BUDGET` | `8000` | Maximum input tokens per session |
-| `COPILOT_STREAMING` | `true` | Enable streaming responses |
-| `COPILOT_DEBUG` | `false` | Enable debug logging |
+### Option 1: GitHub Pages (Default)
 
-## CI/CD Configuration
+Works out of the box at `username.github.io/skillpilot`.
 
-When using submodules, ensure your CI initializes them:
+### Option 2: Custom Domain (Recommended for Production)
 
-#### GitHub Actions
+1. Purchase a domain (e.g., `skills-hub.dev`)
+2. Add a `CNAME` file to `site/public/` with your domain
+3. Configure DNS:
+   - Add a CNAME record pointing to `username.github.io`
+   - Or add A records for GitHub's IPs
+4. Enable HTTPS in repo Settings → Pages
 
-```yaml
-- uses: actions/checkout@v4
-  with:
-    submodules: recursive
-    
-- uses: astral-sh/setup-uv@v5
+### Option 3: Create a GitHub Organization
 
-- name: Install skill dependencies
-  run: |
-    cd .github/skills/copilot-orchestrator/scripts
-    uv sync
-```
-
-#### Azure Pipelines
-
-```yaml
-steps:
-- checkout: self
-  submodules: recursive
-
-- script: |
-    pip install uv
-    cd .github/skills/copilot-orchestrator/scripts
-    uv sync
-```
-
-## Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| Skill not detected by Copilot | Verify `.github/skills/copilot-orchestrator/SKILL.md` exists |
-| Dependencies not installed | Run `cd .github/skills/copilot-orchestrator/scripts && uv sync` |
-| Copilot doesn't respond to skill | Restart VS Code after adding the skill |
-| "uv not found" | Install uv: `curl -LsSf https://astral.sh/uv/install.sh \| sh` (Linux/Mac) or `powershell -c "irm https://astral.sh/uv/install.ps1 \| iex"` (Windows) |
-
-## Extending SkillPilot
-
-### Adding Custom Tools
-
-Create tools in `scripts/custom_tools/`:
-
-```python
-from tool_factory import register_tool, TaskType
-
-@register_tool(
-    name="my_tool",
-    description="Does something useful",
-    task_types=[TaskType.IMPLEMENT]
-)
-async def my_tool(params: MyParams) -> dict:
-    return {"result": "success"}
-```
-
-### Adding Capability Mappings
-
-Edit `references/CAPABILITY_REGISTRY.md` to map new intents to SDK configurations.
+1. Create org (e.g., `copilot-skills-hub`)
+2. Transfer/fork repo to the org
+3. Site lives at `copilot-skills-hub.github.io`
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome skill contributions! See the full **[Contribution Guide](CONTRIBUTING.md)** for detailed instructions.
+
+### Quick Start
+
+1. Fork this repository
+2. Add your skill to `skills/registry.json`
+3. Submit a Pull Request
+4. GitHub Actions validates your submission automatically
+
+### Skill Entry Format
+
+```json
+{
+  "id": "my-skill",
+  "name": "My Skill",
+  "description": "What this skill does...",
+  "shortDescription": "One-line summary",
+  "category": "code-quality",
+  "author": "your-name",
+  "license": "MIT",
+  "triggers": ["keyword1", "keyword2"],
+  "complexity": "beginner",
+  "source": {
+    "repo": "https://github.com/owner/repo",
+    "path": "skills/my-skill/SKILL.md"
+  }
+}
+```
+
+## Development
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (or npm/yarn)
+
+### Run Locally
+
+```bash
+cd site
+pnpm install
+pnpm dev
+```
+
+### Build for Production
+
+```bash
+pnpm build
+```
 
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
-## Acknowledgments
-
-- [GitHub Copilot](https://github.com/features/copilot) - AI pair programmer
-- [awesome-copilot](https://github.com/github/awesome-copilot) - Template patterns
-- [Agent Skills spec](https://agentskills.io/) - Skill file format
-- [uv](https://docs.astral.sh/uv/) - Fast Python package management
-
 ---
 
 <p align="center">
-  <strong>SkillPilot</strong> — One skill to rule them all.
+  <strong>Copilot Skills Hub</strong> — Discover the right skill for every task.
 </p>

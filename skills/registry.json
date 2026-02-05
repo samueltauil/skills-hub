@@ -1,0 +1,298 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-05T00:00:00Z",
+  "categories": [
+    {
+      "id": "git-version-control",
+      "name": "Git & Version Control",
+      "description": "Skills for git workflows, commits, branching, and GitHub operations",
+      "icon": "🔀"
+    },
+    {
+      "id": "code-quality",
+      "name": "Code Quality & Refactoring",
+      "description": "Skills for code reviews, refactoring, linting, and best practices",
+      "icon": "✨"
+    },
+    {
+      "id": "documentation",
+      "name": "Documentation",
+      "description": "Skills for writing docs, READMEs, PRDs, and technical writing",
+      "icon": "📝"
+    },
+    {
+      "id": "diagrams",
+      "name": "Diagrams & Visualization",
+      "description": "Skills for creating Mermaid, PlantUML, Excalidraw diagrams",
+      "icon": "📊"
+    },
+    {
+      "id": "testing",
+      "name": "Testing",
+      "description": "Skills for unit tests, integration tests, E2E, and test automation",
+      "icon": "🧪"
+    },
+    {
+      "id": "api-backend",
+      "name": "API & Backend",
+      "description": "Skills for REST APIs, GraphQL, databases, and backend development",
+      "icon": "🔌"
+    },
+    {
+      "id": "frontend-ui",
+      "name": "Frontend & UI",
+      "description": "Skills for React, Vue, CSS, components, and web design",
+      "icon": "🎨"
+    },
+    {
+      "id": "devops-cicd",
+      "name": "DevOps & CI/CD",
+      "description": "Skills for pipelines, Docker, Kubernetes, Terraform, and deployments",
+      "icon": "🚀"
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "description": "Skills for security audits, vulnerability scanning, and secure coding",
+      "icon": "🔒"
+    },
+    {
+      "id": "data-analytics",
+      "name": "Data & Analytics",
+      "description": "Skills for data pipelines, SQL, Power BI, and data analysis",
+      "icon": "📈"
+    }
+  ],
+  "skills": [
+    {
+      "id": "conventional-commits",
+      "name": "Conventional Commits",
+      "description": "Generate standardized commit messages following the Conventional Commits specification. Analyzes staged changes and produces semantic commit messages with type, scope, and description.",
+      "shortDescription": "Generate standardized commit messages",
+      "category": "git-version-control",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["commit", "git commit", "commit message", "conventional commit"],
+      "complexity": "beginner",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/git-commit/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot && mkdir -p .github/skills/conventional-commits && cp .github/skills/awesome-copilot/skills/git-commit/* .github/skills/conventional-commits/",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/git-commit/SKILL.md"
+      },
+      "featured": true,
+      "tags": ["git", "commits", "semantic", "changelog"]
+    },
+    {
+      "id": "code-review",
+      "name": "Code Review",
+      "description": "Perform thorough code reviews with expert-level feedback. Analyzes code for bugs, security issues, performance problems, and style violations. Provides actionable suggestions.",
+      "shortDescription": "Expert code review with actionable feedback",
+      "category": "code-quality",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["review", "code review", "review this", "check this code"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/code-review/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/code-review/SKILL.md"
+      },
+      "featured": true,
+      "tags": ["review", "quality", "feedback", "bugs"]
+    },
+    {
+      "id": "test-suite",
+      "name": "Test Suite Generator",
+      "description": "Generate comprehensive test suites for your code. Creates unit tests, integration tests, and edge case coverage. Supports multiple testing frameworks.",
+      "shortDescription": "Generate comprehensive test suites",
+      "category": "testing",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["test", "write tests", "unit test", "create tests", "test coverage"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/test-suite/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/test-suite/SKILL.md"
+      },
+      "featured": true,
+      "tags": ["testing", "unit tests", "coverage", "tdd"]
+    },
+    {
+      "id": "ci-pipeline",
+      "name": "CI/CD Pipeline",
+      "description": "Create and configure CI/CD pipelines for GitHub Actions, Azure DevOps, or other platforms. Generates workflows for testing, building, and deploying applications.",
+      "shortDescription": "Create CI/CD pipelines and workflows",
+      "category": "devops-cicd",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["ci", "cd", "pipeline", "github actions", "workflow", "deploy"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/ci-pipeline/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/ci-pipeline/SKILL.md"
+      },
+      "featured": true,
+      "tags": ["ci", "cd", "github-actions", "automation", "deployment"]
+    },
+    {
+      "id": "api-endpoint",
+      "name": "REST API Endpoint",
+      "description": "Design and implement REST API endpoints with proper HTTP methods, validation, error handling, and documentation. Follows RESTful best practices.",
+      "shortDescription": "Design and implement REST API endpoints",
+      "category": "api-backend",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["api", "rest", "endpoint", "route", "controller"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/api-endpoint/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/api-endpoint/SKILL.md"
+      },
+      "featured": false,
+      "tags": ["api", "rest", "http", "backend"]
+    },
+    {
+      "id": "security-audit",
+      "name": "Security Audit",
+      "description": "Perform security audits on your codebase. Identifies vulnerabilities, insecure patterns, and provides remediation guidance following OWASP guidelines.",
+      "shortDescription": "Security audit with vulnerability detection",
+      "category": "security",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["security", "audit", "vulnerability", "secure", "owasp"],
+      "complexity": "advanced",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/security-audit/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/security-audit/SKILL.md"
+      },
+      "featured": true,
+      "tags": ["security", "owasp", "vulnerabilities", "audit"]
+    },
+    {
+      "id": "mermaid-diagrams",
+      "name": "Mermaid Diagrams",
+      "description": "Create professional diagrams using Mermaid syntax. Generates flowcharts, sequence diagrams, class diagrams, ER diagrams, and more from natural language descriptions.",
+      "shortDescription": "Create diagrams with Mermaid syntax",
+      "category": "diagrams",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["diagram", "mermaid", "flowchart", "sequence diagram", "visualize"],
+      "complexity": "beginner",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mermaid-diagrams/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/mermaid-diagrams/SKILL.md"
+      },
+      "featured": false,
+      "tags": ["diagrams", "mermaid", "flowchart", "visualization"]
+    },
+    {
+      "id": "react-component",
+      "name": "React Component",
+      "description": "Create React components with TypeScript, hooks, proper state management, and accessibility. Follows React best practices and modern patterns.",
+      "shortDescription": "Create React components with best practices",
+      "category": "frontend-ui",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["react", "component", "jsx", "tsx", "hooks"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/react-component/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/react-component/SKILL.md"
+      },
+      "featured": false,
+      "tags": ["react", "frontend", "typescript", "components"]
+    },
+    {
+      "id": "dockerfile",
+      "name": "Dockerfile Generator",
+      "description": "Create optimized Dockerfiles for your applications. Generates multi-stage builds, proper caching, security hardening, and follows Docker best practices.",
+      "shortDescription": "Create optimized Dockerfiles",
+      "category": "devops-cicd",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["docker", "dockerfile", "container", "containerize"],
+      "complexity": "intermediate",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dockerfile/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/dockerfile/SKILL.md"
+      },
+      "featured": false,
+      "tags": ["docker", "containers", "devops", "deployment"]
+    },
+    {
+      "id": "prd-generator",
+      "name": "PRD Generator",
+      "description": "Generate Product Requirements Documents from feature descriptions. Creates structured PRDs with user stories, acceptance criteria, and technical requirements.",
+      "shortDescription": "Generate Product Requirements Documents",
+      "category": "documentation",
+      "author": "github",
+      "license": "MIT",
+      "triggers": ["prd", "requirements", "product requirements", "spec", "specification"],
+      "complexity": "beginner",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/prd/SKILL.md",
+        "branch": "main"
+      },
+      "install": {
+        "submodule": "git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot",
+        "rawUrl": "https://raw.githubusercontent.com/github/awesome-copilot/main/skills/prd/SKILL.md"
+      },
+      "featured": false,
+      "tags": ["documentation", "prd", "requirements", "product"]
+    }
+  ]
+}

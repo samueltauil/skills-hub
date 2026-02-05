@@ -1,0 +1,182 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SkillCard from '../../components/SkillCard.astro';
+import SearchBar from '../../components/SearchBar.astro';
+
+import registry from '../../../../skills/registry.json';
+
+const skills = registry.skills;
+const categories = registry.categories;
+---
+
+<Layout title="All Skills" description="Browse all available GitHub Copilot skills">
+  <section class="page-header">
+    <div class="container">
+      <h1>Browse Skills</h1>
+      <p class="text-secondary">Discover {skills.length} curated skills for GitHub Copilot</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar">
+        <SearchBar placeholder="Filter skills..." id="skill-filter" />
+        <div class="filter-options">
+          <select id="category-filter" class="filter-select">
+            <option value="">All Categories</option>
+            {categories.map(cat => (
+              <option value={cat.id}>{cat.name}</option>
+            ))}
+          </select>
+          <select id="complexity-filter" class="filter-select">
+            <option value="">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="skills-grid grid grid-3" id="skills-list">
+        {skills.map(skill => (
+          <div class="skill-item" 
+               data-name={skill.name.toLowerCase()} 
+               data-description={skill.description.toLowerCase()}
+               data-category={skill.category}
+               data-complexity={skill.complexity}
+               data-triggers={skill.triggers?.join(' ').toLowerCase()}>
+            <SkillCard 
+              id={skill.id}
+              name={skill.name}
+              description={skill.description}
+              category={skill.category}
+              complexity={skill.complexity}
+              triggers={skill.triggers}
+            />
+          </div>
+        ))}
+      </div>
+
+      <p class="no-results" id="no-results" style="display: none;">
+        No skills found matching your criteria.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 3rem 0 2rem;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-options {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .filter-select {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    cursor: pointer;
+    min-width: 150px;
+  }
+
+  .filter-select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .skill-item {
+    transition: opacity 0.2s ease;
+  }
+
+  .skill-item.hidden {
+    display: none;
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--color-text-secondary);
+    padding: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .filter-bar {
+      flex-direction: column;
+    }
+
+    .filter-options {
+      flex-direction: column;
+    }
+
+    .filter-select {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const searchInput = document.getElementById('skill-filter') as HTMLInputElement;
+  const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+  const complexityFilter = document.getElementById('complexity-filter') as HTMLSelectElement;
+  const skillItems = document.querySelectorAll('.skill-item');
+  const noResults = document.getElementById('no-results');
+
+  function filterSkills() {
+    const searchTerm = searchInput?.value.toLowerCase() || '';
+    const category = categoryFilter?.value || '';
+    const complexity = complexityFilter?.value || '';
+    
+    let visibleCount = 0;
+
+    skillItems.forEach((item) => {
+      const el = item as HTMLElement;
+      const name = el.dataset.name || '';
+      const description = el.dataset.description || '';
+      const triggers = el.dataset.triggers || '';
+      const itemCategory = el.dataset.category || '';
+      const itemComplexity = el.dataset.complexity || '';
+
+      const matchesSearch = !searchTerm || 
+        name.includes(searchTerm) || 
+        description.includes(searchTerm) ||
+        triggers.includes(searchTerm);
+      
+      const matchesCategory = !category || itemCategory === category;
+      const matchesComplexity = !complexity || itemComplexity === complexity;
+
+      if (matchesSearch && matchesCategory && matchesComplexity) {
+        el.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  }
+
+  searchInput?.addEventListener('input', filterSkills);
+  categoryFilter?.addEventListener('change', filterSkills);
+  complexityFilter?.addEventListener('change', filterSkills);
+</script>

@@ -1,0 +1,71 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  description: string;
+  icon?: string;
+  count?: number;
+}
+
+const { id, name, description, icon = '📦', count } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<a href={`${baseUrl}categories/${id}`} class="category-card card">
+  <div class="category-icon">{icon}</div>
+  <div class="category-content">
+    <h3 class="category-name">{name}</h3>
+    <p class="category-description">{description}</p>
+    {count !== undefined && (
+      <span class="category-count">{count} skill{count !== 1 ? 's' : ''}</span>
+    )}
+  </div>
+</a>
+
+<style>
+  .category-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .category-card:hover {
+    text-decoration: none;
+  }
+
+  .category-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .category-content {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .category-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--color-text);
+  }
+
+  .category-card:hover .category-name {
+    color: var(--color-accent);
+  }
+
+  .category-description {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-count {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+</style>

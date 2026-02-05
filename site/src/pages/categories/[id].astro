@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SkillCard from '../../components/SkillCard.astro';
+import registry from '../../../../skills/registry.json';
+
+export function getStaticPaths() {
+  return registry.categories.map(category => ({
+    params: { id: category.id },
+    props: { category }
+  }));
+}
+
+interface Props {
+  category: typeof registry.categories[0];
+}
+
+const { category } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const skills = registry.skills.filter(s => s.category === category.id);
+---
+
+<Layout title={category.name} description={category.description}>
+  <section class="page-header">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href={baseUrl}>Home</a>
+        <span>/</span>
+        <a href={`${baseUrl}categories`}>Categories</a>
+        <span>/</span>
+        <span>{category.name}</span>
+      </nav>
+      
+      <div class="category-header">
+        <span class="category-icon">{category.icon}</span>
+        <div>
+          <h1>{category.name}</h1>
+          <p class="text-secondary">{category.description}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="result-count">{skills.length} skill{skills.length !== 1 ? 's' : ''} in this category</p>
+      
+      {skills.length > 0 ? (
+        <div class="grid grid-3">
+          {skills.map(skill => (
+            <SkillCard 
+              id={skill.id}
+              name={skill.name}
+              description={skill.description}
+              category={skill.category}
+              complexity={skill.complexity}
+              triggers={skill.triggers}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p>No skills in this category yet.</p>
+          <a href="https://github.com/samueltauil/skillpilot/blob/main/CONTRIBUTING.md" class="btn btn-primary">Contribute a Skill</a>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 2rem 0;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent);
+  }
+
+  .category-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .category-icon {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .category-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-count {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .empty-state p {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+  }
+</style>

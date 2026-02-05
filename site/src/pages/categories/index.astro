@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+
+import registry from '../../../../skills/registry.json';
+
+const categories = registry.categories.map(cat => ({
+  ...cat,
+  count: registry.skills.filter(s => s.category === cat.id).length
+}));
+---
+
+<Layout title="Categories" description="Browse skills by category">
+  <section class="page-header">
+    <div class="container">
+      <h1>Categories</h1>
+      <p class="text-secondary">Browse {categories.length} skill categories</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        {categories.map(category => (
+          <CategoryCard 
+            id={category.id}
+            name={category.name}
+            description={category.description}
+            icon={category.icon}
+            count={category.count}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 3rem 0 2rem;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+</style>

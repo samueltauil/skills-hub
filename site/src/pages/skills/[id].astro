@@ -1,0 +1,365 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import registry from '../../../../skills/registry.json';
+
+export function getStaticPaths() {
+  return registry.skills.map(skill => ({
+    params: { id: skill.id },
+    props: { skill }
+  }));
+}
+
+interface Props {
+  skill: typeof registry.skills[0];
+}
+
+const { skill } = Astro.props;
+const category = registry.categories.find(c => c.id === skill.category);
+const baseUrl = import.meta.env.BASE_URL;
+
+const complexityColors = {
+  beginner: 'badge-success',
+  intermediate: 'badge-warning',
+  advanced: 'badge-primary'
+};
+
+// Generate install commands
+const submodulePath = `.github/skills/${skill.id}`;
+const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
+---
+
+<Layout title={skill.name} description={skill.description}>
+  <section class="skill-detail">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href={baseUrl}>Home</a>
+        <span>/</span>
+        <a href={`${baseUrl}skills`}>Skills</a>
+        <span>/</span>
+        <span>{skill.name}</span>
+      </nav>
+
+      <header class="skill-header">
+        <div class="skill-title-row">
+          <h1>{skill.name}</h1>
+          <span class={`badge ${complexityColors[skill.complexity]}`}>{skill.complexity}</span>
+        </div>
+        <p class="skill-description">{skill.description}</p>
+        
+        <div class="skill-meta">
+          {category && (
+            <a href={`${baseUrl}categories/${category.id}`} class="meta-item">
+              <span class="meta-icon">{category.icon}</span>
+              <span>{category.name}</span>
+            </a>
+          )}
+          <a href={skill.source.repo} target="_blank" rel="noopener noreferrer" class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            <span>View Source</span>
+          </a>
+        </div>
+      </header>
+
+      <div class="skill-content">
+        <div class="main-content">
+          {skill.triggers && skill.triggers.length > 0 && (
+            <section class="content-section">
+              <h2>Triggers</h2>
+              <p class="text-secondary">This skill activates when you mention:</p>
+              <div class="triggers-list">
+                {skill.triggers.map(trigger => (
+                  <code class="trigger">{trigger}</code>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section class="content-section">
+            <h2>Installation</h2>
+            
+            <div class="install-method">
+              <h3>1. Add as Git Submodule</h3>
+              <div class="code-block">
+                <pre><code>{submoduleCmd}</code></pre>
+                <button class="copy-btn" data-copy={submoduleCmd} title="Copy to clipboard">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="install-method">
+              <h3>2. Add to .github/copilot-instructions.md</h3>
+              <div class="code-block">
+                <pre><code>{`applyTo: "**"
+instructions:
+  - "${submodulePath}/SKILL.md"`}</code></pre>
+              </div>
+            </div>
+
+            <div class="install-method">
+              <h3>3. Initialize Submodule (for cloned repos)</h3>
+              <div class="code-block">
+                <pre><code>git submodule update --init --recursive</code></pre>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="sidebar">
+          <div class="sidebar-card">
+            <h3>Quick Info</h3>
+            <dl class="info-list">
+              <dt>Category</dt>
+              <dd>{category?.name || skill.category}</dd>
+              
+              <dt>Complexity</dt>
+              <dd class="capitalize">{skill.complexity}</dd>
+              
+              <dt>Source Path</dt>
+              <dd><code>{skill.source.path}</code></dd>
+            </dl>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Related Skills</h3>
+            <p class="text-secondary">Other skills in {category?.name || skill.category}</p>
+            <ul class="related-list">
+              {registry.skills
+                .filter(s => s.category === skill.category && s.id !== skill.id)
+                .slice(0, 3)
+                .map(related => (
+                  <li>
+                    <a href={`${baseUrl}skills/${related.id}`}>{related.name}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .skill-detail {
+    padding: 2rem 0;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent);
+  }
+
+  .skill-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .skill-title-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-title-row h1 {
+    font-size: 2.5rem;
+  }
+
+  .skill-description {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-meta {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .meta-item:hover {
+    color: var(--color-accent);
+  }
+
+  .meta-icon {
+    font-size: 1.25rem;
+  }
+
+  .skill-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+  }
+
+  .content-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .triggers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .trigger {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .install-method {
+    margin-bottom: 1.5rem;
+  }
+
+  .install-method h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .code-block {
+    position: relative;
+  }
+
+  .code-block pre {
+    padding-right: 3rem;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .sidebar-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-card h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .info-list dt {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-list dd {
+    font-size: 0.875rem;
+  }
+
+  .capitalize {
+    text-transform: capitalize;
+  }
+
+  .related-list {
+    list-style: none;
+    margin-top: 0.75rem;
+  }
+
+  .related-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .related-list li:last-child {
+    border-bottom: none;
+  }
+
+  .related-list a {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 900px) {
+    .skill-content {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .skill-title-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .skill-title-row h1 {
+      font-size: 1.75rem;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = (btn as HTMLElement).dataset.copy;
+      if (text) {
+        navigator.clipboard.writeText(text);
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+        setTimeout(() => {
+          btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        }, 2000);
+      }
+    });
+  });
+</script>

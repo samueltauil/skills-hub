@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SkillCard from '../components/SkillCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import SearchBar from '../components/SearchBar.astro';
+
+// Import registry data
+import registry from '../../../skills/registry.json';
+
+const featuredSkills = registry.skills.slice(0, 6);
+const categories = registry.categories.map(cat => ({
+  ...cat,
+  count: registry.skills.filter(s => s.category === cat.id).length
+}));
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Copilot Skills Hub</h1>
+      <p class="hero-subtitle">
+        Discover and install curated GitHub Copilot skills to supercharge your development workflow.
+      </p>
+      <div class="hero-search">
+        <SearchBar placeholder="Search for skills..." />
+      </div>
+      <div class="hero-stats">
+        <span class="stat">
+          <strong>{registry.skills.length}</strong> Skills
+        </span>
+        <span class="stat-divider">·</span>
+        <span class="stat">
+          <strong>{registry.categories.length}</strong> Categories
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Skills -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Skills</h2>
+        <a href={`${import.meta.env.BASE_URL}skills`} class="btn btn-secondary btn-sm">View All →</a>
+      </div>
+      <div class="grid grid-3">
+        {featuredSkills.map(skill => (
+          <SkillCard 
+            id={skill.id}
+            name={skill.name}
+            description={skill.description}
+            category={skill.category}
+            complexity={skill.complexity}
+            triggers={skill.triggers}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Browse by Category</h2>
+        <a href={`${import.meta.env.BASE_URL}categories`} class="btn btn-secondary btn-sm">All Categories →</a>
+      </div>
+      <div class="grid grid-2">
+        {categories.slice(0, 6).map(category => (
+          <CategoryCard 
+            id={category.id}
+            name={category.name}
+            description={category.description}
+            icon={category.icon}
+            count={category.count}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Install -->
+  <section class="section install-section">
+    <div class="container">
+      <h2 class="section-title text-center">How to Install</h2>
+      <p class="section-subtitle text-center">Add any skill to your project in two simple steps</p>
+      
+      <div class="install-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Add as Git Submodule</h3>
+          <pre><code>git submodule add &lt;skill-repo&gt; .github/skills/&lt;skill-name&gt;</code></pre>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Reference in copilot-instructions.md</h3>
+          <pre><code>applyTo: "**"
+instructions:
+  - ".github/skills/&lt;skill-name&gt;/SKILL.md"</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 0 3rem;
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .stat strong {
+    color: var(--color-text);
+  }
+
+  .stat-divider {
+    opacity: 0.5;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .install-section {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin-top: 2rem;
+  }
+
+  .install-steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .step {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .step pre {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .install-steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

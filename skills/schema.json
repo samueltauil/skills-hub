@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Copilot Skills Registry",
+  "description": "Schema for the Skills Hub skill registry",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time the registry was updated"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Category"
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Skill"
+      }
+    }
+  },
+  "required": ["version", "skills"],
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique category identifier (kebab-case)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Category description"
+        },
+        "icon": {
+          "type": "string",
+          "description": "Emoji or icon identifier"
+        }
+      },
+      "required": ["id", "name"]
+    },
+    "Skill": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique skill identifier (kebab-case)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Full description from SKILL.md"
+        },
+        "shortDescription": {
+          "type": "string",
+          "description": "One-line summary for cards"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category ID this skill belongs to"
+        },
+        "author": {
+          "type": "string",
+          "description": "Skill author or organization"
+        },
+        "license": {
+          "type": "string",
+          "description": "License type (MIT, Apache-2.0, etc.)"
+        },
+        "version": {
+          "type": "string",
+          "description": "Skill version"
+        },
+        "triggers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Keywords that activate this skill"
+        },
+        "complexity": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced"],
+          "description": "Skill complexity level"
+        },
+        "platforms": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Supported platforms (windows, macos, linux)"
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "repo": {
+              "type": "string",
+              "description": "GitHub repository URL"
+            },
+            "path": {
+              "type": "string",
+              "description": "Path to SKILL.md in the repo"
+            },
+            "branch": {
+              "type": "string",
+              "default": "main",
+              "description": "Branch name"
+            }
+          },
+          "required": ["repo", "path"]
+        },
+        "install": {
+          "type": "object",
+          "properties": {
+            "submodule": {
+              "type": "string",
+              "description": "Git submodule add command"
+            },
+            "rawUrl": {
+              "type": "string",
+              "description": "Direct URL to raw SKILL.md"
+            }
+          }
+        },
+        "scripts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "path": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          },
+          "description": "Scripts included with the skill"
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to feature on homepage"
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Additional tags for search"
+        }
+      },
+      "required": ["id", "name", "description", "category", "source"]
+    }
+  }
+}

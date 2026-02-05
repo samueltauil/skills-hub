@@ -1,0 +1,66 @@
+name: Request New Category
+description: Suggest a new skill category
+title: "[Category] "
+labels: ["enhancement", "category-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new category! Please fill out the details below.
+
+  - type: input
+    id: category-name
+    attributes:
+      label: Category Name
+      description: Human-readable name for the category
+      placeholder: "e.g., Machine Learning"
+    validations:
+      required: true
+
+  - type: input
+    id: category-id
+    attributes:
+      label: Category ID
+      description: Lowercase, hyphenated identifier
+      placeholder: "e.g., machine-learning"
+    validations:
+      required: true
+
+  - type: input
+    id: category-icon
+    attributes:
+      label: Category Icon
+      description: Suggested emoji for the category
+      placeholder: "🤖"
+    validations:
+      required: true
+
+  - type: textarea
+    id: category-description
+    attributes:
+      label: Description
+      description: What types of skills would belong in this category?
+      placeholder: "Skills related to machine learning, AI models, training data..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: example-skills
+    attributes:
+      label: Example Skills
+      description: What skills would you expect to see in this category?
+      placeholder: |
+        - Model training pipelines
+        - Data preprocessing
+        - Model evaluation
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: existing-categories
+    attributes:
+      label: Existing Categories Check
+      description: Please confirm this doesn't fit existing categories
+      options:
+        - label: I have checked existing categories and this doesn't fit any of them
+          required: true
