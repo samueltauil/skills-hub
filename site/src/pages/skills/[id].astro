@@ -250,7 +250,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                       <span>{dir}/</span>
                     </div>
                   )}
-                  {files.map((file, index) => (
+                  {files.map((file) => (
                     <details class="file-item" data-path={file.path}>
                       <summary>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -259,7 +259,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                         </svg>
                         <span class="file-name">{file.name}</span>
                         <span class="file-size">{(file.content.length / 1024).toFixed(1)} KB</span>
-                        <button class="copy-file-btn" data-file-index={index} data-path={file.path} title="Copy file content">
+                        <button class="copy-file-btn" data-path={file.path} title="Copy file content">
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -867,11 +867,15 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
   }
 </style>
 
-<script define:vars={{ skillFiles: skill.files, skillPath, allFilesJson }}>
+<script define:vars={{ skillFiles: skill.files, skillPath }}>
   // Store file contents globally for copy functionality
   window.__skillFiles = skillFiles;
   window.__skillPath = skillPath;
-  window.__allFilesJson = allFilesJson;
+  // Create a lookup map by path for quick access
+  window.__filesByPath = {};
+  skillFiles.forEach(f => {
+    window.__filesByPath[f.path] = f.content;
+  });
 </script>
 
 <script>
@@ -879,43 +883,20 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
   const copyAllBtn = document.getElementById('copy-all-btn');
   if (copyAllBtn) {
     copyAllBtn.addEventListener('click', async () => {
-      const skillPath = window.__skillPath;
-      const files = window.__skillFiles;
+      const skillPath = (window as any).__skillPath;
+      const files = (window as any).__skillFiles;
+      
+      if (!files || !files.length) {
+        console.error('No files found');
+        return;
+      }
       
       // Create a formatted output for copying
-      const output = files.map(f => 
+      const output = files.map((f: any) => 
         `// ${skillPath}/${f.path}\n${f.content}`
       ).join('\n\n---\n\n');
       
-      try {
-        await navigator.clipboard.writeText(output);
-        copyAllBtn.classList.add('copied');
-        copyAllBtn.querySelector('span').textContent = 'Copied!';
-        
-        setTimeout(() => {
-          copyAllBtn.classList.remove('copied');
-          copyAllBtn.querySelector('span').textContent = 'Copy All Files';
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
-        // Fallback: Create a textarea and copy
-        const textarea = document.createElement('textarea');
-        textarea.value = output;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        
-        copyAllBtn.classList.add('copied');
-        copyAllBtn.querySelector('span').textContent = 'Copied!';
-        
-        setTimeout(() => {
-          copyAllBtn.classList.remove('copied');
-          copyAllBtn.querySelector('span').textContent = 'Copy All Files';
-        }, 2000);
-      }
+      await copyToClipboard(output, copyAllBtn, 'Copy All Files');
     });
   }
 
@@ -925,34 +906,57 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
       e.preventDefault();
       e.stopPropagation();
       
-      const fileIndex = parseInt((btn as HTMLButtonElement).dataset.fileIndex || '0', 10);
-      const files = window.__skillFiles;
-      const content = files[fileIndex]?.content || '';
+      const filePath = (btn as HTMLButtonElement).dataset.path;
+      const filesByPath = (window as any).__filesByPath;
+      const content = filesByPath[filePath || ''] || '';
       
-      try {
-        await navigator.clipboard.writeText(content);
-        btn.classList.add('copied');
-        
-        setTimeout(() => {
-          btn.classList.remove('copied');
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
-        // Fallback
-        const textarea = document.createElement('textarea');
-        textarea.value = content;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.classList.remove('copied');
-        }, 2000);
+      if (!content) {
+        console.error('No content found for path:', filePath);
+        return;
       }
+      
+      await copyToClipboard(content, btn);
     });
   });
+
+  async function copyToClipboard(text: string, btn: Element, resetText?: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      showCopiedFeedback(btn, resetText);
+    } catch (err) {
+      // Fallback for browsers without clipboard API or when not in secure context
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        const success = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        if (success) {
+          showCopiedFeedback(btn, resetText);
+        } else {
+          console.error('execCommand copy failed');
+        }
+      } catch (fallbackErr) {
+        console.error('All copy methods failed:', fallbackErr);
+      }
+    }
+  }
+
+  function showCopiedFeedback(btn: Element, resetText?: string) {
+    btn.classList.add('copied');
+    const span = btn.querySelector('span');
+    if (span && resetText) {
+      span.textContent = 'Copied!';
+    }
+    
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      if (span && resetText) {
+        span.textContent = resetText;
+      }
+    }, 2000);
+  }
 </script>
