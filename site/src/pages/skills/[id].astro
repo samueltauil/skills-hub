@@ -70,6 +70,16 @@ const skillName = skill.name;
 const skillPath = `.github/skills/${skillName}`;
 const repoName = skill.source.repoName;
 
+// Convert kebab-case to Title Case
+function formatName(str: string): string {
+  return str
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+const displayName = formatName(skillName);
+
 // Get file extension for syntax highlighting
 function getFileLanguage(filename: string): string {
   const ext = filename.split('.').pop()?.toLowerCase();
@@ -115,7 +125,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
 })), null, 2);
 ---
 
-<Layout title={skill.name} description={skill.description}>
+<Layout title={displayName} description={skill.description}>
   <section class="skill-detail">
     <div class="container">
       <nav class="breadcrumb">
@@ -123,12 +133,12 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
         <span>/</span>
         <a href={`${baseUrl}skills/`}>Skills</a>
         <span>/</span>
-        <span>{skill.name}</span>
+        <span>{displayName}</span>
       </nav>
 
       <header class="skill-header">
         <div class="skill-title-row">
-          <h1>{skill.name}</h1>
+          <h1>{displayName}</h1>
           <span class={`badge ${complexityColors[skill.complexity]}`}>{skill.complexity}</span>
         </div>
         <p class="skill-description">{skill.description}</p>
@@ -662,7 +672,66 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
     border-radius: 0;
     font-size: 0.75rem;
     line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre;
+    max-width: 100%;
   }
+
+  .file-content code {
+    display: block;
+    min-width: fit-content;
+  }
+
+  /* Syntax Highlighting */
+  .file-content code.language-python { color: #3572A5; }
+  .file-content code.language-javascript { color: #f1e05a; }
+  .file-content code.language-typescript { color: #3178c6; }
+  .file-content code.language-json { color: #292929; }
+  .file-content code.language-yaml { color: #cb171e; }
+  .file-content code.language-markdown { color: #083fa1; }
+  .file-content code.language-bash { color: #89e051; }
+  .file-content code.language-css { color: #563d7c; }
+  .file-content code.language-html { color: #e34c26; }
+
+  /* Dark mode-friendly syntax colors */
+  :root {
+    --syntax-python: #8be9fd;
+    --syntax-javascript: #f1fa8c;
+    --syntax-typescript: #66d9ef;
+    --syntax-json: #a6e22e;
+    --syntax-yaml: #f92672;
+    --syntax-markdown: #bd93f9;
+    --syntax-bash: #50fa7b;
+    --syntax-css: #ff79c6;
+    --syntax-html: #ffb86c;
+    --syntax-text: var(--color-text);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .file-content code.language-python { color: var(--syntax-python); }
+    .file-content code.language-javascript { color: var(--syntax-javascript); }
+    .file-content code.language-typescript { color: var(--syntax-typescript); }
+    .file-content code.language-json { color: var(--syntax-json); }
+    .file-content code.language-yaml { color: var(--syntax-yaml); }
+    .file-content code.language-markdown { color: var(--syntax-markdown); }
+    .file-content code.language-bash { color: var(--syntax-bash); }
+    .file-content code.language-css { color: var(--syntax-css); }
+    .file-content code.language-html { color: var(--syntax-html); }
+  }
+
+  .file-content code.language-text { color: var(--color-text); }
+
+  /* File type indicators */
+  .file-item[data-path$=".py"] summary svg { color: #3572A5; }
+  .file-item[data-path$=".js"] summary svg { color: #f1e05a; }
+  .file-item[data-path$=".ts"] summary svg { color: #3178c6; }
+  .file-item[data-path$=".json"] summary svg { color: #292929; }
+  .file-item[data-path$=".yaml"] summary svg,
+  .file-item[data-path$=".yml"] summary svg { color: #cb171e; }
+  .file-item[data-path$=".md"] summary svg { color: #083fa1; }
+  .file-item[data-path$=".sh"] summary svg { color: #89e051; }
+  .file-item[data-path$=".css"] summary svg { color: #563d7c; }
+  .file-item[data-path$=".html"] summary svg { color: #e34c26; }
 
   /* Sidebar */
   .sidebar-card {

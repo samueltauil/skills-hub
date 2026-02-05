@@ -9,8 +9,18 @@ interface Props {
   author?: string;
 }
 
-const { id, name, description, category, complexity, triggers = [], author } = Astro.props;
+const { id, name, description, category, complexity, triggers = [] } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
+
+// Convert kebab-case to Title Case
+function formatName(str: string): string {
+  return str
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+const displayName = formatName(name);
 
 const complexityColors = {
   beginner: 'badge-success',
@@ -22,7 +32,7 @@ const complexityColors = {
 <article class="skill-card card">
   <div class="skill-header">
     <h3 class="skill-name">
-      <a href={`${baseUrl}skills/${id}/`}>{name}</a>
+      <a href={`${baseUrl}skills/${id}/`}>{displayName}</a>
     </h3>
     {complexity && <span class={`badge ${complexityColors[complexity]}`}>{complexity}</span>}
   </div>
@@ -31,7 +41,6 @@ const complexityColors = {
   
   <div class="skill-meta">
     <span class="badge">{category}</span>
-    {author && <span class="skill-author">by {author}</span>}
   </div>
   
   {triggers.length > 0 && (
