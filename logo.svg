@@ -1,41 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
-  <defs>
-    <!-- Purple metallic gradient -->
-    <linearGradient id="purple" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c4b5fd"/>
-      <stop offset="50%" stop-color="#8b5cf6"/>
-      <stop offset="100%" stop-color="#5b21b6"/>
-    </linearGradient>
-    
-    <!-- Coral metallic gradient -->
-    <linearGradient id="coral" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fda4af"/>
-      <stop offset="50%" stop-color="#f43f5e"/>
-      <stop offset="100%" stop-color="#be123c"/>
-    </linearGradient>
-  </defs>
-  
-  <!-- Link 1 (purple) - back half -->
-  <ellipse cx="145" cy="165" rx="80" ry="95" 
-           fill="none" stroke="url(#purple)" stroke-width="28"
-           opacity="0.4"/>
-  
-  <!-- Link 2 (coral) - full middle link -->
-  <ellipse cx="200" cy="200" rx="80" ry="95" 
-           fill="none" stroke="url(#coral)" stroke-width="28"/>
-  
-  <!-- Link 3 (purple) - back half -->
-  <ellipse cx="255" cy="235" rx="80" ry="95" 
-           fill="none" stroke="url(#purple)" stroke-width="28"
-           opacity="0.4"/>
-  
-  <!-- Link 1 (purple) - front half -->
-  <path d="M145 70 A80 95 0 0 1 145 260"
-        fill="none" stroke="url(#purple)" stroke-width="28"
-        stroke-linecap="round"/>
-  
-  <!-- Link 3 (purple) - front half -->
-  <path d="M255 140 A80 95 0 0 1 255 330"
-        fill="none" stroke="url(#purple)" stroke-width="28"
-        stroke-linecap="round"/>
+<svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 17L12 22L22 17" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 12L12 17L22 12" stroke="#58a6ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

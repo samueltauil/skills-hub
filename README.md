@@ -83,8 +83,7 @@ skills-hub/
 │   ├── schema.json       # Skill metadata schema
 │   └── registry.json     # Skills catalog
 ├── indexer/              # Python skill scraper (future)
-├── CONTRIBUTING.md       # How to add skills
-└── archive/              # Legacy orchestrator code
+└── CONTRIBUTING.md       # How to add skills
 ```
 
 ## Hosting / Deployment
