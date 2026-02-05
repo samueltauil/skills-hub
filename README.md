@@ -86,29 +86,6 @@ skills-hub/
 └── CONTRIBUTING.md       # How to add skills
 ```
 
-## Hosting / Deployment
-
-The site deploys automatically via GitHub Actions when changes are pushed to `main`.
-
-### Option 1: GitHub Pages (Default)
-
-Works out of the box at `username.github.io/skills-hub`.
-
-### Option 2: Custom Domain (Recommended for Production)
-
-1. Purchase a domain (e.g., `skills-hub.dev`)
-2. Add a `CNAME` file to `site/public/` with your domain
-3. Configure DNS:
-   - Add a CNAME record pointing to `username.github.io`
-   - Or add A records for GitHub's IPs
-4. Enable HTTPS in repo Settings → Pages
-
-### Option 3: Create a GitHub Organization
-
-1. Create org (e.g., `copilot-skills-hub`)
-2. Transfer/fork repo to the org
-3. Site lives at `copilot-skills-hub.github.io`
-
 ## Contributing
 
 We welcome skill contributions! See the full **[Contribution Guide](CONTRIBUTING.md)** for detailed instructions.
