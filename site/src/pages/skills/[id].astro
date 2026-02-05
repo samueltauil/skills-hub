@@ -208,16 +208,26 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
             <div class="install-card">
               <div class="install-header">
                 <div class="install-info">
-                  <p>Copy this skill to your repository at:</p>
+                  <p>Download and extract to your repository:</p>
                   <code class="install-path">{skillPath}/</code>
                 </div>
-                <button id="copy-all-btn" class="copy-all-btn" title="Copy all files to clipboard">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                  </svg>
-                  <span>Copy All Files</span>
-                </button>
+                <div class="install-actions">
+                  <button id="download-btn" class="download-btn" title="Download skill as ZIP">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="7 10 12 15 17 10"/>
+                      <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    <span>Download ZIP</span>
+                  </button>
+                  <button id="copy-all-btn" class="copy-all-btn btn-secondary" title="Copy file contents to clipboard">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                    <span>Copy Contents</span>
+                  </button>
+                </div>
               </div>
               
               <div class="install-note">
@@ -225,7 +235,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                   <circle cx="12" cy="12" r="10"/>
                   <path d="M12 16v-4M12 8h.01"/>
                 </svg>
-                <p>The folder name must match <code>{skillName}</code> for Copilot to auto-discover it.</p>
+                <p>Extract the ZIP to <code>.github/skills/</code> in your repo. The folder name must match <code>{skillName}</code> for Copilot to auto-discover it.</p>
               </div>
             </div>
           </section>
@@ -517,7 +527,12 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
     border-radius: var(--radius-md);
   }
 
-  .copy-all-btn {
+  .install-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .download-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -533,13 +548,42 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
     white-space: nowrap;
   }
 
-  .copy-all-btn:hover {
+  .download-btn:hover {
     background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  .download-btn.downloading {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  .copy-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-bg-tertiary);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .copy-all-btn:hover {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-accent);
     transform: translateY(-1px);
   }
 
   .copy-all-btn.copied {
     background: var(--color-success);
+    border-color: var(--color-success);
+    color: white;
   }
 
   .install-note {
@@ -896,7 +940,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
         `// ${skillPath}/${f.path}\n${f.content}`
       ).join('\n\n---\n\n');
       
-      await copyToClipboard(output, copyAllBtn, 'Copy All Files');
+      await copyToClipboard(output, copyAllBtn, 'Copy Contents');
     });
   }
 
@@ -958,5 +1002,77 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
         span.textContent = resetText;
       }
     }, 2000);
+  }
+
+  // Download ZIP functionality
+  const downloadBtn = document.getElementById('download-btn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', async () => {
+      const skillPath = (window as any).__skillPath;
+      const files = (window as any).__skillFiles;
+      
+      if (!files || !files.length) {
+        console.error('No files found');
+        return;
+      }
+      
+      downloadBtn.classList.add('downloading');
+      const span = downloadBtn.querySelector('span');
+      if (span) span.textContent = 'Creating ZIP...';
+      
+      try {
+        // Dynamically load JSZip
+        const JSZip = await loadJSZip();
+        const zip = new JSZip();
+        
+        // Get skill name from path (e.g., "anthropics-skills/some-skill" -> "some-skill")
+        const skillName = skillPath.split('/').pop() || 'skill';
+        
+        // Add files to ZIP with folder structure
+        files.forEach((f: any) => {
+          zip.file(`${skillName}/${f.path}`, f.content);
+        });
+        
+        // Generate and download
+        const blob = await zip.generateAsync({ type: 'blob' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${skillName}.zip`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        if (span) span.textContent = 'Downloaded!';
+        setTimeout(() => {
+          downloadBtn.classList.remove('downloading');
+          if (span) span.textContent = 'Download ZIP';
+        }, 2000);
+      } catch (err) {
+        console.error('Download failed:', err);
+        if (span) span.textContent = 'Download Failed';
+        setTimeout(() => {
+          downloadBtn.classList.remove('downloading');
+          if (span) span.textContent = 'Download ZIP';
+        }, 2000);
+      }
+    });
+  }
+
+  // Dynamically load JSZip library
+  function loadJSZip(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if ((window as any).JSZip) {
+        resolve((window as any).JSZip);
+        return;
+      }
+      
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+      script.onload = () => resolve((window as any).JSZip);
+      script.onerror = () => reject(new Error('Failed to load JSZip'));
+      document.head.appendChild(script);
+    });
   }
 </script>
