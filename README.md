@@ -79,22 +79,32 @@ flowchart TD
 
 ### Option B: As Submodule (Existing Projects)
 
-1. Add to your existing repo:
+1. Add the skill directly to your existing repo:
    ```bash
-   git submodule add https://github.com/samueltauil/skillpilot.git .github/skills/skillpilot
-   git submodule update --init --recursive
+   # Add submodule with sparse checkout to only get the skill
+   git submodule add --no-checkout https://github.com/samueltauil/skillpilot.git .github/skills/copilot-orchestrator
+   cd .github/skills/copilot-orchestrator
+   git sparse-checkout init --cone
+   git sparse-checkout set .github/skills/copilot-orchestrator
+   git checkout main
+   
+   # Move contents up and clean nested structure
+   mv .github/skills/copilot-orchestrator/* .
+   rm -rf .github LICENSE README.md logo.svg 2>/dev/null
    ```
 2. Install dependencies:
    ```bash
-   cd .github/skills/skillpilot/.github/skills/copilot-orchestrator/scripts
+   cd scripts
    uv sync
    ```
 3. Commit the changes:
    ```bash
-   cd ../../../../../..
-   git add .gitmodules .github/skills/skillpilot
-   git commit -m "Add SkillPilot as submodule"
+   cd ../../../..
+   git add .gitmodules .github/skills/copilot-orchestrator
+   git commit -m "Add copilot-orchestrator skill as submodule"
    ```
+
+> **Note**: The folder name `copilot-orchestrator` must match the `name` field in [SKILL.md](SKILL.md) front-matter for Copilot to discover the skill correctly.
 
 ### Using Copilot
 
@@ -484,51 +494,33 @@ This repository is configured as a **GitHub Template**. To use it:
 
 For existing repositories or when you want automatic updates, add SkillPilot as a **git submodule**.
 
+> **Important**: The skill folder name must match the `name` field in SKILL.md front-matter (`copilot-orchestrator`) for Copilot to discover it correctly.
+
 ### Quick Setup
 
 ```bash
 # Navigate to your existing repository
 cd your-project
 
-# Add SkillPilot as a submodule in .github/skills/
-git submodule add https://github.com/samueltauil/skillpilot.git .github/skills/skillpilot
+# Add the skill as a submodule using sparse checkout
+git submodule add --no-checkout https://github.com/samueltauil/skillpilot.git .github/skills/copilot-orchestrator
+cd .github/skills/copilot-orchestrator
+git sparse-checkout init --cone
+git sparse-checkout set .github/skills/copilot-orchestrator
+git checkout main
 
-# Initialize and clone the submodule content
-git submodule update --init --recursive
+# Move skill contents up and remove nested structure
+mv .github/skills/copilot-orchestrator/* .
+rm -rf .github LICENSE README.md logo.svg 2>/dev/null
 
-# Install the orchestrator dependencies
-cd .github/skills/skillpilot/.github/skills/copilot-orchestrator/scripts
+# Install dependencies
+cd scripts
 uv sync
 
 # Commit the submodule reference
-cd ../../../../../..  # back to project root
-git add .gitmodules .github/skills/skillpilot
-git commit -m "Add SkillPilot as submodule"
-```
-
-### Alternative: Add Only the Skill (Sparse Checkout)
-
-If you only want the `copilot-orchestrator` skill (not the full repo), use sparse checkout:
-
-```bash
-# Add submodule with no checkout initially
-git submodule add --no-checkout https://github.com/samueltauil/skillpilot.git .github/skills/skillpilot
-
-# Navigate into the submodule directory
-cd .github/skills/skillpilot
-
-# Enable sparse checkout
-git sparse-checkout init --cone
-
-# Only pull the copilot-orchestrator skill
-git sparse-checkout set .github/skills/copilot-orchestrator
-
-# Checkout the filtered content
-git checkout main
-
-# Install dependencies
-cd .github/skills/copilot-orchestrator/scripts
-uv sync
+cd ../../../..  # back to project root
+git add .gitmodules .github/skills/copilot-orchestrator
+git commit -m "Add copilot-orchestrator skill as submodule"
 ```
 
 ### Project Structure with Submodule
@@ -541,35 +533,34 @@ your-project/
 ├── .gitmodules                          # Submodule configuration
 ├── .github/
 │   └── skills/
-│       └── skillpilot/                  # ← Submodule root
-│           ├── .github/
-│           │   └── skills/
-│           │       └── copilot-orchestrator/
-│           │           ├── SKILL.md
-│           │           └── scripts/
-│           ├── README.md
-│           └── LICENSE
+│       └── copilot-orchestrator/        # ← Submodule (matches SKILL.md name)
+│           ├── SKILL.md
+│           ├── scripts/
+│           │   ├── orchestrator.py
+│           │   └── pyproject.toml
+│           ├── references/
+│           └── templates/
 ├── src/                                 # Your project code
 └── README.md
 ```
 
-> **Note**: The skill path becomes `.github/skills/skillpilot/.github/skills/copilot-orchestrator/SKILL.md`. GitHub Copilot will discover it automatically through recursive skill scanning.
+> **Note**: The skill path is `.github/skills/copilot-orchestrator/SKILL.md`. The folder name matches the front-matter `name: copilot-orchestrator` for proper skill discovery.
 
 ### Updating the Submodule
 
-Pull the latest changes from SkillPilot:
+Pull the latest changes:
 
 ```bash
 # Update to latest version
-cd .github/skills/skillpilot
+cd .github/skills/copilot-orchestrator
 git pull origin main
 
 # Back to your project root
 cd ../../..
 
 # Commit the updated submodule reference
-git add .github/skills/skillpilot
-git commit -m "Update SkillPilot to latest version"
+git add .github/skills/copilot-orchestrator
+git commit -m "Update copilot-orchestrator skill to latest version"
 ```
 
 Or update all submodules at once:
@@ -584,7 +575,7 @@ git commit -am "Update all submodules"
 For stability, pin the submodule to a specific tag or commit:
 
 ```bash
-cd .github/skills/skillpilot
+cd .github/skills/copilot-orchestrator
 
 # Pin to a specific tag (recommended for production)
 git checkout v1.0.0
@@ -593,8 +584,8 @@ git checkout v1.0.0
 git checkout abc123def456
 
 cd ../../..
-git add .github/skills/skillpilot
-git commit -m "Pin SkillPilot to v1.0.0"
+git add .github/skills/copilot-orchestrator
+git commit -m "Pin copilot-orchestrator to v1.0.0"
 ```
 
 ### CI/CD Configuration
@@ -616,9 +607,9 @@ When using submodules, update your CI/CD workflows to initialize them:
 - name: Install uv
   uses: astral-sh/setup-uv@v5
   
-- name: Install SkillPilot dependencies
+- name: Install copilot-orchestrator dependencies
   run: |
-    cd .github/skills/skillpilot/.github/skills/copilot-orchestrator/scripts
+    cd .github/skills/copilot-orchestrator/scripts
     uv sync
 ```
 
@@ -635,9 +626,9 @@ steps:
 
 - script: |
     pip install uv
-    cd .github/skills/skillpilot/.github/skills/copilot-orchestrator/scripts
+    cd .github/skills/copilot-orchestrator/scripts
     uv sync
-  displayName: 'Install SkillPilot dependencies'
+  displayName: 'Install copilot-orchestrator dependencies'
 ```
 
 ### Cloning a Project with Submodules
@@ -675,16 +666,16 @@ If you need to remove the submodule later:
 
 ```bash
 # Remove the submodule entry from .git/config
-git submodule deinit -f .github/skills/skillpilot
+git submodule deinit -f .github/skills/copilot-orchestrator
 
 # Remove the submodule directory from .git/modules
-rm -rf .git/modules/.github/skills/skillpilot
+rm -rf .git/modules/.github/skills/copilot-orchestrator
 
 # Remove the submodule directory from working tree
-git rm -f .github/skills/skillpilot
+git rm -f .github/skills/copilot-orchestrator
 
 # Commit the removal
-git commit -m "Remove SkillPilot submodule"
+git commit -m "Remove copilot-orchestrator submodule"
 ```
 
 ## Extending SkillPilot
@@ -728,11 +719,11 @@ Edit `references/CAPABILITY_REGISTRY.md` to map new intents to SDK configuration
 | Issue | Solution |
 |-------|----------|
 | "Submodule not initialized" | Run `git submodule update --init --recursive` |
-| "Empty submodule directory" | Ensure checkout succeeded: `cd .github/skills/skillpilot && git status` |
-| "Skill not detected by Copilot" | Check the path is correct and SKILL.md exists |
+| "Empty submodule directory" | Ensure checkout succeeded: `cd .github/skills/copilot-orchestrator && git status` |
+| "Skill not detected by Copilot" | Verify folder name matches SKILL.md `name` field (`copilot-orchestrator`) |
 | "Permission denied" on Windows | Run terminal as Administrator or check file permissions |
 | "Detached HEAD in submodule" | This is normal; submodules point to specific commits |
-| "Submodule conflicts during merge" | Accept ours: `git checkout --ours .github/skills/skillpilot` then re-update |
+| "Submodule conflicts during merge" | Accept ours: `git checkout --ours .github/skills/copilot-orchestrator` then re-update |
 
 ### Submodule Update Fails
 
@@ -743,7 +734,7 @@ If `git submodule update` fails:
 git submodule sync --recursive
 
 # Clear and re-clone the submodule
-rm -rf .github/skills/skillpilot
+rm -rf .github/skills/copilot-orchestrator
 git submodule update --init --force --recursive
 ```
 
@@ -751,13 +742,10 @@ git submodule update --init --force --recursive
 
 If GitHub Copilot doesn't recognize the skill:
 
-1. **Verify SKILL.md exists:**
+1. **Verify SKILL.md exists and folder name matches front-matter name:**
    ```bash
-   # For template installation
    cat .github/skills/copilot-orchestrator/SKILL.md
-   
-   # For submodule installation
-   cat .github/skills/skillpilot/.github/skills/copilot-orchestrator/SKILL.md
+   # Should show: name: copilot-orchestrator
    ```
 
 2. **Check SKILL.md YAML frontmatter is valid:**
