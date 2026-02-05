@@ -103,7 +103,9 @@ const categorySkills = skills.filter(s => (s.category || 'general') === category
               name={skill.name}
               description={skill.description}
               category={skill.category || 'general'}
-              author={skill.author}
+              complexity={skill.complexity}
+              fileCount={skill.files?.length || 0}
+              source={skill.source}
             />
           ))}
         </div>

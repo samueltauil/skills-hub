@@ -77,7 +77,9 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
             name={skill.name}
             description={skill.description}
             category={skill.category}
-            author={skill.author}
+            complexity={skill.complexity}
+            fileCount={skill.files?.length || 0}
+            source={skill.source}
           />
         ))}
       </div>

@@ -211,7 +211,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                   <p>Copy this skill to your repository at:</p>
                   <code class="install-path">{skillPath}/</code>
                 </div>
-                <button id="copy-all-btn" class="copy-all-btn" data-files={allFilesJson} title="Copy all files to clipboard">
+                <button id="copy-all-btn" class="copy-all-btn" title="Copy all files to clipboard">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -250,7 +250,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                       <span>{dir}/</span>
                     </div>
                   )}
-                  {files.map(file => (
+                  {files.map((file, index) => (
                     <details class="file-item" data-path={file.path}>
                       <summary>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -259,7 +259,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                         </svg>
                         <span class="file-name">{file.name}</span>
                         <span class="file-size">{(file.content.length / 1024).toFixed(1)} KB</span>
-                        <button class="copy-file-btn" data-content={file.content} data-path={file.path} title="Copy file content">
+                        <button class="copy-file-btn" data-file-index={index} data-path={file.path} title="Copy file content">
                           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -461,8 +461,15 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
 
   .skill-content {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: minmax(0, 1fr) 300px;
     gap: 3rem;
+    max-width: 100%;
+  }
+
+  .main-content {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .content-section {
@@ -665,6 +672,8 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
   .file-content {
     max-height: 400px;
     overflow: auto;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .file-content pre {
@@ -674,12 +683,29 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
     line-height: 1.5;
     overflow-x: auto;
     white-space: pre;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
   }
 
   .file-content code {
     display: block;
-    min-width: fit-content;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .file-tree {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .files-section {
+    max-width: 100%;
+    overflow: hidden;
   }
 
   /* Syntax Highlighting */
@@ -841,29 +867,54 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
   }
 </style>
 
+<script define:vars={{ skillFiles: skill.files, skillPath, allFilesJson }}>
+  // Store file contents globally for copy functionality
+  window.__skillFiles = skillFiles;
+  window.__skillPath = skillPath;
+  window.__allFilesJson = allFilesJson;
+</script>
+
 <script>
   // Copy all files button
   const copyAllBtn = document.getElementById('copy-all-btn');
   if (copyAllBtn) {
     copyAllBtn.addEventListener('click', async () => {
-      const files = JSON.parse(copyAllBtn.dataset.files || '[]');
+      const skillPath = window.__skillPath;
+      const files = window.__skillFiles;
       
       // Create a formatted output for copying
       const output = files.map(f => 
-        `// ${f.path}\n${f.content}`
+        `// ${skillPath}/${f.path}\n${f.content}`
       ).join('\n\n---\n\n');
       
       try {
         await navigator.clipboard.writeText(output);
         copyAllBtn.classList.add('copied');
-        copyAllBtn.querySelector('span')!.textContent = 'Copied!';
+        copyAllBtn.querySelector('span').textContent = 'Copied!';
         
         setTimeout(() => {
           copyAllBtn.classList.remove('copied');
-          copyAllBtn.querySelector('span')!.textContent = 'Copy All Files';
+          copyAllBtn.querySelector('span').textContent = 'Copy All Files';
         }, 2000);
       } catch (err) {
         console.error('Failed to copy:', err);
+        // Fallback: Create a textarea and copy
+        const textarea = document.createElement('textarea');
+        textarea.value = output;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        
+        copyAllBtn.classList.add('copied');
+        copyAllBtn.querySelector('span').textContent = 'Copied!';
+        
+        setTimeout(() => {
+          copyAllBtn.classList.remove('copied');
+          copyAllBtn.querySelector('span').textContent = 'Copy All Files';
+        }, 2000);
       }
     });
   }
@@ -874,10 +925,12 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
       e.preventDefault();
       e.stopPropagation();
       
-      const content = (btn as HTMLButtonElement).dataset.content;
+      const fileIndex = parseInt((btn as HTMLButtonElement).dataset.fileIndex || '0', 10);
+      const files = window.__skillFiles;
+      const content = files[fileIndex]?.content || '';
       
       try {
-        await navigator.clipboard.writeText(content || '');
+        await navigator.clipboard.writeText(content);
         btn.classList.add('copied');
         
         setTimeout(() => {
@@ -885,6 +938,20 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
         }, 2000);
       } catch (err) {
         console.error('Failed to copy:', err);
+        // Fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = content;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.classList.remove('copied');
+        }, 2000);
       }
     });
   });
