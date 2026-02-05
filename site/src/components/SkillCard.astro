@@ -4,11 +4,12 @@ interface Props {
   name: string;
   description: string;
   category: string;
-  complexity: 'beginner' | 'intermediate' | 'advanced';
+  complexity?: 'beginner' | 'intermediate' | 'advanced';
   triggers?: string[];
+  author?: string;
 }
 
-const { id, name, description, category, complexity, triggers = [] } = Astro.props;
+const { id, name, description, category, complexity, triggers = [], author } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 
 const complexityColors = {
@@ -23,13 +24,14 @@ const complexityColors = {
     <h3 class="skill-name">
       <a href={`${baseUrl}skills/${id}/`}>{name}</a>
     </h3>
-    <span class={`badge ${complexityColors[complexity]}`}>{complexity}</span>
+    {complexity && <span class={`badge ${complexityColors[complexity]}`}>{complexity}</span>}
   </div>
   
   <p class="skill-description">{description}</p>
   
   <div class="skill-meta">
     <span class="badge">{category}</span>
+    {author && <span class="skill-author">by {author}</span>}
   </div>
   
   {triggers.length > 0 && (
@@ -84,6 +86,12 @@ const complexityColors = {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .skill-author {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
   }
 
   .skill-triggers {

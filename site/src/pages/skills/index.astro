@@ -3,10 +3,34 @@ import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
 import SearchBar from '../../components/SearchBar.astro';
 
-import registry from '../../../../skills/registry.json';
+import skillsData from '../../data/skills.json';
 
-const skills = registry.skills;
-const categories = registry.categories;
+// Define category metadata (icons and names)
+const categoryMeta = {
+  'git-version-control': { name: 'Git & Version Control', icon: '🔀' },
+  'code-quality': { name: 'Code Quality & Refactoring', icon: '✨' },
+  'documentation': { name: 'Documentation', icon: '📝' },
+  'diagrams': { name: 'Diagrams & Visualization', icon: '📊' },
+  'testing': { name: 'Testing', icon: '🧪' },
+  'api-backend': { name: 'API & Backend', icon: '🔌' },
+  'frontend-ui': { name: 'Frontend & UI', icon: '🎨' },
+  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀' },
+  'security': { name: 'Security', icon: '🔒' },
+  'data-analytics': { name: 'Data & Analytics', icon: '📈' },
+  'office-documents': { name: 'Office Documents', icon: '📄' },
+  'mcp-development': { name: 'MCP Development', icon: '🔧' },
+  'general': { name: 'General', icon: '📦' }
+};
+
+const skills = skillsData.skills;
+
+// Get unique categories from skills
+const categoryIds = [...new Set(skills.map(s => s.category || 'general'))].sort();
+const categories = categoryIds.map(id => ({
+  id,
+  name: categoryMeta[id]?.name || id,
+  icon: categoryMeta[id]?.icon || '📁'
+}));
 ---
 
 <Layout title="All Skills" description="Browse all available GitHub Copilot skills">
@@ -28,12 +52,6 @@ const categories = registry.categories;
               <option value={cat.id}>{cat.name}</option>
             ))}
           </select>
-          <select id="complexity-filter" class="filter-select">
-            <option value="">All Levels</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
         </div>
       </div>
 
@@ -42,16 +60,14 @@ const categories = registry.categories;
           <div class="skill-item" 
                data-name={skill.name.toLowerCase()} 
                data-description={skill.description.toLowerCase()}
-               data-category={skill.category}
-               data-complexity={skill.complexity}
-               data-triggers={skill.triggers?.join(' ').toLowerCase()}>
+               data-category={skill.category || 'general'}
+               data-author={skill.author?.toLowerCase() || ''}>
             <SkillCard 
               id={skill.id}
               name={skill.name}
               description={skill.description}
-              category={skill.category}
-              complexity={skill.complexity}
-              triggers={skill.triggers}
+              category={skill.category || 'general'}
+              author={skill.author}
             />
           </div>
         ))}
@@ -136,14 +152,12 @@ const categories = registry.categories;
 <script>
   const searchInput = document.getElementById('skill-filter') as HTMLInputElement;
   const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
-  const complexityFilter = document.getElementById('complexity-filter') as HTMLSelectElement;
   const skillItems = document.querySelectorAll('.skill-item');
   const noResults = document.getElementById('no-results');
 
   function filterSkills() {
     const searchTerm = searchInput?.value.toLowerCase() || '';
     const category = categoryFilter?.value || '';
-    const complexity = complexityFilter?.value || '';
     
     let visibleCount = 0;
 
@@ -151,19 +165,17 @@ const categories = registry.categories;
       const el = item as HTMLElement;
       const name = el.dataset.name || '';
       const description = el.dataset.description || '';
-      const triggers = el.dataset.triggers || '';
+      const author = el.dataset.author || '';
       const itemCategory = el.dataset.category || '';
-      const itemComplexity = el.dataset.complexity || '';
 
       const matchesSearch = !searchTerm || 
         name.includes(searchTerm) || 
         description.includes(searchTerm) ||
-        triggers.includes(searchTerm);
+        author.includes(searchTerm);
       
       const matchesCategory = !category || itemCategory === category;
-      const matchesComplexity = !complexity || itemComplexity === complexity;
 
-      if (matchesSearch && matchesCategory && matchesComplexity) {
+      if (matchesSearch && matchesCategory) {
         el.classList.remove('hidden');
         visibleCount++;
       } else {
@@ -178,5 +190,4 @@ const categories = registry.categories;
 
   searchInput?.addEventListener('input', filterSkills);
   categoryFilter?.addEventListener('change', filterSkills);
-  complexityFilter?.addEventListener('change', filterSkills);
 </script>

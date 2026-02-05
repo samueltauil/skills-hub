@@ -1,0 +1,9 @@
+[submodule "sources/awesome-copilot"]
+	path = sources/awesome-copilot
+	url = https://github.com/github/awesome-copilot.git
+[submodule "sources/anthropics-skills"]
+	path = sources/anthropics-skills
+	url = https://github.com/anthropics/skills.git
+[submodule "sources/mcp-ext-apps"]
+	path = sources/mcp-ext-apps
+	url = https://github.com/modelcontextprotocol/ext-apps.git

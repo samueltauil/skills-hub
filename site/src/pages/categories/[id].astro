@@ -1,22 +1,73 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
-import registry from '../../../../skills/registry.json';
+import skillsData from '../../data/skills.json';
+
+// Define category metadata (icons, names, descriptions)
+const categoryMeta: Record<string, { name: string; icon: string; description: string }> = {
+  'git-version-control': { name: 'Git & Version Control', icon: '🔀', description: 'Skills for Git operations, branching, merging, and version control workflows' },
+  'code-quality': { name: 'Code Quality & Refactoring', icon: '✨', description: 'Skills for improving code quality, refactoring, and following best practices' },
+  'documentation': { name: 'Documentation', icon: '📝', description: 'Skills for generating and maintaining documentation' },
+  'diagrams': { name: 'Diagrams & Visualization', icon: '📊', description: 'Skills for creating diagrams, flowcharts, and visual representations' },
+  'testing': { name: 'Testing', icon: '🧪', description: 'Skills for writing and managing tests' },
+  'api-backend': { name: 'API & Backend', icon: '🔌', description: 'Skills for API development and backend services' },
+  'frontend-ui': { name: 'Frontend & UI', icon: '🎨', description: 'Skills for frontend development and UI components' },
+  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀', description: 'Skills for deployment, CI/CD pipelines, and DevOps workflows' },
+  'security': { name: 'Security', icon: '🔒', description: 'Skills for security analysis and best practices' },
+  'data-analytics': { name: 'Data & Analytics', icon: '📈', description: 'Skills for data processing and analytics' },
+  'office-documents': { name: 'Office Documents', icon: '📄', description: 'Skills for working with office documents and formats' },
+  'mcp-development': { name: 'MCP Development', icon: '🔧', description: 'Skills for Model Context Protocol development' },
+  'general': { name: 'General', icon: '📦', description: 'General-purpose development skills' }
+};
 
 export function getStaticPaths() {
-  return registry.categories.map(category => ({
-    params: { id: category.id },
-    props: { category }
+  // Define category metadata inside getStaticPaths for build-time access
+  const catMeta: Record<string, { name: string; icon: string; description: string }> = {
+    'git-version-control': { name: 'Git & Version Control', icon: '🔀', description: 'Skills for Git operations, branching, merging, and version control workflows' },
+    'code-quality': { name: 'Code Quality & Refactoring', icon: '✨', description: 'Skills for improving code quality, refactoring, and following best practices' },
+    'documentation': { name: 'Documentation', icon: '📝', description: 'Skills for generating and maintaining documentation' },
+    'diagrams': { name: 'Diagrams & Visualization', icon: '📊', description: 'Skills for creating diagrams, flowcharts, and visual representations' },
+    'testing': { name: 'Testing', icon: '🧪', description: 'Skills for writing and managing tests' },
+    'api-backend': { name: 'API & Backend', icon: '🔌', description: 'Skills for API development and backend services' },
+    'frontend-ui': { name: 'Frontend & UI', icon: '🎨', description: 'Skills for frontend development and UI components' },
+    'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀', description: 'Skills for deployment, CI/CD pipelines, and DevOps workflows' },
+    'security': { name: 'Security', icon: '🔒', description: 'Skills for security analysis and best practices' },
+    'data-analytics': { name: 'Data & Analytics', icon: '📈', description: 'Skills for data processing and analytics' },
+    'office-documents': { name: 'Office Documents', icon: '📄', description: 'Skills for working with office documents and formats' },
+    'mcp-development': { name: 'MCP Development', icon: '🔧', description: 'Skills for Model Context Protocol development' },
+    'general': { name: 'General', icon: '📦', description: 'General-purpose development skills' }
+  };
+
+  // Generate paths for all categories that have skills
+  const categoryIds = [...new Set(skillsData.skills.map(s => s.category || 'general'))].sort();
+  
+  return categoryIds.map(id => ({
+    params: { id },
+    props: { 
+      category: {
+        id,
+        name: catMeta[id]?.name || id,
+        icon: catMeta[id]?.icon || '📁',
+        description: catMeta[id]?.description || `Skills in the ${id} category`
+      }
+    }
   }));
 }
 
+const skills = skillsData.skills;
+
 interface Props {
-  category: typeof registry.categories[0];
+  category: {
+    id: string;
+    name: string;
+    icon: string;
+    description: string;
+  };
 }
 
 const { category } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
-const skills = registry.skills.filter(s => s.category === category.id);
+const categorySkills = skills.filter(s => (s.category || 'general') === category.id);
 ---
 
 <Layout title={category.name} description={category.description}>
@@ -42,18 +93,17 @@ const skills = registry.skills.filter(s => s.category === category.id);
 
   <section class="section">
     <div class="container">
-      <p class="result-count">{skills.length} skill{skills.length !== 1 ? 's' : ''} in this category</p>
+      <p class="result-count">{categorySkills.length} skill{categorySkills.length !== 1 ? 's' : ''} in this category</p>
       
-      {skills.length > 0 ? (
+      {categorySkills.length > 0 ? (
         <div class="grid grid-3">
-          {skills.map(skill => (
+          {categorySkills.map(skill => (
             <SkillCard 
               id={skill.id}
               name={skill.name}
               description={skill.description}
-              category={skill.category}
-              complexity={skill.complexity}
-              triggers={skill.triggers}
+              category={skill.category || 'general'}
+              author={skill.author}
             />
           ))}
         </div>

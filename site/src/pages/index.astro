@@ -4,13 +4,39 @@ import SkillCard from '../components/SkillCard.astro';
 import CategoryCard from '../components/CategoryCard.astro';
 import SearchBar from '../components/SearchBar.astro';
 
-// Import registry data
-import registry from '../../../skills/registry.json';
+// Import aggregated skills data
+import skillsData from '../data/skills.json';
 
-const featuredSkills = registry.skills.slice(0, 6);
-const categories = registry.categories.map(cat => ({
-  ...cat,
-  count: registry.skills.filter(s => s.category === cat.id).length
+// Category metadata
+const categoryMeta: Record<string, { name: string; icon: string; description: string }> = {
+  'code-quality': { name: 'Code Quality', icon: '✨', description: 'Improve code quality and maintainability' },
+  'testing': { name: 'Testing', icon: '🧪', description: 'Testing and test automation skills' },
+  'documentation': { name: 'Documentation', icon: '📝', description: 'Documentation and knowledge management' },
+  'devops': { name: 'DevOps', icon: '🚀', description: 'CI/CD, deployment, and infrastructure' },
+  'security': { name: 'Security', icon: '🔒', description: 'Security analysis and best practices' },
+  'productivity': { name: 'Productivity', icon: '⚡', description: 'Boost development productivity' },
+  'frameworks': { name: 'Frameworks', icon: '🏗️', description: 'Framework-specific development skills' },
+  'databases': { name: 'Databases', icon: '🗄️', description: 'Database design and optimization' },
+  'api': { name: 'API', icon: '🔌', description: 'API design and integration' },
+  'ai-ml': { name: 'AI & ML', icon: '🤖', description: 'AI and machine learning development' },
+  'general': { name: 'General', icon: '📦', description: 'General-purpose development skills' },
+};
+
+const featuredSkills = skillsData.skills.slice(0, 6);
+
+// Build categories with counts from skills
+const categoryCounts = skillsData.skills.reduce((acc, skill) => {
+  const cat = skill.category || 'general';
+  acc[cat] = (acc[cat] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+const categories = Object.entries(categoryCounts).map(([id, count]) => ({
+  id,
+  name: categoryMeta[id]?.name || id,
+  description: categoryMeta[id]?.description || '',
+  icon: categoryMeta[id]?.icon || '📦',
+  count
 }));
 ---
 
@@ -27,11 +53,11 @@ const categories = registry.categories.map(cat => ({
       </div>
       <div class="hero-stats">
         <span class="stat">
-          <strong>{registry.skills.length}</strong> Skills
+          <strong>{skillsData.skills.length}</strong> Skills
         </span>
         <span class="stat-divider">·</span>
         <span class="stat">
-          <strong>{registry.categories.length}</strong> Categories
+          <strong>{categories.length}</strong> Categories
         </span>
       </div>
     </div>
@@ -51,8 +77,7 @@ const categories = registry.categories.map(cat => ({
             name={skill.name}
             description={skill.description}
             category={skill.category}
-            complexity={skill.complexity}
-            triggers={skill.triggers}
+            author={skill.author}
           />
         ))}
       </div>
@@ -89,8 +114,9 @@ const categories = registry.categories.map(cat => ({
       <div class="install-steps">
         <div class="step">
           <div class="step-number">1</div>
-          <h3>Add as Git Submodule</h3>
-          <pre><code>git submodule add &lt;skill-repo&gt; .github/skills/&lt;skill-name&gt;</code></pre>
+          <h3>Copy Skill Files</h3>
+          <p class="step-desc">Click "Copy All Files" on any skill page to copy all files to your clipboard, then create the folder in your project.</p>
+          <pre><code>.github/skills/&lt;skill-name&gt;/</code></pre>
         </div>
         <div class="step">
           <div class="step-number">2</div>

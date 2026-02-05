@@ -1,20 +1,63 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import registry from '../../../../skills/registry.json';
+import skillsData from '../../data/skills.json';
+
+// Define category metadata (icons and names)
+const categoryMeta: Record<string, { name: string; icon: string }> = {
+  'git-version-control': { name: 'Git & Version Control', icon: '🔀' },
+  'code-quality': { name: 'Code Quality & Refactoring', icon: '✨' },
+  'documentation': { name: 'Documentation', icon: '📝' },
+  'diagrams': { name: 'Diagrams & Visualization', icon: '📊' },
+  'testing': { name: 'Testing', icon: '🧪' },
+  'api-backend': { name: 'API & Backend', icon: '🔌' },
+  'frontend-ui': { name: 'Frontend & UI', icon: '🎨' },
+  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀' },
+  'security': { name: 'Security', icon: '🔒' },
+  'data-analytics': { name: 'Data & Analytics', icon: '📈' },
+  'office-documents': { name: 'Office Documents', icon: '📄' },
+  'mcp-development': { name: 'MCP Development', icon: '🔧' },
+  'general': { name: 'General', icon: '📦' }
+};
 
 export function getStaticPaths() {
-  return registry.skills.map(skill => ({
+  return skillsData.skills.map(skill => ({
     params: { id: skill.id },
     props: { skill }
   }));
 }
 
+interface SkillFile {
+  path: string;
+  name: string;
+  content: string;
+}
+
 interface Props {
-  skill: typeof registry.skills[0];
+  skill: {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    category: string;
+    author: string;
+    license: string;
+    source: {
+      repo: string;
+      repoName: string;
+      path: string;
+      branch: string;
+    };
+    files: SkillFile[];
+    skillMdContent: string;
+    tags: string[];
+    featured: boolean;
+    complexity: string;
+    platforms: string[];
+  };
 }
 
 const { skill } = Astro.props;
-const category = registry.categories.find(c => c.id === skill.category);
+const category = categoryMeta[skill.category] || { name: skill.category, icon: '📁' };
 const baseUrl = import.meta.env.BASE_URL;
 
 const complexityColors = {
@@ -23,25 +66,53 @@ const complexityColors = {
   advanced: 'badge-primary'
 };
 
-// Generate install commands - skills are in subdirectories, so we need sparse checkout
-const skillName = skill.name; // folder name must match frontmatter name
+const skillName = skill.name;
 const skillPath = `.github/skills/${skillName}`;
-const repoName = skill.source.repoName || skill.source.repo.replace('https://github.com/', '');
-const sourcePath = skill.source.path;
-const rawSkillUrl = `https://raw.githubusercontent.com/${repoName}/main/${sourcePath}/SKILL.md`;
+const repoName = skill.source.repoName;
 
-// Method 1: Git sparse checkout (preferred for keeping in sync)
-const sparseCloneCmd = `git clone --filter=blob:none --sparse ${skill.source.repo} temp-skill
-cd temp-skill
-git sparse-checkout set ${sourcePath}
-cd ..
-mkdir -p ${skillPath}
-cp -r temp-skill/${sourcePath}/* ${skillPath}/
-rm -rf temp-skill`;
+// Get file extension for syntax highlighting
+function getFileLanguage(filename: string): string {
+  const ext = filename.split('.').pop()?.toLowerCase();
+  const langMap: Record<string, string> = {
+    'py': 'python',
+    'js': 'javascript',
+    'ts': 'typescript',
+    'md': 'markdown',
+    'json': 'json',
+    'yaml': 'yaml',
+    'yml': 'yaml',
+    'sh': 'bash',
+    'bash': 'bash',
+    'css': 'css',
+    'html': 'html',
+    'tsx': 'typescript',
+    'jsx': 'javascript'
+  };
+  return langMap[ext || ''] || 'text';
+}
 
-// Method 2: Direct download (simplest)
-const directDownloadCmd = `mkdir -p ${skillPath}
-curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
+// Group files by directory
+function groupFilesByDir(files: SkillFile[]): Map<string, SkillFile[]> {
+  const groups = new Map<string, SkillFile[]>();
+  
+  for (const file of files) {
+    const dir = file.path.includes('/') ? file.path.split('/').slice(0, -1).join('/') : '';
+    if (!groups.has(dir)) {
+      groups.set(dir, []);
+    }
+    groups.get(dir)!.push(file);
+  }
+  
+  return groups;
+}
+
+const fileGroups = groupFilesByDir(skill.files);
+
+// Generate the complete skill folder content for one-click copy
+const allFilesJson = JSON.stringify(skill.files.map(f => ({
+  path: `${skillPath}/${f.path}`,
+  content: f.content
+})), null, 2);
 ---
 
 <Layout title={skill.name} description={skill.description}>
@@ -63,12 +134,10 @@ curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
         <p class="skill-description">{skill.description}</p>
         
         <div class="skill-meta">
-          {category && (
-            <a href={`${baseUrl}categories/${category.id}/`} class="meta-item">
-              <span class="meta-icon">{category.icon}</span>
-              <span>{category.name}</span>
-            </a>
-          )}
+          <a href={`${baseUrl}categories/${skill.category}/`} class="meta-item">
+            <span class="meta-icon">{category.icon}</span>
+            <span>{category.name}</span>
+          </a>
           <a href={skill.source.repo} target="_blank" rel="noopener noreferrer" class="meta-item">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
@@ -81,6 +150,13 @@ curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
               <path d="M12 16v-4M12 8h.01"/>
             </svg>
             <span>{skill.license}</span>
+          </span>
+          <span class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <span>{skill.files.length} files</span>
           </span>
         </div>
       </header>
@@ -96,8 +172,8 @@ curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
             — give them a star!
           </span>
         </div>
-        <a href={`${skill.source.repo}/tree/main/${sourcePath}`} target="_blank" rel="noopener noreferrer" class="attribution-link">
-          View SKILL.md
+        <a href={`${skill.source.repo}/tree/main/${skill.source.path}`} target="_blank" rel="noopener noreferrer" class="attribution-link">
+          View on GitHub
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
             <polyline points="15 3 21 3 21 9"/>
@@ -108,52 +184,85 @@ curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
 
       <div class="skill-content">
         <div class="main-content">
-          {skill.triggers && skill.triggers.length > 0 && (
-            <section class="content-section">
-              <h2>Triggers</h2>
-              <p class="text-secondary">This skill activates when you mention:</p>
-              <div class="triggers-list">
-                {skill.triggers.map(trigger => (
-                  <code class="trigger">{trigger}</code>
-                ))}
-              </div>
-            </section>
-          )}
-
-          <section class="content-section">
-            <h2>Installation</h2>
-            <p class="text-secondary" style="margin-bottom: 1rem;">Skills are auto-discovered from <code>.github/skills/</code> — the folder name must match <code>{skillName}</code>.</p>
+          <!-- Installation Section -->
+          <section class="content-section installation-section">
+            <h2>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Installation
+            </h2>
             
-            <div class="install-method">
-              <h3>Option 1: Direct Download (Recommended)</h3>
-              <p class="method-description">Quick one-time setup — download the skill file directly:</p>
-              <div class="code-block">
-                <pre><code>{directDownloadCmd}</code></pre>
-                <button class="copy-btn" data-copy={directDownloadCmd} title="Copy to clipboard">
+            <div class="install-card">
+              <div class="install-header">
+                <div class="install-info">
+                  <p>Copy this skill to your repository at:</p>
+                  <code class="install-path">{skillPath}/</code>
+                </div>
+                <button id="copy-all-btn" class="copy-all-btn" data-files={allFilesJson} title="Copy all files to clipboard">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
                   </svg>
+                  <span>Copy All Files</span>
                 </button>
               </div>
-            </div>
-
-            <div class="install-method">
-              <h3>Option 2: Git Sparse Checkout (For Updates)</h3>
-              <p class="method-description">Clone only this skill from the source repo:</p>
-              <div class="code-block">
-                <pre><code>{sparseCloneCmd}</code></pre>
-                <button class="copy-btn" data-copy={sparseCloneCmd} title="Copy to clipboard">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                  </svg>
-                </button>
+              
+              <div class="install-note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+                <p>The folder name must match <code>{skillName}</code> for Copilot to auto-discover it.</p>
               </div>
             </div>
+          </section>
 
-            <div class="install-note">
-              <p><strong>Important:</strong> The folder name (<code>{skillName}</code>) must match the skill's <code>name</code> frontmatter for Copilot to discover it correctly.</p>
+          <!-- Files Section -->
+          <section class="content-section files-section">
+            <h2>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+              </svg>
+              Skill Files ({skill.files.length})
+            </h2>
+            
+            <div class="file-tree">
+              {Array.from(fileGroups.entries()).map(([dir, files]) => (
+                <div class="file-group">
+                  {dir && (
+                    <div class="folder-header">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                      </svg>
+                      <span>{dir}/</span>
+                    </div>
+                  )}
+                  {files.map(file => (
+                    <details class="file-item" data-path={file.path}>
+                      <summary>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                          <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        <span class="file-name">{file.name}</span>
+                        <span class="file-size">{(file.content.length / 1024).toFixed(1)} KB</span>
+                        <button class="copy-file-btn" data-content={file.content} data-path={file.path} title="Copy file content">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                          </svg>
+                        </button>
+                      </summary>
+                      <div class="file-content">
+                        <pre><code class={`language-${getFileLanguage(file.name)}`}>{file.content}</code></pre>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              ))}
             </div>
           </section>
         </div>
@@ -192,7 +301,7 @@ curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
             <h3>Related Skills</h3>
             <p class="text-secondary">Other skills in {category?.name || skill.category}</p>
             <ul class="related-list">
-              {registry.skills
+              {skillsData.skills
                 .filter(s => s.category === skill.category && s.id !== skill.id)
                 .slice(0, 3)
                 .map(related => (
@@ -351,81 +460,211 @@ curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
   }
 
   .content-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .content-section h2 svg {
+    color: var(--color-accent);
+  }
+
+  /* Installation Section */
+  .install-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+
+  .install-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     margin-bottom: 1rem;
   }
 
-  .triggers-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
-
-  .trigger {
-    padding: 0.5rem 1rem;
+  .install-info p {
     font-size: 0.875rem;
-  }
-
-  .install-method {
-    margin-bottom: 1.5rem;
-  }
-
-  .install-method h3 {
-    font-size: 1rem;
-    font-weight: 500;
+    color: var(--color-text-secondary);
     margin-bottom: 0.5rem;
   }
 
-  .method-description {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 0.75rem;
-  }
-
-  .code-block {
-    position: relative;
-  }
-
-  .code-block pre {
-    padding-right: 3rem;
-    font-size: 0.8125rem;
-    line-height: 1.6;
-  }
-
-  .copy-btn {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+  .install-path {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
     background: var(--color-bg-tertiary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    padding: 0.5rem;
-    cursor: pointer;
-    color: var(--color-text-secondary);
-    transition: all 0.2s ease;
+    border-radius: var(--radius-md);
   }
 
-  .copy-btn:hover {
-    background: var(--color-border);
-    color: var(--color-text);
+  .copy-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .copy-all-btn:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  .copy-all-btn.copied {
+    background: var(--color-success);
   }
 
   .install-note {
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-left: 3px solid var(--color-accent);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--color-bg-tertiary);
     border-radius: var(--radius-md);
-    padding: 1rem;
-    margin-top: 1rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+  }
+
+  .install-note svg {
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    color: var(--color-accent);
   }
 
   .install-note p {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
     margin: 0;
   }
 
+  /* Files Section */
+  .file-tree {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .file-group {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .file-group:last-child {
+    border-bottom: none;
+  }
+
+  .folder-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-tertiary);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .folder-header svg {
+    color: var(--color-accent);
+  }
+
+  .file-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .file-item:last-child {
+    border-bottom: none;
+  }
+
+  .file-item summary {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background 0.15s ease;
+    list-style: none;
+  }
+
+  .file-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .file-item summary:hover {
+    background: var(--color-bg-tertiary);
+  }
+
+  .file-item[open] summary {
+    background: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .file-item summary svg {
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+  }
+
+  .file-name {
+    flex: 1;
+  }
+
+  .file-size {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin-right: 0.5rem;
+  }
+
+  .copy-file-btn {
+    padding: 0.375rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: all 0.15s ease;
+    opacity: 0;
+  }
+
+  .file-item summary:hover .copy-file-btn {
+    opacity: 1;
+  }
+
+  .copy-file-btn:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+  }
+
+  .copy-file-btn.copied {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: white;
+    opacity: 1;
+  }
+
+  .file-content {
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  .file-content pre {
+    margin: 0;
+    border-radius: 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* Sidebar */
   .sidebar-card {
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
@@ -505,6 +744,16 @@ curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
       flex-direction: column;
       align-items: flex-start;
     }
+
+    .install-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .copy-all-btn {
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   @media (max-width: 640px) {
@@ -516,19 +765,57 @@ curl -o ${skillPath}/SKILL.md ${rawSkillUrl}`;
     .skill-title-row h1 {
       font-size: 1.75rem;
     }
+
+    .copy-file-btn {
+      opacity: 1;
+    }
   }
 </style>
 
 <script>
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const text = (btn as HTMLElement).dataset.copy;
-      if (text) {
-        navigator.clipboard.writeText(text);
-        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+  // Copy all files button
+  const copyAllBtn = document.getElementById('copy-all-btn');
+  if (copyAllBtn) {
+    copyAllBtn.addEventListener('click', async () => {
+      const files = JSON.parse(copyAllBtn.dataset.files || '[]');
+      
+      // Create a formatted output for copying
+      const output = files.map(f => 
+        `// ${f.path}\n${f.content}`
+      ).join('\n\n---\n\n');
+      
+      try {
+        await navigator.clipboard.writeText(output);
+        copyAllBtn.classList.add('copied');
+        copyAllBtn.querySelector('span')!.textContent = 'Copied!';
+        
         setTimeout(() => {
-          btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+          copyAllBtn.classList.remove('copied');
+          copyAllBtn.querySelector('span')!.textContent = 'Copy All Files';
         }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+  }
+
+  // Individual file copy buttons
+  document.querySelectorAll('.copy-file-btn').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const content = (btn as HTMLButtonElement).dataset.content;
+      
+      try {
+        await navigator.clipboard.writeText(content || '');
+        btn.classList.add('copied');
+        
+        setTimeout(() => {
+          btn.classList.remove('copied');
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
       }
     });
   });

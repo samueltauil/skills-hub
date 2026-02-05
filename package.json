@@ -1,0 +1,19 @@
+{
+  "name": "skillpilot",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Skills Hub - Curated catalog of GitHub Copilot skills",
+  "scripts": {
+    "aggregate": "node scripts/aggregate-skills.js",
+    "build": "npm run aggregate && cd site && npm run build",
+    "dev": "npm run aggregate && cd site && npm run dev",
+    "update-submodules": "git submodule update --remote --merge"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18"
+  }
+}
