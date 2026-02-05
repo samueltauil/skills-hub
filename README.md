@@ -6,7 +6,7 @@
 
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success?logo=github)](https://samueltauil.github.io/skillpilot)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success?logo=github)](https://samueltauil.github.io/skills-hub)
 [![Skills Count](https://img.shields.io/badge/Skills-10+-blue)](./skills/registry.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -23,7 +23,7 @@
 
 ## Browse Skills
 
-Visit the live site: **[skills-hub.dev](https://skills-hub.dev)** *(or [samueltauil.github.io/skillpilot](https://samueltauil.github.io/skillpilot))*
+Visit the live site: **[skills-hub.dev](https://skills-hub.dev)** *(or [samueltauil.github.io/skills-hub](https://samueltauil.github.io/skills-hub))*
 
 Or explore the [skills registry](./skills/registry.json) directly.
 
@@ -68,7 +68,7 @@ curl -o .github/skills/conventional-commits/SKILL.md \
 ## Project Structure
 
 ```
-skillpilot/
+skills-hub/
 ├── .github/
 │   ├── workflows/        # CI/CD for deployment & validation
 │   ├── ISSUE_TEMPLATE/   # Issue templates
@@ -93,7 +93,7 @@ The site deploys automatically via GitHub Actions when changes are pushed to `ma
 
 ### Option 1: GitHub Pages (Default)
 
-Works out of the box at `username.github.io/skillpilot`.
+Works out of the box at `username.github.io/skills-hub`.
 
 ### Option 2: Custom Domain (Recommended for Production)
 

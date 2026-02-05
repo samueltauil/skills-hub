@@ -61,13 +61,13 @@ your-repo/
 
 ### Step 2: Fork the Skills Hub Repository
 
-1. Go to [github.com/samueltauil/skillpilot](https://github.com/samueltauil/skillpilot)
+1. Go to [github.com/samueltauil/skills-hub](https://github.com/samueltauil/skills-hub)
 2. Click **Fork** in the top-right corner
 3. Clone your fork locally:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/skillpilot.git
-cd skillpilot
+git clone https://github.com/YOUR_USERNAME/skills-hub.git
+cd skills-hub
 ```
 
 ### Step 3: Add Your Skill to the Registry
@@ -201,7 +201,7 @@ ajv validate -s skills/schema.json -d skills/registry.json
 
 ## Questions?
 
-- Open a [GitHub Issue](https://github.com/samueltauil/skillpilot/issues)
+- Open a [GitHub Issue](https://github.com/samueltauil/skills-hub/issues)
 - Check existing skills in `registry.json` for examples
 
 ---

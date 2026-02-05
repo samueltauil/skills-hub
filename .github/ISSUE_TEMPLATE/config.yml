@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Contribution Guide
-    url: https://github.com/samueltauil/skillpilot/blob/main/CONTRIBUTING.md
+    url: https://github.com/samueltauil/skills-hub/blob/main/CONTRIBUTING.md
     about: Learn how to add a new skill to the registry
   - name: Discussions
-    url: https://github.com/samueltauil/skillpilot/discussions
+    url: https://github.com/samueltauil/skills-hub/discussions
     about: Ask questions or discuss ideas
