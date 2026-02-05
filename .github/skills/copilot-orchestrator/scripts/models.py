@@ -343,6 +343,10 @@ class TaskEnvelope(BaseModel):
     created_at: datetime = Field(default_factory=datetime.utcnow)
     metadata: dict[str, Any] = Field(default_factory=dict)
     
+    # Template-first execution support (Mother of All Skills)
+    template_name: str | None = Field(default=None, description="Matched template from awesome-copilot patterns")
+    template_data: dict[str, Any] = Field(default_factory=dict, description="Template triggers, instructions, and tools")
+    
     def to_sdk_config(self) -> dict[str, Any]:
         """
         Convert envelope to SDK session configuration.

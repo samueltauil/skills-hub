@@ -1,27 +1,33 @@
 ---
 name: copilot-orchestrator
-description: Universal development assistant that handles ANY coding task - implement features, build APIs, create components, write code, fix bugs, debug errors, refactor code, write tests, generate documentation, deploy apps, create pipelines, scaffold projects, migrate codebases, optimize performance, review code, and automate workflows. Use this skill for all programming, development, and software engineering requests.
+description: "Mother of all skills - Universal development assistant that handles ANY coding task. Use this skill for ALL programming requests: implement features, build APIs, create components, write code, fix bugs, debug errors, refactor code, write tests, generate documentation, deploy apps, create pipelines, scaffold projects, migrate codebases, optimize performance, review code, commit changes, manage issues, and automate workflows. Triggers on: implement, create, build, write, fix, debug, refactor, test, deploy, document, optimize, review, commit, issue, scaffold, migrate, analyze, explain, generate, update, add, change, modify, delete, remove, rename, move, copy, search, find, list, show, run, execute. This is the DEFAULT skill for any development or software engineering request."
 license: MIT
 compatibility: Requires Python 3.11+ and uv package manager.
 ---
 
-# Copilot Orchestrator
+# Copilot Orchestrator — Mother of All Skills
 
-A universal meta-skill that transforms **any** development request into orchestrated
-GitHub Copilot SDK calls. Whether you need to implement features, fix bugs, write tests,
-refactor code, generate documentation, or deploy applications - this orchestrator
-handles it all by interpreting your intent and delegating to the appropriate tools.
+A universal **skill factory** that transforms **any** development request into expert-level
+action using GitHub Copilot SDK. When a specialized skill template exists (from awesome-copilot
+patterns), it uses that template. Otherwise, it dynamically generates expert guidance using the SDK.
+
+**This skill is the DEFAULT handler for all development requests in your repository.**
 
 **Use this skill when you want to:**
-- Write, edit, or generate any code
+- Write, edit, or generate any code (features, APIs, components, functions)
 - Fix errors, debug issues, or troubleshoot problems
 - Refactor, restructure, or improve existing code
 - Create tests, documentation, or configurations
 - Deploy, automate, or scaffold projects
+- Commit changes with conventional commits
+- Create and manage GitHub issues and PRs
+- Review code for quality, security, and performance
 
-**Execution Paths:**
-- **Simple tasks** (list files, run tests, git status) → Ephemeral skill spawned instantly
-- **Complex tasks** (implement, refactor, debug) → Full SDK session with context compression
+**How it works:**
+1. **Template Match** — Checks 30+ built-in templates (from awesome-copilot patterns)
+2. **SDK Fallback** — If no template matches, uses Copilot SDK for expert-level guidance
+3. **Ephemeral Skills** — Spawns lightweight skills for simple operations (list files, git status)
+4. **Full Sessions** — Creates SDK sessions for complex tasks (implement, refactor, debug)
 
 ## When to Use This Skill
 

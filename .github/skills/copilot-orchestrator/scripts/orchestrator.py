@@ -119,60 +119,94 @@ class TaskClassifier:
     """
     Classify user intent into task types.
     
-    Uses keyword matching with confidence scoring to determine
-    the most likely task type from user input.
+    Mother of All Skills classifier - designed to catch ANY development request.
+    Uses extensive keyword matching with confidence scoring.
     
-    The classifier looks for:
-    - Action keywords (implement, test, debug, etc.)
-    - Domain keywords (API, database, authentication, etc.)
-    - Context clues from the workspace
+    The classifier defaults to IMPLEMENT for unrecognized requests,
+    ensuring we always handle development tasks.
     """
     
-    # Keyword mappings for each task type
+    # Comprehensive keyword mappings for each task type
     TASK_KEYWORDS: dict[TaskType, list[str]] = {
         TaskType.IMPLEMENT: [
-            "implement", "create", "add", "build", "make", "write",
-            "develop", "code", "feature", "new", "endpoint", "function"
+            # Core implementation keywords
+            "implement", "create", "add", "build", "make", "write", "develop",
+            "code", "feature", "new", "endpoint", "function", "method", "class",
+            # API and backend
+            "api", "rest", "graphql", "grpc", "websocket", "server", "backend",
+            "route", "handler", "controller", "service", "repository", "model",
+            # Frontend and UI
+            "component", "page", "view", "form", "button", "modal", "dialog",
+            "ui", "ux", "frontend", "interface", "widget", "layout",
+            # Database and storage
+            "database", "schema", "migration", "query", "crud", "entity",
+            "table", "collection", "index", "relation",
+            # Auth and security
+            "auth", "authentication", "authorization", "login", "signup",
+            "oauth", "jwt", "token", "session", "permission", "role",
+            # Generic action verbs
+            "setup", "configure", "initialize", "start", "enable", "support",
+            "integrate", "connect", "link", "extend", "enhance"
         ],
         TaskType.ANALYZE: [
             "analyze", "review", "inspect", "check", "examine", "audit",
-            "understand", "explain", "what does", "how does", "find"
+            "understand", "explain", "what does", "how does", "find",
+            "investigate", "explore", "discover", "trace", "track",
+            "assess", "evaluate", "study", "research", "look at",
+            "show me", "tell me", "describe", "summarize", "overview"
         ],
         TaskType.REFACTOR: [
-            "refactor", "improve", "optimize", "clean", "restructure",
-            "simplify", "reorganize", "extract", "rename", "move"
+            "refactor", "improve", "enhance", "clean", "restructure",
+            "simplify", "reorganize", "extract", "rename", "move",
+            "split", "merge", "combine", "consolidate", "modularize",
+            "decouple", "abstract", "generalize", "normalize", "dry",
+            "reduce complexity", "reduce duplication", "improve readability"
         ],
         TaskType.DEBUG: [
             "debug", "fix", "error", "bug", "issue", "problem",
-            "broken", "failing", "crash", "exception", "not working"
+            "broken", "failing", "crash", "exception", "not working",
+            "undefined", "null", "nan", "timeout", "hang", "freeze",
+            "memory leak", "race condition", "deadlock", "infinite loop",
+            "wrong", "incorrect", "unexpected", "missing", "failed"
         ],
         TaskType.TEST: [
             "test", "tests", "testing", "spec", "coverage", "unit",
-            "integration", "e2e", "assert", "verify", "validate"
+            "integration", "e2e", "end-to-end", "assert", "verify", "validate",
+            "mock", "stub", "fake", "spy", "fixture", "snapshot",
+            "jest", "pytest", "mocha", "vitest", "playwright", "cypress"
         ],
         TaskType.GENERATE: [
             "generate", "scaffold", "template", "boilerplate", "starter",
-            "init", "setup", "bootstrap", "create project"
+            "init", "setup", "bootstrap", "create project", "new project",
+            "documentation", "readme", "changelog", "license", "config",
+            "schema", "types", "interfaces", "models", "dto"
         ],
         TaskType.DEPLOY: [
             "deploy", "release", "publish", "ship", "production",
-            "staging", "ci/cd", "pipeline", "docker", "kubernetes"
+            "staging", "ci/cd", "pipeline", "docker", "kubernetes",
+            "container", "helm", "terraform", "ansible", "aws", "azure",
+            "gcp", "cloud", "serverless", "lambda", "function app"
         ],
         TaskType.AUTOMATE: [
             "automate", "script", "workflow", "action", "schedule",
-            "cron", "batch", "pipeline", "process"
+            "cron", "batch", "pipeline", "process", "task", "job",
+            "github action", "gitlab ci", "jenkins", "makefile"
         ],
         TaskType.SCAFFOLD: [
             "scaffold", "structure", "layout", "architecture", "setup",
-            "directory", "project structure", "folder"
+            "directory", "project structure", "folder", "workspace",
+            "monorepo", "package", "module", "library"
         ],
         TaskType.MIGRATE: [
             "migrate", "upgrade", "convert", "port", "transition",
-            "switch", "move to", "update from", "replace"
+            "switch", "move to", "update from", "replace", "transform",
+            "version", "v2", "v3", "legacy", "modernize", "deprecate"
         ],
         TaskType.OPTIMIZE: [
             "optimize", "performance", "speed", "fast", "slow",
-            "memory", "cpu", "efficient", "bottleneck", "profile"
+            "memory", "cpu", "efficient", "bottleneck", "profile",
+            "bundle", "minify", "compress", "cache", "lazy", "async",
+            "parallel", "concurrent", "throughput", "latency"
         ]
     }
     
@@ -2922,7 +2956,7 @@ class Orchestrator:
     
     def __init__(self, config: OrchestratorConfig | None = None) -> None:
         """
-        Initialize orchestrator.
+        Initialize orchestrator — the Mother of All Skills.
         
         Args:
             config: Configuration options
@@ -2940,6 +2974,9 @@ class Orchestrator:
         
         # Ephemeral skill spawner - key for "skill factory" behavior
         self.skill_spawner = EphemeralSkillSpawner(workspace=self.config.workspace)
+        
+        # Skill catalog - provides template-first execution path
+        self.skill_catalog = SkillCatalog(workspace=self.config.workspace)
         
         # Session state
         self.session_info: SessionInfo | None = None
@@ -2959,11 +2996,12 @@ class Orchestrator:
         skill_handler_mode: bool = False
     ) -> SessionInfo | dict[str, Any]:
         """
-        Execute a user request.
+        Execute a user request — Mother of All Skills main entry point.
         
-        This is the main entry point. It decides between:
-        - Spawning an ephemeral skill for simple operations
-        - Using full SDK session for complex tasks
+        Execution priority:
+        1. Ephemeral skills for simple operations (list files, run tests, git status)
+        2. Template match from 30+ awesome-copilot patterns (REST API, testing, etc.)
+        3. Full SDK session with expert-level guidance (fallback for complex tasks)
         
         Args:
             request: User's request in natural language
@@ -2974,13 +3012,14 @@ class Orchestrator:
         Returns:
             SessionInfo or dict with results
         """
-        # First, check if an ephemeral skill can handle this directly
+        # =========================================================
+        # PATH 1: Ephemeral skills for simple, immediate operations
+        # =========================================================
         ephemeral_type = self.skill_spawner.select_skill_type(request)
         
         if ephemeral_type:
-            # Fast path: spawn ephemeral skill for specialized operation
             self.renderer.render_status(
-                f"Spawning ephemeral skill: {ephemeral_type}"
+                f"⚡ Ephemeral skill: {ephemeral_type}"
             )
             
             result = await self.skill_spawner.spawn_and_execute(
@@ -3004,7 +3043,6 @@ class Orchestrator:
             else:
                 self.renderer.render_error(result.get("error", "Unknown error"))
             
-            # Return as SessionInfo for consistency
             return SessionInfo(
                 session_id=self._generate_session_id(),
                 state=SessionState.COMPLETED,
@@ -3017,19 +3055,37 @@ class Orchestrator:
                 artifacts=[]
             )
         
-        # Full SDK path for complex tasks
+        # =========================================================
+        # PATH 2: Template match from 30+ awesome-copilot patterns
+        # =========================================================
+        matched_template = self.skill_catalog.suggest_template(request)
+        template_data: dict[str, Any] = {}
+        
+        if matched_template:
+            template_data = SKILL_TEMPLATES.get(matched_template, {})
+            self.renderer.render_status(
+                f"📋 Template match: {matched_template} — using expert pattern"
+            )
+        
+        # =========================================================
+        # PATH 3: Full SDK session with expert-level guidance
+        # =========================================================
         # Classify task if not provided
         if task_type is None:
             task_type, confidence = self.classifier.classify(request)
             self.renderer.render_status(
-                f"Classified as: {task_type.value} (confidence: {confidence:.0%})"
+                f"🎯 Task: {task_type.value} (confidence: {confidence:.0%})"
             )
         
-        # Create task envelope
+        # Create task envelope with template boost
         envelope = TaskEnvelope(
             task_type=task_type,
             original_request=request
         )
+        
+        # Store template data for enhanced prompts
+        envelope.template_name = matched_template
+        envelope.template_data = template_data
         
         # Initialize session
         self.session_info = SessionInfo(
@@ -3041,12 +3097,19 @@ class Orchestrator:
         
         try:
             # Gather context
-            self.renderer.render_status("Gathering context...")
+            self.renderer.render_status("🔍 Gathering context...")
             context = await self._gather_context(envelope)
             envelope.compressed_context = context
             
-            # Get tools for task
+            # Get tools for task (may be enhanced by template)
             tools = self.tool_factory.get_tools_for_task(task_type)
+            
+            # Add template-specific tools if available
+            if template_data.get("tools"):
+                self.renderer.render_status(
+                    f"🛠️ Template tools: {', '.join(template_data['tools'][:5])}"
+                )
+            
             tool_defs = self.tool_factory.to_sdk_tools(tools)
             
             # Build tool handlers map for real SDK mode
@@ -3057,10 +3120,10 @@ class Orchestrator:
             self.client.set_tool_handlers(tool_handlers)
             
             self.renderer.render_status(
-                f"Registered {len(tools)} tools for {task_type.value}"
+                f"✅ Registered {len(tools)} tools for {task_type.value}"
             )
             
-            # Create SDK session
+            # Create SDK session with template-enhanced prompt
             system_prompt = self._build_system_prompt(envelope)
             await self.client.create_session(tool_defs, system_prompt)
             
@@ -3108,19 +3171,46 @@ class Orchestrator:
         """
         Build system prompt for the SDK session.
         
-        The prompt:
-        - Establishes the assistant role
-        - Describes available tools
-        - Sets task-specific guidelines
+        Uses template data when available to provide expert-level guidance.
+        Falls back to generic guidelines for unmatched requests.
         """
-        return f"""You are an expert software development assistant operating in a {envelope.task_type.value} context.
+        # Check if we have a matched template
+        template_section = ""
+        if envelope.template_name and envelope.template_data:
+            template_instructions = envelope.template_data.get("instructions", [])
+            sdk_prompt = envelope.template_data.get("sdk_prompt", "")
+            
+            if sdk_prompt:
+                template_section = f"""
+## Expert Pattern: {envelope.template_name}
+
+{sdk_prompt}
+
+Expert Instructions:
+{chr(10).join(f"- {inst}" for inst in template_instructions)}
+"""
+            elif template_instructions:
+                template_section = f"""
+## Expert Pattern: {envelope.template_name}
+
+Follow these expert instructions:
+{chr(10).join(f"- {inst}" for inst in template_instructions)}
+"""
+        
+        # Build the full prompt
+        base_prompt = f"""You are an expert software development assistant operating as part of the **Mother of All Skills** system.
+
+Task Type: {envelope.task_type.value}
+{f"Template Match: {envelope.template_name}" if envelope.template_name else "No template match (using generic guidance)"}
 
 Your capabilities:
 - Read and analyze code files
-- Write and modify files
+- Write and modify files  
 - Execute commands and tests
 - Search for patterns and dependencies
-
+- Generate documentation and diagrams
+- Create tests and configurations
+{template_section}
 Guidelines for {envelope.task_type.value}:
 {self._get_task_guidelines(envelope.task_type)}
 
@@ -3128,7 +3218,10 @@ Important:
 - Always verify your understanding before making changes
 - Use tools to gather information before acting
 - Explain your reasoning
-- Handle errors gracefully"""
+- Handle errors gracefully
+- Follow existing code patterns and conventions"""
+        
+        return base_prompt
     
     def _get_task_guidelines(self, task_type: TaskType) -> str:
         """Get specific guidelines for a task type."""
