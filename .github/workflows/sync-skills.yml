@@ -1,0 +1,107 @@
+name: Sync Skills Weekly
+
+on:
+  schedule:
+    # Run every Sunday at 2:00 AM UTC
+    - cron: '0 2 * * 0'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync-skills:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update submodules
+        run: |
+          git submodule update --remote --merge
+          
+      - name: Check for submodule changes
+        id: check-submodules
+        run: |
+          if git diff --quiet; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "No submodule changes detected"
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "Submodule changes detected"
+          fi
+
+      - name: Setup Node.js
+        if: steps.check-submodules.outputs.changes == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        if: steps.check-submodules.outputs.changes == 'true'
+        run: |
+          cd site
+          npm ci
+
+      - name: Run aggregation script
+        if: steps.check-submodules.outputs.changes == 'true'
+        run: |
+          node scripts/aggregate-skills.js
+
+      - name: Check for skill changes
+        if: steps.check-submodules.outputs.changes == 'true'
+        id: check-skills
+        run: |
+          if git diff --quiet site/src/data/skills.json; then
+            echo "skill-changes=false" >> $GITHUB_OUTPUT
+            echo "No skill data changes"
+          else
+            echo "skill-changes=true" >> $GITHUB_OUTPUT
+            echo "Skill data updated"
+            # Show summary of changes
+            echo "### Changes detected:" >> $GITHUB_STEP_SUMMARY
+            git diff --stat site/src/data/skills.json >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Build site
+        if: steps.check-submodules.outputs.changes == 'true'
+        run: |
+          cd site
+          npm run build
+
+      - name: Commit and push changes
+        if: steps.check-submodules.outputs.changes == 'true'
+        run: |
+          git add -A
+          
+          # Get list of updated submodules
+          UPDATED_SUBMODULES=$(git diff --cached --name-only sources/ | head -5 | tr '\n' ', ' | sed 's/,$//')
+          
+          # Create commit message
+          COMMIT_MSG="chore: sync skills from upstream sources
+
+          Updated submodules: ${UPDATED_SUBMODULES:-'various sources'}
+          
+          Automated weekly sync by GitHub Actions"
+          
+          git commit -m "$COMMIT_MSG" || echo "No changes to commit"
+          git push
+
+      - name: Summary
+        run: |
+          echo "## Sync Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.check-submodules.outputs.changes }}" == "true" ]; then
+            echo "✅ Skills synchronized from upstream sources" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No upstream changes detected" >> $GITHUB_STEP_SUMMARY
+          fi
