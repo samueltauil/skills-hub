@@ -23,7 +23,7 @@
 
 ## Browse Skills
 
-Visit the live site: **[skills-hub.dev](https://skills-hub.dev)** *(or [samueltauil.github.io/skills-hub](https://samueltauil.github.io/skills-hub))*
+Visit the live site: **[samueltauil.github.io/skills-hub](https://samueltauil.github.io/skills-hub)**
 
 Or explore the [skills registry](./skills/registry.json) directly.
 
@@ -44,26 +44,32 @@ Or explore the [skills registry](./skills/registry.json) directly.
 
 ## Install a Skill
 
+**Skills are auto-discovered!** Just add them to `.github/skills/` and Copilot loads them automatically based on their `name` and `description` frontmatter.
+
 ### Option 1: Git Submodule (Recommended)
 
 ```bash
 # Example: Install the conventional-commits skill
-git submodule add https://github.com/github/awesome-copilot.git .github/skills/awesome-copilot
+git submodule add https://github.com/example/skill-repo.git .github/skills/conventional-commits
 ```
 
 ### Option 2: Direct Copy
 
 1. Find the skill on the website
-2. Click "View Raw" to see the SKILL.md
-3. Copy the content to `.github/skills/<skill-name>/SKILL.md` in your project
+2. Download or copy the skill folder
+3. Place it in `.github/skills/<skill-name>/` in your project
+4. Ensure the folder contains a `SKILL.md` file
 
 ### Option 3: Manual Download
 
 ```bash
-# Download a single skill file
+# Create skill directory and download SKILL.md
+mkdir -p .github/skills/conventional-commits
 curl -o .github/skills/conventional-commits/SKILL.md \
-  https://raw.githubusercontent.com/github/awesome-copilot/main/skills/git-commit/SKILL.md
+  https://raw.githubusercontent.com/example/skill-repo/main/SKILL.md
 ```
+
+> **Note:** No configuration needed! Copilot discovers skills automatically from `.github/skills/`.
 
 ## Project Structure
 

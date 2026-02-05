@@ -78,6 +78,7 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
 
           <section class="content-section">
             <h2>Installation</h2>
+            <p class="text-secondary" style="margin-bottom: 1rem;">Skills are auto-discovered from <code>.github/skills/</code> — no configuration needed!</p>
             
             <div class="install-method">
               <h3>1. Add as Git Submodule</h3>
@@ -93,19 +94,14 @@ const submoduleCmd = `git submodule add ${skill.source.repo} ${submodulePath}`;
             </div>
 
             <div class="install-method">
-              <h3>2. Add to .github/copilot-instructions.md</h3>
-              <div class="code-block">
-                <pre><code>{`applyTo: "**"
-instructions:
-  - "${submodulePath}/SKILL.md"`}</code></pre>
-              </div>
-            </div>
-
-            <div class="install-method">
-              <h3>3. Initialize Submodule (for cloned repos)</h3>
+              <h3>2. Initialize Submodule (for cloned repos)</h3>
               <div class="code-block">
                 <pre><code>git submodule update --init --recursive</code></pre>
               </div>
+            </div>
+
+            <div class="install-note">
+              <p><strong>That's it!</strong> Copilot automatically discovers skills based on their <code>name</code> and <code>description</code> frontmatter and loads them when relevant to your request.</p>
             </div>
           </section>
         </div>
@@ -274,6 +270,21 @@ instructions:
   .copy-btn:hover {
     background: var(--color-border);
     color: var(--color-text);
+  }
+
+  .install-note {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .install-note p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
   }
 
   .sidebar-card {

@@ -84,7 +84,7 @@ const categories = registry.categories.map(cat => ({
   <section class="section install-section">
     <div class="container">
       <h2 class="section-title text-center">How to Install</h2>
-      <p class="section-subtitle text-center">Add any skill to your project in two simple steps</p>
+      <p class="section-subtitle text-center">Skills are auto-discovered — just add to your project!</p>
       
       <div class="install-steps">
         <div class="step">
@@ -94,10 +94,10 @@ const categories = registry.categories.map(cat => ({
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h3>Reference in copilot-instructions.md</h3>
-          <pre><code>applyTo: "**"
-instructions:
-  - ".github/skills/&lt;skill-name&gt;/SKILL.md"</code></pre>
+          <h3>Done! Copilot auto-discovers skills</h3>
+          <pre><code># Skills are loaded automatically based on
+# their name and description frontmatter.
+# No configuration needed!</code></pre>
         </div>
       </div>
     </div>
