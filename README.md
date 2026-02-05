@@ -91,35 +91,26 @@ Choose **one** of the following methods:
 2. Clone your new repository
 3. Install dependencies:
    ```bash
-   cd .github/skills/copilot-orchestrator/scripts
+   cd scripts
    uv sync
    ```
 4. Open the project in VS Code and start using Copilot Chat
 
-#### Option B: Add as Git Submodule (Existing Projects)
+#### Option B: Add to Existing Project (Submodule)
+
+Add SkillPilot as a Git submodule:
 
 ```bash
-# Navigate to your existing repository
-cd your-project
+# From your project root
+git submodule add https://github.com/samueltauil/skillpilot.git .github/skills/copilot-orchestrator
+cd .github/skills/copilot-orchestrator/scripts
+uv sync
+```
 
-# Add SkillPilot as a submodule
-git submodule add --no-checkout https://github.com/samueltauil/skillpilot.git .github/skills/copilot-orchestrator
-cd .github/skills/copilot-orchestrator
-git sparse-checkout init --cone
-git sparse-checkout set .github/skills/copilot-orchestrator
-git checkout main
+To update later:
 
-# Flatten the structure (move skill contents up)
-mv .github/skills/copilot-orchestrator/* .
-rm -rf .github LICENSE README.md logo.svg 2>/dev/null
-
-# Install dependencies
-cd scripts && uv sync && cd ..
-
-# Commit to your repository
-cd ../../..
-git add .gitmodules .github/skills/copilot-orchestrator
-git commit -m "Add copilot-orchestrator skill"
+```bash
+git submodule update --remote .github/skills/copilot-orchestrator
 ```
 
 > **Note:** The folder name `copilot-orchestrator` must match the `name` field in SKILL.md for Copilot to discover the skill.
@@ -242,38 +233,9 @@ Environment variables for customization:
 | `COPILOT_STREAMING` | `true` | Enable streaming responses |
 | `COPILOT_DEBUG` | `false` | Enable debug logging |
 
-## Managing Submodules
+## CI/CD Configuration
 
-### Updating to Latest Version
-
-```bash
-cd .github/skills/copilot-orchestrator
-git pull origin main
-cd ../../..
-git add .github/skills/copilot-orchestrator
-git commit -m "Update copilot-orchestrator skill"
-```
-
-### Pinning to a Version
-
-```bash
-cd .github/skills/copilot-orchestrator
-git checkout v1.0.0
-cd ../../..
-git add .github/skills/copilot-orchestrator
-git commit -m "Pin copilot-orchestrator to v1.0.0"
-```
-
-### Cloning a Repository with SkillPilot
-
-```bash
-git clone --recurse-submodules https://github.com/YOUR_USERNAME/your-project.git
-
-# Or if already cloned:
-git submodule update --init --recursive
-```
-
-### CI/CD with Submodules
+When using submodules, ensure your CI initializes them:
 
 #### GitHub Actions
 
@@ -303,23 +265,14 @@ steps:
     uv sync
 ```
 
-### Removing SkillPilot
-
-```bash
-git submodule deinit -f .github/skills/copilot-orchestrator
-rm -rf .git/modules/.github/skills/copilot-orchestrator
-git rm -f .github/skills/copilot-orchestrator
-git commit -m "Remove copilot-orchestrator skill"
-```
-
 ## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
-| Skill not detected by Copilot | Verify folder name is `copilot-orchestrator` and SKILL.md exists |
-| Empty submodule directory | Run `git submodule update --init --recursive` |
+| Skill not detected by Copilot | Verify `.github/skills/copilot-orchestrator/SKILL.md` exists |
 | Dependencies not installed | Run `cd .github/skills/copilot-orchestrator/scripts && uv sync` |
 | Copilot doesn't respond to skill | Restart VS Code after adding the skill |
+| "uv not found" | Install uv: `curl -LsSf https://astral.sh/uv/install.sh \| sh` (Linux/Mac) or `powershell -c "irm https://astral.sh/uv/install.ps1 \| iex"` (Windows) |
 
 ## Extending SkillPilot
 
