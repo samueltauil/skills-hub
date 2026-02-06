@@ -53,6 +53,20 @@ jobs:
           npm ci
           cd site && npm ci
 
+      - name: Count skills before sync
+        if: steps.check-submodules.outputs.changes == 'true'
+        id: before-sync
+        run: |
+          if [ -f site/src/data/skills.json ]; then
+            BEFORE_COUNT=$(node -e "console.log(require('./site/src/data/skills.json').skills.length)")
+            BEFORE_IDS=$(node -e "console.log(require('./site/src/data/skills.json').skills.map(s => s.id).join(','))")
+          else
+            BEFORE_COUNT=0
+            BEFORE_IDS=""
+          fi
+          echo "count=$BEFORE_COUNT" >> $GITHUB_OUTPUT
+          echo "ids=$BEFORE_IDS" >> $GITHUB_OUTPUT
+
       - name: Run aggregation script
         if: steps.check-submodules.outputs.changes == 'true'
         run: |
@@ -62,15 +76,30 @@ jobs:
         if: steps.check-submodules.outputs.changes == 'true'
         id: check-skills
         run: |
+          AFTER_COUNT=$(node -e "console.log(require('./site/src/data/skills.json').skills.length)")
+          BEFORE_COUNT=${{ steps.before-sync.outputs.count }}
+          BEFORE_IDS="${{ steps.before-sync.outputs.ids }}"
+          
+          # Find new skills
+          NEW_SKILLS=$(node -e "
+            const skills = require('./site/src/data/skills.json').skills;
+            const beforeIds = '$BEFORE_IDS'.split(',').filter(Boolean);
+            const newSkills = skills.filter(s => !beforeIds.includes(s.id));
+            console.log(newSkills.map(s => s.name).join('|'));
+          ")
+          
+          NEW_COUNT=$((AFTER_COUNT - BEFORE_COUNT))
+          
+          echo "after-count=$AFTER_COUNT" >> $GITHUB_OUTPUT
+          echo "new-count=$NEW_COUNT" >> $GITHUB_OUTPUT
+          echo "new-skills=$NEW_SKILLS" >> $GITHUB_OUTPUT
+          
           if git diff --quiet site/src/data/skills.json; then
             echo "skill-changes=false" >> $GITHUB_OUTPUT
             echo "No skill data changes"
           else
             echo "skill-changes=true" >> $GITHUB_OUTPUT
             echo "Skill data updated"
-            # Show summary of changes
-            echo "### Changes detected:" >> $GITHUB_STEP_SUMMARY
-            git diff --stat site/src/data/skills.json >> $GITHUB_STEP_SUMMARY
           fi
 
       - name: Build site
@@ -101,8 +130,35 @@ jobs:
         run: |
           echo "## Sync Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          
           if [ "${{ steps.check-submodules.outputs.changes }}" == "true" ]; then
             echo "✅ Skills synchronized from upstream sources" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            BEFORE="${{ steps.before-sync.outputs.count }}"
+            AFTER="${{ steps.check-skills.outputs.after-count }}"
+            NEW_COUNT="${{ steps.check-skills.outputs.new-count }}"
+            NEW_SKILLS="${{ steps.check-skills.outputs.new-skills }}"
+            
+            echo "### Statistics" >> $GITHUB_STEP_SUMMARY
+            echo "- **Total skills:** $AFTER" >> $GITHUB_STEP_SUMMARY
+            echo "- **Previous count:** $BEFORE" >> $GITHUB_STEP_SUMMARY
+            
+            if [ "$NEW_COUNT" -gt 0 ] 2>/dev/null; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### 🆕 New Skills Found ($NEW_COUNT)" >> $GITHUB_STEP_SUMMARY
+              echo "$NEW_SKILLS" | tr '|' '\n' | while read skill; do
+                if [ -n "$skill" ]; then
+                  echo "- $skill" >> $GITHUB_STEP_SUMMARY
+                fi
+              done
+            elif [ "$NEW_COUNT" -lt 0 ] 2>/dev/null; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### ⚠️ Skills Removed: $((NEW_COUNT * -1))" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### ℹ️ No new skills (existing skills may have been updated)" >> $GITHUB_STEP_SUMMARY
+            fi
           else
             echo "ℹ️ No upstream changes detected" >> $GITHUB_STEP_SUMMARY
           fi
