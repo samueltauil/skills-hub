@@ -50,15 +50,8 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
       <div class="hero-glow hero-glow-2"></div>
     </div>
     <div class="container hero-content">
-      <div class="hero-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-        </svg>
-        <span>Open Source Skill Catalog</span>
-      </div>
       <h1 class="hero-title">
-        <span class="title-line">Copilot Skills</span>
-        <span class="title-accent">Hub</span>
+        <span class="title-line">Copilot Skills <span class="title-accent">Hub</span></span>
       </h1>
       <p class="hero-subtitle">
         Discover and install curated GitHub Copilot skills<br class="hide-mobile" />
@@ -213,26 +206,6 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
     z-index: 1;
   }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: rgba(88, 166, 255, 0.1);
-    border: 1px solid rgba(88, 166, 255, 0.3);
-    border-radius: 9999px;
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    animation: fadeInUp 0.6s ease-out;
-  }
-
-  .hero-badge svg {
-    width: 14px;
-    height: 14px;
-  }
-
   .hero-title {
     font-size: 4rem;
     font-weight: 800;
@@ -243,12 +216,10 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
   }
 
   .title-line {
-    display: block;
     color: var(--color-text);
   }
 
   .title-accent {
-    display: block;
     background: linear-gradient(135deg, var(--color-accent) 0%, #a855f7 50%, var(--color-accent) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
