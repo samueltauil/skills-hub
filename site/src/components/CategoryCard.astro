@@ -30,16 +30,25 @@ const baseUrl = import.meta.env.BASE_URL;
     text-decoration: none;
     color: inherit;
     padding: 0.875rem;
+    transition: border-color 0.2s ease, 
+                box-shadow 0.2s ease, 
+                transform 0.2s ease;
   }
 
   .category-card:hover {
     text-decoration: none;
+    transform: translateY(-2px);
   }
 
   .category-icon {
     font-size: 1.5rem;
     line-height: 1;
     flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .category-card:hover .category-icon {
+    transform: scale(1.1);
   }
 
   .category-content {
@@ -52,6 +61,7 @@ const baseUrl = import.meta.env.BASE_URL;
     font-weight: 600;
     margin-bottom: 0.125rem;
     color: var(--color-text);
+    transition: color 0.15s ease;
   }
 
   .category-card:hover .category-name {

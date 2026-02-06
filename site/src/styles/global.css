@@ -21,6 +21,10 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.3);
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
 }
 
 * {
@@ -93,8 +97,13 @@ pre code {
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
   text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .btn-primary {
@@ -105,6 +114,11 @@ pre code {
 .btn-primary:hover {
   background-color: var(--color-accent-hover);
   text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .btn-secondary {
@@ -116,6 +130,11 @@ pre code {
 .btn-secondary:hover {
   background-color: var(--color-border);
   text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 .btn-sm {
@@ -129,12 +148,20 @@ pre code {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color var(--transition-normal), 
+              box-shadow var(--transition-normal), 
+              transform var(--transition-normal);
 }
 
 .card:hover {
   border-color: var(--color-accent);
   box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);
 }
 
 /* Badges */
@@ -147,6 +174,12 @@ pre code {
   border-radius: var(--radius-sm);
   background-color: var(--color-bg-tertiary);
   color: var(--color-text-secondary);
+  transition: background-color var(--transition-fast), 
+              transform var(--transition-fast);
+}
+
+.badge:hover {
+  background-color: var(--color-border);
 }
 
 .badge-primary {
@@ -154,14 +187,26 @@ pre code {
   color: var(--color-accent);
 }
 
+.badge-primary:hover {
+  background-color: rgba(88, 166, 255, 0.3);
+}
+
 .badge-success {
   background-color: rgba(63, 185, 80, 0.2);
   color: var(--color-success);
 }
 
+.badge-success:hover {
+  background-color: rgba(63, 185, 80, 0.3);
+}
+
 .badge-warning {
   background-color: rgba(210, 153, 34, 0.2);
   color: var(--color-warning);
+}
+
+.badge-warning:hover {
+  background-color: rgba(210, 153, 34, 0.3);
 }
 
 /* Grid */
@@ -209,15 +254,28 @@ pre code {
   border-radius: var(--radius-md);
   color: var(--color-text);
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color var(--transition-normal), 
+              box-shadow var(--transition-normal),
+              background-color var(--transition-normal);
+}
+
+.search-input:hover {
+  border-color: var(--color-text-secondary);
 }
 
 .search-input:focus {
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+  background-color: var(--color-bg);
 }
 
 .search-input::placeholder {
   color: var(--color-text-secondary);
+  transition: opacity var(--transition-fast);
+}
+
+.search-input:focus::placeholder {
+  opacity: 0.7;
 }
 
 /* Section headings */
@@ -254,3 +312,32 @@ pre code {
 .py-4 { padding-top: 2rem; padding-bottom: 2rem; }
 .py-6 { padding-top: 3rem; padding-bottom: 3rem; }
 .py-8 { padding-top: 4rem; padding-bottom: 4rem; }
+
+/* Focus visible for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(88, 166, 255, 0.3);
+  color: var(--color-text);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}

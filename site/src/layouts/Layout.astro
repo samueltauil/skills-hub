@@ -65,11 +65,15 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <style>
   .header {
-    background-color: var(--color-bg-secondary);
+    background-color: rgba(22, 27, 34, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: background-color var(--transition-normal, 0.2s ease),
+                box-shadow var(--transition-normal, 0.2s ease);
   }
 
   .nav {
@@ -86,11 +90,22 @@ const baseUrl = import.meta.env.BASE_URL;
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-text);
+    transition: color var(--transition-normal, 0.2s ease),
+                transform var(--transition-fast, 0.15s ease);
   }
 
   .logo:hover {
     color: var(--color-accent);
     text-decoration: none;
+    transform: translateX(2px);
+  }
+
+  .logo svg {
+    transition: transform var(--transition-normal, 0.2s ease);
+  }
+
+  .logo:hover svg {
+    transform: rotate(-10deg) scale(1.05);
   }
 
   .nav-links {
@@ -102,10 +117,28 @@ const baseUrl = import.meta.env.BASE_URL;
   .nav-links a {
     color: var(--color-text-secondary);
     font-size: 0.875rem;
+    transition: color var(--transition-fast, 0.15s ease);
+    position: relative;
+  }
+
+  .nav-links a:not(.btn)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-normal, 0.2s ease);
+  }
+
+  .nav-links a:not(.btn):hover::after {
+    width: 100%;
   }
 
   .nav-links a:hover {
     color: var(--color-text);
+    text-decoration: none;
   }
 
   .footer {
@@ -118,6 +151,10 @@ const baseUrl = import.meta.env.BASE_URL;
   .footer p {
     font-size: 0.875rem;
     margin-bottom: 0.5rem;
+  }
+
+  .footer a {
+    transition: color var(--transition-fast, 0.15s ease);
   }
 
   @media (max-width: 640px) {
