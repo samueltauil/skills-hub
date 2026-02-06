@@ -45,22 +45,43 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
 <Layout title="Home">
   <!-- Hero Section -->
   <section class="hero">
-    <div class="container">
-      <h1 class="hero-title">Copilot Skills Hub</h1>
+    <div class="hero-bg">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        <span>Open Source Skill Catalog</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">Copilot Skills</span>
+        <span class="title-accent">Hub</span>
+      </h1>
       <p class="hero-subtitle">
-        Discover and install curated GitHub Copilot skills to supercharge your development workflow.
+        Discover and install curated GitHub Copilot skills<br class="hide-mobile" />
+        to <span class="highlight">supercharge</span> your development workflow.
       </p>
       <div class="hero-search">
         <SearchBar placeholder="Search for skills..." />
       </div>
       <div class="hero-stats">
-        <span class="stat">
-          <strong>{skillsData.skills.length}</strong> Skills
-        </span>
-        <span class="stat-divider">·</span>
-        <span class="stat">
-          <strong>{categories.length}</strong> Categories
-        </span>
+        <div class="stat-card">
+          <span class="stat-value">{skillsData.skills.length}</span>
+          <span class="stat-label">Skills</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <span class="stat-value">{categories.length}</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <span class="stat-value">3</span>
+          <span class="stat-label">Sources</span>
+        </div>
       </div>
     </div>
   </section>
@@ -136,50 +157,183 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
 
 <style>
   .hero {
+    position: relative;
     text-align: center;
-    padding: 4rem 0 3rem;
-    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+    padding: 5rem 0 4rem;
+    overflow: hidden;
     border-bottom: 1px solid var(--color-border);
   }
 
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg) 100%);
+    z-index: 0;
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.4;
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  .hero-glow-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-accent);
+    top: -150px;
+    left: 20%;
+    animation-delay: 0s;
+  }
+
+  .hero-glow-2 {
+    width: 300px;
+    height: 300px;
+    background: #a855f7;
+    bottom: -100px;
+    right: 20%;
+    animation-delay: 4s;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.5;
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    border-radius: 9999px;
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .hero-badge svg {
+    width: 14px;
+    height: 14px;
+  }
+
   .hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+  }
+
+  .title-line {
+    display: block;
+    color: var(--color-text);
+  }
+
+  .title-accent {
+    display: block;
+    background: linear-gradient(135deg, var(--color-accent) 0%, #a855f7 50%, var(--color-accent) 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .hero-subtitle {
     font-size: 1.25rem;
     color: var(--color-text-secondary);
     max-width: 600px;
-    margin: 0 auto 2rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+  }
+
+  .hero-subtitle .highlight {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .hide-mobile {
+    display: inline;
   }
 
   .hero-search {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.3s both;
   }
 
   .hero-stats {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    color: var(--color-text-secondary);
-    font-size: 0.875rem;
+    gap: 1.5rem;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
   }
 
-  .stat strong {
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
     color: var(--color-text);
   }
 
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
   .stat-divider {
-    opacity: 0.5;
+    width: 1px;
+    height: 2.5rem;
+    background: linear-gradient(180deg, transparent, var(--color-border), transparent);
   }
 
   .section {
@@ -239,16 +393,54 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
   }
 
   @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 0 2.5rem;
+    }
+
     .hero-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     .hero-subtitle {
       font-size: 1rem;
     }
 
+    .hide-mobile {
+      display: none;
+    }
+
+    .hero-stats {
+      gap: 1rem;
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+    }
+
+    .stat-divider {
+      height: 2rem;
+    }
+
     .install-steps {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glow {
+      animation: none;
+    }
+
+    .hero-badge,
+    .hero-title,
+    .hero-subtitle,
+    .hero-search,
+    .hero-stats {
+      animation: none;
+    }
+
+    .title-accent {
+      animation: none;
     }
   }
 </style>
