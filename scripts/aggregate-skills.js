@@ -12,6 +12,14 @@ const ROOT = path.resolve(__dirname, '..');
 const SOURCES_DIR = path.join(ROOT, 'sources');
 const OUTPUT_FILE = path.join(ROOT, 'site', 'src', 'data', 'skills.json');
 
+// Licenses that prohibit redistribution — skills with these are excluded
+const RESTRICTED_LICENSE_MARKERS = [
+  'All rights reserved',
+  'may not:',
+  'Distribute, sublicense, or transfer',
+  'Extract these materials from the Services'
+];
+
 // Source repositories configuration
 const SOURCES = [
   {
@@ -20,7 +28,8 @@ const SOURCES = [
     path: path.join(SOURCES_DIR, 'awesome-copilot', 'skills'),
     repo: 'https://github.com/github/awesome-copilot',
     author: 'github',
-    defaultLicense: 'MIT'
+    defaultLicense: 'MIT',
+    licenseNotice: 'MIT License\n\nCopyright GitHub, Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.'
   },
   {
     id: 'anthropics-skills',
@@ -28,7 +37,8 @@ const SOURCES = [
     path: path.join(SOURCES_DIR, 'anthropics-skills', 'skills'),
     repo: 'https://github.com/anthropics/skills',
     author: 'anthropic',
-    defaultLicense: 'Proprietary'
+    defaultLicense: 'Apache-2.0',
+    licenseNotice: 'Licensed under the Apache License, Version 2.0. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0'
   },
   {
     id: 'mcp-ext-apps',
@@ -36,7 +46,8 @@ const SOURCES = [
     path: path.join(SOURCES_DIR, 'mcp-ext-apps', 'plugins', 'mcp-apps', 'skills'),
     repo: 'https://github.com/modelcontextprotocol/ext-apps',
     author: 'modelcontextprotocol',
-    defaultLicense: 'MIT'
+    defaultLicense: 'MIT',
+    licenseNotice: 'Licensed under the Apache License, Version 2.0 (new contributions) / MIT License (prior contributions).'
   }
 ];
 
@@ -145,6 +156,34 @@ function extractDescription(content) {
 }
 
 /**
+ * Detect actual license from a LICENSE file's content
+ */
+function detectLicense(licenseContent) {
+  if (!licenseContent) return null;
+  
+  // Check for restrictive/proprietary licenses first
+  const isRestricted = RESTRICTED_LICENSE_MARKERS.some(marker => 
+    licenseContent.includes(marker)
+  );
+  if (isRestricted) return 'Proprietary';
+  
+  // Detect known open source licenses
+  if (licenseContent.includes('Apache License') && licenseContent.includes('Version 2.0')) return 'Apache-2.0';
+  if (licenseContent.includes('MIT License') || licenseContent.includes('Permission is hereby granted, free of charge')) return 'MIT';
+  if (licenseContent.includes('BSD')) return 'BSD';
+  
+  return null;
+}
+
+/**
+ * Check if a license permits redistribution
+ */
+function isRedistributable(license) {
+  const allowed = ['MIT', 'Apache-2.0', 'BSD', 'ISC', 'CC-BY-4.0'];
+  return allowed.includes(license);
+}
+
+/**
  * Process a single skill folder
  */
 function processSkill(skillPath, skillName, source) {
@@ -160,11 +199,19 @@ function processSkill(skillPath, skillName, source) {
   // Get all files in the skill folder
   const files = getFilesRecursive(skillPath);
   
-  // Check for LICENSE file
+  // Detect license from LICENSE file in the skill folder
   const licenseFile = files.find(f => f.name.toLowerCase().includes('license'));
-  const license = licenseFile ? 
-    (licenseFile.content.includes('MIT') ? 'MIT' : source.defaultLicense) : 
-    source.defaultLicense;
+  const detectedLicense = licenseFile ? detectLicense(licenseFile.content) : null;
+  const license = detectedLicense || source.defaultLicense;
+  
+  // Skip skills with non-redistributable licenses
+  if (!isRedistributable(license)) {
+    console.warn(`  ⛔ Skipping ${skillName}: License "${license}" does not permit redistribution`);
+    return null;
+  }
+  
+  // Build license notice from the skill's LICENSE file or fall back to source default
+  const licenseNotice = licenseFile ? licenseFile.content : (source.licenseNotice || '');
   
   // Build skill object
   const skill = {
@@ -175,6 +222,7 @@ function processSkill(skillPath, skillName, source) {
     category: determineCategory(skillName, frontmatter.description || content),
     author: source.author,
     license,
+    licenseNotice,
     source: {
       repo: source.repo,
       repoName: source.name,
