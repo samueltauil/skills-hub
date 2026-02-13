@@ -155,6 +155,8 @@ Your skill must belong to one of these categories:
 | `devops-cicd` | DevOps & CI/CD | Pipelines, Docker, Kubernetes, deployments |
 | `security` | Security | Audits, vulnerabilities, secure coding |
 | `data-analytics` | Data & Analytics | SQL, data pipelines, visualization |
+| `office-documents` | Office Documents | Word, Excel, PowerPoint, PDF files |
+| `mcp-development` | MCP Development | Model Context Protocol servers and apps |
 
 **Need a new category?** Open an issue to discuss before adding skills.
 

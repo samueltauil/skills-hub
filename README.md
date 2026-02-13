@@ -7,7 +7,7 @@
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success?logo=github)](https://samueltauil.github.io/skills-hub)
-[![Skills Count](https://img.shields.io/badge/Skills-10+-blue)](./skills/registry.json)
+[![Skills Count](https://img.shields.io/badge/Skills-51-blue)](./skills/registry.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## What is this?
@@ -16,7 +16,7 @@
 
 ### Features
 
-- **Browse by Category** — Skills organized into 10+ categories (Testing, DevOps, Security, etc.)
+- **Browse by Category** — Skills organized into 8 categories (Testing, DevOps, Documentation, etc.)
 - **Search** — Find skills by name, description, or trigger keywords
 - **One-Click Install** — Copy commands to add skills to your project
 - **Skill Details** — See what each skill does, its triggers, and example usage
@@ -29,18 +29,16 @@ Or explore the [skills registry](./skills/registry.json) directly.
 
 ### Categories
 
-| Category | Description |
-|----------|-------------|
-| 🔀 Git & Version Control | Commits, branching, GitHub operations |
-| ✨ Code Quality | Reviews, refactoring, linting |
-| 📝 Documentation | READMEs, PRDs, technical writing |
-| 📊 Diagrams | Mermaid, PlantUML, visualizations |
-| 🧪 Testing | Unit tests, E2E, test automation |
-| 🔌 API & Backend | REST APIs, GraphQL, databases |
-| 🎨 Frontend & UI | React, Vue, components, design |
-| 🚀 DevOps & CI/CD | Pipelines, Docker, Kubernetes |
-| 🔒 Security | Audits, vulnerabilities, secure coding |
-| 📈 Data & Analytics | Data pipelines, SQL, analytics |
+| Category | Skills | Description |
+|----------|:------:|-------------|
+| 📝 Documentation | 11 | READMEs, PRDs, technical writing |
+| ✨ Code Quality | 11 | Reviews, refactoring, linting |
+| 🎨 Frontend & UI | 8 | React, Vue, components, design |
+| 🔀 Git & Version Control | 7 | Commits, branching, GitHub operations |
+| 🔌 API & Backend | 5 | REST APIs, GraphQL, databases |
+| 📊 Diagrams | 4 | Mermaid, PlantUML, visualizations |
+| 🧪 Testing | 4 | Unit tests, E2E, test automation |
+| 🚀 DevOps & CI/CD | 1 | Pipelines, Docker, Kubernetes |
 
 ## Install a Skill
 
