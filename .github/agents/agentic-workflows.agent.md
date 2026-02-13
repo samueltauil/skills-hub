@@ -1,6 +1,7 @@
 ---
 description: GitHub Agentic Workflows (gh-aw) - Create, debug, and upgrade AI-powered workflows with intelligent prompt routing
-infer: false
+user-invokable: true
+disable-model-invocation: false
 ---
 
 # GitHub Agentic Workflows Agent
