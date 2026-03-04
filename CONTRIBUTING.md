@@ -145,18 +145,18 @@ Your skill must belong to one of these categories:
 
 | Category ID | Name | Description |
 |-------------|------|-------------|
-| `git-version-control` | Git & Version Control | Commits, branching, merges, GitHub operations |
 | `code-quality` | Code Quality | Reviews, refactoring, linting, formatting |
 | `documentation` | Documentation | READMEs, PRDs, API docs, technical writing |
-| `diagrams` | Diagrams | Mermaid, PlantUML, architecture diagrams |
-| `testing` | Testing | Unit tests, integration tests, E2E, TDD |
+| `git-version-control` | Git & Version Control | Commits, branching, merges, GitHub operations |
 | `api-backend` | API & Backend | REST APIs, GraphQL, databases, servers |
 | `frontend-ui` | Frontend & UI | React, Vue, CSS, components, accessibility |
+| `testing` | Testing | Unit tests, integration tests, E2E, TDD |
 | `devops-cicd` | DevOps & CI/CD | Pipelines, Docker, Kubernetes, deployments |
-| `security` | Security | Audits, vulnerabilities, secure coding |
-| `data-analytics` | Data & Analytics | SQL, data pipelines, visualization |
-| `office-documents` | Office Documents | Word, Excel, PowerPoint, PDF files |
 | `mcp-development` | MCP Development | Model Context Protocol servers and apps |
+| `diagrams` | Diagrams | Mermaid, PlantUML, architecture diagrams |
+| `data-analytics` | Data & Analytics | SQL, data pipelines, visualization |
+| `security` | Security | Audits, vulnerabilities, secure coding |
+| `office-documents` | Office Documents | Word, Excel, PowerPoint, PDF files |
 
 **Need a new category?** Open an issue to discuss before adding skills.
 
