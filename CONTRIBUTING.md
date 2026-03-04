@@ -145,18 +145,17 @@ Your skill must belong to one of these categories:
 
 | Category ID | Name | Description |
 |-------------|------|-------------|
-| `git-version-control` | Git & Version Control | Commits, branching, merges, GitHub operations |
-| `code-quality` | Code Quality | Reviews, refactoring, linting, formatting |
-| `documentation` | Documentation | READMEs, PRDs, API docs, technical writing |
-| `diagrams` | Diagrams | Mermaid, PlantUML, architecture diagrams |
-| `testing` | Testing | Unit tests, integration tests, E2E, TDD |
 | `api-backend` | API & Backend | REST APIs, GraphQL, databases, servers |
-| `frontend-ui` | Frontend & UI | React, Vue, CSS, components, accessibility |
-| `devops-cicd` | DevOps & CI/CD | Pipelines, Docker, Kubernetes, deployments |
-| `security` | Security | Audits, vulnerabilities, secure coding |
+| `code-quality` | Code Quality | Reviews, refactoring, linting, formatting |
 | `data-analytics` | Data & Analytics | SQL, data pipelines, visualization |
-| `office-documents` | Office Documents | Word, Excel, PowerPoint, PDF files |
+| `devops-cicd` | DevOps & CI/CD | Pipelines, Docker, Kubernetes, deployments |
+| `diagrams` | Diagrams | Mermaid, PlantUML, architecture diagrams |
+| `documentation` | Documentation | READMEs, PRDs, API docs, technical writing |
+| `frontend-ui` | Frontend & UI | React, Vue, CSS, components, accessibility |
+| `git-version-control` | Git & Version Control | Commits, branching, merges, GitHub operations |
 | `mcp-development` | MCP Development | Model Context Protocol servers and apps |
+| `security` | Security | Audits, vulnerabilities, secure coding |
+| `testing` | Testing | Unit tests, integration tests, E2E, TDD |
 
 **Need a new category?** Open an issue to discuss before adding skills.
 

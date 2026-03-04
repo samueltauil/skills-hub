@@ -9,19 +9,17 @@ import skillsData from '../data/skills.json';
 
 // Category metadata
 const categoryMeta: Record<string, { name: string; icon: string; description: string }> = {
-  'git-version-control': { name: 'Git & Version Control', icon: '🔀', description: 'Git operations, branching, and version control' },
-  'code-quality': { name: 'Code Quality', icon: '✨', description: 'Code quality, refactoring, and best practices' },
-  'documentation': { name: 'Documentation', icon: '📝', description: 'Documentation and knowledge management' },
-  'diagrams': { name: 'Diagrams', icon: '📊', description: 'Diagrams, flowcharts, and visualizations' },
-  'testing': { name: 'Testing', icon: '🧪', description: 'Testing and test automation' },
   'api-backend': { name: 'API & Backend', icon: '🔌', description: 'API development and backend services' },
-  'frontend-ui': { name: 'Frontend & UI', icon: '🎨', description: 'Frontend development and UI components' },
-  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀', description: 'Deployment, pipelines, and DevOps workflows' },
-  'security': { name: 'Security', icon: '🔒', description: 'Security analysis and best practices' },
+  'code-quality': { name: 'Code Quality', icon: '✨', description: 'Code quality, refactoring, and best practices' },
   'data-analytics': { name: 'Data & Analytics', icon: '📈', description: 'Data processing and analytics' },
-  'office-documents': { name: 'Office Documents', icon: '📄', description: 'Office documents and formats' },
+  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀', description: 'Deployment, pipelines, and DevOps workflows' },
+  'diagrams': { name: 'Diagrams', icon: '📊', description: 'Diagrams, flowcharts, and visualizations' },
+  'documentation': { name: 'Documentation', icon: '📝', description: 'Documentation and knowledge management' },
+  'frontend-ui': { name: 'Frontend & UI', icon: '🎨', description: 'Frontend development and UI components' },
+  'git-version-control': { name: 'Git & Version Control', icon: '🔀', description: 'Git operations, branching, and version control' },
   'mcp-development': { name: 'MCP Development', icon: '🔧', description: 'Model Context Protocol development' },
-  'general': { name: 'General', icon: '📦', description: 'General-purpose development skills' },
+  'security': { name: 'Security', icon: '🔒', description: 'Security analysis and best practices' },
+  'testing': { name: 'Testing', icon: '🧪', description: 'Testing and test automation' },
 };
 
 const featuredSkills = skillsData.skills.slice(0, 6);

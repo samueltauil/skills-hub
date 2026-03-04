@@ -7,7 +7,7 @@
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success?logo=github)](https://samueltauil.github.io/skills-hub)
-[![Skills Count](https://img.shields.io/badge/Skills-51-blue)](./skills/registry.json)
+[![Skills Count](https://img.shields.io/badge/Skills-50-blue)](./skills/registry.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## What is this?
@@ -16,7 +16,7 @@
 
 ### Features
 
-- **Browse by Category** — Skills organized into 8 categories (Testing, DevOps, Documentation, etc.)
+- **Browse by Category** — Skills organized into 11 categories (Testing, DevOps, Documentation, etc.)
 - **Search** — Find skills by name, description, or trigger keywords
 - **One-Click Install** — Copy commands to add skills to your project
 - **Skill Details** — See what each skill does, its triggers, and example usage
@@ -31,14 +31,17 @@ Or explore the [skills registry](./skills/registry.json) directly.
 
 | Category | Skills | Description |
 |----------|:------:|-------------|
-| 📝 Documentation | 11 | READMEs, PRDs, technical writing |
-| ✨ Code Quality | 11 | Reviews, refactoring, linting |
-| 🎨 Frontend & UI | 8 | React, Vue, components, design |
-| 🔀 Git & Version Control | 7 | Commits, branching, GitHub operations |
-| 🔌 API & Backend | 5 | REST APIs, GraphQL, databases |
+| 🔌 API & Backend | 2 | REST APIs, GraphQL, databases |
+| ✨ Code Quality | 3 | Reviews, refactoring, linting |
+| 📈 Data & Analytics | 3 | SQL, data pipelines, visualization |
+| 🚀 DevOps & CI/CD | 6 | Pipelines, Docker, Kubernetes |
 | 📊 Diagrams | 4 | Mermaid, PlantUML, visualizations |
-| 🧪 Testing | 4 | Unit tests, E2E, test automation |
-| 🚀 DevOps & CI/CD | 1 | Pipelines, Docker, Kubernetes |
+| 📝 Documentation | 7 | READMEs, PRDs, technical writing |
+| 🎨 Frontend & UI | 10 | React, Vue, components, design |
+| 🔀 Git & Version Control | 4 | Commits, branching, GitHub operations |
+| 🔧 MCP Development | 5 | Model Context Protocol servers and apps |
+| 🔒 Security | 1 | Audits, vulnerabilities, secure coding |
+| 🧪 Testing | 5 | Unit tests, E2E, test automation |
 
 ## Install a Skill
 
