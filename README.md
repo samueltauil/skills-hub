@@ -7,7 +7,7 @@
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success?logo=github)](https://samueltauil.github.io/skills-hub)
-[![Skills Count](https://img.shields.io/badge/Skills-51-blue)](./skills/registry.json)
+[![Skills Count](https://img.shields.io/badge/Skills-214-blue)](./site/src/data/skills.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## What is this?
@@ -16,7 +16,7 @@
 
 ### Features
 
-- **Browse by Category** — Skills organized into 8 categories (Testing, DevOps, Documentation, etc.)
+- **Browse by Category** — Skills organized into 11 categories (Testing, DevOps, Documentation, etc.)
 - **Search** — Find skills by name, description, or trigger keywords
 - **One-Click Install** — Copy commands to add skills to your project
 - **Skill Details** — See what each skill does, its triggers, and example usage
@@ -31,14 +31,17 @@ Or explore the [skills registry](./skills/registry.json) directly.
 
 | Category | Skills | Description |
 |----------|:------:|-------------|
-| 📝 Documentation | 11 | READMEs, PRDs, technical writing |
-| ✨ Code Quality | 11 | Reviews, refactoring, linting |
-| 🎨 Frontend & UI | 8 | React, Vue, components, design |
-| 🔀 Git & Version Control | 7 | Commits, branching, GitHub operations |
-| 🔌 API & Backend | 5 | REST APIs, GraphQL, databases |
-| 📊 Diagrams | 4 | Mermaid, PlantUML, visualizations |
-| 🧪 Testing | 4 | Unit tests, E2E, test automation |
-| 🚀 DevOps & CI/CD | 1 | Pipelines, Docker, Kubernetes |
+| ✨ Code Quality | 56 | Reviews, refactoring, linting |
+| 📝 Documentation | 39 | READMEs, PRDs, technical writing |
+| 🔀 Git & Version Control | 35 | Commits, branching, GitHub operations |
+| 🎨 Frontend & UI | 20 | React, Vue, components, design |
+| 🔌 API & Backend | 20 | REST APIs, GraphQL, databases |
+| 🧪 Testing | 20 | Unit tests, E2E, test automation |
+| 🚀 DevOps & CI/CD | 11 | Pipelines, Docker, Kubernetes |
+| 🔧 MCP Development | 6 | Model Context Protocol servers and apps |
+| 📊 Diagrams | 5 | Mermaid, PlantUML, visualizations |
+| 🔒 Security | 1 | Audits, vulnerabilities, secure coding |
+| 📈 Data & Analytics | 1 | SQL, data pipelines, visualization |
 
 ## Install a Skill
 
@@ -85,8 +88,9 @@ skills-hub/
 │   └── public/           # Static assets
 ├── skills/
 │   ├── schema.json       # Skill metadata schema
-│   └── registry.json     # Skills catalog
-├── indexer/              # Python skill scraper (future)
+│   └── registry.json     # Manually curated skills subset
+├── sources/              # Upstream skill sources (git submodules)
+├── scripts/              # Sync and utility scripts
 └── CONTRIBUTING.md       # How to add skills
 ```
 
