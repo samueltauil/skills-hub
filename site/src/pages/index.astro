@@ -58,7 +58,7 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
         to <span class="highlight">supercharge</span> your development workflow.
       </p>
       <div class="hero-search">
-        <SearchBar placeholder="Search for skills..." />
+        <SearchBar placeholder="Search for skills..." id="hero-search" />
       </div>
       <div class="hero-stats">
         <div class="stat-card">
@@ -414,3 +414,17 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
     }
   }
 </style>
+
+<script>
+  const heroSearch = document.getElementById('hero-search') as HTMLInputElement;
+  heroSearch?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const query = heroSearch.value.trim();
+      if (query) {
+        window.location.href = `/skills/?q=${encodeURIComponent(query)}`;
+      } else {
+        window.location.href = '/skills/';
+      }
+    }
+  });
+</script>

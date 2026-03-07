@@ -157,6 +157,13 @@ const categories = categoryIds.map(id => ({
   const skillItems = document.querySelectorAll('.skill-item');
   const noResults = document.getElementById('no-results');
 
+  // Pre-fill search from URL query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryParam = urlParams.get('q');
+  if (queryParam && searchInput) {
+    searchInput.value = queryParam;
+  }
+
   function filterSkills() {
     const searchTerm = searchInput?.value.toLowerCase() || '';
     const category = categoryFilter?.value || '';
@@ -192,4 +199,9 @@ const categories = categoryIds.map(id => ({
 
   searchInput?.addEventListener('input', filterSkills);
   categoryFilter?.addEventListener('change', filterSkills);
+
+  // Apply filter on load if query param is present
+  if (queryParam) {
+    filterSkills();
+  }
 </script>
