@@ -54,6 +54,13 @@ interface Props {
     featured: boolean;
     complexity: string;
     platforms: string[];
+    verified?: boolean;
+    securityScan?: {
+      scannedAt: string;
+      verified: boolean;
+      issueCount: number;
+      highCount: number;
+    };
   };
 }
 
