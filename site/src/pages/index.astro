@@ -415,15 +415,15 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
   }
 </style>
 
-<script>
-  const heroSearch = document.getElementById('hero-search') as HTMLInputElement;
+<script define:vars={{ baseUrl: import.meta.env.BASE_URL }}>
+  const heroSearch = document.getElementById('hero-search');
   heroSearch?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       const query = heroSearch.value.trim();
       if (query) {
-        window.location.href = `/skills/?q=${encodeURIComponent(query)}`;
+        window.location.href = `${baseUrl}skills/?q=${encodeURIComponent(query)}`;
       } else {
-        window.location.href = '/skills/';
+        window.location.href = `${baseUrl}skills/`;
       }
     }
   });
