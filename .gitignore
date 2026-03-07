@@ -51,3 +51,6 @@ logs/
 
 # Node
 node_modules/
+# Scan reports (generated artifacts)
+scan-report.json
+
