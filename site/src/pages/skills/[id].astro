@@ -348,26 +348,38 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                 Passed
               </span>
             </div>
-            <p class="scan-description">Every skill is automatically scanned before being published to the Hub.</p>
+            <p class="scan-description">Every skill undergoes a two-pass automated security scan before being published to the Hub.</p>
             <details class="scan-details">
               <summary>How does it work?</summary>
               <div class="scan-details-content">
-                <p>Our automated security pipeline analyzes every skill file during the aggregation process to help ensure safe usage:</p>
+                <p><strong>Pass 1 — Pattern analysis</strong> scans every file in the skill against 13 security rules for known dangerous patterns:</p>
                 <ul class="scan-checklist">
                   <li>
-                    <strong>Script & command detection</strong> — Files are inspected for embedded shell commands, script execution calls, and subprocess invocations that could run arbitrary code on your machine.
+                    <strong>Script & command detection</strong> — Shell commands, exec/spawn calls, subprocess invocations, and curl-pipe-to-shell patterns.
                   </li>
                   <li>
-                    <strong>Prompt injection analysis</strong> — Skill instructions are checked for patterns that attempt to override Copilot's safety guidelines or trick the AI into performing unintended actions.
+                    <strong>Prompt injection markers</strong> — Phrases that attempt to override safety guidelines, bypass restrictions, or manipulate AI behavior.
                   </li>
                   <li>
-                    <strong>Sensitive data patterns</strong> — Content is scanned for hardcoded credentials, API keys, tokens, and other secrets that could pose a security risk.
+                    <strong>Sensitive data & secrets</strong> — Hardcoded API keys, credentials, tokens, and access to sensitive system files.
                   </li>
                   <li>
-                    <strong>License compliance</strong> — Each skill's license is verified to ensure it permits redistribution, and skills with restrictive licenses are excluded automatically.
+                    <strong>Obfuscation patterns</strong> — Base64 decode-and-execute, dynamic code evaluation, and unsafe deserialization.
                   </li>
                   <li>
-                    <strong>Source verification</strong> — Skills are only sourced from vetted, trusted repositories with established maintainers and community oversight.
+                    <strong>Data exfiltration risks</strong> — Environment variables sent to external URLs, writes to sensitive paths, and SQL injection patterns.
+                  </li>
+                </ul>
+                <p style="margin-top: 0.75rem;"><strong>Pass 2 — AI deep scan</strong> uses GitHub Copilot to semantically analyze skill content for threats that regex can't catch:</p>
+                <ul class="scan-checklist">
+                  <li>
+                    <strong>Intent analysis</strong> — Detects code that appears benign line-by-line but is malicious in aggregate, such as disguised data exfiltration.
+                  </li>
+                  <li>
+                    <strong>Social engineering</strong> — Instructions that trick users into running dangerous commands or sharing credentials.
+                  </li>
+                  <li>
+                    <strong>Supply chain risks</strong> — References to untrusted packages, suspicious download URLs, or dependency confusion patterns.
                   </li>
                 </ul>
               </div>

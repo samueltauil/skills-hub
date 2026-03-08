@@ -1,6 +1,6 @@
-# Security rules for skill code block scanning
+# Security rules for skill scanning
 # Each rule specifies patterns to detect potentially dangerous constructs
-# in skill SKILL.md code examples.
+# in skill files and SKILL.md code examples.
 #
 # Fields:
 #   id          - unique rule identifier
@@ -8,8 +8,10 @@
 #   description - explanation of what is flagged and why
 #   severity    - high | medium | low
 #   patterns    - list of regex strings (any match triggers the rule)
-#   languages   - optional list of code fence languages this rule applies to
+#   languages   - optional list of languages this rule applies to
 #                 (empty list = applies to all languages)
+#   extensions  - optional list of file extensions this rule applies to
+#                 when scanning skill files (empty = all files)
 
 rules:
   - id: shell-exec
@@ -120,3 +122,58 @@ rules:
       - 'INSERT\s+INTO\s+.*\+\s*'
       - 'f[''"]SELECT\s+.*\{[^}]+\}'
     languages: [python, javascript, typescript]
+
+  - id: base64-exec
+    name: Base64 Decode and Execute
+    description: >
+      Detects patterns where base64-encoded data is decoded and then
+      executed, a common technique for hiding malicious payloads.
+    severity: high
+    patterns:
+      - '\batob\s*\([^)]+\)'
+      - 'Buffer\.from\s*\([^,]+,\s*[''"]base64[''"]'
+      - 'base64\.b64decode\s*\('
+      - 'base64\s+-d'
+    languages: []
+
+  - id: env-exfiltration
+    name: Environment Variable Exfiltration
+    description: >
+      Detects patterns where environment variables (which may contain
+      secrets) are sent to external services via network requests.
+    severity: high
+    flags: 'i'
+    patterns:
+      - 'process\.env\b.*\b(fetch|axios|request|http\.get|https\.get)\b'
+      - '\b(fetch|axios|request|http\.get|https\.get)\b.*process\.env\b'
+      - 'os\.environ\b.*\brequests\.(get|post)\b'
+      - '\brequests\.(get|post)\b.*os\.environ\b'
+    languages: [javascript, typescript, python]
+
+  - id: sensitive-path-write
+    name: Write to Sensitive Paths
+    description: >
+      Detects code that writes to sensitive system directories or
+      configuration files that could compromise the host system.
+    severity: high
+    patterns:
+      - 'writeFile.*(/etc/|/usr/local/bin|~/.bashrc|~/.zshrc|~/.profile|~/.bash_profile)'
+      - 'fs\.write.*(/etc/|/usr/local/bin)'
+      - 'open\s*\(\s*[''"](/etc/|/usr/local/bin|~/.bashrc|~/.zshrc)'
+    languages: []
+
+  - id: prompt-injection
+    name: Prompt Injection Markers
+    description: >
+      Detects phrases commonly used in prompt injection attacks that attempt
+      to override AI safety guidelines or manipulate model behavior.
+    severity: high
+    flags: 'i'
+    patterns:
+      - 'ignore\s+(all\s+)?(previous|prior|above)\s+(instructions|rules|guidelines)'
+      - 'disregard\s+(all\s+)?(previous|prior|above)\s+(instructions|rules)'
+      - 'you\s+are\s+now\s+(a|an|in)\s+'
+      - 'override\s+(safety|system|security)\s+(prompt|instructions|guidelines|rules)'
+      - 'do\s+not\s+follow\s+(the\s+)?(system|safety|previous)\s+'
+      - 'bypass\s+(content|safety|security)\s+(filter|policy|restriction)'
+    languages: []

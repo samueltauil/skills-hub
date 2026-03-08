@@ -6,6 +6,7 @@
   "scripts": {
     "aggregate": "node scripts/aggregate-skills.js",
     "scan": "node scripts/scan-skills.js --output scan-report.json --update-skills",
+    "scan:ai": "node scripts/scan-skills.js --output scan-report.json --update-skills --ai-scan",
     "enrich": "node scripts/enrich-skills.js",
     "build": "npm run aggregate && npm run scan && cd site && npm run build",
     "dev": "npm run aggregate && cd site && npm run dev",
