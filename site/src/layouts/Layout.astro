@@ -58,6 +58,7 @@ const baseUrl = import.meta.env.BASE_URL;
           ·
           <a href="https://github.com/samueltauil/skills-hub/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribute a Skill</a>
         </p>
+        <p class="footer-made-with">Made with ❤️ and <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot</a></p>
       </div>
     </footer>
   </body>
@@ -155,6 +156,23 @@ const baseUrl = import.meta.env.BASE_URL;
 
   .footer a {
     transition: color var(--transition-fast, 0.15s ease);
+  }
+
+  .footer-made-with {
+    font-size: 0.8125rem !important;
+    color: var(--color-text-secondary);
+    margin-top: 0.75rem !important;
+    opacity: 0.8;
+  }
+
+  .footer-made-with a {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .footer-made-with a:hover {
+    color: var(--color-accent-hover, #79b8ff);
+    text-decoration: underline;
   }
 
   @media (max-width: 640px) {
