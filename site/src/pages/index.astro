@@ -76,6 +76,19 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
           <span class="stat-label">Sources</span>
         </div>
       </div>
+
+      <div class="hero-cli">
+        <p class="cli-label">Quick install via terminal</p>
+        <div class="cli-command">
+          <code>gh extension install samueltauil/skills-hub</code>
+          <button class="cli-copy-btn" id="cli-copy-btn" title="Copy to clipboard">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -313,6 +326,62 @@ gh skills-hub info &lt;skill-name&gt;</code></pre>
     background: linear-gradient(180deg, transparent, var(--color-border), transparent);
   }
 
+  .hero-cli {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.5s both;
+  }
+
+  .cli-label {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .cli-command {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 1rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    transition: border-color var(--transition-fast, 0.15s ease);
+  }
+
+  .cli-command:hover {
+    border-color: var(--color-accent);
+  }
+
+  .cli-copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast, 0.15s ease);
+  }
+
+  .cli-copy-btn:hover {
+    color: var(--color-accent);
+    background: var(--color-bg-tertiary);
+  }
+
+  .cli-copy-btn.copied {
+    color: var(--color-success);
+  }
+
   .section {
     padding: 3rem 0;
   }
@@ -456,5 +525,14 @@ gh skills-hub info &lt;skill-name&gt;</code></pre>
         window.location.href = `${baseUrl}skills/`;
       }
     }
+  });
+
+  // CLI copy button
+  const cliCopyBtn = document.getElementById('cli-copy-btn');
+  cliCopyBtn?.addEventListener('click', () => {
+    navigator.clipboard.writeText('gh extension install samueltauil/skills-hub').then(() => {
+      cliCopyBtn.classList.add('copied');
+      setTimeout(() => cliCopyBtn.classList.remove('copied'), 2000);
+    });
   });
 </script>

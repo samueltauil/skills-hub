@@ -220,6 +220,28 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
               </svg>
               Installation
             </h2>
+
+            <!-- CLI Install -->
+            <div class="cli-install-card">
+              <div class="cli-install-header">
+                <div class="cli-install-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 17 10 11 4 5"/>
+                    <line x1="12" y1="19" x2="20" y2="19"/>
+                  </svg>
+                  Install with CLI
+                  <span class="cli-recommended-tag">Recommended</span>
+                </div>
+                <button class="cli-install-copy" id="cli-install-copy" title="Copy command">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                </button>
+              </div>
+              <pre class="cli-install-command"><code>gh skills-hub install {skill.id}</code></pre>
+              <p class="cli-install-hint">Don't have the extension? Run <code>gh extension install samueltauil/skills-hub</code> first.</p>
+            </div>
             
             <div class="install-card">
               <div class="install-header">
@@ -630,6 +652,95 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
   }
 
   /* Installation Section */
+  .cli-install-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .cli-install-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.625rem;
+  }
+
+  .cli-install-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .cli-install-label svg {
+    color: var(--color-accent);
+  }
+
+  .cli-recommended-tag {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.125rem 0.5rem;
+    background: rgba(88, 166, 255, 0.15);
+    color: var(--color-accent);
+    border-radius: var(--radius-full);
+  }
+
+  .cli-install-command {
+    margin: 0;
+    padding: 0.625rem 1rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+  }
+
+  .cli-install-command code {
+    color: var(--color-accent);
+  }
+
+  .cli-install-copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.375rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.15s ease);
+  }
+
+  .cli-install-copy:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+  }
+
+  .cli-install-copy.copied {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: white;
+  }
+
+  .cli-install-hint {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+
+  .cli-install-hint code {
+    font-size: 0.7rem;
+    padding: 0.125rem 0.375rem;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+  }
+
   .install-card {
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
@@ -1194,10 +1305,11 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
   }
 </style>
 
-<script define:vars={{ skillFiles: skill.files, skillPath }}>
+<script define:vars={{ skillFiles: skill.files, skillPath, skillId: skill.id }}>
   // Store file contents globally for copy functionality
   window.__skillFiles = skillFiles;
   window.__skillPath = skillPath;
+  window.__skillId = skillId;
   // Create a lookup map by path for quick access
   window.__filesByPath = {};
   skillFiles.forEach(f => {
@@ -1206,6 +1318,18 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
 </script>
 
 <script>
+  // CLI install copy button
+  const cliInstallCopy = document.getElementById('cli-install-copy');
+  if (cliInstallCopy) {
+    cliInstallCopy.addEventListener('click', () => {
+      const skillId = (window as any).__skillId;
+      navigator.clipboard.writeText(`gh skills-hub install ${skillId}`).then(() => {
+        cliInstallCopy.classList.add('copied');
+        setTimeout(() => cliInstallCopy.classList.remove('copied'), 2000);
+      });
+    });
+  }
+
   // Copy all files button
   const copyAllBtn = document.getElementById('copy-all-btn');
   if (copyAllBtn) {
