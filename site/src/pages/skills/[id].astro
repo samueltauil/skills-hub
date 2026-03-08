@@ -333,6 +333,47 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
         </div>
 
         <aside class="sidebar">
+          <div class="sidebar-card security-scan-card">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Security Scan
+            </h3>
+            <div class="scan-status">
+              <span class="scan-badge scan-passed">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Passed
+              </span>
+            </div>
+            <p class="scan-description">Every skill is automatically scanned before being published to the Hub.</p>
+            <details class="scan-details">
+              <summary>How does it work?</summary>
+              <div class="scan-details-content">
+                <p>Our automated security pipeline analyzes every skill file during the aggregation process to help ensure safe usage:</p>
+                <ul class="scan-checklist">
+                  <li>
+                    <strong>Script & command detection</strong> — Files are inspected for embedded shell commands, script execution calls, and subprocess invocations that could run arbitrary code on your machine.
+                  </li>
+                  <li>
+                    <strong>Prompt injection analysis</strong> — Skill instructions are checked for patterns that attempt to override Copilot's safety guidelines or trick the AI into performing unintended actions.
+                  </li>
+                  <li>
+                    <strong>Sensitive data patterns</strong> — Content is scanned for hardcoded credentials, API keys, tokens, and other secrets that could pose a security risk.
+                  </li>
+                  <li>
+                    <strong>License compliance</strong> — Each skill's license is verified to ensure it permits redistribution, and skills with restrictive licenses are excluded automatically.
+                  </li>
+                  <li>
+                    <strong>Source verification</strong> — Skills are only sourced from vetted, trusted repositories with established maintainers and community oversight.
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
           <div class="sidebar-card">
             <h3>Quick Info</h3>
             <dl class="info-list">
@@ -378,46 +419,6 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
             </ul>
           </div>
 
-          <div class="sidebar-card security-scan-card">
-            <h3>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-              Security Scan
-            </h3>
-            <div class="scan-status">
-              <span class="scan-badge scan-passed">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                Passed
-              </span>
-            </div>
-            <p class="scan-description">Every skill is automatically scanned before being published to the Hub.</p>
-            <details class="scan-details">
-              <summary>How does it work?</summary>
-              <div class="scan-details-content">
-                <p>Our automated security pipeline analyzes every skill file during the aggregation process to help ensure safe usage:</p>
-                <ul class="scan-checklist">
-                  <li>
-                    <strong>Script & command detection</strong> — Files are inspected for embedded shell commands, script execution calls, and subprocess invocations that could run arbitrary code on your machine.
-                  </li>
-                  <li>
-                    <strong>Prompt injection analysis</strong> — Skill instructions are checked for patterns that attempt to override Copilot's safety guidelines or trick the AI into performing unintended actions.
-                  </li>
-                  <li>
-                    <strong>Sensitive data patterns</strong> — Content is scanned for hardcoded credentials, API keys, tokens, and other secrets that could pose a security risk.
-                  </li>
-                  <li>
-                    <strong>License compliance</strong> — Each skill's license is verified to ensure it permits redistribution, and skills with restrictive licenses are excluded automatically.
-                  </li>
-                  <li>
-                    <strong>Source verification</strong> — Skills are only sourced from vetted, trusted repositories with established maintainers and community oversight.
-                  </li>
-                </ul>
-              </div>
-            </details>
-          </div>
         </aside>
       </div>
     </div>
