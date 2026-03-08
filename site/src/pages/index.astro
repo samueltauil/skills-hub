@@ -95,6 +95,7 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
             category={skill.category}
             complexity={skill.complexity}
             fileCount={skill.files?.length || 0}
+            verified={skill.verified}
             source={skill.source}
           />
         ))}

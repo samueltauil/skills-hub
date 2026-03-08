@@ -8,12 +8,13 @@ interface Props {
   triggers?: string[];
   author?: string;
   fileCount?: number;
+  verified?: boolean;
   source?: {
     repoName: string;
   };
 }
 
-const { id, name, description, category, complexity, triggers = [], fileCount = 0, source } = Astro.props;
+const { id, name, description, category, complexity, triggers = [], fileCount = 0, verified = false, source } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 
 // Convert kebab-case to Title Case
@@ -38,7 +39,18 @@ const complexityColors = {
     <h3 class="skill-name">
       <a href={`${baseUrl}skills/${id}/`}>{displayName}</a>
     </h3>
-    {complexity && <span class={`badge ${complexityColors[complexity]}`}>{complexity}</span>}
+    <div class="skill-badges">
+      {verified && (
+        <span class="badge-verified" title="Security scan passed – no dangerous patterns detected">
+          <svg class="verified-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 1.5L2 4v4c0 3.3 2.5 5.8 6 6.5 3.5-.7 6-3.2 6-6.5V4L8 1.5z" fill="rgba(63,185,80,0.2)" stroke="#3fb950" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M5.5 8l1.8 1.8L10.5 6.5" stroke="#3fb950" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Verified
+        </span>
+      )}
+      {complexity && <span class={`badge ${complexityColors[complexity]}`}>{complexity}</span>}
+    </div>
   </div>
   
   <p class="skill-description">{description}</p>
@@ -96,6 +108,41 @@ const complexityColors = {
     align-items: flex-start;
     justify-content: space-between;
     gap: 0.5rem;
+  }
+
+  .skill-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-shrink: 0;
+  }
+
+  .badge-verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(63, 185, 80, 0.12) 0%, rgba(63, 185, 80, 0.06) 100%);
+    color: #3fb950;
+    border: 1px solid rgba(63, 185, 80, 0.35);
+    white-space: nowrap;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .badge-verified:hover {
+    box-shadow: 0 0 8px rgba(63, 185, 80, 0.25);
+    border-color: rgba(63, 185, 80, 0.6);
+  }
+
+  .verified-icon {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
   }
 
   .skill-name {

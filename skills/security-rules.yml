@@ -1,0 +1,122 @@
+# Security rules for skill code block scanning
+# Each rule specifies patterns to detect potentially dangerous constructs
+# in skill SKILL.md code examples.
+#
+# Fields:
+#   id          - unique rule identifier
+#   name        - human-readable rule name
+#   description - explanation of what is flagged and why
+#   severity    - high | medium | low
+#   patterns    - list of regex strings (any match triggers the rule)
+#   languages   - optional list of code fence languages this rule applies to
+#                 (empty list = applies to all languages)
+
+rules:
+  - id: shell-exec
+    name: Shell Command Execution
+    description: >
+      Detects shell execution functions that could run arbitrary system commands,
+      such as exec(), spawn(), or subprocess calls.
+    severity: high
+    patterns:
+      - 'child_process\s*\.'
+      - '\bexecSync\s*\('
+      - '\bspawnSync\s*\('
+      - '\bexecFileSync\s*\('
+      - '\bsubprocess\s*\.'
+      - '\bos\.system\s*\('
+      - '\bos\.popen\s*\('
+    languages: [javascript, typescript, python]
+
+  - id: eval-usage
+    name: Dynamic Code Evaluation
+    description: >
+      Detects eval() or equivalent dynamic code execution that can run
+      arbitrary code supplied at runtime.
+    severity: high
+    patterns:
+      - '\beval\s*\('
+      - '\bnew\s+Function\s*\('
+      - '\bexec\s*\(\s*[''"]'
+    languages: [javascript, typescript, python]
+
+  - id: unsafe-deserialization
+    name: Unsafe Deserialization
+    description: >
+      Detects deserialization of untrusted data which can lead to remote code
+      execution (pickle, yaml.load without Loader, etc.).
+    severity: high
+    patterns:
+      - '\bpickle\.loads?\s*\('
+      - '\byaml\.load\s*\([^,)]+\)'
+      - '\bunserialize\s*\('
+    languages: [python, php]
+
+  - id: hardcoded-secret
+    name: Hardcoded Credential or Secret
+    description: >
+      Detects hardcoded API keys, passwords, or tokens in code examples.
+    severity: high
+    flags: 'i'
+    patterns:
+      - '(api[_-]?key|password|secret|token)\s*=\s*[''"][a-zA-Z0-9+/]{8,}'
+      - 'Authorization:\s+Bearer\s+[a-zA-Z0-9\-_\.]{20,}'
+    languages: []
+
+  - id: network-to-external
+    name: Network Request to External URL
+    description: >
+      Detects outbound HTTP requests to external hosts embedded in code
+      examples without a clear explanation.
+    severity: medium
+    patterns:
+      - 'https?://(?!github\.com|raw\.githubusercontent\.com|docs\.github\.com)[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}'
+    languages: [bash, javascript, typescript, python]
+
+  - id: curl-wget-unsafe
+    name: Curl/Wget Pipe to Shell
+    description: >
+      Detects the classic curl-pipe-to-shell pattern which executes remote
+      scripts without inspection.
+    severity: high
+    patterns:
+      - 'curl\s+.*\|\s*(bash|sh|zsh|fish)'
+      - 'wget\s+.*\|\s*(bash|sh|zsh|fish)'
+      - 'curl\s+.*\|\s*sudo'
+    languages: [bash]
+
+  - id: path-traversal
+    name: Path Traversal
+    description: >
+      Detects "../" sequences in file path construction that could escape
+      intended directories.
+    severity: medium
+    patterns:
+      - '\.\./\.\.'
+      - '\.\./'
+    languages: []
+
+  - id: sensitive-file-access
+    name: Sensitive File Access
+    description: >
+      Detects code that reads well-known sensitive system files
+      (e.g., /etc/passwd, ~/.ssh/).
+    severity: medium
+    patterns:
+      - '/etc/passwd'
+      - '/etc/shadow'
+      - '~/\.ssh/'
+      - '~/.aws/credentials'
+    languages: []
+
+  - id: sql-injection-risk
+    name: SQL Injection Risk
+    description: >
+      Detects string concatenation used to build SQL queries which may
+      introduce injection vulnerabilities.
+    severity: medium
+    patterns:
+      - 'SELECT\s+.*\+\s*'
+      - 'INSERT\s+INTO\s+.*\+\s*'
+      - 'f[''"]SELECT\s+.*\{[^}]+\}'
+    languages: [python, javascript, typescript]

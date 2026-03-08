@@ -73,6 +73,14 @@ jobs:
         run: |
           node scripts/aggregate-skills.js
 
+      - name: Run security scan
+        if: steps.check-submodules.outputs.changes == 'true'
+        run: |
+          node scripts/scan-skills.js \
+            --output /tmp/scan-report.json \
+            --update-skills
+          echo "🔐 Security scan complete – results embedded in skills.json"
+
       - name: Check for skill changes
         if: steps.check-submodules.outputs.changes == 'true'
         id: check-skills

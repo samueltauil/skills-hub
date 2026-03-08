@@ -5,15 +5,17 @@
   "description": "Skills Hub - Curated catalog of GitHub Copilot skills",
   "scripts": {
     "aggregate": "node scripts/aggregate-skills.js",
-    "build": "npm run aggregate && cd site && npm run build",
+    "scan": "node scripts/scan-skills.js --output scan-report.json --update-skills",
+    "enrich": "node scripts/enrich-skills.js",
+    "build": "npm run aggregate && npm run scan && cd site && npm run build",
     "dev": "npm run aggregate && cd site && npm run dev",
     "update-submodules": "git submodule update --remote --merge"
   },
   "dependencies": {
+    "@github/copilot-sdk": "^0.1.31",
     "gray-matter": "^4.0.3"
   },
-  "devDependencies": {},
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }

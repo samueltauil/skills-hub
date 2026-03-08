@@ -69,6 +69,7 @@ const categories = categoryIds.map(id => ({
               category={skill.category || 'general'}
               complexity={skill.complexity}
               fileCount={skill.files?.length || 0}
+              verified={skill.verified}
               source={skill.source}
             />
           </div>
