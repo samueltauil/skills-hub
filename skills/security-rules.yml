@@ -57,9 +57,10 @@ rules:
     description: >
       Detects hardcoded API keys, passwords, or tokens in code examples.
     severity: high
+    flags: 'i'
     patterns:
-      - '(?i)(api[_-]?key|password|secret|token)\s*=\s*[''"][a-zA-Z0-9+/]{8,}'
-      - '(?i)Authorization:\s+Bearer\s+[a-zA-Z0-9\-_\.]{20,}'
+      - '(api[_-]?key|password|secret|token)\s*=\s*[''"][a-zA-Z0-9+/]{8,}'
+      - 'Authorization:\s+Bearer\s+[a-zA-Z0-9\-_\.]{20,}'
     languages: []
 
   - id: network-to-external

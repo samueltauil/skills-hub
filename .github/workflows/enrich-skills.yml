@@ -72,6 +72,9 @@ jobs:
           retention-days: 30
 
       - name: Commit updated skills.json
+        # Only commit scan results when run manually; on push, the report is
+        # available as an artifact to avoid bypassing PR review for data changes.
+        if: github.event_name == 'workflow_dispatch'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"

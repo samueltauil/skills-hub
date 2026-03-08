@@ -34,18 +34,18 @@ const { values: args } = parseArgs({
 
 // ── Load rules ────────────────────────────────────────────────────────────────
 async function loadRules() {
-  // yaml is not in deps – parse manually (simple YAML subset we control)
+  // js-yaml is present as a transitive dependency (via gray-matter); prefer it
+  // over the manual fallback parser so we handle the full YAML spec correctly.
   const rulesPath = path.join(ROOT, 'skills', 'security-rules.yml');
   const raw = fs.readFileSync(rulesPath, 'utf-8');
 
-  // Use a lightweight YAML parser from js-yaml if available, else parse manually
+  // Use js-yaml when available (direct or transitive); fall back to the minimal
+  // hand-rolled parser for controlled schema if the import fails.
   let yaml;
   try {
     const { default: jsYaml } = await import('js-yaml');
     yaml = jsYaml;
   } catch {
-    // js-yaml not available; fall back to a very simple YAML parser for our
-    // controlled schema (no anchors, no multi-doc, no complex types).
     return parseSimpleRulesYaml(raw);
   }
   return yaml.load(raw).rules;
@@ -66,7 +66,7 @@ function parseSimpleRulesYaml(raw) {
 
     if (trimmed.startsWith('- id:')) {
       if (current) rules.push(current);
-      current = { id: trimmed.slice(5).trim(), name: '', description: '', severity: 'medium', patterns: [], languages: [] };
+      current = { id: trimmed.slice(5).trim(), name: '', description: '', severity: 'medium', flags: '', patterns: [], languages: [] };
       inPatterns = false;
       inLanguages = false;
     } else if (current && trimmed.startsWith('name:')) {
@@ -77,6 +77,8 @@ function parseSimpleRulesYaml(raw) {
       if (val && val !== '>') current.description = val;
     } else if (current && trimmed.startsWith('severity:')) {
       current.severity = trimmed.slice(9).trim();
+    } else if (current && trimmed.startsWith('flags:')) {
+      current.flags = trimmed.slice(6).trim().replace(/^['"]|['"]$/g, '');
     } else if (current && trimmed === 'patterns:') {
       inPatterns = true;
       inLanguages = false;
@@ -133,7 +135,10 @@ function scanBlock(block, rules) {
     for (const pattern of rule.patterns) {
       let re;
       try {
-        re = new RegExp(pattern, 'gm');
+        // Merge the default 'gm' flags with any per-rule extra flags (e.g. 'i')
+        // defined in the YAML `flags` field, avoiding duplicate flag characters.
+        const extraFlags = (rule.flags || '').replace(/[gm]/g, '');
+        re = new RegExp(pattern, 'gm' + extraFlags);
       } catch {
         continue; // skip malformed patterns
       }
@@ -210,13 +215,14 @@ async function main() {
       });
     }
 
-    // Attach scan result to skill in-memory (for optional write-back)
+    // Attach scan summary to skill in-memory (for optional write-back).
+    // Only summary fields are persisted; detailed issues live in the external
+    // JSON report artifact to keep skills.json small and diff-friendly.
     skill.securityScan = {
       scannedAt: report.generatedAt,
       verified,
       issueCount: skillIssues.length,
       highCount: highIssues.length,
-      issues: skillIssues,
     };
     // Top-level convenience flag for badge display
     skill.verified = verified;

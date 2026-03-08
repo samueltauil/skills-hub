@@ -121,7 +121,10 @@ function applyEnrichment(skill, enrichment, now) {
   }
   if (Array.isArray(enrichment.platforms) && enrichment.platforms.length > 0) {
     const validPlatforms = ['windows', 'macos', 'linux'];
-    skill.platforms = enrichment.platforms.filter(p => validPlatforms.includes(p));
+    const normalizedPlatforms = enrichment.platforms
+      .map(p => String(p).toLowerCase().trim())
+      .filter(Boolean);
+    skill.platforms = normalizedPlatforms.filter(p => validPlatforms.includes(p));
   }
   skill.enrichedAt = now;
 }
