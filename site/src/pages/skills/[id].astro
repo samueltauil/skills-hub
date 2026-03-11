@@ -60,6 +60,13 @@ interface Props {
       verified: boolean;
       issueCount: number;
       highCount: number;
+      issues?: {
+        ruleId: string;
+        ruleName: string;
+        severity: string;
+        suggestion: string;
+        source: string;
+      }[];
     };
   };
 }
@@ -390,6 +397,36 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
               )}
             </div>
             <p class="scan-description">Every skill undergoes a two-pass automated security scan before being published to the Hub.</p>
+            {skill.securityScan?.issues && skill.securityScan.issues.length > 0 && (
+              <details class="scan-issues-details" open>
+                <summary>View {skill.securityScan.issues.length} issue{skill.securityScan.issues.length !== 1 ? 's' : ''}</summary>
+                <div class="scan-issues-list">
+                  {skill.securityScan.issues.map((issue) => (
+                    <div class={`scan-issue scan-issue-${issue.severity}`}>
+                      <div class="scan-issue-header">
+                        <span class={`scan-issue-severity severity-${issue.severity}`}>
+                          {issue.severity}
+                        </span>
+                        <span class="scan-issue-name">{issue.ruleName}</span>
+                      </div>
+                      <div class="scan-issue-source">
+                        <code>{issue.source}</code>
+                      </div>
+                      {issue.suggestion && (
+                        <div class="scan-issue-suggestion">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                          </svg>
+                          <span><strong>Fix:</strong> {issue.suggestion.trim()}</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
             <details class="scan-details">
               <summary>How does it work?</summary>
               <div class="scan-details-content">
@@ -1267,6 +1304,116 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
     color: var(--color-text-secondary);
     line-height: 1.5;
     margin-bottom: 0.75rem;
+  }
+
+  .scan-issues-details summary {
+    cursor: pointer;
+    font-size: 0.8125rem;
+    color: #d29922;
+    font-weight: 600;
+    padding: 0.375rem 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .scan-issues-details summary:hover {
+    text-decoration: underline;
+  }
+
+  .scan-issues-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .scan-issue {
+    border-radius: var(--radius-md, 8px);
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-secondary, rgba(255,255,255,0.02));
+  }
+
+  .scan-issue-high {
+    border-left: 3px solid #f85149;
+  }
+
+  .scan-issue-medium {
+    border-left: 3px solid #d29922;
+  }
+
+  .scan-issue-low {
+    border-left: 3px solid #8b949e;
+  }
+
+  .scan-issue-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .scan-issue-severity {
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-full);
+  }
+
+  .severity-high {
+    background: rgba(248, 81, 73, 0.15);
+    color: #f85149;
+    border: 1px solid rgba(248, 81, 73, 0.3);
+  }
+
+  .severity-medium {
+    background: rgba(210, 153, 34, 0.15);
+    color: #d29922;
+    border: 1px solid rgba(210, 153, 34, 0.3);
+  }
+
+  .severity-low {
+    background: rgba(139, 148, 158, 0.15);
+    color: #8b949e;
+    border: 1px solid rgba(139, 148, 158, 0.3);
+  }
+
+  .scan-issue-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .scan-issue-source {
+    margin-bottom: 0.375rem;
+  }
+
+  .scan-issue-source code {
+    font-size: 0.6875rem;
+    color: var(--color-text-secondary);
+    background: rgba(110, 118, 129, 0.1);
+    padding: 0.125rem 0.375rem;
+    border-radius: 3px;
+  }
+
+  .scan-issue-suggestion {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    padding: 0.5rem;
+    background: rgba(56, 139, 253, 0.06);
+    border-radius: var(--radius-sm, 4px);
+    border: 1px solid rgba(56, 139, 253, 0.15);
+  }
+
+  .scan-issue-suggestion svg {
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    color: var(--color-accent, #388bfd);
   }
 
   .scan-details summary {

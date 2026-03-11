@@ -74,7 +74,7 @@ function parseSimpleRulesYaml(raw) {
 
     if (trimmed.startsWith('- id:')) {
       if (current) rules.push(current);
-      current = { id: trimmed.slice(5).trim(), name: '', description: '', severity: 'medium', flags: '', patterns: [], languages: [] };
+      current = { id: trimmed.slice(5).trim(), name: '', description: '', severity: 'medium', suggestion: '', flags: '', patterns: [], languages: [] };
       inPatterns = false;
       inLanguages = false;
     } else if (current && trimmed.startsWith('name:')) {
@@ -85,6 +85,9 @@ function parseSimpleRulesYaml(raw) {
       if (val && val !== '>') current.description = val;
     } else if (current && trimmed.startsWith('severity:')) {
       current.severity = trimmed.slice(9).trim();
+    } else if (current && trimmed.startsWith('suggestion:')) {
+      const val = trimmed.slice(11).trim();
+      if (val && val !== '>') current.suggestion = val.replace(/^['"]|['"]$/g, '');
     } else if (current && trimmed.startsWith('flags:')) {
       current.flags = trimmed.slice(6).trim().replace(/^['"]|['"]$/g, '');
     } else if (current && trimmed === 'patterns:') {
@@ -181,6 +184,7 @@ function scanBlock(block, rules) {
           ruleId: rule.id,
           ruleName: rule.name,
           severity: rule.severity,
+          suggestion: rule.suggestion || '',
           pattern,
           matchCount: matches.length,
           snippet: block.code.slice(0, 120).replace(/\n/g, '↵'),
@@ -361,12 +365,19 @@ async function main() {
       });
     }
 
-    // Attach scan summary to skill
+    // Attach scan summary and issue details to skill
     skill.securityScan = {
       scannedAt: report.generatedAt,
       verified: skillIssues.length === 0,
       issueCount: skillIssues.length,
       highCount: highIssues.length,
+      issues: skillIssues.map(i => ({
+        ruleId: i.ruleId,
+        ruleName: i.ruleName,
+        severity: i.severity,
+        suggestion: i.suggestion || '',
+        source: i.source,
+      })),
     };
     skill.verified = skillIssues.length === 0;
   }
@@ -440,6 +451,14 @@ async function main() {
                   skill.securityScan.verified = skill.securityScan.issueCount === 0;
                   skill.verified = skill.securityScan.verified;
                   skill.securityScan.aiScan = { safe: false, confidence: result.confidence, findingCount: result.findings.length };
+                  // Append AI issues to the issues array
+                  skill.securityScan.issues.push(...result.findings.map(f => ({
+                    ruleId: `ai-${f.category}`,
+                    ruleName: f.category,
+                    severity: f.severity || 'medium',
+                    suggestion: f.description || '',
+                    source: 'ai-scan',
+                  })));
                   console.log(`⚠️  ${result.findings.length} issue(s)`);
                 } else {
                   skill.securityScan.aiScan = { safe: true, confidence: result.confidence || 'high', findingCount: 0 };
