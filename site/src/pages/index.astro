@@ -40,6 +40,8 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
   icon: categoryMeta[id]?.icon || '📦',
   count
 }));
+
+const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filter(Boolean)).size;
 ---
 
 <Layout title="Home">
@@ -72,7 +74,7 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
         </div>
         <div class="stat-divider"></div>
         <div class="stat-card">
-          <span class="stat-value">3</span>
+          <span class="stat-value">{sourceCount}</span>
           <span class="stat-label">Sources</span>
         </div>
       </div>
@@ -109,6 +111,7 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
             complexity={skill.complexity}
             fileCount={skill.files?.length || 0}
             verified={skill.verified}
+            securityScan={skill.securityScan}
             source={skill.source}
           />
         ))}
