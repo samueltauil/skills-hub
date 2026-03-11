@@ -7,3 +7,6 @@
 [submodule "sources/mcp-ext-apps"]
 	path = sources/mcp-ext-apps
 	url = https://github.com/modelcontextprotocol/ext-apps.git
+[submodule "sources/ui-ux-pro-max-skill"]
+	path = sources/ui-ux-pro-max-skill
+	url = https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
