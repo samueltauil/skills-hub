@@ -1,9 +1,15 @@
-name: Sync Skills Weekly
+name: Sync Skills
 
 on:
   schedule:
     # Run every Sunday at 2:00 AM UTC
     - cron: '0 2 * * 0'
+  push:
+    branches: [main]
+    paths:
+      - '.gitmodules'
+      - 'sources/**'
+      - 'scripts/aggregate-skills.js'
   workflow_dispatch: # Allow manual trigger
 
 permissions:
@@ -34,7 +40,12 @@ jobs:
       - name: Check for submodule changes
         id: check-submodules
         run: |
-          if git diff --quiet; then
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Push-triggered: paths filter already scoped to relevant changes,
+            # so always run aggregation (skills.json may be stale).
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "Push event — running aggregation"
+          elif git diff --quiet; then
             echo "changes=false" >> $GITHUB_OUTPUT
             echo "No submodule changes detected"
           else
