@@ -92,6 +92,17 @@ function determineCategory(skillName, description = '') {
   return 'code-quality'; // default
 }
 
+// Binary extensions to skip when collecting skill files
+const BINARY_EXTENSIONS = new Set([
+  '.ttf', '.otf', '.woff', '.woff2', '.eot',
+  '.png', '.jpg', '.jpeg', '.gif', '.ico', '.svg', '.webp',
+  '.zip', '.tar', '.gz', '.bz2',
+  '.pdf', '.doc', '.docx',
+  '.exe', '.dll', '.so', '.dylib',
+  '.pyc', '.pyo', '.class',
+  '.db', '.sqlite', '.coverage',
+]);
+
 /**
  * Recursively get all files in a directory
  */
@@ -106,13 +117,19 @@ function getFilesRecursive(dir, relativeTo = dir) {
     const fullPath = path.join(dir, entry.name);
     const relativePath = path.relative(relativeTo, fullPath).replace(/\\/g, '/');
     
-    if (entry.isDirectory()) {
+    // Resolve symlinks to determine actual type
+    const stat = fs.statSync(fullPath, { throwIfNoEntry: false });
+    if (!stat) continue;
+    
+    if (stat.isDirectory()) {
       // Skip __pycache__ and other common ignore patterns
       if (entry.name.startsWith('__') || entry.name.startsWith('.')) continue;
       files.push(...getFilesRecursive(fullPath, relativeTo));
     } else {
       // Skip hidden files
       if (entry.name.startsWith('.')) continue;
+      // Skip binary files
+      if (BINARY_EXTENSIONS.has(path.extname(entry.name).toLowerCase())) continue;
       
       const content = fs.readFileSync(fullPath, 'utf-8');
       files.push({
@@ -308,18 +325,22 @@ async function aggregate() {
     
     for (const skillName of skillFolders) {
       const skillPath = path.join(source.path, skillName);
-      const skill = processSkill(skillPath, skillName, source);
+      try {
+        const skill = processSkill(skillPath, skillName, source);
       
-      if (skill) {
-        skills.push(skill);
+        if (skill) {
+          skills.push(skill);
         
-        // Track category
-        if (!categories.has(skill.category)) {
-          categories.set(skill.category, 0);
+          // Track category
+          if (!categories.has(skill.category)) {
+            categories.set(skill.category, 0);
+          }
+          categories.set(skill.category, categories.get(skill.category) + 1);
+        
+          console.log(`  ✅ ${skillName} (${skill.files.length} files)`);
         }
-        categories.set(skill.category, categories.get(skill.category) + 1);
-        
-        console.log(`  ✅ ${skillName} (${skill.files.length} files)`);
+      } catch (err) {
+        console.warn(`  ⚠️ Skipping ${skillName}: ${err.message}`);
       }
     }
     
