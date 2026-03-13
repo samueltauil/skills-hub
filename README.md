@@ -7,7 +7,7 @@
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
 [![Website](https://img.shields.io/badge/Website-Live-success?logo=github)](https://skillshub.space)
-[![Skills Count](https://img.shields.io/badge/Skills-225-blue)](./site/src/data/skills.json)
+[![Skills Count](https://img.shields.io/badge/Skills-28-blue)](./site/src/data/skills.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## What is this?
@@ -16,7 +16,7 @@
 
 ### Features
 
-- **Browse by Category** — Skills organized into 11 categories (Testing, DevOps, Documentation, etc.)
+- **Browse by Category** — Skills organized into 8 categories (Testing, DevOps, Documentation, etc.)
 - **Search** — Find skills by name, description, or trigger keywords
 - **One-Click Install** — Copy commands to add skills to your project
 - **CLI Extension** — Install skills directly from the terminal with `gh skills-hub`
@@ -33,17 +33,14 @@ Or explore the [skills registry](./skills/registry.json) directly.
 
 | Category | Skills | Description |
 |----------|:------:|-------------|
-| ✨ Code Quality | 58 | Reviews, refactoring, linting |
-| 📝 Documentation | 41 | READMEs, PRDs, technical writing |
-| 🔀 Git & Version Control | 35 | Commits, branching, GitHub operations |
-| 🎨 Frontend & UI | 20 | React, Vue, components, design |
-| 🔌 API & Backend | 26 | REST APIs, GraphQL, databases |
-| 🧪 Testing | 20 | Unit tests, E2E, test automation |
-| 🚀 DevOps & CI/CD | 12 | Pipelines, Docker, Kubernetes |
-| 🔧 MCP Development | 6 | Model Context Protocol servers and apps |
-| 📊 Diagrams | 5 | Mermaid, PlantUML, visualizations |
-| 🔒 Security | 1 | Audits, vulnerabilities, secure coding |
-| 📈 Data & Analytics | 1 | SQL, data pipelines, visualization |
+| 🔌 API & Backend | 4 | REST APIs, GraphQL, databases |
+| ✨ Code Quality | 2 | Reviews, refactoring, linting |
+| 🚀 DevOps & CI/CD | 6 | Pipelines, Docker, Kubernetes |
+| 📊 Diagrams | 1 | Mermaid, PlantUML, visualizations |
+| 📝 Documentation | 4 | READMEs, PRDs, technical writing |
+| 🎨 Frontend & UI | 8 | React, Vue, components, design |
+| 🔀 Git & Version Control | 1 | Commits, branching, GitHub operations |
+| 🧪 Testing | 2 | Unit tests, E2E, test automation |
 
 ## Install a Skill
 
