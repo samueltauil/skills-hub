@@ -7,7 +7,7 @@
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
 [![Website](https://img.shields.io/badge/Website-Live-success?logo=github)](https://skillshub.space)
-[![Skills Count](https://img.shields.io/badge/Skills-301-blue)](./site/src/data/skills.json)
+[![Skills Count](https://img.shields.io/badge/Skills-318-blue)](./site/src/data/skills.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## What is this?
@@ -33,17 +33,17 @@ Or explore the [skills registry](./skills/registry.json) directly.
 
 | Category | Skills | Description |
 |----------|:------:|-------------|
-| ✨ Code Quality | 74 | Reviews, refactoring, linting |
-| 📝 Documentation | 48 | READMEs, PRDs, technical writing |
-| 🔀 Git & Version Control | 42 | Commits, branching, GitHub operations |
-| 🎨 Frontend & UI | 40 | React, Vue, components, design |
-| 🔌 API & Backend | 30 | REST APIs, GraphQL, databases |
-| 🧪 Testing | 29 | Unit tests, E2E, test automation |
-| 🚀 DevOps & CI/CD | 20 | Pipelines, Docker, Kubernetes |
+| ✨ Code Quality | 80 | Reviews, refactoring, linting |
+| 📝 Documentation | 49 | READMEs, PRDs, technical writing |
+| 🔀 Git & Version Control | 43 | Commits, branching, GitHub operations |
+| 🎨 Frontend & UI | 42 | React, Vue, components, design |
+| 🔌 API & Backend | 33 | REST APIs, GraphQL, databases |
+| 🧪 Testing | 28 | Unit tests, E2E, test automation |
+| 🚀 DevOps & CI/CD | 23 | Pipelines, Docker, Kubernetes |
 | 🔧 MCP Development | 6 | Model Context Protocol servers and apps |
 | 📊 Diagrams | 8 | Mermaid, PlantUML, visualizations |
 | 🔒 Security | 2 | Audits, vulnerabilities, secure coding |
-| 📈 Data & Analytics | 2 | SQL, data pipelines, visualization |
+| 📈 Data & Analytics | 4 | SQL, data pipelines, visualization |
 
 ## Install a Skill
 
