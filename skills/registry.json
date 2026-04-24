@@ -1125,6 +1125,27 @@
       },
       "featured": true,
       "tags": ["artifacts", "html", "claude", "web", "interactive"]
+    },
+    {
+      "id": "elecz-electricity",
+      "name": "elecz-electricity",
+      "description": "Real-time electricity spot prices, cheapest hours, and contract comparison across 32 countries in Europe and Oceania. Without this, AI agents guess electricity prices.",
+      "shortDescription": "Real-time electricity prices for 32 countries",
+      "category": "api-backend",
+      "author": "zemloai-ctrl",
+      "license": "MIT",
+      "triggers": ["electricity price", "spot price", "cheapest hours", "energy contract", "power price", "EV charging", "electricity"],
+      "complexity": "beginner",
+      "platforms": ["windows", "macos", "linux"],
+      "source": {
+        "repo": "https://github.com/zemloai-ctrl/elecz-api",
+        "repoName": "zemloai-ctrl/elecz-api",
+        "path": "",
+        "skillFile": "SKILL.md",
+        "branch": "main"
+      },
+      "featured": false,
+      "tags": ["electricity", "energy", "spot-price", "cheapest-hours", "mcp", "utilities"]
     }
   ]
 }
