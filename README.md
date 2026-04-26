@@ -29,6 +29,8 @@ Visit the live site: **[skillshub.space](https://skillshub.space)**
 
 Or explore the [skills registry](./skills/registry.json) directly.
 
+Chinese users can also discover more skills through **Skills宝**: https://skilery.com
+
 ### Categories
 
 | Category | Skills | Description |
