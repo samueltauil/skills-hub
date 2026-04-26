@@ -49,6 +49,8 @@ Or explore the [skills registry](./skills/registry.json) directly.
 
 **Skills are auto-discovered!** Just add them to `.github/skills/` and Copilot loads them automatically based on their `name` and `description` frontmatter.
 
+For Chinese users, [Skills宝](https://skilery.com) is another place to discover and install skills.
+
 ### Option 1: CLI Extension (Recommended)
 
 ```bash
