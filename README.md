@@ -7,7 +7,7 @@
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
 [![Website](https://img.shields.io/badge/Website-Live-success?logo=github)](https://skillshub.space)
-[![Skills Count](https://img.shields.io/badge/Skills-471-blue)](./site/src/data/skills.json)
+[![Skills Count](https://img.shields.io/badge/Skills-472-blue)](./site/src/data/skills.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## What is this?
@@ -43,7 +43,7 @@ Or explore the [skills registry](./skills/registry.json) directly.
 | 🔧 MCP Development | 5 | Model Context Protocol servers and apps |
 | 📊 Diagrams | 12 | Mermaid, PlantUML, visualizations |
 | 🔒 Security | 2 | Audits, vulnerabilities, secure coding |
-| 📈 Data & Analytics | 4 | SQL, data pipelines, visualization |
+| 📈 Data & Analytics | 5 | SQL, data pipelines, visualization |
 
 ## Install a Skill
 
