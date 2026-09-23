@@ -1912,52 +1912,22 @@
         "branch": "main"
       },
       "featured": true,
-      "tags": [
-        "artifacts",
-        "html",
-        "claude",
-        "web",
-        "interactive"
-      ]
+      "tags": ["artifacts", "html", "claude", "web", "interactive"]
     },
     {
-      "id": "copilot-tool-manager",
-      "name": "copilot-tool-manager",
-      "description": "Enable, disable, and manage VS Code Copilot agent tools by category. Optimize your context window by selectively disabling unused tools like browser, GitHub, or memory tools.",
-      "shortDescription": "Manage Copilot tools to save context window tokens",
-      "category": "devops-cicd",
-      "author": "SushantGautam",
+      "id": "mailtrap-email-integration",
+      "name": "Mailtrap Email Integration",
+      "description": "Patterns for integrating transactional email sending using Mailtrap's Email API and Sandbox. Covers sandbox vs production separation, API authentication, sending domain verification (SPF/DKIM/DMARC), and contacts management. Use when implementing email-sending features or debugging delivery issues.",
+      "shortDescription": "Transactional email via Mailtrap API with sandbox testing and domain setup",
+      "category": "api-backend",
+      "author": "mailtrap",
       "license": "MIT",
-      "triggers": [
-        "disable tools",
-        "enable tools",
-        "tool manager",
-        "context optimization",
-        "copilot tools",
-        "browser tools",
-        "terminal tools"
-      ],
-      "complexity": "beginner",
-      "platforms": [
-        "windows",
-        "macos",
-        "linux"
-      ],
+      "triggers": ["email", "mailtrap", "transactional email", "smtp", "email api", "sandbox testing", "domain verification", "spf", "dkim"],
+      "complexity": "intermediate",
       "source": {
-        "repo": "https://github.com/SushantGautam/copilot-tool-manager",
-        "repoName": "SushantGautam/copilot-tool-manager",
-        "path": ".",
-        "skillFile": "SKILL.md",
-        "branch": "main"
-      },
-      "featured": false,
-      "tags": [
-        "copilot",
-        "tools",
-        "context",
-        "optimization",
-        "vscode"
-      ]
+        "repo": "https://github.com/mailtrap/mailtrap-skills",
+        "path": "skills/sending-emails/SKILL.md"
+      }
     }
   ]
 }
