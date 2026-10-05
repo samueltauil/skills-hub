@@ -1928,6 +1928,21 @@
         "repo": "https://github.com/mailtrap/mailtrap-skills",
         "path": "skills/sending-emails/SKILL.md"
       }
+    },
+    {
+      "id": "ledger-tasks-yylo",
+      "name": "YYLO Ledger Tasks",
+      "description": "Retrieve YYLO Ledger Records by ID, discover PDRs and artifacts, and manage tasks and dependencies on the YYLO Kanban board. Requires the yy CLI and delegates to the separately installed yylo-ledger CLI. Use when planning or tracking implementation-sized dev tasks.",
+      "shortDescription": "Plan and track dev tasks on the YYLO Ledger Kanban via yy CLI",
+      "category": "documentation",
+      "author": "yylo-dev",
+      "license": "MIT",
+      "triggers": ["yylo", "ledger", "kanban", "task board", "create task", "task dependencies", "pdr", "product development requirement", "yy ledger", "record search"],
+      "complexity": "intermediate",
+      "source": {
+        "repo": "https://github.com/yylo-dev/yylo-skills",
+        "path": "skills/ledger-tasks-yylo/SKILL.md"
+      }
     }
   ]
 }
