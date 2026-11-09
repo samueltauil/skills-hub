@@ -1928,6 +1928,21 @@
         "repo": "https://github.com/mailtrap/mailtrap-skills",
         "path": "skills/sending-emails/SKILL.md"
       }
+    },
+    {
+      "id": "datacircle",
+      "name": "Datacircle",
+      "description": "Find the best GTM APIs. We benchmark all the GTM APIs and we put the results on our website. With this skill you get every plan of every GTM API as one file, to compare or price an API.",
+      "shortDescription": "Compare and price every GTM API plan from one file",
+      "category": "api-backend",
+      "author": "waynehamadi",
+      "license": "MIT",
+      "triggers": ["gtm api", "compare apis", "api pricing", "datacircle", "best email finder api", "linkedin api"],
+      "complexity": "beginner",
+      "source": {
+        "repo": "https://github.com/waynehamadi/datacircle",
+        "path": "skills/datacircle/SKILL.md"
+      }
     }
   ]
 }
