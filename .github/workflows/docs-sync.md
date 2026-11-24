@@ -1,5 +1,6 @@
 ---
 description: Keeps documentation (README, CONTRIBUTING, and site content) aligned with the current skills registry and upstream sources after sync updates.
+runs-on: ubuntu-24.04
 on:
   push:
     branches: [main]
