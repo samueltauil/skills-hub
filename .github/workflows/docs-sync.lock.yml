@@ -23,7 +23,7 @@
 #
 # Keeps documentation (README, CONTRIBUTING, and site content) aligned with the current skills registry and upstream sources after sync updates.
 #
-# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"4729040c1529e432f9a814e52198ca00d5fb288766a5cbf910e4afe189b0f5ca","compiler_version":"v0.52.1"}
+# gh-aw-metadata: {"schema_version":"v1","frontmatter_hash":"8383092a1727580e81c779f8f7af410a57bd635bf70ab4ab3110934c992baafb","compiler_version":"v0.52.1"}
 
 name: "Documentation Sync Agent"
 "on":
@@ -237,7 +237,7 @@ jobs:
 
   agent:
     needs: activation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       actions: read
       contents: read
