@@ -136,9 +136,9 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
         <div class="step">
           <div class="step-number">1</div>
           <h3>Install as a plugin <span class="step-tag">Recommended</span></h3>
-          <p class="step-desc">Add the marketplace once in GitHub Copilot CLI, then install any skill by name.</p>
+          <p class="step-desc">Add the marketplace once in GitHub Copilot CLI, then install any skill by its ID (the last part of its page URL — each skill page shows the exact command).</p>
           <pre><code>copilot plugin marketplace add {MARKETPLACE_REPO}
-copilot plugin install &lt;skill-name&gt;@{MARKETPLACE_NAME}</code></pre>
+copilot plugin install &lt;skill-id&gt;@{MARKETPLACE_NAME}</code></pre>
           <p class="step-desc step-extra">In VS Code, enable <code>chat.plugins.enabled</code> and add the marketplace:</p>
           <a class="btn btn-secondary btn-sm" href={vscodeAddMarketplace}>Add marketplace to VS Code</a>
         </div>
@@ -147,11 +147,11 @@ copilot plugin install &lt;skill-name&gt;@{MARKETPLACE_NAME}</code></pre>
           <h3>Use the gh extension</h3>
           <p class="step-desc">Install the <code>gh skills-hub</code> extension, then install any skill in one command.</p>
           <pre><code>gh extension install samueltauil/skills-hub
-gh skills-hub install &lt;skill-name&gt;</code></pre>
+gh skills-hub install &lt;skill-id&gt;</code></pre>
           <p class="step-desc step-extra">Search and browse skills from your terminal:</p>
           <pre><code>gh skills-hub search git
 gh skills-hub list
-gh skills-hub info &lt;skill-name&gt;</code></pre>
+gh skills-hub info &lt;skill-id&gt;</code></pre>
         </div>
         <div class="step">
           <div class="step-number">3</div>

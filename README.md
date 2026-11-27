@@ -65,7 +65,7 @@ To add a source: `git submodule add <repo-url> sources/<name>`, then add an entr
 
 ### Option 1: Agent Plugin marketplace (Recommended)
 
-This repository is a plugin marketplace. Each skill is published as its own plugin under [`plugins/`](./plugins), and the catalog lives in [`.github/plugin/marketplace.json`](.github/plugin/marketplace.json). The plugin name is the skill ID shown on the website.
+This repository is a plugin marketplace. Each skill is published as its own plugin under [`plugins/`](./plugins), and the catalog lives in [`.github/plugin/marketplace.json`](.github/plugin/marketplace.json). The plugin name is the skill ID: the last part of the skill's URL on [skillshub.space](https://skillshub.space) (for example `skillshub.space/skills/git-commit/` → `git-commit`). Each skill page shows the exact install command.
 
 **GitHub Copilot CLI**
 
