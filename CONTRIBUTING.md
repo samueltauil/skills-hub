@@ -156,6 +156,7 @@ Your skill must belong to one of these categories:
 | `security` | Security | Audits, vulnerabilities, secure coding |
 | `data-analytics` | Data & Analytics | SQL, data pipelines, visualization |
 | `mcp-development` | MCP Development | Model Context Protocol servers and apps |
+| `office-documents` | Office Documents | Document generation and automation |
 
 **Need a new category?** Open an issue to discuss before adding skills.
 
