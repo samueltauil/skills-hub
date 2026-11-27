@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "docker-compose-patterns",
+  "version": "1.0.0",
+  "description": "Use this skill when creating, modifying, or debugging Docker Compose configurations, even if the user just says they need to wire services together, add a database to their stack, or set up a local development environment with multiple containers. Covers service definitions, health checks, dependency ordering, volumes, networks, environment variables, and development overrides.",
+  "author": {
+    "name": "docker",
+    "url": "https://github.com/docker"
+  },
+  "homepage": "https://skillshub.space/skills/docker-compose-patterns/",
+  "repository": "https://github.com/docker/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "data",
+    "docker",
+    "compose",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/docker/skills",
+        "path": "skills/docker-compose-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f7d2d3d91193b34365898fafcf5af8e7ae28c0c8a08c285e51ae3479fd53d071"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "foundry-agent-sync",
+  "version": "1.0.0",
+  "description": "Create and synchronize prompt-based AI agents directly within Azure AI Foundry via REST API, from a local JSON manifest. Unlike scaffolding skills that only generate local code, this skill registers agents in the Foundry service itself — making them immediately available for invocation. Use when the user asks to create agents in Foundry, sync, deploy, register, or push agents to Foundry, update agent instructions, or scaffold the manifest and sync script for a new repository. Triggers: 'create agent in foundry', 'sync foundry agents', 'deploy agents to foundry', 'register agents in foundry', 'push agents', 'create foundry agent manifest', 'scaffold agent sync'.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/foundry-agent-sync/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "azure",
+    "api",
+    "deploy",
+    "foundry",
+    "agent"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/foundry-agent-sync",
+        "branch": "main"
+      },
+      "contentHash": "sha256:31da795f5ee6a470c4416a0c2023b441e1c1a054039c7bb2bb2d5310decd0505"
+    }
+  }
+}

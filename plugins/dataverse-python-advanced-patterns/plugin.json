@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dataverse-python-advanced-patterns",
+  "version": "1.0.0",
+  "description": "Generate production code for Dataverse SDK using advanced patterns, error handling, and optimization techniques.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/dataverse-python-advanced-patterns/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "python",
+    "data",
+    "dataverse",
+    "advanced",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dataverse-python-advanced-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fc114833355a4aba33b703358f6625a4684320bdf44469fe31534981146d1fe8"
+    }
+  }
+}

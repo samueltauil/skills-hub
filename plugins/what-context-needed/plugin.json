@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "what-context-needed",
+  "version": "1.0.0",
+  "description": "Ask Copilot what files it needs to see before answering a question",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/what-context-needed/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "what",
+    "context",
+    "needed"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/what-context-needed",
+        "branch": "main"
+      },
+      "contentHash": "sha256:062d0b8719f404b3ffd21c8595fc2a6533af28f8d9e7cf17b9e308b24ad2ba89"
+    }
+  }
+}

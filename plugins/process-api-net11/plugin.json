@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "process-api-net11",
+  "version": "1.0.0",
+  "description": "Launch and supervise executable child processes on .NET 11 or later with System.Diagnostics.Process or SafeProcessHandle. DO NOT USE FOR: opening URLs in the default browser or documents in their associated application. Those are operating-system shell-association requests, not executable child-process management, even on .NET 11. DO NOT USE FOR: projects that must remain on .NET 10 or earlier. USE FOR: launching executables; preventing redirected stdout/stderr pipe deadlocks; capturing text, bytes, or interleaved lines; waiting for exit status; cancellation and timeouts; redirecting standard handles to files, pipes, or the null device; restricting handle inheritance; custom native process creation; fire-and-forget starts; parent-exit termination; terminal detachment; SafeProcessHandle and trimmer-friendly process management for NativeAOT applications.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/process-api-net11/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "api",
+    "doc",
+    "process",
+    "net11"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet11/skills/process-api-net11",
+        "branch": "main"
+      },
+      "contentHash": "sha256:18770980451c61a41fe42f0e9f85d072c95d41e5fbd7102420cb14ded08335c8"
+    }
+  }
+}

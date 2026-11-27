@@ -1,0 +1,5 @@
+# Configuration to specify the signature of user-defined functions (UDFs) that are used in the source
+# scripts:
+type: metadata
+udfs:
+- "date parse_short_date(dt int)"

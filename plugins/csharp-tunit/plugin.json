@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "csharp-tunit",
+  "version": "1.0.0",
+  "description": "Get best practices for TUnit unit testing, including data-driven tests",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/csharp-tunit/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "data",
+    "csharp",
+    "tunit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/csharp-tunit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a948e12218f79f6fb9c6a1002b66499119a48c28910369d3452c3c0dfd3f5759"
+    }
+  }
+}

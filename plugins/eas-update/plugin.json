@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "eas-update",
+  "version": "1.0.0",
+  "description": "Configure and use EAS Update for over-the-air JavaScript and asset updates with expo-updates and EAS CLI. Use when setting up OTA updates, configuring branches/channels/runtime versions, publishing to preview/staging/production, testing updates, or debugging why an installed build still shows old code. Load for TestFlight, preview, or production updates that do not appear, including questions about cold launches or reopening the app. Not for update health metrics; use eas-update-insights for adoption, crashes, and rollout monitoring.",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/eas-update/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "cli",
+    "test",
+    "eas",
+    "update"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/eas-update",
+        "branch": "main"
+      },
+      "contentHash": "sha256:18f566ec9e86059ac763c1911ad636e298877215318c2ee1883a78007be27e91"
+    }
+  }
+}

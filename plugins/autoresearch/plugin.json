@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "autoresearch",
+  "version": "1.0.0",
+  "description": "Autonomous iterative experimentation loop for any programming task. Guides the user through defining goals, measurable metrics, and scope constraints, then runs an autonomous loop of code changes, testing, measuring, and keeping/discarding results. Inspired by Karpathy's autoresearch. USE FOR: autonomous improvement, iterative optimization, experiment loop, auto research, performance tuning, automated experimentation, hill climbing, try things automatically, optimize code, run experiments, autonomous coding loop. DO NOT USE FOR: one-shot tasks, simple bug fixes, code review, or tasks without a measurable metric.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/autoresearch/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "cli",
+    "test",
+    "autoresearch"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/autoresearch",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d0d199016f488ce17f6dbc1c416dc62c75446b5aa0b64b8d71ca8f6f15c311c0"
+    }
+  }
+}

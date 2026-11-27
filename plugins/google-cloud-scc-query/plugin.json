@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-scc-query",
+  "version": "1.0.0",
+  "description": "Queries and retrieves active security findings, external exposures, toxic combinations, vulnerabilities, threats, and sensitive data risks from Security Command Center on Google Cloud. Use when retrieving details for a security finding by its name, validating finding scope (e.g., verifying findingClass is TOXIC_COMBINATION, VULNERABILITY, EXTERNAL_EXPOSURE, or THREAT), or fetching finding details for triage. Don't use to draft remediations, apply patches, or execute configurations.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-scc-query/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "security",
+    "data",
+    "google",
+    "cloud",
+    "scc"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-scc-query",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7c4a076174949fd6e0b0075c9dd4eb8c7f1e2921b9dd587364cf0110d7e8128f"
+    }
+  }
+}

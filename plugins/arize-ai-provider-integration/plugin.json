@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "arize-ai-provider-integration",
+  "version": "1.0.0",
+  "description": "Creates, reads, updates, and deletes Arize AI integrations that store LLM provider credentials used by evaluators and other Arize features. Supports any LLM provider (e.g. OpenAI, Anthropic, Azure OpenAI, AWS Bedrock, Vertex AI, Gemini, NVIDIA NIM). Use when the user mentions AI integration, LLM provider credentials, create integration, list integrations, update credentials, delete integration, or connecting an LLM provider to Arize.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/arize-ai-provider-integration/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "azure",
+    "arize",
+    "provider",
+    "integration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/arize-ai-provider-integration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:37e93fa952fdd1b70388ac8ab0f4372790fcf1b34fd5f99115f4a667cf8f343f"
+    }
+  }
+}

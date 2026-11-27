@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "exam-ready",
+  "version": "1.0.0",
+  "description": "Activate this skill when a student provides study material (PDF or pasted notes) and a syllabus, and wants to prepare for an exam. Extracts key definitions, points, keywords, diagrams, exam-ready sentences, and practice questions strictly from the provided material.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/exam-ready/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "diagrams",
+    "diagram",
+    "pdf",
+    "word",
+    "exam",
+    "ready"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "diagrams",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/exam-ready",
+        "branch": "main"
+      },
+      "contentHash": "sha256:01953b5e7a6bed7e5c4fe740bf6eb485a7ef2b7f1dcbff3adf1339899c5c0347"
+    }
+  }
+}

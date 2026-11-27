@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "msbuild-modernization",
+  "version": "1.0.0",
+  "description": "Guide for modernizing and migrating MSBuild project files to SDK-style format. USE FOR: converting legacy .csproj/.vbproj with verbose XML to SDK-style, migrating packages.config to PackageReference, removing Properties/AssemblyInfo.cs in favor of auto-generation, eliminating explicit Compile Include lists via implicit globbing, consolidating shared settings into Directory.Build.props. Indicators of legacy projects: ToolsVersion attribute, an Import of Microsoft.CSharp.targets via $(MSBuildToolsPath), .csproj files over 50 lines for simple projects. DO NOT USE FOR: projects already in SDK-style format, non-.NET build systems (npm, Maven, CMake), .NET Framework projects that cannot move to SDK-style.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/msbuild-modernization/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "msbuild",
+    "modernization"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-msbuild/skills/msbuild-modernization",
+        "branch": "main"
+      },
+      "contentHash": "sha256:71745071525704ee6a5cc3296d7e2747b9b883fb2a0982a3a3c46590c3217197"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "entra-agent-user",
+  "version": "1.0.0",
+  "description": "Create Agent Users in Microsoft Entra ID from Agent Identities, enabling AI agents to act as digital workers with user identity capabilities in Microsoft 365 and Azure environments.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/entra-agent-user/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "azure",
+    "entra",
+    "agent",
+    "user"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/entra-agent-user",
+        "branch": "main"
+      },
+      "contentHash": "sha256:652e274876a1ebe61541238c685820882f301b4e5786d4345cab792a86d46d85"
+    }
+  }
+}

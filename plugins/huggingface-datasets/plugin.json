@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "huggingface-datasets",
+  "version": "1.0.0",
+  "description": "Use this skill for Hugging Face Dataset Viewer API workflows that fetch subset/split metadata, paginate rows, search text, apply filters, download parquet URLs, and read size or statistics.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/huggingface-datasets/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "data",
+    "huggingface",
+    "datasets"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/huggingface-datasets",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2b605e507cb34b7b86e2c262e0caff7cf5f29dde962ca6f1f7049125e1afe014"
+    }
+  }
+}

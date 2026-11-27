@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "aws-resource-health-diagnose",
+  "version": "1.0.0",
+  "description": "Analyze AWS resource health, diagnose issues from CloudWatch logs and metrics, and create a remediation plan for identified problems.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/aws-resource-health-diagnose/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "aws",
+    "resource",
+    "health",
+    "diagnose"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/aws-resource-health-diagnose",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b1de0afff044782b6faf42d921df18bb6a1bebe39981ed3d2173daa50b5c91ff"
+    }
+  }
+}

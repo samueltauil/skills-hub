@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "setup-local-sdk",
+  "version": "1.0.0",
+  "description": "Install a .NET SDK locally for safe preview testing, specific-version pinning, or reproducible team setups — without modifying the system-wide installation. USE FOR: trying .NET previews safely, testing specific SDK versions, installing MAUI or other workloads on a preview, updating or replacing an existing local SDK, creating reproducible team/CI install scripts, configuring global.json paths. DO NOT USE FOR: system-wide SDK installs, .NET hosts older than 10, runtime-only installs, or projects not using SDK-style commands.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/setup-local-sdk/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "setup",
+    "local",
+    "sdk"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet/skills/setup-local-sdk",
+        "branch": "main"
+      },
+      "contentHash": "sha256:90b2929d30f35a0baedcb50b7f31a68068c08621cef4050eda79bf29c5091677"
+    }
+  }
+}

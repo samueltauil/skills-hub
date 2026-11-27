@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sentry-prompt-optimizer",
+  "version": "1.0.0",
+  "description": "Creates, optimizes, and iteratively refines agent prompts, system prompts, developer prompts, and reusable prompt templates. Use when asked to improve a prompt, optimize a system prompt, rewrite an agent prompt, tune prompt wording, make a prompt more reliable, port prompts between OpenAI, Claude, or Gemini, or build prompt evals.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/sentry-prompt-optimizer/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "word",
+    "prompt",
+    "optimizer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/prompt-optimizer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:13e69fa139b3aed9e9cfffc628c0f48f5a387108d4af5343d69a69b56a304781"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "screen-recording",
+  "version": "1.0.0",
+  "description": "Create annotated animated GIF demos and screen recordings for pull requests and documentation. Covers frame capture, timing, imageio-based GIF creation, and per-frame annotation workflows.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/screen-recording/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "screen",
+    "recording"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/screen-recording",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ac77976d8b9bada6ed8c0f10c36ac86e2c4d3cbbae5cff778c8a9cdd27ff33ca"
+    }
+  }
+}

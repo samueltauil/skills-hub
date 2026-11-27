@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "web-perf",
+  "version": "1.0.0",
+  "description": "Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/web-perf/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "web",
+    "perf"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/web-perf",
+        "branch": "main"
+      },
+      "contentHash": "sha256:86f16c6d77cc78c06541b5ca072026d14383afbf1ff1f602b9d3f6abfce69004"
+    }
+  }
+}

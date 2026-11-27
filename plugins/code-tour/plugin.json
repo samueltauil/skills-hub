@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "code-tour",
+  "version": "1.0.0",
+  "description": "Use this skill to create CodeTour .tour files — persona-targeted, step-by-step walkthroughs that link to real files and line numbers. Trigger for: \"create a tour\", \"make a code tour\", \"generate a tour\", \"onboarding tour\", \"tour for this PR\", \"tour for this bug\", \"RCA tour\", \"architecture tour\", \"explain how X works\", \"vibe check\", \"PR review tour\", \"contributor guide\", \"help someone ramp up\", or any request for a structured walkthrough through code. Supports 20 developer personas (new joiner, bug fixer, architect, PR reviewer, vibecoder, security reviewer, and more), all CodeTour step types (file/line, selection, pattern, uri, commands, view), and tour-level fields (ref, isPrimary, nextTour). Works with any repository in any language.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/code-tour/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "security",
+    "code",
+    "tour"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/code-tour",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d819c9851293f3e490104ee066dc07d41954c0cbb9bdbe057a259da023d133fe"
+    }
+  }
+}

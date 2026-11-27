@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-architecture",
+  "version": "1.0.0",
+  "description": "Design AI agent architectures through requirements discovery, or audit and diagnose architectural flaws in existing agents. Architecture only; excludes implementation and general code review.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/agent-architecture/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "agent",
+    "architecture"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/agent-architecture",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fe586cafa815badb98ec9fc874c0ab28a33b642fb246846a5eae7e3ccb6e0c13"
+    }
+  }
+}

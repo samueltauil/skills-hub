@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "structured-autonomy-implement",
+  "version": "1.0.0",
+  "description": "Structured Autonomy Implementation Prompt",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/structured-autonomy-implement/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "structured",
+    "autonomy",
+    "implement"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/structured-autonomy-implement",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d9367351b2106e0e198b5dc2ab9fb731d1689abff48c32bdeb8adfa408e111fc"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "copilot-sdk",
+  "version": "1.0.0",
+  "description": "Build agentic applications with the Microsoft Copilot SDK, transitioning from GitHub Copilot SDK. Use when embedding AI agents in apps, creating custom tools, implementing streaming responses, managing sessions, connecting to MCP servers, or creating custom agents. Triggers on Copilot SDK, Microsoft Copilot SDK, GitHub Copilot SDK, agentic app, embed Copilot, programmable agent, MCP server, custom agent.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/copilot-sdk/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "mcp",
+    "copilot",
+    "sdk"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/copilot-sdk",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cbf2d35293369f8b82c70e7332d5ee78a5783f5802006d64f269904b0bb7a329"
+    }
+  }
+}

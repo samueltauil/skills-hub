@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "triage-frontend-issues",
+  "version": "1.0.0",
+  "description": "Triage new issues in the Sentry `javascript` project by archiving non-actionable noise. Use when asked to \"triage issues\", \"triage the javascript project\", \"archive non-actionable issues\", \"triage new frontend issues\", or \"clean up the sentry/javascript queue\". Operates only on the sentry/javascript project, only archives (never resolves), and always archives with `untilEscalating`.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/triage-frontend-issues/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "triage",
+    "frontend",
+    "issues"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/triage-frontend-issues",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c629fdc46850f902b66ef2d94d0f0087b681f86f7cb2375cf2a481d14a66dea5"
+    }
+  }
+}

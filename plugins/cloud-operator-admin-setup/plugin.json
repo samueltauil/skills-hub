@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-operator-admin-setup",
+  "version": "1.0.0",
+  "description": "Sets up and manages the Cloud Operator Agent (\"Gemini for Google Cloud operations\" in the console) for a Google Cloud organization: turning it on or off, its organization-wide settings, and user access. Use when an organization administrator wants to set it up for the whole organization or change it, or when Cloud Operator is turned off for the organization or the user has no access there. Don't use when someone asks to set up Cloud Operator or their operator agent for themselves, even in a named organization (use `cloud-operator-setup`).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-operator-admin-setup/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "cloud",
+    "operator",
+    "admin",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-operator-admin-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b78ef2c2401c148fd29e5ebf17ad92717d10b3f0011eeacaf6cd68f83ed6d0c6"
+    }
+  }
+}

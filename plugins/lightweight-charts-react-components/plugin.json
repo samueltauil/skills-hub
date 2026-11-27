@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "lightweight-charts-react-components",
+  "version": "1.0.0",
+  "description": "lightweight-charts-react-components recipes for TradingView lightweight-charts in React. Candlestick, line, and area series; volume and indicator panes; realtime WebSocket updates; infinite history on scroll; crosshair OHLC legends and tooltips; trade markers and price lines; synchronized charts; numeric options and yield-curve axes. Use when adding or fixing a financial or trading chart in a React app, or when the user mentions lightweight-charts, TradingView charts in React, or this package.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/lightweight-charts-react-components/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "lightweight",
+    "charts",
+    "components"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/lightweight-charts-react-components",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2eb4505b73bffb078b16bee4c29547b1304ebfbfbb056576395a686416486d67"
+    }
+  }
+}

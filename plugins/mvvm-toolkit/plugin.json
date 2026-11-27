@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mvvm-toolkit",
+  "version": "1.0.0",
+  "description": "CommunityToolkit.Mvvm (the MVVM Toolkit) core: source generators ([ObservableProperty], [RelayCommand], [NotifyPropertyChangedFor], [NotifyCanExecuteChangedFor], [NotifyDataErrorInfo]), base classes (ObservableObject / ObservableValidator / ObservableRecipient), commands (RelayCommand / AsyncRelayCommand), and validation. Companion skills: mvvm-toolkit-messenger for pub/sub, mvvm-toolkit-di for Microsoft.Extensions.DependencyInjection wiring. Works across WPF, WinUI 3, MAUI, Uno, and Avalonia.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mvvm-toolkit/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "data",
+    "mvvm",
+    "toolkit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mvvm-toolkit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3af186f8dc0263580d9648dfc909a67a66bc6ea900beb11ecde1fdb617b6054d"
+    }
+  }
+}

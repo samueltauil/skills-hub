@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vcpkg",
+  "version": "1.0.0",
+  "description": "Guide for setting up vcpkg in C++ projects, managing dependency versions, and cross-compiling. Covers manifest initialization, CMake and Visual Studio integration, classic-to-manifest migration, version pinning, baselines, overrides, triplets, and cross-compilation. Use when a user is working with vcpkg project setup, installation, version management, or cross-platform builds. For specialized tasks, additional references cover custom registries and overlay ports (references/registries.md), CI/CD and binary caching (references/ci.md), and troubleshooting and dependency lifecycle (references/troubleshooting.md).",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/vcpkg/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "vcpkg"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/vcpkg",
+        "branch": "main"
+      },
+      "contentHash": "sha256:941f47990fc4ba89b98d3c3f473aed619e04490884d7a1b7901c0c723a2928f4"
+    }
+  }
+}

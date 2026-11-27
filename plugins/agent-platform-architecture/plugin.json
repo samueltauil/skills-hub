@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-platform-architecture",
+  "version": "1.0.0",
+  "description": "Designs, engineers, and validates enterprise Gemini platform architectures. Use when designing multi-project hierarchies (Host, Central Governance Hub, Runtime Spoke, Tool/MCP Spoke), configuring Agent Gateway, authoring Agent Connectivity Templates (ALL_TRAFFIC vs PRIVATE_RANGES_ONLY), deploying Secure Web Proxy (SWP) with Policy-Based Routing (PBR) or Cross-Cloud mTLS Egress Hubs, configuring Private CA TrustConfig with Internal ALB + Serverless NEG, implementing Unified Access Policies (UAP Policy V2 CEL) and Semantic Governance (SGP), configuring 3P IdP Token Exchange (EntraID/Ping/Okta via ext_proc + STS) or Agent Identity Auth Manager (SPIFFE), enforcing Model Armor Floor Settings and Fail-Closed guardrails, deploying Cross-Project Registry sync, binding ADK agents on Agent Runtime, or executing Day-2 lifecycle operations. Don't use for read-only live log triage or incident diagnosis, or generic Google Cloud Identity and Access Management (IAM) debugging.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/agent-platform-architecture/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "deploy",
+    "mcp",
+    "design",
+    "agent",
+    "platform"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/agent-platform-architecture",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0e47d4644f9ea98daeb61d18de03dc9986f5bcca2c366f194c39aec4595d325d"
+    }
+  }
+}

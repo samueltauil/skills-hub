@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "fluentui-blazor",
+  "version": "1.0.0",
+  "description": "Guide for using the Microsoft Fluent UI Blazor component library (Microsoft.FluentUI.AspNetCore.Components NuGet package) in Blazor applications. Use this when the user is building a Blazor app with Fluent UI components, setting up the library, using FluentUI components like FluentButton, FluentDataGrid, FluentDialog, FluentToast, FluentNavMenu, FluentTextField, FluentSelect, FluentAutocomplete, FluentDesignTheme, or any component prefixed with \"Fluent\". Also use when troubleshooting missing providers, JS interop issues, or theming.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/fluentui-blazor/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "design",
+    "data",
+    "fluentui",
+    "blazor"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/fluentui-blazor",
+        "branch": "main"
+      },
+      "contentHash": "sha256:64a9b2bc46c4023a4cb4a33c5705d353cde272331f2942f4ccb6307720c0006e"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "github-release",
+  "version": "1.0.0",
+  "description": "Guides IA through releasing a new version of a GitHub library end-to-end. Handles SemVer versioning and Keep a Changelog formatting automatically.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/github-release/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "github",
+    "release"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/github-release",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bb3f11e9fb8cc0daef10db51f0844aeba8c86b2f435175acfd5a009533e7a738"
+    }
+  }
+}

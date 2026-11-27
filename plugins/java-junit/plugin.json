@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "java-junit",
+  "version": "1.0.0",
+  "description": "Write, review and fix Java unit tests with JUnit 5 and JUnit 6 (Jupiter), AssertJ and Mockito: assertions, parameterized and nested tests, mocking rules, deterministic time and randomness, Surefire vs Failsafe, JaCoCo coverage, optional PIT mutation testing, and guardrails for agents (never skip or delete failing tests). Use when adding, refactoring or debugging tests in Maven or Gradle projects. Framework-neutral.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/java-junit/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "java",
+    "junit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/java-junit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:67e4fb5cc02fd492a6c9950c883356f8634f65c38e2de7477c45bae7d1844b3e"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-ads-api-quickstart",
+  "version": "1.0.0",
+  "description": "Guides developers through Google Ads API quickstart: credential setup, choosing from 6 client libraries/REST, configuring environments, and running a \"retrieve campaigns\" script. Troubleshoots common setup errors: USER_PERMISSION_DENIED, login_customer_id issues, and CLOUD_PROJECT_NOT_APPROVED_FOR_PRODUCTION (a Google Cloud project with Test access calling a production account). Use this skill when: - The user asks how to get started with the Google Ads API. - The user needs to set up Google Ads API access in a Google Cloud project or OAuth credentials. - The user wants to write a quickstart/example script for Google Ads. - The user encounters errors like USER_PERMISSION_DENIED, CLOUD_PROJECT_NOT_APPROVED_FOR_PRODUCTION, or the legacy DEVELOPER_TOKEN_NOT_APPROVED.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-ads-api-quickstart/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "api",
+    "cli",
+    "test",
+    "google",
+    "ads"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/google-ads-api-quickstart",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d226c90038f41a3509903e3b9e3ebeef940969200d39ba234e0039a851cca3d8"
+    }
+  }
+}

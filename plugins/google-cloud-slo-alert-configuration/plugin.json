@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-slo-alert-configuration",
+  "version": "1.0.0",
+  "description": "Configures Cloud Monitoring PromQL-based Service Level Objective (SLO) alerting policies on Google Cloud for resources registered in App Hub or individually specified. Generates Terraform output. Use when the user asks to configure an SLO or Service Level Objective. Don't use for standard alerting policies.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-slo-alert-configuration/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "google",
+    "cloud",
+    "slo",
+    "alert",
+    "configuration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-slo-alert-configuration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ae05f673830692fa7407880dff12d3bffdea5794f903231fef80fef5926f1c4b"
+    }
+  }
+}

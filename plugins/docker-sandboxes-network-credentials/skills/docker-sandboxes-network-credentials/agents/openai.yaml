@@ -1,0 +1,6 @@
+interface:
+  display_name: 'Docker Sandboxes: Network Policy & Credentials'
+  short_description: Configure sandbox network egress policy and provision service/registry credentials safely through the proxy-injection model.
+  default_prompt: Use this skill when configuring `sbx policy` network allow/deny rules or `sbx secret` service/registry credentials for Docker Sandboxes.
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pytest-coverage",
+  "version": "1.0.0",
+  "description": "Run pytest tests with coverage, discover lines missing coverage, and increase coverage to 100%.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/pytest-coverage/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "pytest",
+    "coverage"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/pytest-coverage",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b344d0263069b70a08780adc73a894fa6e997d6fba7c7c9ba944ebcc1daecb66"
+    }
+  }
+}

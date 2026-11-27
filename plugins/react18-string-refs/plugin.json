@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react18-string-refs",
+  "version": "1.0.0",
+  "description": "Provides exact migration patterns for React string refs (ref=\"name\" + this.refs.name) to React.createRef() in class components. Use this skill whenever migrating string ref usage - including single element refs, multiple refs in a component, refs in lists, callback refs, and refs passed to child components. Always use this skill before writing any ref migration code - the multiple-refs-in-list pattern is particularly tricky and this skill prevents the most common mistakes. Use it for React 18.3.1 migration (string refs warn) and React 19 migration (string refs removed).",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/react18-string-refs/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "react18",
+    "string",
+    "refs"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/react18-string-refs",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f674dba9ac25b00ead7ba50a68a7e809e24cd535d5ef20b4a5cb964055c1131a"
+    }
+  }
+}

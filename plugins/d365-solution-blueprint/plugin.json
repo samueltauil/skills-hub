@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "d365-solution-blueprint",
+  "version": "1.0.0",
+  "description": "Authors a Dynamics 365 Finance and Supply Chain Management Solution Blueprint from scratch through a structured, section-by-section architect interview, establishing scope, target operating model, application and data architecture, integration landscape, migration strategy, security model, ALM, testing, deployment, and support approach, with a decision log capturing rationale and rejected alternatives. Use when the user wants to create D365 implementation architecture documentation, start a D365 implementation, design the architecture, prepare a Solution Blueprint, or identify the architectural decisions the programme must make. Do not use for critique of an existing design; that is a review task rather than blueprint authoring.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/d365-solution-blueprint/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "deploy",
+    "doc",
+    "design",
+    "security"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/d365-solution-blueprint",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5aeff91edcf39a2eb8ff8d8c35f9ada3678b7f76f5e124fa42cfe304fd58f791"
+    }
+  }
+}

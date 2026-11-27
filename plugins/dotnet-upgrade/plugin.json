@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dotnet-upgrade",
+  "version": "1.0.0",
+  "description": "Ready-to-use prompts for comprehensive .NET framework upgrade analysis and execution",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/dotnet-upgrade/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "dotnet",
+    "upgrade"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dotnet-upgrade",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e940e94c7742ce9a8f0f1063560a87557a0f28ee682399002188c5c358714f52"
+    }
+  }
+}

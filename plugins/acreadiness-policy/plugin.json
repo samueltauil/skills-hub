@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "acreadiness-policy",
+  "version": "1.0.0",
+  "description": "Help the user pick, write, or apply an AgentRC policy. Policies customise readiness scoring by disabling irrelevant checks, overriding impact/level, setting pass-rate thresholds, or chaining org baselines with team overrides. Use when the user asks about strict mode, AI-only scoring, custom weights, CI gating, or wants org-wide standardisation.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/acreadiness-policy/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "acreadiness",
+    "policy"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/acreadiness-policy",
+        "branch": "main"
+      },
+      "contentHash": "sha256:29c916d49f22a0e13c294f369f16a7b11229759239d0d4946ca8bfa32c323cf4"
+    }
+  }
+}

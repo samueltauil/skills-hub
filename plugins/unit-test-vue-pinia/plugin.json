@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "unit-test-vue-pinia",
+  "version": "1.0.0",
+  "description": "Write and review unit tests for Vue 3 + TypeScript + Vitest + Pinia codebases. Use when creating or updating tests for components, composables, and stores; mocking Pinia with createTestingPinia; applying Vue Test Utils patterns; and enforcing black-box assertions over implementation details.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/unit-test-vue-pinia/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "typescript",
+    "unit",
+    "vue",
+    "pinia"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/unit-test-vue-pinia",
+        "branch": "main"
+      },
+      "contentHash": "sha256:92627d4b885e91e11fbb790f90a5dff621a7434e14dcc5d054a6f42e38d28dcb"
+    }
+  }
+}

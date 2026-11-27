@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cicd-pipeline-design",
+  "version": "1.0.0",
+  "description": "Use this skill to design and implement a Google Cloud based CI/CD pipeline. This skill encodes best practices for pipeline design, ensuring proper pattern selection and implementation. You MUST activate this skill when tasked with building a pipeline, designing architecture on GCP, or migrating pipelines. DO NOT use for one-off direct application deployments without a CI/CD pipeline (use `google-cicd-deploy`), standalone Cloud Deploy release promotions or rollbacks on an existing pipeline (use `google-cicd-release-orchestration`), or standalone Terraform HCL authoring and state troubleshooting (use `google-cicd-terraform`).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cicd-pipeline-design/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "deploy",
+    "design",
+    "google",
+    "cicd",
+    "pipeline"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cicd-pipeline-design",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8da7331d4f652a62e22f704b8c791521ffbbf72afc57d6a0fa54d970b07a0501"
+    }
+  }
+}

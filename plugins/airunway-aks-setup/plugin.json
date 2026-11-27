@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "airunway-aks-setup",
+  "version": "1.0.0",
+  "description": "Set up AI Runway on AKS — from bare cluster to running model. Covers cluster verification, controller install, GPU assessment, provider setup, and first deployment. WHEN: \"setup AI Runway\", \"onboard AKS cluster\", \"install AI Runway\", \"airunway setup\", \"deploy model to AKS\", \"GPU inference on AKS\", \"KAITO setup on AKS\", \"run LLM on AKS\", \"vLLM on AKS\", \"set up model serving on AKS\", \"AI Runway controller\".",
+  "author": {
+    "name": "microsoft",
+    "url": "https://github.com/microsoft"
+  },
+  "homepage": "https://skillshub.space/skills/airunway-aks-setup/",
+  "repository": "https://github.com/microsoft/azure-skills",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "airunway",
+    "aks",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/microsoft/azure-skills",
+        "path": ".github/plugins/azure-skills/skills/airunway-aks-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:71e760ec69db8f208eed08bc2d44ccda8a4cfdfc512d88c17836402d7babb3fe"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gh-review-requests",
+  "version": "1.0.0",
+  "description": "Fetch unread GitHub notifications for open PRs where review is requested from a specified team or opened by a team member. Use when asked to \"find PRs I need to review\", \"show my review requests\", \"what needs my review\", \"fetch GitHub review requests\", or \"check team review queue\".",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/gh-review-requests/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "review",
+    "requests"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/gh-review-requests",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c7de0c91cf12a992a74a200e6c25dcf864722e56df1a752277101a791ef4a961"
+    }
+  }
+}

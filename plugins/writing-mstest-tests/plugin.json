@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "writing-mstest-tests",
+  "version": "1.0.0",
+  "description": "ALWAYS USE when asked to fix, rewrite, update, improve, modernize, show corrected code for, or explain existing MSTest tests or MSTest-specific configuration. Use for \"review\" when corrected code or edits are wanted, even for one pasted assertion or passing tests with bad failure output. Covers expected/actual labels; generic Boolean, collection, string, numeric, null, identity, exception, hard-cast, and object[] checks; TestContext/lifecycle; timeout/cancellation; OS/CI conditions, retry, cleanup, parallelization, MSTest.Sdk project setup, and MSTESTxxxx. Honor the installed MSTest version. DO NOT USE to design new test cases (code-testing), perform report-only audits, create project files rather than explain MSTest setup, run tests, migrate frameworks, or handle non-MSTest/non-.NET code.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/writing-mstest-tests/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "design",
+    "writing",
+    "mstest",
+    "tests"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/writing-mstest-tests",
+        "branch": "main"
+      },
+      "contentHash": "sha256:57b21795b8f5ce24b48747919a6a8aae5dcaa366c38e00a33d4b537963f045fb"
+    }
+  }
+}

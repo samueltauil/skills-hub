@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "expo-project-structure",
+  "version": "1.0.0",
+  "description": "Folder structure for a new Expo app. Use when scaffolding or laying out a new Expo project with Expo Router, or deciding where a file should live in one. For new projects only — never restructure an existing app to match.",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/expo-project-structure/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "expo",
+    "project",
+    "structure"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/expo-project-structure",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4dcd9bf53c76a93e55de255152510ddd72b6fa6caae9792c88b2eed6ce48e7aa"
+    }
+  }
+}

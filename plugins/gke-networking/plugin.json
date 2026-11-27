@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-networking",
+  "version": "1.0.0",
+  "description": "Plans, configures, and manages core GKE cluster networking. Covers private clusters, VPC-native configurations, DNS, node egress, Dataplane V2, and IP planning. Use when designing GKE networking layouts, configuring private clusters, setting up Dataplane V2, planning GKE IP ranges, or managing VPC- native cluster modes. Don't use for application ingress, load balancing, or service networking (use gke-service-networking instead).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-networking/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "data",
+    "gke",
+    "networking"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-networking",
+        "branch": "main"
+      },
+      "contentHash": "sha256:27e3f86b87fff50f479810f5bb9f75c56f59d108da8c3c4d717cca693c8d0e1e"
+    }
+  }
+}

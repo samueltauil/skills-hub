@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dump-collect",
+  "version": "1.0.0",
+  "description": "Configure and collect crash dumps for modern .NET applications. USE FOR: enabling automatic crash dumps for CoreCLR or NativeAOT, capturing dumps from running .NET processes, setting up dump collection in Docker or Kubernetes, using dotnet-dump collect or createdump. DO NOT USE FOR: analyzing or debugging dumps, post-mortem investigation with lldb/windbg/dotnet-dump analyze, profiling or tracing, or for .NET Framework processes.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/dump-collect/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "dump",
+    "collect"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-diag/skills/dump-collect",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5f3dfae220001c478a953bf5171899adcf74348bfd1be9dc09848d52bc6585a8"
+    }
+  }
+}

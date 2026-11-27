@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-platform-autorater-customization",
+  "version": "1.0.0",
+  "description": "Customizes an autorater (evaluation metric) for an AI agent so its grades match the user's own judgment, starting from the agent's real trajectories. Use when a user wants a metric tailored to their agent, wants to turn failing trajectories into rubrics, says an existing autorater grades their agent wrong, or wants an autorater to agree with human labels (autorater hillclimbing, judge calibration). Don't use for quick evals with built-in metrics or for improving the agent itself (use agent-platform-eval-flywheel).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/agent-platform-autorater-customization/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "cli",
+    "agent",
+    "platform",
+    "autorater",
+    "customization"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/agent-platform-autorater-customization",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3e6265551aee8610702a1f793b579817cacbc0a579fe30629d9d6d464b26a443"
+    }
+  }
+}

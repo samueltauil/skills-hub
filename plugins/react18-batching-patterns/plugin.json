@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react18-batching-patterns",
+  "version": "1.0.0",
+  "description": "Provides exact patterns for diagnosing and fixing automatic batching regressions in React 18 class components. Use this skill whenever a class component has multiple setState calls in an async method, inside setTimeout, inside a Promise .then() or .catch(), or in a native event handler. Use it before writing any flushSync call - the decision tree here prevents unnecessary flushSync overuse. Also use this skill when fixing test failures caused by intermediate state assertions that break after React 18 upgrade.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/react18-batching-patterns/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "react",
+    "react18",
+    "batching",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/react18-batching-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f4876f044088e2b52bc6810648371f9f7c0975fb7d6f5007f7bede0428b279f8"
+    }
+  }
+}

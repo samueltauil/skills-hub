@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "loki-label-analyzer",
+  "version": "1.0.0",
+  "description": "Expert evaluator for Grafana Loki label strategy. Audits, designs, and improves label schemas using cardinality scoring, access-pattern alignment, static vs. dynamic label rules, and consistency checks. Use when the user asks to evaluate, audit, design, or improve a Loki label strategy — or asks why their Loki queries are slow.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/loki-label-analyzer/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "loki",
+    "label",
+    "analyzer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/loki-label-analyzer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fc5ca83e1b0d0433c5c2abb1c13411eebc7cb401ef80160f3128f79eb784b7a9"
+    }
+  }
+}

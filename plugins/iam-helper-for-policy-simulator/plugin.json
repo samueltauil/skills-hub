@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "iam-helper-for-policy-simulator",
+  "version": "1.0.0",
+  "description": "Safely simulates and applies Identity and Access Management (IAM) v1 (Allow) policy changes on Google Cloud. Uses the Policy Simulator to replay historical access logs against proposed policies to prevent breaking active workloads before applying the changes. Use when simulating or applying IAM v1 allow policies across Projects, Folders, or Organizations. Don't use for analyzing IAM v2 deny policies, VPC Service Controls, or performing general policy troubleshooting.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/iam-helper-for-policy-simulator/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "iam",
+    "helper",
+    "for",
+    "policy",
+    "simulator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/iam-helper-for-policy-simulator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ab74927b48285ccb2b28486adada131bc29245e26a5e7d7b5d879b9836fc1939"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "javascript-typescript-jest",
+  "version": "1.0.0",
+  "description": "Best practices for writing JavaScript/TypeScript tests using Jest, including mocking strategies, test structure, and common patterns.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/javascript-typescript-jest/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "typescript",
+    "javascript",
+    "jest"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/javascript-typescript-jest",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bf0af6f9aa08f0d6775fcb5892b7477d61c950c4656da23c42282406168b825d"
+    }
+  }
+}

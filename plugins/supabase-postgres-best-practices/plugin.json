@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "supabase-postgres-best-practices",
+  "version": "1.0.0",
+  "description": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types), schema design, migrations and declarative schema files, RLS policies and the tests that verify them, indexes, triggers, database functions, queues and scheduled jobs (pg_cron, pgmq), vector/semantic search (pgvector), and restoring dumps (pg_restore) or importing data. Also load it when diagnosing slow queries, high CPU, timeouts, EXPLAIN plans, connection exhaustion, locking, bloat, or rows visible to the wrong user or tenant. This is not just a performance guide — schema, migration, security, and SQL authoring tasks need these rules too, even for a one-column change or a single query.",
+  "author": {
+    "name": "supabase",
+    "url": "https://github.com/supabase"
+  },
+  "homepage": "https://skillshub.space/skills/supabase-postgres-best-practices/",
+  "repository": "https://github.com/supabase/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "design",
+    "security",
+    "data",
+    "supabase"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/supabase/agent-skills",
+        "path": "skills/supabase-postgres-best-practices",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4fc272f9d7fc764d5b5f8054e5e7b3110b6facc239aa94bfbb2d44946f31d0b9"
+    }
+  }
+}

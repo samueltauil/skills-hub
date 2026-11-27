@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "python-azure-iot-edge-modules",
+  "version": "1.0.0",
+  "description": "Build and operate Python Azure IoT Edge modules with robust messaging, deployment manifests, observability, and production readiness checks.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/python-azure-iot-edge-modules/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "azure",
+    "deploy",
+    "python",
+    "iot",
+    "edge"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/python-azure-iot-edge-modules",
+        "branch": "main"
+      },
+      "contentHash": "sha256:416aa4c8dd289701f8c043d37b965bb9a1084492d22029e8ad4b475910011077"
+    }
+  }
+}

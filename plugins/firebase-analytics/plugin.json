@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "firebase-analytics",
+  "version": "1.0.0",
+  "description": "Comprehensive guide for Google Analytics for Firebase (GA4F), including base setup, SDK initialization, screen tracking, and event logging on Android and iOS. Use this skill when setting up Google Analytics, adding the SDK, or logging analytics events. Don't use for standalone CLI login or project/config file downloads without Analytics (use firebase-basics), or for Crashlytics, Remote Config, Auth, Firestore, Hosting, App Hosting, or Data Connect.",
+  "author": {
+    "name": "firebase",
+    "url": "https://github.com/firebase"
+  },
+  "homepage": "https://skillshub.space/skills/firebase-analytics/",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "cli",
+    "data",
+    "analytics",
+    "firebase"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/firebase/agent-skills",
+        "path": "skills/firebase-analytics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a9c1085b05d6088f24c012001cb5190a27a4a3a861e0ecd76d70478ce3236047"
+    }
+  }
+}

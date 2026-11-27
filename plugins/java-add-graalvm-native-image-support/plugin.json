@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "java-add-graalvm-native-image-support",
+  "version": "1.0.0",
+  "description": "GraalVM Native Image skill for Spring Boot, Micronaut and plain Java: detects the build tool and framework, adds native image support, builds the executable, analyzes errors, and iterates until the native build succeeds and the binary runs correctly. For Quarkus projects it only dispatches to the quarkus-native-and-container skill.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/java-add-graalvm-native-image-support/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "java",
+    "add",
+    "graalvm",
+    "native",
+    "image"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/java-add-graalvm-native-image-support",
+        "branch": "main"
+      },
+      "contentHash": "sha256:54430333e00a14f5968cbd398c57d18465b51814130920d74ac2c4db1afb1574"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "power-apps-code-app-scaffold",
+  "version": "1.0.0",
+  "description": "Scaffold a complete Power Apps Code App project with PAC CLI setup, SDK integration, and connector configuration",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/power-apps-code-app-scaffold/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "cli",
+    "power",
+    "apps",
+    "code",
+    "app"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/power-apps-code-app-scaffold",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8319b106839fa8fb3b5d877557e8bbf23b8bad1fb81ed906d4ab3b42b47af64e"
+    }
+  }
+}

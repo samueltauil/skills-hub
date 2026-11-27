@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mvvm-toolkit-di",
+  "version": "1.0.0",
+  "description": "Wire CommunityToolkit.Mvvm ViewModels into Microsoft.Extensions.DependencyInjection. Covers the .NET Generic Host composition root, constructor injection, service lifetimes (Singleton / Transient / Scoped), IMessenger registration, resolving ViewModels in Views, keyed services, testing seams, and the legacy Ioc.Default escape hatch. Use across WPF, WinUI 3, .NET MAUI, Uno, and Avalonia.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mvvm-toolkit-di/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "mvvm",
+    "toolkit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mvvm-toolkit-di",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bf9ad0b501a3917a7092403f5811cd3007c37738e44eabc54b432edd522b3e57"
+    }
+  }
+}

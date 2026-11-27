@@ -1,0 +1,13 @@
+interface:
+  display_name: Docker Docs
+  short_description: Current, cited answers from official Docker documentation across every Docker product.
+  default_prompt: Use Docker Docs to look up current official Docker documentation for any Docker product, including Sandboxes, DHI, Docker Agent, Model Runner, and MCP Toolkit.
+dependencies:
+  tools:
+    - type: mcp
+      value: docker-docs
+      description: Docker documentation search MCP server
+      transport: streamable_http
+      url: https://ai-backend-service.docker.com/mcp
+policy:
+  allow_implicit_invocation: true

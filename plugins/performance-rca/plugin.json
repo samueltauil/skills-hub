@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "performance-rca",
+  "version": "1.0.0",
+  "description": "Investigates CPU, memory, and contention problems with Grafana Pyroscope profiles via the gcx CLI. Compares affected and baseline workloads, locates changed application stacks, and tests root-cause hypotheses against symptom and change evidence. Use when a service shows high CPU, growing memory, GC pressure, lock contention, or hot functions, when code regressed after a deploy, or when given a suspect service, flame graph, trace, or profiling anomaly report. For profiling setup use pyroscope; for profilecli-based analysis use profilecli-insights.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/performance-rca/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "cli",
+    "test",
+    "deploy",
+    "performance",
+    "rca"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-lgtm/performance-rca",
+        "branch": "main"
+      },
+      "contentHash": "sha256:15d5a65ec549481ed16d16789557b35b560dabf4a6245ff7e54e5d21a525fc0e"
+    }
+  }
+}

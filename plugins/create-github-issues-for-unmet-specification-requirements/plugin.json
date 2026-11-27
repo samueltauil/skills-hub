@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-github-issues-for-unmet-specification-requirements",
+  "version": "1.0.0",
+  "description": "Create GitHub Issues for unimplemented requirements from specification files using feature_request.yml template.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-github-issues-for-unmet-specification-requirements/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "create",
+    "github",
+    "issues",
+    "for"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-github-issues-for-unmet-specification-requirements",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3113949373a8f6b93646571d1caca71a9efabbcf0cfad0cc80ac7c31f743e528"
+    }
+  }
+}

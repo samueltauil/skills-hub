@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "compute-host-events-troubleshooting",
+  "version": "1.0.0",
+  "description": "Investigates, diagnoses, and mitigates Google Compute Engine virtual machine (VM) host events, including planned infrastructure maintenance (migrateOnHostMaintenance, terminateOnHostMaintenance), physical host hardware errors (hostError), guest OS terminations (guestTerminate), and Spot or Preemptible VM preemptions (compute.instances.preempted) using shutdown-script metadata. Use ONLY when an existing Compute Engine VM unexpectedly reboots, stops, crashes, is preempted, or becomes unresponsive due to physical host maintenance, hardware errors, or Local SSD recovery. DO NOT read or use for creating new standalone VMs, Managed Instance Group (MIG) autoscaler scale-out or scale-in failures, Google Kubernetes Engine (GKE) clusters, application OOM debugging, or VPC firewall issues.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/compute-host-events-troubleshooting/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "data",
+    "compute",
+    "host",
+    "events",
+    "troubleshooting"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/compute-host-events-troubleshooting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1abf9f675d9d8f2fd2bd75ab4ec46ba4be1d2dd0c424b57d6b3c0a8f03e516a9"
+    }
+  }
+}

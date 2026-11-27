@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "suggest-awesome-github-copilot-instructions",
+  "version": "1.0.0",
+  "description": "Suggest relevant GitHub Copilot instruction files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing instructions in this repository, and identifying outdated instructions that need updates.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/suggest-awesome-github-copilot-instructions/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "suggest",
+    "awesome",
+    "github",
+    "copilot"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/suggest-awesome-github-copilot-instructions",
+        "branch": "main"
+      },
+      "contentHash": "sha256:48f9aafdd53f8dbdd2c341beba4ef74d6e0cb75486d89e87f8d2d1ce01efc590"
+    }
+  }
+}

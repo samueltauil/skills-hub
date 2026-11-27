@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "update-specification",
+  "version": "1.0.0",
+  "description": "Update an existing specification file for the solution, optimized for Generative AI consumption based on new requirements or updates to any existing code.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/update-specification/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "update",
+    "specification"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/update-specification",
+        "branch": "main"
+      },
+      "contentHash": "sha256:dd7df78b2d1d3c1848a495714a5e09cbf299ab3d0d7206d63a6c253be22cc53c"
+    }
+  }
+}

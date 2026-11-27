@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "artifacts",
+  "version": "1.0.0",
+  "description": "Build, debug, or review code that uses Cloudflare Artifacts, Git-compatible versioned storage, from Workers, the REST API, or Git clients. Use for the env.ARTIFACTS binding, creating, forking, or importing repositories, repo-scoped tokens, and pushing commits from a Worker.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/artifacts/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "api",
+    "cli",
+    "artifacts"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/artifacts",
+        "branch": "main"
+      },
+      "contentHash": "sha256:78a8f85d56639ee38cb9185441f1041677e0ef3ef91b6c28ebbb95fa61e014e3"
+    }
+  }
+}

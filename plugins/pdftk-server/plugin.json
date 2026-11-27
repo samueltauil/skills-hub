@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pdftk-server",
+  "version": "1.0.0",
+  "description": "Skill for using the command-line tool pdftk (PDFtk Server) for working with PDF files. Use when asked to merge PDFs, split PDFs, rotate pages, encrypt or decrypt PDFs, fill PDF forms, apply watermarks, stamp overlays, extract metadata, burst documents into pages, repair corrupted PDFs, attach or extract files, or perform any PDF manipulation from the command line.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/pdftk-server/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "data",
+    "pdf",
+    "pdftk",
+    "server"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/pdftk-server",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b2caa5f3d33d673e8443edc2d737780524f4e4d073c4ed32179b63e65f2011de"
+    }
+  }
+}

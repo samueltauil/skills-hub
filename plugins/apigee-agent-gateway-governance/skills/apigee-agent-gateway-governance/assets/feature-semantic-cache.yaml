@@ -1,0 +1,179 @@
+# Feature: semantic cache (E2).
+#
+# Lookup in the Request PreFlow, populate on the response path. On a live
+# setup this took a repeat ask from 4743 ms to 336 ms with the model never
+# called.
+#
+# TWO TRAPS, both specific to a no-route proxy. Read before changing anything.
+#
+# 1. The response flow runs on a cache HIT as well. A conventional proxy hangs
+#    populate off the target response flow, which a hit never reaches; here
+#    there is no target, so populate sits in the proxy response flow and a hit
+#    short-circuits straight into it. Ungated, populate re-embeds and
+#    re-upserts the answer it just served -- a wasted embed, findNeighbors and
+#    upsert on the supposedly fast path, plus a duplicate datapoint per hit.
+#
+# 2. The cache-hit variable is NOT the documented name. Runtime emits
+#    SemanticCacheLookup.<policy>.cache_hit; the policy reference documents
+#    semanticcache.lookup.<policy>.cache_hit, which never resolves. An
+#    unresolved variable makes `!= true` true, so a condition written from the
+#    docs fails OPEN and the symptom looks exactly like trap 1.
+#
+# Both are handled by the populate condition below. It is written
+# PRE-NAMESPACED because the compiler rewrites step names and jsc:// URLs but
+# NOT policy-derived flow variables -- if you rename this feature or give it a
+# uid, this condition silently stops matching and you are back to trap 1.
+# Both boolean and string comparisons are present because the runtime type was
+# not pinned down.
+#
+# REQUIRES feature-normalize.yaml (priority 15). The prompt is read from
+# agw.user_prompt, which that feature sets before this one runs. Without it
+# the lookup has nothing to embed and the cache never hits.
+#
+# Requires: a Vertex AI Vector Search index and index endpoint with a deployed
+# index id, an embeddings model, roles/aiplatform.user on the deployment SA,
+# and a deploy with ?serviceAccount=.
+
+gateway: apigee
+schemaVersion: 1.0.0
+name: semanticcache
+uid: semanticcache
+type: feature
+priority: 30
+description: >-
+  Answers a repeated prompt from Vertex AI Vector Search without calling the
+  model. Looks up on the request path and populates on the response path,
+  skipping populate on a hit.
+
+parameters:
+  - name: LLM_URI_MATCH
+    displayName: LLM call match condition
+    description: >-
+      Matches both wire shapes. A single-shape condition disables the cache
+      for the other one with no error -- indistinguishable from a cache that
+      works and never hits. Shared with Model Armor, which fails closed, so
+      never widen this without feature-normalize present.
+    default: '((request.uri Like "*generateContent*") or (request.uri Like "*chat/completions*"))'
+
+  - name: EMBEDDINGS_URL
+    displayName: Embeddings predict URL
+    description: >-
+      THE MODEL FIXES THE INDEX WIDTH, AND THE INDEX IS IMMUTABLE. This policy
+      takes a URL and nothing else -- <Embeddings><VertexAI><URL> has no
+      dimensionality parameter -- so the model's NATIVE output width is what
+      lands in the index, and gemini-embedding-001's MRL truncation cannot be
+      reached through it. Changing this later is not a config change, it is an
+      index rebuild. Widths measured live, one :predict call each:
+        gemini-embedding-001             3072
+        text-embedding-005                768   <- default
+        text-multilingual-embedding-002   768
+        text-embedding-004                768   (still serves, but has dropped
+                                                 off the supported-models list)
+      text-embedding-005 is the default because it is supported and 768 is
+      ample for cache duty -- deciding whether a prompt resembles one seen in
+      the last 60 seconds. gemini-embedding-001 is the stronger model but costs
+      4x the vector storage and more compute per query for no gain at this job,
+      and needs a 3072 index built for it.
+      scripts/ensure_vector_search.sh refuses on a width mismatch rather than
+      letting it surface at runtime.
+    default: https://REGION-aiplatform.googleapis.com/v1/projects/PROJECT/locations/REGION/publishers/google/models/text-embedding-005:predict
+
+  - name: FIND_NEIGHBORS_URL
+    displayName: Vector Search findNeighbors URL
+    description: >-
+      Host is the index endpoint's OWN domain, not the regional aiplatform
+      host. INDEX_ENDPOINT_DOMAIN is substituted at deploy time by
+      deploy_proxy.sh (--index-endpoint-id), NOT supplied by the user: the
+      domain's leading label is assigned at endpoint-creation time and matches
+      neither the index id, the endpoint id, nor the project number, so it can
+      only be read back with
+      `gcloud ai index-endpoints describe ... --format='value(publicEndpointDomainName)'`.
+      That is why the input file has no field for it.
+    default: https://INDEX_ENDPOINT_DOMAIN/v1/projects/PROJECT/locations/REGION/indexEndpoints/INDEX_ENDPOINT_ID:findNeighbors
+
+  - name: UPSERT_URL
+    displayName: Vector Search upsertDatapoints URL
+    default: https://REGION-aiplatform.googleapis.com/v1/projects/PROJECT/locations/REGION/indexes/INDEX_ID:upsertDatapoints
+
+  - name: DEPLOYED_INDEX_ID
+    displayName: Deployed index id
+    description: Rendered into <DeployedIndexID>. All-caps ID; DeployedIndexId fails bundle validation.
+    default: agent_gateway_llm_cache
+
+  - name: SIMILARITY_THRESHOLD
+    default: "0.95"
+
+  - name: CACHE_TTL_SECONDS
+    default: "60"
+
+policies:
+  - name: SCL-lookup
+    type: SemanticCacheLookup
+    content:
+      SemanticCacheLookup:
+        metadata:
+          name: SCL-lookup
+          continueOnError: false
+          enabled: true
+        IgnoreUnresolvedVariables: false
+        # Shape-agnostic, set by feature-normalize at priority 15.
+        UserPromptSource: "{agw.user_prompt}"
+        Embeddings:
+          VertexAI:
+            URL: "{EMBEDDINGS_URL}"
+        SimilaritySearch:
+          VertexAI:
+            URL: "{FIND_NEIGHBORS_URL}"
+            DeployedIndexID: "{DEPLOYED_INDEX_ID}"
+            Threshold: "{SIMILARITY_THRESHOLD}"
+
+  - name: SCP-populate
+    type: SemanticCachePopulate
+    content:
+      SemanticCachePopulate:
+        metadata:
+          name: SCP-populate
+          continueOnError: false
+          enabled: true
+        IgnoreUnresolvedVariables: true
+        SimilaritySearch:
+          VertexAI:
+            URL: "{UPSERT_URL}"
+        TTLInSeconds: "{CACHE_TTL_SECONDS}"
+
+defaultEndpoint:
+  name: default
+  flows:
+    - name: PreFlow
+      mode: Request
+      steps:
+        - name: SCL-lookup
+          condition: "{LLM_URI_MATCH}"
+    # PostFlow/Response, not PreFlow/Response: AFT emits one element per Flow
+    # entry, so a second Flow named PreFlow would produce invalid XML. See
+    # references/gotchas.md.
+    - name: PostFlow
+      mode: Response
+      steps:
+        - name: SCP-populate
+          # response.status.code is load-bearing, and is the ONLY defence
+          # available today. SemanticCachePopulate is status-blind: gated
+          # only on cache_hit it will store ANY response, an upstream error
+          # included. Measured -- a transient 429 from a throttled model was
+          # written to the cache and then replayed, as HTTP 200, to every
+          # identical prompt for the whole TTL. A momentary blip became a
+          # persistent wrong answer served with a success status, invisible
+          # to metering (token_source=none, used.count=0 throughout).
+          #
+          # Raised with the Apigee team: the policy should not cache non-2xx
+          # by default, or should expose an eligibility control. Until that
+          # lands, keep this gate.
+          #
+          # 200-only is deliberate. It also declines 3xx and any future
+          # partial-success shape, which is right for a cache whose entries
+          # are replayed without further inspection.
+          condition: >-
+            {LLM_URI_MATCH}
+            and (response.status.code = 200)
+            and (SemanticCacheLookup.semanticcache-SCL-lookup.cache_hit != true)
+            and (SemanticCacheLookup.semanticcache-SCL-lookup.cache_hit != "true")

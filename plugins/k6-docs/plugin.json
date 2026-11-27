@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "k6-docs",
+  "version": "1.0.0",
+  "description": "Write or review k6 documentation across the three k6 repositories - k6-DefinitelyTyped (TypeScript types), k6-docs (user documentation), and k6 (release notes / changelog). Applies k6 doc style conventions, generates TypeScript type definitions, drafts release notes, and validates examples by running them against k6@master. Use when working on k6 documentation, the k6 changelog, the k6 release notes, k6 API reference, k6 TypeScript types, load testing docs, or when the user asks to write, edit, or review anything in the k6, k6-docs, or k6-DefinitelyTyped repos - even if they don't explicitly say \"documentation\".",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/k6-docs/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "api",
+    "test",
+    "doc",
+    "typescript",
+    "docs"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-k6/k6-docs",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ecb61462828b5f0d8104334ac58abfe588f60cfba9e40b72bd7e46c15f91c49d"
+    }
+  }
+}

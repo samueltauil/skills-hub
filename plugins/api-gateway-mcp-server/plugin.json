@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "api-gateway-mcp-server",
+  "version": "1.0.0",
+  "description": "Configures Google Cloud API Gateway to act as a remote Model Context Protocol (MCP) server (Public Preview) that exposes REST APIs as agent tools over HTTP (POST /mcp). Use when exposing an API Gateway API as MCP tools, migrating OpenAPI 2.0 specs to OpenAPI 3.x for MCP, annotating specs with x-google-api-management.mcp and x-google-mcp-tool, securing tools/list with JWTs or API keys, connecting Google ADK (McpToolset) or Apigee API hub and Agent Registry, or troubleshooting MCP JSON-RPC errors (-32601, -32602, -32000), /mcp HTTP 404 or 405 errors, and MCP errors from api-configs create. Do not use for a migration without MCP or another OpenAPI error from api-configs create (use api-gateway-openapi-spec-authoring), API key, JWT, or quota setup for REST only (use api-gateway-backend-security-and-rate-limiting), failing non-MCP requests (use api-gateway-troubleshooting), Apigee X proxy bundles, outbound LLM model routing, or GKE Gateway API.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/api-gateway-mcp-server/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "api",
+    "mcp",
+    "security",
+    "gateway",
+    "server"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/api-gateway-mcp-server",
+        "branch": "main"
+      },
+      "contentHash": "sha256:97bb127277d71227e2ed04e13171a31210f3197874319034bfa4de8885cd7f14"
+    }
+  }
+}

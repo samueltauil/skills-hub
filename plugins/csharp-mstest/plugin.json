@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "csharp-mstest",
+  "version": "1.0.0",
+  "description": "Get best practices for MSTest 3.x/4.x unit testing, including modern assertion APIs and data-driven tests",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/csharp-mstest/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "data",
+    "csharp",
+    "mstest"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/csharp-mstest",
+        "branch": "main"
+      },
+      "contentHash": "sha256:beacdbba06f78dc16dea3aa815ff983d9430a9785604cef983adf896df03ff85"
+    }
+  }
+}

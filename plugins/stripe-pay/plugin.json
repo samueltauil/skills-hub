@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "stripe-pay",
+  "version": "1.0.0",
+  "description": "Helps users send funds to another Stripe business, transfer money to a Stripe Profile handle or network ID, or ask whether an agent can pay a Stripe business. Use Stripe Directory to find or verify a recipient when the user doesn't provide an exact Stripe Profile handle or network ID.",
+  "author": {
+    "name": "stripe",
+    "url": "https://github.com/stripe"
+  },
+  "homepage": "https://skillshub.space/skills/stripe-pay/",
+  "repository": "https://github.com/stripe/ai",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "stripe",
+    "pay"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/stripe/ai",
+        "path": "skills/stripe-pay",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2dc7099587c38393ee7bb7f077125fcfcd54ffc381bc57c1ddacdb02c814885d"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "qdrant-version-upgrade",
+  "version": "1.0.0",
+  "description": "Guidance on how to upgrade your Qdrant version without interrupting the availability of your application and ensuring data integrity.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/qdrant-version-upgrade/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "data",
+    "qdrant",
+    "version",
+    "upgrade"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/qdrant-version-upgrade",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d319292b064a65ad931fdc37e0ccfe93f732e0cc7c55f31fe9d9d8ef4ebb6461"
+    }
+  }
+}

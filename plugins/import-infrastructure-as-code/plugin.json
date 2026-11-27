@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "import-infrastructure-as-code",
+  "version": "1.0.0",
+  "description": "Import existing Azure resources into Terraform using Azure CLI discovery and Azure Verified Modules (AVM). Use when asked to reverse-engineer live Azure infrastructure, generate Infrastructure as Code from existing subscriptions/resource groups/resource IDs, map dependencies, derive exact import addresses from downloaded module source, prevent configuration drift, and produce AVM-based Terraform files ready for validation and planning across any Azure resource type.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/import-infrastructure-as-code/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "azure",
+    "cli",
+    "import",
+    "infrastructure",
+    "code"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/import-infrastructure-as-code",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f9ad506290bceecdaf11744a18ffcefc263f2d70919171c155783159aa55545b"
+    }
+  }
+}

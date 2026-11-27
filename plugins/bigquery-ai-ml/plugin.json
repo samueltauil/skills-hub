@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bigquery-ai-ml",
+  "version": "1.0.0",
+  "description": "Leverages BigQuery's built-in machine learning and GenAI capabilities for advanced data analytics. Use when you need to write SQL queries that perform time-series forecasting, predict values, detect outliers or anomalies, find key drivers, perform semantic search or vector search, classify text, calculate similarity, summarize content, translate language, evaluate models, filter by semantic conditions, measure the causal effect of an intervention, compute correlations between columns, generate descriptive statistics and table distribution profiles, detect change points or structural breaks, extract trend or seasonality components, or leverage generative AI capabilities in BigQuery. Do not use for general BigQuery dataset, table, or job management requests.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/bigquery-ai-ml/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "data",
+    "analytics",
+    "bigquery"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/bigquery-ai-ml",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1300e7cfa3e1b7538a34f020258ee2ebc335769d66a1d263c88e207977754ff2"
+    }
+  }
+}

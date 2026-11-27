@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "application-integration-basics",
+  "version": "1.0.0",
+  "description": "Explains Google Cloud Application Integration concepts, region provisioning, IAM roles, run-as service accounts, interface choices (REST, Python discovery client, Terraform, ADK), and platform limits. Use when setting up Application Integration in a Google Cloud project, enabling required APIs, provisioning a region, configuring IAM or run-as service accounts, choosing between Application Integration and custom code, or checking quotas and timeouts. Do not use for building, publishing, or invoking integrations (use application-integration-authoring) or diagnosing failed or stuck runs and logs (use application-integration-troubleshooting).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/application-integration-basics/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "python",
+    "application",
+    "integration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/application-integration-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d75ad88d97d402c077c53abfd0cc9f690b0af23be0275cfe92ddc4973769c7c6"
+    }
+  }
+}

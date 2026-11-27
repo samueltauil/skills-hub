@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-statefulset-without-probes",
+  "version": "1.0.0",
+  "description": "Audits, detects, and proposes fixes for GKE StatefulSets that are protected by a PodDisruptionBudget (PDB) but lack container readiness probes (GKE insight subtype PDB_STATEFULSET_WITHOUT_PROBES), causing replacement Pods to be counted as healthy before they are ready during voluntary disruptions. Use when asked to check, audit, or propose fixes for the PDB_STATEFULSET_WITHOUT_PROBES condition, missing readinessProbe configurations on PDB-protected GKE StatefulSets, or premature eviction of StatefulSet replicas during node pool upgrades or drains despite having a PDB. Don't use for StatefulSets missing a PDB (PDB_UNPROTECTED_STATEFULSET), PDBs that allow zero disruptions (PDB_UNPERMISSIVE), general probe and PDB setup unrelated to this condition (use gke-reliability), Pods stuck in Pending (use gke-workload-troubleshooting), ComputeClass configuration (use gke-compute-classes), manifest generation (use gke-manifest-generation), or cluster upgrade planning (use gke-upgrades).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-statefulset-without-probes/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "gke",
+    "statefulset",
+    "without",
+    "probes"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-statefulset-without-probes",
+        "branch": "main"
+      },
+      "contentHash": "sha256:696970135d9223f1884e813487cde6ff505c9f50870a0ab750ae8138efae1d0b"
+    }
+  }
+}

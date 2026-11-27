@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "alloy",
+  "version": "1.0.0",
+  "description": "Build a unified telemetry pipeline with Grafana Alloy — one OpenTelemetry-compatible binary that collects metrics, logs, traces, and profiles and ships to Grafana Cloud / Prometheus / Loki / Tempo / Pyroscope. Covers the Alloy config language (blocks, `sys.env`, component refs), `prometheus.scrape` → `remote_write`, `loki.source.file` + `loki.process` → `loki.write`, `otelcol.receiver.otlp` → `otelcol.exporter.otlp`, `pyroscope.scrape`, K8s / Docker / EC2 discovery, relabeling, modules (`import.file/git/http`), clustering, Fleet Management `remotecfg`, the Alloy UI at `:12345`, and `alloy fmt` / `alloy validate`. Use when writing a `config.alloy`, replacing Grafana Agent / OTel Collector, scraping K8s pods, parsing logs, ingesting OTLP, or debugging \"Alloy isn't sending anything\" — even when the user says \"set up the agent\", \"write me a scrape config\", \"drop these logs before sending\", or \"OTel collector config\" without naming Alloy.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/alloy/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "api",
+    "doc",
+    "alloy"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-core/alloy",
+        "branch": "main"
+      },
+      "contentHash": "sha256:85b8d634f753050ee86ad4ae4c9ea8f1a38098acfe7c75066a88d25ed9a97b02"
+    }
+  }
+}

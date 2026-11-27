@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ui-styling",
+  "version": "1.0.0",
+  "description": "Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.",
+  "author": {
+    "name": "nextlevelbuilder",
+    "url": "https://github.com/nextlevelbuilder"
+  },
+  "homepage": "https://skillshub.space/skills/ui-styling/",
+  "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "styling"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+        "path": ".claude/skills/ui-styling",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d556e5816dcc6aa0359d6dc9aec592f3f76b20d2b9d99bbfcff2a43d06838d99"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "eas-app-stores",
+  "version": "1.0.0",
+  "description": "Build and submit iOS and Android apps with EAS to TestFlight, the App Store, or Google Play. Supports Expo and other React Native projects, plus existing native apps. Use for eas.json setup, release pipelines, signing, app versions and build numbers, store submissions, and listing metadata. For Expo websites and API routes, use eas-hosting; for adding React Native screens to a native app, use expo-brownfield.",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/eas-app-stores/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "react",
+    "data",
+    "eas"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/eas-app-stores",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d451fadbcdbe98768e17b12b3dc61879d5959113cdb22baf5d0caf1884bbe7a4"
+    }
+  }
+}

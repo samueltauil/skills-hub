@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "jupyter-notebook",
+  "version": "1.0.0",
+  "description": "Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/jupyter-notebook/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "jupyter",
+    "notebook"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/jupyter-notebook",
+        "branch": "main"
+      },
+      "contentHash": "sha256:531e2922df7da5f7f88475e5e03f7ed89615f319642e5303cf63eb0923292278"
+    }
+  }
+}

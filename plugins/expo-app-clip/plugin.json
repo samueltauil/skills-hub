@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "expo-app-clip",
+  "version": "1.0.0",
+  "description": "Add an iOS App Clip target to an Expo app. Use when the user mentions App Clip, AASA, apple-app-site-association, appclips, smart app banner, or wants to ship a lightweight iOS Clip invoked from a URL alongside their parent app.",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/expo-app-clip/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "cli",
+    "expo",
+    "app",
+    "clip"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/expo-app-clip",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a770691daf99de9b7675e84fe2a3cfa71f2e7a2dd047fc1af4577149989ad91b"
+    }
+  }
+}

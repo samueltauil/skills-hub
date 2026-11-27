@@ -1,0 +1,25 @@
+type: object_rewriter
+# Change the upper or lower-casing of object names:
+global:
+  case:
+    all: UPPERCASE
+    database: LOWERCASE
+    attribute: LOWERCASE
+# Select the `testdb.acme.employee` table for a temporary table transformation and change all
+# relations from `tmp_schema` schema in `testdb` to temporary, as long as their name starts with
+# `tmp_`
+relation:
+- match: "testdb.testschema.x"
+  temporary: true
+- match:
+    schema: tmp_schema
+    relationRegex: "tmp_.*"
+  temporary: true
+# Change the data type for an attribute of a relation:
+attribute:
+- match:
+    database: testdb
+    schema: testschema
+    attributeRegex: "a+"
+  type:
+    target: NUMERIC(10,2)

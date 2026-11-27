@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "from-the-other-side-anitta",
+  "version": "1.0.0",
+  "description": "Rigorous challenge profile for Anitta: assumption checks, evidence calibration, and defensible reasoning patterns for Ember collaboration.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/from-the-other-side-anitta/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "from",
+    "the",
+    "other",
+    "side",
+    "anitta"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/from-the-other-side-anitta",
+        "branch": "main"
+      },
+      "contentHash": "sha256:adbc47f577cbbcea91f0fa108df6f212daef587033c53d9a6d34ec2b8e5517ad"
+    }
+  }
+}

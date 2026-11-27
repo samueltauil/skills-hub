@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gh-fix-ci",
+  "version": "1.0.0",
+  "description": "Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions; use `gh` to inspect checks and logs, summarize failure context, draft a fix plan, and implement only after explicit approval. Treat external providers (for example Buildkite) as out of scope and report only the details URL.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/gh-fix-ci/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "fix"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/gh-fix-ci",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5a6c1ca00e005b774c16f1bd6412b6ed8ac8cba9efe3a92b052eaa9b14dc6ddc"
+    }
+  }
+}

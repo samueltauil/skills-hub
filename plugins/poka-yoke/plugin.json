@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "poka-yoke",
+  "version": "1.0.0",
+  "description": "Mistake-proof code so misuse cannot be expressed, rather than warning against it. Use when designing an interface, schema, or state machine and the user wants it hard to get wrong (\"make invalid states unrepresentable\", \"so callers cannot screw it up\", \"type-safe API\", \"pit of success\"); when auditing existing code for footguns (\"what could bite us here\", \"what is easy to misuse\", \"poka-yoke this repo\", \"review this diff for ways to get it wrong\"); or when a bug has recurred and the fix must close the class rather than the case (\"make sure this never happens again\", \"this is the third time\"). Especially for money, auth, permissions, deletion, migrations, and pipelines where failure is silent. Classifies every finding by what happens when the mistake occurs and how the device notices, which is what keeps it from collapsing into generic code review.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/poka-yoke/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "api",
+    "design",
+    "poka",
+    "yoke"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/poka-yoke",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e23249589694dfdb839153104734387c3c727da218e5b9dbf483da793e6a2242"
+    }
+  }
+}

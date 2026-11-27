@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "test-analysis-extensions",
+  "version": "1.0.0",
+  "description": "Provides file paths to language-specific reference files for the test ANALYSIS skills (assertion-quality, test-anti-patterns, test-gap-analysis, test-smell-detection, test-tagging). Read this catalog to discover available extension files (e.g., dotnet.md for .NET/MSTest/xUnit/NUnit/TUnit, python.md for pytest/unittest, typescript.md for Jest/Vitest/Mocha, java.md for JUnit/TestNG, etc.). Do not invoke this reference-only skill — its bundled files are read by the quality agent and analysis skills needing framework-specific lookup tables (test markers, assertion APIs, skip annotations, sleep patterns, mystery guest indicators, integration markers, setup/teardown, tag-support capability).",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/test-analysis-extensions/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "api",
+    "test",
+    "python",
+    "typescript",
+    "analysis"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/test-analysis-extensions",
+        "branch": "main"
+      },
+      "contentHash": "sha256:08ad6066f82781a449157db5a87f7bd4386062905ec33c806e5f117c241a7a23"
+    }
+  }
+}

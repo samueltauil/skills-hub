@@ -1,0 +1,748 @@
+{
+  "type" : "object",
+  "properties" : {
+    "attribute" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "attribute" : {
+                "type" : "string"
+              },
+              "attributeRegex" : {
+                "type" : "string"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              },
+              "relation" : {
+                "type" : "string"
+              },
+              "relationRegex" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "schemaRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "alias" : {
+                "type" : "string",
+                "enum" : [ "UPDATE", "PRESERVE" ]
+              },
+              "attribute" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "database" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "database" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "function" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              },
+              "function" : {
+                "type" : "string"
+              },
+              "functionRegex" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "schemaRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "database" : {
+                "type" : "string"
+              },
+              "function" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "global" : {
+      "type" : "object",
+      "properties" : {
+        "outputName" : {
+          "type" : "object",
+          "properties" : {
+            "all" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "attribute" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "database" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "function" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "index" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "matchNameParts" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string",
+                "enum" : [ "database", "schema", "relation", "attribute" ]
+              }
+            },
+            "projection" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "regex" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "match" : {
+                    "type" : "string"
+                  },
+                  "replaceWith" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            },
+            "relation" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "sequence" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "variable" : {
+              "type" : "object",
+              "properties" : {
+                "case" : {
+                  "type" : "string",
+                  "enum" : [ "UPPERCASE", "LOWERCASE" ]
+                },
+                "replace" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "object",
+                    "properties" : {
+                      "match" : {
+                        "type" : "string"
+                      },
+                      "replaceWith" : {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "strip" : {
+          "type" : "object",
+          "properties" : {
+            "stripPrefix" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "stripRegex" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "stripSuffix" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "typeConvert" : {
+          "type" : "object",
+          "properties" : {
+            "char" : {
+              "type" : "object",
+              "properties" : {
+                "comparisonBehavior" : {
+                  "type" : "string",
+                  "enum" : [ "STRICT", "PADDING_AWARE", "CASE_AWARE", "NONE" ]
+                },
+                "precisionAction" : {
+                  "type" : "string",
+                  "enum" : [ "PRESERVE", "DROP" ]
+                },
+                "target" : {
+                  "type" : "string",
+                  "required" : true,
+                  "enum" : [ "VARCHAR" ]
+                }
+              }
+            },
+            "datetime" : {
+              "type" : "object",
+              "properties" : {
+                "target" : {
+                  "type" : "string",
+                  "enum" : [ "DATETIME", "TIMESTAMP", "TIMESTAMPTZ" ]
+                },
+                "timezone" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "timestamp" : {
+              "type" : "object",
+              "properties" : {
+                "target" : {
+                  "type" : "string",
+                  "enum" : [ "DATETIME", "TIMESTAMP", "TIMESTAMPTZ" ]
+                },
+                "timezone" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "timestamptz" : {
+              "type" : "object",
+              "properties" : {
+                "target" : {
+                  "type" : "string",
+                  "enum" : [ "DATETIME", "TIMESTAMP", "TIMESTAMPTZ" ]
+                },
+                "timezone" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "varchar" : {
+              "type" : "object",
+              "properties" : {
+                "comparisonBehavior" : {
+                  "type" : "string",
+                  "enum" : [ "STRICT", "PADDING_AWARE", "CASE_AWARE", "NONE" ]
+                },
+                "precisionAction" : {
+                  "type" : "string",
+                  "enum" : [ "PRESERVE", "DROP" ]
+                },
+                "target" : {
+                  "type" : "string",
+                  "required" : true,
+                  "enum" : [ "VARCHAR" ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "index" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              },
+              "index" : {
+                "type" : "string"
+              },
+              "indexRegex" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "schemaRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "database" : {
+                "type" : "string"
+              },
+              "index" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "projection" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "projection" : {
+                "type" : "string"
+              },
+              "projectionRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "projection" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "relation" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              },
+              "relation" : {
+                "type" : "string"
+              },
+              "relationRegex" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "schemaRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "alias" : {
+                "type" : "string",
+                "enum" : [ "UPDATE", "PRESERVE", "EXCLUSIVE_UPDATE" ]
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "relation" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "schema" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "schemaRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "database" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sequence" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "schemaRegex" : {
+                "type" : "string"
+              },
+              "sequence" : {
+                "type" : "string"
+              },
+              "sequenceRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "database" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "sequence" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "type" : {
+      "type" : "string",
+      "required" : true,
+      "pattern" : "experimental_object_rewriter"
+    },
+    "variable" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "variable" : {
+                "type" : "string"
+              },
+              "variableRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "outputName" : {
+            "type" : "object",
+            "properties" : {
+              "variable" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

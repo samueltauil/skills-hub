@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "boost-prompt",
+  "version": "1.0.0",
+  "description": "Interactive prompt refinement workflow: interrogates scope, deliverables, constraints; copies final markdown to clipboard; never writes code. Requires the Joyride extension.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/boost-prompt/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "cli",
+    "boost",
+    "prompt"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/boost-prompt",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4694505a74d8e25aae94c9360f313448673e75bb5c10fb5c68f3c2efda6972f4"
+    }
+  }
+}

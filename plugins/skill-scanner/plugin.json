@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "skill-scanner",
+  "version": "1.0.0",
+  "description": "Scan agent skills for security issues. Use when asked to \"scan a skill\", \"audit a skill\", \"review skill security\", \"check skill for injection\", \"validate SKILL.md\", or assess whether an agent skill is safe to install. Checks for prompt injection, malicious scripts, excessive permissions, secret exposure, and supply chain risks.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/skill-scanner/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "security",
+    "skill",
+    "scanner"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/skill-scanner",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0e3fd02aa79896366a52740316c49c75891876a1bb5f6877b1378fd55b94dec7"
+    }
+  }
+}

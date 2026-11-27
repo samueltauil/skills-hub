@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "check-bin-obj-clash",
+  "version": "1.0.0",
+  "description": "Find OutputPath/IntermediateOutputPath collisions between distinct projects or required property/TFM variants. USE FOR: missing/overwritten bin/obj or project.assets.json, parallel 'Cannot create a file when that file already exists' or 'file is being used by another process', shared paths, missing AppendTargetFrameworkToOutputPath, PublishReadyToRun, SetTargetFramework on single-target references. DO NOT USE FOR: duplicates or invariant-generation races (find-repeated-work-within-one-build), OS locking, single-instance builds, non-MSBuild systems.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/check-bin-obj-clash/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "check",
+    "bin",
+    "obj",
+    "clash"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-msbuild/skills/check-bin-obj-clash",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cf0a41c34e4f2390f6b37c95c574c828929d1e64da80fe4678be7c618f5c1701"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "shuffle-json-data",
+  "version": "1.0.0",
+  "description": "Shuffle repetitive JSON objects safely by validating schema consistency before randomising entries.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/shuffle-json-data/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "data-analytics",
+    "data",
+    "shuffle",
+    "json"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/shuffle-json-data",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8d4629185a86113263143d581ab7554a03a460ee1e4471027f2e2507b7d17190"
+    }
+  }
+}

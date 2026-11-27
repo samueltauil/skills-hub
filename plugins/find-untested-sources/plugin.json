@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "find-untested-sources",
+  "version": "1.0.0",
+  "description": "MANDATORY for static source-to-test pairing: find or list source files/modules without corresponding tests, or suggest test locations from repository structure. Invoke even for a tiny package; do not substitute manual globbing. Uses Roslyn for C#/.NET and tree-sitter for Python, TS/JS, Go, Java, Rust, Ruby, Kotlin, Swift, PowerShell, and C++. DO NOT USE FOR: real line/branch/Cobertura data, coverage-backed test priorities, CRAP risk, or grading existing tests.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/find-untested-sources/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "test",
+    "python",
+    "data",
+    "find",
+    "untested"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/find-untested-sources",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b599fc92094e172507a3303822287ae56e585832a9de5246815254a52e650358"
+    }
+  }
+}

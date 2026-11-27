@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "xlsx",
+  "version": "1.0.0",
+  "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
+  "author": {
+    "name": "anthropic",
+    "url": "https://github.com/anthropics"
+  },
+  "homepage": "https://skillshub.space/skills/xlsx/",
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "api",
+    "doc",
+    "python",
+    "data",
+    "word"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "path": "skills/xlsx",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d43c4647184f1442446dcd50fd46c32080005cf7ca322d1843a96b8d329c8192"
+    }
+  }
+}

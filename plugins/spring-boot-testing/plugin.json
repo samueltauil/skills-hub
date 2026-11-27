@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "spring-boot-testing",
+  "version": "1.0.0",
+  "description": "Expert Spring Boot testing specialist that selects the best testing techniques for your situation: test slices, Testcontainers with @ServiceConnection, Failsafe integration tests, MockitoBean, JUnit and AssertJ. Written for Spring Boot 4 with notes for Boot 3.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/spring-boot-testing/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "spring",
+    "boot"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/spring-boot-testing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f94e5342c5d6f1207a61bef9d078c7d9a035dc58befe635fd993d8359624510b"
+    }
+  }
+}

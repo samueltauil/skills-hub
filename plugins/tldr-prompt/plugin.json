@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tldr-prompt",
+  "version": "1.0.0",
+  "description": "Create tldr summaries for GitHub Copilot files (prompts, agents, instructions, collections), MCP servers, or documentation from URLs and queries.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/tldr-prompt/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "doc",
+    "mcp",
+    "tldr",
+    "prompt"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/tldr-prompt",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c1f5b5804ec17f688898945d89ec66ac996937e27b74b31d6f3a4dfc0ea9f116"
+    }
+  }
+}

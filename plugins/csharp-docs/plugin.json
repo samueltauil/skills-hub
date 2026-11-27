@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "csharp-docs",
+  "version": "1.0.0",
+  "description": "Ensure that C# types are documented with XML comments and follow best practices for documentation.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/csharp-docs/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "csharp",
+    "docs"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/csharp-docs",
+        "branch": "main"
+      },
+      "contentHash": "sha256:70b2b6968f701a3862daf16c9888f5ff7deba6b7e67166fd29ff0b35f6d16bf4"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-mcp-app",
+  "version": "1.0.0",
+  "description": "This skill should be used when the user asks to \"create an MCP App\", \"add a UI to an MCP tool\", \"build an interactive MCP View\", \"scaffold an MCP App\", or needs guidance on MCP Apps SDK patterns, UI-resource registration, MCP App lifecycle, or host integration. Provides comprehensive guidance for building MCP Apps with interactive UIs.",
+  "author": {
+    "name": "modelcontextprotocol",
+    "url": "https://github.com/modelcontextprotocol"
+  },
+  "homepage": "https://skillshub.space/skills/create-mcp-app/",
+  "repository": "https://github.com/modelcontextprotocol/ext-apps",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "mcp",
+    "create",
+    "app"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/modelcontextprotocol/ext-apps",
+        "path": "plugins/mcp-apps/skills/create-mcp-app",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2cbc6aa38db46de1c09f8247ac362fee150c35ee990330ad82bf7c2bec3c02f3"
+    }
+  }
+}

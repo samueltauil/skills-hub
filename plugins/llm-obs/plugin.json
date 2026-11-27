@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "llm-obs",
+  "version": "1.0.0",
+  "description": "Answer questions about LLM and agentic-application behavior from data already ingested into Elastic: latency and error rate, token and cost utilization, response quality and guardrail events, and agentic call-chain orchestration. Use when the user asks about LLM monitoring, GenAI observability, token spend or AI cost, model latency, prompt or guardrail failures, or how an agent's tool-call chain executed.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/llm-obs/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "data",
+    "llm",
+    "obs"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/observability/llm-obs",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ff774d0da9862e07b6d41924e10999d076fd1b3339caf4b231599c0f81e293c0"
+    }
+  }
+}

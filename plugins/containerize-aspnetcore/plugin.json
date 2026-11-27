@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "containerize-aspnetcore",
+  "version": "1.0.0",
+  "description": "Containerize an ASP.NET Core project by creating Dockerfile and .dockerfile files customized for the project.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/containerize-aspnetcore/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "containerize",
+    "aspnetcore"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/containerize-aspnetcore",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a7d4cda4dade1b1595bf7e88a8b44c7b07c2d5cb071b9b070b1e5ec681ea4514"
+    }
+  }
+}

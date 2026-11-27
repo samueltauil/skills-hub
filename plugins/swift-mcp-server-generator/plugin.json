@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "swift-mcp-server-generator",
+  "version": "1.0.0",
+  "description": "Generate a complete Model Context Protocol server project in Swift using the official MCP Swift SDK package.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/swift-mcp-server-generator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "mcp",
+    "swift",
+    "server",
+    "generator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/swift-mcp-server-generator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e523bed2c40bf3f5a6c3e3204cda6fff0867c21a7bcd75de785e86ff82acf815"
+    }
+  }
+}

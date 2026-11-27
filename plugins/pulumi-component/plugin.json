@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-component",
+  "version": "1.0.0",
+  "description": "Guide for authoring Pulumi ComponentResource classes. Use when creating reusable infrastructure components, designing component interfaces, setting up multi-language support, or distributing component packages.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-component/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "pulumi",
+    "component"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "pulumi/skills/pulumi-component",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1b1db941b101282c64427e723b6c8489533b926f7b7e37713c45110c440d0703"
+    }
+  }
+}

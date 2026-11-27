@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "aws-cdk-python-setup",
+  "version": "1.0.0",
+  "description": "Setup and initialization guide for developing AWS CDK (Cloud Development Kit) applications in Python. This skill enables users to configure environment prerequisites, create new CDK projects, manage dependencies, and deploy to AWS.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/aws-cdk-python-setup/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "deploy",
+    "python",
+    "aws",
+    "cdk",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/aws-cdk-python-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:468ecab7092e5d5ed4cacf82803ca25c2d8254ac2529f16630bf8153b2414cc5"
+    }
+  }
+}

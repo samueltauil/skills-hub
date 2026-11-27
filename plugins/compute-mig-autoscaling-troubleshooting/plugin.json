@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "compute-mig-autoscaling-troubleshooting",
+  "version": "1.0.0",
+  "description": "Diagnoses and resolves Google Compute Engine Managed Instance Group (MIG) autoscaling failures, scale-out blocks, and scale-in stalls. Use ONLY when a Compute Engine MIG fails to add or remove VM instances during load changes, hits quota or zonal stockout limits, reaches maxNumReplicas (CAPPED_AT_MAX_NUM_REPLICAS), conflicts with HTTP(S) load balancer maxRate settings, fails to scale in to zero instances, or fails to read Cloud Monitoring scaling metrics. DO NOT read or use for Google Kubernetes Engine (GKE) Horizontal Pod Autoscaler (HPA), GKE Cluster Autoscaler, standalone single-VM creation, or single-VM host maintenance reboots.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/compute-mig-autoscaling-troubleshooting/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "compute",
+    "mig",
+    "autoscaling",
+    "troubleshooting"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/compute-mig-autoscaling-troubleshooting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b68132d048bf5f7e868dd922f90bb2d8ba772de8b0ac79973fd58b5b16fd05bc"
+    }
+  }
+}

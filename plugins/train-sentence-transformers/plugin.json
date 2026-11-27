@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "train-sentence-transformers",
+  "version": "1.0.0",
+  "description": "Train or fine-tune sentence-transformers models across `SentenceTransformer` (bi-encoder, dense or static embedding model for retrieval, similarity, clustering, classification, paraphrase mining, dedup, multimodal), `CrossEncoder` (reranker, pair scoring for two-stage retrieval / pair classification), `SparseEncoder` (SPLADE, sparse embedding model for learned-sparse retrieval), and `MultiVectorEncoder` (ColBERT / late-interaction, per-token embeddings scored with MaxSim). Covers loss selection, hard-negative mining, evaluators, distillation, LoRA, Matryoshka, and Hugging Face Hub publishing. Use for any sentence-transformers training task.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/train-sentence-transformers/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "train",
+    "sentence",
+    "transformers"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/train-sentence-transformers",
+        "branch": "main"
+      },
+      "contentHash": "sha256:66010eb9ed793ec2ffa5ac5a31b003963770c2e732fc0d1b2dcd44bdca16f9f0"
+    }
+  }
+}

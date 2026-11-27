@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "java-docs",
+  "version": "1.0.0",
+  "description": "Ensure that Java types are documented with Javadoc comments and follow best practices for documentation.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/java-docs/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "java",
+    "docs"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/java-docs",
+        "branch": "main"
+      },
+      "contentHash": "sha256:88a6571d883a37443f5512e1a95dd17e6eeb9f995deca20b146d7a0dc3a0581a"
+    }
+  }
+}

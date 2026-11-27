@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hf-cloud-python-env-setup",
+  "version": "1.0.0",
+  "description": "Set up an isolated Python environment for SageMaker / AWS work, with the right Python version and current boto3. Use this skill whenever Python code will be executed for a SageMaker deployment, training job, or any AWS automation — including when about to run `pip install`, when about to invoke `boto3`, when creating or activating a virtualenv, or when the user asks to \"set up the environment\". Never use system Python and never `pip install` into it. Always isolate. This skill prevents the most common failure modes: wrong Python version, dependency conflicts, and stale SDKs.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/hf-cloud-python-env-setup/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "deploy",
+    "python",
+    "cloud",
+    "env",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/hf-cloud-python-env-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ac92c89a0d7458137e17e181a8fb48aa7b84fda7fed9580ca88268d40464c779"
+    }
+  }
+}

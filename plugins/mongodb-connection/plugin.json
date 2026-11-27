@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mongodb-connection",
+  "version": "1.0.0",
+  "description": "Optimize MongoDB client connection configuration (pools, timeouts, patterns) for any supported driver language. Use this skill when working/updating/reviewing on functions that instantiate or configure a MongoDB client (eg, when calling `connect()`), configuring connection pools, troubleshooting connection errors (ECONNREFUSED, timeouts, pool exhaustion), optimizing performance issues related to connections. This includes scenarios like building serverless functions with MongoDB, creating API endpoints that use MongoDB, optimizing high-traffic MongoDB applications, creating long-running tasks and concurrency, or debugging connection-related failures.",
+  "author": {
+    "name": "mongodb",
+    "url": "https://github.com/mongodb"
+  },
+  "homepage": "https://skillshub.space/skills/mongodb-connection/",
+  "repository": "https://github.com/mongodb/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "api",
+    "cli",
+    "mongodb",
+    "connection"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/mongodb/agent-skills",
+        "path": "skills/mongodb-connection",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ebeb2d18cce7b44d7f18a5d04de14f8ab74f2e2e306c231b707acc9b8ad3e4cd"
+    }
+  }
+}

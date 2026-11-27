@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "devops-rollout-plan",
+  "version": "1.0.0",
+  "description": "Generate comprehensive rollout plans with preflight checks, step-by-step deployment, verification signals, rollback procedures, and communication plans for infrastructure and application changes",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/devops-rollout-plan/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "devops",
+    "rollout",
+    "plan"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/devops-rollout-plan",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5f012a9ac04a5c651111a187d26fc67771ba31f963b225d02e2b8e4a00475d5f"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "code-review",
+  "version": "1.0.0",
+  "description": "Perform code reviews following Sentry engineering practices. Use when reviewing pull requests, examining code changes, or providing feedback on code quality. Covers security, performance, testing, and design review.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/code-review/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "test",
+    "design",
+    "security",
+    "code",
+    "review"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/code-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:70043aef7ae4dc8c787d54429c802d0dcddb3c048292bc1229e6472342832bbc"
+    }
+  }
+}

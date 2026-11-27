@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "build-perf-baseline",
+  "version": "1.0.0",
+  "description": "Establish MSBuild/.NET baselines before optimizing. USE FOR: unranked slow builds; cold/warm/incremental/no-op measurements; before/after comparisons; CI caching; static graph, artifacts output, dependency graph trimming. DO NOT USE FOR: measured bottlenecks (build-perf-diagnostics), known repeated restores (eliminate-redundant-restores), within-build duplicate calls (find-repeated-work-within-one-build), non-MSBuild builds.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/build-perf-baseline/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "build",
+    "perf",
+    "baseline"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-msbuild/skills/build-perf-baseline",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ab9839357b97f46f446de70428dbb6253a373bef4a744ed925378509b317f030"
+    }
+  }
+}

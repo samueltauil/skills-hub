@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-logging-configuration-basics",
+  "version": "1.0.0",
+  "description": "Configure single-project Cloud Logging on Google Cloud: regional log buckets, log sinks, log views, restricting or hiding sensitive logs in the default view (_Default) filter, IAM permissions for views (Logs View Accessor, IAM conditions), logs-based metrics, log exclusions, and sampling. Don't use for cross-project logging or multi-project setups.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-logging-configuration-basics/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "cloud",
+    "logging",
+    "configuration",
+    "basics"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-logging-configuration-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b44beadbd9c4da72862439d1d094652903b50ac300c48da482dff4441b5d6e16"
+    }
+  }
+}

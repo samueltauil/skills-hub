@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "update-avm-modules-in-bicep",
+  "version": "1.0.0",
+  "description": "Update Azure Verified Modules (AVM) to latest versions in Bicep files.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/update-avm-modules-in-bicep/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "azure",
+    "test",
+    "update",
+    "avm",
+    "modules"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/update-avm-modules-in-bicep",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2a369a9872186096c1187176331c8b664655c03db25fa332ae835bb82e5dcafd"
+    }
+  }
+}

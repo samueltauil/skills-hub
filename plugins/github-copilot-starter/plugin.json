@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "github-copilot-starter",
+  "version": "1.0.0",
+  "description": "Set up complete GitHub Copilot configuration for a new project based on technology stack",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/github-copilot-starter/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "github",
+    "copilot",
+    "starter"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/github-copilot-starter",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e4d78e885753a9cd8dab7a11be86997095801ebca35ac451332cc65cdb16d66a"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hf-mem",
+  "version": "1.0.0",
+  "description": "Estimate the GPU memory needed to run a Hugging Face model (weights, KV cache and inference overhead) and whether it fits on given GPUs, without downloading it. Use when asked how much VRAM a model needs, whether it fits on a GPU, the longest context that fits, or which GGUF quantization to pick.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/hf-mem/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "mem"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/hf-mem",
+        "branch": "main"
+      },
+      "contentHash": "sha256:49012fbfb6f9d1f732f51bc5a453f8128a20a0372ab4e4955b1df4e14baccfa8"
+    }
+  }
+}

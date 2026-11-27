@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "playwright-generate-test",
+  "version": "1.0.0",
+  "description": "Generate a Playwright test based on a scenario using Playwright MCP",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/playwright-generate-test/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "mcp",
+    "playwright",
+    "generate"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/playwright-generate-test",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7eeec04248c171a3f1e46d86f6eb205f385f3e05b166fcf89b28fd76a5372b72"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-best-practices",
+  "version": "1.0.0",
+  "description": "Load when the user is writing, reviewing, or debugging Pulumi TypeScript/Python programs; asks about Output<T> or apply() usage; wants to create ComponentResource classes; needs to refactor resources without destroying them (aliases); is setting up secrets or config; or is configuring a pulumi preview/up CI workflow. Also load for questions about resource dependency order, parent/child resource relationships, or pulumi.interpolate.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-best-practices/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "python",
+    "typescript",
+    "pulumi",
+    "best",
+    "practices"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "pulumi/skills/pulumi-best-practices",
+        "branch": "main"
+      },
+      "contentHash": "sha256:78a0d9d5ee687091de4a90c23fe03d5a674b2c073e9fabca79e0292bbe912a59"
+    }
+  }
+}

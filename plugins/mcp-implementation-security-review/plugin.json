@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mcp-implementation-security-review",
+  "version": "1.0.0",
+  "description": "Review the implementation source code of MCP (Model Context Protocol) servers, clients, and tool handlers against a security baseline — authentication, sessions, rate limiting, input-schema validation, official-SDK usage, RCE vectors, and the OWASP MCP Top 10 — producing a report with file/line evidence. Use this skill when: - Reviewing an MCP server implementation for security before release - Checking a server against the baseline controls (MCP-01 to MCP-05) and the OWASP MCP Top 10 - Auditing tools for RCE vectors (command/code injection, unsafe deserialization, path traversal, SSTI, dependency hijacking, SSRF) - Verifying auth, session, rate-limiting, and input-validation controls on a network-exposed server - Reviewing MCP client code that handles untrusted server responses and session IDs - Requests like \"review this MCP server for security\" or \"is my MCP server implementation secure?\"",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mcp-implementation-security-review/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "cli",
+    "mcp",
+    "security",
+    "implementation",
+    "review"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mcp-implementation-security-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:337327edbb6365cb43ce4fe7ddfa502a97e710446a7cab1853ee8d7175e9d44c"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "audit-and-reduce-dependencies",
+  "version": "1.0.0",
+  "description": "Reduces JavaScript dependency footprint with pnpm while preserving lockfile, workspace layout, and dependency range style. Runs /check-npm first, then removes unused deps, dedupes versions, ranks transitive closure, and reports Keep/Replace/Remove triage. Use when cleaning up pnpm dependencies, reducing lockfile size, or shrinking node_modules in Grafana plugins; not for Go modules or full GitHub Actions workflow audits.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/audit-and-reduce-dependencies/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "audit",
+    "and",
+    "reduce",
+    "dependencies"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-plugins/audit-and-reduce-dependencies",
+        "branch": "main"
+      },
+      "contentHash": "sha256:19399ab22b05a09ba32eccd48f04d01b9e9430493695d88795fe07608b7b0244"
+    }
+  }
+}

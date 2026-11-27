@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bug-reproduction-brief",
+  "version": "1.0.0",
+  "description": "Turn a vague, intermittent, or environment-specific bug report into a minimal evidence-backed reproduction before proposing a fix.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/bug-reproduction-brief/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "bug",
+    "reproduction",
+    "brief"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/bug-reproduction-brief",
+        "branch": "main"
+      },
+      "contentHash": "sha256:095e0f03aea9570a7692aac0b9d303ab5d91c21ca721fe01883cf3fa15c4791e"
+    }
+  }
+}

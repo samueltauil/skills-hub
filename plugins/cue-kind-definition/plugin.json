@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cue-kind-definition",
+  "version": "1.0.0",
+  "description": "Author CUE kind definitions for grafana-app-sdk apps - schemas, versioning, field constraints, named type definitions, custom routes, and codegen configuration. Scaffolds kinds via `grafana-app-sdk project kind add`, writes spec/status schemas with type constraints (regex, enum, range), defines `#`-prefixed named types for reusable structs, registers versions in the app manifest, and runs `grafana-app-sdk generate` with explicit error recovery. Use when working with CUE kinds, adding a new resource type, adding a version to an existing kind, writing schema field constraints, defining `#Definition` types, adding custom routes, editing files under `kinds/`, or when the user asks to \"model a resource\", \"add a CUE schema\", or \"write a kind\" — even without saying \"CUE\" explicitly.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/cue-kind-definition/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "cue",
+    "kind",
+    "definition"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-app-sdk/cue-kind-definition",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bb8c6e63a98d830627d3b0177ea17fd8530152be01f2b7451f2a47b604307f32"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# Configuration to specify the explicit character encoding of the input file as ISO-8859-1:
+type: input_formats
+formats:
+- source:
+    pathGlob: "*.sql"
+  contents:
+    raw:
+      charset: iso-8859-1

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "repo-story-time",
+  "version": "1.0.0",
+  "description": "Generate a comprehensive repository summary and narrative story from commit history",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/repo-story-time/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "repo",
+    "story",
+    "time"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/repo-story-time",
+        "branch": "main"
+      },
+      "contentHash": "sha256:680390fb5e38e9bbbb627032085f8a6ddfdd7408bfb8cfcbca079b575ee3a151"
+    }
+  }
+}

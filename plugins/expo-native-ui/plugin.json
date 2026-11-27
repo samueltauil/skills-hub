@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "expo-native-ui",
+  "version": "1.0.0",
+  "description": "Build beautiful, native-feeling Expo screens. Covers Apple HIG styling, semantic colors, native controls, SF Symbols, media, visual effects, gradients, storage, and responsive layout. For routing and navigation, use the expo-router skill; for motion and animation, use the expo-animation skill.",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/expo-native-ui/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "expo",
+    "native"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/expo-native-ui",
+        "branch": "main"
+      },
+      "contentHash": "sha256:586d92ed72d97009b786333d3b35ffcde4012fb88cc3c642b1b715fa557b9d59"
+    }
+  }
+}

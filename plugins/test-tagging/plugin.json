@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "test-tagging",
+  "version": "1.0.0",
+  "description": "Classifies existing tests by standard traits and reports their distribution. USE FOR: tagging all tests with category attributes, categorizing/tagging/ labeling each test, compare happy vs error paths, audit the test mix, describe coverage shape by test type, or tag then verify the project builds. Read bodies when names mislead. Apply canonical attributes; otherwise report only. DO NOT USE FOR: requests owned by test-anti-patterns, coverage-analysis, crap-score, test-gap-analysis, code-testing, or migration skills.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/test-tagging/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "tagging"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/test-tagging",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ccfce8841f92887593e0d31df9cb4be88c276eecbcb643d4afb4a8dac61e40ba"
+    }
+  }
+}

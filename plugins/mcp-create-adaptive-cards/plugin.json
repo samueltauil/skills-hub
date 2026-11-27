@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mcp-create-adaptive-cards",
+  "version": "1.0.0",
+  "description": "Skill converted from mcp-create-adaptive-cards.prompt.md",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mcp-create-adaptive-cards/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "mcp-development",
+    "mcp",
+    "create",
+    "adaptive",
+    "cards"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "mcp-development",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mcp-create-adaptive-cards",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f40c4b4f291e269029f55e75ee6399db17f5b54f1382afb6e9a4e421b179a0f5"
+    }
+  }
+}

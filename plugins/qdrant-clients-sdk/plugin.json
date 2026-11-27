@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "qdrant-clients-sdk",
+  "version": "1.0.0",
+  "description": "Qdrant provides client SDKs for various programming languages, allowing easy integration with Qdrant deployments.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/qdrant-clients-sdk/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "cli",
+    "deploy",
+    "qdrant",
+    "clients",
+    "sdk"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/qdrant-clients-sdk",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c9f67230afa7d7fcdc8dc733fad28d6b21f2c5a2194a33a81b399bc8e020d6c6"
+    }
+  }
+}

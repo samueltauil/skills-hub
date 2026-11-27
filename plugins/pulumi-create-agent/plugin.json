@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-create-agent",
+  "version": "1.0.0",
+  "description": "Create a reusable Pulumi Agent with saved instructions, a role, and selected integrations. Use when the user asks to create, define, or set up a new Pulumi Agent.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-create-agent/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "security",
+    "pulumi",
+    "create",
+    "agent"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "pulumi/skills/pulumi-create-agent",
+        "branch": "main"
+      },
+      "contentHash": "sha256:757afa0101a0f7d554fd4dd65d7a5862354c6633ea9b99cf5cb023ef9ed5754e"
+    }
+  }
+}

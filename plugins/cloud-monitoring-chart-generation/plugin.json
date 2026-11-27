@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-monitoring-chart-generation",
+  "version": "1.0.0",
+  "description": "Generates Cloud Monitoring Server-Driven UI (SDUI) Widget and XyChart Protocol Buffer textprotos on Google Cloud from resolved PromQL or ListTimeSeries queries. Use when: - Generating valid google.monitoring.dashboard.v1.Widget textprotos, containing PrometheusQuery or TimeSeriesFilter datasets, for use with the Cloud Monitoring Dashboards API, gcloud CLI, or declarative dashboard definitions. - Synthesizing Server-Driven UI (SDUI) widget titles, axis labels, and plot types for Prometheus or ListTimeSeries queries. Don't use for: - Metric discovery or PromQL query generation. For those tasks, use the cloud-monitoring-metric-selection or cloud-monitoring-promql-query skills.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-monitoring-chart-generation/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "data",
+    "cloud",
+    "monitoring"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-monitoring-chart-generation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ff1f9c3091c6c03f8442b02ffba37c177f4638196ec5d751281e369ea9666235"
+    }
+  }
+}

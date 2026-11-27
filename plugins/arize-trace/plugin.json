@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "arize-trace",
+  "version": "1.0.0",
+  "description": "Downloads, exports, and inspects existing Arize traces and spans to understand what an LLM app is doing or debug runtime issues. Covers exporting traces by ID, spans by ID, sessions by ID, and root-cause investigation using the ax CLI. Use when the user wants to look at existing trace data, see what their LLM app is doing, export traces, download spans, investigate errors, or analyze behavior regressions.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/arize-trace/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "data-analytics",
+    "cli",
+    "data",
+    "arize",
+    "trace"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/arize-trace",
+        "branch": "main"
+      },
+      "contentHash": "sha256:504bda6ad986aae80115229fbfdb89be1027ed3848a8a5ab121702fd0e7f2da5"
+    }
+  }
+}

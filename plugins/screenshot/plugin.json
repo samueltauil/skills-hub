@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "screenshot",
+  "version": "1.0.0",
+  "description": "Use when the user explicitly asks for a desktop or system screenshot (full screen, specific app or window, or a pixel region), or when tool-specific capture capabilities are unavailable and an OS-level capture is needed.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/screenshot/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "screenshot"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/screenshot",
+        "branch": "main"
+      },
+      "contentHash": "sha256:75aeaf8cb6cd45002ffb251c3ede22699784871abe3d62100893245487ddaade"
+    }
+  }
+}

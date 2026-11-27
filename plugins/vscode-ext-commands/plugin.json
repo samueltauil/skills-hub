@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vscode-ext-commands",
+  "version": "1.0.0",
+  "description": "Guidelines for contributing commands in VS Code extensions. Indicates naming convention, visibility, localization and other relevant attributes, following VS Code extension development guidelines, libraries and good practices",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/vscode-ext-commands/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "vscode",
+    "ext",
+    "commands"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/vscode-ext-commands",
+        "branch": "main"
+      },
+      "contentHash": "sha256:456a8928e04051c61a99be4a5d95254f8b8e32ad188e843b3c5b6d393ecadf29"
+    }
+  }
+}

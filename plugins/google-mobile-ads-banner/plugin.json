@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-mobile-ads-banner",
+  "version": "1.0.0",
+  "description": "Provides instructions to implement, integrate, or configure Google Mobile Ads (GMA) banner ads in Android, iOS, or Unity mobile applications. Use when the task involves setting up banner ads in a mobile application. Don't use for other ad formats like interstitial or rewarded ads.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-mobile-ads-banner/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "google",
+    "mobile",
+    "ads",
+    "banner"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/google-mobile-ads-banner",
+        "branch": "main"
+      },
+      "contentHash": "sha256:02b311bcb1998c71976248c9e4b7488b20249b9713237f342d8a79092a2b1e81"
+    }
+  }
+}

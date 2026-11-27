@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "playwright-interactive",
+  "version": "1.0.0",
+  "description": "Persistent browser and Electron interaction through `js_repl` for fast iterative UI debugging.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/playwright-interactive/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "playwright",
+    "interactive"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/playwright-interactive",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7f52d9dd35c1e396e0c4ac5316e23a4b37805e69b3e0374ddb18c1a913867f58"
+    }
+  }
+}

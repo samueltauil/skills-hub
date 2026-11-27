@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "context-map",
+  "version": "1.0.0",
+  "description": "Generate a map of all files relevant to a task before making changes",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/context-map/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "context",
+    "map"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/context-map",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9f2f462c9401f4e8ddb69f8731d60a738e87667408ba1bbb9c2b8db9df6b682e"
+    }
+  }
+}

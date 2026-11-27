@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "stripe-bfcm-dashboard",
+  "version": "1.0.0",
+  "description": "Builds a Black Friday and Cyber Monday (BFCM) season dashboard of payments, customers, and recurring revenue from the connected Stripe MCP account, as a hosted dashboard or artifact where the agent's tools support one, otherwise as one HTML file. For the 2026 BFCM season only. Use when a merchant asks for a BFCM, Black Friday, Cyber Monday, holiday, holiday sales, or peak-season dashboard, such as \"build me a holiday dashboard\" or \"build me a Cyber Monday dashboard,\" even without the word BFCM.",
+  "author": {
+    "name": "stripe",
+    "url": "https://github.com/stripe"
+  },
+  "homepage": "https://skillshub.space/skills/stripe-bfcm-dashboard/",
+  "repository": "https://github.com/stripe/ai",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "mcp",
+    "word",
+    "stripe",
+    "bfcm",
+    "dashboard"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/stripe/ai",
+        "path": "skills/stripe-bfcm-dashboard",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1f762d85d4adc967523cfa8186477bb6edeeadd375ba5c1f55dd249a8af8ae41"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "configure-auth",
+  "version": "1.0.0",
+  "description": "Add authentication and authorization to a Blazor Web App, accounting for the app's render mode. USE WHEN the user needs [Authorize] on pages, AuthorizeView, role or policy-based access, login/logout Identity pages, or AuthenticationStateProvider. Also USE WHEN auth state is null after WebAssembly loads, SignInManager throws in an interactive component, NotAuthorized content never renders in static SSR, or HttpContext.User is null in an interactive component. DO NOT USE for general component authoring (see author-component), for prerendering concerns unrelated to auth (see support-prerendering), or for managing non-auth cascading state (see coordinate-components).",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/configure-auth/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "configure",
+    "auth"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-blazor/skills/configure-auth",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d14094c7d008e60a4157b8b65ab7727803ecd2d15047d173cef140194de7809c"
+    }
+  }
+}

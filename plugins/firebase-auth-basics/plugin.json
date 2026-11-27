@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "firebase-auth-basics",
+  "version": "1.0.0",
+  "description": "Guide for setting up and using Firebase Authentication. Use this skill when the user's app requires user sign-in, user management, or secure data access using auth rules.",
+  "author": {
+    "name": "firebase",
+    "url": "https://github.com/firebase"
+  },
+  "homepage": "https://skillshub.space/skills/firebase-auth-basics/",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "data",
+    "firebase",
+    "auth",
+    "basics"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/firebase/agent-skills",
+        "path": "skills/firebase-auth-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:60a882b7fc3310b1ac5a757611fc3305e403b78c8ccfe304ff0c2a6e5f7f3bef"
+    }
+  }
+}

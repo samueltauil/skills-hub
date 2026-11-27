@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "litert-google-tensor",
+  "version": "1.0.0",
+  "description": "Compiles LiteRT (.tflite) models ahead-of-time for Google Tensor TPUs (Tensor G5 on Pixel 10, Tensor G6 on Pixel 11) locally on Linux x86_64 or on Google Colab (--colab on macOS, Windows, or ARM hosts), benchmarks them on a USB-attached Pixel with LiteRT's benchmark_model (NPU latency, peak memory, TPU tile time, TPU energy, optional CPU baseline), and packages compiled models for an Android Gradle app as a Google Play AI pack with the Tensor NPU runtime module and a Kotlin loader, applies it to the app and verifies it on a Pixel. Use when the user asks to compile, AOT-compile, or prepare a .tflite model for the Pixel TPU/NPU, check whether a .tflite is already Tensor-compiled, measure on-device NPU performance of a compiled model, or package or deploy a compiled model into their Android app (or replace the one it ships). Don't use for Qualcomm, MediaTek, or Samsung NPUs, GPU-only benchmarking, LiteRT-LM or LLM (.litertlm) models, on-device JIT compilation, non-Gradle builds, or publishing to Google Play.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/litert-google-tensor/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "deploy",
+    "litert",
+    "google",
+    "tensor"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/platform-devices/litert-google-tensor",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7eb2da8f4ced4c224a9b76fc959eb0b585baf730018f4207f4399661340d6c20"
+    }
+  }
+}

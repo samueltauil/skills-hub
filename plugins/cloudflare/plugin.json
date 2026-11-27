@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloudflare",
+  "version": "1.0.0",
+  "description": "Discover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation. Also use when a Cloudflare-proxied site shows a Cloudflare error page, a `52x` status, a 1xxx error code, or a Cloudflare `403`, to decide whether to fix Cloudflare configuration or the origin.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/cloudflare/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "api",
+    "doc",
+    "security",
+    "cloudflare"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/cloudflare",
+        "branch": "main"
+      },
+      "contentHash": "sha256:258838152f5afa6399e13365976e33e5350bff80b5aacbc5c425914978b171f1"
+    }
+  }
+}

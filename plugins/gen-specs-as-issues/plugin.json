@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gen-specs-as-issues",
+  "version": "1.0.0",
+  "description": "This workflow guides you through a systematic approach to identify missing features, prioritize them, and create detailed specifications for implementation.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/gen-specs-as-issues/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "gen",
+    "specs",
+    "issues"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/gen-specs-as-issues",
+        "branch": "main"
+      },
+      "contentHash": "sha256:34907602e7b34c05a7494952d1ea0066e7f4e719923bb0fbee15660417efce08"
+    }
+  }
+}

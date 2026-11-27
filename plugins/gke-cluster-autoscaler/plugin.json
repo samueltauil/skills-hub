@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-cluster-autoscaler",
+  "version": "1.0.0",
+  "description": "Trigger on mention of GKE cluster autoscaler, node autoscaling, node pool auto-creation / node auto-provisioning. Provides guidance on enabling and optimizing cluster autoscaler, best practices, and troubleshooting issues such as nodes not scaling up or down, zonal stockouts, or capacity buffers. Do not use for ComputeClass-specific YAML generation or priority configuration (defer to gke-compute-classes skill).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-cluster-autoscaler/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "gke",
+    "cluster",
+    "autoscaler"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-cluster-autoscaler",
+        "branch": "main"
+      },
+      "contentHash": "sha256:571763f5b3a0d286ef308cc19e9a126e4656ffebb685b1c8b51c733a2c8a3218"
+    }
+  }
+}

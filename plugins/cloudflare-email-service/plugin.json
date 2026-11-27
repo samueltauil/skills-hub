@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloudflare-email-service",
+  "version": "1.0.0",
+  "description": "Implement or troubleshoot Cloudflare Email Sending and Email Routing integrations and their delivery configuration.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/cloudflare-email-service/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "cloudflare",
+    "email",
+    "service"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/cloudflare-email-service",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2ae9817630c89f39cd9f45f2ccfc958f4e33cab2fe5208582948c998f3312b4b"
+    }
+  }
+}

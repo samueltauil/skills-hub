@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cypress-flake-fixer",
+  "version": "1.0.0",
+  "description": "Find and fix flake-prone anti-patterns in an existing Cypress suite, and APIs removed in Cypress 12 to 16. Bundles a zero-dependency scanner for fixed cy.wait() delays, assigned command return values, async/await, force: true, chaining after actions, one-shot expect() inside .then(), conditional testing, and removed APIs such as Cypress.env(), cy.exec(), cy.server()/cy.route(). Use when asked to fix flaky Cypress tests, remove cy.wait, stabilize or harden a Cypress suite, audit Cypress specs, debug \"detached from the DOM\" errors, or prepare an upgrade to Cypress 15 or 16.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/cypress-flake-fixer/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "cypress",
+    "flake",
+    "fixer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/cypress-flake-fixer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ea816fffcbca228e80fe6de1a83e8b5e9f94dda9a289e96045cfc07395884f74"
+    }
+  }
+}

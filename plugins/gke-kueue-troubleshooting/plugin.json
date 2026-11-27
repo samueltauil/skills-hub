@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-kueue-troubleshooting",
+  "version": "1.0.0",
+  "description": "Diagnose a GKE batch or AI workload (Job, JobSet, LeaderWorkerSet, RayJob, Kubeflow training jobs, or plain Pods) that is pending, suspended, stuck, evicted or misconfigured when Kueue manages it - from a live GKE cluster, a support bundle or exported controller/audit logs. Load it as soon as the investigation shows a Kueue footprint, even if the user never said \"Kueue\" - anything under kueue.x-k8s.io (labels, Pod scheduling gates, Workload/LocalQueue/ClusterQueue objects and their conditions), kueue-controller-manager events or logs, or a Job with spec.suspend=true together with a Workload object in its namespace. Scripts compact cluster state and logs into verifiable facts and validate the report, while the agent classifies the cause as Kueue configuration, Kueue defect, or outside Kueue. Don't use for workloads with no Kueue footprint (use gke-node-notready, gke-workload-scaling-troubleshooting, gke-ai-troubleshooting-tpu-reservation-stockout, or gke-ai-troubleshooting-jobset-interruption).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-kueue-troubleshooting/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "gke",
+    "kueue",
+    "troubleshooting"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-kueue-troubleshooting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6b9f398e3d4263b771484bde5f33851cafb4386f64d39d9867d5a76d8ac97b6c"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agents-md",
+  "version": "1.0.0",
+  "description": "Creates and maintains concise AGENTS.md and CLAUDE.md project instruction files. Use when asked to create AGENTS.md, update AGENTS.md, maintain agent docs, set up CLAUDE.md, document repository agent conventions, or keep coding-agent instructions minimal and reference-backed.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/agents-md/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "agents"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/agents-md",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e3c22ca48991490abf2486dccc4b863e14166888e77627d8dd44e2ecf756fff6"
+    }
+  }
+}

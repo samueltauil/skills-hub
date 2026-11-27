@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-platform-model-registry",
+  "version": "1.0.0",
+  "description": "Agent Platform Model Registry Management. Use when you need to upload, list, describe, update, or delete machine learning models (and their versions) in the Agent Platform Model Registry. Don't use for model training, model deployment to endpoints, or managing non-Agent Platform models.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/agent-platform-model-registry/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "agent",
+    "platform",
+    "model",
+    "registry"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/agent-platform-model-registry",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7a202a0be8cb19cf6e5169e02f216c43cf6b0c567bef257d38cd993cfe935067"
+    }
+  }
+}

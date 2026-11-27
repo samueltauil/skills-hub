@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "playwright-automation-fill-in-form",
+  "version": "1.0.0",
+  "description": "Automate filling in a form using Playwright MCP",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/playwright-automation-fill-in-form/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "mcp",
+    "playwright",
+    "automation",
+    "fill",
+    "form"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/playwright-automation-fill-in-form",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3274234aaf9ca44a48da62fb5847d072b5c78aaf54d63b4d62e6a70372560a10"
+    }
+  }
+}

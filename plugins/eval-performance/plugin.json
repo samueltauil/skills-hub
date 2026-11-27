@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "eval-performance",
+  "version": "1.0.0",
+  "description": "Diagnose measured MSBuild evaluation cost before targets run. USE FOR: evaluation-only repeats under global-property variants, expensive node_modules/.git/bin/obj globs, import depth >20, /pp >10K lines, file-I/O property functions, five-phase evaluation. DO NOT USE FOR: duplicate executions (find-repeated-work-within-one-build), execution bottlenecks (build-perf-diagnostics), incremental rebuilds (incremental-build), non-MSBuild systems.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/eval-performance/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "eval",
+    "performance"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-msbuild/skills/eval-performance",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fc9d49371d9bf164181cdbdb8a511c15f84df81136af57b9ae9bd39156bfefd6"
+    }
+  }
+}

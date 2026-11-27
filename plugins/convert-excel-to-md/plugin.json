@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "convert-excel-to-md",
+  "version": "1.0.0",
+  "description": "Converts Excel (.xlsx) workbooks into Markdown so their contents can be accurately analyzed, summarized, searched, or extracted from. Use this skill whenever the user shares, references, or asks about a .xlsx file — even if they don't say \"convert\" or \"markdown\" explicitly. This includes requests to \"read\", \"summarize\", \"review\", \"extract data from\", \"compare\", \"chart\", or \"analyze\" a spreadsheet, workbook, budget, data export, or tracker. Always run the bundled conversion script to produce Markdown first; do not attempt to parse .xlsx content directly or write ad-hoc extraction code. Also use this skill for batch requests involving a whole folder of Excel workbooks. IMPORTANT: When the user references a folder or set of documents containing multiple file types (.pdf, .docx, .xlsx), invoke ALL three sibling skills — convert-pdf-to-md, convert-word-to-md, and convert-excel-to-md — so no file type is silently skipped.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/convert-excel-to-md/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "data",
+    "pdf",
+    "excel",
+    "word"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/convert-excel-to-md",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2e0cd813de58612b136144c415e9d6a5115974bf107d9de7d8857440b5b950a9"
+    }
+  }
+}

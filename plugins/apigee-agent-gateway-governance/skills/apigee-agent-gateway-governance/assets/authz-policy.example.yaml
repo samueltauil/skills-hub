@@ -1,0 +1,48 @@
+# AuthzPolicy -- what makes the gateway actually call the extension.
+#
+#   gcloud beta network-security authz-policies import <NAME> \
+#     --source=authz-policy.yaml --location=$REGION --project=$PROJECT
+#
+# Import this AFTER the AuthzExtension it references. This is the outer gate:
+# a suffix list narrower than gateway.matchPaths means the missing shape never
+# reaches Apigee at all, and the proxy's own condition is irrelevant.
+
+name: projects/PROJECT_ID/locations/REGION/authzPolicies/GATEWAY-apigee-governance-policy
+
+action: CUSTOM
+
+# CONTENT_AUTHZ sees request and response bodies, which is what metering needs.
+# REQUEST_AUTHZ runs first and sees headers only -- that profile is what an IAP
+# extension uses. A gateway allows at most 4 CUSTOM policies across both
+# profiles.
+#
+# Ordering WITHIN one profile is UNDEFINED. It is not alphabetical, not
+# creation order, and AuthzPolicy has no priority field. Do not state a
+# tie-break to a user -- see references/gotchas.md, Agent Gateway.
+policyProfile: CONTENT_AUTHZ
+
+# !! PROJECT *NUMBER*, NOT PROJECT ID -- in BOTH resource lists below.
+# !! And NOT the number in the gateway's serviceExtensionsServiceAccount.
+# !! That SA reads service-<NUMBER>@gcp-sa-dep.iam.gserviceaccount.com and is
+# !! printed by assess_integration.sh as a PASS row, but that number belongs to
+# !! the Google-managed tenant project, not yours. Using it produces a policy
+# !! that imports cleanly, reports no error, and targets nothing.
+# !! Get yours with:
+# !!   gcloud projects describe $PROJECT --format='value(projectNumber)'
+customProvider:
+  authzExtension:
+    resources:
+      - projects/PROJECT_NUMBER/locations/REGION/authzExtensions/GATEWAY-apigee-governance-extension
+
+target:
+  resources:
+    - projects/PROJECT_NUMBER/locations/REGION/agentGateways/GATEWAY
+
+# One entry per gateway.matchPaths entry, copied VERBATIM with leading
+# punctuation kept -- ":generateContent", "/chat/completions". These are
+# suffix matches, so the OpenAI entry has no "/v1".
+httpRules:
+  - to:
+      operations:
+        - paths:
+            - suffix: ":generateContent"

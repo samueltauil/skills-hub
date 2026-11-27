@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "docker-sandboxes-network-credentials",
+  "version": "1.0.0",
+  "description": "Use this skill when configuring what a Docker Sandboxes (`sbx`) sandbox can reach on the network or which credentials it authenticates with, even if the user just says they want to \"let the agent call an internal API\", \"block all network access\", \"give the agent a GitHub token\", or \"use a private registry image for a sandbox\". Covers `sbx policy init/allow/deny/ls/inspect/log/check/rm network` (global and per-sandbox egress rules, deny-over-allow precedence) and `sbx secret set/set-custom/ls/rm/import` (service secrets, dynamic secrets via --ref/--command, and registry pull credentials with their host-pulls-only-by-default injection scope).",
+  "author": {
+    "name": "docker",
+    "url": "https://github.com/docker"
+  },
+  "homepage": "https://skillshub.space/skills/docker-sandboxes-network-credentials/",
+  "repository": "https://github.com/docker/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "api",
+    "doc",
+    "docker",
+    "sandboxes"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/docker/skills",
+        "path": "skills/docker-sandboxes-network-credentials",
+        "branch": "main"
+      },
+      "contentHash": "sha256:86bfbf6fd450365dc88baa94d7512488074f851c7ae043962d5291b3d172c564"
+    }
+  }
+}

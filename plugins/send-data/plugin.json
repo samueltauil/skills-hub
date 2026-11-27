@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "send-data",
+  "version": "1.0.0",
+  "description": "Sending telemetry data to Grafana Cloud — metrics via Prometheus remote write or OTLP, logs via Loki push or Alloy, traces via OTLP to Tempo, profiles via Pyroscope. Covers Alloy-based pipelines, direct SDK/agent integrations, cloud integrations catalog, and credentials management. Use when connecting an application or infrastructure to Grafana Cloud, setting up data ingestion, configuring remote write, or choosing between ingestion methods.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/send-data/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "data",
+    "send"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/send-data",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f9c260a50d37ea60a197ac31f600424cdb52f4b502dff8087f40070d5f59e29f"
+    }
+  }
+}

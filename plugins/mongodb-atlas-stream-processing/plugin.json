@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mongodb-atlas-stream-processing",
+  "version": "1.0.0",
+  "description": "Manages MongoDB Atlas Stream Processing (ASP) workflows. Handles workspace provisioning, data source/sink connections, processor lifecycle operations, debugging diagnostics, and tier sizing. Supports Kafka, Atlas clusters, S3, Apache Iceberg (with Unity and Horizon catalogs), HTTPS, and Lambda integrations for streaming data workloads and event processing. NOT for general MongoDB queries or Atlas cluster management. Requires MongoDB MCP Server with Atlas API credentials.",
+  "author": {
+    "name": "mongodb",
+    "url": "https://github.com/mongodb"
+  },
+  "homepage": "https://skillshub.space/skills/mongodb-atlas-stream-processing/",
+  "repository": "https://github.com/mongodb/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "mcp",
+    "data",
+    "mongodb",
+    "atlas"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/mongodb/agent-skills",
+        "path": "skills/mongodb-atlas-stream-processing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6c075117543937c1f4c3041f5be5c76d3da4ba45db3ee217a6e7d07b2c90ba43"
+    }
+  }
+}

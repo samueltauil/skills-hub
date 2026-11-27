@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "markdown-to-word-mermaid",
+  "version": "1.0.0",
+  "description": "Export Markdown containing Mermaid code fences to Word (.docx) with embedded SVG diagrams and PNG fallbacks. Use when diagram sharpness, Office-compatible labels, or page-aware placement matters. Not for Word-to-Markdown conversion, editable Office shapes, or general slide creation.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/markdown-to-word-mermaid/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "diagram",
+    "office",
+    "word",
+    "markdown"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/markdown-to-word-mermaid",
+        "branch": "main"
+      },
+      "contentHash": "sha256:46c4a1e9acc9d4f3f2143a862fb1e9e8c02854558a08498666db973966d329f8"
+    }
+  }
+}

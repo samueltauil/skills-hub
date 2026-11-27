@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "build-evidence-map",
+  "version": "1.0.0",
+  "description": "Build an auditable evidence map for a contested technical choice, research synthesis, proposal review, or consequential decision. Use when Copilot must preserve supporting, contradicting, qualifying, and missing evidence with exact source regions instead of collapsing disagreement into prose.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/build-evidence-map/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "build",
+    "evidence",
+    "map"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/build-evidence-map",
+        "branch": "main"
+      },
+      "contentHash": "sha256:acbbeab62c536a7cce230c32b4d245a8bcde5661555bf2a08511a689a51ef6ac"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "huggingface-gradio",
+  "version": "1.0.0",
+  "description": "Build Gradio web UIs and demos in Python. Use when creating, modifying, debugging, or answering questions about Gradio and its capabilities, components, event listeners, or layouts.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/huggingface-gradio/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "python",
+    "huggingface",
+    "gradio"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/huggingface-gradio",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0bbe5f54b101a9a6b2d846ad5909213bb97da1228e942526d5a93fba1e9409cd"
+    }
+  }
+}

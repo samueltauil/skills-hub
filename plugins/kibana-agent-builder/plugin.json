@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kibana-agent-builder",
+  "version": "1.0.0",
+  "description": "Create and manage Kibana Agent Builder agents and custom tools. Use when asked to create, update, delete, test, or inspect agents or tools in Agent Builder, or when the user wants to understand what agents or tools already exist.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/kibana-agent-builder/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "test",
+    "kibana",
+    "agent",
+    "builder"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/kibana/kibana-agent-builder",
+        "branch": "main"
+      },
+      "contentHash": "sha256:43aa4ca9af86b847f8fc054cf8f7edd3700d3ff0bd161329e2d43422f82a3b05"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "arize-link",
+  "version": "1.0.0",
+  "description": "Generates deep links to the Arize UI for traces, spans, sessions, datasets, labeling queues, evaluators, and annotation configs. Produces clickable URLs for sharing Arize resources with team members. Use when the user wants to link to or open a trace, span, session, dataset, evaluator, or annotation config in the Arize UI.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/arize-link/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "cli",
+    "data",
+    "arize",
+    "link"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/arize-link",
+        "branch": "main"
+      },
+      "contentHash": "sha256:64342e0887d43926eb6e1b7086bc3bc222824f53fa176033bef177c196881ad4"
+    }
+  }
+}

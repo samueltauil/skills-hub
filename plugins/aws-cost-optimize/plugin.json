@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "aws-cost-optimize",
+  "version": "1.0.0",
+  "description": "Analyze AWS resources used in the app (IaC files and/or resources in a target account/region) and optimize costs - creating GitHub issues for identified optimizations.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/aws-cost-optimize/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "aws",
+    "cost",
+    "optimize"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/aws-cost-optimize",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d6aea28593e6ec7fc6f4e3003c0f08a0359dae7efe0e9327d25d933720e88101"
+    }
+  }
+}

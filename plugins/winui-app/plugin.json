@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "winui-app",
+  "version": "1.0.0",
+  "description": "Bootstrap, develop, and design modern WinUI 3 desktop applications with C# and the Windows App SDK using official Microsoft guidance, WinUI Gallery patterns, Windows App SDK samples, and CommunityToolkit components. Use when creating a brand new app, preparing a machine for WinUI, reviewing, refactoring, planning, troubleshooting, environment-checking, or setting up WinUI 3 XAML, controls, navigation, windowing, theming, accessibility, responsiveness, performance, deployment, or related Windows app design and development work.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/winui-app/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "deploy",
+    "design",
+    "winui",
+    "app"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/winui-app",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b00a3ab0ff1416cc26cf5fac7d5d62337c4b317e00e1c86339131005312d0a18"
+    }
+  }
+}

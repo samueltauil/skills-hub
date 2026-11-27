@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-skill-stack",
+  "version": "1.0.0",
+  "description": "Find, evaluate, and assemble the smallest compatible set of AI Agent Skills for an end-to-end natural-language goal. Use when a user wants Skills for a multi-step workflow, asks which Skills fit a project, needs an installed-Skill audit or conflict check, has low Skill recall, wants indirect helpers such as humanizers or compliance checks, or wants a project-specific Skill Stack with controlled installation. Search local Skills, registries, GitHub, and OpenCLI; compare adoption, verified fit, safety, and overlap. Do not use for locating one known or common Skill; use the generic find-skills workflow.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/agent-skill-stack/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "cli",
+    "agent",
+    "skill",
+    "stack"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/agent-skill-stack",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f5d799c8fa1980f2486408cc768a771e765a6b4041a796bf0f30f4a68b7cb0be"
+    }
+  }
+}

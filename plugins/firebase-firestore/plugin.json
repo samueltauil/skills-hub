@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "firebase-firestore",
+  "version": "1.0.0",
+  "description": "Sets up, manages, queries, and configures Cloud Firestore databases (Standard/Enterprise edition), including data modeling, security rules, indexes, and SDK integrations (Web, Admin, Python, iOS, Android, Flutter). Use when adding or migrating app databases, creating/listing Firestore databases, defining data models/indexes, writing SDK queries, or integrating Firestore SDKs. For authoring or modifying Firestore Security Rules (firestore.rules), delegate to the firestore-rules-author subagent if subagent delegation is available, or use firestore-rules-creation otherwise. Don't use for Data Connect, BigQuery, or standalone Hosting, Auth, Storage/GCS, Crashlytics, or Functions tasks.",
+  "author": {
+    "name": "firebase",
+    "url": "https://github.com/firebase"
+  },
+  "homepage": "https://skillshub.space/skills/firebase-firestore/",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "python",
+    "security",
+    "data",
+    "firebase",
+    "firestore"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/firebase/agent-skills",
+        "path": "skills/firebase-firestore",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a3b5362ac43944e339713f515bdd38d97817efafe4d1e85c8e61187fb0e75d32"
+    }
+  }
+}

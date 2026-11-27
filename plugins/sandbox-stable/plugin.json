@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sandbox-stable",
+  "version": "1.0.0",
+  "description": "Build or maintain Cloudflare Sandbox apps on the stable @cloudflare/sandbox package. Use sandbox-next for preview apps and sandbox-migrate-to-next for stable-to-preview migrations.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/sandbox-stable/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "sandbox",
+    "stable"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/sandbox-stable",
+        "branch": "main"
+      },
+      "contentHash": "sha256:804543339bfdfe21109b22b79d1ed29aba53436f3d56e921f3db5d886d2f0a95"
+    }
+  }
+}

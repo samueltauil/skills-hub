@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "microsoft-appinsights-instrumentation",
+  "version": "1.0.0",
+  "description": "Guidance for instrumenting webapps with Azure Application Insights. Provides telemetry patterns, SDK setup, and configuration references. WHEN: how to instrument app, App Insights SDK, telemetry patterns, what is App Insights, Application Insights guidance, instrumentation examples, APM best practices.",
+  "author": {
+    "name": "microsoft",
+    "url": "https://github.com/microsoft"
+  },
+  "homepage": "https://skillshub.space/skills/microsoft-appinsights-instrumentation/",
+  "repository": "https://github.com/microsoft/azure-skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "azure",
+    "appinsights",
+    "instrumentation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/microsoft/azure-skills",
+        "path": ".github/plugins/azure-skills/skills/appinsights-instrumentation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:513c7083442e6928fb089fd3aa9d72f4072f15d322e1707fe68da20d0c476bc5"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "on-device-delegate",
+  "version": "1.0.0",
+  "description": "Saves cloud-model context by briefing one bounded, read-heavy sub-task (more than about 25 KB of prose, or many files that no single command can answer) to the local-coding plugin's on-device worker, which runs on the local MAI Code 1.1 Flash model. Use for log and test triage, summarizing many files, or extracting facts from large inputs. When the user names this skill, call the skill tool in the same response as your first other tool call, never as a separate step.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/on-device-delegate/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "device",
+    "delegate"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/on-device-delegate",
+        "branch": "main"
+      },
+      "contentHash": "sha256:39218f14dd95a4662f80be9c90a25402217caa4478bbc51200631f95586909fc"
+    }
+  }
+}

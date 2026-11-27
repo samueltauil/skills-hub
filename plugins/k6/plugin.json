@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "k6",
+  "version": "1.0.0",
+  "description": "Generate, validate, and review k6 test scripts — load, stress, spike, soak, smoke, breakpoint, functional, and protocol. Covers HTTP, WebSocket, gRPC, browser, all executors, thresholds, checks, custom metrics, the k6-testing library, k6 Cloud execution, and the xk6 extension ecosystem; uses the xk6-docs CLI (with grafana.com web fallback) for docs lookup and validates every script by running it. Use when writing, generating, validating, or debugging any k6 or load-test script (including plain-language asks like \"load test this API\" or \"stress test my service\"), choosing executors/scenarios, or setting thresholds. For end-to-end website performance suites use k6-perf-test-website; for documenting k6 itself use k6-docs; for a browser/UI test authored from a plain-language user journey (selectors discovered by exploring the live site) use k6-browser-test.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/k6/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "api",
+    "cli",
+    "test",
+    "doc"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-k6/k6",
+        "branch": "main"
+      },
+      "contentHash": "sha256:259feb7f73affa36ac6b6bc74fcfbade9e099056a7c312bf14f18b2ee6e52b3c"
+    }
+  }
+}

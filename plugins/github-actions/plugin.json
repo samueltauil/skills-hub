@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "github-actions",
+  "version": "1.0.0",
+  "description": "GitHub Actions workflow patterns for React Native iOS simulator and Android emulator cloud builds with downloadable artifacts. Use when setting up CI build pipelines or downloading GitHub Actions artifacts via gh CLI and GitHub API.",
+  "author": {
+    "name": "callstack",
+    "url": "https://github.com/callstackincubator"
+  },
+  "homepage": "https://skillshub.space/skills/github-actions/",
+  "repository": "https://github.com/callstackincubator/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "api",
+    "cli",
+    "react",
+    "github"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/callstackincubator/agent-skills",
+        "path": "skills/github-actions",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5434341b24c12ea4cc5a06caac255931b75b978edc251b9ea9968c28ccfb66a1"
+    }
+  }
+}

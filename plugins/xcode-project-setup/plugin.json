@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "xcode-project-setup",
+  "version": "1.0.0",
+  "description": "Safely modifies Xcode projects (.pbxproj) to add Swift Packages and link files. Use this skill whenever an iOS project needs dependencies installed (e.g. Firebase, Alamofire).",
+  "author": {
+    "name": "firebase",
+    "url": "https://github.com/firebase"
+  },
+  "homepage": "https://skillshub.space/skills/xcode-project-setup/",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "xcode",
+    "project",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/firebase/agent-skills",
+        "path": "skills/xcode-project-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0491c8070beb4746b0ddff6f657a47b4ba077527de25e86b7abbbd8c7ae6f18e"
+    }
+  }
+}

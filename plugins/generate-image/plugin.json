@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "generate-image",
+  "version": "1.0.0",
+  "description": "Generate images using AI. Use when asked to generate, create, or make images, textures, icons, sprites, artwork, visual assets, or mockups. Supports OpenAI (gpt-image-2) and Google Gemini (Nano Banana). Requires an API key for the chosen provider.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/generate-image/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "generate",
+    "image"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/generate-image",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a3f0614ec68f7bc0ce2935516696c3784f8d61abf8d9f1ecc219419a9c414d0c"
+    }
+  }
+}

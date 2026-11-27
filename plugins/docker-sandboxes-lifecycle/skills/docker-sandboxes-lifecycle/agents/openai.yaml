@@ -1,0 +1,6 @@
+interface:
+  display_name: 'Docker Sandboxes: Local Lifecycle & Workspace Isolation'
+  short_description: Create, reattach to, and tear down local `sbx` sandboxes; choose workspace bind-mount vs --clone isolation.
+  default_prompt: Use this skill when running, reattaching to, or cleaning up local Docker Sandboxes (`sbx run`/`create`/`ls`/`stop`/`rm`/`prune`), or choosing between a bind-mounted workspace and `--clone` isolation.
+policy:
+  allow_implicit_invocation: true

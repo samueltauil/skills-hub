@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cli-creator",
+  "version": "1.0.0",
+  "description": "Build a composable CLI for Codex from API docs, an OpenAPI spec, existing curl examples, an SDK, a web app, an admin tool, or a local script. Use when the user wants Codex to create a command-line tool that can run from any repo, expose composable read/write commands, return stable JSON, manage auth, and pair with a companion skill.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/cli-creator/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "api",
+    "cli",
+    "doc",
+    "creator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/cli-creator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f444a4d0006a43214364e77c695b96b808b6fa590c05fea56d19ef737279eca7"
+    }
+  }
+}

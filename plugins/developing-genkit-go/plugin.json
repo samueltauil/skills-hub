@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "developing-genkit-go",
+  "version": "1.0.0",
+  "description": "Provides guidance on developing AI-powered applications using Genkit in Go. Use when the user asks to build AI features, agents, flows, or tools in Go using Genkit, or when working with Genkit Go code involving generation, prompts, streaming, tool calling, or model providers. Don't use for Genkit in JavaScript/TypeScript, Python, or Dart.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/developing-genkit-go/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "python",
+    "typescript",
+    "developing",
+    "genkit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/developing-genkit-go",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8fe1dc52e0d8f5c9fff303571fb41fec5c03310b5621a9bf39ac68dfe3414e43"
+    }
+  }
+}

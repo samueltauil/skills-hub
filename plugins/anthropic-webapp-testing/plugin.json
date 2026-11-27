@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "anthropic-webapp-testing",
+  "version": "1.0.0",
+  "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+  "author": {
+    "name": "anthropic",
+    "url": "https://github.com/anthropics"
+  },
+  "homepage": "https://skillshub.space/skills/anthropic-webapp-testing/",
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "test",
+    "webapp"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "path": "skills/webapp-testing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:62861f275e78e4c1d9ef6b389670a8c5ee98c5d0fab878712166a5da75551054"
+    }
+  }
+}

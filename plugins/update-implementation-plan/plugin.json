@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "update-implementation-plan",
+  "version": "1.0.0",
+  "description": "Update an existing implementation plan file with new or update requirements to provide new features, refactoring existing code or upgrading packages, design, architecture or infrastructure.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/update-implementation-plan/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "update",
+    "implementation",
+    "plan"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/update-implementation-plan",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fc1406aa78a1b0d76b6a6b434e8d70b52f740eed3dc9bd41144118470a91f9fe"
+    }
+  }
+}

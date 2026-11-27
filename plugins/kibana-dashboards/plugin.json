@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kibana-dashboards",
+  "version": "1.0.0",
+  "description": "Create and manage Kibana Dashboards and Lens visualizations. Use when you need to define dashboards and visualizations declaratively, version control them, automate their deployment, or improve layout, sections, controls, or chart design.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/kibana-dashboards/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "deploy",
+    "design",
+    "kibana",
+    "dashboards"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/kibana/kibana-dashboards",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c07a05dfe63906817b1151f30ed0b4325330a9dec33c6bcd097bb604b38f8d09"
+    }
+  }
+}

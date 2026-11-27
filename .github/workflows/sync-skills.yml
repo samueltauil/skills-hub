@@ -10,6 +10,8 @@ on:
       - '.gitmodules'
       - 'sources/**'
       - 'scripts/aggregate-skills.js'
+      - 'scripts/build-plugins.js'
+      - 'scripts/plugin-spec.js'
   workflow_dispatch: # Allow manual trigger
 
 permissions:
@@ -93,6 +95,12 @@ jobs:
             --output /tmp/scan-report.json \
             --update-skills
           echo "🔐 Security scan complete – results embedded in skills.json"
+
+      - name: Build and validate plugins
+        if: steps.check-submodules.outputs.changes == 'true'
+        run: |
+          node scripts/build-plugins.js
+          node scripts/validate-plugins.js
 
       - name: Check for skill changes
         if: steps.check-submodules.outputs.changes == 'true'

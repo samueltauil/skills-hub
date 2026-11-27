@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-workload-scaling",
+  "version": "1.0.0",
+  "description": "Manages scaling for GKE workloads using HPA and VPA. Use when configuring Horizontal Pod Autoscaler (HPA), configuring Vertical Pod Autoscaler (VPA), or applying best practices for GKE workload autoscaling. Do not use for cluster-level autoscaling (Cluster Autoscaler), static cluster sizing, or configuring node-level machine styles directly.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-workload-scaling/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "gke",
+    "workload",
+    "scaling"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-workload-scaling",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cbf1697a4c0eeb399e306eff0cbfcf44edd1aba08d9cf8c4993f8df447bab034"
+    }
+  }
+}

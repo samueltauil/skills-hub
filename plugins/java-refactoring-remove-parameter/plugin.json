@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "java-refactoring-remove-parameter",
+  "version": "1.0.0",
+  "description": "Refactoring using Remove Parameter in Java Language",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/java-refactoring-remove-parameter/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "java",
+    "refactoring",
+    "remove",
+    "parameter"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/java-refactoring-remove-parameter",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6ea67e41042b9da4bef8b053dff512258cc07a84509a446be4c447ad602e461c"
+    }
+  }
+}

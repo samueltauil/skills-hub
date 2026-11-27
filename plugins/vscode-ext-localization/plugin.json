@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vscode-ext-localization",
+  "version": "1.0.0",
+  "description": "Guidelines for proper localization of VS Code extensions, following VS Code extension development guidelines, libraries and good practices",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/vscode-ext-localization/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "vscode",
+    "ext",
+    "localization"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/vscode-ext-localization",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ff1337307694cfe2c44b7b744cf4c8a461c98c0af0fd4ad01d9f9ff4531e9b21"
+    }
+  }
+}

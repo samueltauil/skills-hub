@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "application-integration-troubleshooting",
+  "version": "1.0.0",
+  "description": "Diagnoses failed, stuck, or silent Google Cloud Application Integration runs and Integration Connectors tasks using the REST API, Cloud Logging, and Cloud Monitoring. Use when an integration fails, returns HTTP 200 without doing the expected work, hangs in a suspended or retry state, or hits IAM, run-as service account, connector health, or quota errors. Do not use for initial region provisioning (use application-integration-basics) or building and deploying versions (use application-integration-authoring).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/application-integration-troubleshooting/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "deploy",
+    "application",
+    "integration",
+    "troubleshooting"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/application-integration-troubleshooting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1b668e8c7405d4221c9c6c77db3845e2ad005c1cbb6f316d60deb97c8000a5b3"
+    }
+  }
+}

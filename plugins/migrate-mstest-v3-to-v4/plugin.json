@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "migrate-mstest-v3-to-v4",
+  "version": "1.0.0",
+  "description": "Use this skill before answering, planning, or editing any MSTest 3.x-to-4.x upgrade or post-upgrade failure. Triggers include \"MSTest v4 breaking changes\"; CS0507/CS0103/CS1061/CS1615; ExecuteAsync, CallerInfo, DisplayName, or custom TestMethodAttribute; ClassCleanupBehavior; ContainsKey; ThrowsExactly or ExpectedException; IsInstanceOfType out parameters; TestTimeout.Infinite; removed TestContext properties; ITestMethod changes; StringAssert overloads; MSTEST0056/MSTEST0057; renamed assemblies or executor URI; net6/net7 compatibility; TestCase.Id history; TestName in ClassInitialize; TreatDiscoveryWarningsAsErrors; ReflectionTypeLoadException during discovery; inherited test attributes; custom data-source display names; and MSTest.Sdk/MTP or vstest.console discovery changes. Do not use for v1/v2-to-v3 leftovers, framework conversion, runner-only migration, or a general .NET upgrade.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/migrate-mstest-v3-to-v4/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "data",
+    "migrate",
+    "mstest"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test-migration/skills/migrate-mstest-v3-to-v4",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a1f32766bc1a6bae507da5d4bd77f1e2d6f63affddc5adecda92d1936ccbd9bd"
+    }
+  }
+}

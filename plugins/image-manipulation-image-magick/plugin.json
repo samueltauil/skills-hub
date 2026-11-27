@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "image-manipulation-image-magick",
+  "version": "1.0.0",
+  "description": "Process and manipulate images using ImageMagick. Supports resizing, format conversion, batch processing, and retrieving image metadata. Use when working with images, creating thumbnails, resizing wallpapers, or performing batch image operations.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/image-manipulation-image-magick/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "data",
+    "image",
+    "manipulation",
+    "magick"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/image-manipulation-image-magick",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e08fce4ae95784d45c5ad084bfb8193f017181f7e7071e08d2fe7a5c352584d7"
+    }
+  }
+}

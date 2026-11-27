@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "compute-resource-availability-troubleshooting",
+  "version": "1.0.0",
+  "description": "Diagnoses, mitigates, and prevents Google Compute Engine resource availability and capacity stockout errors (ZONE_RESOURCE_POOL_EXHAUSTED, ZONE_RESOURCE_POOL_EXHAUSTED_WITH_DETAILS, and machine type or accelerator unavailable in zone). Use ONLY when VM creation, Managed Instance Group (MIG) scale-out, or stopped instance startup fails due to regional or zonal hardware capacity exhaustion for GPUs, TPUs, or specific CPU shapes. DO NOT read or use for IAM permission errors, project quota limit increases without stockouts, general greenfield VM creation, or unexpected host reboots on already-running VMs.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/compute-resource-availability-troubleshooting/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "compute",
+    "resource",
+    "availability",
+    "troubleshooting"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/compute-resource-availability-troubleshooting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fff0b59011ef8643edc4744739538bd065d1a5bf061ff8593404c8c04cbfc874"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+name: Validate Plugins
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'plugins/**'
+      - '.github/plugin/**'
+      - 'site/src/data/skills.json'
+      - 'scripts/build-plugins.js'
+      - 'scripts/validate-plugins.js'
+      - 'scripts/plugin-spec.js'
+      - 'scripts/plugins.test.js'
+      - 'scripts/schemas/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/validate-plugins.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'plugins/**'
+      - '.github/plugin/**'
+      - 'site/src/data/skills.json'
+      - 'scripts/build-plugins.js'
+      - 'scripts/validate-plugins.js'
+      - 'scripts/plugin-spec.js'
+      - 'scripts/schemas/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Validate marketplace and plugins
+        run: npm run validate:plugins
+
+      - name: Validate plugin manifests against the Agent Plugins schema
+        run: |
+          npx --yes ajv-cli@5 validate --spec=draft2020 --strict=false \
+            -s scripts/schemas/agent-plugins-1.0.0.plugin.schema.json \
+            -d "plugins/*/plugin.json" > /tmp/ajv.log 2>&1 || { cat /tmp/ajv.log; exit 1; }
+          echo "✅ $(grep -c ' valid$' /tmp/ajv.log) plugin.json files match the official schema"
+
+      - name: Check plugins are in sync with the skills catalog
+        run: npm run check:plugins

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "profilecli-insights",
+  "version": "1.0.0",
+  "description": "Query live Pyroscope profiles with profilecli, analyze them with pprof, and correlate hot functions with checked-out source code. Use when the user asks to investigate a service with a configured Pyroscope server, profilecli, and pprof.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/profilecli-insights/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "cli",
+    "profilecli",
+    "insights"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-lgtm/profilecli-insights",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8037996d3e4d6335cd52ee5fd36a287b74fa2da81a5ec2fd2a684345f8fad4eb"
+    }
+  }
+}

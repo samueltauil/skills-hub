@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "flagship",
+  "version": "1.0.0",
+  "description": "Build, debug, or review code that uses Cloudflare Flagship feature flags from Workers, OpenFeature SDKs, the evaluation API, or Wrangler. Use for the Flagship binding, targeting rules, percentage rollouts and A/B splits, kill switches, local flag stores, and flag-related API tokens.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/flagship/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "api",
+    "flagship"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/flagship",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7fd781fbe1fd992f48f84c725e812f4f8f7ac1227a9e1f4e0e6fae6ea0826afe"
+    }
+  }
+}

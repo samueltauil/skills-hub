@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "creating-oracle-to-postgres-master-migration-plan",
+  "version": "1.0.0",
+  "description": "Discovers all projects in a .NET solution, classifies each for Oracle-to-PostgreSQL migration eligibility, and produces a persistent master migration plan. Use when starting a multi-project Oracle-to-PostgreSQL migration, creating a migration inventory, or assessing which .NET projects contain Oracle dependencies.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/creating-oracle-to-postgres-master-migration-plan/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "creating",
+    "oracle",
+    "postgres",
+    "master",
+    "migration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/creating-oracle-to-postgres-master-migration-plan",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5da28c8a7cf7410acc4ab32d7b8b6eacdc34610be6619eab858a3dc8aa84764f"
+    }
+  }
+}

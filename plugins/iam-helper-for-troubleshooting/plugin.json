@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "iam-helper-for-troubleshooting",
+  "version": "1.0.0",
+  "description": "Diagnoses, remediates, and manages Identity and Access Management (IAM) access issues on Google Cloud. Supports two distinct operational modes: (1) Requester Flow for developers encountering access denials (capturing error context, self-service PAM JIT activations, elevated developer self-remediation, or logging structured tickets), and (2) Resolver Flow for privileged administrators (authoritative Policy Troubleshooter analysis, deny policy exemptions, least-privilege role discovery, and PAM/IAM provisioning).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/iam-helper-for-troubleshooting/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "security",
+    "iam",
+    "helper",
+    "for",
+    "troubleshooting"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/iam-helper-for-troubleshooting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5a551eed873f0369c788682158050ec6368ba195e326689a3098ee61534ee3c7"
+    }
+  }
+}

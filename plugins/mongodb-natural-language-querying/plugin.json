@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mongodb-natural-language-querying",
+  "version": "1.0.0",
+  "description": "Generate read-only MongoDB queries (find) or aggregation pipelines using natural language, with collection schema context and sample documents. Use this skill whenever the user asks to write, create, or generate MongoDB queries, wants to filter/query/aggregate data in MongoDB, asks \"how do I query...\", needs help with query syntax, or discusses finding/filtering/grouping MongoDB documents. Also use for translating SQL-like requests to MongoDB syntax. Does NOT handle Atlas Search ($search operator), vector/semantic search ($vectorSearch operator), fuzzy matching, autocomplete indexes, or relevance scoring - use search-and-ai for those. Does NOT analyze or optimize existing queries - use mongodb-query-optimizer for that. Does NOT handle aggregation pipelines that involve write operations. Requires MongoDB MCP server.",
+  "author": {
+    "name": "mongodb",
+    "url": "https://github.com/mongodb"
+  },
+  "homepage": "https://skillshub.space/skills/mongodb-natural-language-querying/",
+  "repository": "https://github.com/mongodb/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "mcp",
+    "data",
+    "mongodb",
+    "natural"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/mongodb/agent-skills",
+        "path": "skills/mongodb-natural-language-querying",
+        "branch": "main"
+      },
+      "contentHash": "sha256:eaa7dda41ac52a773367c361e198af2c0afbe6d0ea61e3e559a7971e545df0b0"
+    }
+  }
+}

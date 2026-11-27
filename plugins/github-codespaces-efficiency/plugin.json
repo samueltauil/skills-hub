@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "github-codespaces-efficiency",
+  "version": "1.0.0",
+  "description": "Audit and improve GitHub Codespaces efficiency. Use this skill when a user wants faster Codespaces startup, lower Codespaces spend, slim devcontainers, right-size machines, tune idle timeout, or scope prebuilds to branches with sustained usage.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/github-codespaces-efficiency/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "github",
+    "codespaces",
+    "efficiency"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/github-codespaces-efficiency",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1d0fd1fc8805a1c3bdefe5596720396024ac50ffbcb2078c57d1cf997a141eb8"
+    }
+  }
+}

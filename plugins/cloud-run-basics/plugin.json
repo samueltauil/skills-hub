@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-run-basics",
+  "version": "1.0.0",
+  "description": "Manages Cloud Run services, jobs, and worker pools. Use when you need to deploy applications responding to HTTP requests (services), run event-triggered or scheduled tasks (jobs), or handle always-on pull-based background processing (worker pools).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-run-basics/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "cloud",
+    "run",
+    "basics"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-run-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6b7d2aec737bb1980098fa09daf431acb0636c3ab4a8ebffdf32a14e4e10f4ac"
+    }
+  }
+}

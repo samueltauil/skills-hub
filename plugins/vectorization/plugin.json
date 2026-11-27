@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vectorization",
+  "version": "1.0.0",
+  "description": "Design, implement, optimize, and review SIMD code in .NET. USE FOR: vectorizing scalar loops with TensorPrimitives, Vector64/128/256/512, or platform hardware intrinsics; reviewing existing SIMD code, including the generic Vector type, for contract equivalence, tail handling, memory safety, portability, fallbacks, and measured performance. DO NOT USE FOR: performance work unrelated to SIMD or vectorization.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/vectorization/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "vectorization"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-advanced/skills/vectorization",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b045939abc940f1138be8d259a993a980d31cd1d40a82c312c2046013bcc70a8"
+    }
+  }
+}

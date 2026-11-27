@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dataverse-python-quickstart",
+  "version": "1.0.0",
+  "description": "Generate Python SDK setup + CRUD + bulk + paging snippets using official patterns.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/dataverse-python-quickstart/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "python",
+    "data",
+    "dataverse",
+    "quickstart"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dataverse-python-quickstart",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c154d2e1197dd7d1e1b337b7a413879638402ed6970f7758a690a6e0dc7d9c2c"
+    }
+  }
+}

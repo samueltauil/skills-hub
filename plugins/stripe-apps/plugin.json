@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "stripe-apps",
+  "version": "1.0.0",
+  "description": "Build, modify, or review Stripe Apps and extensions using the relevant documentation and reference guides. Use for custom Stripe Dashboard UI, stripe-app.yaml, @stripe/ui-extension-sdk, @stripe/extensibility-sdk, script extensions, extension interfaces, custom workflow actions, and apps that authenticate to Stripe or react to events. Also use when deciding whether a Stripe extension can support the user's billing or workflow requirements.",
+  "author": {
+    "name": "stripe",
+    "url": "https://github.com/stripe"
+  },
+  "homepage": "https://skillshub.space/skills/stripe-apps/",
+  "repository": "https://github.com/stripe/ai",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "react",
+    "stripe",
+    "apps"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/stripe/ai",
+        "path": "skills/stripe-apps",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c99bccd7b4db37d7abb0911ed93a8d5495c3efdeee2458a2e4b61992ec7ca95e"
+    }
+  }
+}

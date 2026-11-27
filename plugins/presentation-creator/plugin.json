@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "presentation-creator",
+  "version": "1.0.0",
+  "description": "Create data-driven presentation slides using React, Vite, and Recharts with Sentry branding. Use when asked to \"create a presentation\", \"build slides\", \"make a deck\", \"create a data presentation\", \"build a Sentry presentation\". Scaffolds a complete slide-based app with charts, animations, and single-file HTML output.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/presentation-creator/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "data",
+    "presentation",
+    "creator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/presentation-creator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:80eb8f651e07b5097176a489e75014d4cabefb8b96431b05c2070e015cd496d5"
+    }
+  }
+}

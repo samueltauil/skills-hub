@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "provisioning",
+  "version": "1.0.0",
+  "description": "Provision and operate Elastic Cloud infrastructure: create, connect to, update, and delete Serverless projects (Elasticsearch, Observability, Security); manage traffic filters (IP and AWS PrivateLink network security); and manage the lifecycle of Elastic Cloud Hosted deployments. Use when creating or performing day-2 operations on serverless projects or hosted deployments, or restricting their network access.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/provisioning/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "deploy",
+    "security",
+    "provisioning"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/cloud/provisioning",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d7e4e32c93c70aed6e77c63b4536b78b9c0dc5c727f7bcbf498595f2a252b8e4"
+    }
+  }
+}

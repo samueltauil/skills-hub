@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "code-testing-agent",
+  "version": "1.0.0",
+  "description": "Legacy compatibility alias for the code-testing skill. Do not self-activate for user requests and do not treat this name as a custom agent. When invoked explicitly by older instructions, load code-testing and follow it instead.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/code-testing-agent/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "code",
+    "agent"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/code-testing-agent",
+        "branch": "main"
+      },
+      "contentHash": "sha256:80df2debe47148946be067108122b99283521ca2bc9b9d7bedde2d48302de0e8"
+    }
+  }
+}

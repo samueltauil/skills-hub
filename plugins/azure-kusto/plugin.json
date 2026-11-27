@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-kusto",
+  "version": "1.0.0",
+  "description": "Query and analyze data in Azure Data Explorer (Kusto/ADX) using KQL for log analytics, telemetry, and time series analysis. WHEN: KQL queries, Kusto database queries, Azure Data Explorer, ADX clusters, log analytics, time series data, IoT telemetry, anomaly detection.",
+  "author": {
+    "name": "microsoft",
+    "url": "https://github.com/microsoft"
+  },
+  "homepage": "https://skillshub.space/skills/azure-kusto/",
+  "repository": "https://github.com/microsoft/azure-skills",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "azure",
+    "data",
+    "analytics",
+    "kusto"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/microsoft/azure-skills",
+        "path": ".github/plugins/azure-skills/skills/azure-kusto",
+        "branch": "main"
+      },
+      "contentHash": "sha256:79e09708e1fd668bca125cad4588ea4e3dacaa06db9b778a360fdc0ba2786635"
+    }
+  }
+}

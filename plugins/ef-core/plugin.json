@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ef-core",
+  "version": "1.0.0",
+  "description": "Get best practices for Entity Framework Core",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/ef-core/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "core"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/ef-core",
+        "branch": "main"
+      },
+      "contentHash": "sha256:71ff02aa922a251a1217edb178f21f46c9c2b7b9fb0eca194a29cc75b67f2fdc"
+    }
+  }
+}

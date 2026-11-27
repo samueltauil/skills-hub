@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "application-integration-authoring",
+  "version": "1.0.0",
+  "description": "Builds, versions, publishes, tests, and executes Google Cloud Application Integration workflows through the REST API and Python discovery client, and promotes versions across environments. Use when listing integrations, downloading or uploading integration versions as JSON, configuring API triggers or config variables, publishing drafts, invoking integrations, or automating CI/CD promotion. Do not use for initial region provisioning and IAM setup (use application-integration-basics) or diagnosing failed runs and logs (use application-integration-troubleshooting).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/application-integration-authoring/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "api",
+    "cli",
+    "test",
+    "python",
+    "application"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/application-integration-authoring",
+        "branch": "main"
+      },
+      "contentHash": "sha256:68409d1af8a3329f116412b9b887d0030fee199d5539cd27b73e265676eae027"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "firestore-rules-creation",
+  "version": "1.0.0",
+  "description": "Designs, authors, refactors, and hardens production-grade Cloud Firestore Security Rules (firestore.rules). IMPORTANT: If subagent delegation AND the firestore-rules-author subagent are available in your environment, delegate authoring firestore.rules to the firestore-rules-author subagent. If subagent delegation is unavailable (e.g. not enabled in the IDE), firestore-rules-author is not installed, or you are running inside firestore-rules-author, follow this skill directly.",
+  "author": {
+    "name": "firebase",
+    "url": "https://github.com/firebase"
+  },
+  "homepage": "https://skillshub.space/skills/firestore-rules-creation/",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "design",
+    "security",
+    "firestore",
+    "rules",
+    "creation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/firebase/agent-skills",
+        "path": "skills/firestore-rules-creation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c1a923c17db44e82484851882093ca59a3909aee3482f44c575923016c9b3cdb"
+    }
+  }
+}

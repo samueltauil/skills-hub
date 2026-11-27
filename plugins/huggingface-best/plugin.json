@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "huggingface-best",
+  "version": "1.0.0",
+  "description": "Use when the user asks about finding the best, top, or recommended model for a task, wants to know what AI model to use, or wants to compare models by benchmark scores. Triggers on: \"best model for X\", \"what model should I use for\", \"top models for [task]\", \"which model runs on my laptop/machine/device\", \"recommend a model for\", \"what LLM should I use for\", \"compare models for\", \"what's state of the art for\", or any question about choosing an AI model for a specific use case. Always use this skill when the user wants model recommendations or comparisons, even if they don't explicitly mention HuggingFace or benchmarks.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/huggingface-best/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "huggingface",
+    "best"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/huggingface-best",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a4ba458ff47bad7f96495567e8ec4e35eb965eba12b26db72eaf2424052d7a61"
+    }
+  }
+}

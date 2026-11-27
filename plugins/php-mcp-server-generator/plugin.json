@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "php-mcp-server-generator",
+  "version": "1.0.0",
+  "description": "Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/php-mcp-server-generator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "mcp",
+    "php",
+    "server",
+    "generator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/php-mcp-server-generator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:43eb6fe67b84cd1ab1280fbda78e5f1965d52c2b837316d7ec2604c60b977b03"
+    }
+  }
+}

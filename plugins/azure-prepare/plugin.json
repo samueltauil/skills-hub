@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-prepare",
+  "version": "1.0.0",
+  "description": "Prepare azd-based Azure projects for deployment: generates azure.yaml, infrastructure (Bicep/Terraform), and Dockerfiles for the Azure Developer CLI (azd) workflow. USE ONLY when the user explicitly wants to use azd as the deployment tool, or the project already has an azure.yaml file. DO NOT USE FOR: non-azd deployments, Python App Service code-only deploys (use python-appservice-deploy), or cross-cloud migration (use azure-cloud-migrate). WHEN: prepare app for azd, create azure.yaml, set up azd infrastructure, modernize app for Azure with azd, deploy with azd, function app, timer trigger, service bus trigger, event-driven function, managed identity, generate Bicep, generate Terraform, create and deploy to Azure.",
+  "author": {
+    "name": "microsoft",
+    "url": "https://github.com/microsoft"
+  },
+  "homepage": "https://skillshub.space/skills/azure-prepare/",
+  "repository": "https://github.com/microsoft/azure-skills",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "azure",
+    "cli",
+    "deploy",
+    "doc",
+    "python"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/microsoft/azure-skills",
+        "path": ".github/plugins/azure-skills/skills/azure-prepare",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1d2c5e1cdf6ac3a3f2b54c33b49a1bb8268657d8780400056b984ab6cdec7c50"
+    }
+  }
+}

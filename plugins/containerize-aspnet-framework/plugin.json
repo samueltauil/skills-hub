@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "containerize-aspnet-framework",
+  "version": "1.0.0",
+  "description": "Containerize an ASP.NET .NET Framework project by creating Dockerfile and .dockerfile files customized for the project.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/containerize-aspnet-framework/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "containerize",
+    "aspnet",
+    "framework"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/containerize-aspnet-framework",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1f86c3fba9f684b3758957fe19c58329b8d1315b1a6d82ab903a954533f369f7"
+    }
+  }
+}

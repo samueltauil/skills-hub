@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "find-repeated-work-within-one-build",
+  "version": "1.0.0",
+  "description": "Use ONLY for auditing executed-task counts or batching/hoisting costs within ONE MSBuild invocation: per-project Exec, duplicate dependency builds, per-item generators, run-once races. NEVER load for evaluation-only global-property variants with once-only target/task execution, idle-node/serial-chain investigations, second/unchanged builds, restores across commands, required-variant bin/obj collisions or unranked slowness. Do not load to check scope or replace an unavailable specialist; answer directly.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/find-repeated-work-within-one-build/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "find",
+    "repeated",
+    "work",
+    "within",
+    "one"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-msbuild/skills/find-repeated-work-within-one-build",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fd31568d9019ad68a444921311ee2cd7fdad1f1fa5de2fc7ced6373bd6b0375f"
+    }
+  }
+}

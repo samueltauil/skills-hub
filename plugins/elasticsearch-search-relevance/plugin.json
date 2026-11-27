@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "elasticsearch-search-relevance",
+  "version": "1.0.0",
+  "description": "Improve Elasticsearch search relevance for content and catalog indices: pin or promote results with query rules (correct rule type, criteria, and rule-query wiring) and tune organic ranking with multi_match, field boosts, and analysis grounded in the index mapping. Use when search results rank poorly, a specific document must appear first for a query, or the user asks to tune full-text matching — not for ES|QL analytics, index ingest, or cluster health.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/elasticsearch-search-relevance/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "analytics",
+    "elasticsearch",
+    "search",
+    "relevance"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/elasticsearch/elasticsearch-search-relevance",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2e851960d72f80c1e1c9e9463e14aeb8e93dc26f3a67b6db437b119a01a28a49"
+    }
+  }
+}

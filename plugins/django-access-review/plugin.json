@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "django-access-review",
+  "version": "1.0.0",
+  "description": "Django access control and IDOR security review. Use when reviewing Django views, DRF viewsets, ORM queries, or any Python/Django code handling user authorization. Trigger keywords: \"IDOR\", \"access control\", \"authorization\", \"Django permissions\", \"object permissions\", \"tenant isolation\", \"broken access\".",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/django-access-review/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "python",
+    "security",
+    "word",
+    "django",
+    "access"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/django-access-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bcc1f6a59f8fd79302730a69d89d5bf2c1e2eb8a0ef3c4d4a0c9410dbd1280a9"
+    }
+  }
+}

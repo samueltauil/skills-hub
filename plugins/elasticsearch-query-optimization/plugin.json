@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "elasticsearch-query-optimization",
+  "version": "1.0.0",
+  "description": "Diagnose slow Elasticsearch Query DSL searches and propose measured fixes. Use when a search is slow, profile output shows an expensive clause, exact-match filters sit in scoring context, or leading wildcards dominate latency. Ground every recommendation in search profiling — move non-scoring clauses to filter context, eliminate leading wildcards, and re-profile to confirm improvement.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/elasticsearch-query-optimization/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "elasticsearch",
+    "query",
+    "optimization"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/elasticsearch/elasticsearch-query-optimization",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d3efd6f9e4139b12cb6532c5fd84de25e1a4e6e30476c404db69960c32193157"
+    }
+  }
+}

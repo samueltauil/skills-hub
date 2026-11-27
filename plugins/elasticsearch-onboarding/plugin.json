@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "elasticsearch-onboarding",
+  "version": "1.0.0",
+  "description": "Help developers new to Elasticsearch get from zero to a working search experience. Guide them through understanding their intent, mapping their data, and building a search experience with best practices baked in. Use this when the user shows intent to build search-related functionality, asks about Elasticsearch-related concepts for their use case, or expresses the need for help getting started with Elasticsearch. Also use this when the user wants to search, monitor, or analyze logs, metrics, or security events, so they can be redirected to Elastic's Observability or Security solution.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/elasticsearch-onboarding/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "security",
+    "data",
+    "elasticsearch",
+    "onboarding"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/elasticsearch/elasticsearch-onboarding",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4662c3b72a3928379d5e120d801e4ddfea59fd0b47cf508b35174bdb77177fac"
+    }
+  }
+}

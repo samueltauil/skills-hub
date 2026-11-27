@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "connect-required-verification-information",
+  "version": "1.0.0",
+  "description": "Use this skill when the user asks what information a Stripe Connect connected account must provide for verification, onboarding, KYC, or account requirements; when they need to compare requirements between connected-account setups; or when they ask which verification fields, documents, or business details are required for a particular platform country, account country, business type, dashboard, service agreement, or capability.",
+  "author": {
+    "name": "stripe",
+    "url": "https://github.com/stripe"
+  },
+  "homepage": "https://skillshub.space/skills/connect-required-verification-information/",
+  "repository": "https://github.com/stripe/ai",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "connect",
+    "required",
+    "verification",
+    "information"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/stripe/ai",
+        "path": "skills/connect-required-verification-information",
+        "branch": "main"
+      },
+      "contentHash": "sha256:dc0a48e2de2f39b714f0c8248c61c4bebc6176d544256605e5662cf14442d48f"
+    }
+  }
+}

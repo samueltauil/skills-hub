@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "docker-sandboxes-lifecycle",
+  "version": "1.0.0",
+  "description": "Use this skill when creating, running, reattaching to, listing, stopping, or removing Docker Sandboxes (the standalone `sbx` CLI that runs AI coding agents in isolated microVMs), even if the user just says they want to \"run claude in a sandbox\", \"isolate an agent from my repo\", \"give an agent its own git clone\", or \"clean up old sandboxes\". Covers `sbx run`/`sbx create` (including the built-in agents claude, codex, cursor, devin, docker-agent, gemini, opencode, shell), workspace bind-mount vs `--clone` isolation, additional read-only workspaces, reattaching by `--name`, `sbx ls`/`stop`/`rm`/`prune`, `sbx exec`, `sbx cp`, and `sbx ports`.",
+  "author": {
+    "name": "docker",
+    "url": "https://github.com/docker"
+  },
+  "homepage": "https://skillshub.space/skills/docker-sandboxes-lifecycle/",
+  "repository": "https://github.com/docker/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "cli",
+    "doc",
+    "docker",
+    "sandboxes"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/docker/skills",
+        "path": "skills/docker-sandboxes-lifecycle",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5a4523bd5f60a33b75b932b81604bd7ef1023e1572767726a52e06d97947e7f7"
+    }
+  }
+}

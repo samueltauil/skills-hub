@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "huggingface-trackio",
+  "version": "1.0.0",
+  "description": "Track and visualize ML training experiments with Trackio. Use when logging metrics during training (Python API), firing alerts for training diagnostics, or retrieving/analyzing logged metrics (CLI). Supports real-time dashboard visualization, alerts with webhooks, HF Space syncing, and JSON output for automation.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/huggingface-trackio/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "diagrams",
+    "api",
+    "cli",
+    "python",
+    "huggingface",
+    "trackio"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "diagrams",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/huggingface-trackio",
+        "branch": "main"
+      },
+      "contentHash": "sha256:856a4139a39e640da3c30b875250e546904cce007dc30b9fa2cbb08ae0a5ce34"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "spanner-basics",
+  "version": "1.0.0",
+  "description": "Assists in provisioning instances and databases, designing performant schemas, and querying data in Cloud Spanner on Google Cloud. Use when designing primary keys, writing SQL queries or client library code, or diagnosing performance issues.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/spanner-basics/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "cli",
+    "design",
+    "data",
+    "spanner",
+    "basics"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/spanner-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:da0316c3cc4d333a5c4f66e2aebe327cf1df51d4eaed16f3c50271b404b2b6e5"
+    }
+  }
+}

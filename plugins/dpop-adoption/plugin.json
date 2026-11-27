@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dpop-adoption",
+  "version": "1.0.0",
+  "description": "Implement and debug OAuth 2.0 DPoP (RFC 9449) refresh token sender-constraining for WebCrypto, Node.js ES6, and browser runtimes integrating with Google's OAuth platform. Use when configuring non-extractable asymmetric key pairs (P-256), generating DPoP Proof JWTs for authorization code exchange and token refresh, or handling 400 use_dpop_nonce challenge retry loops at oauth2.googleapis.com/token. Don't use for unconstrained OAuth 2.0 flows (where refresh tokens are not bound to a client key pair), or for Google Cloud IAM / service account authentication.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/dpop-adoption/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "dpop",
+    "adoption"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/identity/dpop-adoption",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f4d8c4cbeab08224ca0b063aa23399f70c6c1aa080982f9bd35d95b3d16a15e6"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-spring-boot-kotlin-project",
+  "version": "1.0.0",
+  "description": "Create Spring Boot Kotlin Project Skeleton",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-spring-boot-kotlin-project/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "create",
+    "spring",
+    "boot",
+    "kotlin",
+    "project"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-spring-boot-kotlin-project",
+        "branch": "main"
+      },
+      "contentHash": "sha256:dcb94e65bed77a52bf93b56dcb3efa1d96d7b6eddc1696aa334dd047b5af107c"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-design-patterns",
+  "version": "1.0.0",
+  "description": "Cloud design patterns for distributed systems architecture covering 42 industry-standard patterns across reliability, performance, messaging, security, and deployment categories. Use when designing, reviewing, or implementing distributed system architectures.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-design-patterns/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "deploy",
+    "design",
+    "security",
+    "cloud",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/cloud-design-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e4112b16a173e0f7e65fd11b79b8e349e770a55de0690c5927de25d7351afb8a"
+    }
+  }
+}

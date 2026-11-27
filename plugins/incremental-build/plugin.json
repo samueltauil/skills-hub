@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "incremental-build",
+  "version": "1.0.0",
+  "description": "Fix MSBuild incremental/no-op builds: 'nothing changed but it rebuilds anyway'. USE FOR: targets re-executing on subsequent builds, missing Inputs/Outputs or FileWrites, volatile output paths, untracked writes, glob changes, Visual Studio Fast Up-to-Date Check (FUTDC); 'Building target completely' vs 'Skipping target' in binlog. DO NOT USE FOR: within-build duplicates (find-repeated-work-within-one-build), first-build slowness (build-perf-baseline), parallelism (build-parallelism), slow evaluation (eval-performance), non-MSBuild systems.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/incremental-build/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "incremental",
+    "build"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-msbuild/skills/incremental-build",
+        "branch": "main"
+      },
+      "contentHash": "sha256:908c0d70a4afa30c2af92205fe933fcd7ffa1fbe3cf3b3b5263e5fbd19b48f2d"
+    }
+  }
+}

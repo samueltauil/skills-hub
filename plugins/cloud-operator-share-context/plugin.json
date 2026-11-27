@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-operator-share-context",
+  "version": "1.0.0",
+  "description": "Shares Google Cloud operating context the user or their team already have — environments, projects, services and regions, product preferences, best practices, architecture guidance, runbooks — found in agent instruction files, local memory, skills and workflows, and the repository's GCP docs, with the operator agent's memory after the user reviews the list. Use when the user runs this skill, accepts the cloud-operator or cloud-operator-setup skill's offer to share their existing Google Cloud context, or asks to share, import or save that context or a GCP fact for the operator agent. Don't use for ordinary GCP requests, which go to the cloud-operator skill.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-operator-share-context/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "cloud",
+    "operator",
+    "share",
+    "context"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-operator-share-context",
+        "branch": "main"
+      },
+      "contentHash": "sha256:dc2eb885914564bb8dc1311c0d76b67b69f5aaa1e271786bde9f4a6ab1ae34c7"
+    }
+  }
+}

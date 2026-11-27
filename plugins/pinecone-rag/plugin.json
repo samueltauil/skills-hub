@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pinecone-rag",
+  "version": "1.0.0",
+  "description": "Build production RAG pipelines and persistent agent memory using Pinecone as the vector database backend. ALWAYS USE THIS SKILL when the user mentions Pinecone, wants to index documents for semantic search, build a retrieval-augmented generation system, store agent memory across sessions, implement hybrid search, or connect an LLM to a searchable knowledge base — even if they don't say \"Pinecone\" explicitly. Also use when the user asks about vector databases for RAG, namespace isolation for multi-tenant agents, embedding pipelines, or scaling a knowledge base beyond what local storage can handle. DO NOT use for local-only vector stores (Chroma, FAISS, pgvector) or pure keyword search with no semantic component.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/pinecone-rag/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "data",
+    "word",
+    "pinecone",
+    "rag"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/pinecone-rag",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e5d3cc1daf01e88174ecf2bff3bae9bd93b43b0e2cdae3ce1781368c1acbfbca"
+    }
+  }
+}

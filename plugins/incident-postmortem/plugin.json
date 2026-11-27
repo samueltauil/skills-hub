@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "incident-postmortem",
+  "version": "1.0.0",
+  "description": "Use when an outage, production incident, or significant service degradation has occurred and the team needs a blameless post-mortem / RCA document in the Google SRE format. Triggers on phrases like \"write a post-mortem\", \"incident review\", \"what went wrong\", \"outage report\", \"root cause analysis\", \"RCA\", or \"fishbone\". Collects incident inputs from the user, uses a fishbone (Ishikawa) diagram to surface candidate causes, drills the strongest branches with 5 Whys, and produces typed action items. Outputs Markdown by default, with HTML, DOCX, or PDF on request.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/incident-postmortem/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "doc",
+    "diagram",
+    "pdf",
+    "incident",
+    "postmortem"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/incident-postmortem",
+        "branch": "main"
+      },
+      "contentHash": "sha256:484cb7d4c5966d17f15181e6fc98e755ec579cac77c113cdcff3109f286c707d"
+    }
+  }
+}

@@ -1,0 +1,385 @@
+# THE customer-owned, version-controlled input -- and the schema for BOTH modes.
+#
+# PROD mode reads this file as the contract and reconciles the setup to it,
+# refusing rather than defaulting when a required field is absent. DEV mode
+# WRITES this same shape at the end of a conversational setup, so what it emits
+# can be committed and fed straight back in. One schema, two entry points --
+# see references/modes.md.
+#
+# Commit it; review it; roll it back. The skill reads it, rewrites the AFT
+# template/feature parameter defaults from it, compiles the proxy through
+# `gcloud apigee apis import --from-template`, and runs the gcloud/REST
+# steps for the pieces AFT does not cover.
+#
+# Do not hand-edit the generated proxy bundle. Change this file and regenerate,
+# or the committed artifact stops matching what is deployed.
+#
+# SCOPE LIMIT, STATED PLAINLY: AFT YAML covers the proxy only. The environment
+# property, envgroup, PSC endpoint, DNS record, AuthzExtension and AuthzPolicy
+# are driven imperatively from the values below. They are reproducible from
+# this file, but they are not themselves declarative Apigee config.
+
+apiVersion: apigee.googleapis.com/v1alpha1
+kind: AgentGatewayGovernance
+
+metadata:
+  name: agent-gateway-governance
+  description: Meter LLM tokens per model on the agent gateway's egress.
+
+spec:
+  project: my-project
+  region: us-central1
+
+  apigee:
+    org: my-project
+    # MUST BE DEDICATED TO THIS PROXY, and attached to exactly ONE envgroup --
+    # the one named below. An environment sitting in two envgroups makes the
+    # gateway return 404 for every agent request, with the extension never
+    # invoked and no error reported anywhere. Do not share an environment to
+    # save creating one.
+    #
+    # CREATED BY THE SKILL if absent, and attached to the runtime instance in
+    # `region`, by scripts/ensure_apigee_environment.sh. That script creates
+    # billable resources, so it prints a plan and does nothing without --yes.
+    # It is idempotent and resumable, so a partial run is safe to repeat.
+    #
+    # An EXISTING environment is reused only after the skill counts its
+    # envgroups and finds at most this one. If it is already in another, the
+    # skill stops rather than continuing, because every later step would
+    # otherwise succeed and govern nothing.
+    #
+    # Two things it handles that bite when done by hand: on a SUBSCRIPTION_2021
+    # org `type` must be omitted from the create, and attaching to the instance
+    # takes around four minutes during which the environment is LOCKED -- a
+    # property PATCH in that window fails looking like a permissions problem.
+    #
+    # The skill WILL set the environment property
+    # apigee-service-extension-enabled=true on it -- that property is what lets
+    # the environment host a service-extension proxy, and without it the proxy
+    # deploys STANDARD and never sees the agent's traffic.
+    # Note the property PATCH replaces the environment's whole property map, so
+    # the skill reads the existing properties first and re-sends them.
+    # This does NOT disable Apigee Analytics; the two are unrelated.
+    environment: agent-gateway-govern
+    # CREATED BY THE SKILL if absent, on `hostname` below, and attached to
+    # `environment` -- same script, same --yes gate as the environment above.
+    #
+    # An existing envgroup is reused ONLY if it already carries `hostname`
+    # exactly. If it exists on a different hostname the skill stops rather than
+    # rewriting it: the group may carry someone else's routing, and a hostname
+    # that does not match the AuthzExtension authority means the callout never
+    # lands and nothing errors.
+    envgroup: agent-gateway-govern-group
+    # An internal hostname you choose. It does not need to be registered
+    # anywhere public and nothing resolves it outside your VPC.
+    #
+    # The skill writes this same string into THREE places it creates, and they
+    # must stay byte-identical or the callout silently never lands and nothing
+    # errors:
+    #   1. the Apigee envgroup hostname
+    #   2. the private DNS A record
+    #   3. the AuthzExtension authority/service
+    # You give the value once, here. network.dns.record below repeats it only
+    # because the DNS zone is described separately; keep the two identical.
+    hostname: agent-gateway-callout.internal.example.local
+    proxy: agent-gateway-governance
+    # YOU CREATE THIS BEFOREHAND. The skill does not create it and does not
+    # grant it anything.
+    #
+    # Required only if an enabled feature calls a Google API. With just
+    # identity + tokenMetering, leave it as "" -- naming a service account that
+    # does not exist, or that you cannot act as, fails the deploy.
+    #
+    # Roles the service account itself needs, by feature:
+    #   modelArmor     roles/modelarmor.user
+    #   semanticCache  roles/aiplatform.user   (embeddings + Vector Search)
+    # And the identity running the deploy needs iam.serviceAccounts.actAs on
+    # this service account, or the deploy is rejected even though the roles
+    # above are correct.
+    #
+    # Omitting it when a feature does need it fails with
+    # MISSING_SERVICE_ACCOUNT.
+    deploymentServiceAccount: ""
+
+  network:
+    # BOTH MUST ALREADY EXIST. The skill does not create them.
+    #
+    # This must be the VPC the Agent Gateway egresses into -- the one named in
+    # the gateway's network attachment -- not simply any VPC in the project.
+    # If they differ, everything below builds successfully and the gateway
+    # still cannot reach Apigee.
+    #
+    # The subnet must be in `region` above, which must also be the region of
+    # the Apigee runtime instance. All three are the same region: the gateway,
+    # the subnet the private endpoint is reserved in, and the Apigee instance.
+    vpc: agent-network
+    subnet: agent-subnet
+    # PSC-interface network attachment the Agent Gateway egresses through to
+    # reach your VPC. CREATED BY THE SKILL in `subnet` above if it does not
+    # already exist; reused as-is if it does.
+    #
+    # This is what gives the gateway a route to the Apigee PSC endpoint. A
+    # gateway without one serves ordinary agent traffic perfectly well -- that
+    # path never enters your VPC -- and silently fails only the Apigee callout.
+    networkAttachment: agent-gateway-egress-attachment
+    dns:
+      # CREATED BY THE SKILL: a private zone visible to `vpc`, plus an A record
+      # pointing at the private endpoint it reserves for the Apigee instance.
+      # The gateway must also be able to resolve this zone -- that comes from
+      # the gateway's own DNS peering config, which is out of scope here.
+      zone: agent-gateway-callout-zone
+      # Must be the parent domain of `record`, with the trailing dot.
+      domain: internal.example.local.
+      # MUST equal apigee.hostname above, character for character.
+      record: agent-gateway-callout.internal.example.local
+
+  gateway:
+    # MUST ALREADY EXIST. The skill does not create the Agent Gateway. It can
+    # add missing network connectivity to one -- see manageNetworkConfig below
+    # -- but only with your confirmation. Use the short name, not the full
+    # resource path. List what you have with:
+    #   gcloud network-services agent-gateways list \
+    #     --location=$REGION --project=$PROJECT
+    #
+    # Two things about that gateway decide whether any of this works, and
+    # NEITHER is visible from the gateway name:
+    #
+    #   1. networkConfig.egress.networkAttachment -- a PSC-interface network
+    #      attachment into `network.vpc` below. Without it the gateway has no
+    #      route into your VPC and can never reach Apigee.
+    #   2. networkConfig.dnsPeeringConfig -- forwards `network.dns.domain` to
+    #      your VPC. Without it the gateway cannot resolve `hostname`.
+    #
+    # A gateway missing these still passes every earlier check and still serves
+    # ordinary agent traffic to public Google endpoints, because that path does
+    # not enter your VPC. It is only the callout to Apigee that fails, and it
+    # fails silently. Check before you start -- empty output means missing:
+    #   gcloud network-services agent-gateways describe $GATEWAY \
+    #     --location=$REGION --project=$PROJECT --format='value(networkConfig)'
+    name: my-agent-gateway
+
+    # What the skill does when that networkConfig is missing.
+    #
+    #   true  -- add it for you: create network.networkAttachment if needed,
+    #            then read-modify-write the gateway to add the egress
+    #            attachment and DNS peering for network.dns.domain. The skill
+    #            prints the exact before/after diff and waits for you to
+    #            confirm. It never applies silently.
+    #   false -- leave the gateway untouched and stop, printing the commands to
+    #            run yourself. Choose this if the gateway is shared, owned by
+    #            another team, or under IaC that would revert the change.
+    #
+    # Either way the skill refuses to continue while networkConfig is absent,
+    # because every later step would succeed and govern nothing.
+    manageNetworkConfig: true
+    # Path suffixes identifying a real model call. ONE ENTRY PER WIRE SHAPE
+    # you want governed; list both to govern both from a single proxy.
+    #
+    #   gemini -> :generateContent
+    #   openai -> /chat/completions
+    #
+    # These compile to the template's LLM_URI_MATCH as an OR of "*<entry>*"
+    # conditions. Two entries give:
+    #
+    #   ((request.uri Like "*generateContent*") or
+    #    (request.uri Like "*chat/completions*"))
+    #
+    # DELETING AN ENTRY SILENTLY STOPS GOVERNING THAT SHAPE. The proxy still
+    # deploys clean and reports nothing -- no fault, no error, just zero
+    # transactions for the shape you dropped. The same condition also gates
+    # Model Armor and the semantic cache, so narrowing this narrows all three
+    # at once. See references/gotchas.md, Runtime.
+    #
+    # The AuthzPolicy binds on path SUFFIX, which is why the OpenAI entry has
+    # NO leading /v1. /v1/chat/completions is LITERAL-OPENAI ONLY: Vertex's
+    # OpenAI-compatible endpoint ends openapi/chat/completions, so that
+    # pattern never matches it. Measured -- 0 transactions across two
+    # successful agent turns, 1 after switching to /chat/completions.
+    # See references/gotchas.md.
+    #
+    # Metering does not depend on this list. The token count is normalised in
+    # JS across both shapes, which is why there is no longer an apiShape
+    # field: it selected nothing and said so in its own comment.
+    matchPaths:
+      - ":generateContent"
+      - "/chat/completions"
+    timeout: 5s
+
+  # Each feature below compiles to a named set of Apigee policies. The values
+  # you set here become those policies' configuration fields, so the policy
+  # reference is the authority on what each one accepts and how it behaves.
+  #
+  #   feature              Apigee policies it generates
+  #   -------------------  ----------------------------------------------------
+  #   identity             VerifyJWT, AssignMessage
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/verify-jwt-policy.md.txt
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/assign-message-policy.md.txt
+  #   tokenMetering        Javascript, LLMTokenQuota (one per model), AssignMessage
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/llm-token-quota-policy.md.txt
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/javascript-policy.md.txt
+  #   modelArmor           SanitizeUserPrompt
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/sanitize-user-prompt-policy.md.txt
+  #                        (response-side equivalent, not generated today:
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/sanitize-llm-response-policy.md.txt)
+  #   semanticCache        SemanticCacheLookup, SemanticCachePopulate
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/semantic-cache-lookup-policy.md.txt
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/semantic-cache-populate-policy.md.txt
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/parse-payload-policy.md.txt
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/verify-api-key-policy.md.txt
+  #                        https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/quota-policy.md.txt
+  #
+  # Field-by-field mapping, including which parameter drives which policy
+  # element: references/recipes.md.
+  features:
+    # ---- always on ---------------------------------------------------------
+    identity:
+      enabled: true
+      # Fallback when the gateway's IAP-egress JWT is absent. An absent header
+      # skips verification entirely; only a present-but-invalid token fails
+      # closed.
+      defaultClientId: anonymous
+
+    tokenMetering:
+      enabled: true
+      #
+      # COUNT_ONLY | ENFORCE. Same shape as modelArmor.mode below, and the
+      # same question: does this observe, or does it refuse?
+      #   COUNT_ONLY  meters every call and blocks nothing. `limit` is the
+      #               denominator you measure against, for alerts and
+      #               chargeback. This is the default.
+      #   ENFORCE     also refuses a caller that has spent its budget, with a
+      #               429, before the model is called. Adds
+      #               feature-token-enforce.yaml. Verified live on ext-proc
+      #               traffic.
+      #
+      # ENFORCEMENT IS ONE REQUEST LATE BY CONSTRUCTION: the turn that crosses
+      # the limit completes, because its cost is not known until the model
+      # answers, and the caller's NEXT request is refused. A token budget
+      # cannot be checked before the tokens exist. Say this when offering it.
+      #
+      # Do NOT try to get enforcement by making the response-flow quotas
+      # blocking. Verified on a live gateway, it fails in both directions:
+      #   - It cannot deny. The quota runs on the RESPONSE, because the token
+      #     count does not exist until the model has answered. The bytes are
+      #     already going back to the caller by then -- Apigee aborts and emits
+      #     429, and the caller still gets the full answer.
+      #   - It breaks the metering you already had. A blocking quota will not
+      #     count the request that violated it, so the counter sticks at the
+      #     limit for the rest of the window.
+      # That is a property of that placement, not of the policy.
+      #
+      # One caveat specific to ENFORCE: it buckets on the REQUESTED model,
+      # because the resolved name only exists in the response. Under an
+      # OpenAI-compatible alias a call can be enforced against one bucket and
+      # counted against another. Everything is still counted and still checked.
+      mode: COUNT_ONLY
+      interval: 1
+      timeUnit: hour
+      # THESE THREE BUCKETS ARE THE THREE THAT EXIST. The list is not
+      # generative: each bucket must also have an LLMTokenQuota step in
+      # feature-token-metering.yaml and a matching template parameter, so
+      # adding a fourth here on its own meters nothing.
+      models:
+        - bucket: gemini-pro
+          limit: 10000
+        - bucket: gemini-flash
+          limit: 40000
+        # Catch-all: every model whose name contains neither "pro"/"argon" nor
+        # "flash"/"hydrogen" -- gpt-oss, Llama, Qwen, DeepSeek. Without it those
+        # calls consume no quota at all: the token count is extracted correctly and
+        # then discarded, with zero ratelimit references in the transaction
+        # and nothing reporting the gap.
+        - bucket: other
+          limit: 40000
+
+    # ---- optional recipes --------------------------------------------------
+    modelArmor:
+      enabled: false
+      # REQUIRED when enabled -- there is deliberately no default. A shipped
+      # default either names a template that does not exist in your project
+      # (the deploy fails for a reason that reads like a permissions problem)
+      # or, worse, silently points at a real template that screens nothing you
+      # chose. Prod mode refuses with the field named, as it does for
+      # semanticCache without deployedIndexId.
+      template: ""
+      # Needs roles/modelarmor.user on deploymentServiceAccount.
+      #
+      # ENFORCE | DRY_RUN. One of two policies here that can refuse a request;
+      # the other is tokenMetering.mode: ENFORCE. With Model Armor off or in
+      # DRY_RUN and metering at COUNT_ONLY, nothing here blocks anything.
+      #   ENFORCE  a filter match faults the policy; the caller gets a 400.
+      #   DRY_RUN  the scan still runs and the verdict is still in the trace,
+      #            but the fault is swallowed and the turn continues.
+      # DRY_RUN is NOT "off": removing the feature means no evaluation at all.
+      # Use it to watch what a template would have blocked before letting it.
+      #
+      # Defaults to ENFORCE on purpose. A security control that silently does
+      # not protect is worse than one that visibly blocks, and silent
+      # non-protection is the failure class this whole skill exists to prevent.
+      # Toggling requires a redeploy (~2 min) -- deliberate, which suits a
+      # change that decides whether live agent turns can be refused.
+      mode: ENFORCE
+
+    semanticCache:
+      # A CACHE HIT CROSSES CALLER BOUNDARIES. The key is the embedding of the
+      # prompt and nothing else -- no caller, no model, no wire shape, no
+      # tenant. One model and one wire shape does NOT make this safe: two
+      # callers whose prompts are merely SIMILAR share an answer, so anything
+      # caller-specific leaks from whoever asked first. Identity is on by
+      # default and agw.client_id is available, but the cache policies accept
+      # no discriminator, so it cannot be scoped.
+      #
+      # Enable this only where every caller is entitled to every other
+      # caller's answer for the same question.
+      #
+      # Two further effects once more than one model answers here. Across wire
+      # shapes the cached body is in the wrong format, the client parses
+      # nothing, and the turn returns an EMPTY SUCCESS rather than an error --
+      # which reads as "the agent stopped working" and sends you into the agent
+      # code, the one place the cause is not. Reproduced across three
+      # consecutive runs. Within one shape it is quieter and worse: the body
+      # parses, and only model_version differs.
+      #
+      # KNOWN ISSUE, NOT A BLOCK. The skill builds the cache and warns rather
+      # than refusing, and it warns whenever the cache is enabled -- not only
+      # when matchPaths carries more than one entry. The defect is upstream and
+      # a fix is expected. See references/gotchas.md (Runtime) for mitigations
+      # and the upstream bug.
+      enabled: false
+      threshold: 0.95
+      ttlSeconds: 60
+      # PICK THIS BEFORE YOU BUILD THE INDEX, NOT AFTER. The policy takes only
+      # a URL, so the model's native width is what the index must be, and index
+      # width is fixed at creation. Changing it later is an index rebuild, not
+      # a config edit. Measured widths:
+      #
+      #   gemini-embedding-001             3072   stronger; 4x storage
+      #   text-embedding-005                768   <- default, supported
+      #   text-multilingual-embedding-002   768
+      #   text-embedding-004                768   still serves, but has dropped
+      #                                           off the supported-models list
+      #
+      # 768 is ample for cache duty. Use gemini-embedding-001 only if you
+      # deliberately want the stronger model and a 3072 index to match.
+      embeddingsModel: text-embedding-005
+      # <DeployedIndexID> -- all-caps ID. DeployedIndexId fails validation.
+      # Lowercase, digits and underscores only; hyphens are rejected.
+      deployedIndexId: agent_gateway_llm_cache
+      # CREATED BY THE SKILL if absent: scripts/ensure_vector_search.sh builds
+      # the index and endpoint, deploys one onto the other, and prints these
+      # ids as JSON. It is --yes gated and resumable, which matters because the
+      # deploy step alone takes about 34 minutes.
+      #
+      # THIS IS THE ONLY PART OF THE SKILL THAT BILLS CONTINUOUSLY: a deployed
+      # index costs per node-hour for as long as it is deployed, with or
+      # without traffic. To stop the cost, undeploy it -- see the teardown
+      # order the script prints, which matters because SCL-lookup is
+      # fail-closed and undeploying underneath a live proxy faults every
+      # request.
+      #
+      # There is deliberately no field for the endpoint's domain. It cannot be
+      # derived from either id, so deploy_proxy.sh reads it back at deploy
+      # time from --index-endpoint-id.
+      indexEndpointId: ""
+      indexId: ""
+      # Needs roles/aiplatform.user on deploymentServiceAccount.

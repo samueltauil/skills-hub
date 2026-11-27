@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "writing-guidelines",
+  "version": "1.0.0",
+  "description": "Review docs/prose for Writing Guidelines compliance. Use when asked to \"review my docs\", \"check writing style\", \"audit prose\", \"review docs voice and tone\", or \"check this page against the writing handbook\".",
+  "author": {
+    "name": "vercel",
+    "url": "https://github.com/vercel-labs"
+  },
+  "homepage": "https://skillshub.space/skills/writing-guidelines/",
+  "repository": "https://github.com/vercel-labs/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "writing",
+    "guidelines"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/vercel-labs/agent-skills",
+        "path": "skills/writing-guidelines",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6358e1ac62959ffd2fff9a9fa659f785a94897841adbc8dc7c68e356a25011d4"
+    }
+  }
+}

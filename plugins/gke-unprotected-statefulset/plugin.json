@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-unprotected-statefulset",
+  "version": "1.0.0",
+  "description": "Audits, detects, and proposes fixes for GKE StatefulSets that lack a matching PodDisruptionBudget (PDB) to prevent simultaneous Pod evictions during voluntary node drains (GKE insight subtype PDB_UNPROTECTED_STATEFULSET). Use when investigating the PDB_UNPROTECTED_STATEFULSET insight, checking whether GKE StatefulSets have a matching PDB, or proposing fixes for selector mismatches where an existing PDB does not match the StatefulSet's .spec.selector. Don't use for existing PDBs that allow zero disruptions or block node drains (PDB_UNPERMISSIVE), general probe and PDB setup unrelated to this insight (use gke-reliability), upgrade planning (use gke-upgrades), Pods stuck in Pending (use gke-workload-troubleshooting), node autoscaling or capacity stockouts (use gke-cluster-autoscaler), ComputeClass configuration (use gke-compute-classes), or general Kubernetes manifest generation (use gke-manifest-generation).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-unprotected-statefulset/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "gke",
+    "unprotected",
+    "statefulset"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-unprotected-statefulset",
+        "branch": "main"
+      },
+      "contentHash": "sha256:39d68d63d69fa7b9152c0dd47a362d2f5afad6acdb4a4fa0f58082b604e52e0e"
+    }
+  }
+}

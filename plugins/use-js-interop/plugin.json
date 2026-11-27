@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "use-js-interop",
+  "version": "1.0.0",
+  "description": "Add, review, or fix JavaScript interop in Blazor components. USE FOR: calling JavaScript from Blazor, calling .NET from JavaScript, collocated .razor.js modules, IJSRuntime, IJSObjectReference lifecycle, DotNetObjectReference, ElementReference, timing rules for when JS is available, IAsyncDisposable disposal of JS references, server-side JS interop safety. DO NOT USE FOR: general Blazor component authoring without JS interop needs (use author-component), forms (use collect-user-input).",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/use-js-interop/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "use",
+    "interop"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-blazor/skills/use-js-interop",
+        "branch": "main"
+      },
+      "contentHash": "sha256:81ea3929e122d8b970e5c3eeed358e29427aaeac701c7cf22b1857a2c91229b9"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "canvas-design",
+  "version": "1.0.0",
+  "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+  "author": {
+    "name": "anthropic",
+    "url": "https://github.com/anthropics"
+  },
+  "homepage": "https://skillshub.space/skills/canvas-design/",
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "design",
+    "pdf",
+    "canvas"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "path": "skills/canvas-design",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a66bc41f9efd0c0207a1725160b16be92fb23c25c7690a604a327e8a483e89a6"
+    }
+  }
+}

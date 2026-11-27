@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "trl-training",
+  "version": "1.0.0",
+  "description": "Post-train LLMs with TRL (Transformers Reinforcement Learning) — SFT, DPO, GRPO, KTO, and reward-model training. Use when writing or debugging training code with the TRL Python API or the trl CLI.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/trl-training/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "python",
+    "trl",
+    "training"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/trl-training",
+        "branch": "main"
+      },
+      "contentHash": "sha256:63577f3aecfb487798256144f04d6f7daf600a8a0c6680d44fb18b4248ae5290"
+    }
+  }
+}

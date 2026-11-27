@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "grafana-oss",
+  "version": "1.0.0",
+  "description": "Configure Grafana OSS — provisions dashboards from YAML, sets up data sources (Prometheus / Loki / Tempo / Pyroscope), writes dashboard JSON with template variables, builds panel queries, assigns built-in roles (Viewer / Editor / Admin / GrafanaAdmin), mints service-account tokens, edits grafana.ini server config, creates annotations, installs plugins via provisioning, and validates each step with a health-check curl. Use when building dashboards, configuring data sources, setting up provisioning YAML, picking a panel type, writing template variables, managing users and roles, configuring SMTP/OAuth in grafana.ini, creating annotations via API, troubleshooting why a provisioned dashboard isn't showing up, or running Grafana OSS locally — even when the user says \"set up a Prometheus data source\", \"provision dashboards from git\", \"make a service account\", or \"configure SSO in OSS\" without saying \"Grafana OSS\".",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/grafana-oss/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "api",
+    "data",
+    "grafana",
+    "oss"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-core/grafana-oss",
+        "branch": "main"
+      },
+      "contentHash": "sha256:eebe106f6c1b95620827cb8ebbe2d8a1b13095f2458130cc2de3a98aa8054f28"
+    }
+  }
+}

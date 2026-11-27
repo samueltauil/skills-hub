@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dotnet-design-pattern-review",
+  "version": "1.0.0",
+  "description": "Review the C#/.NET code for design pattern implementation and suggest improvements.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/dotnet-design-pattern-review/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "dotnet",
+    "pattern",
+    "review"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dotnet-design-pattern-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0ea746ec0655f7865d96c69be8fc2e6fdaf6890e5de8b810be2b67463c536cfc"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-ai-troubleshooting-tpu-mxla-hang",
+  "version": "1.0.0",
+  "description": "Diagnose GKE Cloud TPU multi-slice training hangs (Megascale `HANG_DETECTED` logs and hang monitored events) using the ML Diagnostics `Megascale XLA (MXLA) Hang Analyzer` (`gcloud alpha mldiagnostics monitored-events`) and 1-minute Cloud Monitoring multi-slice latency metrics (`kubernetes.io/container/multislice/*`). Distinguishes XLA compiler/HLO launch divergence and host data-input stalls from TPU chip, SparseCore, ICI, or network fabric faults. Use when multi-slice TPU training jobs freeze without progressing steps, emit `HANG_DETECTED`, or stall in collective operations. Don't use for gradual step-time throughput drops without hangs (use gke-ai-troubleshooting-tpu-performance-degradation) or pod preemption/eviction restarts (use gke-ai-troubleshooting-jobset-interruption).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-ai-troubleshooting-tpu-mxla-hang/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "data",
+    "gke",
+    "troubleshooting",
+    "tpu",
+    "mxla"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-ai-troubleshooting-tpu-mxla-hang",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b2115992b286c902b07caf8ff728889e352214b8a68c6bfb99324352eb53bbce"
+    }
+  }
+}

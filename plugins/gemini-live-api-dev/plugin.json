@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gemini-live-api-dev",
+  "version": "1.0.0",
+  "description": "Use this skill when building real-time, bidirectional streaming applications with the Gemini Live API, or migrating legacy Live models (2.0/2.5/3.1) to Gemini 3.8 Live. Covers WebSocket-based audio/video/text streaming, voice activity detection (VAD), background reasoning (extended thinking), asynchronous function calling, session management, ephemeral tokens, live transcription, and live translation. SDKs covered - google-genai (Python), @google/genai (JavaScript/TypeScript).",
+  "author": {
+    "name": "google-gemini",
+    "url": "https://github.com/google-gemini"
+  },
+  "homepage": "https://skillshub.space/skills/gemini-live-api-dev/",
+  "repository": "https://github.com/google-gemini/gemini-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "python",
+    "typescript",
+    "gemini",
+    "live"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google-gemini/gemini-skills",
+        "path": "skills/gemini-live-api-dev",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e0403c474e31d0f020fd7b34c1b1dba9bd38c9a6d6eec89b1e858d8bfdc1ef73"
+    }
+  }
+}

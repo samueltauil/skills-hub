@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gtm-developer-ecosystem",
+  "version": "1.0.0",
+  "description": "Build and scale developer-led adoption through ecosystem programs. Use when deciding open vs curated ecosystems, building developer programs, scaling platform adoption, or designing student program pipelines.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/gtm-developer-ecosystem/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "gtm",
+    "developer",
+    "ecosystem"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/gtm-developer-ecosystem",
+        "branch": "main"
+      },
+      "contentHash": "sha256:408897f057bb9e100ac179ce0322b69b5606fd1883fdcc8648552b3dc55b1123"
+    }
+  }
+}

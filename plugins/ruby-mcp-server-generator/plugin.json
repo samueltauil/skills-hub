@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ruby-mcp-server-generator",
+  "version": "1.0.0",
+  "description": "Generate a complete Model Context Protocol server project in Ruby using the official MCP Ruby SDK gem.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/ruby-mcp-server-generator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "mcp",
+    "ruby",
+    "server",
+    "generator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/ruby-mcp-server-generator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:73019bfe4d1867461d3e3be7624960d509b1f0bb664902597d81b91dda31dc38"
+    }
+  }
+}

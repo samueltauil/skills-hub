@@ -8,7 +8,11 @@
     "scan": "node scripts/scan-skills.js --output scan-report.json --update-skills",
     "scan:ai": "node scripts/scan-skills.js --output scan-report.json --update-skills --ai-scan",
     "enrich": "node scripts/enrich-skills.js",
-    "build": "npm run aggregate && npm run scan && cd site && npm run build",
+    "build:plugins": "node scripts/build-plugins.js",
+    "check:plugins": "node scripts/build-plugins.js --check",
+    "validate:plugins": "node scripts/validate-plugins.js",
+    "test": "node --test scripts/*.test.js",
+    "build": "npm run aggregate && npm run scan && npm run build:plugins && npm run validate:plugins && cd site && npm run build",
     "dev": "npm run aggregate && cd site && npm run dev",
     "update-submodules": "git submodule update --remote --merge"
   },

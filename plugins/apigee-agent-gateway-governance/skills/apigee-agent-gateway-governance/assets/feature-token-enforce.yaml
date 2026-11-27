@@ -1,0 +1,374 @@
+# Feature: per-model LLM token ENFORCEMENT.
+#
+# Optional and off by default, because it REFUSES traffic. Add it to the
+# template's feature list to turn a budget into a limit.
+#
+# ---------------------------------------------------------------------------
+# HOW IT WORKS
+# ---------------------------------------------------------------------------
+# LLMTokenQuota splits enforcement from counting across two policies that
+# share a <SharedName>:
+#
+#   request flow   EnforceOnly=true   reads the counter, refuses if over
+#   response flow  CountOnly=true     increments the counter, never refuses
+#
+# feature-token-metering.yaml owns the CountOnly half and runs unchanged.
+# Exactly one of CountOnly/EnforceOnly may be set on a given policy.
+#
+# ENFORCEMENT IS ONE REQUEST LATE, BY CONSTRUCTION. The counter cannot include
+# the current turn, because its cost does not exist until the model has
+# answered. The turn that crosses the limit COMPLETES, and the caller's NEXT
+# request is refused. Inherent, not a defect -- state it when offering this.
+#
+# ---------------------------------------------------------------------------
+# VERIFIED LIVE
+# ---------------------------------------------------------------------------
+# Confirmed in the shape that matters: a no-route proxy invoked as
+# EXT_PROC_GRPC by an Agent Gateway, on real Agent Runtime traffic, where the
+# request and response phases arrive as separate gRPC messages.
+#
+# The over-budget turn was refused and the caller received:
+#
+#   429 Too Many Requests
+#   faultstring: "Rate limit LLM Token quota violation. Quota limit exceeded.
+#                 Identifier : principal://agents.global.org-..."
+#
+# From that transaction's trace, flash budget 500/hour:
+#
+#   ratelimit.enforce-LTQ-flash.used.count      = 1086   <- written by CountOnly
+#   ratelimit.enforce-LTQ-flash.allowed.count   = 500
+#   ratelimit.enforce-LTQ-flash.exceed.count    = 586
+#   ratelimit.enforce-LTQ-flash.failed          = true
+#   error.state                                 = PROXY_REQ_FLOW
+#
+# The request-path EnforceOnly policy read 1086 -- exactly what the
+# response-path CountOnly policy had accumulated under the same SharedName --
+# compared it against 500, and refused before the model was called. So the
+# SharedName linkage does join the two halves in a no-route ext-proc proxy.
+#
+# <Identifier> ALSO SCOPES PER CALLER on the enforce half, confirmed in the
+# same trace: ratelimit.*.identifier resolved to the calling agent's
+# principal, not a shared bucket. It behaves the same as on the count half.
+#
+# An earlier report of "0 refusals at any budget" was a test harness pointed
+# at a different project, so that traffic never reached the proxy under test.
+# Not a platform defect.
+#
+# ---------------------------------------------------------------------------
+# TWO TRAPS THAT BOTH PRODUCE "IT NEVER REFUSES"
+# ---------------------------------------------------------------------------
+# 1. BUCKETING ON A RAW URI SUBSTRING. The enforce half must bucket on the
+#    REQUESTED model, derived from the request. Testing the whole URI for a
+#    model name is unsafe, because
+#      /v1beta1/projects/.../models/gemini-4-hydrogen:generateContent
+#    contains "pro" inside *pro*jects. A `request.uri Like "*pro*"` condition
+#    therefore matches a FLASH request, routes it to the pro bucket, finds
+#    headroom there and allows -- while the count half correctly bills flash.
+#    That is indistinguishable from a broken platform and is a config error.
+#
+#    The JS below anchors the match after `models/` precisely for this, and
+#    buckets on the extracted name rather than on the URI. Do not "simplify"
+#    it into a substring test on request.uri.
+#
+# 2. OMITTING <LLMModelSource>, which is required -- see the note on the
+#    policies below. That one fails loudly rather than silently.
+#
+# ---------------------------------------------------------------------------
+# THE BUCKET DISAGREEMENT, WHICH IS REAL AND DELIBERATE
+# ---------------------------------------------------------------------------
+# The counting side buckets on the RESOLVED model, read from the response
+# body. At request time that does not exist, so this side buckets on the
+# REQUESTED model -- the alias in the request body, or the name in the URI.
+#
+# For Gemini-native traffic the two agree: the URI carries the real model.
+# For an OpenAI-compatible endpoint the request carries an ALIAS, which the
+# provider may resolve to a different model. A caller asking for "fast-model"
+# that resolves to a pro model is ENFORCED against the flash bucket and
+# COUNTED against the pro bucket. Everything is still counted and still
+# checked; it is only unsafe if someone assumes a per-model limit is exact
+# under aliasing.
+#
+# ---------------------------------------------------------------------------
+# continueOnError IS false HERE, AND ONLY HERE
+# ---------------------------------------------------------------------------
+# The skill's standing rule is that metering must never fail closed: a bug in
+# your own observability must not break LLM traffic. These policies are the
+# deliberate exception, because refusing is their entire purpose -- a quota
+# violation that is swallowed is not enforcement. The cost is that a quota
+# policy ERROR also refuses, which is what the missing LLMModelSource did to
+# every turn before it was found.
+
+gateway: apigee
+schemaVersion: 1.0.0
+name: enforce
+uid: enforce
+# After identity (10), which sets agw.client_id -- the Identifier below needs
+# it. Before normalize (15) and everything downstream: a refused request
+# should not pay for prompt extraction, Model Armor or a cache lookup.
+priority: 12
+type: feature
+description: >-
+  Refuses a request when the caller has already exhausted its token budget
+  for the model it is asking for. Reads the counters feature-token-metering
+  writes; never increments them. One request late by construction.
+
+parameters:
+  # These MUST match the corresponding *_TOKEN_LIMIT values in
+  # feature-token-metering.yaml. They are separate parameters because AFT does
+  # not share parameters across features, and a mismatch is silent: the
+  # enforce half would refuse at a different threshold than the count half
+  # reports against. Keep them in step, and prefer changing both or neither.
+  - name: PRO_TOKEN_LIMIT
+    default: "10000"
+  - name: FLASH_TOKEN_LIMIT
+    default: "40000"
+  - name: OTHER_TOKEN_LIMIT
+    default: "40000"
+  - name: QUOTA_INTERVAL
+    default: "1"
+  - name: QUOTA_TIME_UNIT
+    default: hour
+  # Byte-identical to the other features that declare it. They must match:
+  # each feature resolves its OWN default (gcloud passes an empty caller map),
+  # so a difference here is a silently different gate, not an override.
+  - name: LLM_URI_MATCH
+    default: '((request.uri Like "*generateContent*") or (request.uri Like "*chat/completions*"))'
+
+resources:
+  - name: extract-model-request.js
+    type: jsc
+    content: |
+      // Request-phase model bucket, for the enforce-only quotas.
+      //
+      // Only request-available sources: the OpenAI-compatible alias in the
+      // body, and the Gemini-native model name in the URI. The resolved name
+      // lives in the response body and does not exist yet -- which is exactly
+      // why enforcement buckets on the requested model and can disagree with
+      // the bucket the counting side later uses. See the header.
+      //
+      // Bucketing is kept byte-identical to extract-model.js so the two sides
+      // agree whenever the requested and resolved names agree. If you change
+      // one, change the other.
+      function readField(v, field) {
+        try {
+          var b = context.getVariable(v);
+          if (b) { var j = JSON.parse(b); if (j && j[field]) return String(j[field]); }
+        } catch (e) {}
+        return "";
+      }
+      function readModelFromUri() {
+        try {
+          var u = context.getVariable("request.uri");
+          if (u) { var m = String(u).match(/\/models\/([^:\/?]+)/); if (m) return m[1]; }
+        } catch (e) {}
+        return "";
+      }
+      var raw = readField("request.content", "model")
+             || readModelFromUri()
+             || "unknown";
+      var ml = raw.toLowerCase(), bucket = "other";
+      if (ml.indexOf("pro") >= 0 || ml.indexOf("argon") >= 0) bucket = "gemini-pro";
+      else if (ml.indexOf("flash") >= 0 || ml.indexOf("hydrogen") >= 0) bucket = "gemini-flash";
+      context.setVariable("agw.req_model_bucket", bucket);
+      context.setVariable("agw.req_model_raw", raw);
+
+policies:
+  - name: JS-extract-model-request
+    type: Javascript
+    content:
+      Javascript:
+        metadata:
+          name: JS-extract-model-request
+          # Stays true: a bucketing failure must not refuse the request. It
+          # falls through to the "other" bucket, which is still enforced.
+          continueOnError: true
+          enabled: true
+          timeLimit: "200"
+        ResourceURL: jsc://extract-model-request.js
+
+  # Three enforce policies, one per SharedName, because <SharedName> is a
+  # static literal per policy -- it is the join key to the CountOnly half and
+  # cannot be templated per request. One bucket therefore needs one policy,
+  # each with its own Allow count. The step condition picks which one runs.
+  # (Each still sets <LLMModelSource>; see the note on the first policy.)
+  - name: LTQ-enforce-pro
+    type: LLMTokenQuota
+    content:
+      LLMTokenQuota:
+        metadata:
+          name: LTQ-enforce-pro
+          # false ON PURPOSE -- see the header. This is the only place in the
+          # skill that fails closed on a quota.
+          continueOnError: false
+          enabled: true
+        SharedName: llm-tokens-pro
+        Allow:
+          metadata:
+            count: "{PRO_TOKEN_LIMIT}"
+        Interval: "{QUOTA_INTERVAL}"
+        TimeUnit: "{QUOTA_TIME_UNIT}"
+        EnforceOnly: "true"
+        Distributed: true
+        Synchronous: true
+        Identifier:
+          metadata:
+            ref: agw.client_id
+        # REQUIRED. Omitting this does NOT mean "this policy needs no model".
+        # The policy substitutes a DEFAULT of
+        #   jsonPath('$.model', request.content, true)
+        # and on a Gemini-native :generateContent call the model is in the URI,
+        # not the body -- so it resolves to nothing, raises
+        # FailedToResolveModelName, and because these policies are
+        # continueOnError="false" the fault kills EVERY governed turn, not just
+        # over-budget ones. Confirmed as a live outage (FINDINGS F12).
+        # Feed it the bucket this feature's own JS computed one step earlier.
+        LLMModelSource: "{agw.req_model_bucket}"
+
+  - name: LTQ-enforce-flash
+    type: LLMTokenQuota
+    content:
+      LLMTokenQuota:
+        metadata:
+          name: LTQ-enforce-flash
+          continueOnError: false
+          enabled: true
+        SharedName: llm-tokens-flash
+        Allow:
+          metadata:
+            count: "{FLASH_TOKEN_LIMIT}"
+        Interval: "{QUOTA_INTERVAL}"
+        TimeUnit: "{QUOTA_TIME_UNIT}"
+        EnforceOnly: "true"
+        Distributed: true
+        Synchronous: true
+        Identifier:
+          metadata:
+            ref: agw.client_id
+        # REQUIRED. Omitting this does NOT mean "this policy needs no model".
+        # The policy substitutes a DEFAULT of
+        #   jsonPath('$.model', request.content, true)
+        # and on a Gemini-native :generateContent call the model is in the URI,
+        # not the body -- so it resolves to nothing, raises
+        # FailedToResolveModelName, and because these policies are
+        # continueOnError="false" the fault kills EVERY governed turn, not just
+        # over-budget ones. Confirmed as a live outage (FINDINGS F12).
+        # Feed it the bucket this feature's own JS computed one step earlier.
+        LLMModelSource: "{agw.req_model_bucket}"
+
+  - name: LTQ-enforce-other
+    type: LLMTokenQuota
+    content:
+      LLMTokenQuota:
+        metadata:
+          name: LTQ-enforce-other
+          continueOnError: false
+          enabled: true
+        SharedName: llm-tokens-other
+        Allow:
+          metadata:
+            count: "{OTHER_TOKEN_LIMIT}"
+        Interval: "{QUOTA_INTERVAL}"
+        TimeUnit: "{QUOTA_TIME_UNIT}"
+        EnforceOnly: "true"
+        Distributed: true
+        Synchronous: true
+        Identifier:
+          metadata:
+            ref: agw.client_id
+        # REQUIRED. Omitting this does NOT mean "this policy needs no model".
+        # The policy substitutes a DEFAULT of
+        #   jsonPath('$.model', request.content, true)
+        # and on a Gemini-native :generateContent call the model is in the URI,
+        # not the body -- so it resolves to nothing, raises
+        # FailedToResolveModelName, and because these policies are
+        # continueOnError="false" the fault kills EVERY governed turn, not just
+        # over-budget ones. Confirmed as a live outage (FINDINGS F12).
+        # Feed it the bucket this feature's own JS computed one step earlier.
+        LLMModelSource: "{agw.req_model_bucket}"
+
+  # Sanitises the refusal the caller sees. LLMTokenQuota's own faultstring
+  # interpolates <Identifier>, and ours is a ref to agw.client_id -- the
+  # gateway's assertion about the calling workload. Unmodified, an over-budget
+  # caller is handed the full principal:
+  #
+  #   Identifier : principal://agents.global.org-<ORG_NUMBER>.system.id.goog
+  #     /resources/aiplatform/projects/<PROJECT_NUMBER>/locations/<REGION>
+  #     /reasoningEngines/<ENGINE_ID>
+  #
+  # That is the org number, the project number, the region and the agent's
+  # resource id, in an error body that reaches whoever called the agent. Fine
+  # in a demo you own end to end; an information-disclosure finding in a
+  # customer deployment, where the caller may be an end user.
+  #
+  # The replacement keeps the SHAPE and the ERRORCODE so anything branching on
+  # `policies.llmtokenquota.LLMTokenQuotaViolation` keeps working, and drops
+  # only the `Identifier : ...` clause. The identifier is still in the proxy's
+  # own analytics and debug trace, which is where it belongs.
+  #
+  # continueOnError is TRUE on purpose, and it is the opposite of the quota
+  # policies above. This policy does not decide anything: if it fails, the
+  # original fault still stands and the caller is still refused, just with the
+  # unsanitised message. Failing closed here would turn a cosmetic problem
+  # into a dropped refusal.
+  - name: AM-quota-refusal
+    type: AssignMessage
+    content:
+      AssignMessage:
+        metadata:
+          name: AM-quota-refusal
+          continueOnError: true
+          enabled: true
+        IgnoreUnresolvedVariables: true
+        Set:
+          StatusCode: "429"
+          ReasonPhrase: Too Many Requests
+          Payload:
+            metadata:
+              contentType: application/json
+            _text: >-
+              {"fault":{"faultstring":"Rate limit LLM Token quota violation.
+              Quota limit exceeded.","detail":{"errorcode":"policies.llmtokenquota.LLMTokenQuotaViolation"}}}
+        AssignTo:
+          metadata:
+            createNew: "false"
+            type: response
+
+defaultEndpoint:
+  name: default
+  flows:
+    - name: PreFlow
+      mode: Request
+      steps:
+        # Gated on LLM_URI_MATCH like every other step in this template. The
+        # ext-proc sees every agent egress -- session create/read,
+        # appendEvent, OpenTelemetry exports -- and refusing one of those
+        # because a model budget is exhausted would break the turn for a call
+        # that consumed no tokens.
+        - name: JS-extract-model-request
+          condition: "{LLM_URI_MATCH}"
+        - name: LTQ-enforce-pro
+          condition: >-
+            {LLM_URI_MATCH} and agw.req_model_bucket = "gemini-pro"
+        - name: LTQ-enforce-flash
+          condition: >-
+            {LLM_URI_MATCH} and agw.req_model_bucket = "gemini-flash"
+        - name: LTQ-enforce-other
+          condition: >-
+            {LLM_URI_MATCH} and agw.req_model_bucket = "other"
+
+  # A fault rule, not a flow step: the quota policies run continueOnError
+  # "false", so the moment one refuses, the request flow stops and no later
+  # step runs. The only place left to touch the response is fault handling.
+  #
+  # A fault rule has no request/response phase -- do NOT give it a `mode`.
+  # models.FaultRule inherits `mode` from Flow, so it parses, but the
+  # converter logs "Ignoring mode ... a fault rule has no request or
+  # response" and drops it.
+  #
+  # The fault still happens and the caller is still refused. This only
+  # rewrites what they are shown.
+  faultRules:
+    - name: quota-refusal
+      condition: (fault.name = "LLMTokenQuotaViolation")
+      steps:
+        - name: AM-quota-refusal

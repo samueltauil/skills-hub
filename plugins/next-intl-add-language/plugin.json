@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "next-intl-add-language",
+  "version": "1.0.0",
+  "description": "Add new language to a Next.js + next-intl application",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/next-intl-add-language/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "next",
+    "intl",
+    "add",
+    "language"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/next-intl-add-language",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fbf07c332e99105fd075173e13a3929075d9b4991af007b46e5ecb4d46e52e46"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "detection-rule-management",
+  "version": "1.0.0",
+  "description": "Create, tune, and manage Elastic Security detection rules (SIEM and Endpoint). Use for false positives, exceptions, new coverage, noisy rules, or rule management via Kibana API.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/detection-rule-management/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "security",
+    "detection",
+    "rule",
+    "management"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/security/detection-rule-management",
+        "branch": "main"
+      },
+      "contentHash": "sha256:01ed2d6f659ccd3a7afc1455b0785dafd958d9c874298df9bd4db8b0b5fb97cd"
+    }
+  }
+}

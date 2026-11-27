@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "platform-detection",
+  "version": "1.0.0",
+  "description": "Identify a .NET project's test platform, framework, command mode, and SDK-style vs classic project system. Use only for \"which test platform/framework?\", \"VSTest or MTP?\", or \"what runner does this project use?\", including bridge settings, UseVSTest opt-outs, and incompatible or conflicting VSTest/MTP configuration. Resolves global.json, project, packages.config, Directory.Build.props, and Directory.Packages.props precedence for MSTest/xUnit/NUnit/TUnit. DO NOT USE when the user asks to run/filter tests or for commands, flags, TRX/dumps, or test-command/filter errors; use run-tests directly. Do not route hot-reload or migration requests here as the entry skill; mtp-hot-reload may use this skill internally for platform detection.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/platform-detection/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "platform",
+    "detection"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/platform-detection",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c763f7cdc67316d591dbcf382b1813c29a4a5e2bb3c24e0f31abc10a570caa74"
+    }
+  }
+}

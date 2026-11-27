@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sred-project-organizer",
+  "version": "1.0.0",
+  "description": "Take a list of projects and their related documentation, and organize them into the SRED format for submission.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/sred-project-organizer/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "sred",
+    "project",
+    "organizer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/sred-project-organizer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f87b6496b0d5a725c2636aed87cff0ed0d3365410b446e628bdd607fdd53eb81"
+    }
+  }
+}

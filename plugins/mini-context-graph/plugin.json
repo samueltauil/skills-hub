@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mini-context-graph",
+  "version": "1.0.0",
+  "description": "A persistent, compounding knowledge base combining Karpathy's LLM Wiki pattern with a structured knowledge graph. Ingest documents once — the LLM writes wiki pages, extracts entities/relations into the graph, and stores raw content for evidence retrieval. Knowledge accumulates and cross-references; it is never re-derived from scratch.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mini-context-graph/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "mini",
+    "context",
+    "graph"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mini-context-graph",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bc21ad80a9aea3576df252f9a84c716e5fdc9eaf2bbfd9fcc335e49d571a4245"
+    }
+  }
+}

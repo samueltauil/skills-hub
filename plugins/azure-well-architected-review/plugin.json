@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-well-architected-review",
+  "version": "1.0.0",
+  "description": "Perform an Azure Well-Architected Framework review of the current workload IaC and architecture, generating findings and GitHub issues for improvements.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/azure-well-architected-review/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "azure",
+    "well",
+    "architected",
+    "review"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/azure-well-architected-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9a09b912a40e7530f8d21c0d1ccbf2fbf3462d1a86c59812a0b59ada5a0a2a0c"
+    }
+  }
+}

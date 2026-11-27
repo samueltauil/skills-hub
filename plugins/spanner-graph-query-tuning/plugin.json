@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "spanner-graph-query-tuning",
+  "version": "1.0.0",
+  "description": "Tunes and troubleshoots Spanner Graph on Google Cloud ISO GQL queries and execution plans. Use when optimizing slow Spanner Graph GQL queries, diagnosing distributed cross apply versus hash join execution operators and index seek prefixes, eliminating multi-arm star query Cartesian products with chained query aggregation, bounding super-node fan-out, decorrelating slow subqueries or optional matches, optimizing deep quantified variable-length paths, or applying join method, index, and path factorization query hints. Don't use for relational-to-property-graph schema mapping over existing relational tables (use spanner-relational-to-graph) or physical schema, table, and interleaving design (use spanner-graph-schema-best-practices).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/spanner-graph-query-tuning/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "spanner",
+    "graph",
+    "query",
+    "tuning"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/spanner-graph-query-tuning",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1856b1db390da8bfefbd3b0606984064f3cbbe6b5f163120a8976b1522e942de"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "developer-device-platform-basics",
+  "version": "1.0.0",
+  "description": "Provides guidance and instructions on managing remote devices on Developer Device Platform (DDP). Use when reserving remote Android devices, establishing connection tunnels, checking session status, or extending/cancelling leases. Don't use for iOS or local device/hardware inquiries.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/developer-device-platform-basics/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "developer",
+    "device",
+    "platform",
+    "basics"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/developer-device-platform-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4ef827b859c39e93cd2878eaf8a655613b2f52f6686326e693ebbf3374e79665"
+    }
+  }
+}

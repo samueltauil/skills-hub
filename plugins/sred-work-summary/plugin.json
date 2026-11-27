@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sred-work-summary",
+  "version": "1.0.0",
+  "description": "Go back through the previous year of work and create a Notion doc that groups relevant links into projects that can then be documented as SRED projects.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/sred-work-summary/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "sred",
+    "work",
+    "summary"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/sred-work-summary",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4f88ef1d9356836ae7e4f98cff7b2d438b17d565dd1e494e92c3f9b47ed093f6"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-mobile-ads-interstitial",
+  "version": "1.0.0",
+  "description": "Provides instructions for implementing, integrating, or configuring Google Mobile Ads (GMA) SDK interstitial ads in Android, iOS, or Unity mobile applications. Use when the task involves setting up interstitial ads. Don't use for \"rewarded interstitial\" ads.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-mobile-ads-interstitial/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "google",
+    "mobile",
+    "ads",
+    "interstitial"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/google-mobile-ads-interstitial",
+        "branch": "main"
+      },
+      "contentHash": "sha256:79b382eb30b504549b4b7d9d06e3c130b1d15c2f6021f457ab3a79e44b4ded67"
+    }
+  }
+}

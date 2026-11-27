@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "add-app-to-server",
+  "version": "1.0.0",
+  "description": "This skill should be used when the user asks to \"add an app to my MCP server\", \"add UI to my MCP server\", \"add a view to my MCP tool\", \"enrich MCP tools with UI\", \"add interactive UI to existing server\", \"add MCP Apps to my server\", or needs to add interactive UI capabilities to an existing MCP server that already has tools. Provides guidance for analyzing existing tools and adding MCP Apps UI resources.",
+  "author": {
+    "name": "modelcontextprotocol",
+    "url": "https://github.com/modelcontextprotocol"
+  },
+  "homepage": "https://skillshub.space/skills/add-app-to-server/",
+  "repository": "https://github.com/modelcontextprotocol/ext-apps",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "mcp",
+    "add",
+    "app",
+    "server"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/modelcontextprotocol/ext-apps",
+        "path": "plugins/mcp-apps/skills/add-app-to-server",
+        "branch": "main"
+      },
+      "contentHash": "sha256:655238c307b829c0664e51511be763803c57810c88014d6a332ec8c63ae16fa3"
+    }
+  }
+}

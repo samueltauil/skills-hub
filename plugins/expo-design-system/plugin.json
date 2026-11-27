@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "expo-design-system",
+  "version": "1.0.0",
+  "description": "Create or extend an Expo app's theme, design tokens, and reusable component conventions. Use for inconsistent styling, generic or AI-generated screens, component libraries, or audits of hardcoded colors, spacing, and fonts. Works with existing NativeWind, Tamagui, Restyle, and Unistyles systems. For platform styling and native controls, use expo-native-ui; for new app folder layouts, use expo-project-structure.",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/expo-design-system/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "design",
+    "expo",
+    "system"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/expo-design-system",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3b0320716d5315a33ff27a1cf0ed1bf8403b4c44e2a8d60ee0292e834f87cf0f"
+    }
+  }
+}

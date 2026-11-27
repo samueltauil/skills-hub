@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "web-artifacts-builder",
+  "version": "1.0.0",
+  "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+  "author": {
+    "name": "anthropic",
+    "url": "https://github.com/anthropics"
+  },
+  "homepage": "https://skillshub.space/skills/web-artifacts-builder/",
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "web",
+    "artifacts",
+    "builder"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "path": "skills/web-artifacts-builder",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4f6730e14fb7dd3ade6b9478491447ce99e18ff02a67a4af790545f442769b01"
+    }
+  }
+}

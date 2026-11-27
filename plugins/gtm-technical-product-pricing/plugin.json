@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gtm-technical-product-pricing",
+  "version": "1.0.0",
+  "description": "Pricing strategy for technical products. Use when choosing usage-based vs seat-based, designing freemium thresholds, structuring enterprise pricing conversations, deciding when to raise prices, or using price as a positioning signal.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/gtm-technical-product-pricing/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "gtm",
+    "technical",
+    "product",
+    "pricing"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/gtm-technical-product-pricing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:789d05909efae991174adef08b12da7e0e62424d485601b00e9609fc6a3982f7"
+    }
+  }
+}

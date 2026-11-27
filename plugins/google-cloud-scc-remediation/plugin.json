@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-scc-remediation",
+  "version": "1.0.0",
+  "description": "Remediates Google Cloud Security Command Center findings, including IAM permission fixes, cloud resource misconfigurations, vulnerabilities, and Toxic Combinations. Use when asked to fix, remediate, or mitigate a Security Command Center finding or address attack paths. Don't use for general IAM policy querying without a Security Command Center finding. For runtime threat detections, this skill provides containment and investigation guidance rather than automated configuration fixes.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-scc-remediation/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "security",
+    "google",
+    "cloud",
+    "scc",
+    "remediation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-scc-remediation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b03607f3941d228709c9218467399b1919725b9dc7da112c968e16cd35eba988"
+    }
+  }
+}

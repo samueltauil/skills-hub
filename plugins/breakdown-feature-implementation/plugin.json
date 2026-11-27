@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "breakdown-feature-implementation",
+  "version": "1.0.0",
+  "description": "Prompt for creating detailed feature implementation plans, following Epoch monorepo structure.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/breakdown-feature-implementation/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "breakdown",
+    "feature",
+    "implementation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/breakdown-feature-implementation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d78ec8e08634b6d6c62cb21f20d176f139fe513db23bf4a2254f10e330bf54b3"
+    }
+  }
+}

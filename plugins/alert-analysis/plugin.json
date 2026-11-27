@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "alert-analysis",
+  "version": "1.0.0",
+  "description": "Investigate a specific Elastic Security detection alert: gather context, assess entity risk, classify the threat, document findings, and optionally acknowledge. Use when triaging a single known alert, performing SOC investigation, or following up after the security-alert-triage skill identifies a group to investigate.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/alert-analysis/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "security",
+    "alert",
+    "analysis"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/security/alert-analysis",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ddad603a150359b3d7c4fbaa058b7ddb961d3faa23f97dd8af27bb13c511e7bd"
+    }
+  }
+}

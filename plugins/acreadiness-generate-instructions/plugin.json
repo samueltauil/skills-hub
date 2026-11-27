@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "acreadiness-generate-instructions",
+  "version": "1.0.0",
+  "description": "Generate tailored AI agent instruction files via AgentRC instructions command. Produces .github/copilot-instructions.md (default, recommended for Copilot in VS Code) plus optional per-area .instructions.md files with applyTo globs for monorepos. Use after running /acreadiness-assess to close gaps in the AI Tooling pillar.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/acreadiness-generate-instructions/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "acreadiness",
+    "generate",
+    "instructions"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/acreadiness-generate-instructions",
+        "branch": "main"
+      },
+      "contentHash": "sha256:36ffa3bc083ba48a2e29e5728ac3a81c9d4be408fba750a1f6ef815062edd6d5"
+    }
+  }
+}

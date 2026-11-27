@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "migrate-nunit-to-mstest",
+  "version": "1.0.0",
+  "description": "Convert .NET tests from NUnit 3/4 to MSTest v4 while preserving VSTest or MTP. Use for replacing NUnit/NUnit3TestAdapter packages, Test/TestCase/ TestCaseSource/Values attributes, constraint assertions, SetUp/TearDown, OneTimeSetUp, SetUpFixture, FixtureLifeCycle, TestContext, categories, retries, timeouts, and NUnit parallelization. Also use when a \"convert NUnit to MSTest\" request may already be migrated: inspect and report the no-op. Do not use for NUnit version upgrades, xUnit/TUnit conversion, MSTest upgrades, or runner-only VSTest-to-MTP migration.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/migrate-nunit-to-mstest/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "migrate",
+    "nunit",
+    "mstest"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test-migration/skills/migrate-nunit-to-mstest",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2b07399103399b2bb18fccb5b0dc1b566394376e90a79a09ecae460df81a9a92"
+    }
+  }
+}

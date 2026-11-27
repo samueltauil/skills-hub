@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "breakdown-epic-arch",
+  "version": "1.0.0",
+  "description": "Prompt for creating the high-level technical architecture for an Epic, based on a Product Requirements Document.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/breakdown-epic-arch/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "breakdown",
+    "epic",
+    "arch"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/breakdown-epic-arch",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1894fa910d275f41e7e3a0c266872bda06e136bf021e361cde49d5576bf8b946"
+    }
+  }
+}

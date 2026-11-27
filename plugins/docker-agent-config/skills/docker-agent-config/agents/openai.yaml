@@ -1,0 +1,6 @@
+interface:
+  display_name: Docker Agent Configuration
+  short_description: Reference and rules for authoring agent.yaml configs for Docker Agent (cagent) — agents, models, providers, toolsets, and multi-agent teams.
+  default_prompt: Use this skill when creating or editing an agent.yaml configuration file for Docker Agent.
+policy:
+  allow_implicit_invocation: true

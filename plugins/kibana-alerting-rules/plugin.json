@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kibana-alerting-rules",
+  "version": "1.0.0",
+  "description": "Create and manage Kibana alerting rules and the action policies that notify on their alerts, for both Universal Alerting and classic alerting. Use when the user wants to be alerted or notified about conditions in their data, change where or how often alerts notify (including snoozing notifications), edit, enable, disable, or delete existing rules or action policies, or list existing alerting, including managing rules with Terraform. Not for Security detection rules.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/kibana-alerting-rules/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "security",
+    "data",
+    "kibana",
+    "alerting",
+    "rules"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/kibana/kibana-alerting-rules",
+        "branch": "main"
+      },
+      "contentHash": "sha256:52a86d99c4db11945df8f354f4546634cff750ec90489c3221e9e5613c04fe45"
+    }
+  }
+}

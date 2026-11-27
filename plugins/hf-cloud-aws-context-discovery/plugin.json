@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hf-cloud-aws-context-discovery",
+  "version": "1.0.0",
+  "description": "Discover the user's local AWS context (active profile, region, account ID, caller identity) at the start of any AWS task. Use this skill before any other AWS work — deploying to SageMaker, creating resources, calling AWS APIs, or anything that touches an AWS account. Use it especially when the user has not specified a region or profile explicitly, when they say things like \"use my AWS account\", \"deploy to AWS\", \"use my profile\", or when about to make any AWS CLI or SDK call. Never guess the region or account ID — always use this skill to read it from the local configuration first.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/hf-cloud-aws-context-discovery/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "deploy",
+    "cloud",
+    "aws"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/hf-cloud-aws-context-discovery",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1d9b8523d4bbdc3db7d9b5d19275f8b8d0c1a048ea744fe5a741ef5766ab192f"
+    }
+  }
+}

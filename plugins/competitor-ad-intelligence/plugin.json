@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "competitor-ad-intelligence",
+  "version": "1.0.0",
+  "description": "Use this skill when the user asks to analyze, tear down, or reverse-engineer a competitor's paid ads. Trigger for prompts like \"what ads is [competitor] running\", \"tear down their ad strategy\", \"competitor ad analysis\", \"find ad angles we haven't tried\", or \"reverse-engineer their paid funnel\". Do not trigger for organic/SEO competitor research or website positioning analysis.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/competitor-ad-intelligence/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "competitor",
+    "intelligence"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/competitor-ad-intelligence",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d0bb297577c30a229ca6ed724687e13feea489e3646e4fe412457879fc381078"
+    }
+  }
+}

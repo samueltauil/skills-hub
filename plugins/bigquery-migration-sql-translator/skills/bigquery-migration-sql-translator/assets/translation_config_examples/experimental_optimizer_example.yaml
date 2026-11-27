@@ -1,0 +1,9 @@
+# Configuration to enable optional transformations. The configuration accepts a list of
+# optimizations and, for optimizations which accept parameters, a section with optional parameter
+# values
+type: experimental_optimizer
+transformations:
+- name: PRECOMPUTE_INDEPENDENT_SUBSELECTS
+- name: REWRITE_CTE_TO_TEMP_TABLE
+  parameters:
+    threshold: 1

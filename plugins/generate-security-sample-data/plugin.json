@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "generate-security-sample-data",
+  "version": "1.0.0",
+  "description": "Generate sample security events, attack scenarios, and synthetic alerts for Elastic Security. Use when demoing, populating dashboards, testing detection rules, or setting up a POC.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/generate-security-sample-data/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "test",
+    "security",
+    "data",
+    "generate",
+    "sample"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/security/generate-security-sample-data",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5bc12b17c7f7ac7dd97e2d3ec1c7eaf8a3ddf070103b7081e64d8a80dcbee668"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mimir",
+  "version": "1.0.0",
+  "description": "Stand up Grafana Mimir for horizontally scalable, multi-tenant, long-term Prometheus + OTLP metrics storage. Covers monolithic / read-write / microservices deployment, S3 / GCS / Azure / filesystem block storage, Prometheus `remote_write` and OTLP ingestion, multi-tenancy with `X-Scope-OrgID`, ingester replication factor, compactor retention, and per-tenant limits. Use when running Mimir locally or on Kubernetes (Helm `mimir-distributed`), scaling Prometheus past a single node, picking ingest / query / backend split, configuring tenants and ingestion rate, debugging `/ready` 503s or `429 Too Many Requests`, or pointing Grafana at a Mimir datasource — even when the user says \"I need long-term Prometheus storage\", \"scale Prometheus\", \"multi-tenant metrics backend\", \"Cortex replacement\", \"remote_write target\", or \"store 10M active series\" without naming Mimir.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/mimir/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "azure",
+    "deploy",
+    "data",
+    "mimir"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-lgtm/mimir",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d3081d8618c834ba0256add976d69bb93919a86d4d2821f4a0c533556c25d99f"
+    }
+  }
+}

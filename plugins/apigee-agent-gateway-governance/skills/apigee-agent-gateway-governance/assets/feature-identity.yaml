@@ -1,0 +1,141 @@
+# Feature: caller identity from the gateway's IAP-egress JWT.
+#
+# Runs in the Request PreFlow. The VerifyJWT step is conditional on the header
+# being PRESENT: an absent header skips it and the client falls back to
+# CLIENT_ID_DEFAULT; only a present-but-invalid token fails closed.
+#
+# NAMESPACING: the compiler renames every policy in this feature to
+# "<feature name>-<policy name>", i.e. VJ-iap-egress-jwt becomes
+# identity-VJ-iap-egress-jwt. It rewrites <Step><Name> references, but it does
+# NOT rewrite policy-derived flow variables such as jwt.<policy>.decoded.*.
+# The Ref below is therefore written pre-namespaced on purpose. If you rename
+# this feature or set a `uid`, update it to match.
+
+gateway: apigee
+schemaVersion: 1.0.0
+name: identity
+uid: identity
+type: feature
+priority: 10
+description: >-
+  Extracts the calling agent identity from the Agent Gateway's IAP-egress JWT
+  assertion and publishes it as agw.client_id for downstream metering and
+  quota identifiers.
+
+parameters:
+  - name: CLIENT_ID_DEFAULT
+    displayName: Default client id
+    description: Fallback when no IAP-egress JWT is present.
+    default: anonymous
+
+  - name: IAP_JWKS_URI
+    displayName: IAP egress JWKS URI
+    description: >-
+      JWKS endpoint used to verify the gateway's egress assertion. VERIFIED
+      LIVE: the assertion's header carries kid 1F5uEQ, and that key is present
+      in this JWK set (5 keys, all ES256), so this default is correct as
+      shipped -- an earlier note here said it pointed at "plain IAP" and that
+      the signature therefore did not verify. It does:
+      jwt.<policy>.signed and jwt.<policy>.valid both read true on a live turn.
+    default: https://www.gstatic.com/iap/verify/public_key-jwk
+
+  - name: IAP_JWT_ISSUER
+    displayName: IAP egress JWT issuer
+    description: >-
+      Asserted against the token's iss claim. VERIFIED LIVE on a real Agent
+      Gateway turn.
+
+      Pinning this matters because the JWKS above is Google's shared IAP key
+      set, which signs assertions for purposes other than gateway egress.
+      Without an Issuer assertion any IAP-signed token passes verification, so
+      a token minted for something else would be accepted as if it were this
+      gateway's. There is no Audience assertion by design: aud on this token is
+      the upstream MODEL endpoint, not Apigee -- the proxy is reading a copy of
+      the agent's egress authorization, not a token addressed to it -- so
+      pinning aud would mean enumerating every model URL and would be wrong in
+      principle.
+    default: https://cloud.google.com/iap-egress
+
+  - name: CLIENT_ID_CLAIM
+    displayName: Claim to use as the caller identity
+    description: >-
+      Flow variable read into agw.client_id, which is what the token quotas key
+      on. VERIFIED LIVE: the gateway's assertion carries no email claim -- its
+      claims are [iss, aud, exp, iat, iam_principal, azp] -- so iam_principal
+      is the identity. Written PRE-NAMESPACED; rename this feature or give it a
+      uid and it stops resolving, and the failure is silent (every caller falls
+      back to CLIENT_ID_DEFAULT and shares one quota bucket).
+    default: jwt.identity-VJ-iap-egress-jwt.decoded.claim.iam_principal
+
+  - name: IAP_JWT_ALGORITHM
+    displayName: IAP egress JWT algorithm
+    description: >-
+      Signing algorithm of the gateway's IAP-egress assertion. VERIFIED LIVE as
+      ES256 against a real Agent Gateway turn. The source playbook does not
+      state it, and RS256 is the natural guess -- it is wrong, and it fails
+      closed: VerifyJWT raises steps.jwt.AlgorithmMismatch, which reaches the
+      agent as an opaque HTTP 500 and breaks the turn.
+    default: ES256
+    examples: ["ES256", "RS256"]
+
+policies:
+  - name: VJ-iap-egress-jwt
+    type: VerifyJWT
+    content:
+      VerifyJWT:
+        metadata:
+          name: VJ-iap-egress-jwt
+          continueOnError: false
+          enabled: true
+        Algorithm: "{IAP_JWT_ALGORITHM}"
+        # No Audience element on purpose -- see IAP_JWT_ISSUER above.
+        Issuer: "{IAP_JWT_ISSUER}"
+        Source: request.header.x-goog-iap-egress-jwt-assertion
+        PublicKey:
+          JWKS:
+            metadata:
+              uri: "{IAP_JWKS_URI}"
+
+  - name: AM-set-client-id
+    type: AssignMessage
+    content:
+      AssignMessage:
+        metadata:
+          name: AM-set-client-id
+          continueOnError: true
+          enabled: true
+        IgnoreUnresolvedVariables: true
+        AssignVariable:
+          Name: agw.client_id
+          # Value is the fallback; Ref wins when it resolves.
+          Value: "{CLIENT_ID_DEFAULT}"
+          # VERIFIED LIVE: the gateway's IAP-egress assertion carries NO email
+          # claim. Its claim set is [iss, aud, exp, iat, iam_principal, azp],
+          # and the identity is iam_principal --
+          #   principal://agents.global.org-<N>.system.id.goog/resources/aiplatform/projects/<P>/...
+          # Referencing .claim.email silently resolves to nothing, so every
+          # caller meters as the CLIENT_ID_DEFAULT and per-caller quota becomes
+          # one shared bucket. Change this only if your gateway mints a
+          # different assertion.
+          Ref: "{CLIENT_ID_CLAIM}"
+
+# Declared as a real `endpoints:` entry, not `defaultEndpoint`. This feature is
+# the lowest priority (10), so it creates the single no-route endpoint that every
+# later feature's `defaultEndpoint` fragment merges into. The template cannot
+# supply it: gcloud 588 ignores a template's `endpoints` whenever features are
+# present, and a defaultEndpoint merges into endpoints that already exist, so
+# with nothing declaring one every flow in every feature is silently discarded.
+# Identity's own steps therefore live here rather than under defaultEndpoint,
+# which is processed BEFORE feature-declared endpoints are added.
+endpoints:
+  - name: default
+    basePath: "/"
+    routes:
+      - name: noroute
+    flows:
+      - name: PreFlow
+        mode: Request
+        steps:
+          - name: VJ-iap-egress-jwt
+            condition: request.header.x-goog-iap-egress-jwt-assertion != null
+          - name: AM-set-client-id

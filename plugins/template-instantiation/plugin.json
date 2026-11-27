@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "template-instantiation",
+  "version": "1.0.0",
+  "description": "Creates .NET projects from templates with validated parameters, smart defaults, Central Package Management adaptation, and latest NuGet version resolution. USE FOR: creating new dotnet projects, scaffolding solutions with multiple projects, installing or uninstalling template packages, creating projects that respect Directory.Packages.props (CPM), composing multi-project solutions (API + tests + library), getting latest NuGet package versions in newly created projects. DO NOT USE FOR: finding templates (use template-discovery), producing a detailed side-by-side comparison of templates (use template-comparison), authoring custom templates (use template-authoring), deciding cross-parameter defaults such as which framework to pair with native AOT or whether to keep HTTPS when auth is enabled (use template-smart-defaults), modifying existing projects or adding NuGet packages to existing projects.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/template-instantiation/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "template",
+    "instantiation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-template-engine/skills/template-instantiation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5ff3c6e4102100bd63a98e6fb371eea803f9155bbfb02b7a8ed723f0091199ab"
+    }
+  }
+}

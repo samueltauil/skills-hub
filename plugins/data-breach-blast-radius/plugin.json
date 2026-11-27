@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "data-breach-blast-radius",
+  "version": "1.0.0",
+  "description": "Pre-breach impact analysis: inventories sensitive data (PII, PHI, PCI-DSS, credentials), traces data flows, scores exposure vectors, and produces a regulatory blast radius report with fine ranges sourced verbatim from GDPR Art. 83, CCPA § 1798.155(a), and HIPAA 45 CFR § 160.404. Cost benchmarks from IBM Cost of a Data Breach Report (annually updated). All citations in references/SOURCES.md for verification. Use when asked: \"assess breach impact\", \"what data could be exposed\", \"calculate blast radius\", \"data exposure analysis\", \"how bad would a breach be\", \"quantify data risk\", \"sensitive data inventory\", \"data flow security audit\", \"pre-breach assessment\", \"worst-case breach scenario\", \"breach readiness\", \"data risk report\", \"/data-breach-blast-radius\". For any stack handling user data, health records, or financial information. Output labels law-sourced figures (exact) vs heuristic estimates (planning only). Does not replace legal counsel.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/data-breach-blast-radius/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "security",
+    "data",
+    "breach",
+    "blast",
+    "radius"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/data-breach-blast-radius",
+        "branch": "main"
+      },
+      "contentHash": "sha256:15dafa0b39c8a55a5f78fd20432ddd637aecf764bb017a2ed281629dc3573b4e"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agents-sdk",
+  "version": "1.0.0",
+  "description": "Build, debug, or review Cloudflare Agents SDK applications using the agents package.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/agents-sdk/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "agents",
+    "sdk"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/agents-sdk",
+        "branch": "main"
+      },
+      "contentHash": "sha256:92512dafb06c829bfd71296c806c92ebcb3f0b8b164b9bcf0ead64f9355ca918"
+    }
+  }
+}

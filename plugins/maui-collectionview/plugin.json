@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "maui-collectionview",
+  "version": "1.0.0",
+  "description": "Guidance for implementing CollectionView in .NET MAUI apps — data display, layouts (list & grid), selection, grouping, scrolling, empty views, templates, incremental loading, swipe actions, and pull-to-refresh. USE FOR: \"CollectionView\", \"list view\", \"grid layout\", \"data template\", \"item template\", \"grouping\", \"pull to refresh\", \"incremental loading\", \"swipe actions\", \"empty view\", \"selection mode\", \"scroll to item\", displaying scrollable data, replacing ListView. DO NOT USE FOR: simple static layouts without scrollable data (use Grid or StackLayout), map pin lists (use Microsoft.Maui.Controls.Maps), table-based data entry forms, non-MAUI list controls, CarouselView or BindableLayout questions, platform-specific handler or renderer customization, diagnosing CollectionView bugs in the MAUI framework itself, or general MVVM/binding questions that merely happen to mention a list (use maui-data-binding).",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/maui-collectionview/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "data",
+    "maui",
+    "collectionview"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-maui/skills/maui-collectionview",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6c8b2bb538bc2b4e6d7b78736c031d2eaadc5476741dbce17c4c97a7ea9e1a47"
+    }
+  }
+}

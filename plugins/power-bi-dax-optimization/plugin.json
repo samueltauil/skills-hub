@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "power-bi-dax-optimization",
+  "version": "1.0.0",
+  "description": "Comprehensive Power BI DAX formula optimization prompt for improving performance, readability, and maintainability of DAX calculations.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/power-bi-dax-optimization/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "power",
+    "dax",
+    "optimization"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/power-bi-dax-optimization",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0904ee22687e2bddc2143ddff962a3eb951539c13557e6211c5998bb78bb046c"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: 'Docker Agent: Running and Operating Agents'
+  short_description: 'Rules for running Docker Agent locally — safety/approval modes, sandbox isolation, aliases, worktrees, and troubleshooting a run.'
+  default_prompt: Use this skill when running a Docker Agent with docker agent run, choosing a safety mode, or using the sandbox flag.
+policy:
+  allow_implicit_invocation: true

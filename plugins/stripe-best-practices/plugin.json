@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "stripe-best-practices",
+  "version": "1.0.0",
+  "description": "Guides Stripe integration decisions across development and test environment planning (separate sandboxes vs the shared test mode sandbox), API selection (Checkout Sessions vs PaymentIntents), Connect platform setup (Accounts v2, controller properties), billing/subscriptions, tax and registrations (Stripe Tax, automatic_tax, product tax codes), Treasury financial accounts, integration options (Checkout, Payment Element), migrating from deprecated Stripe APIs, and security best practices (API key management, API key permissions, webhooks, OAuth). Use when planning, building, modifying, testing, or reviewing any Stripe integration, including choosing a development environment, accepting payments, building marketplaces, integrating Stripe, processing payments, setting up subscriptions, collecting sales tax, VAT, or GST, creating connected accounts, or implementing secure key handling.",
+  "author": {
+    "name": "stripe",
+    "url": "https://github.com/stripe"
+  },
+  "homepage": "https://skillshub.space/skills/stripe-best-practices/",
+  "repository": "https://github.com/stripe/ai",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "api",
+    "test",
+    "security",
+    "stripe",
+    "best"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/stripe/ai",
+        "path": "skills/stripe-best-practices",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c6c97222cb13c6c96ea73c7647e4654f5d9163eb8f16663706456419b86064b0"
+    }
+  }
+}

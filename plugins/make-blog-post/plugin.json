@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "make-blog-post",
+  "version": "1.0.0",
+  "description": "Turn code from the current session into a blog post written in the voice of its author. Covers one function, script, class, or tool as a focused walkthrough with a generalized sample and a usage example, learns tone and structure from existing posts or writing samples by the same author, takes the destination from what the user names or the blog repository in use instead of assumed folders, and saves no file until the draft is approved. Use when asked to write, draft, or turn code into a blog post, article, tutorial, or gist, or when invoked as /make-blog-post at the end of a turn.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/make-blog-post/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "make",
+    "blog",
+    "post"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/make-blog-post",
+        "branch": "main"
+      },
+      "contentHash": "sha256:65aa69443b3ce54378a3e9e2182ed0d016861a923a7018a54695e36dcf27e8a1"
+    }
+  }
+}

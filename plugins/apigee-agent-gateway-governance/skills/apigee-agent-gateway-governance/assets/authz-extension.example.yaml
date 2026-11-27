@@ -1,0 +1,35 @@
+# AuthzExtension -- the gateway's pointer at your Apigee callout.
+#
+#   gcloud service-extensions authz-extensions import <NAME> \
+#     --source=authz-extension.yaml --location=$REGION --project=$PROJECT
+#
+# Create this BEFORE the AuthzPolicy that references it, and only once the
+# callout hostname resolves and the proxy is deployed. Creating it earlier
+# succeeds and reports nothing wrong -- it simply stays inert, so "the
+# extension exists" is not evidence that this leg works.
+
+name: projects/PROJECT_ID/locations/REGION/authzExtensions/GATEWAY-apigee-governance-extension
+
+# Both carry the BARE callout hostname -- no scheme, no port, no trailing
+# slash -- and both must equal the Apigee envgroup hostname and the private
+# DNS A record exactly. Any mismatch and the callout silently never lands.
+authority: agent-gateway-callout.internal.example.local
+service: agent-gateway-callout.internal.example.local
+
+wireFormat: EXT_PROC_GRPC
+
+# true = a callout failure lets the request through. Correct for this skill,
+# which meters and inspects but does not gate: a metering bug must not be able
+# to break LLM traffic. Set false ONLY if you have added a policy that is
+# genuinely meant to block, and you accept that its failure blocks too.
+failOpen: true
+
+timeout: 5s
+
+# LOAD-BEARING. Omit the body flags and body extraction silently sees nothing:
+# the policies run, extract empty, and report no error. This is the most
+# common cause of "the policy runs but extracts nothing".
+metadata:
+  apigee-extension-processor: agent-gateway-governance   # which proxy runs
+  apigee-request-body: 'true'                            # -> request.content
+  apigee-response-body: 'true'                           # -> response.content

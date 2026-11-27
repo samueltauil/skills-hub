@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloudflare-deploy",
+  "version": "1.0.0",
+  "description": "Deploy applications and infrastructure to Cloudflare using Workers, Pages, and related platform services. Use when the user asks to deploy, host, publish, or set up a project on Cloudflare.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/cloudflare-deploy/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "cloudflare"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/cloudflare-deploy",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a18a85f305aa0872d2e91a55b45d2880716838200da8aee515f85d8c8aefe9c4"
+    }
+  }
+}

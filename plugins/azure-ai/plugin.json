@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-ai",
+  "version": "1.0.0",
+  "description": "Build and troubleshoot Azure AI Search, Speech, Document Intelligence, Content Understanding, Translator, Content Safety, and OpenAI apps. WHEN: AI Search, vector search, hybrid search, semantic search, indexer, speech-to-text, text-to-speech, fast or batch transcription, Speech SDK logs, session ID, result ID, OCR, document translation, glossary.",
+  "author": {
+    "name": "microsoft",
+    "url": "https://github.com/microsoft"
+  },
+  "homepage": "https://skillshub.space/skills/azure-ai/",
+  "repository": "https://github.com/microsoft/azure-skills",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "azure",
+    "doc"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/microsoft/azure-skills",
+        "path": ".github/plugins/azure-skills/skills/azure-ai",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b7e34f56723c4249b7c6aebba7032081b57419f7c3d784dea211c0074b145f28"
+    }
+  }
+}

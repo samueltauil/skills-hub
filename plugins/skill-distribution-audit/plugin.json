@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "skill-distribution-audit",
+  "version": "1.0.0",
+  "description": "Audit a skill collection before release or investigate installer omissions, archived/template leakage, duplicate identities, and manifest drift. Reconcile the intended public source set, distribution manifest, and actual discovery output for a specified consumer version. Includes a deterministic set-comparison helper.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/skill-distribution-audit/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "skill",
+    "distribution",
+    "audit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/skill-distribution-audit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d69f4f3965862e10eda90cd605e4268a7d27e612286f5584be697e53d4a7b137"
+    }
+  }
+}

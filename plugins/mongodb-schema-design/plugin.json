@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mongodb-schema-design",
+  "version": "1.0.0",
+  "description": "MongoDB schema design patterns and anti-patterns. Use when designing data models, reviewing schemas, migrating from SQL, or troubleshooting performance issues caused by schema problems. Triggers on \"design schema\", \"embed vs reference\", \"MongoDB data model\", \"schema review\", \"unbounded arrays\", \"one-to-many\", \"tree structure\", \"16MB limit\", \"schema validation\", \"JSON Schema\", \"time series\", \"schema migration\", \"polymorphic\", \"TTL\", \"data lifecycle\", \"archive\", \"index explosion\", \"unnecessary indexes\", \"approximation pattern\", \"document versioning\".",
+  "author": {
+    "name": "mongodb",
+    "url": "https://github.com/mongodb"
+  },
+  "homepage": "https://skillshub.space/skills/mongodb-schema-design/",
+  "repository": "https://github.com/mongodb/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "design",
+    "data",
+    "mongodb",
+    "schema"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/mongodb/agent-skills",
+        "path": "skills/mongodb-schema-design",
+        "branch": "main"
+      },
+      "contentHash": "sha256:58fe41a5c242fc7f1ad4312bc0c2a3905bd8168a5bf042060dbbd4eeed2c1d67"
+    }
+  }
+}

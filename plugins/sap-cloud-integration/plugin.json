@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sap-cloud-integration",
+  "version": "1.0.0",
+  "description": "SAP Cloud Integration (CPI, part of SAP Integration Suite) runtime-specific guidance for building and troubleshooting iFlows. Use when writing or reviewing CPI Groovy scripts, choosing headers vs. exchange properties, designing exception subprocesses, JMS retry, idempotency or data store patterns, or diagnosing adapter errors (SFTP, HTTP/OAuth, SOAP, IDoc, OData, AS2, Cloud Connector) from Message Processing Log (MPL) text. Not for SAP PI/PO, ABAP development, or generic Java/Groovy outside CPI.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/sap-cloud-integration/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "design",
+    "data",
+    "sap",
+    "cloud"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/sap-cloud-integration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1105a65b959c6ad20b48569cbe6c490658bddc49a2ed87d54187574afe6de922"
+    }
+  }
+}

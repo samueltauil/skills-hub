@@ -1,0 +1,6 @@
+interface:
+  display_name: 'Docker Agent: Serving, Sharing, and Evaluating'
+  short_description: Rules for exposing Docker Agents as servers, distributing them via OCI registries, and evaluating them for regressions in CI.
+  default_prompt: Use this skill when serving a Docker Agent as an MCP/API/A2A/chat server, sharing it via a registry, or evaluating it.
+policy:
+  allow_implicit_invocation: true

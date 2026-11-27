@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-monitoring-alert-configuration",
+  "version": "1.0.0",
+  "description": "Configures Cloud Monitoring alerting policies using Terraform and PromQL across Cloud Run, Google Kubernetes Engine (GKE), Compute Engine, AI Hypercomputer reservations, Vertex AI Agent Engine, and generic Google Cloud resources. Use when creating, reviewing, migrating, or deduplicating Terraform alerting policies for latency, traffic, error rates, saturation, host or reservation maintenance, GPU XID insights, or AI agent telemetry. Don't use for standalone PromQL query authoring without alerting, log querying, or billing cost audits.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-monitoring-alert-configuration/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "cloud",
+    "monitoring",
+    "alert",
+    "configuration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-monitoring-alert-configuration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bb1fb686263d881970735721bdb133b938d4817fd51f9544798a811b90448425"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "csharp-nunit",
+  "version": "1.0.0",
+  "description": "Get best practices for NUnit unit testing, including data-driven tests",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/csharp-nunit/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "data",
+    "csharp",
+    "nunit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/csharp-nunit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c9115c84c776d77ee35837aab60081e3bc519daad2aa88ae7b0e27463bc9a681"
+    }
+  }
+}

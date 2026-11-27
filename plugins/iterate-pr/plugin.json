@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "iterate-pr",
+  "version": "1.0.0",
+  "description": "Iterate on a PR until actionable CI passes and high/medium review feedback is addressed. Use for PR CI failures, review feedback, or green-check loops; do not wait for human approval, draft status, or merge gates.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/iterate-pr/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "iterate"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/iterate-pr",
+        "branch": "main"
+      },
+      "contentHash": "sha256:988c435fe5036928a84e23103cd03e25b58732738e796d90eefe0ebf6cc0e5de"
+    }
+  }
+}

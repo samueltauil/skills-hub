@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "discover-azure-skills",
+  "version": "1.0.0",
+  "description": "Searches the Azure skills catalog and recommends installable agent skills by matching an Azure task to skill metadata and plugin installation guidance. WHEN: before starting any task that involves an Azure or Microsoft-cloud service, product, or data source, when no currently loaded skill or tool already covers it.",
+  "author": {
+    "name": "microsoft",
+    "url": "https://github.com/microsoft"
+  },
+  "homepage": "https://skillshub.space/skills/discover-azure-skills/",
+  "repository": "https://github.com/microsoft/azure-skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "azure",
+    "data",
+    "discover",
+    "skills"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/microsoft/azure-skills",
+        "path": ".github/plugins/azure-skills/skills/discover-azure-skills",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9660b3c7a339f7e44751992a7d26dd8e1a43a47e3a188079e3b8e949f9890f54"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "javax-to-jakarta-migration",
+  "version": "1.0.0",
+  "description": "Migrate Java code from javax.* to jakarta.* namespace. Use only when the user explicitly asks for a javax to jakarta namespace or framework migration (for example to Tomcat 10+/11 or Jakarta EE), or when java-upgrade or spring-boot-4-migration delegates it. Finding javax imports alone does not authorize a migration.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/javax-to-jakarta-migration/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "javax",
+    "jakarta",
+    "migration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/javax-to-jakarta-migration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:304e13e75c7cd689ad853f11fc3deadf0731078eca0fb01f90d846fce381ab7b"
+    }
+  }
+}

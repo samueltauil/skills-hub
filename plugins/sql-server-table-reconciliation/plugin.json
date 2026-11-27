@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sql-server-table-reconciliation",
+  "version": "1.0.0",
+  "description": "Use when: comparing SQL Server tables across instances, data migration validation, ETL verification, row mismatch detection, schema drift, reconciliation report, production vs staging comparison. Uses mssql-python driver with Apache Arrow for fast columnar data transfer and comparison.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/sql-server-table-reconciliation/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "python",
+    "data",
+    "sql",
+    "server",
+    "table"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/sql-server-table-reconciliation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fa06b4037032afa2f79f24de5d2912d1ab5f7729b620546b56b22e9164fbfdfe"
+    }
+  }
+}

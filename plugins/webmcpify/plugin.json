@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "webmcpify",
+  "version": "1.0.0",
+  "description": "WebMCP agent skill for curated core coverage or route-by-route parity — inventory an existing web app, integrate approved tools, then inspect, verify and heal them in a real browser. Use for \"webmcpify\", \"add WebMCP\", or \"expose app actions to AI agents\".",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/webmcpify/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "mcp-development",
+    "mcp",
+    "webmcpify"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "mcp-development",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/webmcpify",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2c17ab8b6776d187446ae066fae273145c306a1e67c5d4056552f64bc741a1ab"
+    }
+  }
+}

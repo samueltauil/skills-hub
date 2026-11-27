@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "compute-vm-creation",
+  "version": "1.0.0",
+  "description": "Guides the planning, configuration, and provisioning of standalone Google Compute Engine virtual machines (VMs) and bare metal (-metal) instances using gcloud CLI commands or direct MCP tool execution. Use ONLY when the user wants to create, configure, or provision a new standalone Compute Engine VM or bare metal instance from conversational intents (hardware sizing, region selection, OS image, networking, security defaults). DO NOT read or use for Google Kubernetes Engine (GKE) Autopilot or Standard clusters, Kubernetes node pools or Pods, container orchestration, managing existing VMs, Managed Instance Groups (MIGs), or Instance Templates.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/compute-vm-creation/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "cli",
+    "mcp",
+    "security",
+    "compute",
+    "creation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/compute-vm-creation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9ae89471db507dcad997d407f984aad37c6ca211f2e9297f9af1d55eeb635905"
+    }
+  }
+}

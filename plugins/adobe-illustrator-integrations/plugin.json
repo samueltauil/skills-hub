@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "adobe-illustrator-integrations",
+  "version": "1.0.0",
+  "description": "Build, debug, package, and document Adobe Illustrator integrations: CEP extension panels, C++ SDK plug-ins (.aip), the coming UXP plugins, MCP servers that drive Illustrator, computer-use automation, and OS scripts (batch, PowerShell, bash, AppleScript) that run ExtendScript in Illustrator. Use when creating or fixing an Illustrator extension or plug-in, choosing between a script, extension, or plug-in, connecting an AI tool to Illustrator, automating Illustrator from the command line, or writing install and usage docs for an Illustrator tool someone will publish. Pairs with adobe-illustrator-scripting for the ExtendScript DOM.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/adobe-illustrator-integrations/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "mcp",
+    "adobe",
+    "illustrator",
+    "integrations"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/adobe-illustrator-integrations",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9fa92f92af7c9ff3c603733f45fa797c0d4226ee3b5f2bd62a16b7da91d2cc8a"
+    }
+  }
+}

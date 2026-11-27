@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ml-integrations",
+  "version": "1.0.0",
+  "description": "Install and manage Elastic security ML integration packages (beaconing, ded, dga, lmd, pad, problemchild, security_ai). Handles the full lifecycle: pre-flight checks, Fleet package install, component templates, ingest pipelines, transforms, data views, ML anomaly detection jobs, and detection rules. Use when a user asks to install, set up, check the status of, or troubleshoot a security ML integration package, including the technical preview Security for AI package.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/ml-integrations/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "security",
+    "data",
+    "integrations"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/security/ml-integrations",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1cb60cb66fe2907180cfebe3412fdb025cf944eb4777f53ed99ad7808ed03033"
+    }
+  }
+}

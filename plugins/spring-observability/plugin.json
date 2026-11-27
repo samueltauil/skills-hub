@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "spring-observability",
+  "version": "1.0.0",
+  "description": "Add and review observability in Spring Boot 3/4 apps: Actuator exposure and health probes, Micrometer metrics, Observation API, OpenTelemetry tracing and OTLP/Prometheus export, structured logging with correlation ids, and safe use of heapdump/threaddump. Use when instrumenting, monitoring or troubleshooting a Spring Boot service.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/spring-observability/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "api",
+    "spring",
+    "observability"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/spring-observability",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7982b06d79ae93fd1fff4a8eedaf97b4e04b44c49d575233c2020b1373805f33"
+    }
+  }
+}

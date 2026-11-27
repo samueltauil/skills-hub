@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "plan-ui-change",
+  "version": "1.0.0",
+  "description": "Plan complex Blazor UI features by decomposing them into focused components. USE FOR: building a complex Blazor page with multiple sections, planning component decomposition, designing a multi-section dashboard or layout, breaking down a large UI feature into composable components, pages with sidebars and content panels, any page with 3+ distinct visual sections or multiple interacting sub-features, identifying parent-child relationships and data flow. DO NOT USE FOR: creating new Blazor projects or apps from scratch (use create-blazor-project), implementing a single individual component (use author-component), writing component code with parameters and EventCallback (use author-component), or simple single-component pages.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/plan-ui-change/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "data",
+    "plan",
+    "change"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-blazor/skills/plan-ui-change",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8d94d209c4ddd5d0bff1f133657331fd8700735e760f74bb30d01e1828354888"
+    }
+  }
+}

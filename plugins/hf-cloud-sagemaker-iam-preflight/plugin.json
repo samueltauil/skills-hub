@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hf-cloud-sagemaker-iam-preflight",
+  "version": "1.0.0",
+  "description": "Ensure a usable SageMaker execution role exists before deploying or training. Use this skill whenever about to create a SageMaker endpoint, model, training job, or any resource that requires an execution role. Use it especially when the user has not provided a role ARN explicitly, when scripts are about to call `iam:CreateRole`, or when an AccessDenied error mentions an IAM action. Never blindly call `iam:CreateRole` — always check for existing roles first. This skill prevents the most common SageMaker deployment failure: trying to create IAM resources from an SSO principal that has no IAM write permissions.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/hf-cloud-sagemaker-iam-preflight/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "deploy",
+    "cloud",
+    "sagemaker",
+    "iam",
+    "preflight"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/hf-cloud-sagemaker-iam-preflight",
+        "branch": "main"
+      },
+      "contentHash": "sha256:294f73a806f5180fcdc73016432a2b25ab5619b120f56499bd56a552294b215c"
+    }
+  }
+}

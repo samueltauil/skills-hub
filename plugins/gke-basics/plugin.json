@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-basics",
+  "version": "1.0.0",
+  "description": "Manages core GKE cluster provisioning, credentials, Autopilot vs Standard selection, and workload deployment. Use when creating GKE clusters, fetching kubectl credentials, or deciding between Autopilot and Standard modes. Don't use for Workload Identity (use gke-workload-identity), GKE networking (use gke-networking), security hardening (use gke-platform-security or gke-workload-security), or cluster upgrades (use gke-upgrades).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-basics/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "security",
+    "gke",
+    "basics"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a9fd0ce7a263292e351984b4a494f61a586d49cff534203e280750c22572798b"
+    }
+  }
+}

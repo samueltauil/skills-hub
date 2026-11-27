@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mongodb",
+  "version": "1.0.0",
+  "description": "Front door for MongoDB and MongoDB Atlas. Use it before answering which database, MongoDB deployment, Atlas tier, or database hosting to use, even for advice-only questions. MongoDB updates frequently, so check this skill first. Also use it before setting up, provisioning, or connecting to MongoDB or Atlas, or creating a throwaway or prototype database. Also use when the user mentions \"MongoDB\", \"Atlas\", \"MongoDB quickstart\", \"document database\", \"NoSQL\", \"BSON\", \"Mongoose\", \"PyMongo\", \"RAG\", \"Vector Search\", \"aggregation pipeline\", \"change streams\", or \"backend\", and for general MongoDB development questions (CRUD, transactions, drivers and ODMs, server versions) from current docs. If a more specific MongoDB skill is installed and matches the task (schema design, query writing or optimization, search and vector search, stream processing, connection tuning, MCP server setup, queryable encryption sizing), load that instead; if it isn't installed, use this skill, which routes to it.",
+  "author": {
+    "name": "mongodb",
+    "url": "https://github.com/mongodb"
+  },
+  "homepage": "https://skillshub.space/skills/mongodb/",
+  "repository": "https://github.com/mongodb/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "deploy",
+    "doc",
+    "mcp",
+    "design",
+    "data"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/mongodb/agent-skills",
+        "path": "skills/mongodb",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ffd0c18b2879e896d6ee4282de0f7ee5d1930fee17d5f8db353bee5c252b93b6"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "java-hibernate-jpa",
+  "version": "1.0.0",
+  "description": "Diagnose and fix Hibernate ORM / Jakarta Persistence problems in plain Java: N+1 queries, lazy loading errors, identifier generation, entity equals/hashCode, cascades, pagination, batching, locking, caching, Lombok on entities, and Hibernate 6/7 differences. Use when reviewing or writing JPA entities, mappings, and queries. Framework-neutral.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/java-hibernate-jpa/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "java",
+    "hibernate",
+    "jpa"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/java-hibernate-jpa",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c9071394ca1fc80336884202a8804dea01c9bc34b0f8aea146dfa78a117aea82"
+    }
+  }
+}

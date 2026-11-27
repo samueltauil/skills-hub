@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kotlin-mcp-server-generator",
+  "version": "1.0.0",
+  "description": "Generate a complete Kotlin MCP server project with proper structure, dependencies, and implementation using the official io.modelcontextprotocol:kotlin-sdk library.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/kotlin-mcp-server-generator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "mcp",
+    "kotlin",
+    "server",
+    "generator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/kotlin-mcp-server-generator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:39746e233aa7af25fcf647964c39006b50f2c71ea8005fe7657f80f54cb0acdb"
+    }
+  }
+}

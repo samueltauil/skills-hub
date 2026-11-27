@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "typing-exclusion-worker",
+  "version": "1.0.0",
+  "description": "Python typing exclusion worker: remove assigned mypy exclusion modules in small scoped batches, fix typing issues, run validation, and produce a structured completion summary. Use when running parallel typing-debt workers or when asked to remove modules from pyproject mypy exclusion overrides.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/typing-exclusion-worker/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "python",
+    "typing",
+    "exclusion",
+    "worker"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/typing-exclusion-worker",
+        "branch": "main"
+      },
+      "contentHash": "sha256:39f76d60da87d46323fba4fe0969ceabe9d7bac57bc2b284b4e85e883ac1f747"
+    }
+  }
+}

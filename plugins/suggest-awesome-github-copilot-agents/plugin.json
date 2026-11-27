@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "suggest-awesome-github-copilot-agents",
+  "version": "1.0.0",
+  "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository, and identifying outdated agents that need updates.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/suggest-awesome-github-copilot-agents/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "suggest",
+    "awesome",
+    "github",
+    "copilot"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/suggest-awesome-github-copilot-agents",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5e99772da963a2dc00f76826195ed69c3ead07e84a4bdadfac154a61113c1426"
+    }
+  }
+}

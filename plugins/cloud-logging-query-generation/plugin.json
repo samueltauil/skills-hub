@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-logging-query-generation",
+  "version": "1.0.0",
+  "description": "Generates Logging Query Language (LQL) queries for Cloud Logging on Google Cloud from natural language. Use this skill when you need to query log data or when you are debugging issues. You can filter log data by Google Cloud service. Don't use this skill to query other databases, such as SQL or Cloud Spanner.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-logging-query-generation/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "data",
+    "cloud",
+    "logging",
+    "query",
+    "generation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-logging-query-generation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3bba4f968f72f9239cb86af0da12aaea7b8e0701ca0283c5be0864c95aac0afd"
+    }
+  }
+}

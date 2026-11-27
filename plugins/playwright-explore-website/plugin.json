@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "playwright-explore-website",
+  "version": "1.0.0",
+  "description": "Website exploration for testing using Playwright MCP",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/playwright-explore-website/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "mcp",
+    "playwright",
+    "explore",
+    "website"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/playwright-explore-website",
+        "branch": "main"
+      },
+      "contentHash": "sha256:527e06d173d49e3f16390c2822734b24d445a6328daa7e8e84091a39a4ef31cb"
+    }
+  }
+}

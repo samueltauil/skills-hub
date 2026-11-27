@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mcp-release-qa",
+  "version": "1.0.0",
+  "description": "Verify an MCP server before release by exercising a real protocol session, comparing runtime capabilities with source and documentation, testing failure paths, and recording reproducible evidence. Use when shipping or reviewing an MCP server, tool, resource, prompt, catalog, or install path.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mcp-release-qa/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "doc",
+    "mcp",
+    "release"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mcp-release-qa",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7d1d9d22e72e23640178854135d06aa6c6284c5db9ad993c04273b4dc5e09996"
+    }
+  }
+}

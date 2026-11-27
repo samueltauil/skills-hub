@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "web-design-reviewer",
+  "version": "1.0.0",
+  "description": "This skill enables visual inspection of websites running locally or remotely to identify and fix design issues. Triggers on requests like \"review website design\", \"check the UI\", \"fix the layout\", \"find design problems\". Detects issues with responsive design, accessibility, visual consistency, and layout breakage, then performs fixes at the source code level.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/web-design-reviewer/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "web",
+    "reviewer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/web-design-reviewer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:75aa82750330d65e7a6222816412030e36a81beca2301d5ac27ddfebc2a3574f"
+    }
+  }
+}

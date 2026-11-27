@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react-19-plugin-migration",
+  "version": "1.0.0",
+  "description": "Migrate a Grafana plugin to React 19 compatibility. Use when the user asks to update a plugin for React 19, prepare for React 19, fix React 19 compatibility, upgrade to React 19, migrate to React 19, bump grafanaDependency to 12.3.0, externalize jsx-runtime, or run react-detect. Triggers on phrases like \"update plugin for React 19\", \"React 19 migration\", \"prepare for React 19\", \"plugin React 19 compat\", \"grafanaDependency 12.3.0\", \"JSX runtime externals\", \"react-detect\", \"SECRET_INTERNALS\", \"ReactCurrentOwner\", or \"ReactCurrentDispatcher\".",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/react-19-plugin-migration/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "plugin",
+    "migration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-plugins/react-19-plugin-migration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d97d18c8a21e885b067b9be90dfbb8b56acc570f41125564124579f22192df2f"
+    }
+  }
+}

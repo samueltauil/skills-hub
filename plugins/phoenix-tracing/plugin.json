@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "phoenix-tracing",
+  "version": "1.0.0",
+  "description": "OpenInference semantic conventions and instrumentation for Phoenix AI observability. Use when implementing LLM tracing, creating custom spans, or deploying to production.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/phoenix-tracing/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "phoenix",
+    "tracing"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/phoenix-tracing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d16d6b0c6201fd346c0fa4e8b6ddf49144d8171d20da13a5a55dacefa49e73bf"
+    }
+  }
+}

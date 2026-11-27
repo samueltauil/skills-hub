@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "appinsights-instrumentation",
+  "version": "1.0.0",
+  "description": "Instrument a webapp to send useful telemetry data to Azure App Insights",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/appinsights-instrumentation/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "azure",
+    "data",
+    "appinsights",
+    "instrumentation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/appinsights-instrumentation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8131620110300b16ec8d64745bb955772260758f7029e7a6b02acbc8ac133da6"
+    }
+  }
+}

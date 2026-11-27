@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "elasticsearch-ingest",
+  "version": "1.0.0",
+  "description": "Load local CSV, JSON array, and NDJSON files into Elasticsearch indices with the bulk API through the `elastic` CLI, creating an explicit mapping first when field types matter. Use when batch-importing local files, loading a pre-formed bulk NDJSON body, or verifying document counts and mappings after a load — not for Logstash pipelines, Beats, Elastic Agent, continuous ingestion, or index-to-index reindex.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/elasticsearch-ingest/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "api",
+    "cli",
+    "doc",
+    "elasticsearch",
+    "ingest"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/elasticsearch/elasticsearch-ingest",
+        "branch": "main"
+      },
+      "contentHash": "sha256:61761781b97d3c3b5b4d98c06d1dcec30cfadfe81c448e1410d8754f1694eab9"
+    }
+  }
+}

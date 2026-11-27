@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "upgrading-react-native",
+  "version": "1.0.0",
+  "description": "Upgrades React Native apps to newer versions by applying rn-diff-purge template diffs, updating package.json dependencies, migrating native iOS and Android configuration, resolving CocoaPods and Gradle changes, and handling breaking API updates. Use when upgrading React Native, bumping RN version, updating from RN 0.x to 0.y, or migrating Expo SDK alongside a React Native upgrade.",
+  "author": {
+    "name": "callstack",
+    "url": "https://github.com/callstackincubator"
+  },
+  "homepage": "https://skillshub.space/skills/upgrading-react-native/",
+  "repository": "https://github.com/callstackincubator/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "react",
+    "upgrading",
+    "native"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/callstackincubator/agent-skills",
+        "path": "skills/upgrading-react-native",
+        "branch": "main"
+      },
+      "contentHash": "sha256:dd6a8aece5826b557ea53c2aacf1d6f1d51099ee211f3417826d495e55b51915"
+    }
+  }
+}

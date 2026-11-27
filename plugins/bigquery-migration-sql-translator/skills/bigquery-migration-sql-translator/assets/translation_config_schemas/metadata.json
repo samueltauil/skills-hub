@@ -1,0 +1,47 @@
+{
+  "type" : "object",
+  "properties" : {
+    "nameAlias" : {
+      "type" : "object",
+      "properties" : {
+        "stripPrefix" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "stripRegex" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "stripSuffix" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "type" : {
+      "type" : "string",
+      "required" : true,
+      "pattern" : "metadata"
+    },
+    "udfs" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "udf" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}

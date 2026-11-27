@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-storage",
+  "version": "1.0.0",
+  "description": "Manages GKE storage, including PVCs, PersistentVolumes, and Filestore. Use when configuring GKE storage or creating PVCs. For GCS FUSE mounts, use google-cloud-storage-fuse. For diagnosing storage failures (volume attach/mount errors, disk performance/node storage pressure, or Cloud Storage FUSE OOM), use gke-storage-troubleshooting. Don't use for database administration or replication strategies outside volume provisioning context.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-storage/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "data",
+    "gke",
+    "storage"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-storage",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bf457e1fb9b7bec9171738408d2a0c52076dbf66aa0527c305f5de1b98e9a552"
+    }
+  }
+}

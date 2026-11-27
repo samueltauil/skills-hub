@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-readme",
+  "version": "1.0.0",
+  "description": "Create a README.md file for the project",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-readme/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "create",
+    "readme"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-readme",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b4fc4bae03cf86ac5458d0901402bb97a66cb4e6a58a6c0f4780cd7be50894cd"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "resx-source-generator-migration",
+  "version": "1.0.0",
+  "description": "Migrates a project that uses checked-in .designer.cs files behind .resx to using a source-generator instead",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/resx-source-generator-migration/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "resx",
+    "source",
+    "generator",
+    "migration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/resx-source-generator-migration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2b81ae886bcaec88b7d460b778707b7de5f6c7a6e9301226e1eda394053e50ac"
+    }
+  }
+}

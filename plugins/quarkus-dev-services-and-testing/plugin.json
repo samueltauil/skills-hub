@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "quarkus-dev-services-and-testing",
+  "version": "1.0.0",
+  "description": "Quarkus Dev Services and testing: zero-config containers, @QuarkusTest, @QuarkusIntegrationTest, test resources, RestAssured, @InjectMock, profiles and continuous testing. Use when writing or fixing tests in a Quarkus project.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/quarkus-dev-services-and-testing/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "quarkus",
+    "dev",
+    "services",
+    "and"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/quarkus-dev-services-and-testing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4fe85624c9d7c0cc25aa6f0987eed9637fb2a687d7029556d3929f9c499decc0"
+    }
+  }
+}

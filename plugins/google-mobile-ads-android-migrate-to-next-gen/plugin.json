@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-mobile-ads-android-migrate-to-next-gen",
+  "version": "1.0.0",
+  "description": "Migrates Android applications from the old, legacy Google Mobile Ads (GMA) SDK (com.google.android.gms:play-services-ads) to the new GMA Next-Gen SDK (com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk). Provides comprehensive mapping tables for imports, classes, and method signatures to help determine migration steps. Use when migrating an existing Android codebase from the old, legacy GMA SDK to GMA Next-Gen SDK.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-mobile-ads-android-migrate-to-next-gen/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "google",
+    "mobile",
+    "ads",
+    "android",
+    "migrate"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/google-mobile-ads-android-migrate-to-next-gen",
+        "branch": "main"
+      },
+      "contentHash": "sha256:949232b452237c3cbb774ca628902dc6a551e76c1c3cd8cb5744b74f616e231a"
+    }
+  }
+}

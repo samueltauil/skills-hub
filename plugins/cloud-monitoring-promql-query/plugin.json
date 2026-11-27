@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-monitoring-promql-query",
+  "version": "1.0.0",
+  "description": "Generates valid PromQL queries from Cloud Monitoring metric descriptors and resource parameters. Use when asked to create, generate, write, or format PromQL queries, PromQL strings, or PromQL aggregations for Cloud Monitoring metrics and resources. Don't use for raw metric discovery or metric selection.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-monitoring-promql-query/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "cloud",
+    "monitoring",
+    "promql",
+    "query"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-monitoring-promql-query",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5b4cca11b145f9a2b2906913000b1f3f99c9f5f3ef59eebe4ac32467dc2011ff"
+    }
+  }
+}

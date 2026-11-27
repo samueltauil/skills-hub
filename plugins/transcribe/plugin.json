@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "transcribe",
+  "version": "1.0.0",
+  "description": "Transcribe audio files to text with optional diarization and known-speaker hints. Use when a user asks to transcribe speech from audio/video, extract text from recordings, or label speakers in interviews or meetings.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/transcribe/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "transcribe"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/transcribe",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b921fb117ae317aafe4d57b3eac993c45d8b328f881774aa5435e2af0859d0f4"
+    }
+  }
+}

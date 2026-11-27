@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "firebase-remote-config-basics",
+  "version": "1.0.0",
+  "description": "Manages Firebase Remote Config templates, feature flags, loading strategies, and SDKs (Android, iOS). Use when downloading/deploying remoteconfig JSON templates, managing version history/feature flags, setting in-app defaults, fetchAndActivate(), real-time listeners, or SDK setup. Don't use for Firebase Hosting, Auth, Firestore, Data Connect, Crashlytics, or App Hosting.",
+  "author": {
+    "name": "firebase",
+    "url": "https://github.com/firebase"
+  },
+  "homepage": "https://skillshub.space/skills/firebase-remote-config-basics/",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "deploy",
+    "data",
+    "firebase",
+    "remote",
+    "config"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/firebase/agent-skills",
+        "path": "skills/firebase-remote-config-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:281b4e4c4b16fa1fdb914a2e3628004f1ce01b4bac5939bec5076f82f19ad3e4"
+    }
+  }
+}

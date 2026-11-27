@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "expo-data-fetching",
+  "version": "1.0.0",
+  "description": "Implement or debug data fetching in Expo apps. Use for fetch API calls, React Query, SWR, authenticated requests, caching, retries, offline support, loading and error states, or Expo Router data loaders (useLoaderData).",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/expo-data-fetching/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "react",
+    "data",
+    "expo",
+    "fetching"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/expo-data-fetching",
+        "branch": "main"
+      },
+      "contentHash": "sha256:50c3fb898bbc76a202b9d3a66bfad38427274177cbb08ec251b4aeae97dda61d"
+    }
+  }
+}

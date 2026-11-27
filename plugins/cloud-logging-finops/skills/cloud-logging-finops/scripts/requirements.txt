@@ -1,0 +1,6 @@
+google-auth>=2.20.0,<3.0.0
+google-api-python-client>=2.90.0,<3.0.0
+google-cloud-logging>=3.5.0,<4.0.0
+google-cloud-monitoring>=2.14.0,<3.0.0
+google-cloud-bigquery>=3.10.0,<4.0.0
+absl-py>=1.4.0,<3.0.0

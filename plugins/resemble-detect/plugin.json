@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "resemble-detect",
+  "version": "1.0.0",
+  "description": "Deepfake detection and media safety — detect AI-generated audio, images, video, and text, trace synthesis sources, apply watermarks, verify speaker identity, and analyze media intelligence using Resemble AI",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/resemble-detect/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "resemble",
+    "detect"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/resemble-detect",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2fe410b894a9b005e2c456c1b3a36b045abba69ad6b0a54db146268d624eb5f3"
+    }
+  }
+}

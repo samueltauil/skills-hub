@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nextjs-on-cloudflare",
+  "version": "1.0.0",
+  "description": "Build, migrate, and deploy Next.js apps on Cloudflare Workers with vinext. Use when starting a Next.js project on Cloudflare, moving an existing app to Workers, choosing between vinext and OpenNext, or setting up vinext for Workers. For setup, migration, or deployment, install vinext's upstream skills with `npx skills add cloudflare/vinext` if missing, then read and follow the applicable skill and docs.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/nextjs-on-cloudflare/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "deploy",
+    "doc",
+    "nextjs",
+    "cloudflare"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/nextjs-on-cloudflare",
+        "branch": "main"
+      },
+      "contentHash": "sha256:253d503f3b2cba230665b70d014cfedc0d4ebd4802024b793bec793add75d2f1"
+    }
+  }
+}

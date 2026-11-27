@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "docker-project-foundations",
+  "version": "1.0.0",
+  "description": "Use this skill when setting up, initializing, or Dockerizing a project, even if the user doesn't explicitly mention Docker but describes a need for containerized local development, adding a database or cache dependency, or running services without host-level installs. Covers Dockerfile, compose.yaml, and .dockerignore creation with Docker best practices.",
+  "author": {
+    "name": "docker",
+    "url": "https://github.com/docker"
+  },
+  "homepage": "https://skillshub.space/skills/docker-project-foundations/",
+  "repository": "https://github.com/docker/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "data",
+    "docker",
+    "project",
+    "foundations"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/docker/skills",
+        "path": "skills/docker-project-foundations",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4e71ce02c7eb335984f540404c4135865986851ee3687d8905491f912fa68300"
+    }
+  }
+}

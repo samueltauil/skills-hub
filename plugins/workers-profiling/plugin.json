@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "workers-profiling",
+  "version": "1.0.0",
+  "description": "Profile or debug CPU usage and memory allocation in deployed Cloudflare Workers and Durable Objects. Then use this information to optimize your code.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/workers-profiling/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "workers",
+    "profiling"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/workers-profiling",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a1a88c5202db8a4fc2eb7e9fcfb2a80f7d9879b17178db0dbd7a7c23947f1bf6"
+    }
+  }
+}

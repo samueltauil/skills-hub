@@ -1,0 +1,20 @@
+schema: v1
+id: docker-agent-deploy
+version: 0.1.1
+title: 'Docker Agent: Serving, Sharing, and Evaluating'
+description: Rules for exposing Docker Agents as servers, distributing them via OCI registries, and evaluating them for regressions in CI.
+owns:
+  - docker-agent-serve
+  - docker-agent-share
+  - docker-agent-eval
+  - evals/*.json
+use_when:
+  - The task is exposing an agent over MCP, an HTTP API, an OpenAI-compatible chat endpoint, or A2A/ACP.
+  - The task is publishing an agent to or pulling one from an OCI registry with docker agent share.
+  - The task is writing, running, or gating CI on docker agent eval sessions.
+do_not_use_when:
+  - The main task is authoring or editing the agent.yaml itself (models, toolsets, sub_agents).
+  - The main task is running an agent interactively on a developer machine, or choosing --safety/--sandbox for local use.
+delegates_to:
+  - docker-agent-config
+  - docker-agent-run

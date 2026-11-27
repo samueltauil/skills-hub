@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mtp-hot-reload",
+  "version": "1.0.0",
+  "description": "Set up or recover MTP hot reload for a long-lived console-host edit/re-run loop in a Microsoft Testing Platform project. Use for explicit MTP console requests such as \"enable hot reload\", \"dotnet run to rerun on edit\", or unsupported/rude edits. Covers setup, run/watch, restarts, filters, and the VSTest no-mutation fallback. For one-time runs, exact commands, filter errors, TRX/dumps, or merely a failing test, use run-tests. Do not use when Test Explorer or an IDE should rerun tests without an MTP console host. Excludes editor integration, CI, and writing/debugging tests.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/mtp-hot-reload/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "mtp",
+    "hot",
+    "reload"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/mtp-hot-reload",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cf9f6b87c10299f9f06aa92502d7697907d725146d47de7c5a1c10be4dbdc719"
+    }
+  }
+}

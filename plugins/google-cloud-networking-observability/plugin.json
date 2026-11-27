@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-networking-observability",
+  "version": "1.0.0",
+  "description": "Investigates Google Cloud networking issues by analyzing GCP logs, metrics, and diagnostics. Use when investigating dropped network traffic, packet drops, drop reasons, VPC Flow Logs (including Private Service Connect / PSC, serverless / App Engine Direct VPC, and cost estimation), Cloud NAT, firewall or threat logs, VPN metrics/tunnels, or Connectivity Tests for path diagnostics. Don't use for generic VM management or non-observability tasks.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-networking-observability/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "test",
+    "google",
+    "cloud",
+    "networking",
+    "observability"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-networking-observability",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9e3c99611242c7a680b46a70a2cc201b85456bf82cadb096edfb5ad4f227cdcb"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "coverage-analysis",
+  "version": "1.0.0",
+  "description": "Activation requires either supplied .NET coverage reports/percentages/line, branch, or condition metrics, or an explicit request to collect .NET coverage for analysis. USE FOR: interpreting that evidence, including Cobertura data, partial conditions, plateaus, target arithmetic, project-wide coverage-backed CRAP, and coverage-backed refactoring safety. Analyze supplied reports directly without rerunning tests or installing tools. DO NOT USE FOR: requests with neither coverage evidence nor explicit coverage-collection intent, including hypothetical change-survival questions (use test-gap-analysis); CRAP or refactoring safety for one named target (use crap-score); or requests owned by test-tagging, find-untested-sources, test-anti-patterns, run-tests, or code-testing.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/coverage-analysis/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "test",
+    "data",
+    "coverage",
+    "analysis"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/coverage-analysis",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fa4995a4fe2a6ebce45c80eb7d67c2ac78fbfd0db563f52c06829789c1a0f246"
+    }
+  }
+}

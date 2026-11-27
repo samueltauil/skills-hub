@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-branch",
+  "version": "1.0.0",
+  "description": "Create a git branch following Sentry naming conventions. Use when asked to \"create a branch\", \"new branch\", \"start a branch\", \"make a branch\", \"switch to a new branch\", or when starting new work on the default branch.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/create-branch/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "create",
+    "branch"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/create-branch",
+        "branch": "main"
+      },
+      "contentHash": "sha256:61d7fc247c40686d0aaa80474c3c2460097dd864d0d6a1e3b0c5a4c8768d9c61"
+    }
+  }
+}

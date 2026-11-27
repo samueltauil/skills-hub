@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "quarkus-native-and-container",
+  "version": "1.0.0",
+  "description": "Build Quarkus native executables (Mandrel/GraalVM), fix native failures with reflection registration, test the native binary, and produce container images and Kubernetes/OpenShift manifests. Use for native, Docker, Jib or Kubernetes work in a Quarkus project.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/quarkus-native-and-container/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "test",
+    "doc",
+    "quarkus",
+    "native",
+    "and"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/quarkus-native-and-container",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1325d9121a89a9be84836e5d34f031564d92e0f8f8bbd45afe21004b4d73b805"
+    }
+  }
+}

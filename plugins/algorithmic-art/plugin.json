@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "algorithmic-art",
+  "version": "1.0.0",
+  "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+  "author": {
+    "name": "anthropic",
+    "url": "https://github.com/anthropics"
+  },
+  "homepage": "https://skillshub.space/skills/algorithmic-art/",
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "algorithmic",
+    "art"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/anthropics/skills",
+        "path": "skills/algorithmic-art",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fd2fa0ec544259469887bb5b80caca0b996e830543b0c9bd173876ad37bc5578"
+    }
+  }
+}

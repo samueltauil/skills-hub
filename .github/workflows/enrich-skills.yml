@@ -159,12 +159,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Rebuild and validate plugins
+        run: |
+          node scripts/build-plugins.js
+          node scripts/validate-plugins.js
+
       - name: Commit enrichment results
         id: enrich-commit
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add site/src/data/skills.json
+          git add site/src/data/skills.json plugins .github/plugin
           if git diff --cached --quiet; then
             echo "pushed=false" >> $GITHUB_OUTPUT
           else

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sentry-brand-guidelines",
+  "version": "1.0.0",
+  "description": "Write copy following Sentry brand guidelines. Use when writing UI text, error messages, empty states, onboarding flows, 404 pages, documentation, marketing copy, or any user-facing content. Covers both Plain Speech (default) and Sentry Voice tones.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/sentry-brand-guidelines/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "brand",
+    "guidelines"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/brand-guidelines",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2048d0a2a7bf5699365c70ad651344c9ef1b8bb15f72af611c9b5994ac6dd95f"
+    }
+  }
+}

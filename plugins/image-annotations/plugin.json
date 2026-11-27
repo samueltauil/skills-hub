@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "image-annotations",
+  "version": "1.0.0",
+  "description": "Annotate screenshots, diagrams, and images with callout rectangles, arrows, labels, and color-coded highlights using PIL. Includes rules for animated GIF annotations with timing and pacing.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/image-annotations/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "diagrams",
+    "diagram",
+    "image",
+    "annotations"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "diagrams",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/image-annotations",
+        "branch": "main"
+      },
+      "contentHash": "sha256:af350a6628dc5abf0800430fc3521cc11c252c403ef7b8b0538c120a81116b69"
+    }
+  }
+}

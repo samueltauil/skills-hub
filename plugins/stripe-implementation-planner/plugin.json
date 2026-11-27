@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "stripe-implementation-planner",
+  "version": "1.0.0",
+  "description": "Plans Stripe product selection and integration architecture for an initial Stripe setup or a material expansion of an existing setup. Use when the user needs personalized recommendations based on their business model, payment models, sales channels, geography, or platform requirements, including requests to plan and build an integration. Don't use for API-version upgrades, product-availability questions, existing-integration debugging, webhook troubleshooting, narrow code changes, product explanations, PR review alone, unrelated implementation planning, or when the user explicitly asks to skip planning.",
+  "author": {
+    "name": "stripe",
+    "url": "https://github.com/stripe"
+  },
+  "homepage": "https://skillshub.space/skills/stripe-implementation-planner/",
+  "repository": "https://github.com/stripe/ai",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "api",
+    "stripe",
+    "implementation",
+    "planner"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/stripe/ai",
+        "path": "skills/stripe-implementation-planner",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8f5ee80a88a99cd20806a6fa5d98a0cdc57689a9bddd601fa4a6079b4a811479"
+    }
+  }
+}

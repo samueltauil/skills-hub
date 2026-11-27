@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "power-bi-report-design-consultation",
+  "version": "1.0.0",
+  "description": "Power BI report visualization design prompt for creating effective, user-friendly, and accessible reports with optimal chart selection and layout design.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/power-bi-report-design-consultation/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "diagrams",
+    "design",
+    "power",
+    "report",
+    "consultation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "diagrams",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/power-bi-report-design-consultation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d1803b6c366faea2f5447d8c98071a704ec81593632af2dce8ac6ec7b22eda05"
+    }
+  }
+}

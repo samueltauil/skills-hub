@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "app-sdk-concepts",
+  "version": "1.0.0",
+  "description": "Use when starting any grafana-app-sdk work — scaffolding a Grafana app, initializing a Grafana App Platform app, picking a deployment mode (standalone operator / grafana/apps / frontend-only), wiring app-specific config, or onboarding to the SDK. Covers `grafana-app-sdk` CLI install, `project init` per deployment mode, project layout, the schema-centric workflow (CUE kinds → generated code → reconciler/admission logic), and `SpecificConfig` for env-driven app configuration. Use even if the user just says \"make a new app\", \"Grafana app platform\", \"kinds and watchers\", \"operator scaffold\", or asks about `apps/` inside the Grafana repo, without naming the SDK explicitly.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/app-sdk-concepts/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "cli",
+    "deploy",
+    "app",
+    "sdk",
+    "concepts"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-app-sdk/app-sdk-concepts",
+        "branch": "main"
+      },
+      "contentHash": "sha256:60845b851e406655917ef07270dc248485ea5db14a971ba7d7be0f7c08df0e0e"
+    }
+  }
+}

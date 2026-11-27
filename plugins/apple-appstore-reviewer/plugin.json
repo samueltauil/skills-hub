@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "apple-appstore-reviewer",
+  "version": "1.0.0",
+  "description": "Serves as a reviewer of the codebase with instructions on looking for Apple App Store optimizations or rejection reasons.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/apple-appstore-reviewer/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "apple",
+    "appstore",
+    "reviewer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/apple-appstore-reviewer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b4815204062beb7fa659881131e69231a4b0420337ed288cca4a714f52b05d6a"
+    }
+  }
+}

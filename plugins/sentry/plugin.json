@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sentry",
+  "version": "1.0.0",
+  "description": "Use when the user asks to inspect Sentry issues or events, summarize recent production errors, or pull basic Sentry health data via the Sentry CLI; perform read-only queries using the `sentry` command.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/sentry/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "cli",
+    "data",
+    "sentry"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/sentry",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1e51c59fa2f03eeb7690b38de72d70c9d71ce88475b64ecf6d416c57284fed5d"
+    }
+  }
+}

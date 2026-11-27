@@ -1,0 +1,45 @@
+# syntax=docker/dockerfile:1
+
+# --- Production dependencies ---
+FROM node:22-alpine AS deps
+WORKDIR /src
+# package.json/package-lock.json are bind-mounted (not COPY-ed): npm ci never
+# rewrites them, so they never need to enter a layer.
+# Registry credentials, if any, are mounted only for the duration of `npm ci`.
+# `required=false` keeps the build green when no .npmrc is provided.
+# Invoke with: docker buildx build --secret id=npmrc,src=$HOME/.npmrc .
+RUN --mount=type=bind,source=package.json,target=package.json \
+    --mount=type=bind,source=package-lock.json,target=package-lock.json \
+    --mount=type=secret,id=npmrc,target=/root/.npmrc,required=false \
+    --mount=type=cache,target=/root/.npm \
+    npm ci --omit=dev
+
+# --- Build stage ---
+FROM node:22-alpine AS build
+WORKDIR /src
+RUN --mount=type=bind,source=package.json,target=package.json \
+    --mount=type=bind,source=package-lock.json,target=package-lock.json \
+    --mount=type=secret,id=npmrc,target=/root/.npmrc,required=false \
+    --mount=type=cache,target=/root/.npm \
+    npm ci
+COPY . .
+RUN npm run build
+
+# --- Runtime stage ---
+FROM node:22-alpine AS runtime
+WORKDIR /app
+
+RUN addgroup --system --gid 1001 appgroup && \
+    adduser --system --uid 1001 --ingroup appgroup appuser
+
+# Production node_modules from deps stage, built output from build stage
+COPY --from=deps --chown=appuser:appgroup /src/node_modules ./node_modules
+COPY --from=build --chown=appuser:appgroup /src/dist ./dist
+COPY --from=build --chown=appuser:appgroup /src/package.json .
+
+USER appuser
+EXPOSE 3000
+
+LABEL org.opencontainers.image.source="<source-repository-url>"
+
+ENTRYPOINT ["node", "dist/index.js"]

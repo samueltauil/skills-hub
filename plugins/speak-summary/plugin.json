@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "speak-summary",
+  "version": "1.0.0",
+  "description": "Convert text, markdown, or a summary produced by another skill into a listenable MP3 using local CPU-only neural text-to-speech. Rewrites written prose for the ear before synthesising. Use when the user asks to \"read this out\", \"turn this into audio\", \"make an MP3\", \"I want to listen to this\", \"podcast version\", or wants a spoken digest for a commute or breakfast.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/speak-summary/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "speak",
+    "summary"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/speak-summary",
+        "branch": "main"
+      },
+      "contentHash": "sha256:604d38ff8868cb47d5f6d6db5016058baca6caf7d55545a46607463d86db0a4b"
+    }
+  }
+}

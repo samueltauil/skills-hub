@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pr-link-issue",
+  "version": "1.0.0",
+  "description": "Append a GitHub issue link and its Linear ticket to the current PR's description. Use when asked to \"link issue to pr\", \"fill in issue and linear in pr\", \"add issue refs to pr\", or when given a GitHub issue URL and asked to attach it to the current PR. Resolves the Linear ticket automatically from the issue's linear-linkback comment.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/pr-link-issue/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "link",
+    "issue"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/pr-link-issue",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a57d4fd679f55110402d72019f53fedc40596505912857d4abd2301811f4bce7"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mkdocs-translations",
+  "version": "1.0.0",
+  "description": "Generate a language translation for a mkdocs documentation stack.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mkdocs-translations/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "mkdocs",
+    "translations"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mkdocs-translations",
+        "branch": "main"
+      },
+      "contentHash": "sha256:181abd3ac4893fc99d1966dd5c4b98ba5fded912d7f0276383289b0592caf403"
+    }
+  }
+}

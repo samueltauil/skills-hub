@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "migrate-to-codex",
+  "version": "1.0.0",
+  "description": "Migrate supported instruction files, skills, agents, and MCP config into Codex project and global files.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/migrate-to-codex/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcp-development",
+    "mcp",
+    "migrate",
+    "codex"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "mcp-development",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/migrate-to-codex",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d71c62b13a0c14684d08a805f883569c76e3ad2c43ef1289e4b8adc7d382d69d"
+    }
+  }
+}

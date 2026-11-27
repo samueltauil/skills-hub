@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react-navigation",
+  "version": "1.0.0",
+  "description": "Provides React Navigation UI patterns for stacks, tabs, drawers etc. Use when building navigation UIs with React Navigation, configuring headers, bottom sheets or handling safe areas and insets.",
+  "author": {
+    "name": "callstack",
+    "url": "https://github.com/callstackincubator"
+  },
+  "homepage": "https://skillshub.space/skills/react-navigation/",
+  "repository": "https://github.com/callstackincubator/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "navigation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/callstackincubator/agent-skills",
+        "path": "skills/react-navigation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9ddc37027dc180f13de48c2db59941ae91b4af9c859271847b84a765b23c07a8"
+    }
+  }
+}

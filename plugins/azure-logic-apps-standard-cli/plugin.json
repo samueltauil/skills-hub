@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-logic-apps-standard-cli",
+  "version": "1.0.0",
+  "description": "Create, inspect, validate, test, run, debug, package, and deploy Azure Logic Apps Standard projects using the Azure CLI logicapp extension. Use for Standard workflow authoring, optional workspaces, connector discovery, identity-based connections, local runtimes, native workflow tests, and approved cloud lifecycle operations. Not for Consumption-only workflow development.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/azure-logic-apps-standard-cli/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "azure",
+    "cli",
+    "test",
+    "deploy",
+    "logic"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/azure-logic-apps-standard-cli",
+        "branch": "main"
+      },
+      "contentHash": "sha256:56f22707bccfc7fb71aef0e6af5042db9d78187d19643cd8708be1219630a0b2"
+    }
+  }
+}

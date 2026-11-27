@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "supabase-rls-policies",
+  "version": "1.0.0",
+  "description": "Write, review, and test Supabase Row Level Security (RLS) policies so that one user cannot read or change another user's rows. Use when creating or changing tables, policies, views, or security definer functions in a Supabase project, when reviewing a migration that touches RLS, or when asked to prove user isolation with pgTAP tests that sign in as two users.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/supabase-rls-policies/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "security",
+    "supabase",
+    "rls",
+    "policies"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/supabase-rls-policies",
+        "branch": "main"
+      },
+      "contentHash": "sha256:af5a87c17b099bea5ec8bcf0f3fc80ee387a7aba48e1000749e5e6d62fe514ea"
+    }
+  }
+}

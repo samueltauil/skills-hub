@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "frameworks-on-cloudflare",
+  "version": "1.0.0",
+  "description": "Build, migrate, and deploy web-framework applications on Cloudflare Workers. Use when a framework project such as Astro, SvelteKit, React Router, TanStack Start, Nuxt, Hono, or a React or Vue SPA targets Cloudflare, or when a framework repository contains Workers deployment configuration.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/frameworks-on-cloudflare/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "deploy",
+    "react",
+    "frameworks",
+    "cloudflare"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/frameworks-on-cloudflare",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5632c2fdacef0f7a4b077c35be358200c53f79f75866101b43a0f196897e6e98"
+    }
+  }
+}

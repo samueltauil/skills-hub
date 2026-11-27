@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "steno-mode",
+  "version": "1.0.0",
+  "description": "Shorthand-first response compression that cuts ~40% of response tokens while preserving technical precision and exact literals. Use when the user says \"steno mode\", \"shorthand mode\", \"compressed responses\", \"token reduction\", \"brief structured output\", or invokes /steno. Supports four compression levels: lite, brief, court, machine. Do not trigger for requests needing polished prose such as onboarding/tutorial content, stakeholder or customer-facing copy, or teaching-focused explanations.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/steno-mode/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "steno",
+    "mode"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/steno-mode",
+        "branch": "main"
+      },
+      "contentHash": "sha256:64a907cd1e57647f650dc83e0accd0cf9003b63facbd57b432804a273b586b98"
+    }
+  }
+}

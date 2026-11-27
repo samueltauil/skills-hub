@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "roundup-setup",
+  "version": "1.0.0",
+  "description": "Interactive onboarding that learns your communication style, audiences, and data sources to configure personalized status briefings. Paste in examples of updates you already write, answer a few questions, and roundup calibrates itself to your workflow.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/roundup-setup/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "data-analytics",
+    "data",
+    "roundup",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/roundup-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b798270d335a00979d7800af318bb9ef40c97651e92b33059d4e2ee09f31c43b"
+    }
+  }
+}

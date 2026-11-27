@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "test-value-evidence",
+  "version": "1.0.0",
+  "description": "Assess tests for an identified code or test change, feature, PR or commit. USE FOR: review changed behavior or regression tests, prove pre-fix/missing behavior is detected, revision-bound red-green evidence. Polyglot. DO NOT USE without an identified change: hypothetical mutations or general suite blind spots (test-gap-analysis). Also exclude per-test readiness/A-F grades (grade-tests), coverage (coverage-analysis), new suites (code-testing), or mutation engines.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/test-value-evidence/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "test",
+    "value",
+    "evidence"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/test-value-evidence",
+        "branch": "main"
+      },
+      "contentHash": "sha256:40d1aae6cc9b06c821dd91746d1fd491b84fe928674d7ecdbbf08a4a9c4d74fd"
+    }
+  }
+}

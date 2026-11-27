@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-solution-event-driven-decoupling",
+  "version": "1.0.0",
+  "description": "Decouples tightly coupled services or monoliths with Google Cloud Pub/Sub so services scale and fail independently, using Go reference implementations adaptable to Java, Python, Node.js, and other stacks. Use when breaking apart synchronous chains, defining transaction boundaries, bulkheads, and Transactional Outbox or post-commit publishing; sizing Pub/Sub topics, subscription filters, dead-letter policies, backoff, 10 MB Cloud Storage claim-check, or database-bounded flow control; building idempotent consumers with ack/nack/quarantine handling, SIGTERM draining, GKE HPA, Cloud Run push, Eventarc, or Cloud Run functions (--retry); or instrumenting OpenTelemetry W3C Trace Context across HTTP, gRPC, and Pub/Sub with Cloud Trace OTLP export and Cloud Logging correlation. Don't use for querying existing traces (use cloud-trace-querying), Kafka or non-Google brokers, or orchestration engines such as Workflows or Managed Service for Apache Airflow.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-solution-event-driven-decoupling/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "python",
+    "data",
+    "google",
+    "cloud",
+    "solution"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-solution-event-driven-decoupling",
+        "branch": "main"
+      },
+      "contentHash": "sha256:445de7ed491cf5785dbd8127da245ce4be9e7cb5b08401b2954274e004ca494f"
+    }
+  }
+}

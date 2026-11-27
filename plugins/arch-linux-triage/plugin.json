@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "arch-linux-triage",
+  "version": "1.0.0",
+  "description": "Triage and resolve Arch Linux issues with pacman, systemd, and rolling-release best practices.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/arch-linux-triage/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "arch",
+    "linux",
+    "triage"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/arch-linux-triage",
+        "branch": "main"
+      },
+      "contentHash": "sha256:86bc7b61b7cc122d6f62deb5420da7b85ff60f4b1c57091a0df04273ff8c5ae8"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "finnish-humanizer",
+  "version": "1.0.0",
+  "description": "Detect and remove AI-generated markers from Finnish text, making it sound like a native Finnish speaker wrote it. Use when asked to \"humanize\", \"naturalize\", or \"remove AI feel\" from Finnish text, or when editing .md/.txt files containing Finnish content. Identifies 26 patterns (12 Finnish-specific + 14 universal) and 4 style markers.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/finnish-humanizer/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "finnish",
+    "humanizer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/finnish-humanizer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0fc2e165a456de09f2bee64b094790436eaf2749d769bbfa8185b17ca6a8565d"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "github-actions-efficiency",
+  "version": "1.0.0",
+  "description": "Audit GitHub Actions workflow efficiency and recommend fixes to reduce CI minutes and costs.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/github-actions-efficiency/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "github",
+    "actions",
+    "efficiency"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/github-actions-efficiency",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1f8c50c4c21a3fd2be8446b846e4b776766b072a48e6af40810e3759aafd9619"
+    }
+  }
+}

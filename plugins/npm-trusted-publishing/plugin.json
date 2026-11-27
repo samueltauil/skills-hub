@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "npm-trusted-publishing",
+  "version": "1.0.0",
+  "description": "Set up or fix npm trusted publishing (OIDC) in GitHub Actions and remove NPM_TOKEN. Use for ENEEDAUTH, E404 on PUT, E422 repository.url, or migrating off 2FA-bypass tokens before January 2027.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/npm-trusted-publishing/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "npm",
+    "trusted",
+    "publishing"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/npm-trusted-publishing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0ff3818829e5b731df74037b853c287ce9d8751422b5859679fc00454d179ad5"
+    }
+  }
+}

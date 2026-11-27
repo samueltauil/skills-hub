@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nano-banana-pro-openrouter",
+  "version": "1.0.0",
+  "description": "Generate or edit images via OpenRouter with the Gemini 3 Pro Image model. Use for prompt-only image generation, image edits, and multi-image compositing; supports 1K/2K/4K output.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/nano-banana-pro-openrouter/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "nano",
+    "banana",
+    "pro",
+    "openrouter"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/nano-banana-pro-openrouter",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3a5935f9252b3dac16a2fa48263d57a32a1f46973f37bedbf68772e82e878d4d"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "firebase-hosting-basics",
+  "version": "1.0.0",
+  "description": "Deploys and configures classic Firebase Hosting for static websites, single-page apps (SPAs), and microservices. Use when deploying static sites/SPAs, setting up custom domains, configuring firebase.json hosting settings (redirects, rewrites, headers, multi-site), or managing preview channels. Don't use for Firebase App Hosting (Next.js/SSR), Auth, Firestore queries/rules, Data Connect, or Crashlytics.",
+  "author": {
+    "name": "firebase",
+    "url": "https://github.com/firebase"
+  },
+  "homepage": "https://skillshub.space/skills/firebase-hosting-basics/",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "deploy",
+    "data",
+    "firebase",
+    "hosting",
+    "basics"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/firebase/agent-skills",
+        "path": "skills/firebase-hosting-basics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:276fd94659f669979025a74d0df4618999d4bd94fa4e1619d2f93f3d285fe265"
+    }
+  }
+}

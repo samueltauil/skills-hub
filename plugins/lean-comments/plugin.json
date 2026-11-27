@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "lean-comments",
+  "version": "1.0.0",
+  "description": "Audits, writes, and refines maintained first-party source-code comments and declaration-level documentation across languages. Use when adding, editing, reviewing, cleaning up, or auditing comments, doc comments, docstrings, TODO, FIXME, NOTE, suppressions, or other source commentary, including while modifying code and deciding whether a comment is warranted at all. Defaults to no comment unless it preserves meaningful, non-obvious information that cannot reasonably be recovered from the code or nearby repository context.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/lean-comments/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "lean",
+    "comments"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/lean-comments",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cdff6463d77986afce129f58d80785f3d23f887c8976b9ba6a31715a2cabb2db"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+# Feature: shape normalisation (request path).
+#
+# WHY THIS IS ITS OWN FEATURE, AND WHY IT IS EARLY
+#
+# More than one feature needs the user's prompt, and each one reads it from a
+# JSONPath that assumes a single wire shape:
+#
+#   modelArmor     UserPromptSource  (priority 20)
+#   semanticCache  UserPromptSource  (priority 30)
+#
+# Point LLM_URI_MATCH at two shapes and those JSONPaths silently stop
+# resolving for the shape they were not written for. Model Armor is
+# continueOnError=false by design -- it fails CLOSED -- so the result is not a
+# missed scan, it is an HTTP 500 on every request of the other shape.
+# Verified: widening LLM_URI_MATCH alone took a working OpenAI-shape agent to
+# a hard 500, with the trace showing modelarmor-SUP-sanitize faulting and the
+# cache policies never reached. See references/gotchas.md, Runtime.
+#
+# So the prompt has to be normalised ONCE, before anything consumes it. This
+# feature sits at priority 15: after identity (10), before Model Armor (20)
+# and the cache (30). Both of those then read agw.user_prompt and stop caring
+# about the wire shape.
+#
+# The response-path equivalent -- agw.total_tokens -- lives in
+# feature-token-metering.yaml, because it can only run once a response exists.
+
+gateway: apigee
+schemaVersion: 1.0.0
+name: normalize
+uid: normalize
+type: feature
+priority: 15
+description: >-
+  Extracts the user prompt into agw.user_prompt regardless of wire shape, so
+  Model Armor and the semantic cache can be shape-agnostic.
+
+parameters:
+  - name: LLM_URI_MATCH
+    displayName: LLM call match condition
+    default: '((request.uri Like "*generateContent*") or (request.uri Like "*chat/completions*"))'
+
+resources:
+  - name: extract-prompt.js
+    type: jsc
+    content: |
+      // Normalises the user prompt across wire shapes into agw.user_prompt.
+      // Request-path counterpart to agw.total_tokens in the metering feature.
+      // Same rationale: one JSONPath cannot select from two body layouts, so
+      // the choice has to happen in code.
+      //
+      // continueOnError is true on the policy below. A failure here must
+      // leave agw.user_prompt unset rather than break the turn -- consumers
+      // then behave as they would for an unparseable body.
+      function lastText(body) {
+        try {
+          var j = JSON.parse(body);
+          // Gemini: contents[-1].parts[-1].text
+          if (j && j.contents && j.contents.length) {
+            var c = j.contents[j.contents.length - 1];
+            if (c && c.parts && c.parts.length) {
+              var p = c.parts[c.parts.length - 1];
+              if (p && p.text) return String(p.text);
+            }
+          }
+          // OpenAI: messages[-1].content, which is a string in the simple
+          // case and an array of {type,text} blocks in the multimodal one.
+          if (j && j.messages && j.messages.length) {
+            var m = j.messages[j.messages.length - 1];
+            if (m && typeof m.content === "string") return m.content;
+            if (m && m.content && m.content.length) {
+              var out = "";
+              for (var i = 0; i < m.content.length; i++) {
+                if (m.content[i] && m.content[i].text) out += m.content[i].text;
+              }
+              if (out) return out;
+            }
+          }
+        } catch (e) {}
+        return "";
+      }
+      var body = context.getVariable("request.content");
+      var prompt = body ? lastText(body) : "";
+      if (prompt) { context.setVariable("agw.user_prompt", prompt); }
+      // Always set, so a trace distinguishes "no prompt found" from "policy
+      // never ran".
+      context.setVariable("agw.prompt_len", prompt ? String(prompt.length) : "0");
+
+policies:
+  - name: JS-extract-prompt
+    type: Javascript
+    content:
+      Javascript:
+        metadata:
+          name: JS-extract-prompt
+          continueOnError: true
+          enabled: true
+          timeLimit: "200"
+        ResourceURL: jsc://extract-prompt.js
+
+defaultEndpoint:
+  name: default
+  flows:
+    - name: PreFlow
+      mode: Request
+      steps:
+        - name: JS-extract-prompt
+          condition: "{LLM_URI_MATCH}"

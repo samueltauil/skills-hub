@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "test-anti-patterns",
+  "version": "1.0.0",
+  "description": "Audit a test file or suite; produce a severity-ranked diagnostic report. ALWAYS USE for tests that verify nothing, missing/tautological assertions, swallowed/broad exceptions, flaky/order-dependent tests, duplication, or magic values. Polyglot. DO NOT USE for direct edits: writing-mstest-tests owns supplied MSTest assertions/attributes/lifecycle; code-testing owns new tests. Exclude running tests, migration, assertion metrics (assertion-quality), raw .NET coverage collection (run-tests), non-.NET coverage collection/analysis (native tooling), project-wide .NET coverage/CRAP (coverage-analysis), named-target .NET CRAP (crap-score), behavioral/pseudo-mutation gaps (test-gap-analysis), test-mix/ happy-vs-error classification and trait distributions (test-tagging), or the testsmells.org catalog (test-smell-detection).",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/test-anti-patterns/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "anti",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/test-anti-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cdcde5ebfce800168233e155b9f59bb7cd3e5ae97801051b28ba54630c972d5c"
+    }
+  }
+}

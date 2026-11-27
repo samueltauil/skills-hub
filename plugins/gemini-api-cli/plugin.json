@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gemini-api-cli",
+  "version": "1.0.0",
+  "description": "Call the Gemini API from the shell with gemini-api. Use for media generation (images, TTS, music, video), file and YouTube analysis, audio/video transcription, Deep Research, and sandboxed agents.",
+  "author": {
+    "name": "google-gemini",
+    "url": "https://github.com/google-gemini"
+  },
+  "homepage": "https://skillshub.space/skills/gemini-api-cli/",
+  "repository": "https://github.com/google-gemini/gemini-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "gemini"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google-gemini/gemini-skills",
+        "path": "skills/gemini-api-cli",
+        "branch": "main"
+      },
+      "contentHash": "sha256:20b7e64a40e98eaeed426f482b9a4f326070bbb19bf57b77c517fb71a82df67d"
+    }
+  }
+}

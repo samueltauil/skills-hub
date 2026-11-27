@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dependabot",
+  "version": "1.0.0",
+  "description": "Comprehensive guide for configuring and managing GitHub Dependabot. Use this skill when users ask about creating or optimizing dependabot.yml files, managing Dependabot pull requests, configuring dependency update strategies, setting up grouped updates, monorepo patterns, multi-ecosystem groups, security update configuration, auto-triage rules, or any GitHub Advanced Security (GHAS) supply chain security topic related to Dependabot. For pre-commit dependency vulnerability scanning in AI coding agents via the GitHub MCP Server, this skill references the Advanced Security plugin (`advanced-security@copilot-plugins`). Use this skill when an agent needs to scan dependencies for known vulnerabilities before committing.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/dependabot/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "mcp",
+    "security",
+    "dependabot"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dependabot",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5a6a6c3d0fd6d4b4b9706ab3098abc0a949781486fed9a1eefca27055b0e1ed7"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react-container-presentation-component",
+  "version": "1.0.0",
+  "description": "Create a React component using the Container/Presentation pattern in src/components by asking for the component name and type (ui or features), then scaffold files that follow this repository's TypeScript, Storybook, and SCSS conventions. Use when the user explicitly asks for a Container/Presentation-based component or runs /react-container-presentation-component.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/react-container-presentation-component/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "typescript",
+    "react",
+    "container",
+    "presentation",
+    "component"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/react-container-presentation-component",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cb3f9c160996a0268116671a7aa10875f13c9effa1ce43858f6cb6e540781905"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-databases-onboarding",
+  "version": "1.0.0",
+  "description": "Guides users through discovering their database requirements, recommends a Google Cloud database based on a recommendation matrix, and assists in database creation. Use when a user asks 'What database service should I use?', 'Help me pick a database', or when a user wants to create a new database on Google Cloud. Don't use for general Google Cloud maintenance, managing existing databases, or database migrations.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-databases-onboarding/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "data",
+    "cloud",
+    "databases",
+    "onboarding"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-databases-onboarding",
+        "branch": "main"
+      },
+      "contentHash": "sha256:614c706c3b51004b933a4d56f89b45b74598ff55bd864f4a3a9d22518f4bc173"
+    }
+  }
+}

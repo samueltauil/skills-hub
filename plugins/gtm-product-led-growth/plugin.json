@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gtm-product-led-growth",
+  "version": "1.0.0",
+  "description": "Build self-serve acquisition and expansion motions. Use when deciding PLG vs sales-led, optimizing activation, driving freemium conversion, building growth equations, or recognizing when product complexity demands human touch. Includes the parallel test where sales-led won 10x on revenue.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/gtm-product-led-growth/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "gtm",
+    "product",
+    "led",
+    "growth"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/gtm-product-led-growth",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f5f2fe45531bdfe69b78e7fbce46b076e9ee990b08ff432531e2fe190d1ae6df"
+    }
+  }
+}

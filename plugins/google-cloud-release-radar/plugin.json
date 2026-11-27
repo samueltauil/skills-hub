@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-release-radar",
+  "version": "1.0.0",
+  "description": "Tracks, queries, and summarizes official Google Cloud release notes across 360+ products and curated product bundles using a customizable watchlist. Use when the user asks what shipped recently in Google Cloud, wants to check release notes, deprecations, security bulletins, or breaking changes for specific services or curated bundles, or wants to set up, add, remove, or view products on their release watchlist. Don't use when deploying infrastructure, troubleshooting runtime errors, or writing product release notes for internal codebases.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-release-radar/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "security",
+    "google",
+    "cloud",
+    "release"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-release-radar",
+        "branch": "main"
+      },
+      "contentHash": "sha256:38cce71fd1c67995596ff7db4519ea0d3a881699c6eb78ce03a17f7489c3e388"
+    }
+  }
+}

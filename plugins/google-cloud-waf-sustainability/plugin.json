@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-waf-sustainability",
+  "version": "1.0.0",
+  "description": "Provides recommendations for environmental sustainability, carbon footprint reduction, and energy efficiency based on the Sustainability pillar of the Google Cloud Well-Architected Framework (WAF). Use when the user asks to assess, design, or optimize Google Cloud workloads for sustainability—including the shared responsibility model, selecting low-carbon regions (CFE%), reducing resource and AI/ML energy waste, designing efficient software and storage lifecycles, or measuring and tracking emissions using Google Cloud Carbon Footprint. Don't use for financial cost reduction (use google-cloud-waf-cost-optimization), latency and throughput tuning (use google-cloud-waf-performance-optimization), or high availability and disaster recovery (use google-cloud-waf-reliability).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-waf-sustainability/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "google",
+    "cloud",
+    "waf",
+    "sustainability"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-waf-sustainability",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bf7c7eaebc934881e5c50041f0cdec54779ad41fa9e2e41f83dd0e4bc6d3701c"
+    }
+  }
+}

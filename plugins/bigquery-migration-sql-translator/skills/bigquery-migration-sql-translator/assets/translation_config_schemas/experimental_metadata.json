@@ -1,0 +1,33 @@
+{
+  "type" : "object",
+  "properties" : {
+    "nameAlias" : {
+      "type" : "object",
+      "properties" : {
+        "stripPrefix" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "stripRegex" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "stripSuffix" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "type" : {
+      "type" : "string",
+      "required" : true,
+      "pattern" : "experimental_metadata"
+    }
+  }
+}

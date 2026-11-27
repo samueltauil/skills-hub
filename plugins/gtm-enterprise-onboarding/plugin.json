@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gtm-enterprise-onboarding",
+  "version": "1.0.0",
+  "description": "Four-phase framework for onboarding enterprise customers from contract to value realization. Use when implementing new enterprise customers, preventing churn during onboarding, or solving the adoption cliff that kills deals post-go-live. Includes the Week 4 ghosting pattern.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/gtm-enterprise-onboarding/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "cli",
+    "gtm",
+    "enterprise",
+    "onboarding"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/gtm-enterprise-onboarding",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7b79ad5353df7f5d7f7ea63942c01c24499b88ceb57d214a389bda93e1e54aab"
+    }
+  }
+}

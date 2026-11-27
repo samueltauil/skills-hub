@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "power-bi-model-design-review",
+  "version": "1.0.0",
+  "description": "Comprehensive Power BI data model design review prompt for evaluating model architecture, relationships, and optimization opportunities.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/power-bi-model-design-review/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "data",
+    "power",
+    "model",
+    "review"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/power-bi-model-design-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:929ff8eaec81efcbc90b00c624ece0e947958eef688ceb8f3cbac06096f10ddb"
+    }
+  }
+}

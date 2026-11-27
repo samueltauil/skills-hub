@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-agents-cli-onboarding",
+  "version": "1.0.0",
+  "description": "Onboarding entrypoint for agents-cli on Google Cloud (Gemini Enterprise Agent Platform). It should be used when the user wants to \"create a new agent\", \"develop an agent\", \"build an agent using ADK\", \"build an agent using LangChain, LangGraph, or the Claude Agent SDK\", \"run the agent locally\", \"debug agent code\", \"test an agent\", \"evaluate an agent\", \"deploy an agent\", \"publish an agent\", \"monitor an agent\", or needs the end-to-end production agent development lifecycle.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-agents-cli-onboarding/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "cli",
+    "test",
+    "deploy",
+    "google",
+    "agents"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-agents-cli-onboarding",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e262bab3e5fe93f7417a1ee82df72c099cdb57a6f51d1a26bc6552644dff37ef"
+    }
+  }
+}

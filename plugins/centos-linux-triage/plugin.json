@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "centos-linux-triage",
+  "version": "1.0.0",
+  "description": "Triage and resolve CentOS issues using RHEL-compatible tooling, SELinux-aware practices, and firewalld.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/centos-linux-triage/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "centos",
+    "linux",
+    "triage"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/centos-linux-triage",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1e0abd0812f065ffa02a673f591bf6659c945a1c2e545c10e185aa91a1f9fdc8"
+    }
+  }
+}

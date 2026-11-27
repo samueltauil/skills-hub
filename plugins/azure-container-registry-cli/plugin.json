@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-container-registry-cli",
+  "version": "1.0.0",
+  "description": "Manage Azure Container Registry via the az acr CLI including registries, images, cloud builds, ACR Tasks, authentication, tokens, geo-replication, and networking. Use when working with ACR, az acr commands, pushing/importing/purging container images in Azure, or when the user mentions Azure Container Registry.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/azure-container-registry-cli/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "azure",
+    "cli",
+    "container",
+    "registry"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/azure-container-registry-cli",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ec3ea809dec596aa23d8b1ca1c5ad7400a2cb80d18307929b59a4d66ba3b9001"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+schema: v1
+id: docker-sandboxes-network-credentials
+version: 0.1.1
+title: 'Docker Sandboxes: Network Policy & Credentials'
+description: Configure sandbox network egress policy and provision service/registry credentials safely through the proxy-injection model.
+owns:
+  - sbx-policy
+  - sbx-secret
+  - sandbox-network-egress-precedence
+  - sandbox-registry-credential-scope
+use_when:
+  - The user wants to allow, deny, or inspect which hosts a sandbox or all sandboxes can reach.
+  - The user wants to give an agent an API key, OAuth token, or other service credential without exposing the raw value inside the sandbox.
+  - The user wants to pull a private template image or kit from an authenticated registry.
+  - The user is debugging a blocked network request or a credential that is not being injected.
+do_not_use_when:
+  - The task is docker agent run --sandbox or its docker agent sandbox allowlist.
+  - The task is creating, reattaching to, or removing a sandbox itself.
+  - The task is authoring the sbxenv.yaml file format that declares secrets/registries/bindings.
+  - The task is authoring a kit spec.yaml's own credentials or permissions.network schema.
+delegates_to:
+  - docker-agent-run
+  - docker-sandboxes-lifecycle
+  - docker-docs
+  - docker-sandboxes-kits

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "huggingface-spaces",
+  "version": "1.0.0",
+  "description": "Build, deploy, and maintain applications on Hugging Face Spaces — Gradio / Docker / Static SDKs, ZeroGPU and dedicated hardware, model loading, debugging, buckets, inference providers, community grants. Use whenever the user asks to create or host an app on Hugging Face, port code onto ZeroGPU, fix a Space that won't build or run, or otherwise work with `hf spaces …`, `@spaces.GPU`, Space README frontmatter, or the `spaces` Python package.",
+  "author": {
+    "name": "huggingface",
+    "url": "https://github.com/huggingface"
+  },
+  "homepage": "https://skillshub.space/skills/huggingface-spaces/",
+  "repository": "https://github.com/huggingface/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "deploy",
+    "doc",
+    "python",
+    "huggingface",
+    "spaces"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/huggingface/skills",
+        "path": "skills/huggingface-spaces",
+        "branch": "main"
+      },
+      "contentHash": "sha256:42666da4be4f6ed2d50fe85a707fe75e9ae184f32e52413050de8fe014a5a902"
+    }
+  }
+}

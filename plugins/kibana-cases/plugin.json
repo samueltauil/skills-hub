@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kibana-cases",
+  "version": "1.0.0",
+  "description": "Manage investigation and incident cases across Elastic Security, Observability, and Stack Management — create, search, update, and enrich cases with comments, alerts, events, and observables (IOCs). Use when tracking incidents, correlating alerts to a case, adding investigation notes, updating status or severity, or managing triage output.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/kibana-cases/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "security",
+    "kibana",
+    "cases"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/kibana/kibana-cases",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ee18f544967b023d45d0ce7dcdfb07237a08a6ddf7db2b515be54c76e32d354c"
+    }
+  }
+}

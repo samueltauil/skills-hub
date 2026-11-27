@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-quarkus-project",
+  "version": "1.0.0",
+  "description": "Create a new Quarkus project (Maven or Gradle) with the Quarkus CLI, code.quarkus.io API or Maven plugin, choose extensions, and run it in dev mode. Use when asked to scaffold, bootstrap or start a Quarkus application or REST API.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-quarkus-project/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "create",
+    "quarkus",
+    "project"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-quarkus-project",
+        "branch": "main"
+      },
+      "contentHash": "sha256:967817a6f010069e6c0085b321ea0d4cc64fec6cd00c9b9babbbea2c20c9d525"
+    }
+  }
+}

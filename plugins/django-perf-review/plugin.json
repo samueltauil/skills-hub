@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "django-perf-review",
+  "version": "1.0.0",
+  "description": "Django performance code review. Use when asked to \"review Django performance\", \"find N+1 queries\", \"optimize Django\", \"check queryset performance\", \"database performance\", \"Django ORM issues\", or audit Django code for performance problems.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/django-perf-review/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "data",
+    "django",
+    "perf",
+    "review"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/django-perf-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b820f44e336e2539f19869c0c8980c45d2eb4281a97abdc52ae257cbddd6e793"
+    }
+  }
+}

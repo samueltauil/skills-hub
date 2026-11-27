@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "assistant-mcp",
+  "version": "1.0.0",
+  "description": "Connect AI coding agents (Claude Code, Cursor, VS Code, OpenAI Codex) to Grafana Cloud via the `mcp-grafana` Model Context Protocol server. Installs the server with `go install`, generates a Grafana service-account token, wires `~/.claude/settings.json` or `~/.cursor/mcp.json` with the `command` + `env` block, runs `--disable-write` for safer read-only sessions, switches to SSE transport for team-shared / VS Code setups, and verifies with `/mcp` + a `list_datasources` round-trip. Use when connecting Claude Code to Grafana, setting up MCP for Grafana, configuring the Grafana MCP server, using Grafana tools in Cursor/VS Code, querying Grafana from an AI agent, sharing the MCP server across a team — even when the user says \"give my agent Grafana access\", \"let Claude see my metrics\", or \"Cursor + Grafana\" without saying \"MCP\".",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/assistant-mcp/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "mcp",
+    "data",
+    "assistant"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/assistant-mcp",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7748e804435835ce467539a3946f82a1fca796fd4a1f44018e4b9979287daadc"
+    }
+  }
+}

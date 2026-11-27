@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-solution-rag-enterprise-search-gke-sqldb",
+  "version": "1.0.0",
+  "description": "Discovers requirements, and generates architectural, design, and deployment guidance for a retrieval-augmented generation (RAG)-capable enterprise search system in Google Cloud. Use when users need a vector-enabled SQL database as the store and index for the embedding vectors, an open model and open-source inferencing framework, and Kubernetes containers to host all the application components. DON'T use this skill for fully-managed RAG, or SaaS search services, or when a non-SQL vector database is required.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-solution-rag-enterprise-search-gke-sqldb/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "deploy",
+    "design",
+    "data",
+    "google",
+    "cloud"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-solution-rag-enterprise-search-gke-sqldb",
+        "branch": "main"
+      },
+      "contentHash": "sha256:11f20a03ccb61000f907a3cf3334945268f23c19bc04206f76a80537e55ec0a2"
+    }
+  }
+}

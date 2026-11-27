@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-supply-chain",
+  "version": "1.0.0",
+  "description": "Verify supply chain integrity for AI agent plugins, tools, and dependencies. Use this skill when: - Generating SHA-256 integrity manifests for agent plugins or tool packages - Verifying that installed plugins match their published manifests - Detecting tampered, modified, or untracked files in agent tool directories - Auditing dependency pinning and version policies for agent components - Building provenance chains for agent plugin promotion (dev → staging → production) - Any request like \"verify plugin integrity\", \"generate manifest\", \"check supply chain\", or \"sign this plugin\"",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/agent-supply-chain/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "agent",
+    "supply",
+    "chain"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/agent-supply-chain",
+        "branch": "main"
+      },
+      "contentHash": "sha256:028ef8f7426f6399a6c73646c2f8df222e9dbac669f3e5f612f8e959111c7d59"
+    }
+  }
+}

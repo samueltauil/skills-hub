@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ai-prompt-engineering-safety-review",
+  "version": "1.0.0",
+  "description": "Comprehensive AI prompt engineering safety review and improvement prompt. Analyzes prompts for safety, bias, security vulnerabilities, and effectiveness while providing detailed improvement recommendations with extensive frameworks, testing methodologies, and educational content.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/ai-prompt-engineering-safety-review/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "security",
+    "prompt",
+    "engineering",
+    "safety"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/ai-prompt-engineering-safety-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6a539eff4f8c8876745e383452bd5c164bb255b7d5df035579a5dfda20ec135f"
+    }
+  }
+}

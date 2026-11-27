@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "openapi-to-application-java-spring-boot",
+  "version": "1.0.0",
+  "description": "Generate a Spring Boot (Java) application from an OpenAPI 3 specification using the spec-first approach: openapi-generator (Maven or Gradle) produces API interfaces and DTOs, you implement controllers, services, persistence, security and tests. Use when asked to build, scaffold or implement a Spring Boot API from an OpenAPI/Swagger file.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/openapi-to-application-java-spring-boot/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "security",
+    "openapi",
+    "application"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/openapi-to-application-java-spring-boot",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c278640099e21d44f19f3d58ac7499a4b3d68da993fdedc5ad6468622823fd50"
+    }
+  }
+}

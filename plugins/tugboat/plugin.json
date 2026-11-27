@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tugboat",
+  "version": "1.0.0",
+  "description": "Anxiety-aware, evidence-driven collaboration for stalled or high-stakes work when a user says uncertainty, repeated setbacks, or lack of visible progress is causing significant anxiety or distress. Use immediately when explicitly invoked; when this fit is only inferred from the user's own account, ask permission before applying it. Preserve the user's ideal and turn grounded perspective-taking into persistent, bounded problem solving. Do not use to diagnose, provide therapy, manufacture certainty, or lower goals for reassurance.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/tugboat/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "tugboat"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/tugboat",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0efd00ac3704ccd589e644769fc660a6c4e132eeb4dda91ffec4246978fd1c97"
+    }
+  }
+}

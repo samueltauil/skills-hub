@@ -1,0 +1,347 @@
+# Feature: per-model LLM token metering.
+#
+# Runs in the Response PreFlow, because both request.content (persisted) and
+# response.content are available there and response.content is the documented
+# source for `usage`.
+#
+# Model normalisation matters: with an OpenAI-compatible endpoint the model is
+# an alias in the REQUEST body ($.model, e.g. "gemini-flash") while the
+# RESOLVED name is in the RESPONSE body ("google/gemini-4-argon"). Exact-match
+# step conditions on the raw string therefore fail on the response path. The
+# JS below collapses both into a stable bucket and the per-model counters key
+# on that bucket.
+#
+# One LLMTokenQuota per model, each with its own SharedName -- distinct
+# SharedName is what makes the counters independent.
+
+gateway: apigee
+schemaVersion: 1.0.0
+name: metering
+uid: metering
+type: feature
+priority: 50
+description: >-
+  Meters LLM token usage per model bucket, keyed on the caller identity.
+  Count-only by default: it observes and meters, it does not gate.
+
+# No TOKEN_USAGE_JSONPATH parameter, deliberately. The token count is
+# normalised in JS below and read from agw.total_tokens instead. A JSONPath
+# can only SELECT a field that already exists: it cannot choose between wire
+# shapes, and it cannot compute. Anthropic's Messages API reports
+# input_tokens and output_tokens with no total, so no single JSONPath can
+# express it at all. Keeping the parameter would leave a knob that appears to
+# select the source and no longer does -- see the COUNT_ONLY note below for
+# why that shape of knob was removed rather than reworded.
+
+parameters:
+  - name: PRO_TOKEN_LIMIT
+    default: "10000"
+  - name: FLASH_TOKEN_LIMIT
+    default: "40000"
+  # Catch-all. Every model that is not Gemini pro/argon or flash/hydrogen lands
+  # in the "other" bucket -- gpt-oss, Llama, Qwen, DeepSeek, anything reached
+  # through model
+  # routing later. Without a quota bound to it those calls consume NO quota
+  # at all and nothing reports the gap. Measured with gpt-oss-120b-maas: the
+  # token count extracted correctly, then zero ratelimit references in the
+  # whole transaction. That is worse than a resolution failure, which at
+  # least surfaces FailedToResolveTokenUsageCount in a trace.
+  # See references/gotchas.md, Runtime.
+  - name: OTHER_TOKEN_LIMIT
+    default: "40000"
+  - name: QUOTA_INTERVAL
+    default: "1"
+  - name: QUOTA_TIME_UNIT
+    default: hour
+  # These quotas ship CountOnly=true. That is a DEFAULT, not a limitation --
+  # see the correction below.
+  #
+  # What is true, and was verified live: a single quota with CountOnly=false in
+  # the RESPONSE flow cannot deny, and breaks counting while failing to gate.
+  #
+  #   1. It cannot deny. These policies run in PostFlow/Response, because the
+  #      token count only exists once the model has answered. By then the
+  #      response is already on the wire, so there is nothing left to withhold:
+  #      Apigee aborts and emits 429 while the caller still receives the full
+  #      answer with finish_reason STOP.
+  #   2. It breaks counting. A blocking quota refuses to count the request that
+  #      violated it, so the counter freezes at the limit for the rest of the
+  #      window. You lose the metering that was working and gain no gating.
+  #
+  # CORRECTION. An earlier version of this comment concluded from the above
+  # that enforcement "cannot work" here. That is wrong, and the conclusion did
+  # not follow: it is a property of putting ONE policy in the response flow,
+  # not of the policy type. LLMTokenQuota has a first-class split for exactly
+  # this, documented under "Configuring shared quota counters":
+  #
+  #   request flow   LLMTokenQuota  <EnforceOnly>true</EnforceOnly>
+  #   response flow  LLMTokenQuota  <CountOnly>true</CountOnly>
+  #
+  # Both carry the SAME <SharedName>, so the request-flow policy checks the
+  # counter the response-flow policy increments. Exactly one of CountOnly and
+  # EnforceOnly may be set on a given policy. The enforce policy carries no
+  # <LLMTokenUsageSource> -- it only reads the counter -- but it DOES still
+  # need <LLMModelSource>, which is not optional: omitting it substitutes a
+  # body JSONPath that cannot resolve a Gemini-native model and refuses every
+  # turn. See feature-token-enforce.yaml and references/gotchas.md.
+  #
+  # The product's own sample for this pattern is a <RouteRule name="noroute"/>
+  # proxy, i.e. our shape, so a no-target processor is not an obstacle.
+  #
+  # Enforcement is therefore one request LATE by construction, and that is
+  # inherent rather than a defect: the turn that crosses the limit still
+  # completes, and the NEXT request for that caller is refused. A token budget
+  # cannot be enforced before the tokens are known.
+  #
+  # Shipped as feature-token-enforce.yaml, and verified live: an over-budget
+  # caller was refused with 429 on ext-proc gateway traffic, the model was
+  # never called, used.count 1086 against allowed.count 500. This file owns
+  # the CountOnly half only and runs unchanged when enforcement is added.
+
+resources:
+  - name: extract-model.js
+    type: jsc
+    content: |
+      // Reads a field out of a JSON body variable. Returns "" on anything
+      // unexpected -- this runs continueOnError="true" and must never throw.
+      function readField(v, field) {
+        try {
+          var b = context.getVariable(v);
+          if (b) { var j = JSON.parse(b); if (j && j[field]) return String(j[field]); }
+        } catch (e) {}
+        return "";
+      }
+      // Gemini-native puts the model in the URI, not the body:
+      //   .../publishers/google/models/gemini-4-hydrogen:generateContent
+      function readModelFromUri() {
+        try {
+          var u = context.getVariable("request.uri");
+          if (u) { var m = String(u).match(/\/models\/([^:\/?]+)/); if (m) return m[1]; }
+        } catch (e) {}
+        return "";
+      }
+      // Order matters. OpenAI-compatible carries $.model in the request (an
+      // alias) and in the response (resolved). Gemini-native carries NO model
+      // in the request at all and "modelVersion" in the response, so the body
+      // lookups below must not stop at the OpenAI names.
+      var raw = readField("request.content", "model")
+             || readField("response.content", "modelVersion")
+             || readField("response.content", "model")
+             || readModelFromUri()
+             || "unknown";
+      var ml = raw.toLowerCase(), bucket = "other";
+      if (ml.indexOf("pro") >= 0 || ml.indexOf("argon") >= 0) bucket = "gemini-pro";
+      else if (ml.indexOf("flash") >= 0 || ml.indexOf("hydrogen") >= 0) bucket = "gemini-flash";
+      context.setVariable("agw.model_name", bucket);
+      context.setVariable("agw.requested_model", raw);
+
+      // ---- token count, normalised across wire shapes --------------------
+      // This file already normalises the MODEL across shapes; the count is
+      // the other half, and doing it here is what lets ONE proxy meter more
+      // than one shape. readField above is top-level only; the Gemini count
+      // is nested, so this needs a path walker.
+      function readPath(v, path) {
+        try {
+          var b = context.getVariable(v);
+          if (!b) return "";
+          var j = JSON.parse(b);
+          for (var i = 0; i < path.length; i++) {
+            if (j === null || typeof j !== "object") return "";
+            j = j[path[i]];
+            if (j === undefined || j === null) return "";
+          }
+          return String(j);
+        } catch (e) {}
+        return "";
+      }
+
+      var tot = "", src = "";
+      tot = readPath("response.content", ["usageMetadata", "totalTokenCount"]);
+      if (tot) { src = "gemini"; }
+      if (!tot) {
+        tot = readPath("response.content", ["usage", "total_tokens"]);
+        if (tot) { src = "openai"; }
+      }
+      if (!tot) {
+        // Shapes reporting no single total -- Anthropic's Messages API is
+        // the usual example, carrying input_tokens and output_tokens
+        // separately. Summing is precisely what a JSONPath cannot express.
+        // NOT VERIFIED: Claude is not enabled in the test project, so this
+        // branch is written from the documented shape and is untested.
+        var pin = readPath("response.content", ["usage", "input_tokens"]);
+        var out = readPath("response.content", ["usage", "output_tokens"]);
+        if (pin || out) {
+          tot = String((parseInt(pin || "0", 10)) + (parseInt(out || "0", 10)));
+          src = "sum";
+        }
+      }
+
+      // Deliberately NOT defaulted to 0. A zero meters silently and wrongly;
+      // leaving it unset lets LLMTokenQuota raise
+      // FailedToResolveTokenUsageCount, which at least appears in a trace.
+      // agw.token_source is always set -- "none" when nothing matched -- so
+      // an unmetered request can be diagnosed without guessing.
+      if (tot) { context.setVariable("agw.total_tokens", tot); }
+      context.setVariable("agw.token_source", src || "none");
+
+policies:
+  - name: JS-extract-model
+    type: Javascript
+    content:
+      Javascript:
+        metadata:
+          name: JS-extract-model
+          continueOnError: true
+          enabled: true
+          timeLimit: "200"
+        # ResourceURL is namespace-rewritten by the compiler (the "://<name>"
+        # form is recognised), so it is written un-prefixed here.
+        ResourceURL: jsc://extract-model.js
+
+  - name: LTQ-count-pro
+    type: LLMTokenQuota
+    content:
+      LLMTokenQuota:
+        metadata:
+          name: LTQ-count-pro
+          continueOnError: true
+          enabled: true
+        SharedName: llm-tokens-pro
+        Allow:
+          metadata:
+            count: "{PRO_TOKEN_LIMIT}"
+        Interval: "{QUOTA_INTERVAL}"
+        TimeUnit: "{QUOTA_TIME_UNIT}"
+        CountOnly: "true"   # hardcoded -- see the note above the parameter list
+        Distributed: true
+        Synchronous: true
+        Identifier:
+          metadata:
+            ref: agw.client_id
+        LLMTokenUsageSource: "{agw.total_tokens}"
+        LLMModelSource: "{agw.model_name}"
+
+  - name: LTQ-count-flash
+    type: LLMTokenQuota
+    content:
+      LLMTokenQuota:
+        metadata:
+          name: LTQ-count-flash
+          continueOnError: true
+          enabled: true
+        SharedName: llm-tokens-flash
+        Allow:
+          metadata:
+            count: "{FLASH_TOKEN_LIMIT}"
+        Interval: "{QUOTA_INTERVAL}"
+        TimeUnit: "{QUOTA_TIME_UNIT}"
+        CountOnly: "true"   # hardcoded -- see the note above the parameter list
+        Distributed: true
+        Synchronous: true
+        Identifier:
+          metadata:
+            ref: agw.client_id
+        LLMTokenUsageSource: "{agw.total_tokens}"
+        LLMModelSource: "{agw.model_name}"
+
+  # Catch-all quota. Identical in shape to the two above, bound to the bucket
+  # every non-Gemini model falls into, with its own SharedName so third-party
+  # traffic does not consume a Gemini allowance.
+  #
+  # This is the cheap fix for the silently-unmetered non-Gemini model
+  # described in references/gotchas.md. Note the limitation it leaves: the
+  # `models:` list in apigee-agent-gateway-governance.yaml reads as
+  # authoritative but generates nothing, so adding a model is a feature-file
+  # edit rather than a config change.
+  - name: LTQ-count-other
+    type: LLMTokenQuota
+    content:
+      LLMTokenQuota:
+        metadata:
+          name: LTQ-count-other
+          continueOnError: true
+          enabled: true
+        SharedName: llm-tokens-other
+        Allow:
+          metadata:
+            count: "{OTHER_TOKEN_LIMIT}"
+        Interval: "{QUOTA_INTERVAL}"
+        TimeUnit: "{QUOTA_TIME_UNIT}"
+        CountOnly: "true"   # hardcoded -- see the note above the parameter list
+        Distributed: true
+        Synchronous: true
+        Identifier:
+          metadata:
+            ref: agw.client_id
+        LLMTokenUsageSource: "{agw.total_tokens}"
+        LLMModelSource: "{agw.model_name}"
+
+  - name: AM-quota-headers
+    type: AssignMessage
+    content:
+      AssignMessage:
+        metadata:
+          name: AM-quota-headers
+          continueOnError: true
+          enabled: true
+        IgnoreUnresolvedVariables: true
+        Set:
+          Headers:
+            Header:
+              - metadata:
+                  name: x-agw-model
+                _text: "{agw.model_name}"
+              - metadata:
+                  name: x-agw-client-id
+                _text: "{agw.client_id}"
+
+# NOTE ON FLOW PLACEMENT. The source playbook puts these steps in the
+# ProxyEndpoint *PreFlow* Response. AFT cannot express that alongside a
+# PreFlow Request: models.Flow carries a single `mode`, so a PreFlow with both
+# phases would have to be two Flow entries named PreFlow, and the converter
+# emits one <PreFlow> element per entry -- two sibling <PreFlow> elements,
+# which is not valid ProxyEndpoint XML. PostFlow/Response is the shape AFT's
+# own fixtures use and emits a distinct, valid <PostFlow>. Both run on the
+# response path; PostFlow simply runs later in it.
+# VERIFY ON A LIVE ORG: this is a deviation from the verified playbook setup.
+defaultEndpoint:
+  name: default
+  flows:
+    - name: PostFlow
+      mode: Response
+      steps:
+        # Deliberately UNGATED on cache_hit: it sets agw.model_name, which
+        # AM-quota-headers still needs in order to report a model on a cache
+        # hit. Gating it would save a little wasted work and empty the header.
+        - name: JS-extract-model
+        # The cache_hit clauses stop a cache hit being billed as an inference.
+        # On a hit the replayed response still carries usageMetadata and
+        # request.uri still ends in :generateContent, so without them the quota
+        # counts tokens the model never produced. Measured: the flash counter
+        # moved 683 -> 780 on a hit -- exactly the 97 tokens of the replayed
+        # answer -- with Gemini never called.
+        #
+        # This references a policy owned by feature-semantic-cache.yaml, the
+        # one cross-feature coupling in this template. It degrades safely: with
+        # the cache disabled the variable never resolves, and an unresolved
+        # variable makes `!= true` true, so metering is unchanged. The same
+        # fail-open that is a bug for populate is the correct behaviour here.
+        - name: LTQ-count-pro
+          condition: >-
+            agw.model_name = "gemini-pro"
+            and (SemanticCacheLookup.semanticcache-SCL-lookup.cache_hit != true)
+            and (SemanticCacheLookup.semanticcache-SCL-lookup.cache_hit != "true")
+        - name: LTQ-count-flash
+          condition: >-
+            agw.model_name = "gemini-flash"
+            and (SemanticCacheLookup.semanticcache-SCL-lookup.cache_hit != true)
+            and (SemanticCacheLookup.semanticcache-SCL-lookup.cache_hit != "true")
+        # Same cache_hit gating as the two above -- a replayed answer is not
+        # an inference whichever bucket served it.
+        - name: LTQ-count-other
+          condition: >-
+            agw.model_name = "other"
+            and (SemanticCacheLookup.semanticcache-SCL-lookup.cache_hit != true)
+            and (SemanticCacheLookup.semanticcache-SCL-lookup.cache_hit != "true")
+        # Ungated: a hit should still return the model and client-id headers.
+        - name: AM-quota-headers

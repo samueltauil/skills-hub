@@ -1,0 +1,43 @@
+type: experimental_object_rewriter
+# Convert a `TIMESTAMP` and a `TIMESTAMP WITH TIME ZONE` data type to `DATETIME`, with the target
+# time zone set to `Europe/Paris`. Also, change the output names of all objects (database, schema,
+# relation, and attributes) in the script according to the configured rules:
+global:
+  typeConvert:
+    timestamp:
+      target: DATETIME
+      timezone: Europe/Paris
+    timestamptz:
+      target: DATETIME
+      timezone: Europe/Paris
+  outputName:
+    # Change table names to uppercase and everything else to lowercase. Also do the name cleaning
+    # for all the object names.
+    relation:
+      case: UPPERCASE
+    all:
+      case: LOWERCASE
+      replace:
+      # replace all whitespace characters with underscores.
+      - regex: '\s'
+        replaceWith: '_'
+      # replace '>=' symbol with 'gte' string.
+      - regex: '>='
+        replaceWith: 'gte'
+      # Change all names that don't start with a letter or an underscore to start with an
+      # underscore.
+      - regex: '^[^a-zA-Z_].*'
+        replaceWith: '_$0'
+# Change the name of the table from `my_db.my_schema.my_table` to `my_new_db.my_schema.my_new_table`
+# . And change the name of all tables by adding the prefix `stg_` to those that belong to the staging
+# schema, and then moves those tables to the production schema:
+relation:
+- match: "my_db.my_schema.my_table"
+  outputName:
+    database: "my_new_db"
+    relation: "my_new_table"
+- match:
+    schema: staging
+  outputName:
+    schema: production
+    relation: "stg_${relation}"

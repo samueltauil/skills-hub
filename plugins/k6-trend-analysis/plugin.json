@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "k6-trend-analysis",
+  "version": "1.0.0",
+  "description": "Analyze Grafana Cloud k6 test run trends over time. Detects slow metric drift (e.g., P95 latency creeping up while still passing thresholds), computes headroom to thresholds, flags anomalies, and recommends threshold tightening. Use when the user asks about test performance trends, wants to know if metrics are degrading, asks whether thresholds should be tightened, or wants a health check across recent runs for a specific test. Trigger on phrases like \"how is my test trending\", \"is P95 getting worse\", \"check for performance regression\", \"should I tighten thresholds\", \"are my tests degrading\", \"show me trends for test X\", \"analyze my k6 test runs\", or \"is my test getting slower\". Also trigger when a user asks to check all tests in a project -- run this skill once per test and synthesize.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/k6-trend-analysis/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "test",
+    "trend",
+    "analysis"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-k6/k6-trend-analysis",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ff5a134541b9b4230aa0604e16471868b502722ea965c7288e76883256c59a20"
+    }
+  }
+}

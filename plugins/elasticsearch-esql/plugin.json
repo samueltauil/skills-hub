@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "elasticsearch-esql",
+  "version": "1.0.0",
+  "description": "Execute ES|QL (Elasticsearch Query Language) queries, use when the user wants to query Elasticsearch data, analyze logs, aggregate metrics, explore data, or create charts and dashboards from ES|QL results.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/elasticsearch-esql/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "data",
+    "elasticsearch",
+    "esql"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/elasticsearch/elasticsearch-esql",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fc2ffc057e75c5655c88e4a27c8e64e4b4287f88d302dedcff6802f6efcd9c42"
+    }
+  }
+}

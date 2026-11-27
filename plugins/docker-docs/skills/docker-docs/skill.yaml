@@ -1,0 +1,36 @@
+schema: v1
+id: docker-docs
+version: 0.2.0
+title: Docker Docs
+description: Answer questions about any Docker product from current, cited official Docker documentation, using the Docker docs MCP search tool or the docs.docker.com llms.txt and Markdown fallback.
+owns:
+  - docker-docs-retrieval
+  - docker-product-disambiguation
+  - docker-docs-mcp-setup
+use_when:
+  - The user asks how a Docker product works or which command, flag, setting, or file field to use.
+  - The answer depends on release-sensitive facts such as CLI syntax, experimental features, limits, pricing, or plan entitlements.
+  - The user names a Docker product or alias that needs disambiguation, such as sbx, cloud sandboxes, DHI, DMR, cagent, Offload, or Gordon.
+  - The user asks for a citation or the docs page for a Docker topic, or wants another skill's guidance checked against current docs.
+  - The user explicitly asks to configure or troubleshoot the Docker docs MCP server.
+do_not_use_when:
+  - The task is a generic software task that only mentions Docker in passing.
+  - A more specific Docker skill owns the workflow; use it and consult this skill only to verify details.
+  - The question is about third-party software that runs in containers rather than a Docker product.
+delegates_to:
+  - docker-project-foundations
+  - docker-build-strategies
+  - docker-compose-patterns
+  - docker-sandboxes-lifecycle
+  - docker-sandboxes-network-credentials
+  - docker-sandboxes-kits
+  - docker-agent-config
+  - docker-agent-run
+  - docker-agent-deploy
+  - docker-destructive-guardrails
+interface:
+  display_name: Docker Docs
+  short_description: Current, cited answers from official Docker documentation across every Docker product.
+  default_prompt: Use Docker Docs to look up current official Docker documentation for any Docker product, including Sandboxes, DHI, Docker Agent, Model Runner, and MCP Toolkit.
+policy:
+  allow_implicit_invocation: true

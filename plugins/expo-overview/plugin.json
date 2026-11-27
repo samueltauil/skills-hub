@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "expo-overview",
+  "version": "1.0.0",
+  "description": "Entry point for Expo and EAS tasks. Load first when the request mentions Expo, EAS, Expo Go, or an expo-* package, or the project has an expo dependency. Identify the goal, apply shared SDK and setup rules, and select the relevant skill. Includes fully specified tasks; excludes React Native projects without Expo or EAS signals.",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/expo-overview/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "react",
+    "expo",
+    "overview"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/expo-overview",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c20dbbead741eb9af94d6776634e20982ab1937bab0135dfe9ccb023c44bda23"
+    }
+  }
+}
