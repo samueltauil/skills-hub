@@ -40,11 +40,11 @@ Or explore the [skills registry](./skills/registry.json) directly.
 | 🔌 API & Backend | 52 | REST APIs, GraphQL, databases |
 | 🧪 Testing | 47 | Unit tests, E2E, test automation |
 | 🚀 DevOps & CI/CD | 41 | Pipelines, Docker, Kubernetes |
+| 🔧 MCP Development | 4 | Model Context Protocol servers and apps |
 | 📊 Diagrams | 12 | Mermaid, PlantUML, visualizations |
 | 🔒 Security | 4 | Audits, vulnerabilities, secure coding |
 | 📈 Data & Analytics | 5 | SQL, data pipelines, visualization |
-| 🔧 MCP Development | 4 | Model Context Protocol servers and apps |
-| 📄 Office Documents | 1 | Document generation and automation |
+| 📄 Office Documents | 1 | Spreadsheets, presentations, documents |
 
 ## Install a Skill
 
