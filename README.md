@@ -7,7 +7,7 @@
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
 [![Website](https://img.shields.io/badge/Website-Live-success?logo=github)](https://skillshub.space)
-[![Skills Count](https://img.shields.io/badge/Skills-521-blue)](./site/src/data/skills.json)
+[![Skills Count](https://img.shields.io/badge/Skills-520-blue)](./site/src/data/skills.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## What is this?
@@ -38,7 +38,7 @@ Or explore the [skills registry](./skills/registry.json) directly.
 | 🔀 Git & Version Control | 76 | Commits, branching, GitHub operations |
 | 🎨 Frontend & UI | 68 | React, Vue, components, design |
 | 🔌 API & Backend | 52 | REST APIs, GraphQL, databases |
-| 🧪 Testing | 48 | Unit tests, E2E, test automation |
+| 🧪 Testing | 47 | Unit tests, E2E, test automation |
 | 🚀 DevOps & CI/CD | 41 | Pipelines, Docker, Kubernetes |
 | 🔧 MCP Development | 4 | Model Context Protocol servers and apps |
 | 📊 Diagrams | 12 | Mermaid, PlantUML, visualizations |
