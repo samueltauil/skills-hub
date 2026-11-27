@@ -10,6 +10,7 @@ Thank you for your interest in contributing to the Copilot Skills Hub! This guid
 - [Skill Entry Format](#skill-entry-format)
 - [Categories](#categories)
 - [Validation](#validation)
+- [Agent Plugins](#agent-plugins)
 - [Review Process](#review-process)
 
 ---
@@ -173,6 +174,8 @@ When you submit a PR, GitHub Actions will automatically:
 
 If validation fails, check the PR comments for details on what to fix.
 
+PRs that touch `plugins/`, `.github/plugin/marketplace.json`, `site/src/data/skills.json` or the plugin scripts also run the [Validate Plugins](.github/workflows/validate-plugins.yml) workflow (see [Agent Plugins](#agent-plugins)).
+
 ### Local Validation
 
 You can validate locally before submitting:
@@ -184,6 +187,29 @@ npm install -g ajv-cli ajv-formats
 # Validate registry against schema
 ajv validate -s skills/schema.json -d skills/registry.json --spec=draft2020 --strict=false -c ajv-formats
 ```
+
+---
+
+## Agent Plugins
+
+Each skill is also published as an [Agent Plugin](https://agent-plugins.org) under `plugins/<skill-id>/`, and listed in the marketplace at `.github/plugin/marketplace.json`. These files are **generated**, so please don't edit them by hand. Change the skill source or `site/src/data/skills.json` instead, then regenerate:
+
+```bash
+npm install
+npm run build:plugins     # regenerate plugins/ and the marketplace
+npm run validate:plugins  # check everything against the Agent Plugins spec
+npm run check:plugins     # make sure the generated output is up to date
+npm test                  # unit tests for the plugin tooling
+```
+
+A few rules come from the spec and are enforced by the validator:
+
+- The skill `name` in `SKILL.md` frontmatter must be lowercase letters, numbers and hyphens (max 64 characters) and match its folder name.
+- The skill `description` must be 1 to 1024 characters.
+
+Skills that don't meet these rules are left out of the marketplace with a warning, but they're still listed on the website and installable with the other options.
+
+Plugin versions are bumped automatically when the packaged content changes, so you don't need to edit version numbers.
 
 ---
 

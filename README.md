@@ -17,7 +17,8 @@
 ### Features
 
 - **Browse by Category** — Skills organized into 12 categories (Testing, DevOps, Documentation, etc.)
-- **Search** — Find skills by name, description, or trigger keywords
+- **Search & Filters** — Search by name, description, tag or source, then narrow by category, source or verified status. Filtered views are reflected in the URL so you can share them
+- **Agent Plugins** — Every publishable skill is packaged as an [Agent Plugin](https://agent-plugins.org) and listed in a plugin marketplace you can add to GitHub Copilot CLI or VS Code
 - **One-Click Install** — Copy commands to add skills to your project
 - **CLI Extension** — Install skills directly from the terminal with `gh skills-hub`
 - **Security Scanning** — Two-pass security scanner (regex + AI) validates every skill
@@ -62,9 +63,37 @@ To add a source: `git submodule add <repo-url> sources/<name>`, then add an entr
 
 ## Install a Skill
 
-**Skills are auto-discovered!** Just add them to `.github/skills/` and Copilot loads them automatically based on their `name` and `description` frontmatter.
+### Option 1: Agent Plugin marketplace (Recommended)
 
-### Option 1: CLI Extension (Recommended)
+This repository is a plugin marketplace. Each skill is published as its own plugin under [`plugins/`](./plugins), and the catalog lives in [`.github/plugin/marketplace.json`](.github/plugin/marketplace.json). The plugin name is the skill ID shown on the website.
+
+**GitHub Copilot CLI**
+
+```bash
+# Add the marketplace once
+copilot plugin marketplace add samueltauil/skills-hub
+
+# Browse what's available
+copilot plugin marketplace browse skills-hub
+
+# Install a skill as a plugin
+copilot plugin install git-commit@skills-hub
+```
+
+**VS Code**
+
+1. Turn on the `chat.plugins.enabled` setting.
+2. Add the marketplace: open the Agent Customizations editor and add `samueltauil/skills-hub` as a marketplace, or add it to your settings:
+
+   ```json
+   "chat.plugins.marketplaces": ["samueltauil/skills-hub"]
+   ```
+
+3. Search for a skill and install it. Every skill page on [skillshub.space](https://skillshub.space) also has an **Install in VS Code** button.
+
+### Option 2: CLI Extension
+
+Skills installed this way go into `.github/skills/`, where Copilot discovers them automatically from their `name` and `description` frontmatter.
 
 ```bash
 # Install the gh extension
@@ -80,7 +109,7 @@ gh skills-hub install git-commit
 gh skills-hub list
 ```
 
-### Option 2: Download from Website
+### Option 3: Download from Website
 
 1. Find the skill on [skillshub.space](https://skillshub.space)
 2. Click **Download ZIP** or **Copy All Files** on the skill detail page
@@ -93,9 +122,17 @@ gh skills-hub list
 ```
 skills-hub/
 ├── .github/
+│   ├── plugin/
+│   │   └── marketplace.json  # Agent Plugin marketplace (generated)
 │   ├── workflows/        # CI/CD for deployment & validation
 │   ├── ISSUE_TEMPLATE/   # Issue templates
 │   └── PULL_REQUEST_TEMPLATE/
+├── plugins/              # One Agent Plugin per skill (generated, do not edit)
+│   └── <skill-id>/
+│       ├── plugin.json   # Agent Plugins manifest
+│       ├── README.md     # Install instructions
+│       ├── LICENSE       # Upstream license notice
+│       └── skills/<skill-name>/SKILL.md
 ├── site/                 # Astro static site
 │   ├── src/
 │   │   ├── pages/        # Site pages
@@ -106,7 +143,8 @@ skills-hub/
 │   ├── schema.json       # Skill metadata schema
 │   ├── registry.json     # Manually curated skills subset
 │   └── security-rules.yml # Security scan rules
-├── scripts/              # Build, scan, and enrichment scripts
+├── scripts/              # Build, scan, enrichment and plugin scripts
+│   └── schemas/          # Vendored Agent Plugins JSON schema
 ├── sources/              # Upstream skill sources (git submodules)
 ├── gh-skills-hub         # GitHub CLI extension
 └── CONTRIBUTING.md       # How to add skills
@@ -174,8 +212,30 @@ Run from the repository root:
 | `npm run scan` | Run regex security scan on all skills; updates `verified` field |
 | `npm run scan:ai` | Run regex + AI security scan (requires `GITHUB_TOKEN` and Copilot CLI) |
 | `npm run enrich` | AI-enrich skill metadata using `@github/copilot-sdk` (requires Copilot CLI) |
-| `npm run build` | Aggregate + scan + build the Astro site |
+| `npm run build:plugins` | Regenerate `plugins/` and `.github/plugin/marketplace.json` from `skills.json` |
+| `npm run check:plugins` | Fail if the generated plugins or marketplace are out of date |
+| `npm run validate:plugins` | Validate the marketplace and every plugin against the Agent Plugins spec |
+| `npm test` | Run the plugin tooling unit tests |
+| `npm run build` | Aggregate + scan + build and validate plugins + build the Astro site |
 | `npm run dev` | Aggregate + start local dev server |
+
+## Agent Plugins
+
+Skills Hub follows the [Agent Plugins](https://agent-plugins.org) specification so skills can be installed and updated through standard plugin tooling.
+
+- [`scripts/build-plugins.js`](scripts/build-plugins.js) turns every skill in `site/src/data/skills.json` into `plugins/<skill-id>/` with a `plugin.json` manifest, a README, the upstream license notice and the skill files under `skills/<skill-name>/`. It also writes the marketplace catalog to `.github/plugin/marketplace.json`.
+- Plugin versions start at `1.0.0` and get a patch bump whenever the packaged content changes (tracked by a content hash in `extensions["space.skillshub"]`). The marketplace version is bumped whenever its entries change, so plugin and marketplace versions always move together.
+- Skills that can't meet the spec (for example a description longer than 1024 characters) are skipped with a warning and stay available through the other install options.
+- [`scripts/validate-plugins.js`](scripts/validate-plugins.js) checks the marketplace (names, owners, relative sources, version and description parity with each `plugin.json`), every manifest (closed schema, kebab-case name matching its directory, semver), each bundled `SKILL.md` (frontmatter name and description limits), licenses and symlinks.
+
+The [Validate Plugins](.github/workflows/validate-plugins.yml) workflow runs on every pull request that touches plugins or the scripts that generate them. It runs the unit tests and the validator, validates every `plugin.json` against the official JSON schema, and checks that the generated output is up to date. The sync and enrichment workflows regenerate plugins automatically, so you never need to edit files under `plugins/` by hand.
+
+```bash
+npm run build:plugins     # regenerate plugins and marketplace
+npm run validate:plugins  # validate against the spec
+npm run check:plugins     # verify nothing is stale
+npm test                  # unit tests
+```
 
 ## Security Scanning
 
