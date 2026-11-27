@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "notion-research-documentation",
+  "version": "1.0.0",
+  "description": "Research across Notion and synthesize into structured documentation; use when gathering info from multiple Notion sources to produce briefs, comparisons, or reports with citations.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/notion-research-documentation/",
+  "repository": "https://github.com/openai/skills",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "notion",
+    "research"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/notion-research-documentation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d7c2f802cd548cdb89029cc860ef181c1446f4dd81702f84aeb92fa59dd64778"
+    }
+  }
+}

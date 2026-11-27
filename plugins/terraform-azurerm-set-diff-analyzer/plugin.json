@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "terraform-azurerm-set-diff-analyzer",
+  "version": "1.0.0",
+  "description": "Analyze Terraform plan JSON output for AzureRM Provider to distinguish between false-positive diffs (order-only changes in Set-type attributes) and actual resource changes. Use when reviewing terraform plan output for Azure resources like Application Gateway, Load Balancer, Firewall, Front Door, NSG, and other resources with Set-type attributes that cause spurious diffs due to internal ordering changes.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/terraform-azurerm-set-diff-analyzer/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "azure",
+    "terraform",
+    "azurerm",
+    "set",
+    "diff"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/terraform-azurerm-set-diff-analyzer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0f99e17da08e9ac5d01f94b2a884cadcc83d747dc6744d6e36c9c491b390f5b0"
+    }
+  }
+}

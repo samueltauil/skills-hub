@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "convert-web-app",
+  "version": "1.0.0",
+  "description": "This skill should be used when the user asks to \"add MCP App support to my web app\", \"turn my web app into a hybrid MCP App\", \"make my web page work as an MCP App too\", \"wrap my existing UI as an MCP App\", \"convert iframe embed to MCP App\", \"turn my SPA into an MCP App\", or needs to add MCP App support to an existing web application while keeping it working standalone. Provides guidance for analyzing existing web apps and creating a hybrid web + MCP App with server-side tool and resource registration.",
+  "author": {
+    "name": "modelcontextprotocol",
+    "url": "https://github.com/modelcontextprotocol"
+  },
+  "homepage": "https://skillshub.space/skills/convert-web-app/",
+  "repository": "https://github.com/modelcontextprotocol/ext-apps",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "mcp",
+    "convert",
+    "web",
+    "app"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/modelcontextprotocol/ext-apps",
+        "path": "plugins/mcp-apps/skills/convert-web-app",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0de213342aae618c350fde593b30126b93ca45fd2b02845ed48115aba0324fb5"
+    }
+  }
+}

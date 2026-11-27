@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloudflare-one-migrations",
+  "version": "1.0.0",
+  "description": "Assess and plan migrations from existing VPN, SWG, or SASE platforms to Cloudflare One, including policy mapping, parity gaps, and rollout.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/cloudflare-one-migrations/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "cloudflare",
+    "one",
+    "migrations"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/cloudflare-one-migrations",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a21ff5e5d9ca3f01d01b11826a266ae1746e40c72fc27d9d5b7d1b529c8d9e45"
+    }
+  }
+}

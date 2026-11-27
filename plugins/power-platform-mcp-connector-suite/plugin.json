@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "power-platform-mcp-connector-suite",
+  "version": "1.0.0",
+  "description": "Generate complete Power Platform custom connector with MCP integration for Copilot Studio - includes schema generation, troubleshooting, and validation",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/power-platform-mcp-connector-suite/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "mcp",
+    "power",
+    "platform",
+    "connector",
+    "suite"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/power-platform-mcp-connector-suite",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0f4d8b0f41fe0c1af66465349de27829e9cb48f7901dde2c6b53c770f0a82337"
+    }
+  }
+}

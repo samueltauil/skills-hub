@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "excalidraw-diagram-generator",
+  "version": "1.0.0",
+  "description": "Generate Excalidraw diagrams from natural language descriptions. Use when asked to \"create a diagram\", \"make a flowchart\", \"visualize a process\", \"draw a system architecture\", \"create a mind map\", or \"generate an Excalidraw file\". Supports flowcharts, relationship diagrams, mind maps, and system architecture diagrams. Outputs .excalidraw JSON files that can be opened directly in Excalidraw.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/excalidraw-diagram-generator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "diagrams",
+    "diagram",
+    "excalidraw",
+    "generator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "diagrams",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/excalidraw-diagram-generator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:74c4863365713d251db2e2464caa3c952080e3ccbfe6a4b88c61a5fc2e4e4b0c"
+    }
+  }
+}

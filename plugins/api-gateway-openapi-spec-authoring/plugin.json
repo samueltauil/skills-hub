@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "api-gateway-openapi-spec-authoring",
+  "version": "1.0.0",
+  "description": "Writes, migrates, and fixes OpenAPI specs for Google Cloud API Gateway. Use when converting an OpenAPI 2.0 (Swagger) spec to OpenAPI 3.x, writing a new OpenAPI 3.x spec, or fixing a failed \"gcloud api-gateway api-configs create\", such as \"extension is only supported in OpenAPI 2.x\". Also use when quotas set with x-google-quota are never enforced, or when a backend receives path parameters as query parameters. Don't use for adding or debugging MCP tools (use api-gateway-mcp-server), adding or changing API key, JWT, or quota settings in a working spec, or backend lockdown (use api-gateway-backend-security-and-rate-limiting), failing requests or service account and concurrency errors (use api-gateway-troubleshooting), Cloud Endpoints, Apigee, or GKE Gateway API.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/api-gateway-openapi-spec-authoring/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "mcp",
+    "security",
+    "gateway",
+    "openapi"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/api-gateway-openapi-spec-authoring",
+        "branch": "main"
+      },
+      "contentHash": "sha256:de1a01fa56187307c40cc8bd7eef43a0798a80ab42c605304e26aa7958fc2e35"
+    }
+  }
+}

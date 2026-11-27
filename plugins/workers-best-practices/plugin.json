@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "workers-best-practices",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/workers-best-practices/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "workers",
+    "best",
+    "practices"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/workers-best-practices",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2db5b382d49a10b777a71830e724b30296993e85f755bda0005a058ebb7a05a0"
+    }
+  }
+}

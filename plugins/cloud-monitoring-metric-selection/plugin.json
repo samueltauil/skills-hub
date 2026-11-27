@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-monitoring-metric-selection",
+  "version": "1.0.0",
+  "description": "Retrieve, query, and identify relevant Cloud Monitoring metric descriptors on Google Cloud for a service or resource (such as Compute Engine, Spanner, BigQuery, Cloud Run, Cloud SQL, Pub/Sub, Cloud Storage, etc.). Use when asked to find, list, search, or discover GCP metric types, names, kind/value schemas, or descriptors.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-monitoring-metric-selection/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "cloud",
+    "monitoring",
+    "metric",
+    "selection"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-monitoring-metric-selection",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f2a67c25001de10f6d6c6a426a6ba7785d1b3159a40d3f8bf29c334d96e40419"
+    }
+  }
+}

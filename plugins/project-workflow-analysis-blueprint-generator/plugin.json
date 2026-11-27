@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "project-workflow-analysis-blueprint-generator",
+  "version": "1.0.0",
+  "description": "Comprehensive technology-agnostic prompt generator for documenting end-to-end application workflows. Automatically detects project architecture patterns, technology stacks, and data flow patterns to generate detailed implementation blueprints covering entry points, service layers, data access, error handling, and testing approaches across multiple technologies including .NET, Java/Spring, React, and microservices architectures.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/project-workflow-analysis-blueprint-generator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "test",
+    "doc",
+    "react",
+    "data",
+    "project"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/project-workflow-analysis-blueprint-generator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f1120ffc3f1206fe5451388c37cad3ccda1ff095bf87b2f97d89595e75571c00"
+    }
+  }
+}

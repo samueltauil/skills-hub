@@ -1,0 +1,25 @@
+{
+  "type" : "object",
+  "properties" : {
+    "transformations" : {
+      "type" : "array",
+      "description" : "A list of optimization transformations to apply to the input. Each transformation consists of an optimization name and an optional list of optimization-specific parameters.",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "parameters" : {
+            "type" : "any"
+          }
+        }
+      }
+    },
+    "type" : {
+      "type" : "string",
+      "required" : true,
+      "pattern" : "experimental_optimizer"
+    }
+  }
+}

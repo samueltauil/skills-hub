@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "deploy-to-vercel",
+  "version": "1.0.0",
+  "description": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\".",
+  "author": {
+    "name": "vercel",
+    "url": "https://github.com/vercel-labs"
+  },
+  "homepage": "https://skillshub.space/skills/deploy-to-vercel/",
+  "repository": "https://github.com/vercel-labs/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "deploy",
+    "vercel"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/vercel-labs/agent-skills",
+        "path": "skills/deploy-to-vercel",
+        "branch": "main"
+      },
+      "contentHash": "sha256:02b6d3e922f40c188490e3daf70b0ac710518836c361e54a2e271fc6666d12bf"
+    }
+  }
+}

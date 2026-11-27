@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "power-bi-performance-troubleshooting",
+  "version": "1.0.0",
+  "description": "Systematic Power BI performance troubleshooting prompt for identifying, diagnosing, and resolving performance issues in Power BI models, reports, and queries.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/power-bi-performance-troubleshooting/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "power",
+    "performance",
+    "troubleshooting"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/power-bi-performance-troubleshooting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e428f41ef9442353941306a9756df6b8f1b323f34ffe1fd8ca9cc93502f72d90"
+    }
+  }
+}

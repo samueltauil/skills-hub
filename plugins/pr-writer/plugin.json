@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pr-writer",
+  "version": "1.0.0",
+  "description": "Create or refresh reviewer-facing PR titles and descriptions. Use when opening a PR, updating its title or body, or preparing branch changes for review.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/pr-writer/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "writer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/pr-writer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d8dffcdad9b99d588d41d4c69a1ff9e997c29c1872557ec9e5d718abd6542d87"
+    }
+  }
+}

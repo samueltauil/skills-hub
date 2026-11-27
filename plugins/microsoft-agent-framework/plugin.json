@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "microsoft-agent-framework",
+  "version": "1.0.0",
+  "description": "Create, update, refactor, explain, or review Microsoft Agent Framework solutions using shared guidance plus language-specific references for .NET and Python.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/microsoft-agent-framework/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "python",
+    "microsoft",
+    "agent",
+    "framework"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/microsoft-agent-framework",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c61ca3af1233bcebf7ee3f487f353818e87a5b62e537b25d3e66625ce8931739"
+    }
+  }
+}

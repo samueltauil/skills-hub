@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cicd-release-orchestration",
+  "version": "1.0.0",
+  "description": "Use this skill when you need to design Cloud Deploy delivery pipelines or manage releases for applications deploying to Cloud Run or Google Kubernetes Engine (GKE). This skill encodes best practices for multi-environment deployment, deployment strategies (like canary), and release management (including rollbacks and automations). Always activate this skill for these tasks to ensure robust and consistent configuration. DO NOT use for single-step direct deployments to Cloud Storage, Cloud Run, or GKE without Cloud Deploy (use `google-cicd-deploy`), end-to-end CI/CD source-to-build trigger architecture design (use `google-cicd-pipeline-design`), or Terraform HCL infrastructure provisioning (use `google-cicd-terraform`).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cicd-release-orchestration/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "deploy",
+    "design",
+    "google",
+    "cicd",
+    "release"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cicd-release-orchestration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:83c475dd0243bae17ed318d17f5ceecd158925a63b83f6e418362994614c37ba"
+    }
+  }
+}

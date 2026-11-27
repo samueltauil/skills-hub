@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kibana-workflows",
+  "version": "1.0.0",
+  "description": "Author, validate, test, run, and inspect Elastic Workflow YAML definitions. Use when the user wants to turn natural language into a Kibana workflow, fix workflow YAML, understand triggers or steps, or run a quick test loop against a real Kibana.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/kibana-workflows/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "test",
+    "kibana",
+    "workflows"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/kibana/kibana-workflows",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bfa6408ded44c7825b10545de5dc5c8b6b3b05c93a2ffbb05b258974903a6e9e"
+    }
+  }
+}

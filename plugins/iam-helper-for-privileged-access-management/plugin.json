@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "iam-helper-for-privileged-access-management",
+  "version": "1.0.0",
+  "description": "Manages the end-to-end lifecycle of on-demand, temporary access using Privileged Access Manager (PAM). Use when a user asks to create, read, update, or delete PAM entitlements, request temporary access, or approve/deny pending PAM grants. Do NOT use for permanent IAM policy bindings, troubleshooting IAM permission errors, or general Google Cloud resource provisioning.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/iam-helper-for-privileged-access-management/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "security",
+    "iam",
+    "helper",
+    "for",
+    "privileged",
+    "access"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/iam-helper-for-privileged-access-management",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8aab33a6a96d3f57811f85e09072666a73b188ea6490e1d535d21be00bfdf386"
+    }
+  }
+}

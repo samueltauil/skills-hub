@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "csp-investigation",
+  "version": "1.0.0",
+  "description": "Investigate cloud-provider (CSP) service issues — AWS today (the reasoning applies to any AWS service; schema and failure signatures are deepest for RDS, Lambda, SQS, ALB, EC2), and in future GCP and Azure — using OTel-schema cloud metrics in Elastic. Use when diagnosing cloud-resource problems, whether alert-triggered or ad hoc: database connection/CPU/memory pressure, function error rates and throttling, queue backlog and consumer lag, load-balancer 5xx, instance saturation. Correlates the resource under investigation against its own baseline, classifies the failure mode, and rules out co-occurring but unrelated conditions.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/csp-investigation/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "azure",
+    "data",
+    "csp",
+    "investigation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/observability/csp-investigation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:91cb28f528f652fbac2afc42a1be90a0dd40e173269ddce27809bdf40119f9bd"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "promql",
+  "version": "1.0.0",
+  "description": "Write, validate, and optimize PromQL for Prometheus / Grafana Mimir / Grafana Cloud Metrics. Covers `rate` vs `irate` vs `increase`, label matchers and regex, `sum / avg / topk / by / without` aggregation, classic + native `histogram_quantile`, ratios with divide-by-zero guards, `absent` / `changes` for staleness, time offsets and `predict_linear`, recording-rule naming, SLO + burn-rate math, and a cardinality-hunting playbook. Use when writing a metric query, fixing wrong p95s, building an error-budget alert, debugging \"query is slow\", finding the noisy label that blew up cardinality, or migrating a dashboard query to a recording rule — even when the user says \"calculate the error rate\", \"p99 latency\", \"sum by service\", \"why is this query slow\", or \"what's filling Mimir\" without naming PromQL.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/promql/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "promql"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-core/promql",
+        "branch": "main"
+      },
+      "contentHash": "sha256:86fdc533d416225639c6bc8abba37e838103b79e9be596a9918c8e5ae82684df"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: 'Docker Sandboxes: Kits (v3 descriptors)'
+  short_description: Author, verify, publish, and compose sandbox kits with the v3 descriptor. Experimental.
+  default_prompt: Use this skill when creating, building, verifying, publishing, or composing a Docker Sandboxes kit with the v3 descriptor, or referencing one from sbxenv.yaml.
+policy:
+  allow_implicit_invocation: true

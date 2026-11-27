@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "copilot-instructions-blueprint-generator",
+  "version": "1.0.0",
+  "description": "Technology-agnostic blueprint generator for creating comprehensive copilot-instructions.md files that guide GitHub Copilot to produce code consistent with project standards, architecture patterns, and exact technology versions by analyzing existing codebase patterns and avoiding assumptions.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/copilot-instructions-blueprint-generator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "copilot",
+    "instructions",
+    "blueprint",
+    "generator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/copilot-instructions-blueprint-generator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bd21f01e76debf6822a5b971c3c7ae9dafe782b875c62dacc1d9c3040d8e19ab"
+    }
+  }
+}

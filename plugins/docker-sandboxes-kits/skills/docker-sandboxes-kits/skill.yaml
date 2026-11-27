@@ -1,0 +1,30 @@
+schema: v1
+id: docker-sandboxes-kits
+version: 1.0.4
+title: 'Docker Sandboxes: Kits (v3 descriptors)'
+description: Author, verify, publish, and compose sandbox kits with the v3 descriptor (workload/mixin, capabilities, buildx, kit-tck), and reference them from sbxenv.yaml.
+owns:
+  - sbx-kit
+  - kit-spec-v3
+  - sandbox-kit-v3-descriptor
+  - kit-tck
+  - sbxenv-kit-references
+use_when:
+  - The user wants to create a new kit, such as packaging a CLI or agent, adding a tool, credential, or policy to an existing agent, or adding a mixin variant, using the v3 descriptor.
+  - The user asks whether a kit should be a workload or a mixin, what a kit descriptor should contain, or which capabilities, provides, and requires it needs.
+  - The user wants to write a kit's content recipe, build it with docker buildx, check it with kit-tck and sbx kit inspect, compose it onto a workload, publish it, or sign it.
+  - The user has an existing v2 spec.yaml kit and wants it converted to a new v3 descriptor.
+  - The user wants to reference, configure, or pin a kit from an sbxenv.yaml agent or kits entry, or asks which sbxenv.yaml fields a kit's capabilities need.
+do_not_use_when:
+  - The task is creating, running, or removing the sandbox a kit is composed into, independent of the kit's own content.
+  - The task is what a credential or network rule a kit declares actually does at runtime, where a secret value is stored, or secrets and policy unrelated to any kit.
+  - The task is sbxenv.yaml lifecycle hooks, approval plans, merging, user defaults, or the secrets/registries block format, which no skill in this catalog owns.
+  - The task is general Dockerfile or image-build optimization unrelated to a kit's recipe.
+  - The task is to author, validate, or debug a legacy v2 spec.yaml, which this skill no longer covers.
+  - The task is a bulk v2-to-v3 migration that needs the migrate-kit-to-v3 skill, which is not part of this catalog.
+delegates_to:
+  - docker-sandboxes-lifecycle
+  - docker-sandboxes-network-credentials
+  - docker-docs
+  - docker-build-strategies
+  - docker-destructive-guardrails

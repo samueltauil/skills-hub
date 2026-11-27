@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "docker-agent-run",
+  "version": "1.0.0",
+  "description": "Use this skill when running a Docker Agent with `docker agent run`, choosing a safety/approval mode, using the `--sandbox` isolation flag, setting up aliases, or troubleshooting a run (missing credentials, worktrees). Even if the user just says they want to \"run my agent\", \"make my agent auto-approve tool calls\", \"run this agent safely\", or \"why can't my agent see my API key\", this skill applies. Covers `--safety` (strict/balanced/restricted/autonomous), `--yolo`, `--sandbox` and its network allowlist, `--worktree`, `docker agent alias`, and `docker agent doctor`.",
+  "author": {
+    "name": "docker",
+    "url": "https://github.com/docker"
+  },
+  "homepage": "https://skillshub.space/skills/docker-agent-run/",
+  "repository": "https://github.com/docker/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "api",
+    "doc",
+    "docker",
+    "agent",
+    "run"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/docker/skills",
+        "path": "skills/docker-agent-run",
+        "branch": "main"
+      },
+      "contentHash": "sha256:64e234ba259ecf5044a31b47ac7d5e78ff03494510294794eb302db7ef928281"
+    }
+  }
+}

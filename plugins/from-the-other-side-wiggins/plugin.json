@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "from-the-other-side-wiggins",
+  "version": "1.0.0",
+  "description": "Narrative and synthesis profile for Wiggins: framing, explanation, and audience-aware communication patterns for Ember sessions.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/from-the-other-side-wiggins/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "from",
+    "the",
+    "other",
+    "side",
+    "wiggins"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/from-the-other-side-wiggins",
+        "branch": "main"
+      },
+      "contentHash": "sha256:86bba9d0b86d95213976c231b27ed94379862a8eb5d067fd7cf49ecfc43bd5f7"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "oncall-irm",
+  "version": "1.0.0",
+  "description": "Route alerts, run on-call rotations, and drive incidents in Grafana IRM / OnCall — integrations (Alertmanager / Grafana Alerting / generic webhook / PagerDuty), Jinja2 routing + grouping templates, escalation chains (wait → notify schedule → notify team → webhook → auto-resolve), schedules (web + iCal + Terraform `grafana_oncall_schedule`), Slack chatops with Acknowledge/Resolve/Silence, and the P1-P4 incident lifecycle. Use when wiring Alertmanager to OnCall, deciding which team gets paged, building rotations from a Google Calendar / iCal, hooking up Slack notifications, or declaring an incident from an alert — even when the user says \"page the platform team on critical alerts\", \"send Prometheus alerts to Slack\", \"set up our on-call rota\", \"escalation policy\", or \"auto-resolve when the alert clears\" without naming OnCall / IRM. Heads up — OnCall OSS is in maintenance mode (archived March 2026); Grafana Cloud users should use IRM.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/oncall-irm/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "oncall",
+    "irm"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/oncall-irm",
+        "branch": "main"
+      },
+      "contentHash": "sha256:dfa71cc901934b6c57728e839e0979fe60c26ee56ff1ed083a6e8c54735e3a4b"
+    }
+  }
+}

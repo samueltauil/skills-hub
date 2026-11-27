@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "testability-obstacle",
+  "version": "1.0.0",
+  "description": "MUST USE for C#/.NET deterministic tests that require the smallest production seam for DateTime/Task.Delay/File/Environment/Guid/Random, static API preservation, nested/parallel overrides, or no real I/O. USE ONLY when the target workspace contains C# source plus a .csproj or .sln. DO NOT USE for audits, bulk migration, code that already has an injectable seam, or an explicit migration to a user-named existing abstraction (migrate-static-to-wrapper). Use instead of general test generation when the requested test is impossible without a production edit and seam selection is still open.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/testability-obstacle/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "testability",
+    "obstacle"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/testability-obstacle",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0f536b62225f62a6bb4a62305bc6cf5d92704454d20936b9395184625070f783"
+    }
+  }
+}

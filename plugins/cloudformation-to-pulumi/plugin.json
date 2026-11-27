@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloudformation-to-pulumi",
+  "version": "1.0.0",
+  "description": "Convert, migrate, or import AWS CloudFormation stacks or templates into Pulumi programs. Load this skill whenever a user wants to move from CloudFormation to Pulumi, convert a CFN template, import existing CloudFormation-managed resources into Pulumi, or asks about CloudFormation-to-Pulumi migration in any form. Also load when the user mentions cdk-importer in a migration context.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/cloudformation-to-pulumi/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "cloudformation",
+    "pulumi"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "migration/skills/cloudformation-to-pulumi",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2e5b5973686c45ede659eb73ccc792322d9df1b2c27cd64fd080398ec12bff20"
+    }
+  }
+}

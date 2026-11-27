@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bigquery-bigframes",
+  "version": "1.0.0",
+  "description": "Generates Python code using BigQuery DataFrames (BigFrames). Use by default for any Python data task involving BigQuery, including data processing, analysis, and machine learning. Don't use for SQL-first workflows or the google-cloud-bigquery client library — use bigquery-basics.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/bigquery-bigframes/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "cli",
+    "python",
+    "data",
+    "bigquery",
+    "bigframes"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/bigquery-bigframes",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0a3cd7515a0710f694265e84d5ac7a1ca0e95f1f1c697fd995c228298bba6ad6"
+    }
+  }
+}

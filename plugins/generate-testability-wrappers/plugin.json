@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "generate-testability-wrappers",
+  "version": "1.0.0",
+  "description": "DO NOT USE when the target already consumes an injected interface or built-in abstraction such as IFileSystem or TimeProvider, even if the request says \"generate a wrapper\"; no new wrapper is needed. Use only when C# source calls an ambient/static dependency and no injectable seam exists: first-time TimeProvider, IHttpClientFactory, or System.IO.Abstractions adoption; minimal Environment/Console/Process wrappers; IProcessRunner; DI registration; or an ambient seam that preserves a static API. Exclude static detection (detect-static-dependencies), migration to an existing/registered abstraction (migrate-static-to-wrapper), one blocked behavior plus deterministic tests (testability-obstacle), and general interface design.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/generate-testability-wrappers/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "api",
+    "cli",
+    "test",
+    "design",
+    "generate"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/generate-testability-wrappers",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f0578724693e5e79a469c3b855b82ec11bb0912f30f876752a907a2b40f22eb6"
+    }
+  }
+}

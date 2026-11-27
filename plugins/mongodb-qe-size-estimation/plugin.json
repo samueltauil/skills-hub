@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mongodb-qe-size-estimation",
+  "version": "1.0.0",
+  "description": "Estimates the storage and memory impact of encrypting fields in collections with Queryable Encryption (QE) enabled. Do NOT use for collections that use Client-Side Field Level Encryption (CSFLE) instead of QE.",
+  "author": {
+    "name": "mongodb",
+    "url": "https://github.com/mongodb"
+  },
+  "homepage": "https://skillshub.space/skills/mongodb-qe-size-estimation/",
+  "repository": "https://github.com/mongodb/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "cli",
+    "mongodb",
+    "size",
+    "estimation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/mongodb/agent-skills",
+        "path": "skills/mongodb-qe-size-estimation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6c9bcf0e0f74dc9f94d04e8f1e5aa6849d8a439a790704f01c93430fd263065e"
+    }
+  }
+}

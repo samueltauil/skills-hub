@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "quality-playbook",
+  "version": "1.0.0",
+  "description": "Run a complete quality engineering audit on any codebase. Derives behavioral requirements from the code, generates spec-traced functional tests, runs a three-pass code review with regression tests, executes a multi-model spec audit (Council of Three), and produces a consolidated bug report with TDD-verified patches. Finds the 35% of real defects that structural code review alone cannot catch. Works with any language. Trigger on 'quality playbook', 'spec audit', 'Council of Three', 'fitness-to-purpose', or 'coverage theater'.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/quality-playbook/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "test",
+    "quality",
+    "playbook"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/quality-playbook",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cd42824241c5c3f52545c3b9e9965a8802e5cd25678dca9def9f5f6b31d34ad1"
+    }
+  }
+}

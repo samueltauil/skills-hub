@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-architectural-decision-record",
+  "version": "1.0.0",
+  "description": "Create an Architectural Decision Record (ADR) document for AI-optimized decision documentation.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-architectural-decision-record/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "create",
+    "architectural",
+    "decision",
+    "record"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-architectural-decision-record",
+        "branch": "main"
+      },
+      "contentHash": "sha256:42eef773386d74d869c355d06fac7069e0baa40d155820a546b3e03612048a12"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "aspnet-minimal-api-openapi",
+  "version": "1.0.0",
+  "description": "Create ASP.NET Minimal API endpoints with proper OpenAPI documentation",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/aspnet-minimal-api-openapi/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "api",
+    "doc",
+    "aspnet",
+    "minimal",
+    "openapi"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/aspnet-minimal-api-openapi",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d1daf39b94c6c18561f6c0066885a4b2d9c69432c6cf9779f59080f1e0d7028d"
+    }
+  }
+}

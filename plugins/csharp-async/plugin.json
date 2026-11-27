@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "csharp-async",
+  "version": "1.0.0",
+  "description": "Get best practices for C# async programming",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/csharp-async/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "csharp",
+    "async"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/csharp-async",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5468145cf4a8bd9f99a1d5abc70f00dd5ad9cf80767f859339c10d2abd6d1d31"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "expo-dev-client",
+  "version": "1.0.0",
+  "description": "Build and distribute Expo development clients locally or via TestFlight for internal testing. For production TestFlight releases and store submission, use the eas-app-stores skill.",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/expo-dev-client/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "cli",
+    "test",
+    "expo",
+    "dev",
+    "client"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/expo-dev-client",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0e97020f829ad423ccd5ed8011311976da14676e8458db35380eebbba87a3b8f"
+    }
+  }
+}

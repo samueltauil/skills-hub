@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "drawio",
+  "version": "1.0.0",
+  "description": "Generate draw.io diagrams as .drawio files and export to PNG/SVG/PDF with embedded XML",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/drawio/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "diagrams",
+    "diagram",
+    "pdf",
+    "drawio"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "diagrams",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/drawio",
+        "branch": "main"
+      },
+      "contentHash": "sha256:91c86de325acfffa830787f68f1fb13e724074118e9adb162c933cc3c7a3b7a3"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gemini-omni-flash-api",
+  "version": "1.0.0",
+  "description": "Use this skill for generative video editing, text-to-video, image- and video-referenced video generation, first-frame-to-video, first-and-last-frame transitions, and video extensions using Gemini Omni 1.2 Flash (gemini-omni-1.2-flash) via the official google-genai SDK. Includes workflows for pre-processing/optimizing high-resolution or long source videos with ffmpeg, stripping audio for full sound regeneration, and handling turn-by-turn video editing and parallel execution.",
+  "author": {
+    "name": "google-gemini",
+    "url": "https://github.com/google-gemini"
+  },
+  "homepage": "https://skillshub.space/skills/gemini-omni-flash-api/",
+  "repository": "https://github.com/google-gemini/gemini-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "gemini",
+    "omni",
+    "flash"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google-gemini/gemini-skills",
+        "path": "skills/gemini-omni-flash-api",
+        "branch": "main"
+      },
+      "contentHash": "sha256:141adb209775b96637f3671362f352e9a17287c98b2528df7af7777e47dcc0a0"
+    }
+  }
+}

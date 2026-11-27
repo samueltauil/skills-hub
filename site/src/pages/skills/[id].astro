@@ -1,23 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import skillsData from '../../data/skills.json';
+import { categoryMeta } from '../../data/categories';
+import { getMarketplacePlugins, vscodeInstallLink, MARKETPLACE_NAME, MARKETPLACE_REPO } from '../../data/plugins';
 
-// Define category metadata (icons and names)
-const categoryMeta: Record<string, { name: string; icon: string }> = {
-  'git-version-control': { name: 'Git & Version Control', icon: '🔀' },
-  'code-quality': { name: 'Code Quality & Refactoring', icon: '✨' },
-  'documentation': { name: 'Documentation', icon: '📝' },
-  'diagrams': { name: 'Diagrams & Visualization', icon: '📊' },
-  'testing': { name: 'Testing', icon: '🧪' },
-  'api-backend': { name: 'API & Backend', icon: '🔌' },
-  'frontend-ui': { name: 'Frontend & UI', icon: '🎨' },
-  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀' },
-  'security': { name: 'Security', icon: '🔒' },
-  'data-analytics': { name: 'Data & Analytics', icon: '📈' },
-  'office-documents': { name: 'Office Documents', icon: '📄' },
-  'mcp-development': { name: 'MCP Development', icon: '🔧' },
-  'general': { name: 'General', icon: '📦' }
-};
 
 export function getStaticPaths() {
   return skillsData.skills.map(skill => ({
@@ -83,6 +69,14 @@ const complexityColors = {
 const skillName = skill.name;
 const skillPath = `.github/skills/${skillName}`;
 const repoName = skill.source.repoName;
+
+const plugin = getMarketplacePlugins().get(skill.id);
+const pluginCommands = plugin
+  ? `copilot plugin marketplace add ${MARKETPLACE_REPO}\ncopilot plugin install ${plugin.name}@${MARKETPLACE_NAME}`
+  : '';
+const pluginSourceUrl = plugin
+  ? `https://github.com/${MARKETPLACE_REPO}/tree/main/${plugin.source.replace(/^\.\//, '')}`
+  : '';
 
 // Convert kebab-case to Title Case
 function formatName(str: string): string {
@@ -236,6 +230,36 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
               Installation
             </h2>
 
+            {plugin && (
+              <div class="cli-install-card plugin-install-card">
+                <div class="cli-install-header">
+                  <div class="cli-install-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M12 2l9 4.5v11L12 22l-9-4.5v-11z"/>
+                      <path d="M12 22V11.5M21 6.5l-9 5-9-5"/>
+                    </svg>
+                    Install as Agent Plugin
+                    <span class="cli-recommended-tag">Recommended</span>
+                  </div>
+                  <button class="cli-install-copy" data-copy-text={pluginCommands} title="Copy commands" aria-label="Copy plugin install commands">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                  </button>
+                </div>
+                <pre class="cli-install-command"><code>{pluginCommands}</code></pre>
+                <div class="plugin-actions">
+                  <a class="btn btn-secondary btn-sm" href={vscodeInstallLink(plugin.name)}>Install in VS Code</a>
+                  <a class="btn btn-secondary btn-sm" href={pluginSourceUrl} target="_blank" rel="noopener noreferrer">View plugin source</a>
+                </div>
+                <p class="cli-install-hint">
+                  Works with GitHub Copilot CLI and VS Code (enable <code>chat.plugins.enabled</code>).
+                  Plugin <code>{plugin.name}</code> v{plugin.version} follows the <a href="https://agent-plugins.org" target="_blank" rel="noopener noreferrer">Agent Plugins</a> spec.
+                </p>
+              </div>
+            )}
+
             <!-- CLI Install -->
             <div class="cli-install-card">
               <div class="cli-install-header">
@@ -244,10 +268,10 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                     <polyline points="4 17 10 11 4 5"/>
                     <line x1="12" y1="19" x2="20" y2="19"/>
                   </svg>
-                  Install with CLI
-                  <span class="cli-recommended-tag">Recommended</span>
+                  Install with the gh extension
+                  {!plugin && <span class="cli-recommended-tag">Recommended</span>}
                 </div>
-                <button class="cli-install-copy" id="cli-install-copy" title="Copy command">
+                <button class="cli-install-copy" id="cli-install-copy" title="Copy command" aria-label="Copy install command">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -809,6 +833,13 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
     background: var(--color-success);
     border-color: var(--color-success);
     color: white;
+  }
+
+  .plugin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
   }
 
   .cli-install-hint {
@@ -1528,6 +1559,16 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
       });
     });
   }
+
+  // Copy buttons that carry their own text (plugin install commands)
+  document.querySelectorAll<HTMLButtonElement>('button[data-copy-text]').forEach((button) => {
+    button.addEventListener('click', () => {
+      navigator.clipboard.writeText(button.dataset.copyText || '').then(() => {
+        button.classList.add('copied');
+        setTimeout(() => button.classList.remove('copied'), 2000);
+      });
+    });
+  });
 
   // Copy all files button
   const copyAllBtn = document.getElementById('copy-all-btn');

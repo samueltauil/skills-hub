@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "synthetic-monitoring-checks",
+  "version": "1.0.0",
+  "description": "Author Grafana Cloud Synthetic Monitoring checks, with deep coverage of k6 scripted and browser checks: SM's single-VU/single-iteration execution model, assertions that actually fail probe_success (expect() and fail() vs bare check()), secrets, deterministic scripts, robust browser locators, local validation with k6 run, deployment via UI/API/Terraform, verifying probe_success, and rollback. Also helps choose the simplest sufficient check type (HTTP/ping/DNS/TCP, MultiHTTP, scripted, browser). Use when writing a synthetic check, monitoring a login/checkout/signup flow in production, converting a k6 script or an OpenAPI spec into a check, authoring a browser check, validating a user journey, or asking \"is my site up from multiple regions\". NOT for load, stress, or performance testing — SM runs one iteration per execution; for load tests use the grafana-k6 plugin or Grafana Cloud k6. For the broad Grafana Cloud Testing overview (SM + k6 Cloud + Faro), use the testing skill.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/synthetic-monitoring-checks/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "deploy",
+    "synthetic",
+    "monitoring"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/synthetic-monitoring-checks",
+        "branch": "main"
+      },
+      "contentHash": "sha256:84aaf5cb95a3ece34241a898f42b4fc245fd2ecdf13295ee3222a06ac74b3497"
+    }
+  }
+}

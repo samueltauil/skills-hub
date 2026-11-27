@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sandbox-migrate-to-next",
+  "version": "1.0.0",
+  "description": "Migrate Cloudflare Sandbox apps from stable @cloudflare/sandbox to @cloudflare/sandbox@next (SDK 1.0 preview). Use sandbox-next for apps already on the preview.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/sandbox-migrate-to-next/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "sandbox",
+    "migrate",
+    "next"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/sandbox-migrate-to-next",
+        "branch": "main"
+      },
+      "contentHash": "sha256:94147eb6de009171afffe363f066157b63ec8bd155d4de4cdbacd6cc54ed566f"
+    }
+  }
+}

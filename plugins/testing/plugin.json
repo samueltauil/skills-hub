@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "Probe, load-test, and instrument frontends from Grafana Cloud. Covers Synthetic Monitoring (HTTP / DNS / TCP / Ping / Traceroute / Multihttp / k6-browser scripted checks from 20+ global probes, alert on `probe_success` + TLS-cert expiry), Grafana Cloud k6 (distributed load tests across AWS load-zones, scenarios, `http_req_duration` thresholds, CI integration via `grafana/k6-action`), and Frontend Observability with Faro Web SDK (RUM, Core Web Vitals, custom events, `pushError`, distributed-trace correlation). Use when checking website / API uptime from multiple regions, gating a release on a load test, watching for TLS-cert renewal, instrumenting a React/Vue app, tracking Core Web Vitals, or correlating frontend errors to backend traces — even when the user says \"is my login flow up?\", \"monitor my API\", \"ping our endpoint every minute\", \"release-gate load test\", \"browser performance monitoring\", \"session replay\", or \"RUM\" without naming Synthetic Monitoring / k6 / Faro.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/testing/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "react"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/testing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e5b00f8b4f6e8c27f537c34d276cbf31243045266ad6b14f8991f666507ec8de"
+    }
+  }
+}

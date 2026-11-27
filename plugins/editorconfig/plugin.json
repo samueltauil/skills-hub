@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "editorconfig",
+  "version": "1.0.0",
+  "description": "Generates a comprehensive and best-practice-oriented .editorconfig file based on project analysis and user preferences.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/editorconfig/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "editorconfig"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/editorconfig",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1dd765882c7e0a701e8d9adcdf0162f1fc7dd95a3d930964f6b88e5928dfac11"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gerrit-code-review",
+  "version": "1.0.0",
+  "description": "Reads and manages Gerrit code reviews over the HTTPS REST API: change metadata and diffs, inline comments and drafts, reviewers and CCs, labels and votes, checks, topics, hashtags, commit messages, cherry-picks, abandon, and submit. Use when working with Android (AOSP), Chromium, Fuchsia, or self-hosted Gerrit, when given a Gerrit change URL (https://*-review.googlesource.com/*, https://r.android.com/*, https://crrev.com/c/*, https://fxrev.dev/*, or https://*/c/*/+/*), or when git commands target a Gerrit host (refs/for/ pushes or branch cherry-picks). Don't use for local-only git operations or GitHub and GitLab pull requests.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gerrit-code-review/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "api",
+    "data",
+    "gerrit",
+    "code"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/developers/gerrit-code-review",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3c74abc6328025db9306daa7acea464e5dc780580836d719eec4ffd6f87dd35f"
+    }
+  }
+}

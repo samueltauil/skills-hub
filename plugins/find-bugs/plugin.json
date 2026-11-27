@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "find-bugs",
+  "version": "1.0.0",
+  "description": "Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/find-bugs/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "security",
+    "find",
+    "bugs"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/find-bugs",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6d54a0f8e69469663c1e1203616fc9b031484457fa2ba0233a4f1b8de51672ee"
+    }
+  }
+}

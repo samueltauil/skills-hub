@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "managed-airflow-recommendations",
+  "version": "1.0.0",
+  "description": "Provides recommendations and best practices for creating, configuring, tuning and optimizing Managed Service for Apache Airflow (MSAA; formerly Cloud Composer) environments. Use when the user asks for guidance, recommendations, or best practices on configuring Managed Airflow environments, scaling Airflow environments, preventing workload restarts, or analyzing system health. Don't use for troubleshooting individual DAG or task run failures, authoring DAGs, or migrating DAGs to newer Airflow versions.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/managed-airflow-recommendations/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "managed",
+    "airflow",
+    "recommendations"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/managed-airflow-recommendations",
+        "branch": "main"
+      },
+      "contentHash": "sha256:759d42a5851bd640c0d25cdcfee3fc9375eb407326172e28bbd173689a4cd66e"
+    }
+  }
+}

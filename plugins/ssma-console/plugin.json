@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ssma-console",
+  "version": "1.0.0",
+  "description": "Use when: SSMA console operations — create project, generate assessment report, convert schema, migrate data, Oracle to SQL Server migration, schema conversion, data migration",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/ssma-console/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "data-analytics",
+    "data",
+    "ssma",
+    "console"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/ssma-console",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c78c6c0fd81807f46832bb999e2f6305522ae1bdfea45ecb5b625356e46011ef"
+    }
+  }
+}

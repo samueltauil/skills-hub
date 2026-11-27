@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "service-reliability",
+  "version": "1.0.0",
+  "description": "Design and operate service reliability targets in Elastic Observability: choose an SLI type and a defensible target, pick a time window and budgeting method, create and maintain SLOs through the Kibana API, attach burn-rate alert rules, and decide when an SLO is the wrong instrument and a threshold rule, anomaly job, or synthetics monitor is right. Use when defining or reviewing SLOs and error budgets, tuning burn-rate alerting, reducing alert noise, or setting up availability monitoring for a user-facing endpoint.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/service-reliability/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "api",
+    "design",
+    "service",
+    "reliability"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/observability/service-reliability",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bafe3d4810c7e87e1e9c72b671146d94d680a082081cb8e6ab66fe82470beebb"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-cdk-to-pulumi",
+  "version": "1.0.0",
+  "description": "Load this skill when a user wants to migrate, convert, port, translate, or move an AWS CDK application (including CDK stacks, constructs, or CloudFormation-synthesized templates) to Pulumi. Phrases such as \"convert CDK to Pulumi\", \"migrate CDK app\", \"port CDK stacks\", \"replace CDK with Pulumi\", \"stop using CDK\". Do NOT load for general CDK questions, CDK-only help, or CDK vs Pulumi comparisons where no migration is requested.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-cdk-to-pulumi/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "pulumi",
+    "cdk"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "migration/skills/pulumi-cdk-to-pulumi",
+        "branch": "main"
+      },
+      "contentHash": "sha256:dd3b4596421fc4be2583e5ed02255ed6534c3a1186236a45b1b662839bdb4970"
+    }
+  }
+}

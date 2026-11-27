@@ -1,0 +1,23 @@
+schema: v1
+id: docker-agent-config
+version: 0.1.3
+title: Docker Agent Configuration
+description: Reference and rules for authoring agent.yaml configs for Docker Agent (cagent) — agents, models, providers, toolsets, and multi-agent teams.
+owns:
+  - agent.yaml
+  - agent.yml
+  - agent.hcl
+  - docker-agent-model-config
+  - docker-agent-toolsets
+  - docker-agent-multi-agent-teams
+use_when:
+  - The main artifact being created, edited, or reviewed is an agent.yaml/agent.yml/agent.hcl file for Docker Agent.
+  - The task is adding, removing, or configuring a model, provider, or toolset (built-in or MCP) on an agent.
+  - The task is designing a multi-agent team with a coordinator and sub_agents.
+do_not_use_when:
+  - The main task is invoking docker agent run and choosing CLI flags such as --safety or --sandbox.
+  - The main task is serving an agent over MCP/API/A2A/chat, sharing it via a registry, or evaluating it.
+  - The main task is a generic Dockerfile or Compose file unrelated to Docker Agent.
+delegates_to:
+  - docker-agent-run
+  - docker-agent-deploy

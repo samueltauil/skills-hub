@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "netlify-deploy",
+  "version": "1.0.0",
+  "description": "Deploy web projects to Netlify using the Netlify CLI (`npx netlify`). Use when the user asks to deploy, host, publish, or link a site/repo on Netlify, including preview and production deploys.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/netlify-deploy/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "cli",
+    "deploy",
+    "netlify"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/netlify-deploy",
+        "branch": "main"
+      },
+      "contentHash": "sha256:16bad1a2bacbe2e2af4dc2cd5b4eb9e7c7f5b8f2d82af089e1dcecddf1697977"
+    }
+  }
+}

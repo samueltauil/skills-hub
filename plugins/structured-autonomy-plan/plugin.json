@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "structured-autonomy-plan",
+  "version": "1.0.0",
+  "description": "Structured Autonomy Planning Prompt",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/structured-autonomy-plan/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "structured",
+    "autonomy",
+    "plan"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/structured-autonomy-plan",
+        "branch": "main"
+      },
+      "contentHash": "sha256:930a96913596d058b8d45f789231fddfdd711d6b632d5999efc99c20e034eb85"
+    }
+  }
+}

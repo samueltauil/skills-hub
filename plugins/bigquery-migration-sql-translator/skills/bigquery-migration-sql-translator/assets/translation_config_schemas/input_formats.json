@@ -1,0 +1,45 @@
+{
+  "type" : "object",
+  "properties" : {
+    "formats" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "contents" : {
+            "type" : "object",
+            "properties" : {
+              "raw" : {
+                "type" : "object",
+                "properties" : {
+                  "charset" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          },
+          "source" : {
+            "type" : "object",
+            "properties" : {
+              "pathGlob" : {
+                "type" : "string"
+              },
+              "pathRegex" : {
+                "type" : "string"
+              },
+              "path" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "type" : {
+      "type" : "string",
+      "required" : true,
+      "pattern" : "input_formats"
+    }
+  }
+}

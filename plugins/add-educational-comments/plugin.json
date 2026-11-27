@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "add-educational-comments",
+  "version": "1.0.0",
+  "description": "Add educational comments to the file specified, or prompt asking for file to comment if one is not provided.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/add-educational-comments/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "add",
+    "educational",
+    "comments"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/add-educational-comments",
+        "branch": "main"
+      },
+      "contentHash": "sha256:794b4494217f015675f1d20bd6f3e0930df884c9a8d4f7037bb23aa9b6f88119"
+    }
+  }
+}

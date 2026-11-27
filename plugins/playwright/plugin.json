@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/playwright/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "cli",
+    "data",
+    "playwright"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/playwright",
+        "branch": "main"
+      },
+      "contentHash": "sha256:142e7ff72260131c853b20dfef0b5b43baeffc06f2322a060aed06ceb8154b8b"
+    }
+  }
+}

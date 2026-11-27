@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "onboarding",
+  "version": "1.0.0",
+  "description": "Onboard an Elastic Cloud organization: configure the `elastic` CLI's Cloud context and API key, establish a default region, then invite users, assign predefined or custom Serverless project roles, and create or revoke Cloud API keys. Use when setting up Cloud authentication or when granting, modifying, or auditing user access to an organization and its projects.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/onboarding/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "onboarding"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/cloud/onboarding",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a5135e67f567b12f15e436c9c26a4ee5d40f4cd5d2fd81cae0805aca404c82aa"
+    }
+  }
+}

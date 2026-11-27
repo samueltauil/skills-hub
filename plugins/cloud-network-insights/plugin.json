@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-network-insights",
+  "version": "1.0.0",
+  "description": "Guides and automates setup, onboarding, synthetic monitoring operations, and cleanup for Cloud Network Insights in Google Cloud and Broadcom AppNeta. Use when enabling Cloud Network Insights, deploying or troubleshooting Monitoring Points across cloud and on-premises environments, configuring Network or Web monitoring policies and AppNeta alarm rules, configuring alert policies, querying path alarms and performance metrics, verifying synthetic path reachability, removing specific or all Monitoring Points, monitoring policies, and their hosts, or turning Cloud Network Insights off (only after warning the user and getting an explicit yes). Don't use for generic network observability, VPC Flow Logs, Cloud NAT, or VPC firewall debugging.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-network-insights/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "deploy",
+    "cloud",
+    "network",
+    "insights"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-network-insights",
+        "branch": "main"
+      },
+      "contentHash": "sha256:39f5b6fd70e87e8cbc0264e1290028d457002b8d5119880765949e6767ba302f"
+    }
+  }
+}

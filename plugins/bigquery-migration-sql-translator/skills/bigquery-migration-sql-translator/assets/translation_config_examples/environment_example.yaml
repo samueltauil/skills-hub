@@ -1,0 +1,5 @@
+# Configuration to specify a default database and schema search path:
+type: environment
+session:
+  defaultDatabase: myproject
+  schemaSearchPath: [dataset1, dataset2]

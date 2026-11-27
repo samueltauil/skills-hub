@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "alert-triage",
+  "version": "1.0.0",
+  "description": "Prioritize and rank the Elastic Security alert queue by weighted risk — base risk score, MITRE tactic boost, entity risk, and asset criticality — then cluster alerts into entity groups. Use when an analyst asks what to focus on, which alerts are most urgent, or wants a ranked starting point across the queue before deeper investigation begins.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/alert-triage/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "security",
+    "alert",
+    "triage"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/security/alert-triage",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c400effc785dd3f863ac205f975a1bd4be4955617ad01601e8c19bb2b637ea67"
+    }
+  }
+}

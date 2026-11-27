@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "csharp-xunit",
+  "version": "1.0.0",
+  "description": "Get best practices for XUnit unit testing, including data-driven tests",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/csharp-xunit/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "data",
+    "csharp",
+    "xunit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/csharp-xunit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:78d49d2a15baa226e0318dd32c859a8ed24cef6ff7d55a1bd813cd60847174d7"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gh-address-comments",
+  "version": "1.0.0",
+  "description": "Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/gh-address-comments/",
+  "repository": "https://github.com/openai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "cli",
+    "address",
+    "comments"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/gh-address-comments",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b03bb7a098770be6503b8fc73c52108517cbe5c6fc53e64884ff6d5f87c85d2a"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dataverse-python-usecase-builder",
+  "version": "1.0.0",
+  "description": "Generate complete solutions for specific Dataverse SDK use cases with architecture recommendations",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/dataverse-python-usecase-builder/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "python",
+    "data",
+    "dataverse",
+    "usecase",
+    "builder"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dataverse-python-usecase-builder",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1493b1ec85aa26ca84cddefa3267f596b6ba6b5ac04bed400b5ee37811173df4"
+    }
+  }
+}

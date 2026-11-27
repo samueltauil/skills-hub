@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "durable-objects",
+  "version": "1.0.0",
+  "description": "Build, debug, or review Cloudflare Durable Objects code for persistent state and coordination.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/durable-objects/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "durable",
+    "objects"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/durable-objects",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d446ef9f8514ff8f027c2012cff53f3133eebacfa57d77662d59b385e92950f0"
+    }
+  }
+}

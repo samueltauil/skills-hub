@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-setup-agent-automation",
+  "version": "1.0.0",
+  "description": "Create a schedule or event trigger for an existing Pulumi Agent, or pause or resume an automation. Use when the user requests recurring or event-driven agent work, says yes to a proposed schedule or trigger, or asks to pause or resume an automation.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-setup-agent-automation/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "pulumi",
+    "setup",
+    "agent",
+    "automation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "pulumi/skills/pulumi-setup-agent-automation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8af8a93882734ab9161ec4635c7badcfe72f80e9b04bde2d01139ad83299e47c"
+    }
+  }
+}

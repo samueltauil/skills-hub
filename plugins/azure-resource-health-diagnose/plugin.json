@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-resource-health-diagnose",
+  "version": "1.0.0",
+  "description": "Analyze Azure resource health, diagnose issues from logs and telemetry, and create a remediation plan for identified problems.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/azure-resource-health-diagnose/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "azure",
+    "resource",
+    "health",
+    "diagnose"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/azure-resource-health-diagnose",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0c74ccad459e360a30de3038354eaf68d01993d23d8e5f4bd264cd563d59e4bc"
+    }
+  }
+}

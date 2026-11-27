@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mcp-create-declarative-agent",
+  "version": "1.0.0",
+  "description": "Skill converted from mcp-create-declarative-agent.prompt.md",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mcp-create-declarative-agent/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "mcp-development",
+    "mcp",
+    "create",
+    "declarative",
+    "agent"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "mcp-development",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mcp-create-declarative-agent",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8e67143b4eea8e414a7c80bd8432b36d064dd73cb736cfdb83520b2293e94341"
+    }
+  }
+}

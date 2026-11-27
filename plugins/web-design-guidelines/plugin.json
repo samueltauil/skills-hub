@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "web-design-guidelines",
+  "version": "1.0.0",
+  "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+  "author": {
+    "name": "vercel",
+    "url": "https://github.com/vercel-labs"
+  },
+  "homepage": "https://skillshub.space/skills/web-design-guidelines/",
+  "repository": "https://github.com/vercel-labs/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "web",
+    "guidelines"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/vercel-labs/agent-skills",
+        "path": "skills/web-design-guidelines",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e7802de6c2131609765ed075432ba3c05b3ba0151d533f995f44615a0433f7e1"
+    }
+  }
+}

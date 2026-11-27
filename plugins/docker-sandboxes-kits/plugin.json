@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "docker-sandboxes-kits",
+  "version": "1.0.0",
+  "description": "Use this skill when authoring, verifying, publishing, or composing a Docker Sandboxes kit, even if the user just says they want to \"add a tool to a sandbox agent\", \"package a CLI or agent as a kit\", \"publish a kit to a registry\", or \"give a mixin its own credentials and network access\". Covers the v3 kit descriptor (`# syntax=docker/sandbox-kit:3`, `kind: workload` or `mixin`, typed capabilities, provides/requires, content recipes), building with docker buildx, checking with kit-tck and `sbx kit inspect`, composing onto a workload, referencing and pinning a kit from an `sbxenv.yaml` `agent:`/`kits:` entry, and publishing and signing. Legacy v2 `spec.yaml` kits are not covered; `sbx kit validate` is not a substitute for kit-tck conformance and runtime checks.",
+  "author": {
+    "name": "docker",
+    "url": "https://github.com/docker"
+  },
+  "homepage": "https://skillshub.space/skills/docker-sandboxes-kits/",
+  "repository": "https://github.com/docker/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "cli",
+    "doc",
+    "docker",
+    "sandboxes",
+    "kits"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/docker/skills",
+        "path": "skills/docker-sandboxes-kits",
+        "branch": "main"
+      },
+      "contentHash": "sha256:62ddbadef025850c206e0105d8b225ea70b93cd0f796976e9c3b3d0bdb82374b"
+    }
+  }
+}

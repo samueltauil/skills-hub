@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "migrating-oracle-to-postgres-data-access-code",
+  "version": "1.0.0",
+  "description": "Migrates .NET/C# data access code from Oracle to PostgreSQL (Npgsql). Replaces Oracle NuGet packages, rewrites OracleConnection/OracleCommand/OracleDataReader usage, fixes DbType mappings, updates stored procedure invocation patterns, and adapts connection string configuration. Use when migrating the application code layer of a .NET project during an Oracle-to-PostgreSQL database migration.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/migrating-oracle-to-postgres-data-access-code/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "data",
+    "migrating",
+    "oracle",
+    "postgres",
+    "access"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/migrating-oracle-to-postgres-data-access-code",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ff47dcbac09754bffaaf931f1bc01e56ce5291432fafe1de3c4112e0b37b75bc"
+    }
+  }
+}

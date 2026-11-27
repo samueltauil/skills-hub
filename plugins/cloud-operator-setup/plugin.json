@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloud-operator-setup",
+  "version": "1.0.0",
+  "description": "Sets up the user's personal operator agent in a Google Cloud organization via the `autocloud` MCP server: finds the organization, checks or creates the agent, saves the project and organization, and offers to share the user's existing Google Cloud operating context with the operator agent's memory. Use when the user runs this skill, asks to set up Cloud Operator or their operator agent (also in a named organization, but not for the whole organization as its administrator), asks to create their agent, or chooses setup when the cloud-operator skill asks. Don't use for ordinary GCP requests or installing gcloud.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/cloud-operator-setup/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcp-development",
+    "mcp",
+    "cloud",
+    "operator",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "mcp-development",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/cloud-operator-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b675819c657b14ba734d7718efdf61256500d274324e0da09c68af66064109e5"
+    }
+  }
+}

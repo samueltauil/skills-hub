@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-implementation-plan",
+  "version": "1.0.0",
+  "description": "Create a new implementation plan file for new features, refactoring existing code or upgrading packages, design, architecture or infrastructure.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-implementation-plan/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "create",
+    "implementation",
+    "plan"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-implementation-plan",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1ca46c90de0d1ab62352433d5d3c8bfee6b06c683376b423e0bd4876f7ebfa79"
+    }
+  }
+}

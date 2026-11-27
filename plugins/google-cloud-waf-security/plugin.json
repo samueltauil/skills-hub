@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-waf-security",
+  "version": "1.0.0",
+  "description": "Evaluates Google Cloud workloads and provides actionable recommendations for identity management, access control, permissions and roles, network and perimeter security, data security and encryption, security logging and threat detection, software supply chain hardening, AI security, data privacy, regulatory compliance, and cloud sovereignty. The recommendations are aligned with the Security, Privacy, and Compliance pillar of the Google Cloud Well-Architected Framework (WAF). Use when the user asks about firewall rules, zero trust, shared responsibility and shared fate, audit logging, security monitoring, threat mitigation, shift-left CI/CD security, Secure AI Framework (SAIF), data residency, or hardening Google Cloud resources. Don't use for other Well-Architected Framework pillars (Cost Optimization, Operational Excellence, Reliability, Performance Optimization, or Sustainability).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-waf-security/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "security",
+    "data",
+    "excel",
+    "google",
+    "cloud"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-waf-security",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4a2c962d570a9a1883348ff78843b8fa5841a0025d650905f54c1786c269fc53"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-context-api",
+  "version": "1.0.0",
+  "description": "Query the Pulumi Context API, a graph query interface over an organization's infrastructure in Pulumi Cloud. Use when a question is about relationships or reachability across resources and stacks: the impact of a change (\"what breaks if I change this?\", blast radius), what depends on a resource or a stack's outputs, which provider instances manage which resources and at what versions, orphaned or unreferenced resources, or references that cross stacks and cloud accounts, including resources Pulumi doesn't manage. Don't load it for finding a single resource by name, type, or property (Resource Search covers that), or for update history and failure debugging (use skill `pulumi-debug-failed-operation`).",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-context-api/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "pulumi",
+    "context"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "pulumi/skills/pulumi-context-api",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7d13f126a33598f636471644fba42361dedbac837890f9e3fc0799c3eff060a2"
+    }
+  }
+}

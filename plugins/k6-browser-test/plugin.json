@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "k6-browser-test",
+  "version": "1.0.0",
+  "description": "Generate a working k6 browser test (k6/browser) from a plain-language description of a user journey — no CSS selectors or technical detail needed. Explores the LIVE target site with a throwaway k6/browser session to discover real, verified selectors (getByRole/getByLabel/getByText, etc.), dismisses cookie/consent banners, then writes a functional or load test using expect() from k6-testing (Web-Vitals thresholds for load). Looks up k6/browser APIs via `k6 x docs`; validates with `k6 run`. Use when the user wants to write, author, or generate a k6 browser/UI or load test with a real browser, or says things like \"write a browser test for…\", \"test this login/checkout/search flow with k6\", \"click through my site and verify…\", or describes navigating a site in prose. For a full multi-test performance suite use k6-perf-test-website; for HTTP/protocol (non-browser) tests use the general k6 skills; for browser or scripted checks in Grafana Cloud Synthetic Monitoring, use synthetic-monitoring-checks.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/k6-browser-test/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "api",
+    "cli",
+    "test",
+    "doc",
+    "browser"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-k6/k6-browser-test",
+        "branch": "main"
+      },
+      "contentHash": "sha256:542ffa3fb65fe8c715d8d6ff670ee88ec9528f9db8b230f8049d29d9e661b16a"
+    }
+  }
+}

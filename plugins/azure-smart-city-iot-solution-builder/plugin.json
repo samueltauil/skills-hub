@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-smart-city-iot-solution-builder",
+  "version": "1.0.0",
+  "description": "Design and plan end-to-end Azure IoT and Smart City solutions: requirements, architecture, security, operations, cost, and a phased delivery plan with concrete implementation artifacts.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/azure-smart-city-iot-solution-builder/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "azure",
+    "design",
+    "security",
+    "smart",
+    "city"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/azure-smart-city-iot-solution-builder",
+        "branch": "main"
+      },
+      "contentHash": "sha256:639aaad206e9cfb82ad072395f42e8dfe1949fcdfefbfdb1398e3ae17a828d69"
+    }
+  }
+}

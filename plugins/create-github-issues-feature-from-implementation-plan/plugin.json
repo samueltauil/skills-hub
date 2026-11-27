@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-github-issues-feature-from-implementation-plan",
+  "version": "1.0.0",
+  "description": "Create GitHub Issues from implementation plan phases using feature_request.yml or chore_request.yml templates.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-github-issues-feature-from-implementation-plan/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "create",
+    "github",
+    "issues",
+    "feature"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-github-issues-feature-from-implementation-plan",
+        "branch": "main"
+      },
+      "contentHash": "sha256:03fdd4809eb1e29dda8e2ba805b9d5deead7ee718762283fc89baac3eb876386"
+    }
+  }
+}

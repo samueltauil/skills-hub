@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "spanner-relational-to-graph",
+  "version": "1.0.0",
+  "description": "Analyzes existing Spanner relational schemas on Google Cloud (DDL, foreign keys, interleaved tables, and junction tables) and generates `CREATE PROPERTY GRAPH` DDL statements (`NODE TABLES`, `EDGE TABLES`) without modifying underlying relational tables. Use when mapping existing Spanner tables to a Spanner Graph, identifying node and edge candidates from relational tables, creating SQL bridge views for implicit `ARRAY`/`JSON` or type-mismatched relationships, mapping polymorphic or self-referential tables, or troubleshooting `CREATE PROPERTY GRAPH` DDL compiler errors. Don't use for greenfield physical table design (use spanner-graph-schema-best-practices) or tuning slow ISO GQL queries (use spanner-graph-query-tuning).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/spanner-relational-to-graph/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "spanner",
+    "relational",
+    "graph"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/spanner-relational-to-graph",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4320600dfc69a49c1fa110e2588e6ce8b0580bb25fcc00f5b9ad8d741e18e7ed"
+    }
+  }
+}

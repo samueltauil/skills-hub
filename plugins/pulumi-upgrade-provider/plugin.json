@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-upgrade-provider",
+  "version": "1.0.0",
+  "description": "Automate Pulumi provider repo upgrades with the `upgrade-provider` tool. Use when upgrading a pulumi provider repository to a new upstream version, running `upgrade-provider`, and addressing its common failure modes like patch conflicts or missing module mappings.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-upgrade-provider/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "pulumi",
+    "upgrade",
+    "provider"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "package-maintenance/skills/pulumi-upgrade-provider",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ddf051bf71e9c79ae88e60d03e956987879615bb4d610ed35c3f2d8c652a12c5"
+    }
+  }
+}

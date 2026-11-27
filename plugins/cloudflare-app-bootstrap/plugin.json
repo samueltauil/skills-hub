@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cloudflare-app-bootstrap",
+  "version": "1.0.0",
+  "description": "Get a Cloudflare Workers app to a working local request by connecting its bindings, secrets, and initial data, then verifying real application behavior. Use for app setup or onboarding after the project exists; use frameworks-on-cloudflare or cf-cli to create or configure the project, and wrangler or cf-cli for isolated commands.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/cloudflare-app-bootstrap/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "cli",
+    "data",
+    "cloudflare",
+    "app",
+    "bootstrap"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/cloudflare-app-bootstrap",
+        "branch": "main"
+      },
+      "contentHash": "sha256:99f3ab6a43ef8e1bb3e3787f3c682dad5e75bf556ee5b69a6328de5e2a5b7df2"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "analyzing-dotnet-performance",
+  "version": "1.0.0",
+  "description": "Scans .NET code for ~50 performance anti-patterns across async, memory, strings, collections, LINQ, regex, serialization, and I/O with tiered severity classification. Use when analyzing .NET code for optimization opportunities, reviewing hot paths, or auditing allocation-heavy patterns.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/analyzing-dotnet-performance/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "analyzing",
+    "dotnet",
+    "performance"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-diag/skills/analyzing-dotnet-performance",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9dce8b64f96e8b5d82c96918dfc71d1d634e563bb6f910cd0050ff3be4c170b6"
+    }
+  }
+}

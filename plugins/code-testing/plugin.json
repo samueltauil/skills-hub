@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "code-testing",
+  "version": "1.0.0",
+  "description": "ALWAYS USE for test work that requires changes: write, add, generate, repair, or strengthen tests for existing code in xUnit, MSTest, NUnit, pytest, Vitest/Jest, Go, or another framework. Includes regression cases, failing or flaky tests, coverage-driven additions, and audit-then-fix requests. Focused work stays direct; broad or multi-stage work invokes test-engineer. DO NOT USE for only running tests, analysis-only audits, framework/platform migrations, a test blocked on a missing production seam (testability-obstacle), or MSTest API/configuration corrections that do not design new cases (writing-mstest-tests). Within an active test-engineer pipeline, reuse supplied guidance and do not re-enter this skill.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/code-testing/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "api",
+    "test",
+    "design",
+    "code"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/code-testing",
+        "branch": "main"
+      },
+      "contentHash": "sha256:eacc37ed126328e31ecb4a2d16d388868994f9e0ec10c0d533b7a23bb91114f8"
+    }
+  }
+}

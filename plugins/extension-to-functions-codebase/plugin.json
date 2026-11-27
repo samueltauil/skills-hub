@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "extension-to-functions-codebase",
+  "version": "1.0.0",
+  "description": "Skill for converting an installed Firebase Extension (or extension source) into a standalone Cloud Functions for Firebase codebase or publishable npm package, including V1 to V2 trigger upgrades, lifecycle hooks, and declarative security",
+  "author": {
+    "name": "firebase",
+    "url": "https://github.com/firebase"
+  },
+  "homepage": "https://skillshub.space/skills/extension-to-functions-codebase/",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "security",
+    "extension",
+    "functions",
+    "codebase"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/firebase/agent-skills",
+        "path": "skills/extension-to-functions-codebase",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a5f16f55d51a9ff1bfeca1611af6c19855af62657cb189eb0dcdb87ebb1e5f59"
+    }
+  }
+}

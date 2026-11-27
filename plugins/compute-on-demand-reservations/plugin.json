@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "compute-on-demand-reservations",
+  "version": "1.0.0",
+  "description": "Inspects, verifies, and manages Google Compute Engine (GCE) On-Demand reservations and analyzes consumed versus available reserved capacity. Use when checking active reservation capacity, determining whether reserved VMs are available or exhausted, verifying reservation targeting (automatic versus specific reservation), or sharing reservations across projects. Don't use for Spot capacity advice (use gcloud compute advice capacity --provisioning-model=SPOT) or future calendar bookings (use compute-future-reservations).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/compute-on-demand-reservations/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "compute",
+    "demand",
+    "reservations"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/compute-on-demand-reservations",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c4c6dd3b827602e20e1f821074c3eb2b965ad8ca6734f091a96e972a9d9b1bb6"
+    }
+  }
+}

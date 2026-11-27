@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "creating-oracle-to-postgres-migration-integration-tests",
+  "version": "1.0.0",
+  "description": "Creates integration test cases targeting Oracle for .NET data access artifacts. Tests capture Oracle expected behavior as the authoritative baseline; they are written once and later ported to PostgreSQL by migrating the test project in Phase 6. Use only during Phase 3, before any PostgreSQL migration work has begun. Do not invoke during Phase 6 or against a project that has already been migrated.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/creating-oracle-to-postgres-migration-integration-tests/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "data",
+    "creating",
+    "oracle",
+    "postgres"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/creating-oracle-to-postgres-migration-integration-tests",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5e5fc02ac1da7f3cccbd92fe80898b215467af9bf70269be18d8889f6d19ed41"
+    }
+  }
+}

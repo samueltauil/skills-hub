@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vercel-deploy",
+  "version": "1.0.0",
+  "description": "Deploy applications and websites to Vercel. Use when the user requests deployment actions like \"deploy my app\", \"deploy and give me the link\", \"push this live\", or \"create a preview deployment\".",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/vercel-deploy/",
+  "repository": "https://github.com/openai/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "deploy",
+    "vercel"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/vercel-deploy",
+        "branch": "main"
+      },
+      "contentHash": "sha256:14c50a810972db569a12fe1e6cb994cafd2a1934c14ca08aa8f88840a41ea233"
+    }
+  }
+}

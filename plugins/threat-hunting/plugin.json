@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "threat-hunting",
+  "version": "1.0.0",
+  "description": "Hypothesis-driven threat hunting in Elastic Security using iterative ES|QL exploration. Covers IOC search, anomaly identification, baseline comparison, lateral movement tracking, and turning hunt findings into cases and detection rules. Use when running a proactive hunt, investigating suspicious activity patterns, searching for indicators of compromise, or looking for rare events in security telemetry.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/threat-hunting/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "security",
+    "threat",
+    "hunting"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/security/threat-hunting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:65bc49f0329cc6b7bf9eaeabdebe30080aa0040ab8882fd69b8acfff11596d44"
+    }
+  }
+}

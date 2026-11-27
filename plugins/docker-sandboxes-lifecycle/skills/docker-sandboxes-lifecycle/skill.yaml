@@ -1,0 +1,31 @@
+schema: v1
+id: docker-sandboxes-lifecycle
+version: 0.1.1
+title: 'Docker Sandboxes: Local Lifecycle & Workspace Isolation'
+description: Create, reattach to, and tear down local `sbx` sandboxes; choose workspace bind-mount vs --clone isolation.
+owns:
+  - sbx-run
+  - sbx-create
+  - sbx-ls
+  - sbx-stop
+  - sbx-rm
+  - sbx-prune
+  - sbx-exec
+  - sbx-cp
+  - sbx-ports
+  - sandbox-workspace-clone-mode
+use_when:
+  - The user wants to start, reattach to, stop, or remove a local sbx sandbox.
+  - The user wants an agent to work on a repository without a writable bind mount of the host working tree (--clone).
+  - The user wants extra read-only workspaces mounted alongside the primary one, or wants to copy files/publish ports/exec into a sandbox.
+  - The user wants to clean up stopped sandboxes or remove a specific one.
+do_not_use_when:
+  - The task is docker agent run --sandbox or its docker agent sandbox allowlist.
+  - The task is about sandbox network egress policy or service/registry credentials.
+  - The task is authoring or running a declarative sbxenv.yaml file.
+  - The task is authoring, packaging, signing, or composing a kit spec.yaml.
+delegates_to:
+  - docker-agent-run
+  - docker-sandboxes-network-credentials
+  - docker-docs
+  - docker-sandboxes-kits

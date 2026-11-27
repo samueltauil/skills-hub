@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gem-devops-guidelines",
+  "version": "1.0.0",
+  "description": "Design or review infrastructure, deployment, CI/CD, Docker, Kubernetes, health checks, rollback, feature flags, production readiness, and mobile release workflows. Use for DevOps, platform, container, pipeline, or release tasks.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/gem-devops-guidelines/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "deploy",
+    "doc",
+    "design",
+    "gem",
+    "devops"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/gem-devops-guidelines",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d3e34577b02efc41c975f41fb6657c0062ec3eb563a9b7ef98bef2916f4140ff"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "data-manager-api-setup",
+  "version": "1.0.0",
+  "description": "Guides developers through client library installation and authentication setup steps for the Data Manager API. Use this skill when a user is getting started with the Data Manager API and needs to setup their local environment, install the client library, or setup access to the API. Don't use for implementing audience or event ingestion logic (use the data-manager-api-audience-ingestion or data-manager-api-event-ingestion skills instead), or for debugging UNAUTHENTICATED, PERMISSION_DENIED, or other errors from requests after setup (use the data-manager-api-troubleshooting skill).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/data-manager-api-setup/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "data",
+    "manager",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/data-manager-api-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:855e52c96eb55517cb967e2b232891a95ab68773e9079c8033a15b5d9b0bff9b"
+    }
+  }
+}

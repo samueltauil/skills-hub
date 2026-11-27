@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "openapi-to-application-code",
+  "version": "1.0.0",
+  "description": "Generate a complete, production-ready application from an OpenAPI specification",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/openapi-to-application-code/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "openapi",
+    "application",
+    "code"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/openapi-to-application-code",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4ca7a04b2a010ec335018ca8fa9a88e26604b668775a3fb7b9f05eba3ff556a6"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "k6-perf-test-website",
+  "version": "1.0.0",
+  "description": "Use when the user wants to performance-test, load-test, or stress-test a public website end-to-end with k6. Produces a hybrid (protocol + browser) test suite, SLO-backed thresholds, a load-generator monitor sidecar, and a Grafana-side investigation playbook for backends the user owns. Triggers on \"perf test my site\", \"performance test my site\", \"load test this URL\", \"stress test my web app\", \"I want to load test [URL]\", \"set up k6 against my website\", \"write a k6 suite for [site]\", \"see if my site handles N concurrent users\", or \"how does my site perform under traffic\". Use this skill whenever the user mentions k6, load testing, stress testing, performance testing, or wants to validate a website under traffic — even if they don't explicitly use the word \"test\" or ask for the specific outputs this skill produces. This skill is for a full multi-test suite across several workflows; for a single browser test — functional OR a browser load test measuring Web Vitals for one journey — use k6-browser-test.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/k6-perf-test-website/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "testing",
+    "test",
+    "word",
+    "perf",
+    "website"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-k6/k6-perf-test-website",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9fec618ad2099807e3afef143eec764ff1aad017b6c5e0eec92c226801bebdac"
+    }
+  }
+}

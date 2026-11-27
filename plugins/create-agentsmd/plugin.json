@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-agentsmd",
+  "version": "1.0.0",
+  "description": "Prompt for generating an AGENTS.md file for a repository",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-agentsmd/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "create",
+    "agentsmd"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-agentsmd",
+        "branch": "main"
+      },
+      "contentHash": "sha256:081c89da661aaf59c04cc2fe014e469b45c5c73b2dac232015bf6fa4f997c68b"
+    }
+  }
+}

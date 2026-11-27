@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pr-dashboard",
+  "version": "1.0.0",
+  "description": "Open a GitHub PR dashboard in the browser. Use when the user asks to see their pull requests, open the PR dashboard, show PRs for a date range, or check PR status. Trigger phrases include \"show my PRs\", \"open PR dashboard\", \"pull request dashboard\".",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/pr-dashboard/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "dashboard"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/pr-dashboard",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5f9a8be235615029b03d46a3886a765d3606c668e28d2eb8ce1ce7c48d7ebbf6"
+    }
+  }
+}

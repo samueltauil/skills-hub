@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-specification",
+  "version": "1.0.0",
+  "description": "Create a new specification file for the solution, optimized for Generative AI consumption.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-specification/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "create",
+    "specification"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-specification",
+        "branch": "main"
+      },
+      "contentHash": "sha256:93cf196db7ac5f21bd09b16d1e1fbbdf764da0948bd7b3e3643577dfbb68752b"
+    }
+  }
+}

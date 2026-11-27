@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-waf-reliability",
+  "version": "1.0.0",
+  "description": "Evaluates, designs, and improves the reliability, resilience, availability, fault tolerance, and disaster recovery (DR) of Google Cloud workloads based on the design principles and recommendations in the Reliability pillar of the Google Cloud Well-Architected Framework. Use when the user asks about reliability-related topics like workload uptime, designing for high availability (HA) or DR, setting and meeting RTO/RPO targets, SRE best practices, backup strategies, multi-region failover, or fault-tolerant architecture on Google Cloud. Don't use for other Well-Architected Framework pillars such as Cost Optimization, Operational Excellence, or Security, or for hands-on resource deployment and live incident troubleshooting.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-waf-reliability/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "deploy",
+    "design",
+    "security",
+    "excel",
+    "google"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-waf-reliability",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a40d3e6f8f81d6acee79f73827ef9c94b890a184ad5b5ca928e30fa85c8efbc0"
+    }
+  }
+}

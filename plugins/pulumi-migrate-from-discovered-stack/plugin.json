@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-migrate-from-discovered-stack",
+  "version": "1.0.0",
+  "description": "Migrate a CloudFormation or ARM stack into a Pulumi stack, sourced from a stack that Pulumi Cloud's Discovery feature has already found and exposed via the discovered-stacks API. Load this skill when the user has a discovered stack in Pulumi Cloud and wants to bring its resources under Pulumi management. Do NOT load for greenfield Pulumi authoring, raw template conversion with no discovered-stack counterpart (i.e. no matching entry from the discovered-stacks API), or Terraform migration.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-migrate-from-discovered-stack/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "pulumi",
+    "migrate",
+    "from",
+    "discovered"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "migration/skills/pulumi-migrate-from-discovered-stack",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5ebd5bc1ad40a99c78cb2b9141e77221dc8caa23673d7da42f82eab3ccd048cf"
+    }
+  }
+}

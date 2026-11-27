@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react19-test-patterns",
+  "version": "1.0.0",
+  "description": "Provides before/after patterns for migrating test files to React 19 compatibility, including act() imports, Simulate removal, and StrictMode call count changes.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/react19-test-patterns/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "react",
+    "react19",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/react19-test-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:66773571b7fb05e186e4dd8898b38d5ac89eab0480f775d663dc4893ada81799"
+    }
+  }
+}

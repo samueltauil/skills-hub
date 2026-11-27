@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-tldr-page",
+  "version": "1.0.0",
+  "description": "Create a tldr page from documentation URLs and command examples, requiring both URL and command name.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-tldr-page/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "create",
+    "tldr",
+    "page"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-tldr-page",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7fa68381294ab5ab5e192e13ccd46f7afc4ebe0b1b6c50a6e1e4f7b963d2739e"
+    }
+  }
+}

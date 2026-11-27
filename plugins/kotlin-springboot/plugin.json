@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kotlin-springboot",
+  "version": "1.0.0",
+  "description": "Get best practices for developing applications with Spring Boot and Kotlin.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/kotlin-springboot/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "kotlin",
+    "springboot"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/kotlin-springboot",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7a44711964e9017857a581cfe4127177d439da4410edc11dcf0ecf43d4045e17"
+    }
+  }
+}

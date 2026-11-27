@@ -1,0 +1,26 @@
+# A runnable multi-agent team: coordinator delegates to a coder and a reviewer.
+# Run with: docker agent run ./team-agent.yaml
+agents:
+  root:
+    model: openai/gpt-5
+    description: Team coordinator that routes tasks to the best specialist.
+    instruction: |
+      You are a project coordinator. Delegate coding tasks to `coder` and
+      code-quality checks to `reviewer`. Summarize their results for the user.
+    sub_agents: [coder, reviewer]
+
+  coder:
+    model: anthropic/claude-sonnet-4-5
+    description: Writes and modifies code.
+    instruction: Write clean, tested code. Explain non-obvious decisions briefly.
+    toolsets:
+      - type: filesystem
+      - type: shell
+
+  reviewer:
+    model: anthropic/claude-sonnet-4-5
+    description: Reviews code for bugs, style, and best practices.
+    instruction: Review code for correctness, security, and maintainability.
+    readonly: true
+    toolsets:
+      - type: filesystem

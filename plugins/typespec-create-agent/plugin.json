@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "typespec-create-agent",
+  "version": "1.0.0",
+  "description": "Generate a complete TypeSpec declarative agent with instructions, capabilities, and conversation starters for Microsoft 365 Copilot",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/typespec-create-agent/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "typespec",
+    "create",
+    "agent"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/typespec-create-agent",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9efb6dc1ee4f1000a2fc7b2928a35dae7376ac6c2bded1b517142fdd3a06661d"
+    }
+  }
+}

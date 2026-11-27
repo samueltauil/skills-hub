@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "browse-local-sentry",
+  "version": "1.0.0",
+  "description": "Connects an agent's browser to a local Sentry dev server (dev-ui on *.dev.getsentry.net or the full devserver).",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/browse-local-sentry/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "browse",
+    "local",
+    "sentry"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/browse-local-sentry",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b12887bf9f31ce586dc2b045995b4f2c0898602554dcf56b84e34a632b4f43b5"
+    }
+  }
+}

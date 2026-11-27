@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "qdrant-performance-optimization",
+  "version": "1.0.0",
+  "description": "Different techniques to optimize the performance of Qdrant, including indexing strategies, query optimization, and hardware considerations. Use when you want to improve the speed and efficiency of your Qdrant deployment.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/qdrant-performance-optimization/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "qdrant",
+    "performance",
+    "optimization"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/qdrant-performance-optimization",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5d17efe0fccd2eb32cfc72c49f37a2f35131f157c7141f105d88d8fd4a05a7ec"
+    }
+  }
+}

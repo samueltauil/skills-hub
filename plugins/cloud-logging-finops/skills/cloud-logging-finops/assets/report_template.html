@@ -1,0 +1,3058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Logging Cost Report (Beta): {{PROJECT_ID}}</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-muted: #334155;
+      --bg-input: #0f172a;
+      --border: #334155;
+      --border-subtle: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-subtle: rgba(59, 130, 246, 0.15);
+      --success: #10b981;
+      --success-subtle: rgba(16, 185, 129, 0.15);
+      --warning: #f59e0b;
+      --warning-subtle: rgba(245, 158, 11, 0.15);
+      --danger: #ef4444;
+      --danger-subtle: rgba(239, 68, 68, 0.15);
+      --purple: #a855f7;
+      --purple-subtle: rgba(168, 85, 247, 0.15);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.5;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+    
+    /* Header */
+    .header {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .title { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+    .meta-text { font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .code-pill { font-family: var(--font-mono); background: var(--bg-muted); padding: 2px 6px; border-radius: 4px; font-size: 12px; color: var(--text); }
+    
+    .banner-warning {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #fbbf24;
+      line-height: 1.45;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--bg-muted);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .badge-primary { background: var(--primary-subtle); color: #60a5fa; border-color: rgba(96, 165, 250, 0.3); }
+    .badge-success { background: var(--success-subtle); color: #34d399; border-color: rgba(52, 211, 153, 0.3); }
+    .badge-warning { background: var(--warning-subtle); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+
+    /* Header: title block left, controls right. Below 900px they no longer
+       fit side by side, so the meta items stack and the controls become one
+       toolbar row (toggle left, Report an Issue right). The "Dashboard Metric"
+       label is hidden there; the toggle labels already say it. */
+    .header-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .header-titles { display: flex; flex-direction: column; gap: 8px; }
+    .meta-item { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .header-controls { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
+    .header-metric-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    @media(max-width: 899px) {
+      .header-top { flex-direction: column; align-items: stretch; }
+      .header-titles .meta-text { flex-direction: column; align-items: flex-start; }
+      .meta-sep, .header-metric-label { display: none; }
+      .header-controls { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+      .header-controls .toggle-group { order: -1; }
+    }
+
+    /* Report an Issue: opens a pre-filled GitHub issue in a new tab. */
+    .report-issue-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 10px;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .report-issue-btn:hover { color: var(--text); border-color: var(--primary); background: var(--primary-subtle); }
+
+    /* Navigation */
+    .nav-tabs {
+      display: flex;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Sub-Navigation */
+    .subnav-tabs {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .subtab-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .subtab-btn:hover {
+      color: var(--text);
+      border-color: var(--primary);
+    }
+    .subtab-btn.active {
+      background: var(--primary-subtle);
+      color: #60a5fa;
+      border-color: rgba(96, 165, 250, 0.4);
+    }
+    .subtab-pane { display: flex; flex-direction: column; gap: 24px; }
+    .subtab-pane.hidden { display: none; }
+
+    .two-col-equal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media(min-width: 768px) { .two-col-equal-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .tab-pane { display: flex; flex-direction: column; gap: 24px; }
+    .tab-pane.hidden { display: none; }
+
+    /* Cards Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 16px;
+    }
+    @media(min-width: 640px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width: 1024px) { .kpi-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .card-header { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .kpi-val { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
+    .kpi-subtext { font-size: 12px; color: var(--text-muted); }
+
+    /* Trend Chart Section */
+    .chart-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .chart-title-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .section-title { font-size: 16px; font-weight: 700; }
+    
+    .toggle-group {
+      display: flex;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2px;
+      gap: 2px;
+    }
+    .metric-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .metric-toggle-btn.active {
+      background: var(--bg-muted);
+      color: var(--text);
+    }
+
+    /* Service Explorer (Tab 2) */
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media(min-width: 1024px) { .two-col-grid { grid-template-columns: 5fr 7fr; } }
+
+    .search-box {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 13px;
+      outline: none;
+    }
+    .search-box:focus { border-color: var(--primary); }
+
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 540px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .service-row {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.15s ease;
+    }
+    .service-row:hover { border-color: var(--primary); background: var(--bg-muted); }
+    .service-row.active { border-color: var(--primary); background: var(--primary-subtle); }
+    .service-name { font-weight: 600; max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .service-sub { font-size: 11px; color: var(--text-muted); }
+
+    /* Severity Bar */
+    .severity-bar {
+      display: flex;
+      height: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg-muted);
+      width: 100%;
+    }
+    .sev-segment { height: 100%; transition: width 0.3s ease; }
+
+    /* Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+    .data-table th { padding: 10px 8px; border-bottom: 1px solid var(--border); color: var(--text-muted); font-weight: 600; }
+    .data-table td { padding: 10px 8px; border-bottom: 1px solid var(--border-subtle); color: var(--text); }
+    .severity-row {
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .severity-row:hover {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+    .accordion-arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-right: 6px;
+    }
+    .severity-accordion-cell {
+      padding: 0 !important;
+      background: rgba(15, 23, 42, 0.6);
+      border-bottom: 1px solid var(--border);
+    }
+    .sample-logs-wrap {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sample-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .payload-box {
+      background: #090d16;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      max-height: 115px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      transition: max-height 0.25s ease;
+    }
+    .payload-box.expanded {
+      max-height: 520px;
+    }
+
+    .copy-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: var(--primary-hover); }
+
+    /* Prove It: shows where a number came from and how to reproduce it in the
+       console. It is self-contained (no agent handoff), so it behaves the same
+       in every host: agent artifact panes, IDE previews and plain browsers. */
+    .prove-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease-in-out;
+    }
+    .prove-btn:hover {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #34d399;
+      color: #d1fae5;
+    }
+    .prove-btn .check { font-size: 11px; line-height: 1; }
+    .kpi-actions { display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap; }
+
+    .prove-overlay {
+      position: fixed; inset: 0; background: rgba(2, 6, 23, 0.55);
+      z-index: 9000; display: none;
+    }
+    .prove-overlay.open { display: block; }
+    .prove-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(720px, 100vw);
+      background: var(--bg-card); border-left: 1px solid var(--border);
+      box-shadow: -12px 0 30px rgba(0,0,0,0.4);
+      z-index: 9001; overflow-y: auto; padding: 20px 22px;
+      display: none; flex-direction: column; gap: 16px;
+    }
+    .prove-drawer.open { display: flex; }
+    .prove-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .prove-kicker { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #34d399; }
+    .prove-title { font-size: 18px; font-weight: 700; color: var(--text); margin-top: 2px; }
+    .prove-value { font-size: 14px; font-weight: 600; color: var(--text-muted); margin-top: 2px; }
+    .prove-close { background: none; border: 1px solid var(--border); color: var(--text-muted); border-radius: 6px; padding: 2px 9px; cursor: pointer; font-size: 14px; }
+    .prove-section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .prove-formula { font-family: var(--font-mono); font-size: 11.5px; line-height: 1.6; color: var(--text); background: var(--bg-input); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .prove-source { border: 1px solid var(--border); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .prove-source-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .prove-source-name { font-weight: 600; font-size: 13px; color: var(--text); }
+    .prove-source-role { font-size: 11px; color: var(--text-muted); }
+    .prove-kind { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #60a5fa; }
+    .prove-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: #60a5fa; text-decoration: none; border: 1px solid rgba(96,165,250,0.4); border-radius: 6px; padding: 3px 9px; white-space: nowrap; }
+    .prove-link:hover { background: rgba(96,165,250,0.12); }
+    .prove-code { font-family: var(--font-mono); font-size: 11px; background: var(--bg-input); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 220px; overflow-y: auto; color: var(--text); margin: 0; }
+    .prove-steps { margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.55; color: var(--text); }
+    .prove-diffs { margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.55; color: var(--text-muted); }
+    .prove-foot { font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 10px; }
+
+
+    /* Telemetry Integrity Warning Collapsible Banner */
+    details.telemetry-banner {
+      background: rgba(245, 158, 11, 0.07);
+      border: 1px solid rgba(245, 158, 11, 0.28);
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-bottom: 20px;
+      font-size: 11px;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    details.telemetry-banner[open] {
+      background: rgba(245, 158, 11, 0.11);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    summary.telemetry-banner-summary {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fbbf24;
+      font-size: 12px;
+      font-weight: 500;
+      user-select: none;
+      list-style: none;
+    }
+    summary.telemetry-banner-summary::-webkit-details-marker {
+      display: none;
+    }
+    summary.telemetry-banner-summary:hover .telemetry-banner-title {
+      color: #fef08a;
+    }
+    .telemetry-banner-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .telemetry-banner-icon {
+      font-size: 14px;
+      line-height: 1;
+    }
+    .telemetry-banner-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      transition: all 0.15s ease;
+    }
+    details[open] summary .telemetry-toggle-arrow {
+      transform: rotate(180deg);
+      display: inline-block;
+      transition: transform 0.15s ease;
+    }
+    summary .telemetry-toggle-arrow {
+      display: inline-block;
+      transition: transform 0.15s ease;
+    }
+    .telemetry-banner-body {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(245, 158, 11, 0.2);
+      font-size: 11px;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+    .telemetry-banner-body p {
+      margin: 4px 0;
+    }
+
+    /* Cost Optimizer: one full-width card per action. The coloured left edge
+       and the label above the title carry the verdict from `actions.py`. */
+    .action-list { display: flex; flex-direction: column; gap: 14px; }
+    .action-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--text-muted);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+    .action-card.level-ready { border-left-color: var(--success); }
+    .action-card.level-confirm,
+    .action-card.level-estimated { border-left-color: var(--warning); }
+    .action-card.level-judgement { border-left-color: var(--purple); }
+    .action-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .action-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+    .level-ready .action-label { color: var(--success); }
+    .level-confirm .action-label,
+    .level-estimated .action-label { color: var(--warning); }
+    .level-judgement .action-label { color: #c084fc; }
+    .action-title { font-weight: 600; font-size: 14px; }
+    .action-saving { text-align: right; white-space: nowrap; flex-shrink: 0; }
+    .action-saving-usd { font-size: 18px; font-weight: 700; color: var(--success); }
+    .action-saving-gib { font-size: 11px; color: var(--text-muted); }
+    .action-saving-none { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .action-bar { height: 4px; border-radius: 2px; background: var(--bg-muted); overflow: hidden; }
+    .action-bar > span { display: block; height: 100%; background: var(--success); opacity: 0.7; }
+    .action-body { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media(min-width: 900px) {
+      .action-body { grid-template-columns: 1fr 1fr; }
+      .action-body.action-body-single { grid-template-columns: 1fr; }
+    }
+    .action-body > * { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+    .action-section-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .action-text { font-size: 12px; line-height: 1.55; color: var(--text); }
+    .action-muted { color: var(--text-muted); }
+    /* Must not read as one more neutral sentence: this is the line that stops
+       someone dropping their firewall logs. */
+    .action-caveat {
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: var(--warning-subtle);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    /* A filter is one unbreakable 90-character token; it gets its own scroll
+       box so it cannot drag the card past the edge of a narrow pane. */
+    .action-filter {
+      display: block;
+      padding: 8px 10px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text);
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+    .action-copy { padding: 4px 10px; font-size: 11px; }
+    .action-details { display: block; min-width: 0; }
+    .action-details summary {
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      user-select: none;
+    }
+    .action-details summary:hover { color: var(--text); }
+    .action-details .payload-box { margin-top: 6px; }
+    .action-withheld { gap: 6px; }
+
+    /* Slots */
+    .slot-box { display: flex; flex-direction: column; gap: 12px; }
+
+    /* Narrow-viewport containment.
+
+       A grid or flex item is min-width:auto by default, which resolves to the
+       min-content width of its contents. One unbreakable 90-character
+       `logName = "projects/<id>/logs/<encoded>"` inside the Optimization
+       Actions card therefore widened its column, its grid, and the page --
+       the card ran off the side of the viewport instead of scrolling inside
+       it. Every container that can hold a log name or a filter is allowed to
+       shrink below its content here, and the content is told how to reflow. */
+    .two-col-grid > *,
+    .two-col-equal-grid > *,
+    .kpi-grid > *,
+    .card,
+    .tab-pane,
+    .subtab-pane { min-width: 0; }
+
+    /* Filter text stays on one line and scrolls, rather than forcing the card
+       wider than the pane. */
+    .code-pill { max-width: 100%; }
+
+    /* Wide tables scroll within their card instead of pushing it open. */
+    .table-scroll { width: 100%; overflow-x: auto; }
+    .data-table { min-width: 0; }
+
+    /* The artifact pane can be a few hundred pixels wide; 24px of padding on
+       each side is a meaningful share of it. */
+    @media(max-width: 640px) {
+      body { padding: 12px; }
+      .header, .card, .action-card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div class="header-titles">
+          <h1 class="title">Cloud Logging FinOps & Cost Audit (Beta)</h1>
+          <div class="meta-text">
+            <span class="meta-item"><span>Project:</span> <code class="code-pill">{{PROJECT_ID}}</code></span>
+            <span class="meta-sep">•</span>
+            <span class="meta-item"><span>Generated:</span> <span id="header-time">{{SNAPSHOT_TIME}}</span></span>
+            <span id="provenance-sep" class="meta-sep">•</span>
+            <span id="provenance-badge" class="badge"></span>
+          </div>
+        </div>
+        <div class="header-controls">
+          <a id="report-issue-btn" class="report-issue-btn"
+             href="https://github.com/google/skills/issues/new"
+             target="_blank" rel="noopener noreferrer"
+             title="Open a pre-filled GitHub issue about this report (GitHub issues are public)">Report an Issue ↗</a>
+          <div class="header-metric-label">Dashboard Metric</div>
+          <div class="toggle-group" id="global-unit-toggle">
+            <button onclick="setGlobalMetric('cost')" class="metric-toggle-btn active" id="btn-global-cost" data-metric="cost">Spend ($)</button>
+            <button onclick="setGlobalMetric('volume')" class="metric-toggle-btn" id="btn-global-volume" data-metric="volume">Volume (GiB)</button>
+          </div>
+        </div>
+      </div>
+      <div id="header-billing-banner" class="banner-warning" style="display: none; margin-top: 6px;"></div>
+
+      <!-- Degraded Telemetry Integrity Warning (Collapsible).
+           Lives in the header rather than the Overview tab: the compromised
+           days are still charted in the Service and Severity breakdowns, so
+           the notice has to stay on screen on the tab where those dips are
+           read. -->
+      <details id="telemetry-integrity-banner" class="telemetry-banner" style="display: none;">
+        <summary class="telemetry-banner-summary">
+          <div class="telemetry-banner-header-left">
+            <span class="telemetry-banner-icon">⚠</span>
+            <span class="telemetry-banner-title"><strong>Notice:</strong> Cloud Monitoring metric under-reported log volume on some days</span>
+          </div>
+          <span class="telemetry-banner-toggle">
+            <span class="telemetry-toggle-text">View details</span>
+            <span class="telemetry-toggle-arrow">▼</span>
+          </span>
+        </summary>
+        <div id="telemetry-integrity-body" class="telemetry-banner-body"></div>
+      </details>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" role="tablist">
+      <button onclick="switchTab('tab-overview')" id="btn-tab-overview" class="tab-btn active">Overview</button>
+      <button onclick="switchTab('tab-services')" id="btn-tab-services" class="tab-btn">Service & Severity Breakdowns</button>
+      <button onclick="switchTab('tab-optimization')" id="btn-tab-optimization" class="tab-btn">Cost Optimizer</button>
+    </nav>
+
+    <!-- TAB 1: OVERVIEW -->
+    <div id="tab-overview" class="tab-pane">
+      <!-- KPI Metric Cards -->
+      <div class="kpi-grid">
+        <div class="card">
+          <div class="card-header">
+            <span id="kpi-cost-title">Latest Complete Spend</span>
+            <span class="badge badge-success" id="kpi-cost-badge">—</span>
+          </div>
+          <div class="kpi-val" style="color: #34d399;" id="kpi-cost-val">—</div>
+          <div class="kpi-subtext" id="kpi-cost-subtext">No complete month measured</div>
+          <div class="kpi-actions">
+            <button class="prove-btn" id="kpi-cost-prove" data-claim="latest_complete_spend" onclick="proveIt(this.dataset.claim)" style="display: none;"
+                    title="Where this number comes from, and how to check it yourself"><span class="check">✓</span> Prove It</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span id="kpi-mtd-title">Current MTD Run-Rate</span>
+            <span class="badge badge-primary" id="kpi-mtd-badge">—</span>
+          </div>
+          <div class="kpi-val" id="kpi-mtd-val">—</div>
+          <div class="kpi-subtext" id="kpi-mtd-subtext">Run-rate not measured</div>
+          <div class="kpi-actions">
+            <button class="prove-btn" id="kpi-mtd-prove" data-claim="mtd_run_rate" onclick="proveIt(this.dataset.claim)" style="display: none;"
+                    title="Where this number comes from, and how to check it yourself"><span class="check">✓</span> Prove It</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span>Top Cost Driver</span>
+            <span class="badge badge-warning" id="kpi-driver-badge">—</span>
+          </div>
+          <div class="kpi-val" style="font-size: 20px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" id="kpi-driver-name">—</div>
+          <div class="kpi-subtext" id="kpi-driver-stat">Driver volume not measured</div>
+          <div class="kpi-actions">
+            <button class="prove-btn" data-claim="top_cost_driver" onclick="proveIt(this.dataset.claim)" style="display: none;"
+                    title="Where this number comes from, and how to check it yourself"><span class="check">✓</span> Prove It</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span>Extraneous Log Spend</span>
+            <span class="badge" style="background: var(--purple-subtle); color: #c084fc;" id="kpi-waste-badge">Floor</span>
+          </div>
+          <!-- Populated by renderExtraneousSpend(); shows an em-dash when unmeasured. -->
+          <div class="kpi-val" style="color: #c084fc;" id="kpi-waste-val">—</div>
+          <div class="kpi-subtext" id="kpi-waste-subtext">Awaiting waste analysis</div>
+          <div class="kpi-actions">
+            <button onclick="toggleExtraneousDetails(this)" id="kpi-waste-details-btn" class="copy-btn"
+                    style="display: none; align-self: flex-start; padding: 3px 10px; font-size: 11px;">See details</button>
+            <button class="prove-btn" data-claim="extraneous_spend" onclick="proveIt('extraneous_spend')" style="display: none;"
+                    title="Where this number comes from, and how to check it yourself"><span class="check">✓</span> Prove It</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extraneous Log Spend: inline detail panel (shown via the card's "See details" button) -->
+      <div id="extraneous-details" class="chart-container" style="display: none;"></div>
+
+      <!-- Executive Summary Slot -->
+      <div class="slot-box">
+        <!-- SLOT:EXECUTIVE_SUMMARY -->
+      </div>
+
+      <!-- 6-Month Visual Chart Section -->
+      <div class="chart-container">
+        <div class="chart-title-bar">
+          <div>
+            <h2 class="section-title" id="trend-chart-title">6-Month Ingestion & Spend History</h2>
+            <p class="kpi-subtext" id="trend-chart-subtitle" style="margin-top: 2px;">Monthly ingestion volume (GiB) and cost trajectory over time</p>
+          </div>
+        </div>
+
+        <!-- SVG Visual Bar Chart Container -->
+        <div id="trend-svg-chart-container" style="width: 100%; min-height: 250px; padding: 10px 0;">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- TAB 2: SERVICES & SEVERITY -->
+    <div id="tab-services" class="tab-pane hidden">
+      <!-- Sub-Tab Navigation -->
+      <div class="subnav-tabs" role="tablist">
+        <button onclick="switchSubTab('subtab-severity')" id="btn-subtab-severity" class="subtab-btn active">By Severity</button>
+        <button onclick="switchSubTab('subtab-service')" id="btn-subtab-service" class="subtab-btn">By Service</button>
+        <button onclick="switchSubTab('subtab-details')" id="btn-subtab-details" class="subtab-btn">Service Details</button>
+      </div>
+
+      <!-- SUB-TAB 1: BY SEVERITY -->
+      <div id="subtab-severity" class="subtab-pane">
+        <!-- Daily 14-day Stacked Severity Bar Chart -->
+        <div class="chart-container">
+          <div class="chart-title-bar">
+            <div>
+              <h2 class="section-title" id="sev-daily-heading">14-Day Daily Severity Breakdown</h2>
+              <p class="kpi-subtext" style="margin-top: 2px;">Daily log entry volume broken down by severity level</p>
+              <div id="severity-missing-windows" style="display: none; font-size: 11px; color: var(--warning); margin-top: 6px; font-weight: 500;"></div>
+            </div>
+            <div id="severity-daily-legend" style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--text-muted);">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+          <div id="severity-daily-svg-chart-container" style="width: 100%; min-height: 250px; padding: 10px 0;">
+            <!-- Rendered dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- 7 and 14 Day Severity Distributions -->
+        <div>
+          <h2 class="section-title" style="margin-bottom: 12px;" id="sev-dist-heading">Severity Distributions</h2>
+          <div class="two-col-equal-grid">
+            <div class="card" id="sev-pie-card-7d">
+              <div class="card-header">
+                <span style="font-weight: 700; color: var(--text);" id="sev-pie-title-7d">Prior 7 Days</span>
+                <span class="badge badge-primary" id="sev-pie-badge-7d">7-Day Sum</span>
+              </div>
+              <div id="sev-donut-7d" style="width: 100%; min-height: 220px;"></div>
+            </div>
+            <div class="card" id="sev-pie-card-14d">
+              <div class="card-header">
+                <span style="font-weight: 700; color: var(--text);" id="sev-pie-title-14d">Prior 14 Days</span>
+                <span class="badge badge-primary" id="sev-pie-badge-14d">14-Day Sum</span>
+              </div>
+              <div id="sev-donut-14d" style="width: 100%; min-height: 220px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Severity Breakdown Table -->
+        <div class="card" style="gap: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h2 class="section-title">Severity Breakdown &amp; Analysis</h2>
+              <p class="kpi-subtext" style="margin-top: 2px;">Ingestion volume and estimated cost per severity level</p>
+            </div>
+            <button class="prove-btn" data-claim="severity_costs" onclick="proveIt('severity_costs')" style="display: none;"
+                    title="How these volumes and costs are derived, and how to check them yourself"><span class="check">✓</span> Prove It</button>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Severity</th>
+                  <th id="sev-vol-col-label">14-Day Volume</th>
+                  <th>Est. Cost</th>
+                  <th>Share</th>
+                </tr>
+              </thead>
+              <tbody id="severity-summary-tbody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-TAB 2: BY SERVICE -->
+      <div id="subtab-service" class="subtab-pane hidden">
+        <!-- Daily 14-day Stacked Service Bar Chart -->
+        <div class="chart-container">
+          <div class="chart-title-bar">
+            <div>
+              <h2 class="section-title" id="svc-daily-heading">14-Day Daily Service Breakdown</h2>
+              <p class="kpi-subtext" style="margin-top: 2px;">Daily log volume (GiB) broken down by top service</p>
+            </div>
+            <div id="service-daily-legend" style="display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--text-muted);">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+          <div id="service-daily-svg-chart-container" style="width: 100%; min-height: 250px; padding: 10px 0;">
+            <!-- Rendered dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- 7 and 14 Day Service Distributions -->
+        <div>
+          <h2 class="section-title" style="margin-bottom: 12px;" id="svc-dist-heading">Service Distributions</h2>
+          <div class="two-col-equal-grid">
+            <div class="card" id="svc-pie-card-7d">
+              <div class="card-header">
+                <span style="font-weight: 700; color: var(--text);" id="svc-pie-title-7d">Prior 7 Days</span>
+                <span class="badge badge-success" id="svc-pie-badge-7d">7-Day Sum</span>
+              </div>
+              <div id="svc-donut-7d" style="width: 100%; min-height: 220px;"></div>
+            </div>
+            <div class="card" id="svc-pie-card-14d">
+              <div class="card-header">
+                <span style="font-weight: 700; color: var(--text);" id="svc-pie-title-14d">Prior 14 Days</span>
+                <span class="badge badge-success" id="svc-pie-badge-14d">14-Day Sum</span>
+              </div>
+              <div id="svc-donut-14d" style="width: 100%; min-height: 220px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Breakdown Table -->
+        <div class="card" style="gap: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h2 class="section-title">Top Services Breakdown &amp; Analysis</h2>
+              <p class="kpi-subtext" style="margin-top: 2px;">Ingestion volume and estimated cost per service</p>
+            </div>
+            <button class="prove-btn" data-claim="service_mix" onclick="proveIt('service_mix')" style="display: none;"
+                    title="How these volumes and costs are derived, and how to check them yourself"><span class="check">✓</span> Prove It</button>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th id="svc-vol-col-label">14-Day Volume</th>
+                  <th>Est. Cost</th>
+                  <th>Share</th>
+                </tr>
+              </thead>
+              <tbody id="service-summary-tbody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-TAB 3: SERVICE DETAILS -->
+      <div id="subtab-details" class="subtab-pane hidden">
+        <div class="two-col-grid">
+          <!-- Left: Service List -->
+          <div class="card" style="gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h2 class="section-title">All Services</h2>
+              <span class="badge" id="services-count-badge">—</span>
+            </div>
+            <input type="text" id="service-search-input" placeholder="Filter services by name..." class="search-box" oninput="filterServices(this.value)" />
+            <div id="services-list-container" class="services-list">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Right: Selected Service Details -->
+          <div class="card" style="gap: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border); padding-bottom: 14px;">
+              <div>
+                <div class="meta-text">SELECTED SERVICE</div>
+                <h3 class="section-title" style="font-size: 20px; color: var(--text);" id="selected-svc-title">—</h3>
+              </div>
+              <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end;">
+                <div class="meta-text">Volume / Cost</div>
+                <div style="font-size: 16px; font-weight: 700; color: #34d399;" id="selected-svc-cost">—</div>
+                <div style="font-size: 12px; color: var(--text-muted);" id="selected-svc-vol">—</div>
+              </div>
+            </div>
+
+            <!-- Severity Bar -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 12px;">
+                <span style="font-weight: 600;" id="severity-breakdown-title">14-Day Severity Breakdown (SQL Analytics)</span>
+                <span style="color: var(--text-muted);" id="selected-svc-sample-total">Sample: --</span>
+              </div>
+              <div id="severity-distribution-bar" class="severity-bar">
+                <!-- Dynamically populated segments -->
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 14px; font-size: 11px; color: var(--text-muted); padding-top: 4px;">
+                <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #94a3b8;"></span> DEFAULT</div>
+                <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #3b82f6;"></span> DEBUG</div>
+                <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span> INFO</div>
+                <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #ec4899;"></span> NOTICE</div>
+                <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span> WARNING</div>
+                <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span> ERROR</div>
+              </div>
+            </div>
+
+            <!-- Severity Table -->
+            <div style="overflow-x: auto;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Severity</th>
+                    <th>Volume (Est.)</th>
+                    <th>Cost (Est.)</th>
+                    <th>Share</th>
+                  </tr>
+                </thead>
+                <tbody id="selected-svc-tbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: OPTIMIZATION & LEVERS -->
+    <div id="tab-optimization" class="tab-pane hidden">
+      <div id="optimization-actions" class="action-list">
+        <!-- Populated by renderOptimizationActions() -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Prove It drawer: rendered from `provenance.claims[<id>]` by proveIt(). -->
+  <div id="prove-overlay" class="prove-overlay" onclick="closeProveIt()"></div>
+  <aside id="prove-drawer" class="prove-drawer" role="dialog" aria-modal="true" aria-label="Prove It"></aside>
+
+  <!-- Embedded JSON Data Payload -->
+  <script id="finops-data" type="application/json">
+{{FINOPS_JSON_DATA}}
+  </script>
+
+  <!-- Client-Side Hydration Script -->
+  <script>
+    let reportData = {};
+    let activeService = null;
+
+    let currentTrendMetric = 'cost';
+
+    // Report an Issue. GitHub pre-fills a new issue from the `title` and
+    // `body` query parameters. Issues there are public, so the body carries
+    // only how this report was produced -- never the project ID, cost figures,
+    // service names or log content.
+    const ISSUE_TRACKER_URL = 'https://github.com/google/skills/issues/new';
+    const ISSUE_TITLE_PREFIX = '[cloud-logging-finops] ';
+
+    function buildIssueUrl() {
+      const d = reportData || {};
+      const status = (block) => (d[block] && d[block].status) || 'unknown';
+      const activeTab = document.querySelector('.tab-btn.active');
+      const generated = document.getElementById('header-time');
+      const body = [
+        // Rendered as a hidden comment in the issue. The markers are split so
+        // this inline script never contains a literal HTML comment opener.
+        '<' + '!-- GitHub issues are PUBLIC. Do not paste project IDs, cost figures, service names or log contents. --' + '>',
+        '',
+        '### What went wrong?',
+        '',
+        '',
+        '### What did you expect instead?',
+        '',
+        '',
+        '### Report details (filled in automatically)',
+        '',
+        '- Skill: cloud-logging-finops (Beta)',
+        `- Report generated: ${generated ? generated.textContent.trim() : 'unknown'}`,
+        `- Tab open when reporting: ${activeTab ? activeTab.textContent.trim() : 'unknown'}`,
+        `- Billing data: ${status('billing_metadata')}`,
+        `- Log Analytics: ${status('analytics_metadata')}`,
+        `- Telemetry integrity: ${status('telemetry_integrity')}`,
+        `- Pricing mode: ${(d.pricing && d.pricing.mode) || 'unknown'}`,
+        `- Browser: ${navigator.userAgent}`,
+      ].join('\n');
+      const params = new URLSearchParams({ title: ISSUE_TITLE_PREFIX, body });
+      return `${ISSUE_TRACKER_URL}?${params.toString()}`;
+    }
+
+    function wireIssueButton() {
+      const btn = document.getElementById('report-issue-btn');
+      if (!btn) return;
+      btn.href = buildIssueUrl();
+      // Rebuilt on click so the tab the reader is on is the one reported.
+      btn.addEventListener('click', () => { btn.href = buildIssueUrl(); });
+    }
+
+    function initReport() {
+      try {
+        const rawJson = document.getElementById('finops-data').textContent;
+        reportData = JSON.parse(rawJson);
+        hydrateDashboard();
+        revealProveButtons();
+      } catch (err) {
+        console.error('Error hydrating report:', err);
+      } finally {
+        // A reader whose report failed to render most needs a way to say so.
+        try { wireIssueButton(); } catch (err) { console.error(err); }
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initReport);
+    } else {
+      initReport();
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      const target = document.getElementById(tabId);
+      if (target) target.classList.remove('hidden');
+      const btn = document.getElementById('btn-' + tabId);
+      if (btn) btn.classList.add('active');
+      if (tabId === 'tab-services') {
+        const activeSubBtn = document.querySelector('.subnav-tabs .subtab-btn.active');
+        const activeSubId = activeSubBtn ? activeSubBtn.id.replace('btn-', '') : 'subtab-severity';
+        switchSubTab(activeSubId);
+      }
+    }
+
+    function switchSubTab(subTabId) {
+      document.querySelectorAll('.subtab-pane').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.subtab-btn').forEach(btn => btn.classList.remove('active'));
+      const target = document.getElementById(subTabId);
+      if (target) target.classList.remove('hidden');
+      const btn = document.getElementById('btn-' + subTabId);
+      if (btn) btn.classList.add('active');
+      if (subTabId === 'subtab-severity') {
+        renderDailySeverityChart();
+        renderSeverityPies();
+      } else if (subTabId === 'subtab-service') {
+        renderDailyServiceChart();
+        renderServicePies();
+      }
+      syncSharedWindowLabels();
+    }
+
+
+
+    function setGlobalMetric(metric) {
+      currentTrendMetric = metric;
+      document.querySelectorAll('.metric-toggle-btn[data-metric]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.metric === metric);
+      });
+      renderTrendChart();
+      renderDailySeverityChart();
+      renderSeverityPies();
+      renderDailyServiceChart();
+      renderServicePies();
+
+      const monthlyAggs = reportData.monthly_aggregations;
+      const fullMonthKey = reportData.latest_complete_month;
+      const fullMonth = fullMonthKey ? monthlyAggs[fullMonthKey] : null;
+      const svcMap = fullMonth ? fullMonth.services_details : {};
+      const services = Object.entries(svcMap).sort((a, b) => serviceGib(b[1]) - serviceGib(a[1]));
+      renderServicesList(services, fullMonth);
+    }
+
+    function formatDollars(val) {
+      if (val === undefined || val === null || isNaN(val)) return '—';
+      return '$' + Number(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function formatGiBCompact(gib) {
+      if (gib === undefined || gib === null || isNaN(gib)) return '—';
+      if (gib >= 1024) return (gib / 1024).toFixed(2) + ' TiB';
+      return Number(gib).toFixed(2) + ' GiB';
+    }
+
+
+
+    // Invoiced months restate each service's measured share on the invoiced
+    // volume, matching its cost_usd.
+    function serviceGib(s) {
+      return s.billed_gib ?? s.gib;
+    }
+
+    function hydrateDashboard() {
+      const isTelemetryMode = !reportData.billing_metadata.invoiced;
+
+      const banner = document.getElementById('header-billing-banner');
+      const provBadge = document.getElementById('provenance-badge');
+      // Two disclaimers for one fact read as two different facts. In estimated
+      // mode the banner below says it in full, so the badge is suppressed
+      // rather than repeating "Estimated" in three words of unexplained
+      // shorthand. In invoiced mode there is no banner, so the badge is the
+      // only place the provenance appears and it stays.
+      if (provBadge) {
+        if (isTelemetryMode) {
+          provBadge.textContent = '';
+          provBadge.style.display = 'none';
+        } else {
+          provBadge.textContent = 'Invoiced (Actual BQ Billing)';
+          provBadge.className = 'badge badge-success';
+          provBadge.style.display = '';
+        }
+        // The separator only makes sense when the badge follows it.
+        const provSep = document.getElementById('provenance-sep');
+        if (provSep) provSep.style.display = provBadge.style.display;
+      }
+      if (banner) {
+        if (isTelemetryMode) {
+          // Not built from `billing_metadata.fallback_chain`: which tiers were
+          // searched does not change how a reader should read these numbers.
+          const terms = Object.values(reportData.pricing.skus).map(t =>
+            `${t.label} $${t.unit_price_per_gib.toFixed(2)}/GiB`
+            + (t.free_gib ? ` after the ${t.free_gib} GiB/month free tier` : '')).join('; ');
+          banner.textContent = `Because BigQuery Billing Export is not enabled, pricing is estimated from list prices (${terms}). Enable Billing Export for exact pricing data.`;
+          banner.style.display = 'block';
+        } else {
+          // The banner's copy claims list pricing. Outside telemetry mode every
+          // figure is priced off the invoice, so showing it would contradict
+          // the rest of the report.
+          banner.style.display = 'none';
+        }
+      }
+
+
+      const t30 = reportData.trailing_30d_summary;
+      const monthlyAggs = reportData.monthly_aggregations;
+      const sortedMonths = Object.keys(monthlyAggs).sort();
+      
+      // The MTD card shows the projected month, never an older one.
+      const proj = reportData.cost_projection;
+      const currentMonthKey = monthlyAggs[proj.month] ? proj.month : null;
+      const fullMonthKey = reportData.latest_complete_month;
+
+      const fullMonth = fullMonthKey ? monthlyAggs[fullMonthKey] : null;
+      const currentMonth = currentMonthKey ? monthlyAggs[currentMonthKey] : null;
+
+      // Update Chart Title based on reporting mode
+      const chartTitleEl = document.getElementById('trend-chart-title');
+      const chartSubEl = document.getElementById('trend-chart-subtitle');
+      if (chartTitleEl) {
+        chartTitleEl.textContent = `${sortedMonths.length}-Month Ingestion & Spend History`;
+      }
+      if (isTelemetryMode && chartTitleEl) {
+        chartTitleEl.textContent = "Trailing 4-Week Ingestion & Cost Trend";
+        if (chartSubEl) chartSubEl.textContent = "Weekly volume and estimated cost trajectory (W-4 to W-1) within Cloud Monitoring retention";
+      }
+
+      // 1. Overview KPIs
+      if (isTelemetryMode && t30) {
+        const title1 = document.getElementById('kpi-cost-title');
+        if (title1) title1.textContent = "Trailing 30-Day Volume";
+        document.getElementById('kpi-cost-badge').textContent = "Last 30 Days";
+        document.getElementById('kpi-cost-val').textContent = formatGiBCompact(t30.total_gib);
+        document.getElementById('kpi-cost-subtext').textContent = `Daily Avg: ${t30.daily_avg_gib.toFixed(2)} GiB/day`;
+
+        const title2 = document.getElementById('kpi-mtd-title');
+        if (title2) title2.textContent = "Estimated Monthly Run-Rate";
+        document.getElementById('kpi-mtd-badge').textContent = "Projected";
+        document.getElementById('kpi-mtd-val').textContent = formatDollars(t30.projected_monthly_cost_usd);
+        document.getElementById('kpi-mtd-subtext').textContent = `Annualized: ${formatDollars(t30.projected_annual_cost_usd)}`;
+
+        // These cards show different figures from the invoiced ones, so their
+        // Prove It buttons open the claims that prove these figures
+        // (provenance.py: _trailing_30d_volume, _estimated_run_rate).
+        const costProve = document.getElementById('kpi-cost-prove');
+        if (costProve) costProve.dataset.claim = 'trailing_30d_volume';
+        const mtdProve = document.getElementById('kpi-mtd-prove');
+        if (mtdProve) mtdProve.dataset.claim = 'estimated_run_rate';
+
+        // Ranked once by the collector (aggregations.top_driver).
+        const top = t30.top_services.find(s => s.service === t30.top_driver);
+        if (top) {
+          document.getElementById('kpi-driver-name').textContent = top.service;
+          document.getElementById('kpi-driver-badge').textContent = top.pct_of_total.toFixed(1) + '%';
+          document.getElementById('kpi-driver-stat').textContent = top.gib.toFixed(2) + ' GiB • ' + formatDollars(top.cost_usd) + '/mo';
+        } else {
+          document.getElementById('kpi-driver-name').textContent = '—';
+          document.getElementById('kpi-driver-badge').textContent = '—';
+          document.getElementById('kpi-driver-stat').textContent = 'Driver volume not measured';
+        }
+      } else {
+        if (fullMonth) {
+          // A month before the export began is a telemetry estimate; never
+          // present it as complete invoiced spend.
+          const estimated = fullMonth.data_source !== 'actual_bq_billing';
+          document.getElementById('kpi-cost-title').textContent =
+            estimated ? 'Latest Complete Month (Estimated)' : 'Latest Complete Spend';
+          document.getElementById('kpi-cost-badge').textContent = fullMonthKey;
+          document.getElementById('kpi-cost-val').textContent = formatDollars(fullMonth.net_cost_usd);
+          document.getElementById('kpi-cost-subtext').textContent = fullMonth.total_gib.toFixed(2) + ' GiB ingested'
+            + (estimated ? ' · list-price estimate, before the billing export began' : '');
+        } else {
+          document.getElementById('kpi-cost-badge').textContent = '—';
+          document.getElementById('kpi-cost-val').textContent = '—';
+          if (sortedMonths.length > 0) {
+            const reason = monthlyAggs[sortedMonths[sortedMonths.length-1]].partial_reason || 'partial data';
+            document.getElementById('kpi-cost-subtext').textContent = 'No complete month (' + reason + ')';
+          } else {
+            document.getElementById('kpi-cost-subtext').textContent = 'No complete month measured';
+          }
+        }
+
+        if (currentMonth) {
+          document.getElementById('kpi-mtd-badge').textContent = currentMonthKey + ' (MTD)';
+          document.getElementById('kpi-mtd-val').textContent = formatDollars(currentMonth.net_cost_usd);
+          document.getElementById('kpi-mtd-subtext').textContent = 'Projected EOM: ' + formatDollars(proj.projected_eom_cost_usd);
+        } else {
+          document.getElementById('kpi-mtd-badge').textContent = '—';
+          document.getElementById('kpi-mtd-val').textContent = '—';
+          document.getElementById('kpi-mtd-subtext').textContent = 'Run-rate not measured';
+        }
+
+        // Ranked once by the collector (monthly_aggregations[m].top_service).
+        const topName = fullMonth ? fullMonth.top_service : null;
+        if (topName) {
+          const top = fullMonth.services_details[topName];
+          document.getElementById('kpi-driver-name').textContent = topName;
+          document.getElementById('kpi-driver-badge').textContent = top.pct_of_volume.toFixed(1) + '%';
+          document.getElementById('kpi-driver-stat').textContent = serviceGib(top).toFixed(2) + ' GiB • ' + formatDollars(top.cost_usd);
+        } else {
+          document.getElementById('kpi-driver-name').textContent = '—';
+          document.getElementById('kpi-driver-badge').textContent = '—';
+          document.getElementById('kpi-driver-stat').textContent = 'Driver volume not measured';
+        }
+      }
+
+      // 4th KPI card: measured extraneous (excludable) spend floor.
+      renderExtraneousSpend();
+
+      const telemetryIntegrity = reportData.telemetry_integrity;
+      const metricsBanner = document.getElementById('telemetry-integrity-banner');
+      const metricsBody = document.getElementById('telemetry-integrity-body');
+      if (metricsBanner) {
+        const ti = telemetryIntegrity;
+        if (ti.status === 'degraded' && ti.compromised_days.length) {
+          const volumeBasis = reportData.trailing_30d_summary.volume_basis;
+          // Two different reassurances, because with no billing export the
+          // money figures rest on the same damaged metric and promising the
+          // reader they are correct would be false.
+          const scope = volumeBasis === 'invoiced_daily_usage'
+            ? 'Spend, volume and run-rate figures in this report are read from your Cloud Billing export and are unaffected. What is affected is the breakdown by service and by severity, which can only be measured from this metric.'
+            : 'This project has no Cloud Billing export, so the spend and volume figures rest on the same metric and should be treated as a lower bound.';
+          if (metricsBody) {
+            // The affected days stay in the charts -- the metric is the only
+            // source the breakdowns have -- so the reader is told to read those
+            // days as a metric defect rather than as a drop in logging.
+            metricsBody.innerHTML =
+              '<p style="margin-bottom: 6px;"><strong>A Google Cloud metric under-reported this project\u2019s log volume.</strong> ' + escapeHtml(scope) + '</p>' +
+              '<p style="margin-bottom: 6px;"><strong>Effect on the breakdowns:</strong> the Service &amp; Severity tabs still plot every day in the window, so the affected days appear as dips that the metric invented rather than volume your project stopped sending.</p>' +
+              (ti.note ? '<p style="margin-bottom: 6px; color: var(--text-muted);">' + escapeHtml(ti.note) + '</p>' : '') +
+              '<p style="color: var(--text-muted); font-size: 10px;">This is a known defect in Google\u2019s metric pipeline rather than anything to fix in your project, and the affected days will not correct themselves.</p>';
+          }
+          const toggleText = metricsBanner.querySelector('.telemetry-toggle-text');
+          if (toggleText && !metricsBanner._hasToggleListener) {
+            metricsBanner._hasToggleListener = true;
+            metricsBanner.addEventListener('toggle', () => {
+              toggleText.textContent = metricsBanner.open ? 'Hide details' : 'View details';
+            });
+          }
+          metricsBanner.style.display = 'block';
+        } else {
+          metricsBanner.style.display = 'none';
+        }
+      }
+
+      const activeServicesMonth = fullMonth || currentMonth;
+      const svcMap = activeServicesMonth ? activeServicesMonth.services_details : {};
+      const services = Object.entries(svcMap).sort((a, b) => serviceGib(b[1]) - serviceGib(a[1]));
+
+      // Render 6-month or 4-week visual SVG chart
+      renderTrendChart();
+      // Render Sub-tab charts
+      renderDailySeverityChart();
+      renderDailyServiceChart();
+      renderSeverityPies();
+      renderServicePies();
+      syncSharedWindowLabels();
+      // Render Services Tab Details
+      renderServicesList(services, activeServicesMonth);
+      renderOptimizationActions();
+    }
+
+    function renderTrendChart() {
+      const container = document.getElementById('trend-svg-chart-container');
+      if (!container) return;
+
+      const isCost = currentTrendMetric === 'cost';
+      const isTelemetryMode = !reportData.billing_metadata.invoiced;
+
+      let items = [];
+      const width = 800;
+      const height = 230;
+      const padLeft = 65;
+      const padRight = 30;
+      const padTop = 30;
+      const padBottom = 35;
+      const chartW = width - padLeft - padRight;
+      const chartH = height - padTop - padBottom;
+
+      if (isTelemetryMode && Object.keys(reportData.weekly_aggregations).length > 0) {
+        const weeklyAggs = reportData.weekly_aggregations;
+        const weekKeys = ['W-4', 'W-3', 'W-2', 'W-1'].filter(k => weeklyAggs[k]);
+        items = weekKeys.map((w, idx) => {
+          const wData = weeklyAggs[w];
+          const val = isCost ? wData.cost_usd : wData.total_gib;
+          const isLatest = idx === weekKeys.length - 1;
+          const dateRange = `${wData.start_date.slice(5)} to ${wData.end_date.slice(5)}`;
+          return {
+            key: w,
+            val: val,
+            isCurrent: isLatest,
+            topLabel: isCost ? formatDollars(val) : formatGiBCompact(val),
+            xLabel: `${w} (${dateRange})`,
+            tooltip: `${w} (${wData.start_date} to ${wData.end_date}): ${formatDollars(wData.cost_usd)} (${wData.total_gib.toFixed(2)} GiB)`
+          };
+        });
+      } else {
+        const monthlyAggs = reportData.monthly_aggregations;
+        const months = Object.keys(monthlyAggs).sort();
+        if (months.length === 0) return;
+
+        items = months.map((m, idx) => {
+          const mData = monthlyAggs[m];
+          const val = isCost ? mData.net_cost_usd : mData.total_gib;
+          const isCurrent = idx === months.length - 1;
+          const parts = m.split('-');
+          const monthNum = parseInt(parts[1], 10);
+          const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+          const monthShort = monthNames[monthNum - 1] || m;
+          let xLabel = isCurrent ? `${monthShort} (MTD)` : `${monthShort} '${parts[0].slice(2)}`;
+          if (!isCurrent && mData.is_partial === true) {
+            const reason = mData.partial_reason || `${mData.coverage_days || 0}d`;
+            xLabel += ` (${escapeHtml(reason)})`;
+          }
+          return {
+            key: m,
+            val: val,
+            isCurrent: isCurrent,
+            topLabel: isCost ? formatDollars(val) : formatGiBCompact(val),
+            xLabel: xLabel,
+            tooltip: `${escapeHtml(m)}: ${formatDollars(mData.net_cost_usd)} (${formatGiBCompact(mData.total_gib)})`
+          };
+        });
+      }
+
+      if (items.length === 0) return;
+
+      const values = items.map(it => it.val);
+      const maxVal = Math.max(...values, 1);
+      const yMax = maxVal * 1.2;
+
+      const barWidth = Math.min(60, (chartW / items.length) * 0.52);
+      const step = chartW / items.length;
+
+      let yAxisSvg = '';
+      const yTicks = 4;
+      for (let i = 0; i <= yTicks; i++) {
+        const val = (yMax / yTicks) * i;
+        const yPos = padTop + chartH - (i / yTicks) * chartH;
+        let label = '';
+        if (isCost) {
+          label = '$' + (val >= 1000 ? (val / 1000).toFixed(val % 1000 === 0 ? 0 : 1) + 'k' : val.toFixed(0));
+        } else {
+          label = (val >= 1000 ? (val / 1000).toFixed(val % 1000 === 0 ? 0 : 1) + 'k' : val.toFixed(0)) + ' GiB';
+        }
+        yAxisSvg += `
+          <line x1="${padLeft}" y1="${yPos}" x2="${width - padRight}" y2="${yPos}" stroke="#334155" stroke-dasharray="3,3" stroke-width="1" />
+          <text x="${padLeft - 10}" y="${yPos + 4}" text-anchor="end" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif">${label}</text>
+        `;
+      }
+
+      let barsSvg = '';
+      items.forEach((it, idx) => {
+        const val = it.val;
+        const barH = Math.max(4, (val / yMax) * chartH);
+        const x = padLeft + (idx * step) + (step - barWidth) / 2;
+        const y = padTop + chartH - barH;
+
+        const isCurrent = it.isCurrent;
+        const barFill = isCurrent ? 'url(#striped-accent)' : (isCost ? '#10b981' : '#3b82f6');
+        const strokeColor = isCurrent ? (isCost ? '#34d399' : '#60a5fa') : 'none';
+
+        barsSvg += `
+          <g style="cursor: pointer;">
+            <!-- Top Value -->
+            <text x="${x + barWidth / 2}" y="${y - 8}" text-anchor="middle" fill="${isCurrent ? '#fbbf24' : '#f8fafc'}" font-size="11" font-weight="700" font-family="system-ui, sans-serif">${it.topLabel}</text>
+            <!-- Bar -->
+            <rect x="${x}" y="${y}" width="${barWidth}" height="${barH}" rx="5" ry="5" fill="${barFill}" stroke="${strokeColor}" stroke-width="${isCurrent ? 2 : 0}">
+              <title>${escapeHtml(it.tooltip)}</title>
+            </rect>
+            <!-- X Axis Label -->
+            <text x="${x + barWidth / 2}" y="${height - 8}" text-anchor="middle" fill="${isCurrent ? '#fbbf24' : '#94a3b8'}" font-size="11" font-weight="${isCurrent ? '700' : '500'}" font-family="system-ui, sans-serif">${it.xLabel}</text>
+          </g>
+        `;
+      });
+
+      const svgHtml = `
+        <svg viewBox="0 0 ${width} ${height}" style="width: 100%; height: auto; display: block; overflow: visible;">
+          <defs>
+            <pattern id="striped-accent" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="${isCost ? '#10b981' : '#3b82f6'}" stroke-width="3" />
+              <line x1="4" y1="0" x2="4" y2="8" stroke="#1e293b" stroke-width="5" />
+            </pattern>
+          </defs>
+          ${yAxisSvg}
+          ${barsSvg}
+        </svg>
+      `;
+
+      container.innerHTML = svgHtml;
+    }
+
+
+
+
+    const sevColors = {
+      'DEFAULT': '#94a3b8',
+      'DEBUG': '#3b82f6',
+      'INFO': '#10b981',
+      // Must stay clearly apart from INFO's green: teal (#14b8a6) was
+      // reported as indistinguishable from it.
+      'NOTICE': '#ec4899',
+      'WARNING': '#f59e0b',
+      'ERROR': '#ef4444',
+      'CRITICAL': '#be123c',
+      'ALERT': '#9333ea',
+      'EMERGENCY': '#7f1d1d'
+    };
+    const sevOrder = ['DEFAULT', 'DEBUG', 'INFO', 'NOTICE', 'WARNING', 'ERROR', 'CRITICAL', 'ALERT', 'EMERGENCY'];
+
+    // No daily series means the views render their empty states; nothing is
+    // spread over invented days.
+    function getDailySeverityData() {
+      return reportData.severity_summary.daily_severity;
+    }
+
+    function getDailyServicesData() {
+      return reportData.daily_services;
+    }
+
+    // The severity and service breakdowns share one window so their "N-Day"
+    // labels describe the same days: the union of both maps' days (a day in
+    // only one map is still real data), restricted to days with billed bytes
+    // in daily_services, since every rendered volume -- severity included --
+    // is apportioned from them.
+    const SHARED_WINDOW_MAX_DAYS = 14;
+    const SHARED_WINDOW_SHORT_DAYS = 7;
+    let _sharedWindowCache = null;
+
+    function getSharedWindowDates(maxDays = SHARED_WINDOW_MAX_DAYS) {
+      if (_sharedWindowCache && _sharedWindowCache.maxDays === maxDays) {
+        return _sharedWindowCache.dates;
+      }
+      const dailySvc = getDailyServicesData();
+      const hasByteBasis = d =>
+        Object.values(dailySvc[d] || {}).reduce((a, b) => a + b, 0) > 0;
+      const days = new Set([
+        ...Object.keys(getDailySeverityData()),
+        ...Object.keys(dailySvc)
+      ]);
+      const dates = Array.from(days).filter(hasByteBasis).sort().slice(-maxDays);
+      _sharedWindowCache = { maxDays, dates };
+      return dates;
+    }
+
+    // One place sets every "14-Day" label, so the headline day count can never
+    // drift from the window the charts actually plot: a project holding only a
+    // few days of telemetry says so instead of claiming a full window.
+    function syncSharedWindowLabels() {
+      const n = getSharedWindowDates().length;
+      if (!n) return;
+      const set = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      };
+      set('sev-vol-col-label', `${n}-Day Volume`);
+      set('svc-vol-col-label', `${n}-Day Volume`);
+      set('sev-daily-heading', `${n}-Day Daily Severity Breakdown`);
+      set('svc-daily-heading', `${n}-Day Daily Service Breakdown`);
+      set('sev-pie-title-14d', `Prior ${n} Days`);
+      set('svc-pie-title-14d', `Prior ${n} Days`);
+      const shortWindow = Math.min(SHARED_WINDOW_SHORT_DAYS, n);
+      set('sev-pie-title-7d', `Prior ${shortWindow} Days`);
+      set('svc-pie-title-7d', `Prior ${shortWindow} Days`);
+      set('sev-dist-heading', `Severity Distributions (${shortWindow} and ${n} Days)`);
+      set('svc-dist-heading', `Service Distributions (${shortWindow} and ${n} Days)`);
+    }
+
+    // Log Storage and Vended Logs Storage are billed at different unit prices
+    // and only Log Storage has a free tier. `pricing` (see pricing.py)
+    // publishes each SKU's effective rate -- its baseline cost over its
+    // baseline GiB -- and which resource types it bills. A blended book has
+    // one `blended` SKU that prices every service.
+    function rateForService(name) {
+      const p = reportData.pricing;
+      if (p.mode !== 'per_sku') return p.skus.blended.effective_rate_per_gib;
+      const vended = p.vended_resource_types.indexOf(name) >= 0;
+      const sku = p.skus[vended ? 'vended' : 'log_storage'] || p.skus.log_storage;
+      return sku.effective_rate_per_gib;
+    }
+
+    function getDailySeverityMetrics() {
+      const dailySev = getDailySeverityData();
+      const dailySvc = getDailyServicesData();
+
+      // Every day in the shared window is guaranteed to carry billed bytes, so
+      // the weights below always have a level to be applied to.
+      const dates = getSharedWindowDates();
+
+      const data = {};
+      dates.forEach(d => {
+        data[d] = {};
+        const dSev = dailySev[d] || {};
+        // daily_severity carries bytes, not entry counts (see
+        // aggregations.get_severity_summary). Only the weights are used here:
+        // the absolute level always comes from the billed service bytes below,
+        // never from the Log Analytics content bytes these weights are made of.
+        const rawSevTotal = Object.values(dSev).reduce((a, b) => a + b, 0);
+
+        const dSvc = dailySvc[d] || {};
+        const dSvcBytes = Object.values(dSvc).reduce((a, b) => a + b, 0);
+        const dayTotalGiB = dSvcBytes / (1024 * 1024 * 1024);
+        // The day's dollars priced service by service, so a severity's share
+        // of the day carries the day's real SKU mix.
+        const dayCost = Object.entries(dSvc).reduce(
+          (acc, [sName, bytes]) => acc + (bytes / (1024 * 1024 * 1024)) * rateForService(sName), 0);
+
+        Object.entries(dSev).forEach(([sev, rawVal]) => {
+          const frac = rawSevTotal > 0 ? (rawVal / rawSevTotal) : 0;
+          const sevGiB = frac * dayTotalGiB;
+          data[d][sev] = {
+            gib: sevGiB,
+            cost: frac * dayCost,
+            weight: rawVal,
+            pct: frac * 100
+          };
+        });
+      });
+      return { dates, data };
+    }
+
+    function getDailyServiceMetrics() {
+      const dailySvc = getDailyServicesData();
+      const dates = getSharedWindowDates();
+
+      const data = {};
+      dates.forEach(d => {
+        data[d] = {};
+        const dSvc = dailySvc[d] || {};
+        const dSvcBytes = Object.values(dSvc).reduce((a, b) => a + b, 0);
+
+        Object.entries(dSvc).forEach(([sName, bytes]) => {
+          const sGib = bytes / (1024 * 1024 * 1024);
+          const frac = dSvcBytes > 0 ? (bytes / dSvcBytes) : 0;
+          data[d][sName] = {
+            gib: sGib,
+            cost: sGib * rateForService(sName),
+            bytes: bytes,
+            pct: frac * 100
+          };
+        });
+      });
+      return { dates, data };
+    }
+
+    function renderSvgDonut(containerId, slices, totalCenterText, subCenterText, maxLegend = 5) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const validSlices = slices.filter(s => s.value > 0);
+      const total = validSlices.reduce((acc, s) => acc + s.value, 0);
+
+      if (total <= 0 || validSlices.length === 0) {
+        container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:180px;color:var(--text-muted);font-size:12px;">No data available</div>';
+        return;
+      }
+
+      const size = 180;
+      const cx = size / 2;
+      const cy = size / 2;
+      const rOut = 75;
+      const rIn = 48;
+
+      let pathsSvg = '';
+      let currentAngle = -Math.PI / 2;
+
+      if (validSlices.length === 1) {
+        const s = validSlices[0];
+        pathsSvg = `
+          <circle cx="${cx}" cy="${cy}" r="${(rOut + rIn) / 2}" fill="none" stroke="${s.color}" stroke-width="${rOut - rIn}">
+            <title>${escapeHtml(s.label)}: ${escapeHtml(s.formattedValue)} (100%)</title>
+          </circle>
+        `;
+      } else {
+        validSlices.forEach(s => {
+          const fraction = s.value / total;
+          const angle = fraction * 2 * Math.PI;
+          const aStart = currentAngle;
+          const aEnd = currentAngle + angle;
+
+          const x1 = cx + rOut * Math.cos(aStart);
+          const y1 = cy + rOut * Math.sin(aStart);
+          const x2 = cx + rOut * Math.cos(aEnd);
+          const y2 = cy + rOut * Math.sin(aEnd);
+          const x3 = cx + rIn * Math.cos(aEnd);
+          const y3 = cy + rIn * Math.sin(aEnd);
+          const x4 = cx + rIn * Math.cos(aStart);
+          const y4 = cy + rIn * Math.sin(aStart);
+
+          const largeArc = angle > Math.PI ? 1 : 0;
+          const pathD = `M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${rOut} ${rOut} 0 ${largeArc} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} L ${x3.toFixed(2)} ${y3.toFixed(2)} A ${rIn} ${rIn} 0 ${largeArc} 0 ${x4.toFixed(2)} ${y4.toFixed(2)} Z`;
+
+          pathsSvg += `
+            <path d="${pathD}" fill="${s.color}" stroke="var(--bg-card, #1e293b)" stroke-width="1.5">
+              <title>${escapeHtml(s.label)}: ${escapeHtml(s.formattedValue)} (${(fraction * 100).toFixed(1)}%)</title>
+            </path>
+          `;
+
+          currentAngle += angle;
+        });
+      }
+
+      const limit = (typeof maxLegend === 'number' && maxLegend > 0 && isFinite(maxLegend)) ? maxLegend : null;
+      const displaySlices = limit ? validSlices.slice(0, limit) : validSlices;
+
+      let legendHtml = '<div style="display:flex;flex-direction:column;gap:5px;margin-top:12px;width:100%;font-size:11px;">';
+      displaySlices.forEach(s => {
+        const pct = (s.value / total * 100).toFixed(1);
+        legendHtml += `
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:130px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:${s.color};flex-shrink:0;"></span>
+              <span style="color:var(--text);overflow:hidden;text-overflow:ellipsis;" title="${escapeHtml(s.label)}">${escapeHtml(s.label)}</span>
+            </div>
+            <div style="display:flex;gap:6px;color:var(--text-muted);font-weight:600;">
+              <span>${escapeHtml(s.formattedValue)}</span>
+              <span style="color:var(--text);width:36px;text-align:right;">${pct}%</span>
+            </div>
+          </div>
+        `;
+      });
+      if (limit && validSlices.length > limit) {
+        const otherVal = validSlices.slice(limit).reduce((acc, s) => acc + s.value, 0);
+        const otherPct = (otherVal / total * 100).toFixed(1);
+        legendHtml += `
+          <div style="display:flex;justify-content:space-between;align-items:center;color:var(--text-muted);">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#64748b;flex-shrink:0;"></span>
+              <span>+ ${validSlices.length - limit} more</span>
+            </div>
+            <span style="width:36px;text-align:right;">${otherPct}%</span>
+          </div>
+        `;
+      }
+      legendHtml += '</div>';
+
+      container.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;width:100%;">
+          <div style="position:relative;width:${size}px;height:${size}px;">
+            <svg viewBox="0 0 ${size} ${size}" style="width:100%;height:100%;display:block;">
+              ${pathsSvg}
+            </svg>
+            <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;text-align:center;padding:8px;">
+              <div style="font-size:13px;font-weight:700;color:var(--text);line-height:1.2;">${escapeHtml(totalCenterText)}</div>
+              <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">${escapeHtml(subCenterText)}</div>
+            </div>
+          </div>
+          ${legendHtml}
+        </div>
+      `;
+    }
+
+    function renderDailySeverityChart() {
+      const container = document.getElementById('severity-daily-svg-chart-container');
+      const legend = document.getElementById('severity-daily-legend');
+      if (!container) return;
+
+      const { dates, data: dailyMetrics } = getDailySeverityMetrics();
+      const isCost = currentTrendMetric === 'cost';
+      const titleEl = document.querySelector('#subtab-severity .section-title');
+      if (titleEl && dates.length > 0) titleEl.textContent = `${dates.length}-Day Daily Severity Breakdown`;
+      const subEl = document.querySelector('#subtab-severity .kpi-subtext');
+      if (subEl) subEl.textContent = isCost ? 'Daily estimated spend trajectory ($) broken down by severity level' : 'Daily log entry volume broken down by severity level';
+
+      const hasSeverity = dates.some(d => Object.keys(dailyMetrics[d] || {}).length > 0);
+      if (!hasSeverity) {
+        container.innerHTML = '<div style="color:var(--text-muted);padding:20px;text-align:center;">No severity daily telemetry available.</div>';
+        return;
+      }
+
+      const missingWindowsEl = document.getElementById('severity-missing-windows');
+      const missingWindows = reportData.severity_summary.missing_windows;
+      if (missingWindowsEl) {
+        if (missingWindows.length > 0) {
+          missingWindowsEl.innerHTML = `⚠ <strong>LOWER BOUND:</strong> Partial Cloud Monitoring fetch. Missing data for: ${escapeHtml(missingWindows.join(', '))}`;
+          missingWindowsEl.style.display = 'block';
+        } else {
+          missingWindowsEl.style.display = 'none';
+        }
+      }
+
+      if (legend) {
+        const presentSevs = new Set();
+        dates.forEach(d => Object.keys(dailyMetrics[d] || {}).forEach(s => presentSevs.add(s)));
+        let legHtml = '';
+        sevOrder.filter(s => presentSevs.has(s)).forEach(s => {
+          legHtml += `
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="width:10px;height:10px;border-radius:50%;background:${sevColors[s] || '#94a3b8'};"></span>
+              <span>${escapeHtml(s)}</span>
+            </div>
+          `;
+        });
+        legend.innerHTML = legHtml;
+      }
+
+      const dailyTotals = dates.map(d => {
+        const dObj = dailyMetrics[d] || {};
+        return Object.values(dObj).reduce((acc, item) => acc + (isCost ? item.cost : item.gib), 0);
+      });
+
+      const maxVal = Math.max(...dailyTotals, 0.1);
+      const yMax = maxVal * 1.25;
+
+      const width = 800;
+      const height = 230;
+      const padLeft = 65;
+      const padRight = 30;
+      const padTop = 30;
+      const padBottom = 35;
+      const chartW = width - padLeft - padRight;
+      const chartH = height - padTop - padBottom;
+
+      const barWidth = Math.min(42, (chartW / dates.length) * 0.65);
+      const step = chartW / dates.length;
+
+      let yAxisSvg = '';
+      const yTicks = 4;
+      for (let i = 0; i <= yTicks; i++) {
+        const val = (yMax / yTicks) * i;
+        const yPos = padTop + chartH - (i / yTicks) * chartH;
+        let label = isCost
+          ? ('$' + (val >= 1000 ? (val / 1000).toFixed(val % 1000 === 0 ? 0 : 1) + 'k' : val.toFixed(val < 10 ? 2 : 0)))
+          : ((val >= 1000 ? (val / 1000).toFixed(val % 1000 === 0 ? 0 : 1) + 'k' : val.toFixed(val < 10 ? 1 : 0)) + ' GiB');
+        yAxisSvg += `
+          <line x1="${padLeft}" y1="${yPos}" x2="${width - padRight}" y2="${yPos}" stroke="#334155" stroke-dasharray="3,3" stroke-width="1" />
+          <text x="${padLeft - 10}" y="${yPos + 4}" text-anchor="end" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif">${label}</text>
+        `;
+      }
+
+      let barsSvg = '';
+      dates.forEach((d, idx) => {
+        const dObj = dailyMetrics[d] || {};
+        const total = dailyTotals[idx];
+        const x = padLeft + (idx * step) + (step - barWidth) / 2;
+
+        let curY = padTop + chartH;
+        let segsSvg = '';
+
+        sevOrder.forEach(sev => {
+          const item = dObj[sev];
+          const val = item ? (isCost ? item.cost : item.gib) : 0;
+          if (item && val > 0) {
+            const segH = (val / yMax) * chartH;
+            curY -= segH;
+            const pct = item.pct.toFixed(1);
+            const formattedVal = isCost ? formatDollars(item.cost) : formatGiBCompact(item.gib);
+            const tip = `${d} • ${escapeHtml(sev)}: ${formattedVal} (${pct}%)`;
+            segsSvg += `
+              <rect x="${x}" y="${curY}" width="${barWidth}" height="${segH}" fill="${sevColors[sev] || '#94a3b8'}">
+                <title>${escapeHtml(tip)}</title>
+              </rect>
+            `;
+          }
+        });
+
+        const dParts = d.split('-');
+        const monthNum = parseInt(dParts[1], 10);
+        const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+        const xLabel = `${monthNames[monthNum - 1]} ${dParts[2]}`;
+        const topLabel = isCost ? formatDollars(total) : formatGiBCompact(total);
+
+        barsSvg += `
+          <g style="cursor: pointer;">
+            <text x="${x + barWidth / 2}" y="${curY - 8}" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="700" font-family="system-ui, sans-serif">${topLabel}</text>
+            ${segsSvg}
+            <text x="${x + barWidth / 2}" y="${height - 8}" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="500" font-family="system-ui, sans-serif">${xLabel}</text>
+          </g>
+        `;
+      });
+
+      container.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" style="width: 100%; height: auto; display: block; overflow: visible;">
+          ${yAxisSvg}
+          ${barsSvg}
+        </svg>
+      `;
+    }
+
+    function renderSeverityPies() {
+      const { dates, data: dailyMetrics } = getDailySeverityMetrics();
+      if (dates.length === 0) return;
+
+      const isCost = currentTrendMetric === 'cost';
+      const windows = [
+        { id: 'sev-donut-7d', badgeId: 'sev-pie-badge-7d', days: SHARED_WINDOW_SHORT_DAYS },
+        { id: 'sev-donut-14d', badgeId: 'sev-pie-badge-14d', days: SHARED_WINDOW_MAX_DAYS },
+      ];
+
+      windows.forEach(w => {
+        const sliceDates = dates.slice(-w.days);
+        const badge = document.getElementById(w.badgeId);
+        if (badge && sliceDates.length > 0) {
+          badge.textContent = sliceDates.length === 1 ? sliceDates[0] : `${sliceDates[0]} to ${sliceDates[sliceDates.length - 1]}`;
+        }
+
+        const sevSum = {};
+        sliceDates.forEach(d => {
+          const dObj = dailyMetrics[d] || {};
+          Object.entries(dObj).forEach(([sev, item]) => {
+            if (!sevSum[sev]) sevSum[sev] = { gib: 0, cost: 0 };
+            sevSum[sev].gib += item.gib;
+            sevSum[sev].cost += item.cost;
+          });
+        });
+
+        const totalGib = Object.values(sevSum).reduce((acc, item) => acc + item.gib, 0);
+        const totalVal = isCost ? Object.values(sevSum).reduce((acc, item) => acc + item.cost, 0) : totalGib;
+        const slices = sevOrder.filter(s => sevSum[s] && sevSum[s].gib > 0).map(s => {
+          const val = isCost ? sevSum[s].cost : sevSum[s].gib;
+          return {
+            label: s,
+            value: val,
+            formattedValue: isCost ? formatDollars(val) : formatGiBCompact(val),
+            color: sevColors[s] || '#94a3b8'
+          };
+        });
+
+        renderSvgDonut(w.id, slices, isCost ? formatDollars(totalVal) : formatGiBCompact(totalGib), `${sliceDates.length}-Day Total`, 6);
+      });
+
+      // Populate severity-summary-tbody (14-day window breakdown)
+      const tbody = document.getElementById('severity-summary-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      const sev14 = {};
+      dates.forEach(d => {
+        const dObj = dailyMetrics[d] || {};
+        Object.entries(dObj).forEach(([sev, item]) => {
+          if (!sev14[sev]) sev14[sev] = { gib: 0, cost: 0 };
+          sev14[sev].gib += item.gib;
+          sev14[sev].cost += item.cost;
+        });
+      });
+
+      const total14Gib = Object.values(sev14).reduce((acc, item) => acc + item.gib, 0);
+      const activeSevs = sevOrder.filter(s => sev14[s] && sev14[s].gib > 0);
+
+      if (activeSevs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 16px;">No severity metrics available.</td></tr>';
+        return;
+      }
+
+      activeSevs.forEach(sev => {
+        const item = sev14[sev];
+        const pct = total14Gib > 0 ? (item.gib / total14Gib * 100) : 0;
+        const costEst = item.cost;
+        const volStr = formatGiBCompact(item.gib);
+        const costStr = formatDollars(costEst);
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: ${sevColors[sev] || '#94a3b8'}; flex-shrink: 0;"></span>
+              <span style="font-weight: 600; color: var(--text);">${escapeHtml(sev)}</span>
+            </div>
+          </td>
+          <td style="font-weight: 500;">${volStr}</td>
+          <td style="color: #34d399; font-weight: 600;">${costStr}</td>
+          <td style="font-weight: 600;">${pct.toFixed(1)}%</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    const serviceColors = [
+      '#3b82f6', '#10b981', '#f59e0b', '#a855f7', '#ec4899',
+      '#06b6d4', '#84cc16', '#f97316', '#6366f1', '#14b8a6'
+    ];
+
+    function renderDailyServiceChart() {
+      const container = document.getElementById('service-daily-svg-chart-container');
+      const legend = document.getElementById('service-daily-legend');
+      if (!container) return;
+
+      const { dates, data: dailyMetrics } = getDailyServiceMetrics();
+      const isCost = currentTrendMetric === 'cost';
+      const titleEl = document.querySelector('#subtab-service .section-title');
+      if (titleEl && dates.length > 0) titleEl.textContent = `${dates.length}-Day Daily Service Breakdown`;
+      const subEl = document.querySelector('#subtab-service .kpi-subtext');
+      if (subEl) subEl.textContent = isCost ? 'Daily estimated spend trajectory ($) broken down by top service' : 'Daily log volume (GiB) broken down by top service';
+
+      if (dates.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted);padding:20px;text-align:center;">No service daily telemetry available.</div>';
+        return;
+      }
+
+      const srvTotals = {};
+      dates.forEach(d => {
+        const dObj = dailyMetrics[d] || {};
+        Object.entries(dObj).forEach(([s, item]) => {
+          const val = isCost ? item.cost : item.gib;
+          srvTotals[s] = (srvTotals[s] || 0) + val;
+        });
+      });
+
+      const topServices = Object.keys(srvTotals).sort((a, b) => srvTotals[b] - srvTotals[a]).slice(0, 6);
+      const colorMap = {};
+      topServices.forEach((s, i) => {
+        colorMap[s] = serviceColors[i % serviceColors.length];
+      });
+      colorMap['Other'] = '#64748b';
+
+      if (legend) {
+        let legHtml = '';
+        topServices.forEach(s => {
+          legHtml += `
+            <div style="display:flex;align-items:center;gap:6px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+              <span style="width:10px;height:10px;border-radius:50%;background:${colorMap[s]};flex-shrink:0;"></span>
+              <span title="${escapeHtml(s)}" style="overflow:hidden;text-overflow:ellipsis;">${escapeHtml(s)}</span>
+            </div>
+          `;
+        });
+        legHtml += `
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="width:10px;height:10px;border-radius:50%;background:#64748b;"></span>
+            <span>Other</span>
+          </div>
+        `;
+        legend.innerHTML = legHtml;
+      }
+
+      const dailyTotals = dates.map(d => {
+        const dObj = dailyMetrics[d] || {};
+        return Object.values(dObj).reduce((acc, item) => acc + (isCost ? item.cost : item.gib), 0);
+      });
+
+      const maxVal = Math.max(...dailyTotals, 0.1);
+      const yMax = maxVal * 1.25;
+
+      const width = 800;
+      const height = 230;
+      const padLeft = 65;
+      const padRight = 30;
+      const padTop = 30;
+      const padBottom = 35;
+      const chartW = width - padLeft - padRight;
+      const chartH = height - padTop - padBottom;
+
+      const barWidth = Math.min(42, (chartW / dates.length) * 0.65);
+      const step = chartW / dates.length;
+
+      let yAxisSvg = '';
+      const yTicks = 4;
+      for (let i = 0; i <= yTicks; i++) {
+        const val = (yMax / yTicks) * i;
+        const yPos = padTop + chartH - (i / yTicks) * chartH;
+        let label = isCost
+          ? ('$' + (val >= 1000 ? (val / 1000).toFixed(val % 1000 === 0 ? 0 : 1) + 'k' : val.toFixed(val < 10 ? 2 : 0)))
+          : ((val >= 1000 ? (val / 1000).toFixed(val % 1000 === 0 ? 0 : 1) + 'k' : val.toFixed(val < 10 ? 1 : 0)) + ' GiB');
+        yAxisSvg += `
+          <line x1="${padLeft}" y1="${yPos}" x2="${width - padRight}" y2="${yPos}" stroke="#334155" stroke-dasharray="3,3" stroke-width="1" />
+          <text x="${padLeft - 10}" y="${yPos + 4}" text-anchor="end" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif">${label}</text>
+        `;
+      }
+
+      let barsSvg = '';
+      dates.forEach((d, idx) => {
+        const dObj = dailyMetrics[d] || {};
+        const total = dailyTotals[idx];
+        const x = padLeft + (idx * step) + (step - barWidth) / 2;
+
+        let curY = padTop + chartH;
+        let segsSvg = '';
+
+        topServices.forEach(s => {
+          const item = dObj[s];
+          const val = item ? (isCost ? item.cost : item.gib) : 0;
+          if (item && val > 0) {
+            const segH = (val / yMax) * chartH;
+            curY -= segH;
+            const pct = total > 0 ? ((val / total) * 100).toFixed(1) : '0';
+            const formattedVal = isCost ? formatDollars(item.cost) : formatGiBCompact(item.gib);
+            const tip = `${d} • ${escapeHtml(s)}: ${formattedVal} (${pct}%)`;
+            segsSvg += `
+              <rect x="${x}" y="${curY}" width="${barWidth}" height="${segH}" fill="${colorMap[s]}">
+                <title>${escapeHtml(tip)}</title>
+              </rect>
+            `;
+          }
+        });
+
+        let otherGiB = 0;
+        let otherCost = 0;
+        Object.entries(dObj).forEach(([s, item]) => {
+          if (!topServices.includes(s)) {
+            otherGiB += item.gib;
+            otherCost += item.cost;
+          }
+        });
+
+        const otherSegVal = isCost ? otherCost : otherGiB;
+        if (otherSegVal > 0) {
+          const segH = (otherSegVal / yMax) * chartH;
+          curY -= segH;
+          const pct = total > 0 ? ((otherSegVal / total) * 100).toFixed(1) : '0';
+          const formattedVal = isCost ? formatDollars(otherCost) : formatGiBCompact(otherGiB);
+          const tip = `${d} • Other: ${formattedVal} (${pct}%)`;
+          segsSvg += `
+            <rect x="${x}" y="${curY}" width="${barWidth}" height="${segH}" fill="#64748b">
+              <title>${escapeHtml(tip)}</title>
+            </rect>
+          `;
+        }
+
+        const dParts = d.split('-');
+        const monthNum = parseInt(dParts[1], 10);
+        const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+        const xLabel = `${monthNames[monthNum - 1]} ${dParts[2]}`;
+        const topLabel = isCost ? formatDollars(total) : formatGiBCompact(total);
+
+        barsSvg += `
+          <g style="cursor: pointer;">
+            <text x="${x + barWidth / 2}" y="${curY - 8}" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="700" font-family="system-ui, sans-serif">${topLabel}</text>
+            ${segsSvg}
+            <text x="${x + barWidth / 2}" y="${height - 8}" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="500" font-family="system-ui, sans-serif">${xLabel}</text>
+          </g>
+        `;
+      });
+
+      container.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" style="width: 100%; height: auto; display: block; overflow: visible;">
+          ${yAxisSvg}
+          ${barsSvg}
+        </svg>
+      `;
+    }
+
+    function renderServicePies() {
+      const { dates, data: dailyMetrics } = getDailyServiceMetrics();
+      if (dates.length === 0) return;
+
+      const isCost = currentTrendMetric === 'cost';
+      const windows = [
+        { id: 'svc-donut-7d', badgeId: 'svc-pie-badge-7d', days: SHARED_WINDOW_SHORT_DAYS },
+        { id: 'svc-donut-14d', badgeId: 'svc-pie-badge-14d', days: SHARED_WINDOW_MAX_DAYS },
+      ];
+
+      windows.forEach(w => {
+        const sliceDates = dates.slice(-w.days);
+        const badge = document.getElementById(w.badgeId);
+        if (badge && sliceDates.length > 0) {
+          badge.textContent = sliceDates.length === 1 ? sliceDates[0] : `${sliceDates[0]} to ${sliceDates[sliceDates.length - 1]}`;
+        }
+
+        const srvSum = {};
+        sliceDates.forEach(d => {
+          const dObj = dailyMetrics[d] || {};
+          Object.entries(dObj).forEach(([s, item]) => {
+            if (!srvSum[s]) srvSum[s] = { gib: 0, cost: 0 };
+            srvSum[s].gib += item.gib;
+            srvSum[s].cost += item.cost;
+          });
+        });
+
+        const totalGib = Object.values(srvSum).reduce((acc, v) => acc + v.gib, 0);
+        const totalVal = isCost ? Object.values(srvSum).reduce((acc, v) => acc + v.cost, 0) : totalGib;
+        const sortedSrv = Object.keys(srvSum).sort((a, b) => (isCost ? srvSum[b].cost - srvSum[a].cost : srvSum[b].gib - srvSum[a].gib));
+        const topSrv = sortedSrv.slice(0, 5);
+
+        const slices = topSrv.map((s, idx) => {
+          const val = isCost ? srvSum[s].cost : srvSum[s].gib;
+          return {
+            label: s,
+            value: val,
+            formattedValue: isCost ? formatDollars(val) : formatGiBCompact(val),
+            color: serviceColors[idx % serviceColors.length]
+          };
+        });
+
+        if (sortedSrv.length > 5) {
+          const otherVal = sortedSrv.slice(5).reduce((acc, s) => acc + (isCost ? srvSum[s].cost : srvSum[s].gib), 0);
+          slices.push({
+            label: 'Other',
+            value: otherVal,
+            formattedValue: isCost ? formatDollars(otherVal) : formatGiBCompact(otherVal),
+            color: '#64748b'
+          });
+        }
+
+        renderSvgDonut(w.id, slices, isCost ? formatDollars(totalVal) : formatGiBCompact(totalVal), `${sliceDates.length}-Day Total`, 5);
+      });
+
+      // Populate service-summary-tbody (14-day window breakdown)
+      const tbody = document.getElementById('service-summary-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      const srv14 = {};
+      dates.forEach(d => {
+        const dObj = dailyMetrics[d] || {};
+        Object.entries(dObj).forEach(([s, item]) => {
+          srv14[s] = (srv14[s] || 0) + item.gib;
+        });
+      });
+
+      const total14Gib = Object.values(srv14).reduce((acc, v) => acc + v, 0);
+      const sortedSrv14 = Object.keys(srv14).sort((a, b) => srv14[b] - srv14[a]);
+
+      if (sortedSrv14.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 16px;">No service metrics available.</td></tr>';
+        return;
+      }
+
+      sortedSrv14.forEach((sName, idx) => {
+        const gib = srv14[sName];
+        const pct = total14Gib > 0 ? (gib / total14Gib * 100) : 0;
+        const costEst = gib * rateForService(sName);
+        const volStr = formatGiBCompact(gib);
+        const costStr = formatDollars(costEst);
+        const sColor = idx < serviceColors.length ? serviceColors[idx] : '#64748b';
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="width: 10px; height: 10px; border-radius: 50%; background: ${sColor}; flex-shrink: 0;"></span>
+              <span style="font-weight: 600; color: var(--text);">${escapeHtml(sName)}</span>
+            </div>
+          </td>
+          <td style="font-weight: 500;">${volStr}</td>
+          <td style="color: #34d399; font-weight: 600;">${costStr}</td>
+          <td style="font-weight: 600;">${pct.toFixed(1)}%</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderServicesList(services, monthData) {
+      const container = document.getElementById('services-list-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      
+      document.getElementById('services-count-badge').textContent = services.length + ' services';
+
+      services.forEach(([sName, metric], idx) => {
+        const gib = serviceGib(metric);
+        const cost = metric.cost_usd;
+
+        const row = document.createElement('div');
+        row.className = 'service-row' + (sName === activeService || (!activeService && idx === 0) ? ' active' : '');
+        row.dataset.service = sName;
+        row.onclick = () => selectService(sName, services, monthData);
+
+        const isCost = currentTrendMetric === 'cost';
+
+
+        const primaryDisplay = isCost ? formatDollars(cost) : gib.toFixed(2) + ' GiB';
+        const primaryColor = isCost ? '#34d399' : '#60a5fa';
+        const secondaryDisplay = isCost ? gib.toFixed(2) + ' GiB' : formatDollars(cost);
+
+        row.innerHTML = `
+          <div style="overflow: hidden; padding-right: 8px; flex: 1; min-width: 0;">
+            <div class="service-name">${escapeHtml(sName)}</div>
+            <div class="service-sub" style="color: var(--text-muted);">${secondaryDisplay}</div>
+          </div>
+          <div style="text-align: right; white-space: nowrap; display: flex; align-items: center; gap: 8px;">
+            <div style="font-weight: 700; color: ${primaryColor};">${primaryDisplay}</div>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      const currentActive = activeService || (services.length > 0 ? services[0][0] : null);
+      if (currentActive) {
+        selectService(currentActive, services, monthData);
+      } else {
+        const titleEl = document.getElementById('selected-svc-title');
+        if (titleEl) titleEl.textContent = '—';
+        const volEl = document.getElementById('selected-svc-vol');
+        if (volEl) volEl.textContent = '—';
+        const costEl = document.getElementById('selected-svc-cost');
+        if (costEl) costEl.textContent = '—';
+      }
+    }
+
+    function selectService(sName, services, monthData) {
+      activeService = sName;
+      document.querySelectorAll('.service-row').forEach(r => {
+        if (r.dataset.service === sName) r.classList.add('active');
+        else r.classList.remove('active');
+      });
+
+      const metric = monthData.services_details[sName];
+      const gib = serviceGib(metric);
+      const cost = metric.cost_usd;
+
+      document.getElementById('selected-svc-title').textContent = sName;
+      document.getElementById('selected-svc-vol').textContent = gib.toFixed(2) + ' GiB';
+      document.getElementById('selected-svc-cost').textContent = formatDollars(cost);
+
+      const sevData = reportData.severity_summary;
+      const sevSource = sevData.severity_source === 'log_analytics' ? 'Log Analytics' : 'Cloud Monitoring';
+      const breakdownsTitle = document.getElementById('severity-breakdown-title');
+      if (breakdownsTitle) breakdownsTitle.textContent = `${sevData.window_days}-Day Severity Breakdown (${sevSource})`;
+
+      // Severity Breakdown
+      const rawSev = sevData.severity_by_service[sName] || {};
+      const bar = document.getElementById('severity-distribution-bar');
+      bar.innerHTML = '';
+      const tbody = document.getElementById('selected-svc-tbody');
+      tbody.innerHTML = '';
+
+      let totalRaw = 0;
+      Object.values(rawSev).forEach(v => {
+        totalRaw += v;
+      });
+
+      if (totalRaw > 0) {
+        document.getElementById('selected-svc-sample-total').textContent = 
+          'Sample Volume: ' + gib.toFixed(2) + ' GiB (' + formatDollars(cost) + ')';
+
+        sevOrder.forEach(sev => {
+          const rawVal = rawSev[sev] || 0;
+          if (rawVal > 0) {
+            const pct = (rawVal / totalRaw) * 100;
+            const sevGib = (pct / 100) * gib;
+            const sevCost = (pct / 100) * cost;
+
+            const seg = document.createElement('div');
+            seg.className = 'sev-segment';
+            seg.style.width = pct + '%';
+            seg.style.backgroundColor = sevColors[sev] || '#94a3b8';
+            seg.title = `${escapeHtml(sev)}: ${pct.toFixed(1)}% (${sevGib.toFixed(2)} GiB, ${formatDollars(sevCost)})`;
+            bar.appendChild(seg);
+
+            const tr = document.createElement('tr');
+            tr.className = 'severity-row';
+            tr.setAttribute('onclick', `toggleSeverityAccordion('${escapeJs(sName)}', '${escapeJs(sev)}')`);
+            tr.title = 'Click to expand/collapse sample log messages';
+
+            const samples = (sevData.samples_by_service[sName] || {})[sev] || [];
+            const sampleCountBadge = samples.length > 0
+              ? `<span class="badge" style="font-size: 10px; padding: 1px 6px; margin-left: 6px; font-weight: normal;">${samples.length} logs</span>`
+              : '';
+
+            tr.innerHTML = `
+              <td>
+                <div style="display: flex; align-items: center;">
+                  <span id="arrow-${escapeHtml(sName)}-${escapeHtml(sev)}" class="accordion-arrow">▶</span>
+                  <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: ${sevColors[sev] || '#94a3b8'}; margin-right: 6px;"></span>
+                  <span style="font-weight: 600;">${escapeHtml(sev)}</span>
+                  ${sampleCountBadge}
+                </div>
+              </td>
+              <td>${sevGib.toFixed(2)} GiB</td>
+              <td style="color: #34d399; font-weight: 600;">${formatDollars(sevCost)}</td>
+              <td style="font-weight: 600;">${pct.toFixed(1)}%</td>
+            `;
+            tbody.appendChild(tr);
+
+            const accTr = document.createElement('tr');
+            accTr.id = `accordion-${escapeHtml(sName)}-${escapeHtml(sev)}`;
+            accTr.className = 'severity-accordion-row';
+            accTr.style.display = 'none';
+
+            let samplesHtml = '';
+            if (samples.length > 0) {
+              // Five patterns could be 90% of this stream or 2% of it. Without
+              // the remainder the reader cannot tell which, and would be right
+              // to assume the larger.
+              const cov = (sevData.sample_coverage && sevData.sample_coverage[sName] && sevData.sample_coverage[sName][sev]) || null;
+              const covNote = (cov && cov.shown_pct !== null && cov.shown_pct !== undefined)
+                ? `${cov.shown_pct.toFixed(1)}% of this stream's volume · remainder spread across other patterns`
+                : 'share of stream not measured';
+              samplesHtml = `
+                <div class="sample-logs-wrap">
+                  <div style="border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 6px;">
+                    <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">
+                      Representative Logs (${samples.length})
+                    </span>
+                    <span style="font-size: 11px; color: var(--text-muted); margin-left: 8px;">
+                      ${escapeHtml(covNote)}
+                    </span>
+                  </div>
+                  ${samples.map((sm, sIdx) => renderSampleCard(sm, sName, sev, sIdx, cov)).join('')}
+                </div>
+              `;
+            } else {
+              const sErr = (sevData.sample_errors && sevData.sample_errors[sName] && sevData.sample_errors[sName][sev]) || '';
+              samplesHtml = `
+                <div class="sample-logs-wrap">
+                  <p style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 12px 0;">
+                    No representative log entries for ${escapeHtml(sev)} in ${escapeHtml(sName)}${sErr ? ': ' + escapeHtml(sErr) : '.'}
+                  </p>
+                </div>
+              `;
+            }
+
+            accTr.innerHTML = `<td colspan="4" class="severity-accordion-cell">${samplesHtml}</td>`;
+            tbody.appendChild(accTr);
+          }
+        });
+      } else {
+        document.getElementById('selected-svc-sample-total').textContent = 'Sample: Baseline standard telemetry';
+        bar.innerHTML = '<div style="width: 100%; height: 100%; background: #475569;" title="Standard telemetry"></div>';
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 14px;">No granular SQL severity sample available.</td></tr>';
+      }
+    }
+
+    function toggleSeverityAccordion(sName, sev) {
+      const accId = `accordion-${escapeHtml(sName)}-${escapeHtml(sev)}`;
+      const arrowId = `arrow-${escapeHtml(sName)}-${escapeHtml(sev)}`;
+      const row = document.getElementById(accId);
+      const arrow = document.getElementById(arrowId);
+      if (!row) return;
+
+      if (row.style.display === 'none' || !row.style.display) {
+        row.style.display = 'table-row';
+        if (arrow) {
+          arrow.textContent = '▼';
+          arrow.style.color = '#3b82f6';
+        }
+      } else {
+        row.style.display = 'none';
+        if (arrow) {
+          arrow.textContent = '▶';
+          arrow.style.color = 'var(--text-muted)';
+        }
+      }
+    }
+
+    // What `signature_source` actually promises about a cluster's members.
+    // Clusters are grouped on service + log ID + severity + the first 120
+    // characters of ONE payload field, and which field that is decides whether
+    // the example on the card is representative or merely arbitrary. That
+    // varies from "the opening line is identical" to "these entries have
+    // nothing in common but their type", so it is stated on every card rather
+    // than left for the reader to infer from the payload.
+    const SIGNATURE_MATCH = {
+      text_payload: {
+        label: 'Same message template',
+        tone: '#34d399',
+        field: 'text_payload',
+        detail: 'These entries share one message template. Variable tokens — timestamps, ids, addresses, numbers — were normalised before grouping, so they differ between entries wherever a <PLACEHOLDER> appears.'
+      },
+      json_message: {
+        label: 'Same message template',
+        tone: '#34d399',
+        field: 'jsonPayload.message',
+        detail: 'These entries share one jsonPayload.message template. Variable tokens were normalised before grouping, so they differ wherever a <PLACEHOLDER> appears. Other payload fields are not compared.'
+      },
+      json_MESSAGE: {
+        label: 'Same message template',
+        tone: '#34d399',
+        field: 'jsonPayload.MESSAGE',
+        detail: 'These entries share one jsonPayload.MESSAGE template (the systemd journal field). Variable tokens were normalised before grouping. Other payload fields are not compared.'
+      },
+      json_msg: {
+        label: 'Same message template',
+        tone: '#34d399',
+        field: 'jsonPayload.msg',
+        detail: 'These entries share one jsonPayload.msg template. Variable tokens were normalised before grouping. Other payload fields are not compared.'
+      },
+      json_log: {
+        label: 'Same message template',
+        tone: '#34d399',
+        field: 'jsonPayload.log',
+        detail: 'These entries share one jsonPayload.log template. Variable tokens were normalised before grouping. Other payload fields are not compared.'
+      },
+      audit_method: {
+        label: 'Same API method',
+        tone: '#fbbf24',
+        field: 'protoPayload.methodName',
+        detail: 'Every entry records the same API method. Callers, target resources, parameters and outcomes vary freely.'
+      },
+      json_shape: {
+        label: 'Same record structure',
+        tone: '#fbbf24',
+        field: null,
+        detail: 'These entries carry no message field, so they are grouped by the set of keys their payload contains. Every member has this same structure; every value inside it may differ. Two records with identical keys but opposite meanings — an allowed and a denied connection, say — sit in this same group.'
+      },
+      proto_type: {
+        label: 'Payload type only — contents vary',
+        tone: '#f87171',
+        field: 'protoPayload.@type',
+        detail: 'Grouped only by payload type. No message text was extractable, so the entries share a schema and nothing else. The example is one arbitrary member.'
+      },
+      none: {
+        label: 'Payload type only — contents vary',
+        tone: '#f87171',
+        field: null,
+        detail: 'No message field could be extracted from these entries, so they are grouped by service, log ID and severity alone. The example is one arbitrary member and may look nothing like the rest.'
+      }
+    };
+
+    function signatureMatchInfo(src) {
+      return SIGNATURE_MATCH[src] || SIGNATURE_MATCH.none;
+    }
+
+    function renderSampleCard(sm, sName, sev, sIdx, coverage) {
+      const log = sm.sample_log || {};
+      const payloadText = log.payload || sm.preview || '';
+      const cardId = `log-${escapeHtml(sName)}-${escapeHtml(sev)}-${sIdx}`.replace(/[^a-zA-Z0-9_-]/g, '_');
+      const isLong = payloadText.length > 300;
+      const initialText = isLong ? payloadText.slice(0, 300) + '...' : payloadText;
+
+      // A census card is two things: the log, and how much of this stream that
+      // kind of line accounts for. It deliberately carries no exclusion rule --
+      // a rule is an irreversible action on log routing and belongs to the cost
+      // optimizer, which measures what the rule itself would drop. Here the
+      // volume describes the pattern, which is a different number.
+      const gib = sm.total_gib || 0;
+      const entries = sm.entry_count || 0;
+      // Never substitute a placeholder count: a pattern with no measurement
+      // says so rather than implying it carries a single log.
+      const measured = (sm.volume_measured !== undefined)
+        ? !!sm.volume_measured
+        : (gib > 0 || entries > 0);
+
+      const streamBytes = coverage ? (coverage.stream_bytes || 0) : 0;
+      const sharePct = (streamBytes > 0 && sm.total_bytes > 0)
+        ? (sm.total_bytes / streamBytes) * 100
+        : null;
+
+      let metaText;
+      if (!measured) {
+        metaText = 'Volume not measured for this stream';
+      } else {
+        const parts = [];
+        if (entries > 0) parts.push(`${Number(entries).toLocaleString()} entries`);
+        if (gib > 0) parts.push(`${gib.toFixed(2)} GiB`);
+        if (sharePct !== null) parts.push(`${sharePct.toFixed(1)}% of ${escapeHtml(sev)} in ${escapeHtml(sName)}`);
+        metaText = parts.join(' · ');
+      }
+
+      const match = signatureMatchInfo(sm.signature_source);
+      // A pattern that covers its whole stream has not identified a pattern at
+      // all -- it is the stream, relabelled. Saying so is the difference
+      // between "these 135M entries are alike" and "we could not tell these
+      // 135M entries apart".
+      const isWholeStream = sharePct !== null && sharePct >= 99.5;
+      const detailsId = `sig-${cardId}`;
+
+      const isShape = sm.signature_source === 'json_shape';
+      const criteriaRows = [
+        ['resource.type', sName],
+        ['log ID', sm.log_id || '—'],
+        ['severity', sev]
+      ];
+      if (isShape) {
+        criteriaRows.push([
+          'payload key set',
+          sm.preview ? String(sm.preview).slice(0, 120) : '(none)'
+        ]);
+      } else if (match.field) {
+        criteriaRows.push([
+          `${match.field} template`,
+          sm.preview ? `"${String(sm.preview).slice(0, 120)}"` : '(empty)'
+        ]);
+      } else {
+        criteriaRows.push([
+          'message text',
+          'not extractable — not used for grouping'
+        ]);
+      }
+
+      return `
+        <div class="sample-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-bottom: 6px;">
+            <div style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">
+              ${escapeHtml(metaText)}
+            </div>
+            <span style="font-size: 10px; font-weight: 700; color: ${match.tone}; border: 1px solid ${match.tone}44; background: ${match.tone}1a; border-radius: 10px; padding: 2px 8px; white-space: nowrap;">
+              ${escapeHtml(match.label)}
+            </span>
+          </div>
+
+          ${isWholeStream ? `
+            <div style="font-size: 11px; color: #f87171; padding-bottom: 6px;">
+              This pattern covers the entire ${escapeHtml(sev)} stream — it describes the stream, not a distinguishing pattern within it.
+            </div>
+          ` : ''}
+
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div class="payload-box" id="box-${cardId}">${escapeHtml(initialText)}</div>
+            ${isLong ? `
+              <div style="display: flex; justify-content: flex-end;">
+                <button onclick="togglePayloadExpand('${cardId}', this)" class="copy-btn" style="padding: 2px 8px; font-size: 10px;">Show full (${payloadText.length.toLocaleString()} chars)</button>
+              </div>
+            ` : ''}
+            <textarea id="full-${cardId}" style="display: none;">${escapeHtml(payloadText)}</textarea>
+            <textarea id="trunc-${cardId}" style="display: none;">${escapeHtml(initialText)}</textarea>
+          </div>
+
+          <details id="${detailsId}" style="margin-top: 8px;">
+            <summary style="font-size: 11px; color: var(--text-muted); cursor: pointer; user-select: none;">
+              What makes a log part of this group?
+            </summary>
+            <div style="margin-top: 6px; font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+              <div style="margin-bottom: 6px;">${escapeHtml(match.detail)}</div>
+              <table style="width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 10px;">
+                <tr><td colspan="2" style="padding: 3px 0; font-weight: 700; color: var(--text-muted);">COMPARED</td></tr>
+                ${criteriaRows.map(([k, v]) => `
+                  <tr>
+                    <td style="padding: 2px 8px 2px 0; vertical-align: top; white-space: nowrap;">${escapeHtml(k)}</td>
+                    <td style="padding: 2px 0; word-break: break-all;">${escapeHtml(String(v))}</td>
+                  </tr>
+                `).join('')}
+                <tr><td colspan="2" style="padding: 8px 0 3px 0; font-weight: 700; color: var(--text-muted);">NOT COMPARED</td></tr>
+                <tr><td colspan="2" style="padding: 2px 0;">resource labels — instance, subnetwork, cluster and zone all vary within this group</td></tr>
+                ${isShape
+                  ? '<tr><td colspan="2" style="padding: 2px 0;">every value inside the payload — only the key names were compared</td></tr>'
+                  : '<tr><td colspan="2" style="padding: 2px 0;">any token shown as &lt;TS&gt;, &lt;IP&gt;, &lt;UUID&gt;, &lt;HEX&gt;, &lt;PATH&gt; or &lt;N&gt; — these vary between members by design</td></tr>'}
+                <tr><td colspan="2" style="padding: 2px 0;">anything past character 200</td></tr>
+                <tr><td colspan="2" style="padding: 2px 0;">all other payload fields, labels, timestamps and insertId</td></tr>
+              </table>
+              <div style="margin-top: 6px; font-style: italic;">
+                The log shown above is one member chosen arbitrarily, not the most common or most recent.
+              </div>
+            </div>
+          </details>
+        </div>
+      `;
+    }
+
+
+    function togglePayloadExpand(cardId, btn) {
+      const box = document.getElementById(`box-${cardId}`);
+      const full = document.getElementById(`full-${cardId}`);
+      const trunc = document.getElementById(`trunc-${cardId}`);
+      if (!box || !full || !trunc) return;
+
+      if (box.classList.contains('expanded')) {
+        box.classList.remove('expanded');
+        box.textContent = trunc.value;
+        btn.textContent = `Show full (${full.value.length.toLocaleString()} chars)`;
+      } else {
+        box.classList.add('expanded');
+        box.textContent = full.value;
+        btn.textContent = 'Show less';
+      }
+    }
+
+    // ---- Extraneous Log Spend (measured waste floor) ----
+
+    // Inline show/hide for the detail panel.
+    function toggleExtraneousDetails(btn) {
+      const el = document.getElementById('extraneous-details');
+      if (!el) return;
+      if (el.style.display === 'none' || !el.style.display) {
+        el.style.display = 'flex';
+        btn.textContent = 'Hide details';
+      } else {
+        el.style.display = 'none';
+        btn.textContent = 'See details';
+      }
+    }
+
+    // `null` means "not measured" and must not render as 0.
+    function measuredNumber(v) {
+      return (v === null || v === undefined) ? NaN : Number(v);
+    }
+
+    // One row per action, from the same objects the Cost Optimizer renders;
+    // the filter and how to apply it live on the action's card there.
+    function extraneousRows(actions) {
+      return actions.map(a => {
+        const gib = measuredNumber(a.monthly_gib);
+        const usd = measuredNumber(a.monthly_usd);
+        const pct = measuredNumber(a.pct_of_billable);
+        const details = [];
+        if (a.flag) {
+          details.push(`<div style="color: var(--warning); font-size: 11px;">⚠ ${escapeHtml(a.flag)}</div>`);
+        }
+        if (a.evidence) {
+          details.push(`<p class="kpi-subtext">${escapeHtml(a.evidence)}</p>`);
+        }
+        return `
+          <tr>
+            <td style="font-weight: 600;">${escapeHtml(a.title)}</td>
+            <td>${isFinite(gib) ? formatGiBCompact(gib) + '/mo' : '—'}</td>
+            <td style="color: #34d399; font-weight: 600;">${isFinite(usd) ? formatDollars(usd) + '/mo' : '—'}</td>
+            <td>${isFinite(pct) ? pct.toFixed(2) + '%' : '—'}</td>
+            <td style="color: var(--text-muted);">${escapeHtml(a.assurance.label)}</td>
+          </tr>
+          ${details.length > 0 ? `
+            <tr>
+              <td colspan="5" style="padding-top: 0;">
+                <div style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 6px;">${details.join('')}</div>
+              </td>
+            </tr>` : ''}`;
+      }).join('');
+    }
+
+    function buildExtraneousPanel(ext, counted, uncounted, withheld) {
+      const basis = ext.basis || {};
+      const head = `
+        <thead>
+          <tr>
+            <th>Action</th><th>Volume</th><th>Savings</th><th>% of billable</th><th>Assurance</th>
+          </tr>
+        </thead>`;
+
+      let html = `
+        <div class="chart-title-bar">
+          <h2 class="section-title">Extraneous Log Spend — counted actions</h2>
+        </div>`;
+
+      if (counted.length > 0) {
+        html += `<div class="table-scroll"><table class="data-table">${head}<tbody>${extraneousRows(counted)}</tbody></table></div>`;
+        html += `<p class="kpi-subtext">Filters and how to apply each one are in the Cost Optimizer.</p>`;
+      } else {
+        html += `<p class="kpi-subtext">No individually measured actions were counted in this window.</p>`;
+      }
+
+      if (uncounted.length > 0 || withheld.length > 0) {
+        const morePct = measuredNumber(ext.uncounted_total_pct);
+        const heading = isFinite(morePct) && morePct > 0
+          ? `Additional — requires owner review (${Number(morePct.toFixed(2))}% more, not counted)`
+          : 'Additional — requires owner review (not counted)';
+        html += `
+          <div style="border-top: 1px dashed rgba(255,255,255,0.12); padding-top: 14px;">
+            <h3 class="section-title" style="font-size: 14px; margin-bottom: 10px;">${escapeHtml(heading)}</h3>
+            ${uncounted.length > 0 ? `<div class="table-scroll"><table class="data-table">${head}<tbody>${extraneousRows(uncounted)}</tbody></table></div>` : ''}
+            ${withheld.map(w => `<p class="kpi-subtext">• <strong>${escapeHtml(w.title)}:</strong> ${escapeHtml(w.reason)}</p>`).join('')}
+          </div>`;
+      }
+
+      const basisBits = [];
+      if (basis.source) basisBits.push(escapeHtml(basis.source));
+      if (basis.window_days) basisBits.push(`${escapeHtml(basis.window_days)}-day window`);
+      if (basis.byte_count_to_billed_calibration !== undefined && basis.byte_count_to_billed_calibration !== null) {
+        basisBits.push(`stream volumes calibrated to billed bytes (×${escapeHtml(basis.byte_count_to_billed_calibration)})`);
+      }
+      if (basisBits.length > 0) {
+        html += `<p class="kpi-subtext" style="border-top: 1px solid var(--border); padding-top: 10px;">Basis: ${basisBits.join(' · ')}</p>`;
+      }
+      return html;
+    }
+
+    function renderExtraneousSpend() {
+      const valEl = document.getElementById('kpi-waste-val');
+      const subEl = document.getElementById('kpi-waste-subtext');
+      if (!valEl || !subEl) return;
+      const badgeEl = document.getElementById('kpi-waste-badge');
+      const btnEl = document.getElementById('kpi-waste-details-btn');
+      const panelEl = document.getElementById('extraneous-details');
+
+      const ext = reportData.extraneous_spend;
+      // Both are absent when the floor could not be measured.
+      const headline = ext.headline;
+      const basis = ext.basis || {};
+
+      // Reset the details affordance; it is only offered when there is something to list.
+      if (btnEl) { btnEl.style.display = 'none'; btnEl.textContent = 'See details'; }
+      if (panelEl) { panelEl.style.display = 'none'; panelEl.innerHTML = ''; }
+
+      // No measured data: show an em-dash and the upstream reason. Never fabricate a number.
+      const pct = headline ? Number(headline.pct_of_billable_spend) : NaN;
+      if (ext.status !== 'ok' || !isFinite(pct)) {
+        valEl.textContent = '—';
+        subEl.textContent = ext.reason;
+        if (badgeEl) badgeEl.textContent = 'No data';
+        return;
+      }
+
+      const needsReview = headline.exceeds_sanity_ceiling === true;
+      if (badgeEl) badgeEl.textContent = basis.window_days ? `Floor · ${basis.window_days}d` : 'Floor';
+
+      // The headline is a floor (only measured actions are counted), hence the ≥.
+      valEl.textContent = `≥ ${Number(pct.toFixed(2))}%` + (needsReview ? ' ⚠' : '');
+
+      const reduction = reportData.reduction_actions;
+      const levers = reduction.actions.filter(a => a.source === 'measured_lever');
+      const counted = levers.filter(a => a.counted);
+      const uncounted = levers.filter(a => !a.counted);
+      const withheld = reduction.withheld;
+      let subtext = `~${formatDollars(headline.monthly_savings_usd)}/mo of ${formatDollars(basis.billable_monthly_cost_usd)}/mo billable · ${counted.length} actions counted`;
+      if (needsReview) subtext += ' · ⚠ exceeds sanity ceiling, needs manual review';
+      subEl.textContent = subtext;
+
+      if (panelEl && (levers.length > 0 || withheld.length > 0)) {
+        panelEl.innerHTML = buildExtraneousPanel(ext, counted, uncounted, withheld);
+        if (btnEl) btnEl.style.display = 'inline-block';
+      }
+    }
+
+    function copyToClipboard(text, btn) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          const original = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = original; }, 1500);
+        }).catch(() => {
+          fallbackCopyText(text, btn);
+        });
+      } else {
+        fallbackCopyText(text, btn);
+      }
+    }
+
+    function fallbackCopyText(text, btn) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        if (!document.execCommand('copy')) throw new Error('copy refused');
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = original; }, 1500);
+      } catch (err) {
+        btn.textContent = 'Failed';
+      }
+      document.body.removeChild(ta);
+    }
+
+    // ---------------------------------------------------------------------
+    // Prove It: renders `provenance.claims[<id>]` (provenance.py) from the
+    // embedded JSON. It never talks to an agent, since an HTML file cannot know
+    // which host embeds it; the footer names verify_claim.py instead.
+    // ---------------------------------------------------------------------
+    function provenanceClaim(claimId) {
+      const claims = reportData.provenance.claims;
+      return claims[claimId] || null;
+    }
+
+    function revealProveButtons() {
+      document.querySelectorAll('.prove-btn[data-claim]').forEach(btn => {
+        btn.style.display = provenanceClaim(btn.dataset.claim) ? '' : 'none';
+      });
+    }
+
+    function renderProveSource(src, idx) {
+      const link = (src.console && src.console.url)
+        ? `<a class="prove-link" href="${escapeHtml(src.console.url)}" target="_blank" rel="noopener">${escapeHtml(src.console.label || 'Open in Console')} ↗</a>`
+        : '';
+      const code = src.query
+        ? `<div>
+             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+               <span class="prove-kind">${escapeHtml(src.language || 'query')}</span>
+               <button class="prove-link" style="background:none; cursor:pointer;" onclick="copyProveQuery(${idx}, this)">Copy</button>
+             </div>
+             <pre class="prove-code">${escapeHtml(src.query)}</pre>
+           </div>`
+        : '';
+      const steps = (src.steps && src.steps.length)
+        ? `<ol class="prove-steps">${src.steps.map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ol>`
+        : '';
+      return `
+        <div class="prove-source">
+          <div class="prove-source-head">
+            <div>
+              <div class="prove-kind">${escapeHtml(src.kind || '')}</div>
+              <div class="prove-source-name">${escapeHtml(src.name || 'Source')}</div>
+              ${src.role ? `<div class="prove-source-role">${escapeHtml(src.role)}</div>` : ''}
+            </div>
+            ${link}
+          </div>
+          ${code}
+          ${steps}
+        </div>`;
+    }
+
+    let activeProveClaim = null;
+
+    function copyProveQuery(idx, btn) {
+      const src = ((activeProveClaim || {}).sources || [])[idx];
+      if (src && src.query) copyToClipboard(src.query, btn);
+    }
+
+    function proveIt(claimId) {
+      const claim = provenanceClaim(claimId);
+      if (!claim) return;
+      activeProveClaim = claim;
+      const formula = claim.formula.join('\n');
+      const sources = claim.sources.map(renderProveSource).join('');
+      const diffs = claim.differences.length
+        ? `<div><div class="prove-section-title">Why the console may differ slightly</div>
+             <ul class="prove-diffs">${claim.differences.map(d => `<li>${escapeHtml(d)}</li>`).join('')}</ul></div>`
+        : '';
+      const related = claim.see_also.filter(provenanceClaim);
+      const seeAlso = related.length
+        ? `<div><div class="prove-section-title">Built from these claims, each with its own proof</div>
+             <ul class="prove-diffs">${related.map(id => `<li><a class="prove-link" href="#" data-claim="${escapeHtml(id)}" onclick="proveIt(this.dataset.claim); return false;">${escapeHtml(provenanceClaim(id).title)}</a></li>`).join('')}</ul></div>`
+        : '';
+      const ctx = reportData.report_context || {};
+      const verifyCmd = `${ctx.python || 'python3'} ${ctx.verify_script || 'scripts/verify_claim.py'} --summary ${ctx.summary_path || 'logging_usage_summary.json'} --claim "${claim.id}"`;
+      const foot = `To re-check every input above against the live sources: <code>${escapeHtml(verifyCmd)}</code><br>Or ask your agent: <code>prove ${escapeHtml(claim.id)}</code>`;
+
+      const drawer = document.getElementById('prove-drawer');
+      drawer.innerHTML = `
+        <div class="prove-head">
+          <div>
+            <div class="prove-kicker">✓ Prove It</div>
+            <div class="prove-title">${escapeHtml(claim.title || '')}</div>
+            <div class="prove-value">${escapeHtml(claim.value || '')}</div>
+          </div>
+          <button class="prove-close" onclick="closeProveIt()" aria-label="Close">✕</button>
+        </div>
+        ${claim.summary ? `<div style="font-size:13px; line-height:1.55; color:var(--text);">${escapeHtml(claim.summary)}</div>` : ''}
+        ${formula ? `<div><div class="prove-section-title">How it's calculated</div><div class="prove-formula">${escapeHtml(formula)}</div></div>` : ''}
+        ${sources ? `<div style="display:flex; flex-direction:column; gap:10px;"><div class="prove-section-title">Check each input yourself</div>${sources}</div>` : ''}
+        ${seeAlso}
+        ${diffs}
+        <div class="prove-foot">${foot}</div>`;
+      document.getElementById('prove-overlay').classList.add('open');
+      drawer.classList.add('open');
+      drawer.scrollTop = 0;
+    }
+
+    function closeProveIt() {
+      document.getElementById('prove-overlay').classList.remove('open');
+      document.getElementById('prove-drawer').classList.remove('open');
+      activeProveClaim = null;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeProveIt();
+    });
+
+    function escapeHtml(str) {
+      if (str === undefined || str === null) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function escapeJs(str) {
+      if (str === undefined || str === null) return '';
+      return String(str)
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, "\\'")
+        .replace(/"/g, '\\"')
+        .replace(/\n/g, '\\n')
+        .replace(/\r/g, '\\r');
+    }
+
+    function filterServices(q) {
+      const term = q.toLowerCase().trim();
+      document.querySelectorAll('.service-row').forEach(row => {
+        const name = row.dataset.service.toLowerCase();
+        row.style.display = name.includes(term) ? 'flex' : 'none';
+      });
+    }
+
+    // One card per action, full width, ranked by saving. Each card answers, in
+    // order: what it is and what it saves, why (evidence and what to weigh),
+    // and how to apply it. Nothing here is selectable or summed: overlapping
+    // actions can cover the same stream, so a running total would promise the
+    // same bytes twice.
+    function renderOptimizationActions() {
+      const container = document.getElementById('optimization-actions');
+      if (!container) return;
+
+      const reductionData = reportData.reduction_actions;
+      const actions = reductionData.actions;
+      const withheld = reductionData.withheld;
+
+      if (actions.length === 0 && withheld.length === 0) {
+        container.innerHTML = '<div class="card"><p class="kpi-subtext">No actions could be measured for this window.</p></div>';
+        return;
+      }
+
+      // Bars are scaled to the largest action so the list reads as a ranking.
+      const maxGib = Math.max(0, ...actions.map(a => a.monthly_gib || 0));
+
+      const cards = actions.map(item => {
+        const id = escapeHtml(escapeJs(item.id));
+        const a = item.assurance;
+        const level = a.level || 'judgement';
+        const hasFigure = item.monthly_usd !== null && item.monthly_usd !== undefined;
+        const hasVolume = item.monthly_gib !== null && item.monthly_gib !== undefined;
+
+        // Dollars lead and volume sits under them: one fact, measured two ways.
+        const saving = hasFigure
+          ? `<div class="action-saving-usd">${formatDollars(item.monthly_usd)}/mo</div>`
+            + (hasVolume ? `<div class="action-saving-gib">${formatGiBCompact(item.monthly_gib)}/mo</div>` : '')
+          : '<div class="action-saving-usd action-saving-none">—</div>';
+        const barPct = (maxGib > 0 && hasVolume) ? Math.max(2, item.monthly_gib / maxGib * 100) : 0;
+
+        // The caveat says what the stream is FOR. It is the line that can stop
+        // someone deleting their firewall logs, so it is set apart.
+        const why = [item.evidence, a.measurement, a.judgement]
+          .filter(Boolean)
+          .map(s => `<div class="action-text">${escapeHtml(s)}</div>`)
+          .join('')
+          + (a.caveat ? `<div class="action-caveat">${escapeHtml(a.caveat)}</div>` : '');
+
+        let how = '';
+        if (item.filter) {
+          how += `
+            <div class="action-text action-muted">Add as an exclusion filter on the <code>_Default</code> sink (Logging → Log Router → <code>_Default</code> → Edit sink).</div>
+            <code class="action-filter">${escapeHtml(item.filter)}</code>
+            <div><button class="copy-btn action-copy" onclick="copyActionFilter('${id}', this)">Copy filter</button></div>`;
+        }
+        if (item.manual_step) {
+          how += `<div class="action-text">${escapeHtml(item.manual_step)}</div>`;
+        }
+        if (item.scope_note) {
+          how += `<div class="action-text action-muted">${escapeHtml(item.scope_note)}</div>`;
+        }
+        // Without this the saving looks arbitrarily smaller than the volume the
+        // evidence quotes, with nothing to explain the gap.
+        const refused = item.refused_claims.filter(r => r.monthly_gib > 0);
+        if (refused.length > 0) {
+          how += `<div class="action-text action-muted"><strong>Not covered by this filter:</strong>`
+            + refused.map(r => `<div>• ${escapeHtml(r.log_id)} (${formatGiBCompact(r.monthly_gib)}/mo) — ${escapeHtml(r.reason)}</div>`).join('')
+            + '</div>';
+        }
+
+        const sample = item.sample_log && (item.sample_log.payload || item.sample_log.preview);
+        const sampleName = (item.sample_log && item.sample_log.log_name) ? ` (${escapeHtml(item.sample_log.log_name)})` : '';
+        const sampleHtml = sample
+          ? `<details class="action-details"><summary>Example log${sampleName}</summary><div class="payload-box">${escapeHtml(sample)}</div></details>`
+          : '';
+
+        return `
+          <div class="action-card level-${escapeHtml(level)}">
+            <div class="action-head">
+              <div style="min-width: 0;">
+                <div class="action-label">${escapeHtml(a.label || 'Your call')}</div>
+                <div class="action-title">${escapeHtml(item.title)}</div>
+              </div>
+              <div class="action-saving">${saving}${hasFigure ? `
+                <div style="margin-top: 6px;"><button class="prove-btn" style="display:none;" data-claim="action::${escapeHtml(item.id)}"
+                        onclick="proveIt(this.dataset.claim)"
+                        title="How this saving is calculated, and how to check it yourself"><span class="check">✓</span> Prove It</button></div>` : ''}</div>
+            </div>
+            ${barPct > 0 ? `<div class="action-bar"><span style="width: ${barPct.toFixed(1)}%;"></span></div>` : ''}
+            <div class="action-body${how ? '' : ' action-body-single'}">
+              <div>
+                <div class="action-section-title">Why</div>
+                ${why}
+              </div>
+              ${how ? `<div><div class="action-section-title">How to apply</div>${how}</div>` : ''}
+            </div>
+            ${sampleHtml ? `<div class="action-foot">${sampleHtml}</div>` : ''}
+          </div>`;
+      });
+
+      if (withheld.length > 0) {
+        cards.push(`
+          <div class="card action-withheld">
+            <div class="action-section-title">Not offered as an action</div>
+            ${withheld.map(w => `<div class="action-text action-muted">• <strong>${escapeHtml(w.title)}:</strong> ${escapeHtml(w.reason)}</div>`).join('')}
+          </div>`);
+      }
+
+      container.innerHTML = cards.join('');
+    }
+
+    // Looked up by id rather than passed through the onclick attribute: filters
+    // contain quotes and newlines, which break attribute escaping.
+    function copyActionFilter(actionId, btn) {
+      const actions = reportData.reduction_actions.actions;
+      const item = actions.find(x => x.id === actionId);
+      if (item && item.filter) copyToClipboard(item.filter, btn);
+    }
+  </script>
+</body>
+</html>

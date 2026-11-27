@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "git-flow-branch-creator",
+  "version": "1.0.0",
+  "description": "Intelligent Git Flow branch creator that analyzes git status/diff and creates appropriate branches following the nvie Git Flow branching model.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/git-flow-branch-creator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "flow",
+    "branch",
+    "creator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/git-flow-branch-creator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5f23019be65ff47128dede5711705ff75853a72dc6f8df9bd7c602178f44289c"
+    }
+  }
+}

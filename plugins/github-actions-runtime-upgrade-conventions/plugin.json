@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "github-actions-runtime-upgrade-conventions",
+  "version": "1.0.0",
+  "description": "Upgrade GitHub Actions to supported runtimes by selecting safe action versions, preserving workflow behavior, and validating post-upgrade execution.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/github-actions-runtime-upgrade-conventions/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "github",
+    "actions",
+    "runtime",
+    "upgrade"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/github-actions-runtime-upgrade-conventions",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7988c4a02753d9623677ca2ca941074e4cbdd6caca347b5c73442516334cffb5"
+    }
+  }
+}

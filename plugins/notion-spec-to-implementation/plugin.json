@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "notion-spec-to-implementation",
+  "version": "1.0.0",
+  "description": "Turn Notion specs into implementation plans, tasks, and progress tracking; use when implementing PRDs/feature specs and creating Notion plans + tasks from them.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/notion-spec-to-implementation/",
+  "repository": "https://github.com/openai/skills",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "notion",
+    "spec",
+    "implementation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/notion-spec-to-implementation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b597aee869916e16864fdf6692d64543d2d6f9ac0b3c5de0239640d610c2fc64"
+    }
+  }
+}

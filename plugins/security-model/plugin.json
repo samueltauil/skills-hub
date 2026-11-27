@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "security-model",
+  "version": "1.0.0",
+  "description": "Define, review, or update SECURITY_MODEL.md files that tell security review tools a repository's threat model, trust boundaries, invariants, reportable finding classes, and exclusions. Use when asked to \"write a security model\", \"threat model this repo for scanners\", \"define security review scope\", \"what counts as a vulnerability here\", \"update SECURITY_MODEL.md\", \"why did the scanner flag or miss this\", or to check whether existing security guidance still matches the code. Not for running a security review or editing the SECURITY.md disclosure policy.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/security-model/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "security",
+    "model"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/security-model",
+        "branch": "main"
+      },
+      "contentHash": "sha256:0305b13b663df41bfe7c18c4fc9f979096236f5aa5c1df98f9802abdf255429a"
+    }
+  }
+}

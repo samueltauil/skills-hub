@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bigquery-pipeline-audit",
+  "version": "1.0.0",
+  "description": "Audits Python + BigQuery pipelines for cost safety, idempotency, and production readiness. Returns a structured report with exact patch locations.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/bigquery-pipeline-audit/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "python",
+    "bigquery",
+    "pipeline",
+    "audit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/bigquery-pipeline-audit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:18042262ed25c4b20abc692f33365d0bc727de41cba53b576625863333a916a7"
+    }
+  }
+}

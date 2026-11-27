@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "spanner-graph-schema-best-practices",
+  "version": "1.0.0",
+  "description": "Designs, reviews, and optimizes physical table schemas, indexes, and graph topologies for Spanner Graph on Google Cloud. Use when creating a new Spanner Graph schema, selecting node and edge primary key types, optimizing forward, reverse, or per-node Top-K edge traversals, designing interleaved node or edge tables and covering indexes, configuring cascading deletes and row deletion policies (TTL), evaluating schematized versus schemaless dynamic label graphs, or folding 1:1 and N:1 edges into node tables. Don't use for tuning GQL query syntax or execution plans without schema changes (use spanner-graph-query-tuning), or when creating a zero-change graph overlay on existing relational tables (use spanner-relational-to-graph).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/spanner-graph-schema-best-practices/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "design",
+    "spanner",
+    "graph",
+    "schema",
+    "best"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/spanner-graph-schema-best-practices",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e8f2558e70a233f56300f0c9b9058686de4660771f1f4e69ebee640eace4829a"
+    }
+  }
+}

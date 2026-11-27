@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "k6-test-maintenance",
+  "version": "1.0.0",
+  "description": "Maintain and improve existing k6 test scripts. Covers threshold tightening based on trend data, version migration between k6 releases, auto-fixing tests when the underlying service changes, refactoring for cleanliness, and auditing scripts against current best practices from docs. Use when the user asks to fix a failing k6 test, tighten thresholds, migrate a script to a new k6 version, refactor a test, update a script after a service change, or improve a script with best practices. Trigger on phrases like \"fix my k6 test\", \"tighten my thresholds\", \"migrate to k6 v2\", \"update my test script\", \"refactor this k6 test\", \"my test is failing after a deploy\", \"apply best practices to my script\", \"modernize my k6 test\", or \"the service changed and my test broke\". Also trigger when another skill (k6-trend-analysis or k6-cloud-investigate-test) hands off with a recommendation to edit a script. Maintains existing scripts; to author a new test use the k6 skill, or k6-browser-test for a browser test.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/k6-test-maintenance/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "test",
+    "deploy",
+    "doc",
+    "data",
+    "maintenance"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-k6/k6-test-maintenance",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bdecb417b97d0d1f4ca3caf980a6295bad323991180e6c0523bb89f12a1690d5"
+    }
+  }
+}

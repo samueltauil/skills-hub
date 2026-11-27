@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "multi-stage-dockerfile",
+  "version": "1.0.0",
+  "description": "Create optimized multi-stage Dockerfiles for any language or framework",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/multi-stage-dockerfile/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "multi",
+    "stage",
+    "dockerfile"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/multi-stage-dockerfile",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7922c66667c97f70bf7401ce165147f2d6765e0448429229e2c8e8486320a274"
+    }
+  }
+}

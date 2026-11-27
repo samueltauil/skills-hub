@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "developing-genkit-python",
+  "version": "1.0.0",
+  "description": "Provides guidance on developing AI-powered applications using Genkit Python (0.13) and migrating Genkit Python 0.12 projects to 0.13. Use when building AI agents, flows, tools, structured outputs, or FastAPI routes in Python, upgrading from Genkit 0.12, or debugging Genkit imports, config errors, or traces. Don't use for Genkit in JavaScript/TypeScript, Go, or Dart.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/developing-genkit-python/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "python",
+    "typescript",
+    "developing",
+    "genkit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/developing-genkit-python",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a98dd416ca3e2b23ba557641a2fbd43a7a03c4ac638cdde516b9c31c4488506e"
+    }
+  }
+}

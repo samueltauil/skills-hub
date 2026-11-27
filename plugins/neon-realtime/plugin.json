@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "neon-realtime",
+  "version": "1.0.0",
+  "description": "Neon Realtime makes any SQL query live. Build realtime, reactive apps and agents on Lakebase Postgres with live SQL queries and reactivity primitives. Use when app UI or agent state must update live from database rows (dashboards, feeds, collaboration, multi-user or multi-device sync), for optimistic mutations, or to replace polling or other realtime sync systems. Triggers include \"live query\", \"subscribe\", \"sync engine\", \"useLiveQuery\", \"TanStack DB\", \"optimistic updates\", \"@neon/realtime\". For push that doesn't come from database rows (presence, typing, LLM streams), use neon-functions.",
+  "author": {
+    "name": "neon",
+    "url": "https://github.com/neondatabase"
+  },
+  "homepage": "https://skillshub.space/skills/neon-realtime/",
+  "repository": "https://github.com/neondatabase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "data",
+    "neon",
+    "realtime"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/neondatabase/agent-skills",
+        "path": "skills/neon-realtime",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cc5b05b5a2b2cc19f4034bc27069af702de0355c4ac72c6de809e91f83fdf8ab"
+    }
+  }
+}

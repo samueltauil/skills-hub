@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "elasticsearch-anomaly-detection",
+  "version": "1.0.0",
+  "description": "Create and manage Elastic ML anomaly detection jobs via the API. Use when setting up jobs on an index or data stream, configuring jobs and datafeeds, or opening, starting, or stopping them.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/elasticsearch-anomaly-detection/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "data",
+    "elasticsearch",
+    "anomaly",
+    "detection"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/elasticsearch/elasticsearch-anomaly-detection",
+        "branch": "main"
+      },
+      "contentHash": "sha256:37b1b401d59a05c6748ce34297295deb4b0911ddfa7bdf83085d3539f473f340"
+    }
+  }
+}

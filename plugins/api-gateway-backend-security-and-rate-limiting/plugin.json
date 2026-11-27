@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "api-gateway-backend-security-and-rate-limiting",
+  "version": "1.0.0",
+  "description": "Secures and rate limits backend services behind Google Cloud API Gateway across OpenAPI 2.0 and OpenAPI 3.x API configurations, including MCP-enabled gateways. Use when configuring API key or JWT authentication, locking down Cloud Run or Cloud Run functions backends with a gateway service account, reading authenticated claims from X-Apigateway-Api-Userinfo, setting per-project request quotas, or changing quota metrics without the HTTP 500 \"Failed to call Service Control Quota\" error on older gateways. Do not use for finding the cause of failing requests from gateway logs, such as an unexplained HTTP 429 or 5xx (use api-gateway-troubleshooting), writing or migrating a whole spec (use api-gateway-openapi-spec-authoring), MCP tool setup (use api-gateway-mcp-server), Apigee, GKE Gateway API, Cloud Load Balancing custom domain setup, or LLM model routing.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/api-gateway-backend-security-and-rate-limiting/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "mcp",
+    "security",
+    "gateway",
+    "backend"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/api-gateway-backend-security-and-rate-limiting",
+        "branch": "main"
+      },
+      "contentHash": "sha256:88b1628776d86fdbeb3be1dfbadbbd9ae3b28cf5be062a9fb32520d55491bb8f"
+    }
+  }
+}

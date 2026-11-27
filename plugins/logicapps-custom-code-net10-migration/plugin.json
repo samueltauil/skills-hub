@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "logicapps-custom-code-net10-migration",
+  "version": "1.0.0",
+  "description": "Migrate Azure Logic Apps Standard local-function custom-code projects from .NET 8 to .NET 10. Use for legacy Logic Apps custom-code workspace upgrades, project/package configuration, custom-worker settings, publication, and integrated VS Code debugging. Not for ordinary .NET applications, standalone Azure Functions, Consumption workflows, or cloud deployment.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/logicapps-custom-code-net10-migration/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "azure",
+    "deploy",
+    "logicapps",
+    "custom",
+    "code"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/logicapps-custom-code-net10-migration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:79c3b27e2e7a3d02edd01bc004e79ec2abf607d29fbb20389ff1827cc43a2cdf"
+    }
+  }
+}

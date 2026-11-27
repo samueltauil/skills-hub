@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "composition-patterns",
+  "version": "1.0.0",
+  "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes.",
+  "author": {
+    "name": "vercel",
+    "url": "https://github.com/vercel-labs"
+  },
+  "homepage": "https://skillshub.space/skills/composition-patterns/",
+  "repository": "https://github.com/vercel-labs/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "api",
+    "react",
+    "design",
+    "composition",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/vercel-labs/agent-skills",
+        "path": "skills/composition-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:473818b10a6efa53c0cc49e81f71c304f8caf0dd45daeb8a3837c96d0b517689"
+    }
+  }
+}

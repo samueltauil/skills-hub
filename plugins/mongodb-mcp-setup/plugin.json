@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mongodb-mcp-setup",
+  "version": "1.0.0",
+  "description": "Guide users through installing and configuring the MongoDB MCP server. Use this skill when a user wants to connect their agent to MongoDB/Atlas through MCP, when the MongoDB MCP server is installed but its environment variables aren't configured, or when they don't have the server or credentials set up yet.",
+  "author": {
+    "name": "mongodb",
+    "url": "https://github.com/mongodb"
+  },
+  "homepage": "https://skillshub.space/skills/mongodb-mcp-setup/",
+  "repository": "https://github.com/mongodb/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "mcp",
+    "mongodb",
+    "setup"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/mongodb/agent-skills",
+        "path": "skills/mongodb-mcp-setup",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4b6346532e71bb7669751e7e79551b06d79335534aa8819d76c02a66f0036e7d"
+    }
+  }
+}

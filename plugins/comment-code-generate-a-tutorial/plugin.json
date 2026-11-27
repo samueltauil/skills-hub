@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "comment-code-generate-a-tutorial",
+  "version": "1.0.0",
+  "description": "Transform this Python script into a polished, beginner-friendly project by refactoring the code, adding clear instructional comments, and generating a complete markdown tutorial.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/comment-code-generate-a-tutorial/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "python",
+    "comment",
+    "code",
+    "generate",
+    "tutorial"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/comment-code-generate-a-tutorial",
+        "branch": "main"
+      },
+      "contentHash": "sha256:22c4fad797213137f7ec865231b5cc27f1e791d21a790e3feb28f87600fece50"
+    }
+  }
+}

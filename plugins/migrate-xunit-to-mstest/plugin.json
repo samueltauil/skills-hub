@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "migrate-xunit-to-mstest",
+  "version": "1.0.0",
+  "description": "Convert .NET tests from xUnit.net v2/v3 to MSTest v4 while preserving VSTest or MTP. Use for replacing xunit packages, Fact/Theory/InlineData/MemberData, assertions, IClassFixture/ICollectionFixture, ITestOutputHelper, TestContext cancellation, traits/Owner, skips, timeouts, and xUnit parallelization. Also use when a \"convert xUnit to MSTest\" request may already be migrated: inspect and report the no-op. Do not use for xUnit v2-to-v3, MSTest upgrades, NUnit/TUnit conversion, or runner-only VSTest-to-MTP migration.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/migrate-xunit-to-mstest/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "data",
+    "migrate",
+    "xunit",
+    "mstest"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test-migration/skills/migrate-xunit-to-mstest",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fb34dab678eaf676059c18da9546706a9a8459f689a67bea6cb298934931b93d"
+    }
+  }
+}

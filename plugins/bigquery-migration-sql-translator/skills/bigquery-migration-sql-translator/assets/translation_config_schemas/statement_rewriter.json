@@ -1,0 +1,56 @@
+{
+  "type" : "object",
+  "properties" : {
+    "common" : {
+      "type" : "object",
+      "properties" : {
+        "decimalPrecision" : {
+          "type" : "string",
+          "enum" : [ "STRICT", "MAXIMIZE" ]
+        },
+        "defaultValueValidation" : {
+          "type" : "boolean"
+        },
+        "identityNumericCastAsTruncate" : {
+          "type" : "boolean"
+        },
+        "remove" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "stringPrecision" : {
+          "type" : "string",
+          "enum" : [ "STRICT", "MAXIMIZE" ]
+        }
+      }
+    },
+    "emitterCharset" : {
+      "type" : "string",
+      "enum" : [ "UTF8", "US_ASCII" ]
+    },
+    "select" : {
+      "type" : "object",
+      "properties" : {
+        "groupBy" : {
+          "type" : "string",
+          "enum" : [ "EXPRESSION", "ALIAS", "INDEX" ]
+        },
+        "orderBy" : {
+          "type" : "string",
+          "enum" : [ "EXPRESSION", "ALIAS", "INDEX" ]
+        },
+        "starProjection" : {
+          "type" : "string",
+          "enum" : [ "ALLOW", "PRESERVE", "EXPAND" ]
+        }
+      }
+    },
+    "type" : {
+      "type" : "string",
+      "required" : true,
+      "pattern" : "statement_rewriter"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dataverse-python-production-code",
+  "version": "1.0.0",
+  "description": "Generate production-ready Python code using Dataverse SDK with error handling, optimization, and best practices",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/dataverse-python-production-code/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "python",
+    "data",
+    "dataverse",
+    "production",
+    "code"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dataverse-python-production-code",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fcb24913dc7d329f00d1cf54de24428feada85ab762163ff0b34d7633462c219"
+    }
+  }
+}

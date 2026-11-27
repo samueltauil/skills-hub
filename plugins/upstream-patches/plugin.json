@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "upstream-patches",
+  "version": "1.0.0",
+  "description": "Create, amend, remove, and rebase patches for Terraform provider submodules using `./scripts/upstream.sh`. Use when `upgrade-provider` or manual patch work needs owning-patch lookup, patch conflict fixes, patch/hunk removal, or upstream rebase.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/upstream-patches/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "upstream",
+    "patches"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "package-maintenance/skills/upstream-patches",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ced8165cb30f99f07e08ab99f18c8a686f4f061b4fd03a8e6e3222686bd9fa2b"
+    }
+  }
+}

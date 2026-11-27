@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "typespec-create-api-plugin",
+  "version": "1.0.0",
+  "description": "Generate a TypeSpec API plugin with REST operations, authentication, and Adaptive Cards for Microsoft 365 Copilot",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/typespec-create-api-plugin/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "typespec",
+    "create",
+    "plugin"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/typespec-create-api-plugin",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5fb7768bc687a2d536f8c8d8a78ad3c57e1b69999e631d3d2dc0a5ee02c04075"
+    }
+  }
+}

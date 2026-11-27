@@ -1,0 +1,26 @@
+# elasticsearch-onboarding
+
+Help developers new to Elasticsearch get from zero to a working search experience. Guide them through understanding their intent, mapping their data, and building a search experience with best practices baked in. Use this when the user shows intent to build search-related functionality, asks about Elasticsearch-related concepts for their use case, or expresses the need for help getting started with Elasticsearch. Also use this when the user wants to search, monitor, or analyze logs, metrics, or security events, so they can be redirected to Elastic's Observability or Security solution.
+
+This plugin packages the [`elasticsearch-onboarding`](skills/elasticsearch-onboarding/SKILL.md) skill from
+[elastic/agent-skills](https://github.com/elastic/agent-skills/tree/main/skills/elasticsearch/elasticsearch-onboarding) so it can be installed on its own. It is generated
+by [Skills Hub](https://skillshub.space/skills/elasticsearch-onboarding/) and follows the
+[Agent Plugins](https://agent-plugins.org) specification.
+
+## Install
+
+GitHub Copilot CLI:
+
+```sh
+copilot plugin marketplace add samueltauil/skills-hub
+copilot plugin install elasticsearch-onboarding@skills-hub
+```
+
+VS Code (with `chat.plugins.enabled` turned on): [install with one click](https://vscode.dev/redirect?url=vscode%3A%2F%2Fchat-plugin%2Finstall%3Fsource%3Dsamueltauil%252Fskills-hub%26plugin%3Delasticsearch-onboarding),
+or add the `samueltauil/skills-hub` marketplace from the Agent Customizations editor and
+search for `elasticsearch-onboarding`.
+
+## License
+
+Apache-2.0. See [LICENSE](LICENSE). The skill content belongs to its original authors at
+[elastic/agent-skills](https://github.com/elastic/agent-skills).

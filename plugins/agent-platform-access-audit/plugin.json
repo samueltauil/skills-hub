@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-platform-access-audit",
+  "version": "1.0.0",
+  "description": "Audits AI agent data access, blast radius, and blocked policy operations in Google Cloud by querying Cloud Audit Logs via BigQuery. Use when investigating what resources or services an agent accessed, identifying top originating principals the agent is acting as, or triaging PERMISSION_DENIED errors to distinguish VPC Service Controls perimeter violations from IAM permission denials. Don't use for configuring Cloud Monitoring alert policies, modifying IAM policies or VPC Service Controls perimeters, querying non-audit application logs, or performing write operations.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/agent-platform-access-audit/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "data",
+    "agent",
+    "platform",
+    "access",
+    "audit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/agent-platform-access-audit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b8fa6036dad63b40fff85e92d3a1a868986ee22d8b722de4f6f0aa3f2303a0b8"
+    }
+  }
+}

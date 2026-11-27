@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ima-sdk-client-side",
+  "version": "1.0.0",
+  "description": "Supports Interactive Media Ads (IMA) SDK. Use this skill for client-side ad insertion when you are requesting video ads for websites, apps, TVs or other platforms using VAST or VMAP. Do not use for Dynamic Ad Insertion (DAI), SSAI, or SGAI.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/ima-sdk-client-side/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "cli",
+    "ima",
+    "sdk",
+    "client",
+    "side"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/ima-sdk-client-side",
+        "branch": "main"
+      },
+      "contentHash": "sha256:602498d88e1bf9cdf9b418952592584b1126635fd19fc55aab2b95f2b90a702d"
+    }
+  }
+}

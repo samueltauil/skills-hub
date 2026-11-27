@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-technical-spike",
+  "version": "1.0.0",
+  "description": "Create time-boxed technical spike documents for researching and resolving critical development decisions before implementation.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-technical-spike/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "create",
+    "technical",
+    "spike"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-technical-spike",
+        "branch": "main"
+      },
+      "contentHash": "sha256:846fe0f0fb9a8e5100c0899fca65ff6822e641c1e93bcfe6170b0f53869395f1"
+    }
+  }
+}

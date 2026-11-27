@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ponder",
+  "version": "1.0.0",
+  "description": "Convergent deliberation loop - repeated grading passes over one subject until the answer stops changing, with coverage enforced so no unit is silently skipped. Use when the user says \"ponder <anything>\" (\"ponder the UI\", \"ponder our error handling\"), \"think this over properly\", \"keep thinking until it converges\", \"keep looping until it converges\", \"loop on this until it stops changing\", \"go through all the screens and grade them\", \"audit/rate/grade every X\", or asks for any broad sweep-and-grade across many units where a single pass would miss things. Also use to resume or recover a ponder already in flight - \"where were we\", \"carry on pondering\", a lost thread mid-loop, or a .ponder/ directory in the project - where the move is to run ponder status rather than start over.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/ponder/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "ponder"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/ponder",
+        "branch": "main"
+      },
+      "contentHash": "sha256:650fa5605de11f96a362bcee3867fa5cf9cf31e91215532656fbc449cd834bcf"
+    }
+  }
+}

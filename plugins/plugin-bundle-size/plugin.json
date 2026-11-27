@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "plugin-bundle-size",
+  "version": "1.0.0",
+  "description": "Optimise Grafana app plugin bundle size using React.lazy, Suspense, and webpack code splitting. Use when the user asks to reduce plugin bundle size, optimise module.js, add code splitting, improve initial plugin load performance, split plugin chunks, lazy load plugin pages, or help implement lazy loading in a Grafana app plugin. Triggers on phrases like \"optimise plugin bundle size\", \"module.js is too large\", \"plugin is slow to load\", \"code split the plugin\", \"reduce initial JS payload\", or \"help me with Suspense in my plugin\".",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/plugin-bundle-size/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "plugin",
+    "bundle",
+    "size"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-plugins/plugin-bundle-size",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fb4907ba0488675411cf75a7c8265c155a2d773fbc4bd8e81232003358aa5592"
+    }
+  }
+}

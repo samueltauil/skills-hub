@@ -1,0 +1,24 @@
+schema: v1
+id: docker-agent-run
+version: 0.1.2
+title: 'Docker Agent: Running and Operating Agents'
+description: 'Rules for running Docker Agent locally — safety/approval modes, sandbox isolation, aliases, worktrees, and troubleshooting a run.'
+owns:
+  - docker-agent-run-flags
+  - docker-agent-safety-modes
+  - docker-agent-sandbox
+  - docker-agent-alias
+  - docker-agent-worktree
+use_when:
+  - The task is invoking docker agent run interactively or headlessly against an existing agent config.
+  - The task is choosing or debugging --safety, --yolo, or --sandbox behavior for a run.
+  - The task is creating an alias, a git worktree run, or diagnosing a failed run with docker agent doctor.
+do_not_use_when:
+  - The task uses standalone sbx lifecycle, policy, or secret commands rather than the Docker Agent wrapper.
+  - The main task is authoring or editing the agent.yaml itself (models, toolsets, sub_agents).
+  - The main task is serving an agent as a server, sharing it via a registry, or evaluating it.
+delegates_to:
+  - docker-sandboxes-lifecycle
+  - docker-sandboxes-network-credentials
+  - docker-agent-config
+  - docker-agent-deploy

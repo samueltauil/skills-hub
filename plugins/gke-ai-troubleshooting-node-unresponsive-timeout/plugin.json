@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gke-ai-troubleshooting-node-unresponsive-timeout",
+  "version": "1.0.0",
+  "description": "Diagnose and mitigate GKE TPU or GPU nodes stuck in NotReady / NodeStatusUnknown (\"Kubelet stopped posting node status\") due to host kernel panics, hardware lockups, or disabled node auto-repair. Use when nodes stop heartbeating beyond the node auto-repair threshold and pods remain stuck in Terminating. Don't use for healthy nodes, pod-only application crashes, or routine GKE upgrades.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/gke-ai-troubleshooting-node-unresponsive-timeout/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "gke",
+    "troubleshooting",
+    "node",
+    "unresponsive",
+    "timeout"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/gke-ai-troubleshooting-node-unresponsive-timeout",
+        "branch": "main"
+      },
+      "contentHash": "sha256:460f5b5c97ad91ae2cf74570750813aa59f71174c9ff74c718d9890cacf35609"
+    }
+  }
+}

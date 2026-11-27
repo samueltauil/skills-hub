@@ -1,0 +1,353 @@
+{
+  "type" : "object",
+  "properties" : {
+    "attribute" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "attribute" : {
+                "type" : "string"
+              },
+              "attributeRegex" : {
+                "type" : "string"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              },
+              "relation" : {
+                "type" : "string"
+              },
+              "relationRegex" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "schemaRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "type" : {
+            "type" : "object",
+            "properties" : {
+              "sourceToTarget" : {
+                "type" : "string"
+              },
+              "target" : {
+                "type" : "string"
+              },
+              "targetToSource" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "global" : {
+      "type" : "object",
+      "properties" : {
+        "case" : {
+          "type" : "object",
+          "properties" : {
+            "all" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "attribute" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "database" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "function" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "index" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "projection" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "relation" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "schema" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "sequence" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            },
+            "variable" : {
+              "type" : "string",
+              "enum" : [ "UPPERCASE", "LOWERCASE" ]
+            }
+          }
+        }
+      }
+    },
+    "relation" : {
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "properties" : {
+          "clustering" : {
+            "type" : "object",
+            "properties" : {
+              "add" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "mode" : {
+                "type" : "string"
+              },
+              "remove" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "set" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "description" : {
+            "type" : "object",
+            "properties" : {
+              "enable" : {
+                "type" : "boolean"
+              },
+              "text" : {
+                "type" : "string"
+              }
+            }
+          },
+          "ephemeral" : {
+            "type" : "object",
+            "properties" : {
+              "enable" : {
+                "type" : "boolean"
+              },
+              "expireAfterSeconds" : {
+                "type" : "integer"
+              }
+            }
+          },
+          "external" : {
+            "type" : "object",
+            "properties" : {
+              "connection_id" : {
+                "type" : "string"
+              },
+              "enable" : {
+                "type" : "boolean"
+              },
+              "format" : {
+                "type" : "string"
+              },
+              "location_expression" : {
+                "type" : "string"
+              },
+              "locations" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "properties" : {
+                "type" : "object",
+                "additionalProperties" : {
+                  "type" : "string"
+                }
+              },
+              "table_format" : {
+                "type" : "string",
+                "enum" : [ "ICEBERG" ]
+              }
+            }
+          },
+          "index" : {
+            "type" : "object",
+            "properties" : {
+              "primary" : {
+                "type" : "object",
+                "properties" : {
+                  "add" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "remove" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "set" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "unique" : {
+                "type" : "object",
+                "properties" : {
+                  "add" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "name" : {
+                    "type" : "string"
+                  },
+                  "remove" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "set" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "match" : {
+            "type" : "object",
+            "properties" : {
+              "all" : {
+                "type" : "boolean"
+              },
+              "database" : {
+                "type" : "string"
+              },
+              "databaseRegex" : {
+                "type" : "string"
+              },
+              "relation" : {
+                "type" : "string"
+              },
+              "relationRegex" : {
+                "type" : "string"
+              },
+              "schema" : {
+                "type" : "string"
+              },
+              "schemaRegex" : {
+                "type" : "string"
+              }
+            }
+          },
+          "partition" : {
+            "type" : "object",
+            "properties" : {
+              "range_bucket" : {
+                "type" : "object",
+                "properties" : {
+                  "column" : {
+                    "type" : "string"
+                  },
+                  "end" : {
+                    "type" : "integer"
+                  },
+                  "options" : {
+                    "type" : "object",
+                    "additionalProperties" : {
+                      "type" : "string"
+                    }
+                  },
+                  "start" : {
+                    "type" : "integer"
+                  },
+                  "step" : {
+                    "type" : "integer"
+                  }
+                }
+              },
+              "simple" : {
+                "type" : "object",
+                "properties" : {
+                  "add" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "remove" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  },
+                  "set" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "partitionLifetime" : {
+            "type" : "object",
+            "properties" : {
+              "enable" : {
+                "type" : "boolean"
+              },
+              "expireAfterSeconds" : {
+                "type" : "integer"
+              }
+            }
+          },
+          "temporary" : {
+            "type" : "object",
+            "properties" : {
+              "enable" : {
+                "type" : "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "type" : {
+      "type" : "string",
+      "required" : true,
+      "pattern" : "object_rewriter"
+    }
+  }
+}

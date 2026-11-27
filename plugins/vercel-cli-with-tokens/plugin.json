@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "vercel-cli-with-tokens",
+  "version": "1.0.0",
+  "description": "Deploy and manage projects on Vercel using token-based authentication. Use when working with Vercel CLI using access tokens rather than interactive login — e.g. \"deploy to vercel\", \"set up vercel\", \"add environment variables to vercel\".",
+  "author": {
+    "name": "vercel",
+    "url": "https://github.com/vercel-labs"
+  },
+  "homepage": "https://skillshub.space/skills/vercel-cli-with-tokens/",
+  "repository": "https://github.com/vercel-labs/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "cli",
+    "deploy",
+    "vercel",
+    "with",
+    "tokens"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/vercel-labs/agent-skills",
+        "path": "skills/vercel-cli-with-tokens",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fb11bc4b4b22e1b939ce2eb006946311460d6f6c66be3929ee16e3ac1dddb340"
+    }
+  }
+}

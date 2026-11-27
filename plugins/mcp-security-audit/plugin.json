@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mcp-security-audit",
+  "version": "1.0.0",
+  "description": "Audit MCP (Model Context Protocol) server configurations for security issues. Use this skill when: - Reviewing .mcp.json files for security risks - Checking MCP server args for hardcoded secrets or shell injection patterns - Validating that MCP package-runner dependencies use exact reviewed versions, not bare names, @latest, or ranges - Detecting mutable npm/npx, bunx, pnpm dlx, yarn dlx, npm exec, uvx, uv tool run, and pipx run references in MCP configurations - Auditing which MCP servers a project registers and whether they're on an approved list - Checking for environment variable usage vs. hardcoded credentials in MCP configs - Any request like \"is my MCP config secure?\", \"audit my MCP servers\", or \"check .mcp.json\" keywords: [mcp, security, audit, secrets, shell-injection, supply-chain, governance]",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mcp-security-audit/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "mcp",
+    "security",
+    "word",
+    "audit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mcp-security-audit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f94b7751582e1f7e4fb0828351ffc228b5b1a0d1569ddc619c955c1df7fb055f"
+    }
+  }
+}

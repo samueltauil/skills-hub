@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "assess-react-native-migration",
+  "version": "1.0.0",
+  "description": "Assesses whether and how an existing mobile product should migrate to React Native. Use when auditing one or more product repositories for migration readiness, including products whose iOS, Android, and other clients live in separate directories or repositories; choosing brownfield, greenfield, or a checkpoint-based path; defining a representative trial; or preparing a baseline and ROI decision before implementation. When product scope or material evidence is unavailable, grills the stakeholder with exactly one question per turn instead of sending a questionnaire.",
+  "author": {
+    "name": "callstack",
+    "url": "https://github.com/callstackincubator"
+  },
+  "homepage": "https://skillshub.space/skills/assess-react-native-migration/",
+  "repository": "https://github.com/callstackincubator/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "cli",
+    "react",
+    "assess",
+    "native",
+    "migration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/callstackincubator/agent-skills",
+        "path": "skills/assess-react-native-migration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c09a3873603693664ba4eed976e7b93b1700e67c1d3a3cf165699c0489026a81"
+    }
+  }
+}

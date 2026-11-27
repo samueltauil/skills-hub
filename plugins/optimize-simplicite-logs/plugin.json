@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "optimize-simplicite-logs",
+  "version": "1.0.0",
+  "description": "capability to parse Simplicité logs from a raw `.txt` file, filter fields to reduce noise, and output the result as structured JSON.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/optimize-simplicite-logs/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "optimize",
+    "simplicite",
+    "logs"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/optimize-simplicite-logs",
+        "branch": "main"
+      },
+      "contentHash": "sha256:14c77477a488b4f8c85a35e1877a42dfe108e1608bba809ef5d85a7adb4d1606"
+    }
+  }
+}

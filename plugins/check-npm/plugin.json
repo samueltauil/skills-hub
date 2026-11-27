@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "check-npm",
+  "version": "1.0.0",
+  "description": "Audit a JavaScript/TypeScript repo's npm, yarn, or pnpm configuration for supply-chain hardening: tool version, lifecycle scripts, unsafe dependency protocols, and minimum release age ≥3 days. Use when the user invokes /check-npm or asks to audit package manager security, lifecycle scripts, git dependencies, ignore-scripts, min-release-age, allow-git, approvedGitRepositories, strictDepBuilds, or blockExoticSubdeps in a Grafana plugin or JS/TS project.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/check-npm/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "typescript",
+    "security",
+    "check",
+    "npm"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-plugins/check-npm",
+        "branch": "main"
+      },
+      "contentHash": "sha256:08be38615d98b0814f30c6c533fbb55a0078921d75fb630b6c3e7f0d1dece6ab"
+    }
+  }
+}

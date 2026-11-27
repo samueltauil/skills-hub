@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "use-igniteui-blazor",
+  "version": "1.0.0",
+  "description": "Add, configure, or review Ignite UI for Blazor Lite component support in Blazor applications. USE FOR: installing IgniteUI.Blazor.Lite or IgniteUI.Blazor.GridLite, registering AddIgniteUIBlazor() in Blazor Server, WASM, Hybrid, or split Blazor Web App projects, adding @using IgniteUI.Blazor.Controls, wiring the theme stylesheet, picking the right host page, locating the GridLite stylesheet path, explaining single-project vs split Server/Client Web App setup differences, and checking where an interactive render mode is needed for Ignite UI components to work. DO NOT USE FOR: general Blazor component authoring without Ignite UI, choosing app architecture or render mode from scratch (see create-blazor-project), JavaScript interop (see use-js-interop), authentication (see configure-auth), prerendering (see support-prerendering), or layout/component design questions that need no Ignite UI setup.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/use-igniteui-blazor/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "cli",
+    "design",
+    "use",
+    "igniteui",
+    "blazor"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-blazor/skills/use-igniteui-blazor",
+        "branch": "main"
+      },
+      "contentHash": "sha256:ba94088ddfc9a8704b6b52f5f042029f91f96f97fd8d1cc4a2bf4b5970816aff"
+    }
+  }
+}

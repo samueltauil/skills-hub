@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-debug-failed-operation",
+  "version": "1.0.0",
+  "description": "Debug a Pulumi update or preview that failed: read the failure Pulumi already recorded, find what caused it, and fix it. Load this skill when the user asks to debug, diagnose, or fix a failed update or preview, or points at a failing `pulumi up` or `pulumi preview`. Don't load it for authoring new infrastructure, migrations, or provider upgrades; those have their own skills.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-debug-failed-operation/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "pulumi",
+    "debug",
+    "failed",
+    "operation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "pulumi/skills/pulumi-debug-failed-operation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9d40f9f361b1e6eefd9b3a5025347b86a8a41f7c861e24c75499b459a4988421"
+    }
+  }
+}

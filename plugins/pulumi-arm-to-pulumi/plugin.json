@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-arm-to-pulumi",
+  "version": "1.0.0",
+  "description": "Convert or migrate Azure ARM (Azure Resource Manager) templates, Bicep templates, or code to Pulumi, including importing existing Azure resources. This skill MUST be loaded whenever a user requests migration, conversion, or import of ARM templates, Bicep templates, ARM code, Bicep code, or Azure resources to Pulumi.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-arm-to-pulumi/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "azure",
+    "pulumi",
+    "arm"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "migration/skills/pulumi-arm-to-pulumi",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8f06f1395169f6dce5dffe5538f8def08c90a8f8f2dfe6654572fd37e05da70b"
+    }
+  }
+}

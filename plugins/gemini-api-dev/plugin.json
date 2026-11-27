@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gemini-api-dev",
+  "version": "1.0.0",
+  "description": "Use this skill when writing code that calls the Gemini API for text generation, multi-turn chat, multimodal understanding, image generation, video generation, speech generation (TTS), voice design, voice replication, streaming responses, background research tasks, function calling, structured output, calibrated decisions (yes/no, choice, rubric scoring), or migrating from the old generateContent API. Covers SDK usage and best practices for Gemini models and agents in Python and TypeScript.",
+  "author": {
+    "name": "google-gemini",
+    "url": "https://github.com/google-gemini"
+  },
+  "homepage": "https://skillshub.space/skills/gemini-api-dev/",
+  "repository": "https://github.com/google-gemini/gemini-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "python",
+    "typescript",
+    "design",
+    "gemini"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google-gemini/gemini-skills",
+        "path": "skills/gemini-api-dev",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1d6fb97ac3f26ceace318a539832d50f2b372b4cf43617d2f9f21d524589b324"
+    }
+  }
+}

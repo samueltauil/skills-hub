@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "migrate-oai-app",
+  "version": "1.0.0",
+  "description": "This skill should be used when the user asks to \"migrate from OpenAI Apps SDK\", \"convert OpenAI App to MCP\", \"port from window.openai\", \"migrate from skybridge\", \"convert openai/outputTemplate\", or needs guidance on converting OpenAI Apps SDK applications to MCP Apps SDK. Provides step-by-step migration guidance with API mapping tables.",
+  "author": {
+    "name": "modelcontextprotocol",
+    "url": "https://github.com/modelcontextprotocol"
+  },
+  "homepage": "https://skillshub.space/skills/migrate-oai-app/",
+  "repository": "https://github.com/modelcontextprotocol/ext-apps",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "mcp",
+    "migrate",
+    "oai",
+    "app"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/modelcontextprotocol/ext-apps",
+        "path": "plugins/mcp-apps/skills/migrate-oai-app",
+        "branch": "main"
+      },
+      "contentHash": "sha256:66c8fed7e11a2f641513386c9ccc966392ff8488097fb5f9972a85b4351d7a80"
+    }
+  }
+}

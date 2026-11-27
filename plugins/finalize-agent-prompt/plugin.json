@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "finalize-agent-prompt",
+  "version": "1.0.0",
+  "description": "Finalize prompt file using the role of an AI agent to polish the prompt for the end user.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/finalize-agent-prompt/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "finalize",
+    "agent",
+    "prompt"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "security",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/finalize-agent-prompt",
+        "branch": "main"
+      },
+      "contentHash": "sha256:6bb31fa56d83317058f995764e151f61992cf0e687d0c39e2310ab0d5c4981d1"
+    }
+  }
+}

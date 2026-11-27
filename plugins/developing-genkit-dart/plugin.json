@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "developing-genkit-dart",
+  "version": "1.0.0",
+  "description": "Provides guidance on developing AI-powered applications using the Genkit Dart SDK. Use when the user asks to build AI agents in Dart, use Genkit flows, or integrate LLMs into Dart/Flutter applications. Don't use for Genkit in JavaScript/TypeScript, Go, or Python.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/developing-genkit-dart/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "python",
+    "typescript",
+    "developing",
+    "genkit",
+    "dart"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/developing-genkit-dart",
+        "branch": "main"
+      },
+      "contentHash": "sha256:20a2b8a819fdca4f339216012e086f56165dbea3ded9827c1ff86b4084a2ef48"
+    }
+  }
+}

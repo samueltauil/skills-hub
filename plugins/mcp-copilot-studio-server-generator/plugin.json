@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mcp-copilot-studio-server-generator",
+  "version": "1.0.0",
+  "description": "Generate a complete MCP server implementation optimized for Copilot Studio integration with proper schema constraints and streamable HTTP support",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mcp-copilot-studio-server-generator/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "mcp-development",
+    "mcp",
+    "copilot",
+    "studio",
+    "server",
+    "generator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "mcp-development",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mcp-copilot-studio-server-generator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a8a723a15e4815f4d46011c59ca504d7b2eb6f52a41667f2c3e6ba115455c24f"
+    }
+  }
+}

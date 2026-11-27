@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "commit",
+  "version": "1.0.0",
+  "description": "Use for every request to commit changes or draft a commit message. Creates Sentry-style conventional commits with issue references.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/commit/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-version-control",
+    "commit"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/commit",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d5fb2a2d8878eb63ed27beefd77a842e285039744912c45c9d7aebf60c4f5b69"
+    }
+  }
+}

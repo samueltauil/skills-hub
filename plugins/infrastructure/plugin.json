@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "infrastructure",
+  "version": "1.0.0",
+  "description": "Ship Kubernetes, host, container, and cloud-provider telemetry into Grafana Cloud — `k8s-monitoring` Helm chart for K8s clusters (metrics + logs + traces + events + cost), Alloy `prometheus.exporter.unix` for Linux hosts, cAdvisor + Docker discovery for containers, and CloudWatch / Azure Monitor / Google Cloud Monitoring datasource setup. Use when onboarding a new cluster or VM fleet to Grafana Cloud, picking the right Helm values for K8s scraping, wiring kube-state-metrics + node-exporter + cAdvisor, alerting on `PodCrashLooping` / node memory / PVC capacity, or pulling AWS / Azure / GCP cloud metrics — even when the user says \"monitor my cluster\", \"send K8s metrics to Grafana\", \"scrape EC2 metrics\", \"cluster pod logs\", or \"install the monitoring helm chart\" without naming `k8s-monitoring` or Alloy.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/infrastructure/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "azure",
+    "api",
+    "doc",
+    "data",
+    "infrastructure"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/infrastructure",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b1940bf9febc16e38a58879179176045780175676a3aac3d80ab9e6fe91de920"
+    }
+  }
+}

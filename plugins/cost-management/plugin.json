@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cost-management",
+  "version": "1.0.0",
+  "description": "Cut your Grafana Cloud bill by attributing spend to teams and reducing telemetry volume. Covers FOCUS-compliant billing dashboards, cost-attribution labels in Alloy, Adaptive Metrics (cardinality reduction), Adaptive Logs (drop/sample), Adaptive Traces (tail sampling), usage alerts, and an optimization checklist. Use when investigating a high Grafana Cloud bill, attributing observability cost to a team or service, reducing active series / log bytes / trace spans, or setting up usage / quota alerts — even when the user says \"our Grafana bill is too high\", \"who's burning the most metrics\", \"drop debug logs\", \"sample our traces\", or \"alert me before we hit quota\" without naming Cost Management.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/cost-management/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "cost",
+    "management"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/cost-management",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2fcb744ef0348b7fb7dcc7ab7b69350e2360bbea4a26f96de384bc7a8cc03aa2"
+    }
+  }
+}

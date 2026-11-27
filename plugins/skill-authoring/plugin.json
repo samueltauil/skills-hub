@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "skill-authoring",
+  "version": "1.0.0",
+  "description": "Author, audit, and improve Grafana SKILL.md files against Anthropic's published Agent Skills guidance and the four-dimension rubric the grafana/skills CI gate uses (conciseness, actionability, workflow clarity, progressive disclosure). Applies the canonical SKILL.md structure (YAML frontmatter + body + references/ + scripts/ + assets/), the \"pushy description\" trigger pattern, the three-level progressive-disclosure model, and the validate-fix-rerun feedback loop. Use when creating a new skill in this repo, when reviewing a skill PR, when a skill's Tessl review score is below 75 (the merge gate), when a skill's description isn't getting picked up by agents, when restructuring a long SKILL.md into a bundle, or when the user asks how to write, improve, optimize, audit, or fix a skill - even if they don't say \"skill\" explicitly (e.g. \"this isn't triggering\", \"Tessl scored this 72\", \"split this doc\").",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/skill-authoring/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "skill",
+    "authoring"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-core/skill-authoring",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3826e31361d49c689dcb481dac3122fb925f127ad15259344595da5280a5b13b"
+    }
+  }
+}

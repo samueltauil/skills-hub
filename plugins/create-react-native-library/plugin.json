@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-react-native-library",
+  "version": "1.0.0",
+  "description": "Scaffolds React Native libraries with create-react-native-library for standalone libraries or local native modules and views. Use when creating or working on React Native libraries or adding native functionality in an existing app.",
+  "author": {
+    "name": "callstack",
+    "url": "https://github.com/callstackincubator"
+  },
+  "homepage": "https://skillshub.space/skills/create-react-native-library/",
+  "repository": "https://github.com/callstackincubator/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "create",
+    "native",
+    "library"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/callstackincubator/agent-skills",
+        "path": "skills/create-react-native-library",
+        "branch": "main"
+      },
+      "contentHash": "sha256:eef951b9118b790d8b0b72ba46eea960238e606ac8d2ff19fc7455680e5337bd"
+    }
+  }
+}

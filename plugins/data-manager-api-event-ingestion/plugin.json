@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "data-manager-api-event-ingestion",
+  "version": "1.0.0",
+  "description": "Guides developers through implementing event and conversion ingestion to Google products using the Data Manager API /v1/events:ingest endpoint and its associated client libraries. Use this skill when the user wants to upload offline conversions, enhanced conversions for leads, click conversions, call conversions, Google Analytics web or app events, or any other event ingestion use case supported by the Data Manager API. Don't use for uploading audience members (use the data-manager-api-audience-ingestion skill), or for debugging errors, checking request status, or investigating missing conversions (use the data-manager-api-troubleshooting skill).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/data-manager-api-event-ingestion/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "data",
+    "analytics",
+    "manager"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/data-manager-api-event-ingestion",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4d6368706142195d72a6da4ffed61867d384b623e4b5d06cc2ff768ab56b3fcc"
+    }
+  }
+}

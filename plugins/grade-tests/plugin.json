@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "grade-tests",
+  "version": "1.0.0",
+  "description": "Grade curated individual tests for readiness, A-F quality and improvements. ALWAYS USE FOR: grade tests, review only a named test, per-test readiness or quality bands for supplied methods, bodies, file spans or bounded PR diffs, including existing tests. Return Pass/Failed/Uncertain/Not applicable; unresolved/empty scopes omit grades. Compose read-only per-test evidence. Polyglot. DO NOT USE FOR: suite audits (test-engineer/test-anti-patterns), concrete fix/feature detection proof (test-value-evidence), writing/fixing tests, or coverage.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/grade-tests/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "test",
+    "grade",
+    "tests"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/grade-tests",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4b3191b6f948b2b18346bc324b9c54d9fadadf5177e8a524222bd788d1a95b12"
+    }
+  }
+}

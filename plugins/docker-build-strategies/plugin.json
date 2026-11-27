@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "docker-build-strategies",
+  "version": "1.0.0",
+  "description": "Use this skill when writing, reviewing, or optimizing Dockerfiles, even if the user just says their image is too large, their build is slow, or they need to harden a container for production. Covers multi-stage builds, layer caching, .dockerignore, non-root users, and image size optimization.",
+  "author": {
+    "name": "docker",
+    "url": "https://github.com/docker"
+  },
+  "homepage": "https://skillshub.space/skills/docker-build-strategies/",
+  "repository": "https://github.com/docker/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "doc",
+    "docker",
+    "build",
+    "strategies"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/docker/skills",
+        "path": "skills/docker-build-strategies",
+        "branch": "main"
+      },
+      "contentHash": "sha256:17239fefca7639247064f15cca6c94eac10d8b94d19f35576af3a0f61d20ed94"
+    }
+  }
+}

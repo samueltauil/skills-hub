@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mcp-deploy-manage-agents",
+  "version": "1.0.0",
+  "description": "Skill converted from mcp-deploy-manage-agents.prompt.md",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/mcp-deploy-manage-agents/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "deploy",
+    "mcp",
+    "manage",
+    "agents"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/mcp-deploy-manage-agents",
+        "branch": "main"
+      },
+      "contentHash": "sha256:22af3df68e3ecd541967c411eac014bb42e73d903be793adbc80f0b1f0acc1f8"
+    }
+  }
+}

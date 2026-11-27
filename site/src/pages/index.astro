@@ -6,22 +6,8 @@ import SearchBar from '../components/SearchBar.astro';
 
 // Import aggregated skills data
 import skillsData from '../data/skills.json';
-
-// Category metadata
-const categoryMeta: Record<string, { name: string; icon: string; description: string }> = {
-  'git-version-control': { name: 'Git & Version Control', icon: '🔀', description: 'Git operations, branching, and version control' },
-  'code-quality': { name: 'Code Quality', icon: '✨', description: 'Code quality, refactoring, and best practices' },
-  'documentation': { name: 'Documentation', icon: '📝', description: 'Documentation and knowledge management' },
-  'diagrams': { name: 'Diagrams', icon: '📊', description: 'Diagrams, flowcharts, and visualizations' },
-  'testing': { name: 'Testing', icon: '🧪', description: 'Testing and test automation' },
-  'api-backend': { name: 'API & Backend', icon: '🔌', description: 'API development and backend services' },
-  'frontend-ui': { name: 'Frontend & UI', icon: '🎨', description: 'Frontend development and UI components' },
-  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀', description: 'Deployment, pipelines, and DevOps workflows' },
-  'security': { name: 'Security', icon: '🔒', description: 'Security analysis and best practices' },
-  'data-analytics': { name: 'Data & Analytics', icon: '📈', description: 'Data processing and analytics' },
-  'mcp-development': { name: 'MCP Development', icon: '🔧', description: 'Model Context Protocol development' },
-  'office-documents': { name: 'Office Documents', icon: '📄', description: 'Spreadsheets, presentations, and documents' },
-};
+import { categoryMeta } from '../data/categories';
+import { MARKETPLACE_NAME, MARKETPLACE_REPO } from '../data/plugins';
 
 const featuredSkills = skillsData.skills.slice(0, 6);
 
@@ -38,7 +24,9 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
   description: categoryMeta[id]?.description || '',
   icon: categoryMeta[id]?.icon || '📦',
   count
-}));
+})).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+const vscodeAddMarketplace = `https://vscode.dev/redirect?url=${encodeURIComponent(`vscode://chat-plugin/add-marketplace?ref=${encodeURIComponent(MARKETPLACE_REPO)}`)}`;
 
 const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filter(Boolean)).size;
 ---
@@ -107,7 +95,6 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
             name={skill.name}
             description={skill.description}
             category={skill.category}
-            complexity={skill.complexity}
             fileCount={skill.files?.length || 0}
             verified={skill.verified}
             securityScan={skill.securityScan}
@@ -143,22 +130,31 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
   <section class="section install-section">
     <div class="container">
       <h2 class="section-title text-center">How to Install</h2>
-      <p class="section-subtitle text-center">Skills are auto-discovered — just add to your project!</p>
-      
+      <p class="section-subtitle text-center">Skills are published as <a href="https://agent-plugins.org" target="_blank" rel="noopener noreferrer">Agent Plugins</a>. Pick whichever install path fits your workflow.</p>
+
       <div class="install-steps">
         <div class="step">
           <div class="step-number">1</div>
-          <h3>Install with the CLI <span class="step-tag">Recommended</span></h3>
-          <p class="step-desc">Install the <code>gh skills-hub</code> extension, then install any skill in one command.</p>
-          <pre><code>gh extension install samueltauil/skills-hub
-gh skills-hub install &lt;skill-name&gt;</code></pre>
-          <p class="step-desc step-extra">Search and browse skills from your terminal:</p>
-          <pre><code>gh skills-hub search git
-gh skills-hub list
-gh skills-hub info &lt;skill-name&gt;</code></pre>
+          <h3>Install as a plugin <span class="step-tag">Recommended</span></h3>
+          <p class="step-desc">Add the marketplace once in GitHub Copilot CLI, then install any skill by its ID (the last part of its page URL — each skill page shows the exact command).</p>
+          <pre><code>copilot plugin marketplace add {MARKETPLACE_REPO}
+copilot plugin install &lt;skill-id&gt;@{MARKETPLACE_NAME}</code></pre>
+          <p class="step-desc step-extra">In VS Code, enable <code>chat.plugins.enabled</code> and add the marketplace:</p>
+          <a class="btn btn-secondary btn-sm" href={vscodeAddMarketplace}>Add marketplace to VS Code</a>
         </div>
         <div class="step">
           <div class="step-number">2</div>
+          <h3>Use the gh extension</h3>
+          <p class="step-desc">Install the <code>gh skills-hub</code> extension, then install any skill in one command.</p>
+          <pre><code>gh extension install samueltauil/skills-hub
+gh skills-hub install &lt;skill-id&gt;</code></pre>
+          <p class="step-desc step-extra">Search and browse skills from your terminal:</p>
+          <pre><code>gh skills-hub search git
+gh skills-hub list
+gh skills-hub info &lt;skill-id&gt;</code></pre>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
           <h3>Or copy manually</h3>
           <p class="step-desc">Click "Download ZIP" or "Copy All Files" on any skill page, then add to your project.</p>
           <pre><code>.github/skills/&lt;skill-name&gt;/</code></pre>
@@ -404,9 +400,9 @@ gh skills-hub info &lt;skill-name&gt;</code></pre>
 
   .install-steps {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 900px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
     margin: 0 auto;
   }
 
@@ -462,6 +458,13 @@ gh skills-hub info &lt;skill-name&gt;</code></pre>
   .step pre {
     font-size: 0.75rem;
     margin: 0;
+    overflow-x: auto;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .install-steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 768px) {

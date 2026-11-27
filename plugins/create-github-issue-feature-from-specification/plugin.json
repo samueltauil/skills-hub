@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-github-issue-feature-from-specification",
+  "version": "1.0.0",
+  "description": "Create GitHub Issue for feature request from specification file using feature_request.yml template.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-github-issue-feature-from-specification/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "create",
+    "github",
+    "issue",
+    "feature"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-github-issue-feature-from-specification",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f66f5b46dbe077c8c529e0a7e8824c5a0206a73267397d65711590a49f69363a"
+    }
+  }
+}

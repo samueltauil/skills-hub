@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "assuredworkloads-frameworks-author",
+  "version": "1.0.0",
+  "description": "Authors custom cloud controls and customized frameworks for Assured Workloads when built-in resources cannot satisfy core requirements. Use when creating or synthesizing custom data boundary resources. Don't use for browsing or mapping existing built-in frameworks (use assuredworkloads-frameworks-navigator instead).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/assuredworkloads-frameworks-author/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "data",
+    "assuredworkloads",
+    "frameworks",
+    "author"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/assuredworkloads-frameworks-author",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c3ae40a00ec921e4e5a7ab5ae24885095c215be8a5d6045de914cdbee7d2519c"
+    }
+  }
+}

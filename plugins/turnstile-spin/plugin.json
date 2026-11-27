@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "turnstile-spin",
+  "version": "1.0.0",
+  "description": "Set up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.",
+  "author": {
+    "name": "cloudflare",
+    "url": "https://github.com/cloudflare"
+  },
+  "homepage": "https://skillshub.space/skills/turnstile-spin/",
+  "repository": "https://github.com/cloudflare/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "turnstile",
+    "spin"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/cloudflare/skills",
+        "path": "skills/turnstile-spin",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2c6bc73622c19e2114e3441218846eb8337ba6adb68582b5a864a1afba968f32"
+    }
+  }
+}

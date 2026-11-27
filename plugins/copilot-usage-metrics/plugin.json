@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "copilot-usage-metrics",
+  "version": "1.0.0",
+  "description": "Retrieve and display GitHub Copilot usage metrics for organizations and enterprises using the GitHub CLI and REST API.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/copilot-usage-metrics/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "api",
+    "cli",
+    "copilot",
+    "usage"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/copilot-usage-metrics",
+        "branch": "main"
+      },
+      "contentHash": "sha256:535ac4e514774daeb7aaaf634e45ee011b83dc0b9bb05a2b6e758d6faed6c833"
+    }
+  }
+}

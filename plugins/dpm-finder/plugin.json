@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dpm-finder",
+  "version": "1.0.0",
+  "description": "Find the Prometheus metrics that drive your Grafana Cloud bill. `dpm-finder` is a Grafana Professional Services CLI that ranks metrics by Data Points per Minute (DPM) with per-label-set breakdown, optional `--cost-per-1000-series` pricing, and a Prometheus-exporter mode. Use when investigating high Grafana Cloud spend, hunting noisy / high-cardinality metrics, comparing pre/post recording-rule cardinality, or feeding cost data into dashboards — even when the user says \"why is my Mimir bill so high?\", \"find the biggest metrics\", \"cardinality offenders\", or \"optimize Prometheus cost\" without naming dpm-finder.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/dpm-finder/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "cli",
+    "data",
+    "dpm",
+    "finder"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/dpm-finder",
+        "branch": "main"
+      },
+      "contentHash": "sha256:60115d0973376e5dbaae39df439fe814e0a392361443397dec86dae6083c7b98"
+    }
+  }
+}

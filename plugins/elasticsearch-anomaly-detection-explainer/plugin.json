@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "elasticsearch-anomaly-detection-explainer",
+  "version": "1.0.0",
+  "description": "Explain Elasticsearch ML anomaly detection scores, model behavior, and result interpretation. Use when the user asks why a score is high or low, how the model learns, what the numbers mean, or how to troubleshoot unexpected anomaly scores.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/elasticsearch-anomaly-detection-explainer/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "elasticsearch",
+    "anomaly",
+    "detection",
+    "explainer"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/elasticsearch/elasticsearch-anomaly-detection-explainer",
+        "branch": "main"
+      },
+      "contentHash": "sha256:fc9212d3970fd1eaf38849ef9702aecdbd7bfce46e5a6da9b7b44c745c853b5b"
+    }
+  }
+}

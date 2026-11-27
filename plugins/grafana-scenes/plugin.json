@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "grafana-scenes",
+  "version": "1.0.0",
+  "description": "Build Grafana plugin pages using the @grafana/scenes framework. Use when creating new scene pages, adding panels/visualizations, setting up drilldown navigation, defining variables, configuring query runners, building table/timeseries/stat panels, or extending SceneObjectBase for custom scene objects. Triggers on any work involving SceneApp, SceneAppPage, EmbeddedScene, SceneQueryRunner, SceneDataTransformer, PanelBuilders, SceneFlexLayout, QueryVariable, or drilldown/tab configuration in Grafana plugins.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/grafana-scenes/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "diagrams",
+    "data",
+    "grafana",
+    "scenes"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "diagrams",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-plugins/grafana-scenes",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e93da3156a4a3cf5949db225a1e2b553da8c46b43cfe54f52ff1e45ac4702dba"
+    }
+  }
+}

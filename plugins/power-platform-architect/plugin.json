@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "power-platform-architect",
+  "version": "1.0.0",
+  "description": "Use this skill when the user needs to transform business requirements, use case descriptions, or meeting transcripts into a technical Power Platform solution architecture, including component selection and Mermaid.js diagrams.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/power-platform-architect/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "diagram",
+    "power",
+    "platform",
+    "architect"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/power-platform-architect",
+        "branch": "main"
+      },
+      "contentHash": "sha256:d08e0bd398f66d47a1d94dd4dd1c1a4af80af433436b82d099dc5b88d79007c9"
+    }
+  }
+}

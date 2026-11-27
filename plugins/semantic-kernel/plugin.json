@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "semantic-kernel",
+  "version": "1.0.0",
+  "description": "Create, update, refactor, explain, or review Semantic Kernel solutions using shared guidance plus language-specific references for .NET and Python.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/semantic-kernel/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "python",
+    "semantic",
+    "kernel"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/semantic-kernel",
+        "branch": "main"
+      },
+      "contentHash": "sha256:36cac57300ffd4e98170a81c034f4c0aeef3a8ce07283664958ce1c018eb2e16"
+    }
+  }
+}

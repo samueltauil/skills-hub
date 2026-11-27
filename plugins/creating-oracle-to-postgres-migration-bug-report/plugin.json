@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "creating-oracle-to-postgres-migration-bug-report",
+  "version": "1.0.0",
+  "description": "Creates structured bug reports for defects found during Oracle-to-PostgreSQL migration. Use when documenting behavioral differences between Oracle and PostgreSQL as actionable bug reports with severity, root cause, and remediation steps.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/creating-oracle-to-postgres-migration-bug-report/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "creating",
+    "oracle",
+    "postgres",
+    "migration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/creating-oracle-to-postgres-migration-bug-report",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1e52c07cd13e95aca295ec630cdb51e089bca42dccfa371f5a1c3b6d5f598459"
+    }
+  }
+}

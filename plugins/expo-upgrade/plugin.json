@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "expo-upgrade",
+  "version": "1.0.0",
+  "description": "Guidelines for upgrading Expo SDK versions and fixing dependency issues",
+  "author": {
+    "name": "expo",
+    "url": "https://github.com/expo"
+  },
+  "homepage": "https://skillshub.space/skills/expo-upgrade/",
+  "repository": "https://github.com/expo/skills",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "expo",
+    "upgrade"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/expo/skills",
+        "path": "plugins/expo/skills/expo-upgrade",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2a0eeb280ca3e5206d9d473a7df8fec3d87a5c8c920943703507d5a86fbefd0d"
+    }
+  }
+}

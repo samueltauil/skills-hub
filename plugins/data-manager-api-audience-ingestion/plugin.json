@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "data-manager-api-audience-ingestion",
+  "version": "1.0.0",
+  "description": "Guides developers through managing (adding, removing, and clearing) audience members for Google products using the Data Manager API and its associated client libraries. Use this skill when the user wants to upload audience members, remove specific users, or clear/replace an entire audience for Customer Match, mobile device ID audiences, or any other audience use case supported by the Data Manager API. Don't use for uploading events or conversions (use the data-manager-api-event-ingestion skill), or for debugging errors, checking request status, or investigating low match rates (use the data-manager-api-troubleshooting skill).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/data-manager-api-audience-ingestion/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "cli",
+    "data",
+    "manager",
+    "audience"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/data-manager-api-audience-ingestion",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e8a2b3eb91f20a1bc968e1cf64247615953019e9b3b19c2d006b219602120776"
+    }
+  }
+}

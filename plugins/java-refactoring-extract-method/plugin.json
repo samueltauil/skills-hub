@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "java-refactoring-extract-method",
+  "version": "1.0.0",
+  "description": "Refactoring using Extract Methods in Java Language",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/java-refactoring-extract-method/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "java",
+    "refactoring",
+    "extract",
+    "method"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/java-refactoring-extract-method",
+        "branch": "main"
+      },
+      "contentHash": "sha256:1a7da74b93413007c892153db16347da2126ec5d361ff3a81c53e7185cebc9a2"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dotnet-best-practices",
+  "version": "1.0.0",
+  "description": "Ensure .NET/C# code meets best practices for the solution/project.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/dotnet-best-practices/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "dotnet",
+    "best",
+    "practices"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/dotnet-best-practices",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f54b18b2a57bef5b3c05b2b7b1fca68bde3b7dccad9d809263fd80a815a5645a"
+    }
+  }
+}

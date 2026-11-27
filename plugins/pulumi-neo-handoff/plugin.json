@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-neo-handoff",
+  "version": "1.0.0",
+  "description": "Hand off the current thread to a new Pulumi Neo task as a one-way transfer. Use when the user explicitly asks to hand off, send, transfer, or continue current work in Pulumi Neo (e.g. \"hand this to Neo\", \"continue in Neo\", \"/neo-handoff\"). Do not load when the user only mentions Neo, asks what Neo can do, asks for an AI-written PR or preview explanation, or hands off to a different agent.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-neo-handoff/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "pulumi",
+    "neo",
+    "handoff"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "delegation/skills/pulumi-neo-handoff",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b46c65a20271aa64dc74ab8064243e6e8cb6d48c6efd9ff096f8c2e2d0141a1d"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "convert-plaintext-to-md",
+  "version": "1.0.0",
+  "description": "Convert a text-based document to markdown following instructions from prompt, or if a documented option is passed, follow the instructions for that option.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/convert-plaintext-to-md/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "convert",
+    "plaintext"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/convert-plaintext-to-md",
+        "branch": "main"
+      },
+      "contentHash": "sha256:33093cae64beffafd92e142ff9d4e1575f379db7feac393b6177c4b11cdaa0ac"
+    }
+  }
+}

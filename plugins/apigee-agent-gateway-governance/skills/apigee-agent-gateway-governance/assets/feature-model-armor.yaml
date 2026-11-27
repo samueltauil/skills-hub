@@ -1,0 +1,86 @@
+# Feature: Model Armor prompt sanitization.
+#
+# Blocks unsafe prompts before they reach the model. Unlike the metering
+# policies this one is deliberately fail-CLOSED (continueOnError=false) -- a
+# safety filter that fails open is not a safety filter.
+#
+# Because it fails closed, the step condition is load-bearing: ungated it
+# fires on session/appendEvent/telemetry calls that carry no prompt, the
+# extraction resolves empty, the policy raises, and the agent's turn dies.
+#
+# Enable by adding this file to the template's `features` list.
+#
+# REQUIRES feature-normalize.yaml (priority 15). The prompt is read from
+# agw.user_prompt, which that feature sets before this one runs. Enabling this
+# feature without it leaves the variable unset, the scan resolves empty, and
+# because the policy fails closed every matching request 500s.
+# See references/gotchas.md, Runtime.
+#
+# Requires: a Model Armor template in the same region, roles/modelarmor.user
+# on the deployment service account, and deploying with ?serviceAccount=.
+
+gateway: apigee
+schemaVersion: 1.0.0
+name: modelarmor
+uid: modelarmor
+type: feature
+priority: 20
+description: >-
+  Screens the user prompt through a Model Armor template before the model is
+  called. Blocks on a filter match; the caller sees a 400 with
+  steps.sanitize.user.prompt.FilterMatched.
+
+parameters:
+  - name: MA_TEMPLATE_NAME
+    displayName: Model Armor template resource name
+    description: Full resource name, projects/<p>/locations/<r>/templates/<t>.
+    default: projects/PROJECT/locations/REGION/templates/MA_TEMPLATE
+
+  - name: LLM_URI_MATCH
+    displayName: LLM call match condition
+    description: >-
+      Gate for the sanitize step. MUST match only calls that actually carry a
+      prompt. Gemini-native is *generateContent*; the OpenAI tail is
+      *chat/completions*. Shared with feature-normalize and the cache, so
+      widening it here widens their blast radius too.
+    default: '((request.uri Like "*generateContent*") or (request.uri Like "*chat/completions*"))'
+
+  - name: MA_CONTINUE_ON_ERROR
+    displayName: Model Armor enforcement mode
+    description: >-
+      "false" = ENFORCE: a filter match faults the policy and the caller gets a
+      400. "true" = DRY_RUN: the scan still runs and the verdict is still in the
+      trace, but the fault is swallowed and the turn continues.
+      This is the blocking switch, NOT an on/off switch -- dropping the step
+      entirely would mean no evaluation at all, which is "off", not dry-run.
+      Default is ENFORCE: a security control that silently does not protect is
+      worse than one that visibly blocks, and silent non-protection is the exact
+      failure class this skill exists to prevent.
+    default: "false"
+
+policies:
+  - name: SUP-sanitize
+    type: SanitizeUserPrompt
+    content:
+      SanitizeUserPrompt:
+        metadata:
+          name: SUP-sanitize
+          # The enforcement switch. See MA_CONTINUE_ON_ERROR above.
+          continueOnError: "{MA_CONTINUE_ON_ERROR}"
+          enabled: true
+        IgnoreUnresolvedVariables: true
+        ModelArmor:
+          TemplateName: "{MA_TEMPLATE_NAME}"
+        # Shape-agnostic, set by feature-normalize at priority 15. A raw
+        # JSONPath here is written for exactly one wire shape and fails
+        # closed on any other -- HTTP 500 per request, not a skipped scan.
+        UserPromptSource: "{agw.user_prompt}"
+
+defaultEndpoint:
+  name: default
+  flows:
+    - name: PreFlow
+      mode: Request
+      steps:
+        - name: SUP-sanitize
+          condition: "{LLM_URI_MATCH}"

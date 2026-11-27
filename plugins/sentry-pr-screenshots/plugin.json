@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sentry-pr-screenshots",
+  "version": "1.0.0",
+  "description": "Capture screenshots of the Sentry UI in a web browser, lay them out in a pull request description as before/after tables, and upload them with `gh --attach`.",
+  "author": {
+    "name": "sentry",
+    "url": "https://github.com/getsentry"
+  },
+  "homepage": "https://skillshub.space/skills/sentry-pr-screenshots/",
+  "repository": "https://github.com/getsentry/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "screenshots"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/getsentry/skills",
+        "path": "skills/pr-screenshots",
+        "branch": "main"
+      },
+      "contentHash": "sha256:2778242435952dab317f8f193b4fcebe1f5dc9557964641b8681e5002883de78"
+    }
+  }
+}

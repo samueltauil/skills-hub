@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react19-source-patterns",
+  "version": "1.0.0",
+  "description": "Reference for React 19 source-file migration patterns, including API changes, ref handling, and context updates.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/react19-source-patterns/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "react",
+    "react19",
+    "source",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/react19-source-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:124c17b622f52aefa5ee6dc1034ac3b5b66b8d2235e0e89c002c085d3372cfca"
+    }
+  }
+}

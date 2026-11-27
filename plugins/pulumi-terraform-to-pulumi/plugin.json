@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pulumi-terraform-to-pulumi",
+  "version": "1.0.0",
+  "description": "Migrate Terraform/OpenTofu projects to Pulumi, including translating HCL source code and/or importing Terraform state into a Pulumi stack. Use when a user wants to convert Terraform to Pulumi, migrate from HCL, or import tfstate into Pulumi. Do NOT trigger for general Terraform-vs-Pulumi comparisons or questions about using both tools side-by-side.",
+  "author": {
+    "name": "pulumi",
+    "url": "https://github.com/pulumi"
+  },
+  "homepage": "https://skillshub.space/skills/pulumi-terraform-to-pulumi/",
+  "repository": "https://github.com/pulumi/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "pulumi",
+    "terraform"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/pulumi/agent-skills",
+        "path": "migration/skills/pulumi-terraform-to-pulumi",
+        "branch": "main"
+      },
+      "contentHash": "sha256:9b74f33cc4a8759278ba03e9f762823e41a3d531319d52f51955078fe989e23c"
+    }
+  }
+}

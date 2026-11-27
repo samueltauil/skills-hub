@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "generate-custom-instructions-from-codebase",
+  "version": "1.0.0",
+  "description": "Migration and code evolution instructions generator for GitHub Copilot. Analyzes differences between two project versions (branches, commits, or releases) to create precise instructions allowing Copilot to maintain consistency during technology migrations, major refactoring, or framework version upgrades.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/generate-custom-instructions-from-codebase/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "generate",
+    "custom",
+    "instructions",
+    "from"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/generate-custom-instructions-from-codebase",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a3f9a734b6d00570cdfaccaf51c5a5b5d39d1364f2535685b7d51c40b57aebfa"
+    }
+  }
+}

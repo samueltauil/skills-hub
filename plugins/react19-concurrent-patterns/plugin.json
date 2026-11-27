@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react19-concurrent-patterns",
+  "version": "1.0.0",
+  "description": "Preserve React 18 concurrent patterns and adopt React 19 APIs (useTransition, useDeferredValue, Suspense, use(), useOptimistic, Actions) during migration.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/react19-concurrent-patterns/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "api-backend",
+    "api",
+    "react",
+    "react19",
+    "concurrent",
+    "patterns"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/react19-concurrent-patterns",
+        "branch": "main"
+      },
+      "contentHash": "sha256:bf2d2f20409b8392c9f7f0af47aa9f357c202aefb6e642d388b9d6f8be585c6f"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "winforms-expert",
+  "version": "1.0.0",
+  "description": "Create, modify, debug, or review Windows Forms applications only when the request contains a concrete Windows Forms marker. USE FOR: WinForms, Windows Forms, System.Windows.Forms, WinForms Form or UserControl designer files (*.Designer.cs or *.Designer.vb), Visual Studio WinForms Designer, TableLayoutPanel, BindingSource, DataGridView, Control.InvokeAsync, component-tray ownership, or custom control serialization. DO NOT USE FOR: WPF or WPF XAML, including Window.InputBindings, KeyBinding, commands, or DataContext; .NET MAUI; Avalonia; or any request where none of the listed Windows Forms markers is present.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/winforms-expert/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "design",
+    "data",
+    "winforms",
+    "expert"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-winforms/skills/winforms-expert",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8e33976d9d1e85eba4853b297086e6dfd2e884704e02d9cdfb0aa55da03b5c7a"
+    }
+  }
+}

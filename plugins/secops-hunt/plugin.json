@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "secops-hunt",
+  "version": "1.0.0",
+  "description": "Expert guidance for proactive threat hunting in Google SecOps. Use when proactively hunting for threats, retroactively analyzing indicators of compromise (IoCs), performing prevalence searches across enterprise events, hunting for MITRE ATT&CK techniques, or detecting behavioral and statistical outliers using UDM queries. Don't use for incoming alert triage (use secops-triage), active incident response and timeline deep-dives on a known breach (use secops-investigate), or detection rule authoring (use secops-detection-engineering).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/secops-hunt/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "secops",
+    "hunt"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/secops-hunt",
+        "branch": "main"
+      },
+      "contentHash": "sha256:631b1eb55d32c108b1d4a6f4dcff9e5b96da9ece1fb20f43baf153980e77260c"
+    }
+  }
+}

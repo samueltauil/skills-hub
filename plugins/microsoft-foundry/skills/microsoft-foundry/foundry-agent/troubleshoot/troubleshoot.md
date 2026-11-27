@@ -1,0 +1,135 @@
+# Foundry Agent Troubleshoot
+
+Troubleshoot and debug Foundry agents by collecting Hosted Agent logs with azd, discovering observability connections, and querying Application Insights telemetry.
+
+## Quick Reference
+
+| Property | Value |
+|----------|-------|
+| MCP servers | `azure` |
+| Hosted Agent CLI | `azd ai agent show`, `sessions`, `monitor` |
+| Related skills | `trace` (telemetry analysis) |
+| Preferred query tool | `monitor_resource_log_query` (Azure MCP) — preferred over `azure-kusto` for App Insights |
+| CLI references | `azd ai agent show`, `azd ai agent sessions`, `azd ai agent monitor`, `az cognitiveservices account connection` |
+
+## When to Use This Skill
+
+- Agent is not responding or returning errors
+- Hosted agent version is not becoming active
+- Need to view hosted-agent session logs
+- Diagnose latency or timeout issues
+- Query Application Insights for agent traces and exceptions
+- Investigate agent runtime failures
+
+## Workflow
+
+### Step 1: Collect Agent Information
+
+Use the project endpoint and agent name from the project context (see [Common Project Context Resolution](../../SKILL.md#agent-common-project-context-resolution)). Ask the user only for values not already resolved:
+- **Project endpoint** — Microsoft Foundry project endpoint URL
+- **Agent name** — Name of the agent to troubleshoot
+
+### Step 2: Identify the Agent Type (`Hosted`, `Voice`, `Managed Harness Agent`, or `Prompt`)
+
+Inspect `azure.yaml` (`host: azure.ai.agent`) and classify the top-level agent type:
+1. **Voice Agent** (apply the top-level compatibility classification for legacy manifests):
+   - Read [Voice Agent subtypes](../create/references/voice-agent/subtypes.md), [common Voice invariants](../create/references/voice-agent/common.md), and the selected subtype reference from [create-voice](../create/create-voice.md).
+   - Triage in this exact order:
+     1. **Definition & deployment**: Validate the selected subtype and run `azd ai agent show --output json`.
+     2. **Voice WebSocket upgrade & auth**: For GPT-Live Voice, confirm `/endpoint/protocols/voice/live/sessions?api-version=v1`. For Prompt Voice and Hosted Voice, confirm `/endpoint/protocols/voice?api-version=v1` with `Foundry-Features: VoiceAgents=V1Preview`. Use an Entra token for `https://ai.azure.com`; never use `azd ai agent invoke`.
+     3. **Audio & session settings**: Compare audio, voice, greeting, model, storage, and delegation settings with the selected subtype reference. Do not apply Prompt Voice settings to GPT-Live Voice.
+     4. **Subtype-specific runtime triage**:
+        - **GPT-Live Voice**: Has no Hosted container and must not use the ordinary Voice helper. Verify the deployed version, `session.started`, and `session.closed` with reason `close_requested` using [GPT-Live Voice smoke testing](../create/references/voice-agent/gpt-live-voice-smoke-test.md).
+        - **Prompt Voice (`modelType: managed` or `self_deployed`)**: Has no Hosted container, no `azd ai agent sessions`, no `files`, and no `azd ai agent monitor` log stream. Skip Step 3 and proceed to Step 4 (Application Insights telemetry).
+        - **Hosted Voice (`conversationEngine.type: hosted_agent`)**: Separate wrapper configuration/endpoint failures from target transport, Bridge, startup, model, and RBAC failures. Route through exact `voice_conversation_engine/1.0.0` unless legacy `invocations_ws/1.0.0` was explicitly selected or already declared with both compatibility metadata values. Use [Hosted Voice Bridge troubleshooting](../create/references/voice-agent/hosted-voice-bridge.md), then inspect logs on the `kind: hosted` target service.
+     5. **Observability**: Proceed to Step 4 and Step 5 for Application Insights conversation telemetry.
+2. **`kind: hosted` (Hosted Agent or Hosted Voice target)**: Run:
+
+```bash
+azd ai agent show --output json
+```
+
+If azd returns Hosted Agent details, proceed to Step 3. If the command fails for an identified Hosted Agent, diagnose the reported error instead of proceeding to Step 4.
+3. **`kind: prompt` (Managed Harness Agent or ordinary Prompt Agent)**: Has no Hosted container session logs; skip Step 3 and proceed to Step 4.
+
+### Step 3: Retrieve Logs (Hosted Agents Only)
+
+Hosted Agent logs are scoped to sessions. Use azd for session discovery and log retrieval.
+
+> **Hosted WebSocket agents:** use the client-supplied session id when the selected protocol exposes one. `azd ai agent invoke` does not create conversation-engine or `invocations_ws` sessions. Pass a known session id to `azd ai agent monitor --session-id`.
+
+1. **Check agent version status.** Use the result from Step 2 and verify that the deployed version is `active`.
+
+2. **Read logs from the current session.** `monitor` automatically reuses the session saved by the last azd invoke:
+
+   ```bash
+   azd ai agent monitor --tail 100
+   ```
+
+3. **Select another session when needed.** If no session is saved or the user needs a different one, run:
+
+   ```bash
+   azd ai agent sessions list --output table
+   azd ai agent monitor --session-id <session-id> --tail 100
+   ```
+
+   In multi-agent projects, add `--agent-name <service-name>` to `sessions list` and pass the service name positionally to `monitor`. Pass the same `--user-identity` used for invoke when header-based isolation is enabled.
+
+4. **Choose the log stream.** Use `--follow` for live logs and `--type system` for container events:
+
+   ```bash
+   azd ai agent monitor --session-id <session-id> --follow
+   azd ai agent monitor --session-id <session-id> --type system
+   ```
+
+5. **Interpret the logs.** Review `stdout`, `stderr`, and system events. Highlight errors and warnings.
+
+If no session exists, use `azd ai agent invoke` to trigger the Hosted Agent only when remote invocation is within the user's request.
+
+### Step 4: Discover Observability Connections
+
+List the project connections to find Application Insights or Azure Monitor resources using the Azure CLI command documented at:
+[az cognitiveservices account connection](https://learn.microsoft.com/en-us/cli/azure/cognitiveservices/account/connection?view=azure-cli-latest)
+
+Refer to the documentation above for the exact command syntax and parameters. Look for connections of type `ApplicationInsights` or `AzureMonitor` in the output.
+
+If no observability connection is found, inform the user and suggest setting up Application Insights for the project. Ask if they want to proceed without telemetry data.
+
+### Step 5: Query Application Insights Telemetry
+
+Use **`monitor_resource_log_query`** (Azure MCP tool) to run KQL queries against the Application Insights resource discovered in Step 4. This is preferred over delegating to the `azure-kusto` skill. Pass the App Insights resource ID and the KQL query directly.
+
+> ⚠️ **Always pass `subscription` explicitly** to Azure MCP tools like `monitor_resource_log_query` — they don't extract it from resource IDs.
+
+Use `* contains "<response_id>"` or `* contains "<agent_name>"` filters to narrow down results to the specific agent instance.
+
+### Step 6: Summarize Findings
+
+Present a summary to the user including:
+- **Agent status** — Hosted Agent version status when available
+- **Log errors** — key errors from hosted-agent session logs
+- **Telemetry insights** — exceptions, failed requests, latency trends
+- **Recommended actions** — specific steps to resolve identified issues
+
+## Error Handling
+
+| Error | Cause | Resolution |
+|-------|-------|------------|
+| Agent not found | Invalid agent name or project endpoint | Verify the `azure.yaml` service name and run `azd ai agent show` |
+| Hosted Agent not active | Hosted Agent is still provisioning or failed | Check deployment status, identity permissions, and system logs, then recheck status |
+| Session logs unavailable | The session does not exist or has not been invoked | Run `azd ai agent sessions list`; invoke with azd when authorized, then retry `monitor` |
+| No saved session ID | azd has not persisted an invoke session | Select one from `azd ai agent sessions list` and pass `--session-id` |
+| No observability connection | Application Insights not configured for the project | Suggest configuring Application Insights for the Foundry project |
+| Kusto query failed | Invalid cluster/database or insufficient permissions | Verify Application Insights resource details and reader permissions |
+| No telemetry data | Agent not instrumented or too recent | Check if Application Insights SDK is configured; data may take a few minutes to appear |
+| `session.rejected` (`protocol_mismatch`) on Hosted Voice startup | Hosted target does not satisfy the selected Bridge contract | Follow [Hosted Voice Bridge troubleshooting](../create/references/voice-agent/hosted-voice-bridge.md), redeploy the target, and retest |
+| Hosted Voice target endpoint is missing or wrong | Target protocol declaration does not match the deployed route | Verify `voice_conversation_engine/1.0.0` and `AGENT_<TARGET_SERVICE_KEY>_VOICE_CONVERSATION_ENGINE_ENDPOINT`, or preserve the complete legacy `invocations_ws` plus metadata contract |
+| GPT-Live Voice connects to ordinary `/protocols/voice` or the regular helper | The wrong subtype workflow was selected | Re-read [Voice Agent subtypes](../create/references/voice-agent/subtypes.md) and use `/protocols/voice/live/sessions?api-version=v1` with the GPT-Live Voice session smoke helper |
+| `azd ai agent invoke` fails on Voice Agent | `azd ai agent invoke` does not support Voice protocols | Use the GPT-Live Voice session smoke helper for GPT-Live Voice; otherwise use the Voice WebSocket smoke-test script ([smoke-test-voice.sh](../create/scripts/smoke-test-voice.sh) / [smoke-test-voice.ps1](../create/scripts/smoke-test-voice.ps1)); use the Foundry Voice playground for manual acceptance |
+
+## Additional Resources
+
+- [Foundry Hosted Agents](https://learn.microsoft.com/azure/ai-foundry/agents/concepts/hosted-agents?view=foundry)
+- [Account Connection CLI Reference](https://learn.microsoft.com/en-us/cli/azure/cognitiveservices/account/connection?view=azure-cli-latest)
+- [KQL Quick Reference](https://learn.microsoft.com/azure/data-explorer/kusto/query/kql-quick-reference)
+- [Foundry Samples](https://github.com/microsoft-foundry/foundry-samples)

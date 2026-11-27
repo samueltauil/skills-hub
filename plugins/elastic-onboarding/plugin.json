@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "elastic-onboarding",
+  "version": "1.0.0",
+  "description": "Onboard an application into Elastic Observability with the Elastic Distribution of OpenTelemetry (EDOT): route on language and runtime, detect and replace a classic Elastic APM agent, apply the required OTLP configuration, and then verify with ES|QL that traces, metrics, and logs actually arrive under the expected service name. Use when adding observability to a service, migrating off the classic Elastic APM agent, or debugging why an instrumented service is not showing up in Elastic.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/elastic-onboarding/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "onboarding"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/observability/onboarding",
+        "branch": "main"
+      },
+      "contentHash": "sha256:16ae3eff975bf7502e03e0816b4d8c8be3c64f795e55071e7dd3771ab1fa3208"
+    }
+  }
+}

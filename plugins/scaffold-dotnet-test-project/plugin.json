@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "scaffold-dotnet-test-project",
+  "version": "1.0.0",
+  "description": "MUST USE when an existing .NET test project was excluded from a .slnf/CI solution filter, disappeared from .sln/.slnx discovery, or lost its production ProjectReference; also for requests to set up, create, reuse, add, register, include, or repair a test project. Handles \"tests pass directly but CI discovers zero\", exact solution wiring, xUnit/NUnit/MSTest, and central packages. DO NOT USE to only author tests in an already-wired project (code-testing), run tests, migrate, or correct MSTest syntax/configuration without changing project or CI files (writing-mstest-tests).",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/scaffold-dotnet-test-project/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "scaffold",
+    "dotnet",
+    "project"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/scaffold-dotnet-test-project",
+        "branch": "main"
+      },
+      "contentHash": "sha256:359398826bac6e173aa71587d5dd668664b90c09f72db9ff6302bb99e56b0142"
+    }
+  }
+}

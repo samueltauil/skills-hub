@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kibana-context-engine",
+  "version": "1.0.0",
+  "description": "Query Elastic Context Engine AI Indices, and the Knowledge Indicators (KIs) they store. Use when asked to search, explore, count, or answer questions from an AI Index / KI / Context Engine knowledge index, and when writing the ES|QL that queries one.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/kibana-context-engine/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "kibana",
+    "context",
+    "engine"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/kibana/kibana-context-engine",
+        "branch": "main"
+      },
+      "contentHash": "sha256:b8f6099d99bbad6cf12fd5f78294cdaeb230d8a5205f52b7d69c9a3d3f464b30"
+    }
+  }
+}

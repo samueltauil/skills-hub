@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "notion-knowledge-capture",
+  "version": "1.0.0",
+  "description": "Capture conversations and decisions into structured Notion pages; use when turning chats/notes into wiki entries, how-tos, decisions, or FAQs with proper linking.",
+  "author": {
+    "name": "openai",
+    "url": "https://github.com/openai"
+  },
+  "homepage": "https://skillshub.space/skills/notion-knowledge-capture/",
+  "repository": "https://github.com/openai/skills",
+  "license": "MIT",
+  "keywords": [
+    "devops-cicd",
+    "notion",
+    "knowledge",
+    "capture"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/openai/skills",
+        "path": "skills/.curated/notion-knowledge-capture",
+        "branch": "main"
+      },
+      "contentHash": "sha256:68e2bfb2f38175f98245a106f0ff556e1b699ed5f2a3e82b7153a19b83f34087"
+    }
+  }
+}

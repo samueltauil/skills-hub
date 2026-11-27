@@ -1,0 +1,53 @@
+{
+  "id": "41b179a2-ed19-4ae2-a45d-95775aaa90f7",
+  "title": "Counting Files in Local Folder",
+  "messages": [
+    {
+      "message": {
+        "message": {
+          "role": "user",
+          "content": "How many files in the local folder?"
+        }
+      }
+    },
+    {
+      "message": {
+        "agent_name": "root",
+        "message": {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call_abc123",
+              "type": "function",
+              "function": {
+                "name": "list_directory",
+                "arguments": "{\"path\":\"./\"}"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "message": {
+        "agent_name": "root",
+        "message": {
+          "role": "assistant",
+          "content": "There are 2 files in the local folder: README.md and agent.yaml."
+        }
+      }
+    }
+  ],
+  "evals": {
+    "relevance": [
+      "The response mentions exactly 2 files",
+      "The response lists README.md and agent.yaml"
+    ],
+    "assertions": [
+      { "name": "used list_directory", "type": "tool_called", "value": "list_directory" },
+      { "name": "no error message", "type": "not_contains", "value": "error" }
+    ],
+    "size": "S",
+    "working_dir": "my-project"
+  }
+}

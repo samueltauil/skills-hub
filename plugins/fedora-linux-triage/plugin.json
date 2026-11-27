@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "fedora-linux-triage",
+  "version": "1.0.0",
+  "description": "Triage and resolve Fedora issues with dnf, systemd, and SELinux-aware guidance.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/fedora-linux-triage/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "fedora",
+    "linux",
+    "triage"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/fedora-linux-triage",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a4646a2fb15c0692093f8ec779baabd0c29192d9d26236df3c7e56739f97a375"
+    }
+  }
+}

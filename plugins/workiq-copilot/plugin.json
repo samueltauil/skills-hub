@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "workiq-copilot",
+  "version": "1.0.0",
+  "description": "Guides the Copilot CLI on how to use the WorkIQ CLI/MCP server to query Microsoft 365 Copilot data (emails, meetings, docs, Teams, people) for live context, summaries, and recommendations.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/workiq-copilot/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "cli",
+    "doc",
+    "mcp",
+    "data",
+    "workiq"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/workiq-copilot",
+        "branch": "main"
+      },
+      "contentHash": "sha256:974bc7a14a6e894efc5cd77be299dc8823efc85da8cc57c6d5d2d2e31e6bbb3b"
+    }
+  }
+}

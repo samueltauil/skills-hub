@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "update-markdown-file-index",
+  "version": "1.0.0",
+  "description": "Update a markdown file section with an index/table of files from a specified folder.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/update-markdown-file-index/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "update",
+    "markdown",
+    "file",
+    "index"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/update-markdown-file-index",
+        "branch": "main"
+      },
+      "contentHash": "sha256:57faae4941c1a2dfb3f4196015909e9c7003f51343ba2ba24519aa566ae3170c"
+    }
+  }
+}

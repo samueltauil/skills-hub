@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kibana-anomaly-detection",
+  "version": "1.0.0",
+  "description": "Elastic ML anomaly detection — investigation/RCA, score explanation, job lifecycle troubleshooting, and job operations. Use when answering \"what broke?\"/\"which entity?\"/RCA, \"why is score high/low?\"/renormalization, \"datafeed stopped\"/\"memory limit\"/hard_limit, or configuring ML anomaly detection jobs. Reads results from `.ml-anomalies-*` and job state from ML REST APIs.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/kibana-anomaly-detection/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "api",
+    "data",
+    "kibana",
+    "anomaly",
+    "detection"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/kibana/kibana-anomaly-detection",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3786e1110225e72406c48ebf46941dac887ddae5ff51c3ac3562bae664f31866"
+    }
+  }
+}

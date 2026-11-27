@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "docker-agent-config",
+  "version": "1.0.0",
+  "description": "Use this skill when creating or editing an agent.yaml (or .yml/.hcl) configuration file for Docker Agent (cagent), including defining agents, models/providers, built-in or MCP toolsets, multi-agent teams with sub_agents. Even if the user just says they want to \"build an AI agent with Docker\", \"make a coding agent config\", \"add a tool to my agent\", or \"set up a team of agents\", this skill applies. Covers agent properties (model, instruction, toolsets, sub_agents, fallback), the models/providers sections, built-in toolsets (filesystem, shell, think, todo, memory, fetch), MCP toolset references, and named commands.",
+  "author": {
+    "name": "docker",
+    "url": "https://github.com/docker"
+  },
+  "homepage": "https://skillshub.space/skills/docker-agent-config/",
+  "repository": "https://github.com/docker/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "documentation",
+    "doc",
+    "mcp",
+    "docker",
+    "agent",
+    "config"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/docker/skills",
+        "path": "skills/docker-agent-config",
+        "branch": "main"
+      },
+      "contentHash": "sha256:64756824a3324bfbe23b86ae4c1a6a7657c3b26122996856907ffe697f6f096d"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "create-github-action-workflow-specification",
+  "version": "1.0.0",
+  "description": "Create a formal specification for an existing GitHub Actions CI/CD workflow, optimized for AI consumption and workflow maintenance.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/create-github-action-workflow-specification/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "git-version-control",
+    "git",
+    "create",
+    "github",
+    "action",
+    "workflow"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "git-version-control",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/create-github-action-workflow-specification",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e110881e3270a6110eeb9a2a5a382f7958d2e19ff34951e5d4a43b33dc34f560"
+    }
+  }
+}

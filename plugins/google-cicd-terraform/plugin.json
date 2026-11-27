@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cicd-terraform",
+  "version": "1.0.0",
+  "description": "Architect, provision, and troubleshoot infrastructure on Google Cloud using Terraform. This skill ensures best practices like GCS backend usage and least-privilege IAM are followed. Enforces Google's Cloud Foundation Fabric patterns and rigorous validation protocols to ensure secure, idempotent, and scalable deployments across environments. Activate when the user requests infrastructure changes, pipeline design involving Terraform, or debugging Terraform issues. DO NOT use when deploying application code or container images directly via `gcloud` or `kubectl` without Terraform (use `google-cicd-deploy`), designing high-level CI/CD architecture before choosing an IaC tool (use `google-cicd-pipeline-design`), or managing Cloud Deploy releases and rollouts via `clouddeploy.yaml` (use `google-cicd-release-orchestration`).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cicd-terraform/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "deploy",
+    "design",
+    "google",
+    "cicd",
+    "terraform"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cicd-terraform",
+        "branch": "main"
+      },
+      "contentHash": "sha256:cbdcd59ce6e52d2aec21badef771c85a65e13d3045dcd7a02cb85676611623c5"
+    }
+  }
+}

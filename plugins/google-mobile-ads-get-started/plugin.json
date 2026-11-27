@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-mobile-ads-get-started",
+  "version": "1.0.0",
+  "description": "Provides instructions for integrating the Google Mobile Ads (GMA) SDK. Use this skill when the user wants to get started with, install, integrate, set up, or configure the SDK for AdMob or Ad Manager, GMA Next-Gen SDK or mobile ads framework in an Android, iOS, or Unity application.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-mobile-ads-get-started/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "api-backend",
+    "google",
+    "mobile",
+    "ads",
+    "get",
+    "started"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "api-backend",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/ads/google-mobile-ads-get-started",
+        "branch": "main"
+      },
+      "contentHash": "sha256:760d7414640a460804f9e190bb3a9ec85fa1362cbbadd6e9da85c773e0a9316a"
+    }
+  }
+}

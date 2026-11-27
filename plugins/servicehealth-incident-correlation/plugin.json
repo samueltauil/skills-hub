@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "servicehealth-incident-correlation",
+  "version": "1.0.0",
+  "description": "Checks Personalized Service Health (PSH) events and resource-level impacts to determine whether a Google Cloud incident affects a project or its resources, returning an impact verdict with affected resources, published symptoms, and workarounds. Use when asked whether Google Cloud is having an outage or affecting a project or its resources, when looking up a PSH event, or when triaging live Google Cloud workload issues or alerts whose symptoms suggest a possible Google Cloud service disruption—even if the user does not suspect an outage. Don't use for local code or build errors, routine alerts or automations that neither ask for a service health check nor suggest a platform disruption, configuring PSH alerts, or checking non-project-specific public status.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/servicehealth-incident-correlation/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "servicehealth",
+    "incident",
+    "correlation"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/servicehealth-incident-correlation",
+        "branch": "main"
+      },
+      "contentHash": "sha256:3b38fad2b96831ec20a3da90b317f1a0fcad1bc9b2f0389c24aa55eb90295fcf"
+    }
+  }
+}

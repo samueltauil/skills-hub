@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "react-native-brownfield-migration",
+  "version": "1.0.0",
+  "description": "Implements an accepted incremental brownfield migration from native iOS or Android to React Native or Expo using @callstack/react-native-brownfield. Use after the brownfield path has been selected, when setting up the integration, packaging XCFramework or AAR artifacts, or adding React Native surfaces to native hosts.",
+  "author": {
+    "name": "callstack",
+    "url": "https://github.com/callstackincubator"
+  },
+  "homepage": "https://skillshub.space/skills/react-native-brownfield-migration/",
+  "repository": "https://github.com/callstackincubator/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "frontend-ui",
+    "react",
+    "native",
+    "brownfield",
+    "migration"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/callstackincubator/agent-skills",
+        "path": "skills/react-native-brownfield-migration",
+        "branch": "main"
+      },
+      "contentHash": "sha256:f1966f1e0bd952bbec5bc72388cc39cbd7c03b58ca49440a400e3c61178d5c7e"
+    }
+  }
+}

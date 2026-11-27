@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "azure-architecture-autopilot",
+  "version": "1.0.0",
+  "description": "Design Azure infrastructure using natural language, or analyze existing Azure resources to auto-generate architecture diagrams, refine them through conversation, and deploy with Bicep. When to use this skill: - \"Create X on Azure\", \"Set up a RAG architecture\" (new design) - \"Analyze my current Azure infrastructure\", \"Draw a diagram for rg-xxx\" (existing analysis) - \"Foundry is slow\", \"I want to reduce costs\", \"Strengthen security\" (natural language modification) - Azure resource deployment, Bicep template generation, IaC code generation - Microsoft Foundry, AI Search, OpenAI, Fabric, ADLS Gen2, Databricks, and all Azure services",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/azure-architecture-autopilot/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "diagrams",
+    "azure",
+    "deploy",
+    "diagram",
+    "design",
+    "security"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "diagrams",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/azure-architecture-autopilot",
+        "branch": "main"
+      },
+      "contentHash": "sha256:560583db9a997913c6ad864c2adb32947e4bbbde4708bfedda75d886b5ce1283"
+    }
+  }
+}

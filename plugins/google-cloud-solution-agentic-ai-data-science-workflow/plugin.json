@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "google-cloud-solution-agentic-ai-data-science-workflow",
+  "version": "1.0.0",
+  "description": "DEPRECATED. Use the google-cloud-solution-agentic-analytics-spark-knowledge-catalog skill instead.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/google-cloud-solution-agentic-ai-data-science-workflow/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "data",
+    "analytics",
+    "google",
+    "cloud",
+    "solution"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/google-cloud-solution-agentic-ai-data-science-workflow",
+        "branch": "main"
+      },
+      "contentHash": "sha256:92c753aef12ed38bbfea8db0f1159993e7984ea187a7ade38550b1081f7df904"
+    }
+  }
+}

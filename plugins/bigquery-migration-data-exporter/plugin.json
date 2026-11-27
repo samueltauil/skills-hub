@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bigquery-migration-data-exporter",
+  "version": "1.0.0",
+  "description": "Generates type-safe, schema-aligned database data export SQL files (.sql) for Snowflake, Databricks, Teradata, Oracle, and PostgreSQL directly from BigQuery Migration Service (BQMS) translation_output/metadata configs, exporting into target file formats (such as Parquet). Use when generating source database export SQL scripts for BigQuery ingestion without connecting to the source database. Don't use for executing SQL against source databases or streaming/staging exported files, extracting source database catalog metadata, translating SQL queries or DDL schemas (use bigquery-migration-sql-translator), loading staged Parquet files into BigQuery, or running post-migration data validation.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/bigquery-migration-data-exporter/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "data-analytics",
+    "data",
+    "bigquery",
+    "migration",
+    "exporter"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "data-analytics",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/bigquery-migration-data-exporter",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c9a97b3d76961f522046d891c39fcc9f32f92c1dbc770300d8f40e8059b37bd7"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-platform-agent-registry",
+  "version": "1.0.0",
+  "description": "Manages Google Cloud Agent Registry (agentregistry.googleapis.com) resources using gcloud CLI and Kubernetes manifests, including agents, MCP servers, endpoints, services, bindings, AI applications, skills and skill revisions, resource-level IAM policies, Cloud Run and GKE automatic workload registration, Cloud Resource Manager management boundaries, 5-endpoint Quick Add for Agent Gateway, and Python ADK integration. Use when registering, discovering, searching, filtering, or governing agents, MCP servers, endpoints, skills, AI applications, or management boundaries in Google Cloud Agent Registry. Don't use for the preview AI Platform Skill Registry Python scripts (use agent-platform-skill-registry), deploying raw Vertex AI Agent Engine code (use agent-platform-deploy), or runtime trace debugging (use agent-platform-troubleshooting).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/agent-platform-agent-registry/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "api",
+    "cli",
+    "deploy",
+    "mcp",
+    "python"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/agent-platform-agent-registry",
+        "branch": "main"
+      },
+      "contentHash": "sha256:635e8bc0ef133483732fe4097136254fab718865ef2602ccbea8118ee3ca4819"
+    }
+  }
+}

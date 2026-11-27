@@ -1,0 +1,9 @@
+type: statement_rewriter
+select:
+  # Configure the star projection to `EXPAND`:
+  starProjection: EXPAND
+# By default, BigQuery Migration Service increases numeric precision to the highest precision
+# available for a given scale. Override this behavior by configuring the precision strictness to
+# retain the decimal precision of the source statement:
+common:
+  decimalPrecision: STRICT

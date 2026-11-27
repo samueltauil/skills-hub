@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "write-coding-standards-from-file",
+  "version": "1.0.0",
+  "description": "Write a coding standards document for a project using the coding styles from the file(s) and/or folder(s) passed as arguments in the prompt.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/write-coding-standards-from-file/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "write",
+    "coding",
+    "standards",
+    "from"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/write-coding-standards-from-file",
+        "branch": "main"
+      },
+      "contentHash": "sha256:8508185d4c0e79785f551316e2e666b60a672376309b5b282c433a0bee5508f2"
+    }
+  }
+}

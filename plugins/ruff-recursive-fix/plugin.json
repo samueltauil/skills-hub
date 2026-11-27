@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ruff-recursive-fix",
+  "version": "1.0.0",
+  "description": "Run Ruff checks with optional scope and rule overrides, apply safe and unsafe autofixes iteratively, review each change, and resolve remaining findings with targeted edits or user decisions.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/ruff-recursive-fix/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "ruff",
+    "recursive",
+    "fix"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/ruff-recursive-fix",
+        "branch": "main"
+      },
+      "contentHash": "sha256:c31d9a47fde006b45863ca5766fdcd77d5a643ab1f24da809b2ca8798a5f433a"
+    }
+  }
+}

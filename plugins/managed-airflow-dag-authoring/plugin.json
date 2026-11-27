@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "managed-airflow-dag-authoring",
+  "version": "1.0.0",
+  "description": "Provides guidance for authoring Apache Airflow DAGs in Managed Service for Apache Airflow (MSAA; formerly Cloud Composer). Covers environment context discovery, Airflow 2 vs 3 compatibility, authoring best practices, and local/remote validation processes. Use when creating or extending an Airflow DAG. Don't use when authoring Python code unrelated to Airflow DAGs.",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/managed-airflow-dag-authoring/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "python",
+    "managed",
+    "airflow",
+    "dag",
+    "authoring"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/managed-airflow-dag-authoring",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e7c8a3b5186aa8733297ca543cdef82768bdc963c064f22f8ac74e0a9b750580"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "crap-score",
+  "version": "1.0.0",
+  "description": "Calculates CRAP (Change Risk Anti-Patterns) for a named .NET method, class, or file. USE FOR: explicit CRAP calculation or coverage-and-complexity risk within that named target, including which tests to prioritize. DO NOT USE FOR: project-wide coverage/CRAP, plateaus, or project-wide blockers/priorities (coverage-analysis); behavioral/pseudo-mutation gaps (test-gap-analysis); writing tests; test runs without CRAP context.",
+  "author": {
+    "name": "dotnet",
+    "url": "https://github.com/dotnet"
+  },
+  "homepage": "https://skillshub.space/skills/crap-score/",
+  "repository": "https://github.com/dotnet/skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "test",
+    "crap",
+    "score"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "testing",
+      "source": {
+        "repo": "https://github.com/dotnet/skills",
+        "path": "plugins/dotnet-test/skills/crap-score",
+        "branch": "main"
+      },
+      "contentHash": "sha256:381fb2fae9e14469ab3718b8be557c3a3ba62f5d6664f6dea3a5613dc0fce31a"
+    }
+  }
+}

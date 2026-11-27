@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "bigquery-migration-validator",
+  "version": "1.0.0",
+  "description": "Validates that tables migrated to BigQuery match their source (Teradata, Snowflake, Oracle, Redshift, Databricks, PostgreSQL, SQL Server, MySQL, MariaDB, Hive, Impala, Vertica) with the BigQuery Migration Service (BQMS) validation tool: schema and data type comparison, column aggregate comparison, and row-level data comparison. Use when generating or editing a validation config, running a validation, choosing sampling or partitioning, fixing connection or driver errors, or investigating validation results in BigQuery and Cloud Storage to decide which mismatches to fix. Don't use for SQL translation (use bigquery-migration-sql-translator), extracting source database catalog metadata or query logs, generating SQL scripts (such as COPY INTO) or exporting or unloading source tables to Parquet on Cloud Storage, loading staged files into BigQuery (such as bq load), or general BigQuery query failures and tuning (use bigquery-troubleshooting or bigquery-optimization).",
+  "author": {
+    "name": "google",
+    "url": "https://github.com/google"
+  },
+  "homepage": "https://skillshub.space/skills/bigquery-migration-validator/",
+  "repository": "https://github.com/google/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "devops-cicd",
+    "data",
+    "bigquery",
+    "migration",
+    "validator"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "devops-cicd",
+      "source": {
+        "repo": "https://github.com/google/skills",
+        "path": "skills/cloud/bigquery-migration-validator",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a43226aba42688800ee8eb823eda3a632896d69a4b4fe17c7b1e8d15f08f7f59"
+    }
+  }
+}

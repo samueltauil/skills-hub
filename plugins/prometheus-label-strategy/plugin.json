@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "prometheus-label-strategy",
+  "version": "1.0.0",
+  "description": "Expert evaluator for Prometheus label strategy on Grafana Cloud. Audits, designs, and improves label schemas using cardinality scoring, access-pattern alignment, static vs. dynamic label rules, histogram bucket discipline, and instrumentation hygiene. Prevents high cardinality at the source — in application code and scrape target labels — without dropping labels that make series unique (which breaks the data). For reducing the cost of series already in Grafana Cloud, routes to the adaptive-metrics skill. Use when the user asks to evaluate, audit, design, or improve Prometheus labels — or asks how to prevent high cardinality at the source. For \"why is my Prometheus slow / expensive right now\" triage, see prometheus-cardinality-troubleshooter.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/prometheus-label-strategy/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "design",
+    "data",
+    "prometheus",
+    "label",
+    "strategy"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/prometheus-label-strategy",
+        "branch": "main"
+      },
+      "contentHash": "sha256:e33bcf8a962ac1b8bbcca227382dd507a359d145ea1171877b47f1297f484128"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "breakdown-feature-prd",
+  "version": "1.0.0",
+  "description": "Prompt for creating Product Requirements Documents (PRDs) for new features, based on an Epic.",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/breakdown-feature-prd/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "doc",
+    "breakdown",
+    "feature",
+    "prd"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/breakdown-feature-prd",
+        "branch": "main"
+      },
+      "contentHash": "sha256:5cfc04cdb973f1c68d17318c7fac96ded391061f26e746fc5164b1f2332bf704"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sre-triage",
+  "version": "1.0.0",
+  "description": "Triage a degraded or suspect service end to end: read SLO status and burn rate, check active alerting rules and ML anomalies, measure throughput, latency, and error rate, assess dependency health and infrastructure saturation, and funnel logs down to the failures that explain it. Use when someone asks whether a service is healthy, why it is slow or erroring, what is in its logs, or which attribute distinguishes the requests that are failing. Also use when someone asks for the query behind any of those signals — throughput, latency percentiles, error rate, dependency health, or log volume — over APM/OTel traces, metrics, or logs.",
+  "author": {
+    "name": "elastic",
+    "url": "https://github.com/elastic"
+  },
+  "homepage": "https://skillshub.space/skills/sre-triage/",
+  "repository": "https://github.com/elastic/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "frontend-ui",
+    "sre",
+    "triage"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "frontend-ui",
+      "source": {
+        "repo": "https://github.com/elastic/agent-skills",
+        "path": "skills/observability/sre-triage",
+        "branch": "main"
+      },
+      "contentHash": "sha256:4904da8fb9c37228ec7264e97dcf1b640ebadb95a31709e9c75335206df9fce2"
+    }
+  }
+}

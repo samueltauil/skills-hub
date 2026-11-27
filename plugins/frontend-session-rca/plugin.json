@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "frontend-session-rca",
+  "version": "1.0.0",
+  "description": "Diagnoses a Grafana Frontend Observability (RUM) session: whether it is healthy, what went wrong, ranked problems with timestamps and evidence, likely cause, how to fix it. Optional follow-up: zoom in on the top error, impact across sessions, Session Replay, or a Tempo trace if the user asks. Fetches telemetry with `gcx frontend sessions get --save` and reads only that dump file. Use when the user asks to explain, diagnose, analyse, RCA, or review a session; asks if a session is healthy; pastes Frontend Observability session context (app id, session id, datasource UID); or mentions Faro, user journey, Core Web Vitals, exceptions, ANR, or a web or mobile RUM session — even if they do not say \"session narrator\" or \"frontend-session-rca\". Do not use this skill to instrument an app (Faro Web, React Native, Flutter, native OpenTelemetry) — use `app-observability` for Faro Web setup instead.",
+  "author": {
+    "name": "grafana",
+    "url": "https://github.com/grafana"
+  },
+  "homepage": "https://skillshub.space/skills/frontend-session-rca/",
+  "repository": "https://github.com/grafana/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "code-quality",
+    "react",
+    "data",
+    "frontend",
+    "session",
+    "rca"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/grafana/skills",
+        "path": "skills/grafana-cloud/frontend-session-rca",
+        "branch": "main"
+      },
+      "contentHash": "sha256:04e17d946b67d0fb670d3df0bb46d10568be360b2b4c0020bed345ab1a11926f"
+    }
+  }
+}

@@ -1,0 +1,198 @@
+# Apigee Feature Template: Agent Gateway ext-proc processor.
+#
+# Compiles to a NO-ROUTE proxy: <RouteRule name="noroute"/> with no
+# <TargetEndpoint>. The Agent Gateway calls this proxy as a Service Extension
+# callout; it inspects the LLM request/response the gateway hands it and
+# returns a verdict. It never calls a backend.
+#
+# Compile + deploy:
+#   gcloud apigee apis import organizations/$ORG/apis/$PROXY \
+#       --from-template=apigee-proxy-template.yaml
+#
+# Every flow step comes from a feature. The template only declares the endpoint
+# shell and the no-route rule, because AFT's Template.endpoints accepts
+# name/basePath/routes only -- flows live on features' defaultEndpoint and are
+# merged in feature `priority` order.
+#
+# Parameter override: gcloud's `apis import` passes an EMPTY caller-parameter
+# map to the AFT compiler, so values are taken from the `default` fields below.
+# To customise, rewrite these defaults before compiling. Do not rely on a
+# --parameters flag; none exists today.
+
+gateway: apigee
+schemaVersion: 1.0.0
+name: agent-gateway-governance
+type: template
+description: >-
+  Apigee proxy invoked by a GCP Agent Gateway as an ext-proc (Service
+  Extension) callout on LLM and agent-tool egress. Extracts caller identity,
+  meters LLM token usage per model, and optionally applies Model Armor,
+  semantic cache. No backend.
+
+features:
+  - feature-identity.yaml
+  # Priority 15, between identity (10) and every consumer of a request-body
+  # value. Kept in the base list rather than treated as optional: Model Armor
+  # and the semantic cache both read agw.user_prompt, and enabling either one
+  # without this present makes Model Armor fail CLOSED on every matching
+  # request. Costs one gated JS step when nothing consumes it.
+  # See references/gotchas.md, Runtime.
+  - feature-normalize.yaml
+  - feature-token-metering.yaml
+  # Optional -- uncomment to enable:
+  #   - feature-token-enforce.yaml         (turns the budget into a limit)
+  #   - feature-model-armor.yaml           (Model Armor template + IAM)
+  #   - feature-semantic-cache.yaml        (Vector Search index + endpoint)
+  #
+  # feature-token-enforce.yaml needs no external resource -- it reads the
+  # counters feature-token-metering.yaml already writes. Off by default
+  # because it REFUSES traffic: it is the only part of this template besides
+  # Model Armor that fails closed, and enforcement is one request late by
+  # construction. Verified live on ext-proc traffic. Its
+  # *_TOKEN_LIMIT values must stay in step with the metering ones, and
+  # compile_check.py fails the build if they drift.
+
+parameters:
+  # READ THIS BEFORE EDITING A DEFAULT BELOW.
+  #
+  # These declarations are INERT for features. Editing one changes nothing.
+  #
+  # `gcloud apigee apis import --from-template` calls the compiler with an
+  # EMPTY caller-parameter map, so every feature resolves its OWN declared
+  # default and the template's declaration of the same name is never read.
+  # The compile still succeeds -- the macro resolves, just to the other value
+  # -- so there is no error to notice.
+  #
+  # Measured: setting MA_CONTINUE_ON_ERROR to "true" (DRY_RUN) here while
+  # feature-model-armor.yaml kept "false" produced a bundle with
+  # continueOnError="false", i.e. ENFORCE, on a fail-closed security policy.
+  # The operator had explicitly chosen DRY_RUN.
+  #
+  # TO CHANGE A SHARED PARAMETER, EDIT IT IN EVERY FEATURE THAT DECLARES IT.
+  # LLM_URI_MATCH is declared in four feature files; all four must agree.
+  # `scripts/compile_check.py` now FAILS on any template/feature disagreement
+  # and warns about template parameters no feature reads, so this cannot be
+  # shipped silently again -- but it only catches it if you run it.
+  #
+  # The declarations are kept because they document the knobs and their
+  # defaults in one place, and because the compile check uses them to detect
+  # drift. They are documentation, not configuration.
+  #
+  # Separately: macro substitution runs over FEATURE content only. A {MACRO}
+  # written in the template's own body (basePath, for instance) is not
+  # replaced and would reach Apigee literally.
+  # ---- routing / shape -----------------------------------------------------
+  - name: LLM_URI_MATCH
+    displayName: LLM call match condition
+    description: >-
+      Flow condition identifying the real model call. The ext-proc sees EVERY
+      agent egress (session create/read, appendEvent, OpenTelemetry exports),
+      so every step must be gated or it fires on traffic carrying no prompt and
+      breaks the agent turn.
+
+      DERIVED FROM gateway.matchPaths in the input file: one
+      (request.uri Like "*<entry>*") clause per list entry, OR-ed together.
+      This is the compiled form of that list, not an independent knob -- the
+      input file is the reviewable contract. A one-entry list is legitimate
+      and means "govern one shape".
+
+      Matching BOTH shapes lets one proxy govern a Gemini-native agent and an
+      OpenAI-shape agent at the same time. The default does that, and matches
+      the two-entry default in the shipped input file.
+
+      The OpenAI tail is *chat/completions* with NO leading /v1. Vertex's
+      OpenAI-compatible endpoint ends openapi/chat/completions, and the
+      AuthzPolicy matches on SUFFIX, so a "*/v1/chat/completions*" pattern
+      never fires against it -- that form is literal-OpenAI only. Measured:
+      0 transactions across two successful agent turns, 1 after the switch.
+
+      THIS CONDITION IS SHARED by feature-normalize, Model Armor and the
+      cache. Widening it widens all of their blast radii at once, which is
+      why the prompt is normalised once at priority 15 rather than inside
+      whichever feature needs it first. See references/gotchas.md, Runtime.
+    default: '((request.uri Like "*generateContent*") or (request.uri Like "*chat/completions*"))'
+    examples:
+      - '(request.uri Like "*generateContent*")'
+      - '(request.uri Like "*chat/completions*")'
+      - '((request.uri Like "*generateContent*") or (request.uri Like "*chat/completions*"))'
+
+  # ---- Model Armor enforcement mode ----------------------------------------
+  - name: MA_CONTINUE_ON_ERROR
+    displayName: Model Armor enforcement mode
+    description: >-
+      Only meaningful when feature-model-armor is enabled. "false" = ENFORCE,
+      a filter match faults the policy and the caller gets a 400. "true" =
+      DRY_RUN, the scan still runs and the verdict is still in the trace, but
+      the fault is swallowed and the turn continues.
+
+      This is the blocking switch, not an on/off switch: removing the feature
+      means no evaluation at all, which is "off" rather than dry-run.
+
+      Model Armor is the only policy that blocks in the DEFAULT feature set:
+      the shipped quotas are CountOnly. Adding feature-token-enforce.yaml puts
+      a second blocking policy in the request flow -- check which features are
+      enabled before telling anyone nothing here can refuse a request.
+      Toggling needs a redeploy, which is deliberate, and suits a change that
+      decides whether live turns can be refused.
+    default: "false"
+    examples:
+      - "false"
+      - "true"
+
+  # ---- identity ------------------------------------------------------------
+  - name: CLIENT_ID_DEFAULT
+    displayName: Default client id
+    description: >-
+      Value for agw.client_id when the gateway's IAP-egress JWT is absent. An
+      absent header skips the VerifyJWT step entirely; only a present-but-
+      invalid token fails closed.
+    default: anonymous
+
+  # ---- token metering ------------------------------------------------------
+  # No TOKEN_USAGE_JSONPATH parameter. The count is normalised in JS and read
+  # from agw.total_tokens, because a JSONPath can only select a field that
+  # exists -- it cannot choose between wire shapes, and it cannot compute a
+  # total for a shape that reports input and output separately. Adding a
+  # shape is an || branch in extract-model.js, not a config change.
+  # See references/gotchas.md, Runtime.
+
+  - name: PRO_TOKEN_LIMIT
+    displayName: Pro model token allowance
+    description: Token allowance per interval for the gemini-pro bucket.
+    default: "10000"
+
+  - name: FLASH_TOKEN_LIMIT
+    displayName: Flash model token allowance
+    description: Token allowance per interval for the gemini-flash bucket.
+    default: "40000"
+
+  - name: OTHER_TOKEN_LIMIT
+    displayName: Non-Gemini model token allowance
+    description: >-
+      Token allowance per interval for the catch-all "other" bucket, which is
+      every model whose name contains neither "pro"/"argon" nor
+      "flash"/"hydrogen" -- gpt-oss, Llama, Qwen, DeepSeek. Without it those
+      calls consume no quota at all
+      and nothing reports the gap. See references/gotchas.md, Runtime.
+    default: "40000"
+
+  - name: QUOTA_INTERVAL
+    displayName: Quota interval
+    default: "1"
+
+  - name: QUOTA_TIME_UNIT
+    displayName: Quota time unit
+    default: hour
+    examples: ["minute", "hour", "day"]
+
+
+# No `endpoints:` here, and no `targets:`.
+#
+# gcloud 588.0.0 ignores a template's `endpoints`/`targets` whenever the template
+# supplies features -- "they are only used when the template supplies no
+# features" -- and logs a warning. Before 588 the two were combined, which is how
+# the no-route endpoint used to get here.
+#
+# It now lives in feature-identity.yaml (priority 10, the lowest), declared as a
+# real `endpoints:` entry so the later features' `defaultEndpoint` fragments have
+# something to merge into. Put one back here and it is silently discarded.

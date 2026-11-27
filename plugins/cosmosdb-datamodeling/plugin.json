@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cosmosdb-datamodeling",
+  "version": "1.0.0",
+  "description": "Step-by-step guide for capturing key application requirements for NoSQL use-case and produce Azure Cosmos DB Data NoSQL Model design using best practices and common patterns, artifacts_produced: \"cosmosdb_requirements.md\" file and \"cosmosdb_data_model.md\" file",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/cosmosdb-datamodeling/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "azure",
+    "design",
+    "data",
+    "cosmosdb",
+    "datamodeling"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "documentation",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/cosmosdb-datamodeling",
+        "branch": "main"
+      },
+      "contentHash": "sha256:a7ededbbbf827543f3df812261c14dc55efcb017f6f176e5e2408b0a33799542"
+    }
+  }
+}

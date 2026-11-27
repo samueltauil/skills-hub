@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "review-and-refactor",
+  "version": "1.0.0",
+  "description": "Review and refactor code in your project according to defined instructions",
+  "author": {
+    "name": "github",
+    "url": "https://github.com/github"
+  },
+  "homepage": "https://skillshub.space/skills/review-and-refactor/",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "review",
+    "and",
+    "refactor"
+  ],
+  "extensions": {
+    "space.skillshub": {
+      "category": "code-quality",
+      "source": {
+        "repo": "https://github.com/github/awesome-copilot",
+        "path": "skills/review-and-refactor",
+        "branch": "main"
+      },
+      "contentHash": "sha256:7d8be34e4b0f1e14b4dbca4489095c73e3f5f0f890fd7ed85dab809caa692ccd"
+    }
+  }
+}
