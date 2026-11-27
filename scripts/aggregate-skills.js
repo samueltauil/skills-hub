@@ -20,12 +20,15 @@ const RESTRICTED_LICENSE_MARKERS = [
   'Extract these materials from the Services'
 ];
 
+const LICENSE_FILE_PATTERN = /^licen[cs]e(\.[a-z]+)?$/i;
+
 // Source repositories configuration
 const SOURCES = [
   {
     id: 'awesome-copilot',
     name: 'github/awesome-copilot',
-    path: path.join(SOURCES_DIR, 'awesome-copilot', 'skills'),
+    dir: 'awesome-copilot',
+    paths: ['skills'],
     repo: 'https://github.com/github/awesome-copilot',
     author: 'github',
     defaultLicense: 'MIT',
@@ -34,7 +37,8 @@ const SOURCES = [
   {
     id: 'anthropics-skills',
     name: 'anthropics/skills',
-    path: path.join(SOURCES_DIR, 'anthropics-skills', 'skills'),
+    dir: 'anthropics-skills',
+    paths: ['skills'],
     repo: 'https://github.com/anthropics/skills',
     author: 'anthropic',
     defaultLicense: 'Apache-2.0',
@@ -43,7 +47,8 @@ const SOURCES = [
   {
     id: 'mcp-ext-apps',
     name: 'modelcontextprotocol/ext-apps',
-    path: path.join(SOURCES_DIR, 'mcp-ext-apps', 'plugins', 'mcp-apps', 'skills'),
+    dir: 'mcp-ext-apps',
+    paths: ['plugins/mcp-apps/skills'],
     repo: 'https://github.com/modelcontextprotocol/ext-apps',
     author: 'modelcontextprotocol',
     defaultLicense: 'MIT',
@@ -52,7 +57,8 @@ const SOURCES = [
   {
     id: 'ui-ux-pro-max-skill',
     name: 'nextlevelbuilder/ui-ux-pro-max-skill',
-    path: path.join(SOURCES_DIR, 'ui-ux-pro-max-skill', '.claude', 'skills'),
+    dir: 'ui-ux-pro-max-skill',
+    paths: ['.claude/skills'],
     repo: 'https://github.com/nextlevelbuilder/ui-ux-pro-max-skill',
     author: 'nextlevelbuilder',
     defaultLicense: 'MIT',
@@ -61,13 +67,242 @@ const SOURCES = [
   {
     id: 'azure-skills',
     name: 'microsoft/azure-skills',
-    path: path.join(SOURCES_DIR, 'azure-skills', '.github', 'plugins', 'azure-skills', 'skills'),
+    dir: 'azure-skills',
+    paths: ['.github/plugins/azure-skills/skills'],
     repo: 'https://github.com/microsoft/azure-skills',
     author: 'microsoft',
     defaultLicense: 'MIT',
     licenseNotice: 'MIT License\n\nCopyright 2025 (c) Microsoft Corporation.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.'
+  },
+  // Official vendor skill repositories. When licenseNotice is omitted, the
+  // repository's root LICENSE file is used.
+  {
+    id: 'openai-skills',
+    name: 'openai/skills',
+    dir: 'openai-skills',
+    // .system skills are Codex built-ins; only the curated catalog is published.
+    paths: ['skills/.curated'],
+    repo: 'https://github.com/openai/skills',
+    author: 'openai',
+    // No repository-wide license: each skill must ship its own LICENSE file.
+    defaultLicense: null
+  },
+  {
+    id: 'vercel-agent-skills',
+    name: 'vercel-labs/agent-skills',
+    dir: 'vercel-agent-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/vercel-labs/agent-skills',
+    author: 'vercel',
+    defaultLicense: 'MIT',
+    licenseNotice: 'MIT License (as declared in the vercel-labs/agent-skills README).'
+  },
+  {
+    id: 'huggingface-skills',
+    name: 'huggingface/skills',
+    dir: 'huggingface-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/huggingface/skills',
+    author: 'huggingface',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'cloudflare-skills',
+    name: 'cloudflare/skills',
+    dir: 'cloudflare-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/cloudflare/skills',
+    author: 'cloudflare',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'sentry-skills',
+    name: 'getsentry/skills',
+    dir: 'sentry-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/getsentry/skills',
+    author: 'sentry',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'expo-skills',
+    name: 'expo/skills',
+    dir: 'expo-skills',
+    paths: ['plugins/expo/skills'],
+    repo: 'https://github.com/expo/skills',
+    author: 'expo',
+    defaultLicense: 'MIT'
+  },
+  {
+    id: 'dotnet-skills',
+    name: 'dotnet/skills',
+    dir: 'dotnet-skills',
+    paths: ['plugins/*/skills'],
+    exclude: ['plugins/dotnet-experimental/skills'],
+    repo: 'https://github.com/dotnet/skills',
+    author: 'dotnet',
+    defaultLicense: 'MIT'
+  },
+  {
+    id: 'firebase-agent-skills',
+    name: 'firebase/agent-skills',
+    dir: 'firebase-agent-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/firebase/agent-skills',
+    author: 'firebase',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'docker-skills',
+    name: 'docker/skills',
+    dir: 'docker-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/docker/skills',
+    author: 'docker',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'stripe-ai',
+    name: 'stripe/ai',
+    dir: 'stripe-ai',
+    paths: ['skills'],
+    repo: 'https://github.com/stripe/ai',
+    author: 'stripe',
+    defaultLicense: 'MIT'
+  },
+  {
+    id: 'supabase-agent-skills',
+    name: 'supabase/agent-skills',
+    dir: 'supabase-agent-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/supabase/agent-skills',
+    author: 'supabase',
+    defaultLicense: 'MIT'
+  },
+  {
+    id: 'gemini-skills',
+    name: 'google-gemini/gemini-skills',
+    dir: 'gemini-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/google-gemini/gemini-skills',
+    author: 'google-gemini',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'google-skills',
+    name: 'google/skills',
+    dir: 'google-skills',
+    paths: ['skills/*'],
+    repo: 'https://github.com/google/skills',
+    author: 'google',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'elastic-agent-skills',
+    name: 'elastic/agent-skills',
+    dir: 'elastic-agent-skills',
+    paths: ['skills/*'],
+    repo: 'https://github.com/elastic/agent-skills',
+    author: 'elastic',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'grafana-skills',
+    name: 'grafana/skills',
+    dir: 'grafana-skills',
+    paths: ['skills/*'],
+    repo: 'https://github.com/grafana/skills',
+    author: 'grafana',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'mongodb-agent-skills',
+    name: 'mongodb/agent-skills',
+    dir: 'mongodb-agent-skills',
+    // plugins/* contain copies of the same skills
+    paths: ['skills'],
+    repo: 'https://github.com/mongodb/agent-skills',
+    author: 'mongodb',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'pulumi-agent-skills',
+    name: 'pulumi/agent-skills',
+    dir: 'pulumi-agent-skills',
+    paths: ['pulumi/skills', 'migration/skills', 'package-maintenance/skills', 'delegation/skills'],
+    repo: 'https://github.com/pulumi/agent-skills',
+    author: 'pulumi',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'neon-agent-skills',
+    name: 'neondatabase/agent-skills',
+    dir: 'neon-agent-skills',
+    // plugins/* contain copies of the same skills
+    paths: ['skills'],
+    repo: 'https://github.com/neondatabase/agent-skills',
+    author: 'neon',
+    defaultLicense: 'Apache-2.0'
+  },
+  {
+    id: 'callstack-agent-skills',
+    name: 'callstackincubator/agent-skills',
+    dir: 'callstack-agent-skills',
+    paths: ['skills'],
+    repo: 'https://github.com/callstackincubator/agent-skills',
+    author: 'callstack',
+    defaultLicense: 'MIT'
   }
 ];
+
+/**
+ * Expand a source's path patterns ("*" matches one non-hidden directory level)
+ * into repo-relative directories that contain skill folders.
+ */
+function resolveSourcePaths(source) {
+  const root = path.join(SOURCES_DIR, source.dir);
+  const expand = (pattern) => {
+    let current = [''];
+    for (const segment of pattern.split('/')) {
+      const next = [];
+      for (const rel of current) {
+        if (segment !== '*') {
+          next.push(rel ? `${rel}/${segment}` : segment);
+          continue;
+        }
+        const abs = path.join(root, rel);
+        if (!fs.existsSync(abs)) continue;
+        for (const d of fs.readdirSync(abs, { withFileTypes: true })) {
+          if (d.isDirectory() && !d.name.startsWith('.')) {
+            next.push(rel ? `${rel}/${d.name}` : d.name);
+          }
+        }
+      }
+      current = next;
+    }
+    return current;
+  };
+  return source.paths.flatMap(expand)
+    .filter(rel => !(source.exclude || []).includes(rel))
+    .filter(rel => fs.existsSync(path.join(root, rel)))
+    .sort();
+}
+
+/**
+ * Read a source repository's root LICENSE file, if present
+ */
+function readRepoLicense(source) {
+  const root = path.join(SOURCES_DIR, source.dir);
+  if (!fs.existsSync(root)) return null;
+  const file = fs.readdirSync(root).find(n => LICENSE_FILE_PATTERN.test(n));
+  if (!file) return null;
+  const text = fs.readFileSync(path.join(root, file), 'utf-8');
+  // The Apache-2.0 text is ~11KB; link to it rather than embedding it in every skill.
+  if (detectLicense(text) === 'Apache-2.0') {
+    return `Licensed under the Apache License, Version 2.0. See ${source.repo}/blob/${source.branch || 'main'}/${file}`;
+  }
+  return text;
+}
 
 // Category keywords for auto-categorization
 const CATEGORY_KEYWORDS = {
@@ -203,7 +438,7 @@ function detectLicense(licenseContent) {
   if (isRestricted) return 'Proprietary';
   
   // Detect known open source licenses
-  if (licenseContent.includes('Apache License') && licenseContent.includes('Version 2.0')) return 'Apache-2.0';
+  if (/Apache License,?\s+(Version\s+)?2\.0/i.test(licenseContent)) return 'Apache-2.0';
   if (licenseContent.includes('MIT License') || licenseContent.includes('Permission is hereby granted, free of charge')) return 'MIT';
   if (licenseContent.includes('BSD')) return 'BSD';
   
@@ -221,7 +456,7 @@ function isRedistributable(license) {
 /**
  * Process a single skill folder
  */
-function processSkill(skillPath, skillName, source) {
+function processSkill(skillPath, skillName, source, repoPath) {
   const skillMdPath = path.join(skillPath, 'SKILL.md');
   
   if (!fs.existsSync(skillMdPath)) {
@@ -229,15 +464,17 @@ function processSkill(skillPath, skillName, source) {
     return null;
   }
   
-  const { frontmatter, content, raw } = parseSkillFile(skillMdPath);
+  const { frontmatter, content } = parseSkillFile(skillMdPath);
   
   // Get all files in the skill folder
   const files = getFilesRecursive(skillPath);
   
-  // Detect license from LICENSE file in the skill folder
-  const licenseFile = files.find(f => f.name.toLowerCase().includes('license'));
-  const detectedLicense = licenseFile ? detectLicense(licenseFile.content) : null;
-  const license = detectedLicense || source.defaultLicense;
+  // Detect license from a LICENSE file in the skill folder. A license file
+  // with unrecognized terms overrides the source default and is excluded.
+  const licenseFile = files.find(f => !f.path.includes('/') && LICENSE_FILE_PATTERN.test(f.name))
+    || files.find(f => LICENSE_FILE_PATTERN.test(f.name));
+  const detectedLicense = licenseFile ? (detectLicense(licenseFile.content) || 'Unknown') : null;
+  const license = detectedLicense || source.defaultLicense || 'Unknown';
   
   // Skip skills with non-redistributable licenses
   if (!isRedistributable(license)) {
@@ -246,7 +483,7 @@ function processSkill(skillPath, skillName, source) {
   }
   
   // Build license notice from the skill's LICENSE file or fall back to source default
-  const licenseNotice = licenseFile ? licenseFile.content : (source.licenseNotice || '');
+  const licenseNotice = licenseFile ? licenseFile.content : (source.licenseNotice || source.repoLicense || '');
   
   // Build skill object
   const skill = {
@@ -261,8 +498,8 @@ function processSkill(skillPath, skillName, source) {
     source: {
       repo: source.repo,
       repoName: source.name,
-      path: `skills/${skillName}`,
-      branch: 'main'
+      path: repoPath,
+      branch: source.branch || 'main'
     },
     // Files for copy-to-clipboard
     files: files.map(f => ({
@@ -270,8 +507,6 @@ function processSkill(skillPath, skillName, source) {
       name: f.name,
       content: f.content
     })),
-    // Raw SKILL.md content for display
-    skillMdContent: raw,
     // Tags from frontmatter or auto-generated
     tags: frontmatter.tags || generateTags(skillName, frontmatter.description || content),
     // Metadata
@@ -318,26 +553,43 @@ async function aggregate() {
   const skills = [];
   const categories = new Map();
   
+  const usedIds = new Set();
+  
   for (const source of SOURCES) {
     console.log(`📦 Processing ${source.name}...`);
     
-    if (!fs.existsSync(source.path)) {
-      console.warn(`  ⚠️ Source path not found: ${source.path}`);
+    const sourcePaths = resolveSourcePaths(source);
+    if (sourcePaths.length === 0) {
+      console.warn(`  ⚠️ No skill paths found in sources/${source.dir} (${source.paths.join(', ')})`);
       continue;
     }
+    source.repoLicense = readRepoLicense(source);
     
-    const skillFolders = fs.readdirSync(source.path, { withFileTypes: true })
-      .filter(d => d.isDirectory())
-      .map(d => d.name);
+    const skillFolders = sourcePaths.flatMap(rel =>
+      fs.readdirSync(path.join(SOURCES_DIR, source.dir, rel), { withFileTypes: true })
+        .filter(d => d.isDirectory() && !d.name.startsWith('.'))
+        .map(d => ({ name: d.name, repoPath: `${rel}/${d.name}` }))
+    );
     
     console.log(`  Found ${skillFolders.length} skill folders`);
     
-    for (const skillName of skillFolders) {
-      const skillPath = path.join(source.path, skillName);
+    for (const { name: skillName, repoPath } of skillFolders) {
+      const skillPath = path.join(SOURCES_DIR, source.dir, repoPath);
       try {
-        const skill = processSkill(skillPath, skillName, source);
+        const skill = processSkill(skillPath, skillName, source, repoPath);
       
         if (skill) {
+          // Skill IDs drive page URLs and CLI installs, so they must be unique.
+          // Earlier sources keep the bare name; later ones get a prefix.
+          if (usedIds.has(skill.id)) {
+            const prefixed = `${source.author}-${skill.id}`;
+            skill.id = usedIds.has(prefixed) ? `${source.id}-${skill.id}` : prefixed;
+          }
+          if (usedIds.has(skill.id)) {
+            console.warn(`  ⚠️ Skipping ${repoPath}: duplicate skill id "${skill.id}"`);
+            continue;
+          }
+          usedIds.add(skill.id);
           skills.push(skill);
         
           // Track category

@@ -24,7 +24,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          # Sources' own nested submodules (e.g. google/skills plugins) aren't aggregated
+          submodules: true
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 

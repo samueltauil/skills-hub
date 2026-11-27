@@ -13,3 +13,60 @@
 [submodule "sources/azure-skills"]
 	path = sources/azure-skills
 	url = https://github.com/microsoft/azure-skills.git
+[submodule "sources/openai-skills"]
+	path = sources/openai-skills
+	url = https://github.com/openai/skills.git
+[submodule "sources/vercel-agent-skills"]
+	path = sources/vercel-agent-skills
+	url = https://github.com/vercel-labs/agent-skills.git
+[submodule "sources/huggingface-skills"]
+	path = sources/huggingface-skills
+	url = https://github.com/huggingface/skills.git
+[submodule "sources/cloudflare-skills"]
+	path = sources/cloudflare-skills
+	url = https://github.com/cloudflare/skills.git
+[submodule "sources/sentry-skills"]
+	path = sources/sentry-skills
+	url = https://github.com/getsentry/skills.git
+[submodule "sources/expo-skills"]
+	path = sources/expo-skills
+	url = https://github.com/expo/skills.git
+[submodule "sources/dotnet-skills"]
+	path = sources/dotnet-skills
+	url = https://github.com/dotnet/skills.git
+[submodule "sources/firebase-agent-skills"]
+	path = sources/firebase-agent-skills
+	url = https://github.com/firebase/agent-skills.git
+[submodule "sources/docker-skills"]
+	path = sources/docker-skills
+	url = https://github.com/docker/skills.git
+[submodule "sources/stripe-ai"]
+	path = sources/stripe-ai
+	url = https://github.com/stripe/ai.git
+[submodule "sources/supabase-agent-skills"]
+	path = sources/supabase-agent-skills
+	url = https://github.com/supabase/agent-skills.git
+[submodule "sources/gemini-skills"]
+	path = sources/gemini-skills
+	url = https://github.com/google-gemini/gemini-skills.git
+[submodule "sources/google-skills"]
+	path = sources/google-skills
+	url = https://github.com/google/skills.git
+[submodule "sources/elastic-agent-skills"]
+	path = sources/elastic-agent-skills
+	url = https://github.com/elastic/agent-skills.git
+[submodule "sources/grafana-skills"]
+	path = sources/grafana-skills
+	url = https://github.com/grafana/skills.git
+[submodule "sources/mongodb-agent-skills"]
+	path = sources/mongodb-agent-skills
+	url = https://github.com/mongodb/agent-skills.git
+[submodule "sources/pulumi-agent-skills"]
+	path = sources/pulumi-agent-skills
+	url = https://github.com/pulumi/agent-skills.git
+[submodule "sources/neon-agent-skills"]
+	path = sources/neon-agent-skills
+	url = https://github.com/neondatabase/agent-skills.git
+[submodule "sources/callstack-agent-skills"]
+	path = sources/callstack-agent-skills
+	url = https://github.com/callstackincubator/agent-skills.git

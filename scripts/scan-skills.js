@@ -199,6 +199,15 @@ function scanBlock(block, rules) {
 }
 
 /**
+ * Raw SKILL.md content for a skill (stored in files[] by aggregate-skills.js)
+ */
+function getSkillMd(skill) {
+  return skill.skillMdContent
+    || (skill.files || []).find(f => f.path === 'SKILL.md')?.content
+    || '';
+}
+
+/**
  * Scan all skill files against the rules.
  * Returns issues from both raw file content and SKILL.md code blocks.
  */
@@ -206,7 +215,7 @@ function scanSkillFiles(skill, rules) {
   const allIssues = [];
 
   // Pass 1a: Scan SKILL.md code blocks (original behavior)
-  const content = skill.skillMdContent || '';
+  const content = getSkillMd(skill);
   const codeBlocks = extractCodeBlocks(content);
   for (const block of codeBlocks) {
     block.source = 'skill-md-code-block';
@@ -249,7 +258,7 @@ function truncate(str, max = 1500) {
 }
 
 function buildAiPrompt(skill) {
-  const skillContent = truncate(skill.skillMdContent || skill.description || '', 2000);
+  const skillContent = truncate(getSkillMd(skill) || skill.description || '', 2000);
   const filesSummary = (skill.files || [])
     .map(f => `--- ${f.path} ---\n${truncate(f.content, 500)}`)
     .join('\n\n');

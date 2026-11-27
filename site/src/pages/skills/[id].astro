@@ -49,7 +49,6 @@ interface Props {
       branch: string;
     };
     files: SkillFile[];
-    skillMdContent: string;
     tags: string[];
     featured: boolean;
     complexity: string;
@@ -215,7 +214,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
           </svg>
           <span>{repoName}</span>
         </a>
-        <a href={`${skill.source.repo}/tree/main/${skill.source.path}`} target="_blank" rel="noopener noreferrer" class="view-source-link">
+        <a href={`${skill.source.repo}/tree/${skill.source.branch || 'main'}/${skill.source.path}`} target="_blank" rel="noopener noreferrer" class="view-source-link">
           View source
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="15 3 21 3 21 9"/>
