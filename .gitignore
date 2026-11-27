@@ -54,3 +54,5 @@ node_modules/
 # Scan reports (generated artifacts)
 scan-report.json
 
+# Generated plugins mirror upstream skill files verbatim, so nothing in them is ignored
+!plugins/**

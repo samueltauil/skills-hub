@@ -1,10 +1,11 @@
 ---
+import { getCategory } from '../data/categories';
+
 interface Props {
   id: string;
   name: string;
   description: string;
   category: string;
-  complexity?: 'beginner' | 'intermediate' | 'advanced';
   triggers?: string[];
   author?: string;
   fileCount?: number;
@@ -20,8 +21,9 @@ interface Props {
   };
 }
 
-const { id, name, description, category, complexity, triggers = [], fileCount = 0, verified = false, securityScan, source } = Astro.props;
+const { id, name, description, category, triggers = [], fileCount = 0, verified = false, securityScan, source } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
+const categoryInfo = getCategory(category);
 
 // Convert kebab-case to Title Case
 function formatName(str: string): string {
@@ -32,19 +34,14 @@ function formatName(str: string): string {
 }
 
 const displayName = formatName(name);
-
-const complexityColors = {
-  beginner: 'badge-success',
-  intermediate: 'badge-warning',
-  advanced: 'badge-primary'
-};
 ---
 
 <article class="skill-card card">
-  <div class="skill-header">
-    <h3 class="skill-name">
-      <a href={`${baseUrl}skills/${id}/`}>{displayName}</a>
-    </h3>
+  <div class="skill-top">
+    <span class="skill-category" title={categoryInfo.name}>
+      <span aria-hidden="true">{categoryInfo.icon}</span>
+      <span class="skill-category-name">{categoryInfo.name}</span>
+    </span>
     <div class="skill-badges">
       {verified && (
         <span class="badge-verified" title="Security scan passed – no dangerous patterns detected">
@@ -64,33 +61,15 @@ const complexityColors = {
           Scanned
         </span>
       )}
-      {complexity && <span class={`badge ${complexityColors[complexity]}`}>{complexity}</span>}
     </div>
   </div>
-  
+
+  <h3 class="skill-name">
+    <a href={`${baseUrl}skills/${id}/`} class="skill-link">{displayName}</a>
+  </h3>
+
   <p class="skill-description">{description}</p>
-  
-  <div class="skill-meta">
-    <span class="badge">{category}</span>
-    {fileCount > 0 && (
-      <span class="meta-info">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-        </svg>
-        {fileCount} {fileCount === 1 ? 'file' : 'files'}
-      </span>
-    )}
-    {source?.repoName && (
-      <span class="meta-info source-info">
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-        {source.repoName.split('/')[0]}
-      </span>
-    )}
-  </div>
-  
+
   {triggers.length > 0 && (
     <div class="skill-triggers">
       <span class="triggers-label">Triggers:</span>
@@ -102,13 +81,37 @@ const complexityColors = {
       </div>
     </div>
   )}
+
+  <div class="skill-meta">
+    {source?.repoName && (
+      <span class="meta-info source-info" title={source.repoName}>
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        <span class="source-name">{source.repoName}</span>
+      </span>
+    )}
+    {fileCount > 0 && (
+      <span class="meta-info">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+        </svg>
+        {fileCount} {fileCount === 1 ? 'file' : 'files'}
+      </span>
+    )}
+  </div>
+  
 </article>
 
 <style>
   .skill-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    height: 100%;
+    min-width: 0;
     transition: border-color 0.2s ease, 
                 box-shadow 0.2s ease, 
                 transform 0.2s ease;
@@ -118,14 +121,33 @@ const complexityColors = {
     transform: translateY(-3px);
   }
 
-  .skill-header {
+  .skill-top {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
+    min-height: 1.5rem;
+  }
+
+  .skill-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-width: 0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+
+  .skill-category-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .skill-badges {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     gap: 0.375rem;
@@ -192,6 +214,12 @@ const complexityColors = {
     font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
   }
 
   .skill-name a {
@@ -199,27 +227,50 @@ const complexityColors = {
     transition: color 0.15s ease;
   }
 
+  /* Make the whole card clickable while keeping a single, accessible link */
+  .skill-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .skill-card:hover .skill-name a,
   .skill-name a:hover {
     color: var(--color-accent);
     text-decoration: none;
+  }
+
+  .skill-name a:focus-visible {
+    outline: none;
   }
 
   .skill-description {
     color: var(--color-text-secondary);
     font-size: 0.875rem;
     line-height: 1.5;
-    flex-grow: 1;
+    min-height: calc(0.875rem * 1.5 * 3);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    overflow-wrap: anywhere;
   }
 
   .skill-meta {
     display: flex;
     gap: 0.5rem;
-    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
   }
 
   .meta-info {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     gap: 0.25rem;
     font-size: 0.75rem;
@@ -227,9 +278,19 @@ const complexityColors = {
   }
 
   .source-info {
+    flex-shrink: 1;
+    min-width: 0;
+    max-width: 75%;
+    overflow: hidden;
     padding: 0.125rem 0.5rem;
     background: var(--color-bg-tertiary);
     border-radius: var(--radius-sm);
+  }
+
+  .source-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .skill-author {

@@ -2,13 +2,15 @@
 interface Props {
   placeholder?: string;
   id?: string;
+  label?: string;
+  value?: string;
 }
 
-const { placeholder = 'Search skills...', id = 'search' } = Astro.props;
+const { placeholder = 'Search skills...', id = 'search', label = 'Search skills', value } = Astro.props;
 ---
 
 <div class="search-container">
-  <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
     <circle cx="11" cy="11" r="8"/>
     <path d="M21 21l-4.35-4.35"/>
   </svg>
@@ -17,9 +19,13 @@ const { placeholder = 'Search skills...', id = 'search' } = Astro.props;
     id={id}
     class="search-input" 
     placeholder={placeholder}
+    aria-label={label}
+    aria-keyshortcuts="/"
+    value={value}
     autocomplete="off"
+    spellcheck="false"
   />
-  <kbd class="search-shortcut">/</kbd>
+  <kbd class="search-shortcut" aria-hidden="true">/</kbd>
 </div>
 
 <style>
@@ -57,14 +63,25 @@ const { placeholder = 'Search skills...', id = 'search' } = Astro.props;
     color: var(--color-text-secondary);
     pointer-events: none;
   }
+
+  .search-input:focus ~ .search-shortcut,
+  .search-input:not(:placeholder-shown) ~ .search-shortcut {
+    display: none;
+  }
 </style>
 
 <script>
-  // Focus search on "/" key press
+  // Focus the page's search box on "/" key press
   document.addEventListener('keydown', (e) => {
-    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) {
-      e.preventDefault();
-      document.getElementById('search')?.focus();
+    const target = e.target as HTMLElement | null;
+    const isEditing = !!target && (['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName) || target.isContentEditable);
+    if (e.key === '/' && !isEditing && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      const input = document.querySelector<HTMLInputElement>('.search-container .search-input');
+      if (input) {
+        e.preventDefault();
+        input.focus();
+        input.select();
+      }
     }
   });
 </script>

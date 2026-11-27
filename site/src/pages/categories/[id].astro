@@ -2,42 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
 import skillsData from '../../data/skills.json';
-
-// Define category metadata (icons, names, descriptions)
-const categoryMeta: Record<string, { name: string; icon: string; description: string }> = {
-  'git-version-control': { name: 'Git & Version Control', icon: '🔀', description: 'Skills for Git operations, branching, merging, and version control workflows' },
-  'code-quality': { name: 'Code Quality & Refactoring', icon: '✨', description: 'Skills for improving code quality, refactoring, and following best practices' },
-  'documentation': { name: 'Documentation', icon: '📝', description: 'Skills for generating and maintaining documentation' },
-  'diagrams': { name: 'Diagrams & Visualization', icon: '📊', description: 'Skills for creating diagrams, flowcharts, and visual representations' },
-  'testing': { name: 'Testing', icon: '🧪', description: 'Skills for writing and managing tests' },
-  'api-backend': { name: 'API & Backend', icon: '🔌', description: 'Skills for API development and backend services' },
-  'frontend-ui': { name: 'Frontend & UI', icon: '🎨', description: 'Skills for frontend development and UI components' },
-  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀', description: 'Skills for deployment, CI/CD pipelines, and DevOps workflows' },
-  'security': { name: 'Security', icon: '🔒', description: 'Skills for security analysis and best practices' },
-  'data-analytics': { name: 'Data & Analytics', icon: '📈', description: 'Skills for data processing and analytics' },
-  'office-documents': { name: 'Office Documents', icon: '📄', description: 'Skills for working with office documents and formats' },
-  'mcp-development': { name: 'MCP Development', icon: '🔧', description: 'Skills for Model Context Protocol development' },
-  'general': { name: 'General', icon: '📦', description: 'General-purpose development skills' }
-};
+import { categoryMeta } from '../../data/categories';
 
 export function getStaticPaths() {
-  // Define category metadata inside getStaticPaths for build-time access
-  const catMeta: Record<string, { name: string; icon: string; description: string }> = {
-    'git-version-control': { name: 'Git & Version Control', icon: '🔀', description: 'Skills for Git operations, branching, merging, and version control workflows' },
-    'code-quality': { name: 'Code Quality & Refactoring', icon: '✨', description: 'Skills for improving code quality, refactoring, and following best practices' },
-    'documentation': { name: 'Documentation', icon: '📝', description: 'Skills for generating and maintaining documentation' },
-    'diagrams': { name: 'Diagrams & Visualization', icon: '📊', description: 'Skills for creating diagrams, flowcharts, and visual representations' },
-    'testing': { name: 'Testing', icon: '🧪', description: 'Skills for writing and managing tests' },
-    'api-backend': { name: 'API & Backend', icon: '🔌', description: 'Skills for API development and backend services' },
-    'frontend-ui': { name: 'Frontend & UI', icon: '🎨', description: 'Skills for frontend development and UI components' },
-    'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀', description: 'Skills for deployment, CI/CD pipelines, and DevOps workflows' },
-    'security': { name: 'Security', icon: '🔒', description: 'Skills for security analysis and best practices' },
-    'data-analytics': { name: 'Data & Analytics', icon: '📈', description: 'Skills for data processing and analytics' },
-    'office-documents': { name: 'Office Documents', icon: '📄', description: 'Skills for working with office documents and formats' },
-    'mcp-development': { name: 'MCP Development', icon: '🔧', description: 'Skills for Model Context Protocol development' },
-    'general': { name: 'General', icon: '📦', description: 'General-purpose development skills' }
-  };
-
   // Generate paths for all categories that have skills
   const categoryIds = [...new Set(skillsData.skills.map(s => s.category || 'general'))].sort();
   
@@ -46,9 +13,9 @@ export function getStaticPaths() {
     props: { 
       category: {
         id,
-        name: catMeta[id]?.name || id,
-        icon: catMeta[id]?.icon || '📁',
-        description: catMeta[id]?.description || `Skills in the ${id} category`
+        name: categoryMeta[id]?.name || id,
+        icon: categoryMeta[id]?.icon || '📁',
+        description: categoryMeta[id]?.description || `Skills in the ${id} category`
       }
     }
   }));
@@ -67,7 +34,9 @@ interface Props {
 
 const { category } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
-const categorySkills = skills.filter(s => (s.category || 'general') === category.id);
+const categorySkills = skills
+  .filter(s => (s.category || 'general') === category.id)
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <Layout title={category.name} description={category.description}>
@@ -93,17 +62,19 @@ const categorySkills = skills.filter(s => (s.category || 'general') === category
 
   <section class="section">
     <div class="container">
-      <p class="result-count">{categorySkills.length} skill{categorySkills.length !== 1 ? 's' : ''} in this category</p>
-      
+      <div class="result-bar">
+        <p class="result-count">{categorySkills.length} skill{categorySkills.length !== 1 ? 's' : ''} in this category</p>
+        <a class="btn btn-secondary btn-sm" href={`${baseUrl}skills/?category=${encodeURIComponent(category.id)}`}>Search &amp; filter this category</a>
+      </div>
+
       {categorySkills.length > 0 ? (
-        <div class="grid grid-3">
+        <div class="grid grid-3 skills-grid">
           {categorySkills.map(skill => (
             <SkillCard 
               id={skill.id}
               name={skill.name}
               description={skill.description}
               category={skill.category || 'general'}
-              complexity={skill.complexity}
               fileCount={skill.files?.length || 0}
               verified={skill.verified}
               securityScan={skill.securityScan}
@@ -161,9 +132,27 @@ const categorySkills = skills.filter(s => (s.category || 'general') === category
     margin-bottom: 0.5rem;
   }
 
+  .result-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
   .result-count {
     color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-auto-rows: 1fr;
+  }
+
+  @media (max-width: 640px) {
+    .skills-grid {
+      grid-auto-rows: auto;
+    }
   }
 
   .empty-state {

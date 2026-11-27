@@ -2,72 +2,118 @@
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
 import SearchBar from '../../components/SearchBar.astro';
+import { getCategory } from '../../data/categories';
 
 import skillsData from '../../data/skills.json';
 
-// Define category metadata (icons and names)
-const categoryMeta = {
-  'git-version-control': { name: 'Git & Version Control', icon: '🔀' },
-  'code-quality': { name: 'Code Quality & Refactoring', icon: '✨' },
-  'documentation': { name: 'Documentation', icon: '📝' },
-  'diagrams': { name: 'Diagrams & Visualization', icon: '📊' },
-  'testing': { name: 'Testing', icon: '🧪' },
-  'api-backend': { name: 'API & Backend', icon: '🔌' },
-  'frontend-ui': { name: 'Frontend & UI', icon: '🎨' },
-  'devops-cicd': { name: 'DevOps & CI/CD', icon: '🚀' },
-  'security': { name: 'Security', icon: '🔒' },
-  'data-analytics': { name: 'Data & Analytics', icon: '📈' },
-  'office-documents': { name: 'Office Documents', icon: '📄' },
-  'mcp-development': { name: 'MCP Development', icon: '🔧' },
-  'general': { name: 'General', icon: '📦' }
-};
+const PAGE_SIZE = 48;
+const skills = [...skillsData.skills].sort((a, b) => a.name.localeCompare(b.name));
+const verifiedCount = skills.filter(s => s.verified).length;
 
-const skills = skillsData.skills;
+function countBy<T>(items: T[], key: (item: T) => string) {
+  const counts = new Map<string, number>();
+  for (const item of items) counts.set(key(item), (counts.get(key(item)) || 0) + 1);
+  return counts;
+}
 
-// Get unique categories from skills
-const categoryIds = [...new Set(skills.map(s => s.category || 'general'))].sort();
-const categories = categoryIds.map(id => ({
-  id,
-  name: categoryMeta[id]?.name || id,
-  icon: categoryMeta[id]?.icon || '📁'
-}));
+const categories = [...countBy(skills, s => s.category || 'general')]
+  .map(([id, count]) => ({ ...getCategory(id), count }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const sources = [...countBy(skills, s => s.source?.repoName || 'unknown')]
+  .map(([id, count]) => ({ id, count }))
+  .sort((a, b) => b.count - a.count || a.id.localeCompare(b.id));
+
+function searchText(skill: (typeof skills)[number]) {
+  return [
+    skill.name,
+    skill.id,
+    skill.description,
+    skill.author,
+    skill.source?.repoName,
+    getCategory(skill.category).name,
+    ...(skill.tags || []),
+  ].filter(Boolean).join(' ').toLowerCase();
+}
 ---
 
-<Layout title="All Skills" description="Browse all available GitHub Copilot skills">
+<Layout title="All Skills" description="Browse, search and filter all available GitHub Copilot skills">
   <section class="page-header">
     <div class="container">
       <h1>Browse Skills</h1>
-      <p class="text-secondary">Discover {skills.length} curated skills for GitHub Copilot</p>
+      <p class="text-secondary">
+        Discover {skills.length} curated skills for GitHub Copilot from {sources.length} sources.
+        Skills are security scanned and installable as <a href="https://agent-plugins.org" target="_blank" rel="noopener noreferrer">Agent Plugins</a>.
+      </p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="filter-bar">
-        <SearchBar placeholder="Filter skills..." id="skill-filter" />
-        <div class="filter-options">
-          <select id="category-filter" class="filter-select">
-            <option value="">All Categories</option>
-            {categories.map(cat => (
-              <option value={cat.id}>{cat.name}</option>
-            ))}
-          </select>
+      <form class="filter-bar" id="filter-form" role="search" aria-label="Filter skills" onsubmit="return false">
+        <div class="filter-search">
+          <SearchBar placeholder="Search skills, tags or sources…" id="skill-filter" label="Search skills" />
         </div>
+        <div class="filter-options">
+          <label class="filter-field">
+            <span class="filter-label">Category</span>
+            <select id="category-filter" class="filter-select" name="category">
+              <option value="">All categories</option>
+              {categories.map(cat => (
+                <option value={cat.id}>{cat.icon} {cat.name} ({cat.count})</option>
+              ))}
+            </select>
+          </label>
+          <label class="filter-field">
+            <span class="filter-label">Source</span>
+            <select id="source-filter" class="filter-select" name="source">
+              <option value="">All sources</option>
+              {sources.map(src => (
+                <option value={src.id}>{src.id} ({src.count})</option>
+              ))}
+            </select>
+          </label>
+          <label class="filter-field">
+            <span class="filter-label">Sort by</span>
+            <select id="sort-filter" class="filter-select" name="sort">
+              <option value="name">Name (A–Z)</option>
+              <option value="name-desc">Name (Z–A)</option>
+              <option value="files">Most files</option>
+              <option value="source">Source</option>
+            </select>
+          </label>
+          <label class="filter-toggle">
+            <input type="checkbox" id="verified-filter" name="verified" />
+            <span>Verified only <span class="toggle-count">({verifiedCount})</span></span>
+          </label>
+        </div>
+      </form>
+
+      <div class="results-bar">
+        <p class="results-count" id="results-count" aria-live="polite">
+          Showing {Math.min(PAGE_SIZE, skills.length)} of {skills.length} skills
+        </p>
+        <button type="button" class="btn btn-secondary btn-sm" id="clear-filters" hidden>
+          Clear filters
+        </button>
       </div>
 
-      <div class="skills-grid grid grid-3" id="skills-list">
-        {skills.map(skill => (
-          <div class="skill-item" 
-               data-name={skill.name.toLowerCase()} 
-               data-description={skill.description.toLowerCase()}
-               data-category={skill.category || 'general'}
-               data-author={skill.author?.toLowerCase() || ''}>
-            <SkillCard 
+      <div class="skills-grid grid grid-3" id="skills-list" data-page-size={PAGE_SIZE}>
+        {skills.map((skill, index) => (
+          <div
+            class:list={['skill-item', { 'is-paged': index >= PAGE_SIZE }]}
+            data-name={skill.name.toLowerCase()}
+            data-search={searchText(skill)}
+            data-category={skill.category || 'general'}
+            data-source={skill.source?.repoName || 'unknown'}
+            data-verified={skill.verified ? 'true' : 'false'}
+            data-files={skill.files?.length || 0}
+          >
+            <SkillCard
               id={skill.id}
               name={skill.name}
               description={skill.description}
               category={skill.category || 'general'}
-              complexity={skill.complexity}
               fileCount={skill.files?.length || 0}
               verified={skill.verified}
               securityScan={skill.securityScan}
@@ -77,9 +123,14 @@ const categories = categoryIds.map(id => ({
         ))}
       </div>
 
-      <p class="no-results" id="no-results" style="display: none;">
-        No skills found matching your criteria.
-      </p>
+      <div class="no-results" id="no-results" hidden>
+        <p>No skills match your filters.</p>
+        <button type="button" class="btn btn-secondary btn-sm" id="no-results-clear">Clear filters</button>
+      </div>
+
+      <div class="load-more">
+        <button type="button" class="btn btn-secondary" id="load-more">Show more skills</button>
+      </div>
     </div>
   </section>
 </Layout>
@@ -98,37 +149,114 @@ const categories = categoryIds.map(id => ({
 
   .filter-bar {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .filter-search :global(.search-container) {
+    max-width: none;
   }
 
   .filter-options {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
     gap: 0.75rem;
+    align-items: end;
+  }
+
+  .filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    min-width: 0;
+  }
+
+  .filter-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
   .filter-select {
-    padding: 0.75rem 1rem;
+    width: 100%;
+    padding: 0.625rem 0.75rem;
     font-size: 0.875rem;
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     color: var(--color-text);
     cursor: pointer;
-    min-width: 150px;
   }
 
-  .filter-select:focus {
-    outline: none;
-    border-color: var(--color-accent);
+  .filter-select:hover {
+    border-color: var(--color-text-secondary);
+  }
+
+  .filter-select:focus-visible,
+  .filter-toggle:focus-within {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .filter-toggle input {
+    accent-color: var(--color-success);
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .toggle-count {
+    color: var(--color-text-secondary);
+  }
+
+  .results-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .results-count {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .skills-grid {
+    grid-auto-rows: 1fr;
   }
 
   .skill-item {
-    transition: opacity 0.2s ease;
+    display: flex;
+    min-width: 0;
   }
 
-  .skill-item.hidden {
+  .skill-item > :global(*) {
+    flex: 1;
+  }
+
+  .skill-item.hidden,
+  .skill-item.is-paged {
     display: none;
   }
 
@@ -138,72 +266,177 @@ const categories = categoryIds.map(id => ({
     padding: 3rem;
   }
 
-  @media (max-width: 768px) {
+  .no-results p {
+    margin-bottom: 1rem;
+  }
+
+  .load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .filter-options {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
     .filter-bar {
-      flex-direction: column;
+      padding: 0.75rem;
     }
 
     .filter-options {
-      flex-direction: column;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .filter-select {
-      width: 100%;
+    .filter-field:nth-child(-n + 2) {
+      grid-column: 1 / -1;
+    }
+
+    .skills-grid {
+      grid-auto-rows: auto;
     }
   }
 </style>
 
 <script>
+  const PAGE_SIZE_ATTR = document.getElementById('skills-list')?.dataset.pageSize;
+  const PAGE_SIZE = Number(PAGE_SIZE_ATTR) || 48;
+
+  const grid = document.getElementById('skills-list') as HTMLElement;
   const searchInput = document.getElementById('skill-filter') as HTMLInputElement;
   const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
-  const skillItems = document.querySelectorAll('.skill-item');
-  const noResults = document.getElementById('no-results');
+  const sourceFilter = document.getElementById('source-filter') as HTMLSelectElement;
+  const sortFilter = document.getElementById('sort-filter') as HTMLSelectElement;
+  const verifiedFilter = document.getElementById('verified-filter') as HTMLInputElement;
+  const resultsCount = document.getElementById('results-count') as HTMLElement;
+  const clearButton = document.getElementById('clear-filters') as HTMLButtonElement;
+  const noResults = document.getElementById('no-results') as HTMLElement;
+  const noResultsClear = document.getElementById('no-results-clear') as HTMLButtonElement;
+  const loadMoreWrap = document.querySelector('.load-more') as HTMLElement;
+  const loadMore = document.getElementById('load-more') as HTMLButtonElement;
+  const items = Array.from(grid.querySelectorAll<HTMLElement>('.skill-item'));
 
-  // Pre-fill search from URL query parameter
-  const urlParams = new URLSearchParams(window.location.search);
-  const queryParam = urlParams.get('q');
-  if (queryParam && searchInput) {
-    searchInput.value = queryParam;
+  let limit = PAGE_SIZE;
+
+  function selectHasValue(select: HTMLSelectElement, value: string) {
+    return Array.from(select.options).some(o => o.value === value);
   }
 
-  function filterSkills() {
-    const searchTerm = searchInput?.value.toLowerCase() || '';
-    const category = categoryFilter?.value || '';
-    
-    let visibleCount = 0;
+  // Restore state from the URL so filtered views can be shared and bookmarked
+  const params = new URLSearchParams(window.location.search);
+  searchInput.value = params.get('q') || '';
+  const initialCategory = params.get('category') || '';
+  if (selectHasValue(categoryFilter, initialCategory)) categoryFilter.value = initialCategory;
+  const initialSource = params.get('source') || '';
+  if (selectHasValue(sourceFilter, initialSource)) sourceFilter.value = initialSource;
+  const initialSort = params.get('sort') || 'name';
+  if (selectHasValue(sortFilter, initialSort)) sortFilter.value = initialSort;
+  verifiedFilter.checked = params.get('verified') === '1';
 
-    skillItems.forEach((item) => {
-      const el = item as HTMLElement;
-      const name = el.dataset.name || '';
-      const description = el.dataset.description || '';
-      const author = el.dataset.author || '';
-      const itemCategory = el.dataset.category || '';
+  function syncUrl() {
+    const next = new URLSearchParams();
+    const q = searchInput.value.trim();
+    if (q) next.set('q', q);
+    if (categoryFilter.value) next.set('category', categoryFilter.value);
+    if (sourceFilter.value) next.set('source', sourceFilter.value);
+    if (verifiedFilter.checked) next.set('verified', '1');
+    if (sortFilter.value !== 'name') next.set('sort', sortFilter.value);
+    const query = next.toString();
+    history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}`);
+  }
 
-      const matchesSearch = !searchTerm || 
-        name.includes(searchTerm) || 
-        description.includes(searchTerm) ||
-        author.includes(searchTerm);
-      
-      const matchesCategory = !category || itemCategory === category;
+  const collator = new Intl.Collator(undefined, { sensitivity: 'base', numeric: true });
+  const comparators: Record<string, (a: HTMLElement, b: HTMLElement) => number> = {
+    'name': (a, b) => collator.compare(a.dataset.name || '', b.dataset.name || ''),
+    'name-desc': (a, b) => collator.compare(b.dataset.name || '', a.dataset.name || ''),
+    'files': (a, b) => Number(b.dataset.files) - Number(a.dataset.files) || collator.compare(a.dataset.name || '', b.dataset.name || ''),
+    'source': (a, b) => collator.compare(a.dataset.source || '', b.dataset.source || '') || collator.compare(a.dataset.name || '', b.dataset.name || ''),
+  };
+  let currentSort = '';
 
-      if (matchesSearch && matchesCategory) {
-        el.classList.remove('hidden');
-        visibleCount++;
-      } else {
-        el.classList.add('hidden');
+  function applySort() {
+    if (sortFilter.value === currentSort) return;
+    currentSort = sortFilter.value;
+    const sorted = [...items].sort(comparators[currentSort] || comparators.name);
+    const fragment = document.createDocumentFragment();
+    sorted.forEach(item => fragment.appendChild(item));
+    grid.appendChild(fragment);
+  }
+
+  function render({ resetPaging = true } = {}) {
+    if (resetPaging) limit = PAGE_SIZE;
+    applySort();
+
+    const terms = searchInput.value.toLowerCase().split(/\s+/).filter(Boolean);
+    const category = categoryFilter.value;
+    const source = sourceFilter.value;
+    const verifiedOnly = verifiedFilter.checked;
+
+    let matched = 0;
+    let shown = 0;
+    for (const item of grid.querySelectorAll<HTMLElement>('.skill-item')) {
+      const text = item.dataset.search || '';
+      const matches =
+        terms.every(term => text.includes(term)) &&
+        (!category || item.dataset.category === category) &&
+        (!source || item.dataset.source === source) &&
+        (!verifiedOnly || item.dataset.verified === 'true');
+
+      item.classList.toggle('hidden', !matches);
+      item.classList.toggle('is-paged', matches && matched >= limit);
+      if (matches) {
+        matched++;
+        if (matched <= limit) shown++;
       }
-    });
-
-    if (noResults) {
-      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
     }
+
+    const total = items.length;
+    resultsCount.textContent = matched === total
+      ? `Showing ${shown} of ${total} skills`
+      : `Showing ${shown} of ${matched} matching skills (${total} total)`;
+
+    const filtered = terms.length > 0 || !!category || !!source || verifiedOnly;
+    clearButton.hidden = !filtered && sortFilter.value === 'name';
+    noResults.hidden = matched !== 0;
+    loadMoreWrap.hidden = matched <= limit;
+    loadMore.textContent = `Show more skills (${matched - shown} remaining)`;
+    syncUrl();
   }
 
-  searchInput?.addEventListener('input', filterSkills);
-  categoryFilter?.addEventListener('change', filterSkills);
-
-  // Apply filter on load if query param is present
-  if (queryParam) {
-    filterSkills();
+  function clearFilters() {
+    searchInput.value = '';
+    categoryFilter.value = '';
+    sourceFilter.value = '';
+    sortFilter.value = 'name';
+    verifiedFilter.checked = false;
+    render();
+    searchInput.focus();
   }
+
+  let searchTimer: number | undefined;
+  searchInput.addEventListener('input', () => {
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(() => render(), 120);
+  });
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchInput.value) {
+      searchInput.value = '';
+      render();
+    }
+  });
+  categoryFilter.addEventListener('change', () => render());
+  sourceFilter.addEventListener('change', () => render());
+  sortFilter.addEventListener('change', () => render());
+  verifiedFilter.addEventListener('change', () => render());
+  clearButton.addEventListener('click', clearFilters);
+  noResultsClear.addEventListener('click', clearFilters);
+  loadMore.addEventListener('click', () => {
+    limit += PAGE_SIZE;
+    render({ resetPaging: false });
+  });
+
+  render();
 </script>
