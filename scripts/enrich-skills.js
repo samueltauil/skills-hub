@@ -51,11 +51,20 @@ function truncate(str, max = 300) {
 }
 
 /**
+ * Raw SKILL.md content for a skill (stored in files[] by aggregate-skills.js)
+ */
+function getSkillMd(skill) {
+  return skill.skillMdContent
+    || (skill.files || []).find(f => f.path === 'SKILL.md')?.content
+    || '';
+}
+
+/**
  * Build a prompt asking Copilot to return structured JSON enrichment for a
  * skill entry.
  */
 function buildPrompt(skill) {
-  const content = truncate(skill.skillMdContent || skill.description || '', 800);
+  const content = truncate(getSkillMd(skill) || skill.description || '', 800);
   return `You are enriching a metadata record for a GitHub Copilot skill.
 
 Skill name: ${skill.name}

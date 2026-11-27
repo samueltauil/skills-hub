@@ -7,7 +7,7 @@
 > Discover, browse, and install GitHub Copilot skills for your projects.
 
 [![Website](https://img.shields.io/badge/Website-Live-success?logo=github)](https://skillshub.space)
-[![Skills Count](https://img.shields.io/badge/Skills-520-blue)](./site/src/data/skills.json)
+[![Skills Count](https://img.shields.io/badge/Skills-1154-blue)](./site/src/data/skills.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## What is this?
@@ -29,21 +29,35 @@ Visit the live site: **[skillshub.space](https://skillshub.space)**
 
 Or explore the [skills registry](./skills/registry.json) directly.
 
+### Sources
+
+Skills are synced weekly from official upstream repositories (git submodules under [`sources/`](./sources)):
+
+- **GitHub & Microsoft:** [github/awesome-copilot](https://github.com/github/awesome-copilot), [microsoft/azure-skills](https://github.com/microsoft/azure-skills), [dotnet/skills](https://github.com/dotnet/skills)
+- **AI providers:** [anthropics/skills](https://github.com/anthropics/skills), [openai/skills](https://github.com/openai/skills), [google-gemini/gemini-skills](https://github.com/google-gemini/gemini-skills), [huggingface/skills](https://github.com/huggingface/skills), [modelcontextprotocol/ext-apps](https://github.com/modelcontextprotocol/ext-apps)
+- **Cloud & platforms:** [google/skills](https://github.com/google/skills), [cloudflare/skills](https://github.com/cloudflare/skills), [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills), [firebase/agent-skills](https://github.com/firebase/agent-skills), [docker/skills](https://github.com/docker/skills), [pulumi/agent-skills](https://github.com/pulumi/agent-skills)
+- **Data & observability:** [supabase/agent-skills](https://github.com/supabase/agent-skills), [mongodb/agent-skills](https://github.com/mongodb/agent-skills), [neondatabase/agent-skills](https://github.com/neondatabase/agent-skills), [elastic/agent-skills](https://github.com/elastic/agent-skills), [grafana/skills](https://github.com/grafana/skills), [getsentry/skills](https://github.com/getsentry/skills)
+- **App development:** [stripe/ai](https://github.com/stripe/ai), [expo/skills](https://github.com/expo/skills), [callstackincubator/agent-skills](https://github.com/callstackincubator/agent-skills), [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+
+Only skills under redistributable licenses (MIT, Apache-2.0, BSD, ISC, CC-BY-4.0) are published; skills with proprietary or unrecognized license files are skipped. When two sources publish a skill with the same name, the later source's ID is prefixed with its author (e.g. `anthropic-webapp-testing`).
+
+To add a source: `git submodule add <repo-url> sources/<name>`, then add an entry to `SOURCES` in [`scripts/aggregate-skills.js`](scripts/aggregate-skills.js) with the skill directory `paths` (`*` matches one directory level) and the repository's default license.
+
 ### Categories
 
 | Category | Skills | Description |
 |----------|:------:|-------------|
-| ✨ Code Quality | 138 | Reviews, refactoring, linting |
-| 📝 Documentation | 72 | READMEs, PRDs, technical writing |
-| 🔀 Git & Version Control | 76 | Commits, branching, GitHub operations |
-| 🎨 Frontend & UI | 68 | React, Vue, components, design |
-| 🔌 API & Backend | 52 | REST APIs, GraphQL, databases |
-| 🧪 Testing | 47 | Unit tests, E2E, test automation |
-| 🚀 DevOps & CI/CD | 41 | Pipelines, Docker, Kubernetes |
-| 🔧 MCP Development | 4 | Model Context Protocol servers and apps |
-| 📊 Diagrams | 12 | Mermaid, PlantUML, visualizations |
-| 🔒 Security | 4 | Audits, vulnerabilities, secure coding |
-| 📈 Data & Analytics | 5 | SQL, data pipelines, visualization |
+| ✨ Code Quality | 270 | Reviews, refactoring, linting |
+| 📝 Documentation | 129 | READMEs, PRDs, technical writing |
+| 🔀 Git & Version Control | 117 | Commits, branching, GitHub operations |
+| 🎨 Frontend & UI | 179 | React, Vue, components, design |
+| 🔌 API & Backend | 188 | REST APIs, GraphQL, databases |
+| 🧪 Testing | 97 | Unit tests, E2E, test automation |
+| 🚀 DevOps & CI/CD | 114 | Pipelines, Docker, Kubernetes |
+| 🔧 MCP Development | 7 | Model Context Protocol servers and apps |
+| 📊 Diagrams | 14 | Mermaid, PlantUML, visualizations |
+| 🔒 Security | 15 | Audits, vulnerabilities, secure coding |
+| 📈 Data & Analytics | 23 | SQL, data pipelines, visualization |
 | 📄 Office Documents | 1 | Spreadsheets, presentations, documents |
 
 ## Install a Skill

@@ -31,7 +31,7 @@ You are a documentation maintenance agent for the **AI Skills Hub** repository. 
 
 ## Context
 
-This repository is a curated catalog of AI assistant skills. Skills are aggregated from three upstream sources (git submodules under `sources/`) into `site/src/data/skills.json` by a weekly sync workflow. There is also a manually curated `skills/registry.json` which is a small subset.
+This repository is a curated catalog of AI assistant skills. Skills are aggregated from multiple upstream sources (git submodules under `sources/`, configured in the `SOURCES` list in `scripts/aggregate-skills.js`) into `site/src/data/skills.json` by a weekly sync workflow. There is also a manually curated `skills/registry.json` which is a small subset.
 
 **`site/src/data/skills.json` is the canonical source of truth** for total skills count, category counts, and category listings. The `skills/registry.json` file is only a manually curated subset and must NOT be used for totals or category counts in documentation.
 
