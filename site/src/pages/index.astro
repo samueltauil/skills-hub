@@ -22,11 +22,11 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
   id,
   name: categoryMeta[id]?.name || id,
   description: categoryMeta[id]?.description || '',
-  icon: categoryMeta[id]?.icon || '📦',
   count
 })).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 
 const vscodeAddMarketplace = `https://vscode.dev/redirect?url=${encodeURIComponent(`vscode://chat-plugin/add-marketplace?ref=${encodeURIComponent(MARKETPLACE_REPO)}`)}`;
+const pluginInstallCommands = `copilot plugin marketplace add ${MARKETPLACE_REPO}\ncopilot plugin install <skill-id>@${MARKETPLACE_NAME}`;
 
 const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filter(Boolean)).size;
 ---
@@ -43,8 +43,7 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
         <span class="title-line">Skills <span class="title-accent">Hub</span></span>
       </h1>
       <p class="hero-subtitle">
-        Discover and install curated AI coding skills<br class="hide-mobile" />
-        to <span class="highlight">supercharge</span> your development workflow.
+        Explore {skillsData.skills.length} curated Agent Skills, packaged individually as Agent Plugins for GitHub Copilot.
       </p>
       <div class="hero-search">
         <SearchBar placeholder="Search for skills..." id="hero-search" />
@@ -67,16 +66,18 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
       </div>
 
       <div class="hero-cli">
-        <p class="cli-label">Quick install via terminal</p>
+        <p class="cli-label">Install a skill with GitHub Copilot CLI</p>
         <div class="cli-command">
-          <code>gh extension install samueltauil/skills-hub</code>
-          <button class="cli-copy-btn" id="cli-copy-btn" title="Copy to clipboard">
+          <pre><code>{pluginInstallCommands}</code></pre>
+          <button class="cli-copy-btn" id="cli-copy-btn" title="Copy install commands" aria-label="Copy plugin install commands">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
             </svg>
           </button>
         </div>
+        <p class="cli-hint">Replace <code>&lt;skill-id&gt;</code> with the ID on any skill page.</p>
+        <a class="cli-vscode-link" href={vscodeAddMarketplace}>Set up the marketplace in VS Code</a>
       </div>
     </div>
   </section>
@@ -118,7 +119,6 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
             id={category.id}
             name={category.name}
             description={category.description}
-            icon={category.icon}
             count={category.count}
           />
         ))}
@@ -135,30 +135,15 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
       <div class="install-steps">
         <div class="step">
           <div class="step-number">1</div>
-          <h3>Install as a plugin <span class="step-tag">Recommended</span></h3>
-          <p class="step-desc">Add the marketplace once in GitHub Copilot CLI, then install any skill by its ID (the last part of its page URL — each skill page shows the exact command).</p>
-          <pre><code>copilot plugin marketplace add {MARKETPLACE_REPO}
-copilot plugin install &lt;skill-id&gt;@{MARKETPLACE_NAME}</code></pre>
-          <p class="step-desc step-extra">In VS Code, enable <code>chat.plugins.enabled</code> and add the marketplace:</p>
-          <a class="btn btn-secondary btn-sm" href={vscodeAddMarketplace}>Add marketplace to VS Code</a>
+          <h3>GitHub Copilot CLI <span class="step-tag">Recommended</span></h3>
+          <p class="step-desc">Add the marketplace once, then install a skill using its ID. Each skill page includes its exact install command.</p>
+          <pre><code>{pluginInstallCommands}</code></pre>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h3>Use the gh extension</h3>
-          <p class="step-desc">Install the <code>gh skills-hub</code> extension, then install any skill in one command.</p>
-          <pre><code>gh extension install samueltauil/skills-hub
-gh skills-hub install &lt;skill-id&gt;</code></pre>
-          <p class="step-desc step-extra">Search and browse skills from your terminal:</p>
-          <pre><code>gh skills-hub search git
-gh skills-hub list
-gh skills-hub info &lt;skill-id&gt;</code></pre>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Or copy manually</h3>
-          <p class="step-desc">Click "Download ZIP" or "Copy All Files" on any skill page, then add to your project.</p>
-          <pre><code>.github/skills/&lt;skill-name&gt;/</code></pre>
-          <p class="step-desc step-extra" style="margin-top: 1rem;">Copilot auto-discovers skills — no configuration needed!</p>
+          <h3>Visual Studio Code</h3>
+          <p class="step-desc">Enable <code>chat.plugins.enabled</code>, add the Skills Hub marketplace, then browse and install a plugin from Agent Customizations.</p>
+          <a class="btn btn-secondary btn-sm" href={vscodeAddMarketplace}>Add marketplace to VS Code</a>
         </div>
       </div>
     </div>
@@ -274,15 +259,6 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
     animation: fadeInUp 0.6s ease-out 0.2s both;
   }
 
-  .hero-subtitle .highlight {
-    color: var(--color-accent);
-    font-weight: 500;
-  }
-
-  .hide-mobile {
-    display: inline;
-  }
-
   .hero-search {
     display: flex;
     justify-content: center;
@@ -344,6 +320,8 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
+    width: 100%;
+    max-width: 34rem;
     padding: 0.625rem 1rem;
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
@@ -352,6 +330,25 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
     font-size: 0.875rem;
     color: var(--color-accent);
     transition: border-color var(--transition-fast, 0.15s ease);
+  }
+
+  .cli-command pre {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    overflow-x: auto;
+  }
+
+  .cli-command code {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 0.75rem;
+    white-space: pre;
   }
 
   .cli-command:hover {
@@ -374,6 +371,15 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
   .cli-copy-btn:hover {
     color: var(--color-accent);
     background: var(--color-bg-tertiary);
+  }
+
+  .cli-vscode-link {
+    font-size: 0.8125rem;
+  }
+
+  .cli-hint {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
   }
 
   .cli-copy-btn.copied {
@@ -400,9 +406,9 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
 
   .install-steps {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
-    max-width: 1100px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
@@ -411,6 +417,7 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: 1.5rem;
+    min-width: 0;
   }
 
   .step-number {
@@ -461,12 +468,6 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
     overflow-x: auto;
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .install-steps {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
   @media (max-width: 768px) {
     .hero {
       padding: 3rem 0 2.5rem;
@@ -478,10 +479,6 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
 
     .hero-subtitle {
       font-size: 1rem;
-    }
-
-    .hide-mobile {
-      display: none;
     }
 
     .hero-stats {
@@ -497,7 +494,7 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
     }
 
     .install-steps {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 
@@ -509,7 +506,8 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
     .hero-title,
     .hero-subtitle,
     .hero-search,
-    .hero-stats {
+    .hero-stats,
+    .hero-cli {
       animation: none;
     }
 
@@ -519,7 +517,7 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
   }
 </style>
 
-<script define:vars={{ baseUrl: import.meta.env.BASE_URL }}>
+<script define:vars={{ baseUrl: import.meta.env.BASE_URL, pluginInstallCommands }}>
   const heroSearch = document.getElementById('hero-search');
   heroSearch?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -535,7 +533,7 @@ gh skills-hub info &lt;skill-id&gt;</code></pre>
   // CLI copy button
   const cliCopyBtn = document.getElementById('cli-copy-btn');
   cliCopyBtn?.addEventListener('click', () => {
-    navigator.clipboard.writeText('gh extension install samueltauil/skills-hub').then(() => {
+    navigator.clipboard.writeText(pluginInstallCommands).then(() => {
       cliCopyBtn.classList.add('copied');
       setTimeout(() => cliCopyBtn.classList.remove('copied'), 2000);
     });

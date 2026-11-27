@@ -12,7 +12,6 @@ const categories = categoryIds.map(id => ({
   id,
   name: categoryMeta[id]?.name || id,
   description: categoryMeta[id]?.description || `Skills in the ${id} category`,
-  icon: categoryMeta[id]?.icon || '📁',
   count: skillsData.skills.filter(s => (s.category || 'general') === id).length
 }));
 ---
@@ -33,7 +32,6 @@ const categories = categoryIds.map(id => ({
             id={category.id}
             name={category.name}
             description={category.description}
-            icon={category.icon}
             count={category.count}
           />
         ))}
