@@ -1943,6 +1943,21 @@
         "repo": "https://github.com/waynehamadi/datacircle",
         "path": "skills/datacircle/SKILL.md"
       }
+    },
+    {
+      "id": "kite-design",
+      "name": "Kite",
+      "description": "Design app screens, user flows, landing pages and design systems in Kite (kite.new) through its hosted MCP server. The agent draws real, editable layers in a file your team edits live, and frames export as HTML, React or Tailwind.",
+      "shortDescription": "Design editable UI in Kite through its hosted MCP server",
+      "category": "frontend-ui",
+      "author": "itsloukman",
+      "license": "MIT",
+      "triggers": ["kite", "design a screen", "ui design", "landing page design", "design system", "figma alternative"],
+      "complexity": "beginner",
+      "source": {
+        "repo": "https://github.com/kitedotnew/kite-agent-plugins",
+        "path": "plugins/kite/skills/kite/SKILL.md"
+      }
     }
   ]
 }
