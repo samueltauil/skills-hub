@@ -114,3 +114,14 @@ test('review artifact uploads explicitly include the hidden review files', () =>
     '.review-data/input.json', '.review-data/response.json',
   ]);
 });
+
+test('independent skills do not share workflow or engine concurrency groups', () => {
+  const lock = matter(`---\n${fs.readFileSync(
+    new URL('../.github/workflows/skill-security-review.lock.yml', import.meta.url), 'utf8',
+  )}\n---`).data;
+  for (const config of [lock.concurrency, lock.jobs.agent.concurrency]) {
+    assert.match(config.group, /\$\{\{ inputs\.skill \|\| inputs\.fixture \}\}/);
+    assert.equal(config['cancel-in-progress'] ?? false, false);
+  }
+  assert.notEqual(lock.concurrency.group, lock.jobs.agent.concurrency.group);
+});

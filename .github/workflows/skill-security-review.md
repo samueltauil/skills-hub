@@ -1,5 +1,6 @@
 ---
 name: Skill security review pilot
+run-name: "Skill security review: ${{ inputs.skill || inputs.fixture }}"
 description: Manual, evidence-based review of one inert skill bundle; artifacts by default and an opt-in report-only PR.
 # gh-aw v0.44.0. Keep its runtime action pinned when recompiling.
 # gh aw compile skill-security-review --strict --action-tag cec1ecf3b97e9a1bbffaedf490a49ce03c1071ba
@@ -20,6 +21,9 @@ on:
         default: false
         required: true
 if: github.ref == 'refs/heads/main'
+concurrency:
+  group: "skill-review-${{ inputs.skill || inputs.fixture }}"
+  cancel-in-progress: false
 permissions:
   contents: read
 strict: true
@@ -27,6 +31,9 @@ runs-on: ubuntu-24.04
 timeout-minutes: 15
 engine:
   id: copilot
+  concurrency:
+    group: "skill-review-agent-${{ inputs.skill || inputs.fixture }}"
+    cancel-in-progress: false
   version: "0.0.410"
   model: gpt-5.1-codex-mini
   args:

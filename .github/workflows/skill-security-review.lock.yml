@@ -23,7 +23,7 @@
 #
 # Manual, evidence-based review of one inert skill bundle; artifacts by default and an opt-in report-only PR.
 #
-# frontmatter-hash: bd9c3bf286b0d6b96205e3c7e9ee1062b1b7aa49d5b87fee7c534f72ad9213c9
+# frontmatter-hash: c08ac51e18bcb10a2a3d1fc09cf1189d68085a649a46554717a2aa034f736f25
 
 name: "Skill security review pilot"
 "on":
@@ -46,9 +46,10 @@ name: "Skill security review pilot"
 permissions: {}
 
 concurrency:
-  group: "gh-aw-${{ github.workflow }}"
+  cancel-in-progress: false
+  group: skill-review-${{ inputs.skill || inputs.fixture }}
 
-run-name: "Skill security review pilot"
+run-name: "Skill security review: ${{ inputs.skill || inputs.fixture }}"
 
 jobs:
   activation:
@@ -81,7 +82,7 @@ jobs:
     permissions:
       contents: read
     concurrency:
-      group: "gh-aw-copilot-${{ github.workflow }}"
+      group: "skill-review-agent-${{ inputs.skill || inputs.fixture }}"
     env:
       DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
       GH_AW_ASSETS_ALLOWED_EXTS: ""
