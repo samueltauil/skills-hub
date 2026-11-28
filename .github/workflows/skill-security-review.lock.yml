@@ -23,7 +23,7 @@
 #
 # Manual, evidence-based review of one inert skill bundle; artifacts by default and an opt-in report-only PR.
 #
-# frontmatter-hash: 39f9255ea06266bade535657742dd5e43d102e250287dd2cedf9ed99fdd42447
+# frontmatter-hash: bd9c3bf286b0d6b96205e3c7e9ee1062b1b7aa49d5b87fee7c534f72ad9213c9
 
 name: "Skill security review pilot"
 "on":
@@ -226,7 +226,7 @@ jobs:
                   ],
                   "type": "object"
                 },
-                "handler": "read_review_bundle.cjs",
+                "handler": "read_review_bundle.py",
                 "timeout": 60
               },
               {
@@ -244,7 +244,7 @@ jobs:
                   ],
                   "type": "object"
                 },
-                "handler": "submit_review.cjs",
+                "handler": "submit_review.py",
                 "timeout": 60
               }
             ]
@@ -269,33 +269,75 @@ jobs:
           
       - name: Setup Safe Inputs Tool Files
         run: |
-          cat > /opt/gh-aw/safe-inputs/read_review_bundle.cjs << 'GH_AW_SAFE_INPUTS_JS_READ_REVIEW_BUNDLE_EOF'
-            async function execute(inputs) {
-              const { offset } = inputs || {};
-              const fs = require("node:fs");
-              const path = require("node:path");
-              const file = path.join(process.env.GITHUB_WORKSPACE, ".review-data/input.json");
-              if (fs.statSync(file).size > 262144) throw new Error("Review input exceeds limit");
-              const text = fs.readFileSync(file, "utf8");
-              if (!Number.isSafeInteger(offset) || offset < 0 || offset >= text.length)
-                throw new Error("Invalid character offset");
-              const end = Math.min(offset + 8192, text.length);
-              return { offset, totalChars: text.length, nextOffset: end < text.length ? end : null, text: text.slice(offset, end) };
-            }
-            module.exports = { execute };
-          GH_AW_SAFE_INPUTS_JS_READ_REVIEW_BUNDLE_EOF
-          cat > /opt/gh-aw/safe-inputs/submit_review.cjs << 'GH_AW_SAFE_INPUTS_JS_SUBMIT_REVIEW_EOF'
-            async function execute(inputs) {
-              const { response } = inputs || {};
-              const fs = require("node:fs");
-              const path = require("node:path");
-              if (Buffer.byteLength(response, "utf8") > 1048576) throw new Error("Response exceeds limit");
-              JSON.parse(response);
-              fs.writeFileSync(path.join(process.env.GITHUB_WORKSPACE, ".review-data/response.json"), response, { flag: "wx", mode: 0o600 });
-              return "Recorded for validation; not a safety verdict.";
-            }
-            module.exports = { execute };
-          GH_AW_SAFE_INPUTS_JS_SUBMIT_REVIEW_EOF
+          cat > /opt/gh-aw/safe-inputs/read_review_bundle.py << 'GH_AW_SAFE_INPUTS_PY_READ_REVIEW_BUNDLE_EOF'
+          #!/usr/bin/env python3
+          # Auto-generated safe-input tool: read_review_bundle
+          # Read consecutive 8192-character pages of the single inert JSON manifest. No path or network parameters.
+          
+          import json
+          import os
+          import sys
+          
+          # Read inputs from stdin (JSON format)
+          try:
+              inputs = json.loads(sys.stdin.read()) if not sys.stdin.isatty() else {}
+          except (json.JSONDecodeError, Exception):
+              inputs = {}
+          
+          # Input parameters available in 'inputs' dictionary:
+          # offset = inputs.get('offset')  # Character offset, starting at zero. Continue at nextOffset until null.
+          
+          # User code:
+          from pathlib import Path
+          file = Path(os.environ["GITHUB_WORKSPACE"]) / ".review-data" / "input.json"
+          if file.stat().st_size > 262144:
+              raise ValueError("Review input exceeds limit")
+          text = file.read_bytes().decode("utf-8")
+          offset = inputs["offset"]
+          if type(offset) is not int or offset < 0 or offset >= len(text):
+              raise ValueError("Invalid character offset")
+          end = min(offset + 8192, len(text))
+          print(json.dumps({"offset": offset, "totalChars": len(text),
+                           "nextOffset": end if end < len(text) else None,
+                           "text": text[offset:end]}, ensure_ascii=False))
+          
+          
+          GH_AW_SAFE_INPUTS_PY_READ_REVIEW_BUNDLE_EOF
+          chmod +x /opt/gh-aw/safe-inputs/read_review_bundle.py
+          cat > /opt/gh-aw/safe-inputs/submit_review.py << 'GH_AW_SAFE_INPUTS_PY_SUBMIT_REVIEW_EOF'
+          #!/usr/bin/env python3
+          # Auto-generated safe-input tool: submit_review
+          # Submit exactly one bounded JSON response for later deterministic validation. This does not publish or certify anything.
+          
+          import json
+          import os
+          import sys
+          
+          # Read inputs from stdin (JSON format)
+          try:
+              inputs = json.loads(sys.stdin.read()) if not sys.stdin.isatty() else {}
+          except (json.JSONDecodeError, Exception):
+              inputs = {}
+          
+          # Input parameters available in 'inputs' dictionary:
+          # response = inputs.get('response')  # JSON matching the closed response contract in the trusted workflow prompt.
+          
+          # User code:
+          from pathlib import Path
+          response = inputs["response"]
+          data = response.encode("utf-8")
+          if len(data) > 1048576:
+              raise ValueError("Response exceeds limit")
+          json.loads(response)
+          file = Path(os.environ["GITHUB_WORKSPACE"]) / ".review-data" / "response.json"
+          fd = os.open(file, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+          with os.fdopen(fd, "wb") as output:
+              output.write(data)
+          print(json.dumps("Recorded for validation; not a safety verdict."))
+          
+          
+          GH_AW_SAFE_INPUTS_PY_SUBMIT_REVIEW_EOF
+          chmod +x /opt/gh-aw/safe-inputs/submit_review.py
           
       - name: Generate Safe Inputs MCP Server Config
         id: safe-inputs-config
@@ -588,8 +630,11 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           if-no-files-found: warn
+          include-hidden-files: true
           name: skill-review-transport
-          path: .review-data/*.json
+          path: |
+            .review-data/input.json
+            .review-data/response.json
           retention-days: 7
 
       - name: Upload agent artifacts
@@ -881,6 +926,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           if-no-files-found: error
+          include-hidden-files: true
           name: skill-security-review
           path: |
             .review-data/report.json

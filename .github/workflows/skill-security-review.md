@@ -56,16 +56,20 @@ safe-inputs:
         type: number
         required: true
         description: Character offset, starting at zero. Continue at nextOffset until null.
-    script: |
-      const fs = require("node:fs");
-      const path = require("node:path");
-      const file = path.join(process.env.GITHUB_WORKSPACE, ".review-data/input.json");
-      if (fs.statSync(file).size > 262144) throw new Error("Review input exceeds limit");
-      const text = fs.readFileSync(file, "utf8");
-      if (!Number.isSafeInteger(offset) || offset < 0 || offset >= text.length)
-        throw new Error("Invalid character offset");
-      const end = Math.min(offset + 8192, text.length);
-      return { offset, totalChars: text.length, nextOffset: end < text.length ? end : null, text: text.slice(offset, end) };
+    # v0.44's JavaScript wrapper is not invoked by its subprocess runtime.
+    py: |
+      from pathlib import Path
+      file = Path(os.environ["GITHUB_WORKSPACE"]) / ".review-data" / "input.json"
+      if file.stat().st_size > 262144:
+          raise ValueError("Review input exceeds limit")
+      text = file.read_bytes().decode("utf-8")
+      offset = inputs["offset"]
+      if type(offset) is not int or offset < 0 or offset >= len(text):
+          raise ValueError("Invalid character offset")
+      end = min(offset + 8192, len(text))
+      print(json.dumps({"offset": offset, "totalChars": len(text),
+                       "nextOffset": end if end < len(text) else None,
+                       "text": text[offset:end]}, ensure_ascii=False))
   submit_review:
     description: Submit exactly one bounded JSON response for later deterministic validation. This does not publish or certify anything.
     inputs:
@@ -73,13 +77,18 @@ safe-inputs:
         type: string
         required: true
         description: JSON matching the closed response contract in the trusted workflow prompt.
-    script: |
-      const fs = require("node:fs");
-      const path = require("node:path");
-      if (Buffer.byteLength(response, "utf8") > 1048576) throw new Error("Response exceeds limit");
-      JSON.parse(response);
-      fs.writeFileSync(path.join(process.env.GITHUB_WORKSPACE, ".review-data/response.json"), response, { flag: "wx", mode: 0o600 });
-      return "Recorded for validation; not a safety verdict.";
+    py: |
+      from pathlib import Path
+      response = inputs["response"]
+      data = response.encode("utf-8")
+      if len(data) > 1048576:
+          raise ValueError("Response exceeds limit")
+      json.loads(response)
+      file = Path(os.environ["GITHUB_WORKSPACE"]) / ".review-data" / "response.json"
+      fd = os.open(file, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+      with os.fdopen(fd, "wb") as output:
+          output.write(data)
+      print(json.dumps("Recorded for validation; not a safety verdict."))
 steps:
   - name: Check out trusted main revision for deterministic collection only
     uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -130,7 +139,10 @@ post-steps:
     timeout-minutes: 2
     with:
       name: skill-review-transport
-      path: .review-data/*.json
+      path: |
+        .review-data/input.json
+        .review-data/response.json
+      include-hidden-files: true
       if-no-files-found: warn
       retention-days: 7
 jobs:
@@ -228,6 +240,7 @@ jobs:
           path: |
             .review-data/report.json
             .review-data/report.json.summary.md
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 30
   publish:
