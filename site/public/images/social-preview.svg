@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#58a6ff"/>
+      <stop offset="1" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <rect x="0" y="0" width="1200" height="10" fill="url(#accent)"/>
+  <circle cx="1120" cy="110" r="280" fill="#161b2b"/>
+  <circle cx="1180" cy="550" r="220" fill="#191629"/>
+  <g transform="translate(84 96)" fill="none" stroke="url(#accent)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42 0 0 21 42 42 84 21Z"/>
+    <path d="m0 42 42 21 42-21M0 63l42 21 42-21"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="84" y="286" fill="#f0f6fc" font-size="76" font-weight="700">Copilot Skills Hub</text>
+    <text x="88" y="362" fill="#c9d1d9" font-size="34">Discover and install Agent Skills</text>
+    <text x="88" y="412" fill="#c9d1d9" font-size="34">for GitHub Copilot.</text>
+    <text x="88" y="544" fill="#58a6ff" font-size="27">skillshub.space</text>
+  </g>
+</svg>

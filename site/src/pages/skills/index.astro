@@ -37,7 +37,11 @@ function searchText(skill: (typeof skills)[number]) {
 }
 ---
 
-<Layout title="All Skills" description="Browse, search and filter all available GitHub Copilot skills">
+<Layout
+  title="All Skills"
+  description={`Browse ${skills.length} curated GitHub Copilot skills. Search and filter by category or source, explore skill files, and find plugin installation commands.`}
+  pageType="CollectionPage"
+>
   <section class="page-header">
     <div class="container">
       <h1>Browse Skills</h1>

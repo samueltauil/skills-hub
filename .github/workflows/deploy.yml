@@ -32,9 +32,13 @@ jobs:
         run: npm ci
         working-directory: site
 
-      - name: Build Astro site
-        run: npm run build
+      - name: Build and validate Astro site
+        run: npm test
         working-directory: site
+        env:
+          PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
+          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
+          PUBLIC_BING_SITE_VERIFICATION: ${{ vars.PUBLIC_BING_SITE_VERIFICATION }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -136,7 +136,20 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
 
 ---
 
-<Layout title={displayName} description={skill.description}>
+<Layout
+  title={displayName}
+  description={skill.description}
+  breadcrumbs={[
+    { name: 'Home', path: baseUrl },
+    { name: 'Skills', path: `${baseUrl}skills/` },
+    { name: displayName, path: Astro.url.pathname },
+  ]}
+  skill={{
+    name: displayName,
+    description: skill.description,
+    sourceUrl: `${skill.source.repo}/tree/${skill.source.branch || 'main'}/${skill.source.path}`,
+  }}
+>
   <section class="skill-detail">
     <div class="container">
       <nav class="breadcrumb">
