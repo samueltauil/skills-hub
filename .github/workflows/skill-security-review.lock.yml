@@ -714,7 +714,7 @@ jobs:
           FIXTURE_ID: ${{ inputs.fixture }}
           SKILL_ID: ${{ inputs.skill }}
         with:
-          script: |
+          script: |-
             const fs = require("node:fs");
             // Bound the entire deterministic publisher even on a stalled API.
             const deadline = setTimeout(() => process.exit(1), 180000);

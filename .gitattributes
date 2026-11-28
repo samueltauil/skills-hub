@@ -1,3 +1,4 @@
+.github/workflows/* text eol=lf
 .github/workflows/*.lock.yml linguist-generated=true merge=ours
 plugins/** linguist-generated=true
 .github/plugin/marketplace.json linguist-generated=true
