@@ -57,7 +57,7 @@ safe-outputs:
   threat-detection: false
 safe-inputs:
   read_review_bundle:
-    description: Read consecutive 8192-character pages of the single inert JSON manifest. No path or network parameters.
+    description: Read consecutive byte-bounded pages of the single inert JSON manifest. No path or network parameters.
     inputs:
       offset:
         type: number
@@ -74,9 +74,18 @@ safe-inputs:
       if type(offset) is not int or offset < 0 or offset >= len(text):
           raise ValueError("Invalid character offset")
       end = min(offset + 8192, len(text))
-      print(json.dumps({"offset": offset, "totalChars": len(text),
-                       "nextOffset": end if end < len(text) else None,
-                       "text": text[offset:end]}, ensure_ascii=False))
+      while True:
+          page = {"offset": offset, "totalChars": len(text),
+                  "nextOffset": end if end < len(text) else None,
+                  "text": text[offset:end]}
+          encoded = json.dumps(page, ensure_ascii=True)
+          for char in "<>&":
+              encoded = encoded.replace(char, "\\u%04x" % ord(char))
+          # Leave room for the MCP envelope and the gateway's second JSON encoding.
+          if len(encoded.encode("utf-8")) <= 4000:
+              print(encoded)
+              break
+          end = offset + (end - offset) // 2
   submit_review:
     description: Submit exactly one bounded JSON response for later deterministic validation. This does not publish or certify anything.
     inputs:

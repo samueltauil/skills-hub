@@ -23,7 +23,7 @@
 #
 # Manual, evidence-based review of one inert skill bundle; artifacts by default and an opt-in report-only PR.
 #
-# frontmatter-hash: c08ac51e18bcb10a2a3d1fc09cf1189d68085a649a46554717a2aa034f736f25
+# frontmatter-hash: dd00969976e59711aa2b9297e77b517e333375c85153bc8945866fd97c374321
 
 name: "Skill security review pilot"
 "on":
@@ -214,7 +214,7 @@ jobs:
             "tools": [
               {
                 "name": "read_review_bundle",
-                "description": "Read consecutive 8192-character pages of the single inert JSON manifest. No path or network parameters.",
+                "description": "Read consecutive byte-bounded pages of the single inert JSON manifest. No path or network parameters.",
                 "inputSchema": {
                   "properties": {
                     "offset": {
@@ -273,7 +273,7 @@ jobs:
           cat > /opt/gh-aw/safe-inputs/read_review_bundle.py << 'GH_AW_SAFE_INPUTS_PY_READ_REVIEW_BUNDLE_EOF'
           #!/usr/bin/env python3
           # Auto-generated safe-input tool: read_review_bundle
-          # Read consecutive 8192-character pages of the single inert JSON manifest. No path or network parameters.
+          # Read consecutive byte-bounded pages of the single inert JSON manifest. No path or network parameters.
           
           import json
           import os
@@ -298,9 +298,18 @@ jobs:
           if type(offset) is not int or offset < 0 or offset >= len(text):
               raise ValueError("Invalid character offset")
           end = min(offset + 8192, len(text))
-          print(json.dumps({"offset": offset, "totalChars": len(text),
-                           "nextOffset": end if end < len(text) else None,
-                           "text": text[offset:end]}, ensure_ascii=False))
+          while True:
+              page = {"offset": offset, "totalChars": len(text),
+                      "nextOffset": end if end < len(text) else None,
+                      "text": text[offset:end]}
+              encoded = json.dumps(page, ensure_ascii=True)
+              for char in "<>&":
+                  encoded = encoded.replace(char, "\\u%04x" % ord(char))
+              # Leave room for the MCP envelope and the gateway's second JSON encoding.
+              if len(encoded.encode("utf-8")) <= 4000:
+                  print(encoded)
+                  break
+              end = offset + (end - offset) // 2
           
           
           GH_AW_SAFE_INPUTS_PY_READ_REVIEW_BUNDLE_EOF

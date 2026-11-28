@@ -58,7 +58,7 @@ test('compiled review tools read stdin, return pages and persist exactly one res
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'skill-review-tools-'));
   try {
     fs.mkdirSync(path.join(root, '.review-data'));
-    const text = JSON.stringify({ content: 'line\r\n'.repeat(1800) });
+    const text = JSON.stringify({ content: 'line\r\n<>&"\\\u0001\u2028\ud83d\ude80'.repeat(500) });
     const inputPath = path.join(root, '.review-data', 'input.json');
     fs.writeFileSync(inputPath, text);
     for (const name of ['read_review_bundle', 'submit_review']) {
@@ -81,7 +81,10 @@ test('compiled review tools read stdin, return pages and persist exactly one res
       assert.equal(result.status, 0, result.stderr || result.error?.message);
       const page = JSON.parse(result.stdout);
       assert.equal(page.offset, offset);
-      assert.equal(page.totalChars, text.length);
+      assert.equal(page.totalChars, [...text].length);
+      const envelope = JSON.stringify({ content: [{ type: 'text', text: result.stdout.trim() }] })
+        .replace(/[<>&]/g, char => `\\u${char.charCodeAt(0).toString(16).padStart(4, '0')}`);
+      assert.ok(Buffer.byteLength(envelope, 'utf8') < 10240, 'Page must stay inline in the MCP gateway');
       reconstructed += page.text;
       offset = page.nextOffset;
     } while (offset !== null);
