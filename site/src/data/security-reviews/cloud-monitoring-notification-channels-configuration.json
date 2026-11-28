@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-monitoring-notification-channels-configuration",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "b67d7d20711acd766e97c9f72a10fd6c12265c7eb91f4d74ddfa7ebfbb3a3d90",
+  "contentHash": "7e54c28a86b10c845683664804520912b2bd5d3821d46b0c4eb8eed983be8e5a",
+  "reviewedAt": "2026-11-28T13:46:34.794Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/email.md",
+      "references/pagerduty.md",
+      "references/pubsub.md",
+      "references/slack.md",
+      "references/sms.md",
+      "references/webhook.md",
+      "scripts/verify_pubsub_topic.sh"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/secret.tfvars",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "data-breach-blast-radius",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f9a053e93e63554b0c85302cb6822fff328f671c5ede6e88a87b95270e4956b6",
+  "contentHash": "5f8460ed173e5728ba98bcacdf5f0d30f490ba51479e93e0a70f992789af544a",
+  "reviewedAt": "2026-11-28T14:03:19.320Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/SOURCES.md",
+      "references/blast-radius-calculator.md",
+      "references/data-classification.md",
+      "references/hardening-playbook.md",
+      "references/regulatory-impact.md",
+      "references/report-format.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

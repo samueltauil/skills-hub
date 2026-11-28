@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "create-quarkus-project",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "16fe66c477fb12dcd1a04901d494a8c1aee2f92416d86dbff75632a2f3e4b3d3",
+  "contentHash": "5efa2abc935dd3c7c21e59a440ea7217c823fbb9221d6dbc42516c2f30214d33",
+  "reviewedAt": "2026-11-28T13:58:35.614Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/configuration.md",
+      "references/container-image.md",
+      "references/database.md",
+      "references/local-runtime-insights.md",
+      "references/security.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

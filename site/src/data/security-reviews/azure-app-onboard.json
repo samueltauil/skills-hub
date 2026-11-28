@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-app-onboard",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bf6d7c174271ae2d13a41e9da1b5147b5d85491ad7984745e53e95f6e8d38df8",
+  "contentHash": "a418213bb3c829ad74093c33ba19101d07f46f36b5f2709ee58e3026b0147596",
+  "reviewedAt": "2026-11-28T13:37:39.028Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "deploy/PHASE.md",
+      "deploy/references/approval-gate-template.md",
+      "deploy/references/blocked-patterns.md",
+      "deploy/references/code-deployment-appservice.md",
+      "deploy/references/code-deployment-container-apps.md",
+      "deploy/references/code-deployment-swa.md",
+      "deploy/references/database-post-deploy.md",
+      "deploy/references/deploy-checklist-template.md",
+      "deploy/references/deploy-safety.md",
+      "deploy/references/deploy-schemas.ts",
+      "deploy/references/error-classification.md",
+      "deploy/references/health-check-patterns.md",
+      "deploy/references/mcp-tools.md",
+      "deploy/references/portal-links.md",
+      "deploy/references/preflight-checks.md",
+      "deploy/references/subagent-preflight.md",
+      "prepare/PHASE.md",
+      "prepare/references/deploy-strategy.md",
+      "prepare/references/mcp-tools.md",
+      "prepare/references/naming-patterns.md",
+      "prepare/references/prepare-schemas.ts",
+      "prepare/references/pricing-guide-services.md",
+      "prepare/references/pricing-guide.md",
+      "prepare/references/service-mapping.md",
+      "prepare/references/sku-matrix.md",
+      "prepare/references/sku-quota-validation.md",
+      "prepare/references/subagent-pricing.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/handoff-protocol.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/iac-resources.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/intent-gathering.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/mcp-tool-reference.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pipeline-rules-runtime.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pipeline-rules.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/session-protocol.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/session-schemas.ts",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/subscription-resolution.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/PHASE.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/bicep-app-service.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/bicep-container-apps.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/bicep-patterns-data.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/bicep-patterns-security.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/bicep-patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/bicep-swa.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/cicd-pipelines.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/dockerfile-generation.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/env-var-secrets.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/error-handling.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/iac-generation-rules.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/mcp-tools.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/rbac-roles.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/scaffold-healing-rules.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/scaffold-schemas.ts",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/self-healing.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/self-review-checklist.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/self-review-procedure.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/subagent-iac-gen.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/subagent-review.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/subagent-validate.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/terraform-patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/validation-and-manifest.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/references/waf-checklist.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/scripts/scaffold-conformance.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scaffold/scripts/scaffold-conformance.sh",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "prepare/references/subagent-quota.md",
+      "prepare/references/validation-rubric.md",
+      "references/approval-gates.md",
+      "references/azd-template-routing.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

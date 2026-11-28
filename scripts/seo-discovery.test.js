@@ -23,6 +23,7 @@ test('discovery follows real page routes and category fallback without mutating 
     'https://catalog.example/',
     'https://catalog.example/skills/',
     'https://catalog.example/categories/',
+    'https://catalog.example/dashboard/',
     'https://catalog.example/categories/general/',
     'https://catalog.example/categories/testing/',
     'https://catalog.example/skills/alpha/',
@@ -30,7 +31,7 @@ test('discovery follows real page routes and category fallback without mutating 
   ]);
   assert.equal(skills[0].id, 'zeta');
   assert.deepEqual(discoveryUrls(site, []), [
-    'https://catalog.example/', 'https://catalog.example/skills/', 'https://catalog.example/categories/',
+    'https://catalog.example/', 'https://catalog.example/skills/', 'https://catalog.example/categories/', 'https://catalog.example/dashboard/',
   ]);
 });
 
@@ -40,7 +41,7 @@ test('robots and sitemap honor Astro.site and omit unsupported freshness or rati
   const sitemap = renderSitemap(configuredSite, skills);
   assert.match(sitemap, /^<\?xml version="1.0" encoding="UTF-8"\?>/);
   assert.match(sitemap, /xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9"/);
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 7);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 8);
   assert.ok(sitemap.includes('<loc>https://preview.example/catalog/skills/zeta/</loc>'));
   assert.doesNotMatch(sitemap, /lastmod|changefreq|priority|rating|skillshub\.space/);
   assert.throws(() => renderRobots(undefined), /Astro.site/);
@@ -51,7 +52,7 @@ test('sitemap encodes route segments and escapes XML', () => {
   const sitemap = renderSitemap(site, special);
   assert.ok(sitemap.includes('/skills/a%26b&apos;%3Cx%3E/'));
   assert.ok(sitemap.includes('/categories/a%2Fb/'));
-  assert.equal((renderSitemap(site, [...skills, skills[0]]).match(/<loc>/g) || []).length, 7);
+  assert.equal((renderSitemap(site, [...skills, skills[0]]).match(/<loc>/g) || []).length, 8);
 });
 
 test('LLM index and full catalog use real descriptions, categories and upstream metadata', () => {
@@ -61,6 +62,8 @@ test('LLM index and full catalog use real descriptions, categories and upstream 
   assert.ok(index.includes('[Zeta](<https://catalog.example/skills/zeta/>): Short Zeta.'));
   assert.ok(index.includes('[general](<https://catalog.example/categories/general/>)'));
   assert.ok(index.includes('https://catalog.example/llms-full.txt'));
+  assert.ok(index.includes('[Skills dashboard](<https://catalog.example/dashboard/>)'));
+  assert.ok(full.includes('[Skills dashboard](<https://catalog.example/dashboard/>)'));
   assert.doesNotMatch(index, /Unused|Full Zeta description/);
   assert.ok(full.includes('Full Zeta description.'));
   assert.ok(full.includes('- Author: Example\n- License: MIT\n- Complexity: advanced\n- Platforms: linux\n- Tags: test'));
@@ -82,7 +85,7 @@ test('every canonical catalog skill and used category is discoverable', () => {
   const catalog = JSON.parse(fs.readFileSync(new URL('../site/src/data/skills.json', import.meta.url), 'utf8'));
   const urls = discoveryUrls(site, catalog.skills);
   const usedCategories = new Set(catalog.skills.map(skill => skill.category || 'general'));
-  assert.equal(urls.length, 3 + usedCategories.size + catalog.skills.length);
+  assert.equal(urls.length, 4 + usedCategories.size + catalog.skills.length);
   const index = renderLlms(site, catalog.skills, {});
   const full = renderLlms(site, catalog.skills, {}, true);
   for (const skill of catalog.skills) {

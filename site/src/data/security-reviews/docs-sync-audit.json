@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "docs-sync-audit",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "b41d61b4fa505a0d4f3cc5cde431564d6343d4c936fe39a9a474fb4f874dad94",
+  "contentHash": "8a6b4afd05d40c8105817aa99e701bb70d5d80e3ef7b74379b82c5f3b3908749",
+  "reviewedAt": "2026-11-28T14:10:47.252Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "scripts/docs_drift.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

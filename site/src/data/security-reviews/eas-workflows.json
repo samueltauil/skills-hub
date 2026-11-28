@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "eas-workflows",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "823587c9877d40b95445be0763afbe1fddee0c6fdb0ac397d8c2f6d12cff1943",
+  "contentHash": "16c2b121f0720cddbdf36a02be17fb7d305ef71f58ec5f947b4010351f4dfc31",
+  "reviewedAt": "2026-11-28T14:15:20.412Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "scripts/fetch.js",
+      "scripts/package.json"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

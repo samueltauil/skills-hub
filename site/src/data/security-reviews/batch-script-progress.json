@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "batch-script-progress",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d3615acbaeb924d5a7c8cb0cc6518311b624cef7e849da2bb2d7a9e6f28a6d33",
+  "contentHash": "728069c56b8ff4dcd7c5426c56612deb23133fe22f9eb838b272c08488b1260b",
+  "reviewedAt": "2026-11-28T13:36:27.765Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "examples/batch.mjs",
+      "examples/batch.ps1",
+      "examples/batch.py",
+      "references/language-notes.md",
+      "references/verification.md",
+      "tests/verify-examples.mjs"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

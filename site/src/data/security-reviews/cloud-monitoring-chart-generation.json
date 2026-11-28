@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-monitoring-chart-generation",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "31faaaae544e9b0735491689f6db5adbba0ba6c29ff7e0fd0bd63f92a0931ea3",
+  "contentHash": "ac07c02edcee589e58ec06fbab13cf57590c7fa23429b321a433e537b092a55c",
+  "reviewedAt": "2026-11-28T13:46:09.805Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "scripts/assemble_widget_proto.py",
+      "scripts/assemble_widget_proto_test.py",
+      "scripts/compute_labels.py",
+      "scripts/compute_labels_test.py",
+      "scripts/requirements.txt",
+      "scripts/textproto_util.py",
+      "scripts/textproto_util_test.py",
+      "scripts/validate_chart.py",
+      "scripts/validate_chart_test.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

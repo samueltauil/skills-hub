@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "binlog-failure-analysis",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "a00d80efe538a11b5732a02e29d25b2e9dd72f0aee7a9ca0b324bbf51d994805",
+  "contentHash": "1f49c37c705eb2a9425b5800c2ff27d5bc3aca75c3d38b7cbdda2b0c76333970",
+  "reviewedAt": "2026-11-28T13:39:06.848Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

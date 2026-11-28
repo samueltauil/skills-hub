@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-basics",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "32bd5ce500382bb8766e2c48969fd07c1a18fe096d796745d799d8ae2df76c5c",
+  "contentHash": "5bedfbf330cc67ac7ace5587c2c508a6c6a8ce05e57a4fdd9835cefc9f8be34c",
+  "reviewedAt": "2026-11-28T16:17:38.753Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/cli-reference.md",
+      "references/client-library-usage.md",
+      "references/core-concepts.md",
+      "references/iac-usage.md",
+      "references/mcp-usage.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

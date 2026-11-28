@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bug-receipt",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "2c12f8343fff7783758b93d80ce294e9101814c0c3f19b0559d7e9711b6c46fa",
+  "contentHash": "6be7bf8549003ed1556187beca65781454fdfb95d1502024deee5d01ec6d092a",
+  "reviewedAt": "2026-11-28T13:41:55.070Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/receipt.template.json",
+      "references/receipt-contract.md",
+      "references/receipt.schema.json",
+      "scripts/validate-receipt.mjs"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

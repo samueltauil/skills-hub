@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "skillId": "basin",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "e2321c7e507541af0cf915f54512b3819a304687d1b446b68e320026c87fc435",
+  "contentHash": "fe647a97fb8c91e1d72623c1ab0813bb57ec39b14b8d269f91c025c8c01f8286",
+  "reviewedAt": "2026-11-28T13:36:00.455Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/catalog/README.md",
+      "references/catalog/api.md",
+      "references/catalog/configuration.md",
+      "references/catalog/gotchas.md",
+      "references/catalog/patterns.md",
+      "references/pipelines/README.md",
+      "references/pipelines/api.md",
+      "references/pipelines/configuration.md",
+      "references/pipelines/gotchas.md",
+      "references/pipelines/patterns.md",
+      "references/skill-feedback.md",
+      "references/sql/README.md",
+      "references/sql/api.md",
+      "references/sql/configuration.md",
+      "references/sql/gotchas.md",
+      "references/sql/patterns.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

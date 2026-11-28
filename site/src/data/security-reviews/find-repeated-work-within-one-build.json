@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "find-repeated-work-within-one-build",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "1dd52da4a4f4d132a62e56c0a02a0c6bb3141acb5437aa6ef253f7ab4abdec58",
+  "contentHash": "f141f118f6b70fd28f4ff8a9b6a42847ebe3bbb6f12e9cdf06bdf9ad3edff0e0",
+  "reviewedAt": "2026-11-28T15:27:37.684Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

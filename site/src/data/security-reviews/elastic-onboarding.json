@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "elastic-onboarding",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "02227f0f80f41149e74c7c78a30b983cb8a53987fe6fa886a97d4369c2ddfe8b",
+  "contentHash": "89ede13970f07ae22ca1e51ca031ffded0b6fa86d4bbb6ada496d90bf750588f",
+  "reviewedAt": "2026-11-28T14:16:14.081Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dotnet.md",
+      "references/java.md",
+      "references/php.md",
+      "references/python.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

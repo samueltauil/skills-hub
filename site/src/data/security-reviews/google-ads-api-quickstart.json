@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-ads-api-quickstart",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "ab10229fe7a4222b069d087f6c73728b7f77af375eb40e5d2fdff968dd8af6de",
+  "contentHash": "a2224653ed3e3cc0ea3a4270c7282df5fadbb3dd4911eb172df72f6a2f8624f5",
+  "reviewedAt": "2026-11-28T16:38:17.955Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dotnet.md",
+      "references/java.md",
+      "references/perl.md",
+      "references/php.md",
+      "references/python.md",
+      "references/rest.md",
+      "references/ruby.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

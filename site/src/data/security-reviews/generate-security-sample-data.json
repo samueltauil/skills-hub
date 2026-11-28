@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "generate-security-sample-data",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "7149147ca00027fb99da19b38f00c07fd9d48721af4b0a072169a6a31ff5b456",
+  "contentHash": "bdb461b570a096c3d5222340daeb9f7b6b32f1524ea51c0c7377e577368b2605",
+  "reviewedAt": "2026-11-28T15:58:52.879Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/sample-data-reference.md",
+      "scripts/demo-walkthrough.js",
+      "scripts/es-client.js",
+      "scripts/kibana-client.js"
+    ],
+    "omittedFiles": [
+      {
+        "path": "scripts/sample-data.js",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

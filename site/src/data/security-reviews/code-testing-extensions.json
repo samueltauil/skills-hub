@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "skillId": "code-testing-extensions",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "102699bc3ed0d253f452a7016e395f75266c32c6e516db5f59f7abbf8155ea24",
+  "contentHash": "8f3aed399fcef86a3ccc6bd94d43ee3996afd90c1d15c62922613a8b7531751d",
+  "reviewedAt": "2026-11-28T13:52:21.758Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "extensions/cpp-examples.md",
+      "extensions/cpp.md",
+      "extensions/dotnet-examples.md",
+      "extensions/dotnet.md",
+      "extensions/go-examples.md",
+      "extensions/go.md",
+      "extensions/java-examples.md",
+      "extensions/java.md",
+      "extensions/kotlin-examples.md",
+      "extensions/kotlin.md",
+      "extensions/powershell-examples.md",
+      "extensions/powershell.md",
+      "extensions/python-examples.md",
+      "extensions/python.md",
+      "extensions/ruby-examples.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": [
+      "extensions/ruby.md",
+      "extensions/rust-examples.md",
+      "extensions/rust.md",
+      "extensions/swift.md",
+      "extensions/typescript-examples.md",
+      "extensions/typescript.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

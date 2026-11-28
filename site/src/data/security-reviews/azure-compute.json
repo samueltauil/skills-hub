@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-compute",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "7365de44a50025c931d2cf30042cc939802475ad4775f3ced07e4766d8aa0a66",
+  "contentHash": "3fbc1927c0d30445874e91a3d9b53665393db5de4bd138894a42df2d906190a9",
+  "reviewedAt": "2026-11-28T13:32:56.209Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/retail-prices-api.md",
+      "references/vm-families.md",
+      "references/vm-quotas.md",
+      "references/vmss-guide.md",
+      "workflows/capacity-reservation/capacity-reservation.md",
+      "workflows/capacity-reservation/references/association-disassociation.md",
+      "workflows/capacity-reservation/references/capacity-reservation-overview.md",
+      "workflows/essential-machine-management/essential-machine-management.md",
+      "workflows/essential-machine-management/references/emm-enable-flow-portal-guidance.md",
+      "workflows/essential-machine-management/references/emm-enable-flow.md",
+      "workflows/essential-machine-management/references/emm-overview.md",
+      "workflows/essential-machine-management/references/emm-prerequisites.md",
+      "workflows/vm-creator/examples/bicep/README.md",
+      "workflows/vm-creator/examples/terraform/README.md",
+      "workflows/vm-creator/references/delivery-options/github-pr.md",
+      "workflows/vm-creator/references/delivery-options/index.md",
+      "workflows/vm-creator/references/delivery-options/print.md",
+      "workflows/vm-creator/references/delivery-options/save-local.md",
+      "workflows/vm-creator/references/depth-probe/beginner.md",
+      "workflows/vm-creator/references/depth-probe/cost-deep.md",
+      "workflows/vm-creator/references/depth-probe/index.md",
+      "workflows/vm-creator/references/depth-probe/networking-deep.md",
+      "workflows/vm-creator/references/depth-probe/security-deep.md",
+      "workflows/vm-creator/references/depth-probe/spec-deep.md",
+      "workflows/vm-creator/references/mcp-tools.md",
+      "workflows/vm-creator/references/output-adapters/az-cli.md",
+      "workflows/vm-creator/references/output-adapters/bicep.md",
+      "workflows/vm-creator/references/output-adapters/index.md",
+      "workflows/vm-creator/references/output-adapters/mcp-apply.md",
+      "workflows/vm-creator/references/output-adapters/terraform.md",
+      "workflows/vm-creator/references/plan-card.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "workflows/vm-creator/examples/bicep/main.bicep",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "workflows/vm-creator/examples/terraform/main.tf",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "workflows/vm-creator/examples/terraform/outputs.tf",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "workflows/vm-creator/examples/terraform/variables.tf",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "workflows/vm-creator/references/validation-gates.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "workflows/vm-creator/vm-creator.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "workflows/vm-recommender/references/handoff-to-creator.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "workflows/vm-recommender/references/web-fetch-policy.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "workflows/vm-recommender/vm-recommender.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

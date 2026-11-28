@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cf-cli",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f6a38829c3f0c1027aad71d45ca06cd9b8f9f7d2d52b3e1557a9112cc95dd513",
+  "contentHash": "a87f7f59d1fe01bed78552c808eb6d665cda0f50047fd31d02210c9f818612fd",
+  "reviewedAt": "2026-11-28T13:42:49.438Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/skill-feedback.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

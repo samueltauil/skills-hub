@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "creating-oracle-to-postgres-migration-integration-tests",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "46b97efdab572ca0daabad6d018531affcfd0a2c13d3a40be276f18dfd1e7924",
+  "contentHash": "014fbb096763834648830883832ed8f08848c43902f63acc4057a2c6ced03c47",
+  "reviewedAt": "2026-11-28T14:00:08.601Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

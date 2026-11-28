@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "flowstudio-power-automate-monitoring",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "7a94bc2d6c64912c5b077f3b3977c636dd9086963ff71cbae1fd64a66162cfb5",
+  "contentHash": "790d28a8793df65f0c07bc759d1a6eb8fa3f0c7ace16cf0c0bfec86c44f0dce2",
+  "reviewedAt": "2026-11-28T15:42:12.480Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

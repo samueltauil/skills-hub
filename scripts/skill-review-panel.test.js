@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { collectSkill, errorReport, validatePublishedReport, validateResponse } from './skill-review.js';
-import { getSecurityReview } from '../site/src/data/security-reviews.js';
+import { getSecurityReview, summarizeSecurityReview } from '../site/src/data/security-reviews.js';
 
 const skill = {
   id: 'example',
@@ -54,6 +54,32 @@ test('incomplete and failed reviews never become clean results', () => {
   });
   assert.equal(getSecurityReview(incomplete, skill).status, 'incomplete');
   assert.equal(getSecurityReview(errorReport(new Error('Model timed out'), manifest), skill).status, 'error');
+});
+
+test('coverage summary counts both omitted and unreviewed files', () => {
+  const bundle = {
+    ...skill,
+    files: [...skill.files, { path: 'notes.md', content: 'Check permissions.' }, { path: 'image.png', content: '' }],
+  };
+  const collected = collectSkill(bundle, { revision: manifest.revision });
+  const partial = validateResponse(collected, {
+    bundleHash: collected.bundleHash, status: 'complete', reviewedFiles: ['SKILL.md'], findings: [],
+  });
+  const review = getSecurityReview(partial, bundle);
+  const summary = summarizeSecurityReview(review);
+  assert.equal(review.status, 'incomplete');
+  assert.equal(summary.coverage, '1 of 3 catalog files reviewed');
+  assert.equal(summary.gaps, 2);
+  assert.notEqual(summary.label, 'No findings observed');
+});
+
+test('legacy scan flags cannot influence review status or coverage', () => {
+  const legacy = { ...skill, verified: true, securityScan: { verified: true, issueCount: 0 } };
+  const unreviewed = summarizeSecurityReview(getSecurityReview(undefined, legacy));
+  assert.equal(unreviewed.label, 'Not reviewed');
+  assert.equal(unreviewed.coverage, 'Coverage unavailable');
+  const changed = { ...legacy, files: [{ path: 'SKILL.md', content: 'Changed.' }] };
+  assert.equal(summarizeSecurityReview(getSecurityReview(report, changed)).label, 'Out of date');
 });
 
 test('published review files belong to catalog skills and pass panel validation', () => {

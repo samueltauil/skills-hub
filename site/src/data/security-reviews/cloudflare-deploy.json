@@ -1,0 +1,1166 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloudflare-deploy",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d26d4aac574332ce69f3490f7e658ce4d8d8e2b88fa4c39ddae60e73540e82d8",
+  "contentHash": "44e4a509156a3c4498bac482ea4087906e0447bfdd691f150c67e1317cf99218",
+  "reviewedAt": "2026-11-28T13:50:06.846Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/agents-sdk/README.md",
+      "references/agents-sdk/api.md",
+      "references/agents-sdk/configuration.md",
+      "references/agents-sdk/gotchas.md",
+      "references/agents-sdk/patterns.md",
+      "references/ai-gateway/README.md",
+      "references/ai-gateway/configuration.md",
+      "references/ai-gateway/dynamic-routing.md",
+      "references/ai-gateway/features.md",
+      "references/ai-gateway/sdk-integration.md",
+      "references/ai-gateway/troubleshooting.md",
+      "references/ai-search/README.md",
+      "references/ai-search/api.md",
+      "references/ai-search/configuration.md",
+      "references/ai-search/gotchas.md",
+      "references/ai-search/patterns.md",
+      "references/analytics-engine/README.md",
+      "references/analytics-engine/api.md",
+      "references/analytics-engine/configuration.md",
+      "references/analytics-engine/gotchas.md",
+      "references/analytics-engine/patterns.md",
+      "references/api-shield/README.md",
+      "references/api-shield/api.md",
+      "references/api-shield/configuration.md",
+      "references/api-shield/gotchas.md",
+      "references/api-shield/patterns.md",
+      "references/api/README.md",
+      "references/api/api.md",
+      "references/api/configuration.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/api/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/api/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/argo-smart-routing/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/argo-smart-routing/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/argo-smart-routing/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/argo-smart-routing/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/argo-smart-routing/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bindings/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bindings/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bindings/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bindings/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bindings/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bot-management/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bot-management/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bot-management/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bot-management/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/bot-management/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/browser-rendering/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/browser-rendering/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/browser-rendering/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/browser-rendering/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/browser-rendering/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/c3/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/c3/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/c3/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/c3/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/c3/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cache-reserve/README.md",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "references/cache-reserve/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cache-reserve/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cache-reserve/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cache-reserve/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/containers/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/containers/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/containers/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/containers/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/containers/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cron-triggers/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cron-triggers/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cron-triggers/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cron-triggers/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cron-triggers/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/ddos/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/ddos/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/ddos/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/ddos/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/ddos/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/do-storage/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/do-storage/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/do-storage/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/do-storage/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/do-storage/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/do-storage/testing.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/durable-objects/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/durable-objects/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/durable-objects/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/durable-objects/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/durable-objects/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-routing/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-routing/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-routing/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-routing/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-routing/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-workers/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-workers/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-workers/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-workers/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/email-workers/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/network-interconnect/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/network-interconnect/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/network-interconnect/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/network-interconnect/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/network-interconnect/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pipelines/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pipelines/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pipelines/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pipelines/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pipelines/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pulumi/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pulumi/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pulumi/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pulumi/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pulumi/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-data-catalog/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-data-catalog/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-data-catalog/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-data-catalog/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-data-catalog/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-sql/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-sql/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-sql/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-sql/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2-sql/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtime-sfu/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtime-sfu/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtime-sfu/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtime-sfu/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtime-sfu/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtimekit/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtimekit/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtimekit/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtimekit/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/realtimekit/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sandbox/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sandbox/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sandbox/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sandbox/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sandbox/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/smart-placement/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/smart-placement/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/smart-placement/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/smart-placement/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/smart-placement/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/snippets/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/snippets/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/snippets/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/snippets/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/snippets/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/spectrum/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/spectrum/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/spectrum/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/spectrum/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/spectrum/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/api-live.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/terraform/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/terraform/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/terraform/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/terraform/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/terraform/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/networking.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turn/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turn/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turn/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turn/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turn/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turnstile/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turnstile/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turnstile/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turnstile/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/turnstile/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/web-analytics/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/web-analytics/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/web-analytics/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/web-analytics/integration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/web-analytics/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workerd/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workerd/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workerd/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workerd/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workerd/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-for-platforms/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-for-platforms/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-for-platforms/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-for-platforms/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-for-platforms/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-playground/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-playground/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-playground/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-playground/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-playground/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-vpc/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-vpc/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-vpc/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-vpc/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-vpc/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers/frameworks.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/wrangler/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/wrangler/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/wrangler/auth.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/wrangler/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/wrangler/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/wrangler/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/zaraz/IMPLEMENTATION_SUMMARY.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/zaraz/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/zaraz/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/zaraz/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/zaraz/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/zaraz/patterns.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

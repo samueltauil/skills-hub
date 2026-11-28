@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-cluster-creation",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "2a688d7b1de0a1f7f174b27b577282f4767e9529791c8791efed1184ac3024b4",
+  "contentHash": "70af5522a662bb3d761c03d76131584b710c27eb9c7f03e0eedd9fb3229d81cf",
+  "reviewedAt": "2026-11-28T16:19:34.747Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

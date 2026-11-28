@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "skillId": "firebase-firestore",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "4e9c57114744b3cc7205c01727dcb90fbe7eb1c7714536237977f250687960f8",
+  "contentHash": "4d8e580f54608af3239ed79b0f19d1d448bf44d2cee87b89a3f8c2622c3304c7",
+  "reviewedAt": "2026-11-28T15:34:36.668Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/enterprise/android_sdk_usage.md",
+      "references/enterprise/data_model.md",
+      "references/enterprise/flutter_setup.md",
+      "references/enterprise/indexes.md",
+      "references/enterprise/ios_setup.md",
+      "references/enterprise/provisioning.md",
+      "references/enterprise/python_sdk_usage.md",
+      "references/enterprise/web_sdk_usage.md",
+      "references/standard/android_sdk_usage.md",
+      "references/standard/flutter_setup.md",
+      "references/standard/indexes.md",
+      "references/standard/ios_setup.md",
+      "references/standard/provisioning.md",
+      "references/standard/web_sdk_usage.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

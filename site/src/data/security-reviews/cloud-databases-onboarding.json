@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-databases-onboarding",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f684cc27d927f146300da219038a5be0434438aef91a5f0d719d840d2bae9ee7",
+  "contentHash": "c4b0c0d4f9bb24a80345e59a6a54bc25f444b56b7301638f6e70bf8cc8269a5d",
+  "reviewedAt": "2026-11-28T13:45:16.749Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/onboarding_prompts.md",
+      "references/recommendation_matrix.txt",
+      "references/selection_prompts.md",
+      "scripts/database_onboarding_skill.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

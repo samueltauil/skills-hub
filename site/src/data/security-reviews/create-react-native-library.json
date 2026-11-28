@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "create-react-native-library",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "388ed9e02f154e66c00b3eef55a2c810c4db63d9ee68c5f32fe0ca8ffdf8a9f4",
+  "contentHash": "4aa2dc2995b27b4290ac9c3417e956c368b8bc757f73c516277da9b3d2536bde",
+  "reviewedAt": "2026-11-28T13:59:24.812Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/local-library.md",
+      "references/scaffold-library.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

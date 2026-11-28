@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-container-registry-cli",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "533d4771ddf500fde270733033cb7d04e0a49f6d81b58512d4a49fbb8d698c70",
+  "contentHash": "81ec9e71169b96ea2d51069c92c3fbcf996f7d1162ea47a0a47e9c4499d89fcf",
+  "reviewedAt": "2026-11-28T13:31:57.371Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/auth-and-security.md",
+      "references/build-and-tasks.md",
+      "references/images-and-artifacts.md",
+      "references/networking-and-geo.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

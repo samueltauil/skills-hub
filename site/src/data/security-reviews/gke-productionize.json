@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-productionize",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "ce5704f673e6ceb1dc06dd14f8caab800a1f1ce99ae3a01766109844d7110026",
+  "contentHash": "e2f1dd009fbb52b12f39107c2175de86f81a3ca838b2734061bd9f30a1e70b69",
+  "reviewedAt": "2026-11-28T16:27:39.047Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

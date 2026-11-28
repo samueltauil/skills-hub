@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dotnet-breaking-changes",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "9d401ee6448ecdade8d3b8d7a8cfe951e05d1062a75b5fb6e82bee2da9114539",
+  "contentHash": "6de109baf13b45056032d9e03d1045e35e024800a01752c9728b8d875be6c7d2",
+  "reviewedAt": "2026-11-28T14:12:31.578Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/internals-visible-to.md",
+      "references/multi-targeting.md",
+      "references/public-api.md",
+      "references/source-generation.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

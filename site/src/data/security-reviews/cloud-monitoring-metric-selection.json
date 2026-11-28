@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-monitoring-metric-selection",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "7cd9889271a13af1b1479d5c7f59a97977601a977b197e3ffcaec0b5246c5b51",
+  "contentHash": "4352823375bd30f7ce7b5c1a2698aa1f480387f01904327798049bdda446d760",
+  "reviewedAt": "2026-11-28T13:46:21.411Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

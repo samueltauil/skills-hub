@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloudflare-one-migrations",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "794a8634831c286a8ed109fa797f0c4387225b78e4ed234946b59cd77a4c8dc5",
+  "contentHash": "3dbc53271578c296329b54cc0c34195ec8e28d9d4987b6509f726b2e0ff07400",
+  "reviewedAt": "2026-11-28T13:48:54.078Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/skill-feedback.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

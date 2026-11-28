@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "skillId": "design",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f2718e9deaf56d86331f0d3f30c99c1d1a047d06cc9cb7a8ec33180dac2f8f4a",
+  "contentHash": "c19bc398d448ff104c7abb522349a30942adc9cca459e96b84bfb0bb820b8a74",
+  "reviewedAt": "2026-11-28T14:07:28.186Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "data/cip/deliverables.csv",
+      "data/cip/industries.csv",
+      "data/cip/mockup-contexts.csv",
+      "data/cip/styles.csv",
+      "data/icon/styles.csv",
+      "data/logo/colors.csv",
+      "data/logo/industries.csv",
+      "data/logo/styles.csv",
+      "references/banner-sizes-and-styles.md",
+      "references/cip-deliverable-guide.md",
+      "references/cip-design.md",
+      "references/cip-prompt-engineering.md",
+      "references/cip-style-guide.md",
+      "references/design-routing.md",
+      "references/icon-design.md",
+      "references/logo-color-psychology.md",
+      "references/logo-design.md",
+      "references/logo-prompt-engineering.md",
+      "references/logo-style-guide.md",
+      "references/slides-copywriting-formulas.md",
+      "references/slides-create.md",
+      "references/slides-html-template.md",
+      "references/slides-layout-patterns.md",
+      "references/slides-strategies.md",
+      "references/slides.md",
+      "references/social-photos-design.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "scripts/logo/core.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/logo/generate.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/logo/search.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/logo/tests/test_generate.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/logo/tests/test_logo_stdout_encoding.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/tests/test_cip_generate.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/tests/test_cip_stdout_encoding.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/tests/test_env_file_encoding.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/tests/test_icon_generate.py",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "scripts/cip/core.py",
+      "scripts/cip/generate.py",
+      "scripts/cip/render-html.py",
+      "scripts/cip/search.py",
+      "scripts/icon/generate.py"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

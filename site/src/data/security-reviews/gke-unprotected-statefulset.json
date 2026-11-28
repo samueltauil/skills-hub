@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-unprotected-statefulset",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "3de845bd6af42749f605f2582b1ce4119eccae27b1de1a9b7f5bd570e0d28da9",
+  "contentHash": "e8de02807f19d0b43a459b41d3611a7a280c8e31070500942a66072c0ad22f30",
+  "reviewedAt": "2026-11-28T16:30:44.062Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

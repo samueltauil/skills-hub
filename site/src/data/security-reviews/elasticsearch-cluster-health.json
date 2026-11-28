@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "elasticsearch-cluster-health",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "472d058ef91d9158f9ac036311ca851857dfe8e820e207b76f9b75571f271fc4",
+  "contentHash": "30b90689f5ddff44a8d767025afc9c3dd3adb92ed8a80ae704aa762d748d85ec",
+  "reviewedAt": "2026-11-28T14:16:14.059Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

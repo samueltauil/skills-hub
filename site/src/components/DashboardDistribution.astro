@@ -1,0 +1,30 @@
+---
+interface Props {
+  rows: { id: string; label?: string; count: number; percentage: number; href?: string }[];
+}
+const { rows } = Astro.props;
+const number = new Intl.NumberFormat('en-US');
+const percent = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
+---
+
+<ul class="distribution">
+  {rows.map(row => (
+    <li data-distribution-id={row.id} data-count={row.count}>
+      <div class="row-label">
+        {row.href ? <a href={row.href}>{row.label || row.id}</a> : <span>{row.label || row.id}</span>}
+        <span class="row-value">{number.format(row.count)} <span class="share">· {percent.format(row.percentage)}%</span></span>
+      </div>
+      <div class="bar-track" aria-hidden="true"><span style={`width: ${row.percentage}%`}></span></div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .distribution { list-style: none; display: grid; gap: 1rem; }
+  .row-label { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.4rem; font-size: 0.875rem; }
+  .row-label > :first-child { min-width: 0; overflow-wrap: anywhere; }
+  .row-value { flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  .share { color: var(--color-text-secondary); }
+  .bar-track { height: 5px; background: var(--color-bg-tertiary); border-radius: 4px; overflow: hidden; }
+  .bar-track span { display: block; height: 100%; background: var(--color-accent); border-radius: inherit; }
+</style>

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dotnet-mcp-builder",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "3cada962503b93d307f8d99b44f2e5ea6eabd093e3d38e4659d66118ab5aa659",
+  "contentHash": "37a71a0f1f2700bff0c5598c3e5964a182e4ba28b64d951112994896b983e6aa",
+  "reviewedAt": "2026-11-28T14:12:55.336Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/client.md",
+      "references/elicitation.md",
+      "references/mcp-apps.md",
+      "references/packages.md",
+      "references/prompt-primitive.md",
+      "references/resource-primitive.md",
+      "references/roots.md",
+      "references/sampling.md",
+      "references/server-features.md",
+      "references/testing.md",
+      "references/tool-primitive.md",
+      "references/transport-http.md",
+      "references/transport-stdio.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

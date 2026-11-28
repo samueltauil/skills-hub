@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigtable-basics",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d24158b46f957b62b32eccb3ccecf34200afb384743911d93acfb49e6ae87416",
+  "contentHash": "ca813c310737940d04fb60e7864bae857af8bdcfa3f1944716c55096e8549800",
+  "reviewedAt": "2026-11-28T13:39:34.784Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/row_key_schema.yaml",
+      "references/attribution.md",
+      "references/cli_data_access.md",
+      "references/client_libraries.md",
+      "references/dataplex.md",
+      "references/infrastructure_management.md",
+      "references/schema_design.md",
+      "references/sql_guide.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "csharp-expert",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "fe43a10da17daafb71f3eeef856604747ee9f856eaaa6318f75c91145ef0caf7",
+  "contentHash": "9cb464c90ecf9fefbe50eab0a0e73c6c4e73a707a5d82bc082685d36a32b5874",
+  "reviewedAt": "2026-11-28T14:01:54.791Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dotnet-skills-marketplace.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

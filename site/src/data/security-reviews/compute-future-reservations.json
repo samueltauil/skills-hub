@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "compute-future-reservations",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f2bad43610d82ea426f0fce055a127143123ddf8025dbd2196433da6574ae083",
+  "contentHash": "d17816677890bc56cf87a9be4a679d754bb125023d99f7c77bfd5b3e0a4494e7",
+  "reviewedAt": "2026-11-28T13:52:10.347Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

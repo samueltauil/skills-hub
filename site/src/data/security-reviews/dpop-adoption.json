@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dpop-adoption",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "de61073752d0194c65bd961d54388ef7861dbe7658bb081904eb2406e96eb7d5",
+  "contentHash": "6905ce897a8aea2b9bfe78e9d158323d2cfc91ddfaff66d6c77e46b5ec7ff946",
+  "reviewedAt": "2026-11-28T14:13:39.080Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

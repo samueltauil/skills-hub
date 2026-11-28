@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-smart-city-iot-solution-builder",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8b1a11e90d79842a2c6c44227b605cb33520aaa9ce7203de827af1a9a6983432",
+  "contentHash": "f42049ba452bb3cffb6875554d1dbfd4e40b06190565db1ebf4e43c3b3cf6fa5",
+  "reviewedAt": "2026-11-28T13:35:35.261Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/smart-city-solution-template.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

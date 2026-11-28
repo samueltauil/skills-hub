@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "go-mcp-server-generator",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "d8bc9f9478f657c4fcc947b81a065af8b685f404688a6aadeddb4157f821a1dc",
+  "contentHash": "52b43ca6efd81f117b1f11f72374a2fba8bb57d906de005fb3d42528020db88e",
+  "reviewedAt": "2026-11-28T16:35:47.115Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "hf-cloud-sagemaker-iam-preflight",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "aaf2d5866d11f4706d70b585748950782a51963e3281f073ae6097fba7e28872",
+  "contentHash": "b2153a8420131cfbc7dd9ca76363510a9e35c8a4b7fc948e92b8f55c20bf0225",
+  "reviewedAt": "2026-11-28T17:17:55.533Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/minimum-permissions.json",
+      "references/trust-policy.json",
+      "scripts/check_role.py",
+      "scripts/create_role.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

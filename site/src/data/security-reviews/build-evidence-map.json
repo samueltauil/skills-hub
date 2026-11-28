@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "build-evidence-map",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "7d6c05fbd5d31de6090183b08344585485d7402a174f000950f97978f93a9e3e",
+  "contentHash": "4033194d5d4800076ccb2183572437b95e17ead6e5c3aa82bc7b445ab49d93ff",
+  "reviewedAt": "2026-11-28T13:41:58.000Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/evidence-ladder.md",
+      "references/map-schema.md",
+      "scripts/contract.mjs",
+      "scripts/validate.mjs"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

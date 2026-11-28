@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "elasticsearch-reindex",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "0b88b3f7e74c8cac9c917e1c39e1ff74a18ca5b5c8eaa3e3a6fce0fd2c545f38",
+  "contentHash": "3b08c3baf5ac1704cfd28f42c916258feca081a7a3bf14913bc74c30ad2fc370",
+  "reviewedAt": "2026-11-28T14:17:06.971Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/api-reference.md",
+      "references/patterns.md",
+      "references/troubleshooting.md",
+      "references/tuning.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -2,7 +2,9 @@
 /**
  * scan-skills.js
  *
- * Two-pass security scanner for skills in site/src/data/skills.json.
+ * Legacy, standalone diagnostics for skills in site/src/data/skills.json.
+ * Not used by build/refresh or as published security evidence. Security review
+ * publication is handled only by the Skill Security Review Agentic Workflow.
  *
  * Pass 1 (regex):  Scans all skill files and SKILL.md code blocks against
  *                  pattern rules defined in skills/security-rules.yml.
@@ -14,7 +16,6 @@
  *
  * Options:
  *   --output <file>    Write a JSON report to this path (default: scan-report.json)
- *   --update-skills    Write scan results back into skills.json (adds securityScan field)
  *   --fail-on-high     Exit with code 1 if any high-severity issues are found
  *   --ai-scan          Enable AI-powered deep scan (requires GITHUB_TOKEN)
  *   --model <model>    Model to use for AI scan (default: gpt-4o)
@@ -39,6 +40,13 @@ const { values: args } = parseArgs({
   },
   strict: false,
 });
+
+// Fail before reading/scanning content: legacy results must never replace the
+// hash-bound, evidence-validated Agentic Workflow reports.
+if (args['update-skills']) {
+  console.error('--update-skills is retired. Publish security reviews through the Skill Security Review Agentic Workflow.');
+  process.exit(1);
+}
 
 // ── Load rules ────────────────────────────────────────────────────────────────
 async function loadRules() {
@@ -509,12 +517,6 @@ async function main() {
       const severities = finding.issues.map(i => i.severity).join(', ');
       console.log(`   - ${finding.skillId} [${finding.source}]: ${finding.issueCount} issue(s) [${severities}]`);
     }
-  }
-
-  // Optional write-back to skills.json
-  if (args['update-skills']) {
-    fs.writeFileSync(skillsPath, JSON.stringify(skillsData, null, 2));
-    console.log('\n✅ skills.json updated with security scan results');
   }
 
   if (args['fail-on-high'] && highCount > 0) {

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "compute-host-events-troubleshooting",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8b2a98ee8e1892f7a2d4eba71f0d7ff937927d080e14653cc83ee386138ca4b2",
+  "contentHash": "a3457475dac3086459cac1b3c885a71880f69879099823357cbe962d406e4e52",
+  "reviewedAt": "2026-11-28T13:52:15.315Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

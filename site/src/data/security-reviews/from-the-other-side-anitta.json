@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "from-the-other-side-anitta",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "e20ac99ea1ebcb1271a588e92d11639e178ea3bf93d1ecb9a5a78f1d11170c31",
+  "contentHash": "02bd4fda3dfd0c4d4627dd0b7d13893c150e87c586baf87ed83488753279763c",
+  "reviewedAt": "2026-11-28T15:45:52.666Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

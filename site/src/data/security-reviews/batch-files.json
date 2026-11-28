@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "skillId": "batch-files",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "42700a2b4d29833c9d816c8e0829e386ffa7ab11f061b43d640fe48b620fa5cd",
+  "contentHash": "5d720357375496c283eede4a734aaced8a4cb2493763b1421265db105440bf6f",
+  "reviewedAt": "2026-11-28T13:36:38.816Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/executable.txt",
+      "assets/library.txt",
+      "assets/task.txt",
+      "references/cygwin.md",
+      "references/msys2.md",
+      "references/tools-and-resources.md",
+      "references/windows-subsystem-on-linux.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/batch-files-and-functions.md",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "references/windows-commands.md",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

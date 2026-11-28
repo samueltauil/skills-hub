@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "from-the-other-side-wiggins",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "1b3fcd9917934be293147a46c511c6e203603975c63deec87bd443ff6709ed10",
+  "contentHash": "6b873498d675dac8c33176b26c5d709b93522a8dca2f10762bc05dacaae95edd",
+  "reviewedAt": "2026-11-28T15:48:03.918Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

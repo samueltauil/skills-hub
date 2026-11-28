@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "declarative-agents",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "66a4170cf884d663bb61f1d92f8e0013d557e2ae7aa71e1109e46a01164105ad",
+  "contentHash": "f81900a15d4dea6f907bda7c9b4cf258f71221c2a6762f5bc1c8b845b48d2852",
+  "reviewedAt": "2026-11-28T14:05:30.962Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

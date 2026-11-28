@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "skillId": "chatgpt-apps",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "03a5b359be343f214928bbbf37f5bbd888ca3f266b6030f46baa91f94d047205",
+  "contentHash": "987b4e6361244ce722cc0a7b5cd850c677f12c6efff84884a3357bcf6339ce57",
+  "reviewedAt": "2026-11-28T13:43:48.113Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/app-archetypes.md",
+      "references/apps-sdk-docs-workflow.md",
+      "references/interactive-state-sync-patterns.md",
+      "references/repo-contract-and-validation.md",
+      "references/search-fetch-standard.md",
+      "references/upstream-example-workflow.md",
+      "references/window-openai-patterns.md",
+      "scripts/scaffold_node_ext_apps.mjs"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

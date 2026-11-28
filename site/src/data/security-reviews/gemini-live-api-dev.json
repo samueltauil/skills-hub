@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gemini-live-api-dev",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "4f8b733fd4c364116a5664ed67f4f108554b58b5d0881695875894e867d145c1",
+  "contentHash": "8b34c44ccc2be7c606770e668f0448b4af4a226e8463b23cb9c7907d30543532",
+  "reviewedAt": "2026-11-28T15:56:10.774Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/migration.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

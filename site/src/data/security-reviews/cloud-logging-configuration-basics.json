@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-logging-configuration-basics",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "c75cc006d5125cc65b43fe840535fe32e37c79c19671b9892826c0e61b4d8dd2",
+  "contentHash": "c7445e0cc25eedd926e0cf452db86091d1c4c2a54674a3fd6cd2faa14ecdc6f0",
+  "reviewedAt": "2026-11-28T13:44:52.057Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

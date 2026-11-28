@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-solution-agentic-ai-borderless-data-lakehouse",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "a4f6c9d6d1b76f51d43ab279d73ee04dea756e40303906941ec4427abda45de0",
+  "contentHash": "34c0187b9faf6f39806585e6405a85eed9a480ce1f76ad02ad89d3e162b61213",
+  "reviewedAt": "2026-11-28T16:50:14.937Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/output-template.md",
+      "references/attribution.md",
+      "references/design_recommendations.md",
+      "references/product_mapping.md",
+      "references/product_renaming.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

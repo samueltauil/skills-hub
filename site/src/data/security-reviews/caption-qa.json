@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "caption-qa",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "5fbe46e794d76cd218e354c1134c83c3d099afc21a4967b732731e022b46bfcd",
+  "contentHash": "075924a4e910e0600c30458d393bfb0bcc98e27ba8c3a9513762a667599314cf",
+  "reviewedAt": "2026-11-28T13:42:36.578Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

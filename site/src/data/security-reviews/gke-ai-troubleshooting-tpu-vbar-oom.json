@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-ai-troubleshooting-tpu-vbar-oom",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "c486223b178b088d86d3a0f27e010b55a24fbdb668989a6c828ebd6b19c10639",
+  "contentHash": "aa3312f2e6bccefc40185494b5a63592cb650831f9a776514e66ae2ebed993a2",
+  "reviewedAt": "2026-11-28T16:14:57.573Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/failure_signatures.md",
+      "scripts/validate_queries.sh"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

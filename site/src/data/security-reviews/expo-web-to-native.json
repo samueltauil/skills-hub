@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "expo-web-to-native",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "7c6eb410bcd083684de2128040f17622fa498778497d43a3b051d6e1010ddb28",
+  "contentHash": "92997610a0c111b10b27bea63c27289d805547e9ad543196433eddcc75de010f",
+  "reviewedAt": "2026-11-28T15:18:09.452Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/false-friends.md",
+      "references/native-patterns.md",
+      "references/run-as-goal.md",
+      "references/verify-on-device.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

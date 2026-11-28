@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "skillId": "draw-io-diagram-generator",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "a90b0bf24221b67311ef05073ee521ecba94e75353105a130cb3772efd552406",
+  "contentHash": "c589001c5da1dbd5e59e62cd3876c74b5677a1bc849eef6f442175df02ac7323",
+  "reviewedAt": "2026-11-28T14:14:46.963Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/drawio-xml-schema.md",
+      "references/shape-libraries.md",
+      "references/style-reference.md",
+      "scripts/README.md",
+      "scripts/add-shape.py",
+      "scripts/validate-drawio.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/templates/architecture.drawio",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/templates/er-diagram.drawio",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/templates/flowchart.drawio",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/templates/sequence.drawio",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/templates/uml-class.drawio",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

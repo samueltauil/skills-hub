@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "creating-oracle-to-postgres-master-migration-plan",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "b7e907d7da063621002fe75cd2259d3852a5dce6bd4a1dbe341825f3fce74863",
+  "contentHash": "dd007cd0daa756a1255c9ee8d2d351d9e7385b05124a8c52c38b9433f528456b",
+  "reviewedAt": "2026-11-28T14:00:06.129Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

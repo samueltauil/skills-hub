@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-pricing",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "1709716ee601f8f0eebecf2cb271516af6cd1651c09e1b03505dc5c38b661b44",
+  "contentHash": "5e076aa9f5c116f8acd7f3d830fcd63815473c02e0345293ad52d3108c8ded15",
+  "reviewedAt": "2026-11-28T13:34:22.264Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/COPILOT-STUDIO-RATES.md",
+      "references/COST-ESTIMATOR.md",
+      "references/REGIONS.md",
+      "references/SERVICE-NAMES.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "data-manager-api-troubleshooting",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "1706711c3b1bb15a821c2fac7269b6f2934b11bc06e28fe685514d866398fe52",
+  "contentHash": "a8c720ae5ed241904c0ca380e6dd68f1542f48ad2e41ca9fc92ca442715a15a5",
+  "reviewedAt": "2026-11-28T14:03:23.366Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/request-errors.md",
+      "references/request-status.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

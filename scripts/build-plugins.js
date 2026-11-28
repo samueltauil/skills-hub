@@ -11,7 +11,7 @@
  *   ├── plugin.json            # Agent Plugins manifest
  *   ├── README.md              # What it is and how to install it
  *   ├── LICENSE                # Upstream license notice
- *   └── skills/<skill-name>/   # The skill files, as scanned and published on the site
+ *   └── skills/<skill-name>/   # The skill files, as published on the site
  *
  * It also writes the marketplace catalog at .github/plugin/marketplace.json so
  * the repository can be added as a marketplace in Copilot CLI and VS Code.
@@ -49,7 +49,7 @@ const ROOT = path.resolve(__dirname, '..');
 const SKILLS_JSON = path.join(ROOT, 'site', 'src', 'data', 'skills.json');
 
 const MARKETPLACE_DESCRIPTION =
-  'Curated catalog of Agent Skills for GitHub Copilot, packaged as Agent Plugins. Every skill is security scanned and installable on its own.';
+  'Curated catalog of Agent Skills for GitHub Copilot, packaged as individually installable Agent Plugins. See each skill page for security review coverage.';
 
 function sha256(text) {
   return createHash('sha256').update(text).digest('hex');

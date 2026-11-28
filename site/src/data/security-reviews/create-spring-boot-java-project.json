@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "skillId": "create-spring-boot-java-project",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "b43937f76b14cceefbdb95c2a02f60a5e4af4f3484491710b3d727747fd54a91",
+  "contentHash": "baa345b78042343a5485a0b312cefb81cd503c2ddc1e0903f56021faa4cdef29",
+  "reviewedAt": "2026-11-28T13:59:45.626Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/Dockerfile",
+      "references/PROVENANCE.md",
+      "references/configuration.md",
+      "references/database.md",
+      "references/docker.md",
+      "references/logging.md",
+      "references/security.md",
+      "references/spring-boot-4.md",
+      "references/versions.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/Dockerfile-gradle",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/Dockerfile-native",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/Dockerfile-native-gradle",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

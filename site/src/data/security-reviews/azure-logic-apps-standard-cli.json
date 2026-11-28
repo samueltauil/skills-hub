@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-logic-apps-standard-cli",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "e9cec2f87092080e12ef4b01456eda30c9f68bdc3452ecd062a3ea29411ebca9",
+  "contentHash": "c86fe704ea94ea581440e19e697eca6ae8f6eccb6dd52792351210904cd96334",
+  "reviewedAt": "2026-11-28T13:32:31.566Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "README.md",
+      "SKILL.md",
+      "references/connections.md",
+      "references/live-operations.md",
+      "references/local-runtime.md",
+      "references/packaging-deployment.md",
+      "references/testing.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

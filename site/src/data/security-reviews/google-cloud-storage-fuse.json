@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-storage-fuse",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "fec2efbc27c0bdabf1dcf8250793f9fdbd0cd38948068d0d5d2b20aeb1bc0bca",
+  "contentHash": "31ade93af7d23ed4ce4d2c24a6987cb621475ab690f09549acbe91d7862d6533",
+  "reviewedAt": "2026-11-28T16:59:05.949Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/checkpoint-safety.md",
+      "references/gke-training-deployment.md",
+      "references/performance-diagnosis.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

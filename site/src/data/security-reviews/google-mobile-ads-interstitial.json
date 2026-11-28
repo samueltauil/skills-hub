@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-mobile-ads-interstitial",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "c9e0f5d14d4293b5c40e5eadfee6ee1c8cd28ec81e4b8d27728ff84c9458e439",
+  "contentHash": "ac6f01f19996ea4d4fcd0018f6bc18563aee00e9944ed237863c9924fc8ae555",
+  "reviewedAt": "2026-11-28T17:04:59.842Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/android-interstitial.md",
+      "references/ios-interstitial.md",
+      "references/unity-interstitial.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

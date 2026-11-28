@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloudflare-app-bootstrap",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "c80008ef6e983c711fee82460c8f61b42952a66d95aee0add89ef5a0189ac22b",
+  "contentHash": "624b3bb0951a6a2fca69d07aefb215a03c5b2c8d2bbedceb845155e9d1984ce0",
+  "reviewedAt": "2026-11-28T13:48:07.365Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/skill-feedback.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

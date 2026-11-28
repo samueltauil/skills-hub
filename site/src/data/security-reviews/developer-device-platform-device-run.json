@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "developer-device-platform-device-run",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d8cc1383363a9dea20eb4a3e02395287c8bc085127fcd93ac7d2c47eaa059d5a",
+  "contentHash": "9c03bba26969b0e60638021d4d30eb1be34fd0df8b79b9f2d31b5f6a0c388ddb",
+  "reviewedAt": "2026-11-28T14:07:11.840Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/android_executable.md",
+      "references/attribution.md",
+      "references/device_selection.md",
+      "references/instrumentation.md",
+      "references/multi_config_runs.md",
+      "references/results.md",
+      "references/session_lifecycle.md",
+      "references/troubleshooting.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

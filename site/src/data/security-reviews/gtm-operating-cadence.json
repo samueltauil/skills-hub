@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gtm-operating-cadence",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "65d2d95c0db211cc600b718972add5a8cf53903cd6403dd6f20e253866241b71",
+  "contentHash": "ee754ec0c1b37bdf166b0af01ea33dedca96b9c8056cebdafe325bf1d5b8a01e",
+  "reviewedAt": "2026-11-28T17:12:04.719Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

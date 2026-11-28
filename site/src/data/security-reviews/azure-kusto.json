@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-kusto",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "9fb75011eea14e5f32c50e91a3ea3c4da4e6e970da65720627c1560be8f53019",
+  "contentHash": "399474cf6c9d21e2d2defbf653832d89d250f7d25f21a5551c41ef7477897d4d",
+  "reviewedAt": "2026-11-28T13:31:51.255Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

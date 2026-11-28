@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gitmoji",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "2802f67cb8492f6b9b587a705a3a52782e8131ff3fd1a2a10905d2c4017ecac9",
+  "contentHash": "060933f80d608ce1885c931335299eb24f84b05cc7f29016bd3608228ea92051",
+  "reviewedAt": "2026-11-28T16:09:03.618Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/gitmoji-reference.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

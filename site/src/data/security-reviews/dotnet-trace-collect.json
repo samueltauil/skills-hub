@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dotnet-trace-collect",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d98c9729e9e3090c2d40cbb92ae56906ef9b78f77b87b8804b0c0397ba7f521f",
+  "contentHash": "a7f9b6a3b879d549971bb21b42f0eb45c40a0e7e71bbb7f58960c65d5cb9981d",
+  "reviewedAt": "2026-11-28T14:13:05.269Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dotnet-monitor.md",
+      "references/dotnet-trace-collect-linux.md",
+      "references/dotnet-trace-collect.md",
+      "references/perfcollect.md",
+      "references/perfview.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

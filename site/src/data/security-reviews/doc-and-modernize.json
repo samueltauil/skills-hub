@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "doc-and-modernize",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "4bbfc162adc36fef25adde9344faa80e61b1ce50813dd7e0c75d15941cbb1987",
+  "contentHash": "bfc23515b0fe5711c196634556fe05d7c205e60dea5d76b07ef528850f37f7c3",
+  "reviewedAt": "2026-11-28T14:09:09.038Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/copilot-instructions.template.md",
+      "references/migration-hazards.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

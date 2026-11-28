@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "detection-engineering-coverage-evaluation",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "193ee5ad9cd1ee3c38b9060346b4b40ce05d0eca994e5b3cb6207d37174c555c",
+  "contentHash": "559719bdccced6d26f534224d6a70a6cdf96575259cd3474f0c6654a3933af32",
+  "reviewedAt": "2026-11-28T14:06:19.713Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

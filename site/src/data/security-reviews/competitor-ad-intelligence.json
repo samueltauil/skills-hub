@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "competitor-ad-intelligence",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bcd096ec43eaf199da53bbf6d962085726ebef43cac20cf74cfe505ca6b9128c",
+  "contentHash": "d973c3f409977bc27a844836f7106b13223ae2a805fcf92853d941a604806d47",
+  "reviewedAt": "2026-11-28T13:51:57.563Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

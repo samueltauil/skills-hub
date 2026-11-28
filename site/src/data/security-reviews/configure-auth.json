@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "configure-auth",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "19661d43d6ecb846185b7c08cd31c06c94e6bb84ed9cfab378c35c4b441ddef0",
+  "contentHash": "a84c0e7acf89a1824bff2d7422134d989566bb06eb794f9621f095601448ae0a",
+  "reviewedAt": "2026-11-28T13:52:55.545Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "convert-blazor-server-to-webapp",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "9a77dfa6c7709cfc447eb374ca2066ef9063f2ccfcbae4214d8fd0097854e8b8",
+  "contentHash": "5277d178511f1bd69c04ee08797e3e62b5e2a018a7ffb9d057e6bd4921d7838a",
+  "reviewedAt": "2026-11-28T13:55:06.382Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

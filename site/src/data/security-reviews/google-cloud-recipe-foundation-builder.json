@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-recipe-foundation-builder",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "0325d3825baa48f1835da8e7557d2545fe1fa629b64bcf47584312da9d0255df",
+  "contentHash": "44066c9e83df59e844a593020e73ed9db945a409d6fcd9a078ef95caa652f12d",
+  "reviewedAt": "2026-11-28T16:46:55.324Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/admin-iam.md",
+      "references/attribution.md",
+      "references/logging-monitoring.md",
+      "references/org-policies.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigquery-basics",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "4e17255a444373c8e519f2e8434fc574a7da303310c7ba15e71669ed4cb05764",
+  "contentHash": "46911b531cb525a1ca85694ee9fdef048e4f31f18b87796af7e5bd62fc996acf",
+  "reviewedAt": "2026-11-28T13:37:28.070Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/change-history.md",
+      "references/cli-usage.md",
+      "references/client-library-usage.md",
+      "references/continuous-queries.md",
+      "references/core-concepts.md",
+      "references/iac-usage.md",
+      "references/iam-security.md",
+      "references/mcp-usage.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

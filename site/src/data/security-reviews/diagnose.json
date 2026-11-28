@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "diagnose",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bcaaa3602b25ddb14a470ff3d240745a77b3ce965ad52e5b0edc40c8bf05e79d",
+  "contentHash": "92952d1ed24130ade5a5c83014c39062d6b94298dfb10fa60ff8f1ee613e84b1",
+  "reviewedAt": "2026-11-28T14:08:00.238Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

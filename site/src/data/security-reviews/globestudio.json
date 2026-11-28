@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "globestudio",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "d17305209d4a0f1531d4f88c304eb3a2e75611439b2a98f0c4c66952813cdf00",
+  "contentHash": "e5f900ee03aee26ef547c2be86adbb4efe4324dd422e1b5b80e94b55b82f7b41",
+  "reviewedAt": "2026-11-28T16:35:56.248Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/config.md",
+      "references/embedding.md",
+      "references/looks.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

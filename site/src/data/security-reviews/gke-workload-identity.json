@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-workload-identity",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "ca3a818492fe6ed8a6940a57b38264e277793b02f415e2eae21dd9c251c26429",
+  "contentHash": "a860f3889d722461862fb50f665f6ec0bc2354d7c28bc5d82287ae054c51daee",
+  "reviewedAt": "2026-11-28T16:32:44.736Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

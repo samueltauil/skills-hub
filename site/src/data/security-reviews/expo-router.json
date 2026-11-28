@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "expo-router",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "eda3b5b5592114b9952ac2308590fdba47c2dcaf54eea0763de8057f08d1340b",
+  "contentHash": "7cec3f005f15bf6b4ba68df4dbc4207b0ef6a42bb26ac85a750f0a39fa0fb4e4",
+  "reviewedAt": "2026-11-28T14:20:35.487Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/form-sheet.md",
+      "references/route-structure.md",
+      "references/search.md",
+      "references/tabs.md",
+      "references/toolbar-and-headers.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": [
+      "references/zoom-transitions.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

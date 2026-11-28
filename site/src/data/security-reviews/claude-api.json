@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "skillId": "claude-api",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "6fe78e5bd389d38d223fcec10b272d1f9f62968095fc8b009610dbc501d73b8d",
+  "contentHash": "ff9760335c351c46dde1ebb4f8ff72f0d8a3c6b581a718614ac2edccbab6af8a",
+  "reviewedAt": "2026-11-28T13:44:36.717Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "csharp/claude-api/README.md",
+      "csharp/claude-api/batches.md",
+      "csharp/claude-api/files-api.md",
+      "csharp/claude-api/streaming.md",
+      "csharp/claude-api/tool-use.md",
+      "curl/examples.md",
+      "curl/managed-agents.md",
+      "go/claude-api/README.md",
+      "go/claude-api/files-api.md",
+      "go/claude-api/streaming.md",
+      "go/claude-api/tool-use.md",
+      "go/managed-agents/README.md",
+      "java/claude-api/README.md",
+      "java/claude-api/files-api.md",
+      "java/claude-api/streaming.md",
+      "java/claude-api/tool-use.md",
+      "java/managed-agents/README.md",
+      "php/claude-api/README.md",
+      "php/claude-api/batches.md",
+      "php/claude-api/files-api.md",
+      "php/claude-api/streaming.md",
+      "php/claude-api/tool-use.md",
+      "php/managed-agents/README.md",
+      "python/claude-api/README.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "SKILL.md",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "python/claude-api/streaming.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "python/claude-api/tool-use.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "python/managed-agents/README.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "ruby/claude-api/README.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "ruby/claude-api/tool-use.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "ruby/managed-agents/README.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/admin-api.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/agent-design.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/anthropic-cli.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/claude-platform-on-aws.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/cost-optimization.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/error-codes.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/evals/build-eval.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/evals/cost-hillclimb.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/evals/eval-audit.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/evals/eval-hillclimb.md",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "shared/evals/report/SCHEMA.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/evals/report/build-report-lite.mjs",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/evals/report/runner-scaffold.mjs",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/live-sources.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-api-reference.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-client-patterns.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-core.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-environments.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-events.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-memory.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-multiagent.md",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "shared/managed-agents-onboarding-from-quickstart.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-onboarding-from-url.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-onboarding.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-outcomes.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-overview.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/bug-hunter.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/contract-tracker.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/data-analyst.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/deep-researcher.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/explainer-video-maker.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/field-monitor.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/incident-commander.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/performance-tuner.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/sprint-retro-facilitator.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/structured-extractor.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/support-agent.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/support-to-eng-escalator.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-quickstarts/watchlist-scanner.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-scheduled-deployments.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-self-hosted-sandboxes.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-tools.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/managed-agents-webhooks.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/model-migration.md",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "shared/models.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/platform-availability.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/preserved-thinking-migration.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/preserved-thinking-migration/causes.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/preserved-thinking-migration/drop_block_probe.py",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "shared/preserved-thinking-migration/prefix_diff.py",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "shared/prompt-audit.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/prompt-caching.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/token-counting.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "shared/tool-use-concepts.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "typescript/claude-api/README.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "typescript/claude-api/batches.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "typescript/claude-api/files-api.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "typescript/claude-api/streaming.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "typescript/claude-api/tool-use.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "typescript/managed-agents/README.md",
+        "reason": "bundle-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "python/claude-api/batches.md",
+      "python/claude-api/files-api.md",
+      "python/claude-api/sdk-upgrade.md",
+      "ruby/claude-api/streaming.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

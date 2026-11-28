@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-storage",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d627ff390501572b095a07aa1cec663a9ba6e96f822150e9787ce77d7343a39e",
+  "contentHash": "9aafce436804da3834cf79963c1118b511169dc26008f3e561800511aad0b3ce",
+  "reviewedAt": "2026-11-28T13:35:48.921Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/auth-best-practices.md",
+      "references/sdk-usage.md",
+      "references/sdk/azure-data-tables-java.md",
+      "references/sdk/azure-data-tables-py.md",
+      "references/sdk/azure-storage-blob-java.md",
+      "references/sdk/azure-storage-blob-py.md",
+      "references/sdk/azure-storage-blob-rust.md",
+      "references/sdk/azure-storage-blob-ts.md",
+      "references/sdk/azure-storage-file-datalake-py.md",
+      "references/sdk/azure-storage-file-share-py.md",
+      "references/sdk/azure-storage-file-share-ts.md",
+      "references/sdk/azure-storage-queue-py.md",
+      "references/sdk/azure-storage-queue-ts.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

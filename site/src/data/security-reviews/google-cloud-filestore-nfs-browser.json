@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-filestore-nfs-browser",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "89ab5a4f31d947eb5fd5d838052944cd2ec5f739ab9f932e94f41aba4c86e056",
+  "contentHash": "d5447110b984786d6bf03bad1b089a714ac8575c4e45cf3b0776b2edc15d4212",
+  "reviewedAt": "2026-11-28T16:44:32.123Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/architecture.md",
+      "references/attribution.md",
+      "references/iap-jump-host.md",
+      "references/nfs-bridge-setup.md",
+      "references/token-safety-guardrails.md",
+      "references/troubleshooting.md",
+      "scripts/bridge_server/Dockerfile",
+      "scripts/bridge_server/main.py",
+      "scripts/bridge_server/requirements.txt",
+      "scripts/deploy_bridge.sh",
+      "scripts/formatters.py",
+      "scripts/jump_host_engine.py",
+      "scripts/nfs_browser.py",
+      "scripts/nfs_browser_test.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

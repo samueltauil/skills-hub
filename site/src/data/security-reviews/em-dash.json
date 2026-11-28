@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "em-dash",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8d903178ce68e571708a130509be520cfa3bccb94f9aaf72b350c3390e621fdb",
+  "contentHash": "12fdf4e2fe4db38204b3f826d6f6703731d361030ab49bb2bcc4bdda73bff822",
+  "reviewedAt": "2026-11-28T14:17:17.858Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [],
+    "omittedFiles": [
+      {
+        "path": "SKILL.md",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

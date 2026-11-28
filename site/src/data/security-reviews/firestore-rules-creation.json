@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "firestore-rules-creation",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "39ed47b90e3e332ebc4a2d5c0e5218aa633434a1bb3411716b8eadc3da2941a1",
+  "contentHash": "65beb10ee4b78cbe00e1c8979fe97e3cbd55acba5a86561bb1f1c283081d98ea",
+  "reviewedAt": "2026-11-28T15:37:13.871Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

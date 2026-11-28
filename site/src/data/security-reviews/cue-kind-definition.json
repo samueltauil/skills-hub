@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cue-kind-definition",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "62a2e23cd159ffc5f1ab8676901e0cfff278f63fa4f918899ff8e24a9bc0822c",
+  "contentHash": "17897ff0e53ae1e4686f5e82002b462f841fffb1f1f393b69084af276c6384f6",
+  "reviewedAt": "2026-11-28T14:01:58.975Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/cue-constraints.md",
+      "references/custom-routes.md",
+      "references/kind-layout.md",
+      "references/schema-types.md",
+      "references/versioning-guide.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

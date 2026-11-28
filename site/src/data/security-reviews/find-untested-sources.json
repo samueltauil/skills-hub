@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "find-untested-sources",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "621c96de7ffa78cc0ee6dd381a22e5cada6fa58b9292fa2c93785bdf1ebd47df",
+  "contentHash": "1ef80606fe2067da3a09f6820e6a9217f3d9aebcf969661aa9f6fb2c0fd618f6",
+  "reviewedAt": "2026-11-28T15:28:47.892Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "scripts/Find-UntestedSources.cs",
+      "scripts/find_untested_sources.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

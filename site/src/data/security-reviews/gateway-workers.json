@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gateway-workers",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "c5ec85035f3e467af96139997dd2b2720069357977a8d30b15d0ff19b5c749f8",
+  "contentHash": "a35f1af189370c7f3270bcc22d5ac39f58f3cf2b875b229c3b198a360c54581d",
+  "reviewedAt": "2026-11-28T15:50:15.162Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/skill-feedback.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

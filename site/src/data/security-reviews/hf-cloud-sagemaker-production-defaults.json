@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "hf-cloud-sagemaker-production-defaults",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "4b246d7cb50af385fe702c337cf39b325efe62cfe13a772eab35aa3a23a2628b",
+  "contentHash": "9bd1586d78d341efbe9180e5bff8fb16c4b68bd8adbc538745fd3656f03987cc",
+  "reviewedAt": "2026-11-28T17:19:50.100Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/deployment-template.md",
+      "scripts/_common.py",
+      "scripts/deploy.py",
+      "scripts/deploy_async.py",
+      "scripts/deploy_ic.py",
+      "scripts/invoke_endpoint.py",
+      "scripts/teardown.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

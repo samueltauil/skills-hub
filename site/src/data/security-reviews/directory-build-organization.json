@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "directory-build-organization",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "88a20fb4a2f9cee95fb17162cc293788688119f34ae22273f20aeb1852608cca",
+  "contentHash": "33e46258cefc8a48c23cc427e62692b182a267842e745748d640e13e88a35a23",
+  "reviewedAt": "2026-11-28T14:07:50.068Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/common-patterns.md",
+      "references/multi-level-examples.md",
+      "references/targetframework-props-pitfall.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

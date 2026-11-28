@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-ai-troubleshooting-tpu-reservation-stockout",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "a5e7c56e81679ab0b25164cb632c85ea8a6747ee39f5f2af72f4ee936b360c02",
+  "contentHash": "13e63aa705777da02edd32fd04de88a1e3fe97410d1429e03b786357fe92c987",
+  "reviewedAt": "2026-11-28T16:13:59.868Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-storage-diagnostic",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "88447f4fdc40ccaf14abd461fae1cf967c8be61241dc1fdc914426fb48e17baa",
+  "contentHash": "8086b01c9e2be5d40c72b54e27b7969aea700f2732b5418760691b1f7122c8b6",
+  "reviewedAt": "2026-11-28T16:58:24.087Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/403_troubleshooting.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

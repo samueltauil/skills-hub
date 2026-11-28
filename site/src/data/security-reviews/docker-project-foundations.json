@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "skillId": "docker-project-foundations",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f6ace14a40ee2c10a5a0bbbb283949acc20aceaa6deba39e4f8343b32160bb8e",
+  "contentHash": "d8c8a35e9e5eea16d2c428b44e86fccf6610b3dd3456bb544bb5487b2bebe8cc",
+  "reviewedAt": "2026-11-28T14:10:55.382Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "assets/compose-dev.yaml",
+      "checks/verification.md",
+      "evals/docker-project-foundations.md",
+      "references/project-structure.md",
+      "scripts/verify-setup.sh",
+      "skill.yaml"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/Dockerfile.simple",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/dockerignore-example",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

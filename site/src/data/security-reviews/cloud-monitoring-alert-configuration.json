@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-monitoring-alert-configuration",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "019ab082cd8f48218dfc573feb65b7ed884b6a28e87da421c24167e04b659f9a",
+  "contentHash": "650e29ef3a7ebd1e60647fa36a93db607840a26a71a028c8435217635d715fb7",
+  "reviewedAt": "2026-11-28T13:49:12.672Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/agent_platform_cost_alert_policies.md",
+      "references/agent_platform_has_historical_traffic_data.md",
+      "references/agent_platform_no_historical_traffic_data.md",
+      "references/agent_platform_quality_alert_policies.md",
+      "references/agent_platform_reliability_alert_policies.md",
+      "references/agent_platform_safety_alert_policies.md",
+      "references/agent_platform_security_alert_policies.md",
+      "references/agent_platform_telemetry_enablement.md",
+      "references/attribution.md",
+      "references/cloud_run_jobs.md",
+      "references/cloud_run_services.md",
+      "references/cloud_run_worker_pools.md",
+      "references/compute_engine_alerts.md",
+      "references/generic_alert_policies.md",
+      "references/kubernetes_gke_configuration_prerequisites.md",
+      "references/kubernetes_metrics_and_alerts_catalog.md",
+      "scripts/agent_platform/lint_syntax.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/kubernetes_promql_queries.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/analyze_traffic.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/analyze_traffic_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/check_telemetry.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/check_telemetry_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/config_utils.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/config_utils_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/create_online_monitor.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/create_online_monitor_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/gather_agent_info.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/gather_agent_info_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/list_log_scope_table_names.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/list_log_scope_table_names_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/list_trace_scope_table_names.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/list_trace_scope_table_names_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/mock_traffic_data.py",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/agent_platform/scan_duplicates.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/agent_platform/scan_duplicates_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/discover_metric_schema.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/discover_metric_schema_test.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/kubernetes/validate_config.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/lint_promql.py",
+        "reason": "bundle-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "scripts/agent_platform/requirements.txt"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

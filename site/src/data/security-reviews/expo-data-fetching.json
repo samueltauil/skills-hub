@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "expo-data-fetching",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "56c36850ed3761ab02c20c4951a673f6f95a1b25f5aee7b4e89fc23cd43c5fc6",
+  "contentHash": "88360eeb97071eef637e741f0c15744eb524eb3576da0f2669103840d76a6235",
+  "reviewedAt": "2026-11-28T14:19:11.816Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/expo-router-loaders.md",
+      "references/offline-and-cancellation.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

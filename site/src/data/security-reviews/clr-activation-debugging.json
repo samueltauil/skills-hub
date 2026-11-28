@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "clr-activation-debugging",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "ec15cee45da289a0af68bebe87981933b3638615e383e11cfba545ec0305bf20",
+  "contentHash": "32c43b8bacd59bbb276c68cf20ec5585cc66e967dfa1c07c9ae930388c5f7648",
+  "reviewedAt": "2026-11-28T13:49:31.951Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/activation-flow.md",
+      "references/com-activation.md",
+      "references/log-format.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

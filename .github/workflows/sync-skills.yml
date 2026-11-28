@@ -21,7 +21,7 @@ permissions:
 jobs:
   sync-skills:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -40,7 +40,7 @@ jobs:
         run: |
           git submodule foreach 'git fetch origin && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)' || true
           git submodule update --remote --force
-          
+
       - name: Check for submodule changes
         id: check-submodules
         run: |
@@ -88,14 +88,6 @@ jobs:
         run: |
           node scripts/aggregate-skills.js
 
-      - name: Run security scan
-        if: steps.check-submodules.outputs.changes == 'true'
-        run: |
-          node scripts/scan-skills.js \
-            --output /tmp/scan-report.json \
-            --update-skills
-          echo "🔐 Security scan complete – results embedded in skills.json"
-
       - name: Build and validate plugins
         if: steps.check-submodules.outputs.changes == 'true'
         run: |
@@ -109,7 +101,7 @@ jobs:
           AFTER_COUNT=$(node -e "console.log(require('./site/src/data/skills.json').skills.length)")
           BEFORE_COUNT=${{ steps.before-sync.outputs.count }}
           BEFORE_IDS="${{ steps.before-sync.outputs.ids }}"
-          
+
           # Find new skills
           NEW_SKILLS=$(node -e "
             const skills = require('./site/src/data/skills.json').skills;
@@ -117,13 +109,13 @@ jobs:
             const newSkills = skills.filter(s => !beforeIds.includes(s.id));
             console.log(newSkills.map(s => s.name).join('|'));
           ")
-          
+
           NEW_COUNT=$((AFTER_COUNT - BEFORE_COUNT))
-          
+
           echo "after-count=$AFTER_COUNT" >> $GITHUB_OUTPUT
           echo "new-count=$NEW_COUNT" >> $GITHUB_OUTPUT
           echo "new-skills=$NEW_SKILLS" >> $GITHUB_OUTPUT
-          
+
           if git diff --quiet site/src/data/skills.json; then
             echo "skill-changes=false" >> $GITHUB_OUTPUT
             echo "No skill data changes"
@@ -143,17 +135,17 @@ jobs:
         id: commit
         run: |
           git add -A
-          
+
           # Get list of updated submodules
           UPDATED_SUBMODULES=$(git diff --cached --name-only sources/ | head -5 | tr '\n' ', ' | sed 's/,$//')
-          
+
           # Create commit message
           COMMIT_MSG="chore: sync skills from upstream sources
 
           Updated submodules: ${UPDATED_SUBMODULES:-'various sources'}
-          
+
           Automated sync by GitHub Actions"
-          
+
           if git commit -m "$COMMIT_MSG"; then
             git push
             echo "pushed=true" >> $GITHUB_OUTPUT
@@ -174,20 +166,20 @@ jobs:
         run: |
           echo "## Sync Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ steps.check-submodules.outputs.changes }}" == "true" ]; then
             echo "✅ Skills synchronized from upstream sources" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            
+
             BEFORE="${{ steps.before-sync.outputs.count }}"
             AFTER="${{ steps.check-skills.outputs.after-count }}"
             NEW_COUNT="${{ steps.check-skills.outputs.new-count }}"
             NEW_SKILLS="${{ steps.check-skills.outputs.new-skills }}"
-            
+
             echo "### Statistics" >> $GITHUB_STEP_SUMMARY
             echo "- **Total skills:** $AFTER" >> $GITHUB_STEP_SUMMARY
             echo "- **Previous count:** $BEFORE" >> $GITHUB_STEP_SUMMARY
-            
+
             if [ "$NEW_COUNT" -gt 0 ] 2>/dev/null; then
               echo "" >> $GITHUB_STEP_SUMMARY
               echo "### 🆕 New Skills Found ($NEW_COUNT)" >> $GITHUB_STEP_SUMMARY

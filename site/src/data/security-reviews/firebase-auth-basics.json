@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "firebase-auth-basics",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "4cbf3aa5823db1a307a20828fd10ca49c4b2e6ad360c1e45c4a88dabf4a4bcfd",
+  "contentHash": "4fd77d3800ed8c4a0826085646a53bd1bb4d6e58760730728463b5898224a2d6",
+  "reviewedAt": "2026-11-28T15:31:29.387Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/client_sdk_android.md",
+      "references/client_sdk_web.md",
+      "references/flutter_setup.md",
+      "references/ios_setup.md",
+      "references/security_rules.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

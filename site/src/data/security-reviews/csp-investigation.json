@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "csp-investigation",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "b91e0701ea4df9b9167583dd5c1d0c6422cfff49f36a59dbe5ef66149da08dc6",
+  "contentHash": "f6d72b55fe4168f54ecb6e9476aa59903f6abc8815e1572913cc959611772afa",
+  "reviewedAt": "2026-11-28T14:02:04.177Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/aws.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

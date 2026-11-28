@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-ai-troubleshooting-node-unresponsive-timeout",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "a3928b28d37cc982c059cd95365fbe8faed024a45177f675e3e7ebadec4e9c88",
+  "contentHash": "d830ee16bee860edd754c27ecb5893c18c4ae81a8f074ce50b1c14e2d0d85439",
+  "reviewedAt": "2026-11-28T16:10:54.421Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

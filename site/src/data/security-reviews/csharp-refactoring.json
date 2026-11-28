@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "csharp-refactoring",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "fe6dbd43b5f48ec657caba2d0ccd86f1bbcedbca6666ed781e1e868a1ab711d2",
+  "contentHash": "2c2c17e488c6dd0e3a3986a2ffbfdfcc2807b3d704c72b383017f8c999612a6b",
+  "reviewedAt": "2026-11-28T14:01:07.417Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/operation-catalog.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

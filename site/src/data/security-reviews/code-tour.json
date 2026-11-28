@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "code-tour",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "ee79150af80ca82c372c49d4e9df36c5f6d600ff6ca22f7f6f93cfa3b67fc0f5",
+  "contentHash": "96e8925a6125b23e120ea6ceec44f5877639cc776681f027609f2905d0e89939",
+  "reviewedAt": "2026-11-28T13:50:58.359Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/codetour-schema.json",
+      "references/examples.md",
+      "scripts/generate_from_docs.py",
+      "scripts/validate_tour.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

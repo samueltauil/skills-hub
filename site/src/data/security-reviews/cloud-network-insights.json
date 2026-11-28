@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-network-insights",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "77e9724b7b8aabca1841386627d664461bf372f90c053213b1c6493f1251c6ec",
+  "contentHash": "0d334ff81870537cb0289dea6084e718c3de8f76e518fe2eed98dd3f4c6eb4f3",
+  "reviewedAt": "2026-11-28T13:47:53.070Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/alerts-logs-metrics.md",
+      "references/attribution.md",
+      "references/monitoring-point-deployment.md",
+      "references/monitoring-policies.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

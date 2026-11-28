@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "eyeball",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "809cdbfc23b4f0948247f500695084b4446d02af7006d3ad654c1183e12fb88d",
+  "contentHash": "fb4629bbc62046d5ae8a011a0e0ff11db663b15dc23dfa37ca3fb29a49d31c8a",
+  "reviewedAt": "2026-11-28T15:26:02.164Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "tools/eyeball.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

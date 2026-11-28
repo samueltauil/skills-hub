@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "create-datadriven-aspnetcore",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "ac4be093f2db650c1f6e13fb49eecab745ab96ee758000bbadb3016c45d94abc",
+  "contentHash": "8147ee699cf36196760aca844cc3272e0404e56a5e818b13ba5c184b704c6a0a",
+  "reviewedAt": "2026-11-28T13:57:39.454Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

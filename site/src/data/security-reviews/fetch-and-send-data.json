@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "fetch-and-send-data",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "b54e4331da2ee4a44ea9fb4e5897663622f68600f5b5ce28663ca4cc1b413255",
+  "contentHash": "e797938803c08b11e7b02133fdb13cde8bec8001be22bc1619296a935fbed50d",
+  "reviewedAt": "2026-11-28T15:25:22.410Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

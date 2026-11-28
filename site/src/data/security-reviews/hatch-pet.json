@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "skillId": "hatch-pet",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "d30c63392c86f208e45448c68772e9b50ec60c4fe68654ad5e6e29154b53e1b6",
+  "contentHash": "cf86361514fa74c27483ce10b494cecf99503da3ea465ca062a985107a071a29",
+  "reviewedAt": "2026-11-28T17:15:36.604Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/animation-rows.md",
+      "references/codex-pet-contract.md",
+      "references/qa-rubric.md",
+      "scripts/compose_atlas.py",
+      "scripts/derive_running_left_from_running_right.py",
+      "scripts/extract_strip_frames.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": [
+      "scripts/inspect_frames.py",
+      "scripts/make_contact_sheet.py",
+      "scripts/prepare_pet_run.py",
+      "scripts/render_animation_previews.py",
+      "scripts/validate_atlas.py"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

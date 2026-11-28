@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigquery-migration-data-exporter",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "5782734780ca97a90669a6d7b769077d2e292dda56126a209e2cf8d07cae1ae9",
+  "contentHash": "c14d89a72cdddec4557f4ddd1224758222c6afa07c0f6acbbf59a46fb13562e1",
+  "reviewedAt": "2026-11-28T13:37:44.798Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/export_databricks_tables_template.py",
+      "references/snowflake_parquet_mapping.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/export_teradata_tables_template.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "references/postgres_parquet_mapping.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "references/teradata_parquet_mapping.md",
+        "reason": "bundle-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "assets/export_oracle_tables_template.py",
+      "assets/export_postgres_tables_template.py",
+      "assets/export_snowflake_tables_template.py",
+      "references/attribution.md",
+      "references/databricks_parquet_mapping.md",
+      "references/oracle_parquet_mapping.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

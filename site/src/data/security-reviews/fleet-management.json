@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "fleet-management",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "31ca209d73a6862c7d6355f029ef6380cf4f1b598c8a2f415a8643c1d6b81f62",
+  "contentHash": "d6be5d9e43bbcc4f053004bf59b2568940a89d1357060c1e0c15a46999e6b918",
+  "reviewedAt": "2026-11-28T15:39:03.852Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/api.md",
+      "references/bootstrap.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

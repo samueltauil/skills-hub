@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cost-management",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "26208d3c33df8126a4381b5a43a9f137f2b22e14c8c4b20ec87a869ef237f253",
+  "contentHash": "6e3b55da095c15c2eced5d1f53229d3b2280d53c1bc4b8bbf9b5fb7406b485e3",
+  "reviewedAt": "2026-11-28T13:56:34.154Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/adaptive-signals.md",
+      "references/alerts-and-queries.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-workload-scaling-troubleshooting",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "84e781c6269e933254062f91e41147a8ffe54bb43cd6b3b160cddb72d87090c9",
+  "contentHash": "82389a658b06dd48bc194b099a47a2cac3b7a31b940fd639b047e937fcacaa4c",
+  "reviewedAt": "2026-11-28T16:33:42.814Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

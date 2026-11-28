@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gemini-live-api",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "e25a8777d31dc00f7757824e5644746137364fd9b3cc20e4a38159c5b8e3b771",
+  "contentHash": "1eb986c2fff6512513428308ee6cb8a8c93bf286b51a9f2e12989c96e3ecba6c",
+  "reviewedAt": "2026-11-28T15:56:19.975Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/client_server_messages.md",
+      "references/session_manager.md",
+      "references/troubleshooting_audio_voice.md",
+      "references/troubleshooting_tools_lifecycle.md",
+      "references/troubleshooting_turns_vad.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/client_server_messages.proto",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

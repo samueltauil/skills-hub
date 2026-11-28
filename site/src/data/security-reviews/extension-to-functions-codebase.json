@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "extension-to-functions-codebase",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "de8f86799aff7584ddda1211b347918e61f10a03e921d4cfd8e294e56d9da6cc",
+  "contentHash": "d31ac4d380efa0a7d2e748fcf4b43efcf684d0e254c63155342bed23d3b62dd8",
+  "reviewedAt": "2026-11-28T15:17:56.762Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/configuration-migration.md",
+      "references/destructuring-shim.md",
+      "references/signature-mapping.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

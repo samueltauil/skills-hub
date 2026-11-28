@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-role-selector",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "832349aaacfec678a60aa78eda6e1233ea37bc0aba2f8b5aad39aa9c5a9d736b",
+  "contentHash": "72ea4ad1d89558816930e5ae4c35369bc2afbf2d7165864999061bada49f5858",
+  "reviewedAt": "2026-11-28T13:34:44.346Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

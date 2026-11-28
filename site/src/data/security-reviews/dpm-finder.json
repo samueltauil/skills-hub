@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dpm-finder",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "828f4e7997779990ab52b53f220847825ddac2f0f230cb81ade64296acc6c582",
+  "contentHash": "3cc748a174993a5a7a32ab4b6a71d570b675d59813c210455efd407893a17d22",
+  "reviewedAt": "2026-11-28T14:13:29.562Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/cli.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

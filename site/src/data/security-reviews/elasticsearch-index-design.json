@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "elasticsearch-index-design",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "29335a72188c78b43f5d53b8b93e9b03aaabd0be042ea841232690347e1008b6",
+  "contentHash": "11bd0a07548b8a4559ced84396b4cefdb68760e31b353e0fc170a64df599420b",
+  "reviewedAt": "2026-11-28T14:16:57.081Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/field-type-decisions.md",
+      "references/mapping-explosion.md",
+      "references/multi-field-patterns.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

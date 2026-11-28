@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-storage-basics",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "ac0b6f3d592a1a08083c1a9018551650c0a9f0d11ee666fc24843afe16090cd4",
+  "contentHash": "1e18c89ccd61e7475e254823a5fbda83b99ff5b9c648093a3bc30e74105844a9",
+  "reviewedAt": "2026-11-28T16:57:03.257Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/cli-api-usage.md",
+      "references/client-library-usage.md",
+      "references/core-concepts.md",
+      "references/data-management.md",
+      "references/data-transfer.md",
+      "references/gcsfuse.md",
+      "references/high-performance-storage.md",
+      "references/iac-usage.md",
+      "references/mcp-usage.md",
+      "references/storage-intelligence.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

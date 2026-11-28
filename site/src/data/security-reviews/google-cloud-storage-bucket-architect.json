@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-storage-bucket-architect",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "4014b94a25682e34ffba7baf2353d0cfc4db53749190c4114c1e08b04dda0396",
+  "contentHash": "0d3c3a5a36b85bec248d2ead4ea851a3de8782022e186574ad2f68dbcd854ebd",
+  "reviewedAt": "2026-11-28T17:00:14.734Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/archiving_compliance.md",
+      "references/backup_dr.md",
+      "references/gcloud.md",
+      "references/log_storage.md",
+      "references/media_hosting.md",
+      "references/phase_draft_plan.md",
+      "references/phase_output.md",
+      "references/phase_project_checks.md",
+      "references/rest.md",
+      "references/sdk.md",
+      "references/sdk_cpp.md",
+      "references/sdk_go.md",
+      "references/sdk_java.md",
+      "references/sdk_python.md",
+      "references/sensitive_data.md",
+      "references/static_website.md",
+      "references/storage_for_ai.md",
+      "references/terraform.md",
+      "references/ugc_ingestion.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-platform-security",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "942ee2f70774ba443745f8301dc33f098623e2b10fa97a56e9ad084492a6476d",
+  "contentHash": "e4eadd4e5d4d57a5baef67591722cbf0c4955aa99624f74db622e8b1fc23dad5",
+  "reviewedAt": "2026-11-28T16:27:12.898Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

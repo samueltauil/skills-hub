@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-deployment-preflight",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "ac98151dcb7c6be483d1cf6c9571aaec0353b5103fabbc56216d986f78bd287f",
+  "contentHash": "8b10adcbde907261a01e8e764648e84a104a1299e766117567fa4e8f64740629",
+  "reviewedAt": "2026-11-28T13:32:02.450Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/ERROR-HANDLING.md",
+      "references/REPORT-TEMPLATE.md",
+      "references/VALIDATION-COMMANDS.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

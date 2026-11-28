@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "datanalysis-credit-risk",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bbeba8a36938ef3720754e8a552789fee7e1b5500e8ecf5f1ed80cdd0705e4fe",
+  "contentHash": "3518510951ec15d0156cd42066b9d70a1ad6e9ffe72aafa67400690140e79cb0",
+  "reviewedAt": "2026-11-28T14:04:56.511Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/analysis.py",
+      "references/func.py",
+      "scripts/example.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

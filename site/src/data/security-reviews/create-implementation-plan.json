@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "create-implementation-plan",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bb8754d554115f0c36ccb2ecf2031e73223849dac7eb758fb964c0ed76d323c4",
+  "contentHash": "2f61683d9368c69a1e7ec2c8ccd4febde285e05766259be461e80617834fd0a7",
+  "reviewedAt": "2026-11-28T14:01:45.388Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

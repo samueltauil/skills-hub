@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-solution-architecture",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "9dcea52ddceb2a3e18e2dec65cb9e7c61301544764677acbfb7ee6ad7fe9e7ca",
+  "contentHash": "58564e534904919cf7e866671d44d4735fe9760beb78af68d0b5a346f70f5dae",
+  "reviewedAt": "2026-11-28T16:52:44.397Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/output-template.md",
+      "references/attribution.md",
+      "references/best-practices-guides.md",
+      "references/decision-making-guides.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/architecture-guides.md",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

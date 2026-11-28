@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cicd-deploy",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "96ca92e9d200c027eae18a3ac324f06e8a44c74361dfa02c7e9eb32444d7751f",
+  "contentHash": "a4bb4ae290b0b74093e77d6ecfe63a5854b96b6ff15edf1375c796988d493237",
+  "reviewedAt": "2026-11-28T16:40:05.476Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/agent_registry_and_binauthz.md",
+      "references/attribution.md",
+      "references/how_to_deploy_to_gcs_with_gcloud.md",
+      "references/how_to_deploy_to_gke_with_kubectl.md",
+      "references/how_to_load_deployment_config.md",
+      "references/how_to_write_dockerfile.md",
+      "references/sample-deployment-config.json"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-upgrade",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8d5afbc6e036c1bfb151052c8d662e98d182d8047cd85d32fbdf376d98138dbf",
+  "contentHash": "92a730b7d55b831141ba035dcd09275484b2557e64bd15865fccf85ebd5ba972",
+  "reviewedAt": "2026-11-28T13:37:04.791Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/global-rules.md",
+      "references/languages/java/INSTRUCTION.md",
+      "references/languages/java/README.md",
+      "references/languages/java/bom-migration/bom-gradle-settings.md",
+      "references/languages/java/bom-migration/bom-gradle-toml.md",
+      "references/languages/java/bom-migration/bom-gradle.md",
+      "references/languages/java/bom-migration/bom-maven.md",
+      "references/languages/java/bom-migration/bom-migration.md",
+      "references/languages/java/bom-migration/bom-validation.md",
+      "references/languages/java/package-specific/com.microsoft.azure.eventprocessorhost.md",
+      "references/languages/java/package-specific/com.microsoft.azure.management.md",
+      "references/languages/java/rules/efficiency.md",
+      "references/languages/java/rules/execution-guidelines.md",
+      "references/languages/java/rules/review-code-changes.md",
+      "references/languages/java/rules/troubleshooting.md",
+      "references/languages/java/rules/upgrade-strategy.md",
+      "references/languages/java/rules/upgrade-success-criteria.md",
+      "references/languages/java/scripts/upgrade_bom.py",
+      "references/languages/java/templates/PLAN_TEMPLATE.md",
+      "references/languages/java/templates/PROGRESS_TEMPLATE.md",
+      "references/languages/java/templates/SUMMARY_TEMPLATE.md",
+      "references/languages/java/workflow/phase-1-precheck.md",
+      "references/languages/java/workflow/phase-2-plan.md",
+      "references/languages/java/workflow/phase-3-execute.md",
+      "references/languages/java/workflow/phase-4-summarize.md",
+      "references/services/functions/consumption-to-flex/linux/assessment.md",
+      "references/services/functions/consumption-to-flex/linux/automation.md",
+      "references/services/functions/consumption-to-flex/linux/workflow.md",
+      "references/services/functions/consumption-to-flex/windows/assessment.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/access-key-strategy.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/app-creation.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/app-settings.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/built-in-authentication.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/cleanup-and-rollback.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/code-deployment.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/configuration-inventory.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/deployment-package.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/discovery-and-assessment.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/networking-and-storage.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/site-and-identity.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/trigger-safety-and-monitoring.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/automation/validation-and-cutover.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/dependency-scan.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/progress-tracking.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/consumption-to-flex/windows/workflow.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/redis/redis-to-amr.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflow-details.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "references/services/functions/consumption-to-flex/windows/automation.md",
+      "references/services/functions/consumption-to-flex/windows/automation/access-key-copy.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

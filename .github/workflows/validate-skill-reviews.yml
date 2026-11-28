@@ -6,15 +6,33 @@ on:
     paths:
       - '.gitattributes'
       - 'scripts/skill-review*'
+      - 'scripts/dashboard.test.js'
+      - 'scripts/seo-*.test.js'
+      - 'site/src/data/dashboard.js'
+      - 'site/src/data/seo*.js'
+      - 'site/src/layouts/**'
+      - 'site/src/components/DashboardDistribution.astro'
+      - 'site/src/pages/dashboard.astro'
+      - 'scripts/aggregate-skills.js'
+      - 'scripts/scan-skills.js'
+      - 'scripts/enrich-skills.js'
+      - 'scripts/build-plugins.js'
+      - '.github/plugin/marketplace.json'
       - 'scripts/schemas/skill-review-response.schema.json'
       - 'scripts/fixtures/skill-review/**'
       - 'site/src/data/security-reviews*'
       - 'site/src/data/security-reviews/**'
       - 'site/src/data/skills.json'
       - 'site/src/components/SecurityReview.astro'
+      - 'site/src/components/SkillCard.astro'
+      - 'site/src/pages/index.astro'
+      - 'site/src/pages/categories/**'
       - 'site/src/pages/skills/**'
+      - 'site/tests/**'
       - '.github/workflows/skill-security-review*'
       - '.github/workflows/validate-skill-reviews.yml'
+      - '.github/workflows/enrich-skills.yml'
+      - '.github/workflows/sync-skills.yml'
       - 'package*.json'
       - 'site/package*.json'
   push:
@@ -22,15 +40,33 @@ on:
     paths:
       - '.gitattributes'
       - 'scripts/skill-review*'
+      - 'scripts/dashboard.test.js'
+      - 'scripts/seo-*.test.js'
+      - 'site/src/data/dashboard.js'
+      - 'site/src/data/seo*.js'
+      - 'site/src/layouts/**'
+      - 'site/src/components/DashboardDistribution.astro'
+      - 'site/src/pages/dashboard.astro'
+      - 'scripts/aggregate-skills.js'
+      - 'scripts/scan-skills.js'
+      - 'scripts/enrich-skills.js'
+      - 'scripts/build-plugins.js'
+      - '.github/plugin/marketplace.json'
       - 'scripts/schemas/skill-review-response.schema.json'
       - 'scripts/fixtures/skill-review/**'
       - 'site/src/data/security-reviews*'
       - 'site/src/data/security-reviews/**'
       - 'site/src/data/skills.json'
       - 'site/src/components/SecurityReview.astro'
+      - 'site/src/components/SkillCard.astro'
+      - 'site/src/pages/index.astro'
+      - 'site/src/pages/categories/**'
       - 'site/src/pages/skills/**'
+      - 'site/tests/**'
       - '.github/workflows/skill-security-review*'
       - '.github/workflows/validate-skill-reviews.yml'
+      - '.github/workflows/enrich-skills.yml'
+      - '.github/workflows/sync-skills.yml'
       - 'package*.json'
       - 'site/package*.json'
   workflow_dispatch:
@@ -58,8 +94,12 @@ jobs:
         run: npm ci && npm --prefix site ci
       - name: Test review collection, validation, publishing and panel states
         run: node --test scripts/skill-review*.test.js
+      - name: Test dashboard aggregation and SEO discovery
+        run: node --test scripts/dashboard.test.js scripts/seo-*.test.js
       - name: Build skill pages with published reports
         run: npm --prefix site run build
+      - name: Test rendered security review UI
+        run: node --test site/tests/*.test.js
       - name: Install pinned Agentic Workflows compiler
         env:
           GH_TOKEN: ${{ github.token }}

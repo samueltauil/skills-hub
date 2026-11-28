@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "elasticsearch-query-optimization",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "52ad5a425b09fae58dbef57a99ef312b9c5fa819b995d82602932a88d2fcdb69",
+  "contentHash": "694d8abb39904bc1155c7ad92f79781b06c3324c5be1bfd41437f7414894c558",
+  "reviewedAt": "2026-11-28T14:16:58.668Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/query-optimization-reference.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

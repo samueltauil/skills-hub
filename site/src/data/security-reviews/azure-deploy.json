@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-deploy",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "91a0faa9f455022bb8cb3222f9ba8a727244a06755b795ea0816714e4a67d396",
+  "contentHash": "cb2beb203b4774c581bf8e30126d9918322e21cf8d0419d18b282b89137dc8d9",
+  "reviewedAt": "2026-11-28T13:32:52.572Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/auth-best-practices.md",
+      "references/global-rules.md",
+      "references/live-role-verification.md",
+      "references/pre-deploy-checklist.md",
+      "references/recipes/README.md",
+      "references/recipes/azcli/README.md",
+      "references/recipes/azcli/errors.md",
+      "references/recipes/azcli/verify.md",
+      "references/recipes/azd/README.md",
+      "references/recipes/azd/ef-migrations.md",
+      "references/recipes/azd/errors.md",
+      "references/recipes/azd/functions-deploy.md",
+      "references/recipes/azd/post-deployment.md",
+      "references/recipes/azd/scripts/apply-migrations.ps1",
+      "references/recipes/azd/scripts/apply-migrations.sh",
+      "references/recipes/azd/scripts/grant-and-migrate.ps1",
+      "references/recipes/azd/scripts/grant-and-migrate.sh",
+      "references/recipes/azd/sql-entra-auth.md",
+      "references/recipes/azd/sql-managed-identity.md",
+      "references/recipes/azd/verify.md",
+      "references/recipes/bicep/README.md",
+      "references/recipes/bicep/errors.md",
+      "references/recipes/bicep/verify.md",
+      "references/recipes/cicd/README.md",
+      "references/recipes/cicd/errors.md",
+      "references/recipes/cicd/examples/azdo-azd.yml",
+      "references/recipes/cicd/examples/azdo-multistage.yml",
+      "references/recipes/cicd/examples/github-azd.yml",
+      "references/recipes/cicd/examples/github-bicep.yml",
+      "references/recipes/cicd/verify.md",
+      "references/recipes/terraform/README.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/recipes/terraform/errors.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/recipes/terraform/verify.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/region-availability.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azd-deployment.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-identity-dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-identity-java.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-identity-py.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-identity-ts.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/troubleshooting.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

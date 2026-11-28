@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "skillId": "entra-app-registration",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "39e1d6c98cb6ee45bff86fa23ba1a01bfc5b295c2a4e434eb6c23ace8305073d",
+  "contentHash": "087e790cb192e61323fd8816d4c6906d6823edd06f25c7af6018c8ac41faaf40",
+  "reviewedAt": "2026-11-28T14:19:15.830Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/api-permissions.md",
+      "references/auth-best-practices.md",
+      "references/cli-commands.md",
+      "references/console-app-example.md",
+      "references/first-app-registration.md",
+      "references/oauth-flows.md",
+      "references/sdk/azure-identity-dotnet.md",
+      "references/sdk/azure-identity-java.md",
+      "references/sdk/azure-identity-py.md",
+      "references/sdk/azure-identity-rust.md",
+      "references/sdk/azure-identity-ts.md",
+      "references/sdk/azure-keyvault-py.md",
+      "references/sdk/azure-keyvault-secrets-ts.md",
+      "references/sdk/microsoft-azure-webjobs-extensions-authentication-events-dotnet.md",
+      "references/troubleshooting.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/BICEP-EXAMPLE.bicep",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

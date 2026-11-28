@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-cost-analysis",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "a44a648e190720d9523bf5cc6e292e85da61a63ea6abee9e94a20055c51d192d",
+  "contentHash": "3620381b8424fe3e4c6306abd6a1daf65aeee951975dcb07140c56629b5b8d05",
+  "reviewedAt": "2026-11-28T16:20:53.549Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/billing-queries.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

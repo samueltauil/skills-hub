@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "skillId": "github-issues",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "a69f81a0e5558a6c12e4de781117074c24048439e164727172ff4b8cd9c6264e",
+  "contentHash": "d22a2e7d89f59ae61b4b555d33b4a59e754331c7b2c8db8b6c944ae795e7bf83",
+  "reviewedAt": "2026-11-28T16:08:14.630Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dependencies.md",
+      "references/images.md",
+      "references/issue-fields.md",
+      "references/issue-types.md",
+      "references/labels.md",
+      "references/milestones.md",
+      "references/projects.md",
+      "references/search.md",
+      "references/sub-issues.md",
+      "references/templates.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

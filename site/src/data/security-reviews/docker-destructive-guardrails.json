@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "docker-destructive-guardrails",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "20a060eee79d83c74a78a85b2e1de60ccefa44ea0e09a62adb80d8e486be1bbb",
+  "contentHash": "a4530dccb79782b3b76187199db63eed156b839ee981450a07d640e8fb8358c0",
+  "reviewedAt": "2026-11-28T14:10:22.749Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "checks/verification.md",
+      "evals/docker-destructive-guardrails.md",
+      "references/cross-skill-destructive-command-index.md",
+      "references/docker-cli-destructive-commands.md",
+      "skill.yaml"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

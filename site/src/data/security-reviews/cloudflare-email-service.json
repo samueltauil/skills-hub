@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloudflare-email-service",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "fbba1b2c72282132e040c162822f387bf32a9344d3f383423a754324bc6bdb65",
+  "contentHash": "cd6128b614dcceb3409f7ac7331ed3bc8db5bf86590811e7a3b7212500ab5a6e",
+  "reviewedAt": "2026-11-28T13:49:12.106Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/cli-and-mcp.md",
+      "references/deliverability.md",
+      "references/rest-api.md",
+      "references/routing.md",
+      "references/sending.md",
+      "references/skill-feedback.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

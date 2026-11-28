@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "connect-recommend",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "41876e8897c2d750c2928746912580f4675713c7aff85fc829920d680bf9a977",
+  "contentHash": "5677e59eb79d4ed1f7e32bcb436e54a4c607657062c2f015401aed7e043d04b7",
+  "reviewedAt": "2026-11-28T13:54:36.623Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/account-types.md",
+      "references/charge-patterns.md",
+      "references/company-researcher.md",
+      "references/compatibility-matrix.md",
+      "references/decision-matrix.md",
+      "references/discovery-questions.md",
+      "references/recommendation-template.md",
+      "references/terminology-rules.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-design-patterns",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "38ad38ebc0ba649e96b52a8637cb460b00a474db010f2226baff1a07128e4c17",
+  "contentHash": "ccfe9b1abf32a7a245b74ad220970e700aac8b8ee26526b8954b7edb3e61c667",
+  "reviewedAt": "2026-11-28T13:44:37.807Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/architecture-design.md",
+      "references/azure-service-mappings.md",
+      "references/best-practices.md",
+      "references/deployment-operational.md",
+      "references/event-driven.md",
+      "references/messaging-integration.md",
+      "references/performance.md",
+      "references/reliability-resilience.md",
+      "references/security.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

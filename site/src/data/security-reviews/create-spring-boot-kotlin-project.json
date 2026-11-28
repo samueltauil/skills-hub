@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "create-spring-boot-kotlin-project",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "41cdcf42176fbb591e2fce48f7e73e6cfe2964d7fb39ce499c90382d11f7d38b",
+  "contentHash": "1e5f7e343b81ec5ae19ce6adc45e3f1e2abe7756523668be8ca62fc2b8c7c3b0",
+  "reviewedAt": "2026-11-28T13:59:50.018Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

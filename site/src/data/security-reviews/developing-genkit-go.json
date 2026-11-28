@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "skillId": "developing-genkit-go",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "ad86b49a250120cf336d73f6b5543e78796fc84f8ff4e548d484a3b5aa677397",
+  "contentHash": "af4227f073ca96d676fe3b1b7784922b501a2cea08b2b35a2b91570e84a2531b",
+  "reviewedAt": "2026-11-28T14:08:09.154Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": [
+      "references/a2ui.md",
+      "references/agents-artifacts.md",
+      "references/agents-background.md",
+      "references/agents-branching.md",
+      "references/agents-custom.md",
+      "references/agents-deployment.md",
+      "references/agents-human-in-the-loop.md",
+      "references/agents-multi-agent.md",
+      "references/agents-sessions.md",
+      "references/agents-state.md",
+      "references/agents.md",
+      "references/flows-and-http.md",
+      "references/generation.md",
+      "references/getting-started.md",
+      "references/middleware.md",
+      "references/observability.md",
+      "references/prompts.md",
+      "references/providers.md",
+      "references/tools.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

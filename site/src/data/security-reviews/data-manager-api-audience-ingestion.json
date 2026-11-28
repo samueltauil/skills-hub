@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "data-manager-api-audience-ingestion",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "09f9a348cc1ca91da47d628f97046e5970b0a16567e5563b264c77e65e6565a6",
+  "contentHash": "075500924b1fddbca0a455e6756e1e0f50d6f187b8cf1288fd3e142dd9aed15a",
+  "reviewedAt": "2026-11-28T14:02:42.035Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/create-audience.md",
+      "references/formatting.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

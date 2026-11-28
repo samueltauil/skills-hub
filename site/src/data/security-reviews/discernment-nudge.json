@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "discernment-nudge",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "5e778348ef9c71bc2f09063c7c18bd06fc50287321025bb9c7eff5264d104ef1",
+  "contentHash": "15cd763c164c5b2d8068081ac7c77c36817d8cfd79d7527f9b2263d976e1dee8",
+  "reviewedAt": "2026-11-28T14:07:55.177Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

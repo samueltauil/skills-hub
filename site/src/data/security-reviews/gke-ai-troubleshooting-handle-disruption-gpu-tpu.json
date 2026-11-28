@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-ai-troubleshooting-handle-disruption-gpu-tpu",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "ed2ed3b3070a41707d03532b34f77e05b6a4840234e32c3b4823199450b8ac6f",
+  "contentHash": "018f1230b4242c489d004d6c32ee1d4bdf90e2ea232c37e2244bd264b9c8690f",
+  "reviewedAt": "2026-11-28T16:09:53.886Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

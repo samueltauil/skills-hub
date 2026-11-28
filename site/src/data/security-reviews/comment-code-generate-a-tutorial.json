@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "comment-code-generate-a-tutorial",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "ff91c7234348b36f061d5cc6e6ddc42579af70838de21ea5e9145d9c6e717320",
+  "contentHash": "246a169da2df213ca3795621b5e269f3a6f847e9a33dd5b96ae10bd845e99f1f",
+  "reviewedAt": "2026-11-28T13:51:21.496Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

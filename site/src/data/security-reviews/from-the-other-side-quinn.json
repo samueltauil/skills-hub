@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "from-the-other-side-quinn",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "d1be0bfd00f4a44a42c9e958c0032fb20aa5e42639a3f860a8ba34e9e13fd735",
+  "contentHash": "da56852ade513a74344a7593ae0600e763121583528f89a1479f24ba357d336d",
+  "reviewedAt": "2026-11-28T15:46:54.195Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

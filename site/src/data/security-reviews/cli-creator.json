@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cli-creator",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "85f301373d28bd9c89e91d5a531d75c92e18ebf25ec8ace5a8095b2b42aee528",
+  "contentHash": "4e5805d9b79a2aed7d187e7e332998783c334b6db9eefc58455b981d515f21d0",
+  "reviewedAt": "2026-11-28T13:44:07.826Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/agent-cli-patterns.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

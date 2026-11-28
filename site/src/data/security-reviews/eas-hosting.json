@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "eas-hosting",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "25dd6b352dea50e7f72d747540cbad94b8972882d1d27ecea94e83bf41a4820d",
+  "contentHash": "1fc414eda00f10062288190d92076b71fca800d38833b6403c2d0cd11b61f5c2",
+  "reviewedAt": "2026-11-28T14:14:51.777Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

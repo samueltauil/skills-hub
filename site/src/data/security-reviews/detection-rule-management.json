@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "skillId": "detection-rule-management",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "b003a7c0c846f29d8fecdcad46e699ef48921653d9a34310a7adc6039edd0d8b",
+  "contentHash": "8b54fa334dbbe03e0455e6dfef10832d0d5c8413d0db372dd4a6482a5740d1fc",
+  "reviewedAt": "2026-11-28T14:07:20.559Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/detection-api-reference.md",
+      "references/endpoint-behavior-tuning-workflow.md",
+      "references/endpoint-exceptions-guide.md",
+      "references/endpoint-rule-exclusion-best-practices.md",
+      "scripts/add-endpoint-exception.js",
+      "scripts/check-exclusion-best-practices.js",
+      "scripts/es-client.js",
+      "scripts/fetch-endpoint-rule-from-github.js",
+      "scripts/kibana-client.js",
+      "scripts/rule-manager.js"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

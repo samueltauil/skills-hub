@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "compute-spot-capacity-advice",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "dc14a4c1d96a0c4fb1e9df73e91b6a139fdb5e58ed80996b7903ee7264997405",
+  "contentHash": "a3d37a04db32aadb0c79aa4e5d7d9abae13e449e72f991557c9cedaee520ae9e",
+  "reviewedAt": "2026-11-28T13:52:48.702Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

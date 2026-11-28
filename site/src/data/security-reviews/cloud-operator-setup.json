@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-operator-setup",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "2e35ccdb4209d4a9917f66daf06649627d28402fe27b36afdca17d8a3204238a",
+  "contentHash": "2345f27f062cd35d39c144e10a273f68716a203f22ddc057e2f335d11a08aa7b",
+  "reviewedAt": "2026-11-28T13:46:57.360Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

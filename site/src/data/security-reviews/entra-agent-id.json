@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "entra-agent-id",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "552bf3dc66a86d202a1cd5858cdb3d1f0506256023d988996f17eeca1e25eaba",
+  "contentHash": "20f2c1341bd3afad2299e67da5ee952101ac042c4e8815e530e5e6b443853bc2",
+  "reviewedAt": "2026-11-28T14:18:30.864Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/known-limitations.md",
+      "references/oauth2-token-flow.md",
+      "references/obo-blueprint-setup.md",
+      "references/runtime-token-exchange.md",
+      "references/sdk-sidecar-deployment.md",
+      "references/sdk-sidecar.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

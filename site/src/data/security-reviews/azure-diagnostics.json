@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-diagnostics",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "50c50db87491c1b2f13259261d13ca41ce792d61ed93760bdda0ec7ecb3a8464",
+  "contentHash": "c90f23d26cb5c4c67be60f9d1d213552d4e0d2c3a00b31a8b611abbe08e5d814",
+  "reviewedAt": "2026-11-28T13:33:35.136Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/app-service/README.md",
+      "references/azure-resource-graph.md",
+      "references/container-apps/README.md",
+      "references/functions/README.md",
+      "references/functions/durable.md",
+      "references/functions/triggers.md",
+      "references/kql-queries.md",
+      "scripts/aks-baseline.ps1",
+      "scripts/aks-baseline.sh",
+      "scripts/appservice-diagnostics.ps1",
+      "scripts/appservice-diagnostics.sh",
+      "scripts/containerapp-diagnostics.ps1",
+      "scripts/containerapp-diagnostics.sh",
+      "scripts/pod-evidence.ps1",
+      "scripts/pod-evidence.sh",
+      "scripts/run-ig.ps1",
+      "scripts/run-ig.sh",
+      "scripts/test-messaging-connectivity.ps1",
+      "scripts/test-messaging-connectivity.sh",
+      "troubleshooting/aks/aks-troubleshooting.md",
+      "troubleshooting/aks/general-diagnostics.md",
+      "troubleshooting/aks/load-balancer-and-ingress.md",
+      "troubleshooting/aks/network-policy.md",
+      "troubleshooting/aks/networking.md",
+      "troubleshooting/aks/node-issues.md",
+      "troubleshooting/aks/optional-aks-operations.md",
+      "troubleshooting/aks/pod-failures.md",
+      "troubleshooting/aks/references/aks-mcp.md",
+      "troubleshooting/aks/references/command-flows.md",
+      "troubleshooting/aks/references/inspektor-gadget.md",
+      "troubleshooting/aks/references/structured-input-modes.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "troubleshooting/aks/spot-and-zone-issues.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/aks/upgrade-operations.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/references/cannot-connect-to-vm.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/references/credential-auth-errors.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/references/firewall-blocking.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/references/network-connectivity.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/references/rdp-connectivity.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/references/rdp-service-config.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/references/ssh-connectivity.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/references/vm-agent-not-responding.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/compute/vm-troubleshooting.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/auth-best-practices.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/azure-eventhubs-dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/azure-eventhubs-java.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/azure-eventhubs-js.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/azure-eventhubs-py.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/azure-servicebus-dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/azure-servicebus-java.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/azure-servicebus-js.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/azure-servicebus-py.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "troubleshooting/messaging/service-troubleshooting.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

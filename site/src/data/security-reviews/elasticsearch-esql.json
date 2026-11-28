@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "skillId": "elasticsearch-esql",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f213f5ddc70a67afd046d6fb333cacf3d3cb511368107445e65a4b1a0c8aeb37",
+  "contentHash": "55f853c10d50b764c981d4893c5fcf52d2218ed192b88bbeb46e97f4998b47a7",
+  "reviewedAt": "2026-11-28T14:16:18.188Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dsl-to-esql-migration.md",
+      "references/query-patterns.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/esql-reference.md",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "references/time-series-queries.md",
+        "reason": "bundle-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "references/esql-search-strategy.md",
+      "references/esql-search.md",
+      "references/esql-version-history.md",
+      "references/generation-tips.md",
+      "references/promql-command.md",
+      "references/query-approximation.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "discover-azure-skills",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bc9f884e35d248aa1597a5b10a4d22a4e8cc95d962604fa542d26eb800f18ad6",
+  "contentHash": "d9aec272e9589374780ebe76fddbad3c9ba1ba72aa9fe96b95390902dd929cb1",
+  "reviewedAt": "2026-11-28T14:08:43.522Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/install/claude-code.md",
+      "references/install/copilot-cli.md",
+      "references/install/other.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

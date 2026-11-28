@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "breakdown-plan",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "9c454a119c5dc6ae06664ef0e0e6409f87c08a0d306919c552c1d0901f535c82",
+  "contentHash": "e0795e5f4da20a66df713fdb156331740e967a266babbd5966fae001e6920a27",
+  "reviewedAt": "2026-11-28T13:41:03.086Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

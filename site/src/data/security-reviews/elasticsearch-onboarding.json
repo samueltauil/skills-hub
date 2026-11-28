@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "elasticsearch-onboarding",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "579dd3a067ef13a43b8c5cd5b56286e986822b2db2946efae6cbca843251b9ce",
+  "contentHash": "67081571691dd5e440f35ac4b8fe89ce9d01fe99261997001b14a17ce12ade72",
+  "reviewedAt": "2026-11-28T14:17:52.535Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/catalog-ecommerce/ecommerce.md",
+      "references/cluster-access/cluster-access.md",
+      "references/code-generation/code-generation.md",
+      "references/elasticsearch-onboarding-playbook.md",
+      "references/keyword-search/keyword-search.md",
+      "references/rag-chatbot/rag-chatbot.md",
+      "references/search-ui/search-ui.md",
+      "references/use-case-library/use-case-library.md",
+      "references/vector-hybrid-search/vector-hybrid-search.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

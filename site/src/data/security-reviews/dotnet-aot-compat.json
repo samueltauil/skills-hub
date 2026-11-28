@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dotnet-aot-compat",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "800b26f020719d929cad1a1ed00fe3f83087536ff3d484612803fbe6c8e62e33",
+  "contentHash": "4e21e9ea50960b315ee1df3df045a357ff08155fa7dd0be413131fb514013a3a",
+  "reviewedAt": "2026-11-28T14:11:29.019Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/polyfills.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

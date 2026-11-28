@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "elasticsearch-anomaly-detection-explainer",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "1a1cffd1a52eb05db38aaef2874a017cc4a031405b67f3148e27e6253e11fb6d",
+  "contentHash": "2b0d0c172bddd765b026f794e8171721e20c3f2601837f39f34aad5d4ea96295",
+  "reviewedAt": "2026-11-28T14:16:11.392Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/explainer-reference.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

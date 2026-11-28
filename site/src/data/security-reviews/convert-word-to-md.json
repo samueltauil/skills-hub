@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "convert-word-to-md",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "355cad4e03a9cbcc484efc9330f035ab5abf18f12722a64a333004e97b843126",
+  "contentHash": "8986bfbc940abcc3271204346c63eca4dc9410b59fb7453e65873bcca6912b52",
+  "reviewedAt": "2026-11-28T13:55:07.365Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/setup.md",
+      "scripts/convert_word_to_md.py",
+      "scripts/requirements.txt"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

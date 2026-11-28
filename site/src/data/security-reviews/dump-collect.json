@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dump-collect",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f405ccb529f8e944b4952c8b3c104b6ec2e5eb1507b9f3590a3e167d4b6c0323",
+  "contentHash": "8264971e62ef3dfcc6423bdb908eea90905b45f6afb30433b2d6e8bd268c666a",
+  "reviewedAt": "2026-11-28T14:13:46.675Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/container-dumps.md",
+      "references/coreclr-dumps.md",
+      "references/nativeaot-dumps.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

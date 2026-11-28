@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-resource-lookup",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "68f7b976cedd89e8a18327e419aa7bb528ec6339078b087d539656eccc0df714",
+  "contentHash": "25272f69bce93fbc23125f43be35d0ac7fe2f6ff0f3007ac628313856e7ac93b",
+  "reviewedAt": "2026-11-28T13:35:02.058Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/azure-resource-graph.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

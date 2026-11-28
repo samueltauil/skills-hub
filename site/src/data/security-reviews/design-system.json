@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "skillId": "design-system",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "723332b942fc57ad2deed65aa5bd25cdf983eed8d6be51e187b686254c688182",
+  "contentHash": "6b83a74c1e70f8d5e718ab6cc9624131727ddfd7d8012a0a05b920fca5205815",
+  "reviewedAt": "2026-11-28T14:06:30.596Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "data/slide-backgrounds.csv",
+      "data/slide-charts.csv",
+      "data/slide-color-logic.csv",
+      "data/slide-copy.csv",
+      "data/slide-layout-logic.csv",
+      "data/slide-layouts.csv",
+      "data/slide-strategies.csv",
+      "data/slide-typography.csv",
+      "references/component-specs.md",
+      "scripts/validate-tokens.cjs",
+      "templates/design-tokens-starter.json"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": [
+      "references/component-tokens.md",
+      "references/primitive-tokens.md",
+      "references/semantic-tokens.md",
+      "references/states-and-variants.md",
+      "references/tailwind-integration.md",
+      "references/token-architecture.md",
+      "scripts/embed-tokens.cjs",
+      "scripts/fetch-background.py",
+      "scripts/generate-slide.py",
+      "scripts/generate-tokens.cjs",
+      "scripts/html-token-validator.py",
+      "scripts/search-slides.py",
+      "scripts/slide-token-validator.py",
+      "scripts/slide_search_core.py",
+      "scripts/tests/test_utf8_io.py",
+      "scripts/tests/test_validate_tokens.py"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

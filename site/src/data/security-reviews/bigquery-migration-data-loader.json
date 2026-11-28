@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigquery-migration-data-loader",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "73384d999bbf42e13767260aa662bed3774d66597535b748a62e130ed6284d4c",
+  "contentHash": "a5b721174735cf096aa2a4f8c594f9018bb5da166d5c4c5e85bbcd4707b031a2",
+  "reviewedAt": "2026-11-28T13:38:25.369Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/bq_loader_template.py",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

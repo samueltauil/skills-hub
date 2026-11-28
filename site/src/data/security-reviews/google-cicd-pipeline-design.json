@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cicd-pipeline-design",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "f002c5125ab772eb5c78d58c41c203087c74d5b941df1d555dcc6e41e5f1f211",
+  "contentHash": "4abc4d6af2011d24c58cb24e89b50889fdf43dfdbcd3e38cb39606519f748371",
+  "reviewedAt": "2026-11-28T16:41:34.193Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/how_to_build_cloudbuild_yaml.md",
+      "references/how_to_create_cloudbuild_trigger.md",
+      "references/how_to_load_deployment_config.md",
+      "references/how_to_write_dockerfile.md",
+      "references/pattern_git_tag_triggered_release.txt",
+      "references/pattern_trunk_based_ci_tag_based_cd.txt",
+      "references/pattern_trunk_based_push_to_deploy.txt",
+      "references/programming_language_specific_project_setup.md",
+      "references/sample-deployment-config.json"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "skillId": "eval-driven-dev",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "de01a8d222fb30da7807900734dce58a61073d375995185e4c5719d310572907",
+  "contentHash": "7e8da944356640c0168ae86d01461b098246398a2faec1282205e570e15a41ac",
+  "reviewedAt": "2026-11-28T14:19:38.117Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/1-a-project-analysis.md",
+      "references/1-b-entry-point.md",
+      "references/1-c-eval-criteria.md",
+      "references/2a-instrumentation.md",
+      "references/2b-implement-runnable.md",
+      "references/2c-capture-and-verify-trace.md",
+      "references/3-define-evaluators.md",
+      "references/4-build-dataset.md",
+      "references/5-run-tests.md",
+      "references/6-analyze-outcomes.md",
+      "references/evaluators.md",
+      "references/runnable-examples/cli-app.md",
+      "references/runnable-examples/fastapi-web-server.md",
+      "references/runnable-examples/standalone-function.md",
+      "references/testing-api.md",
+      "references/wrap-api.md",
+      "resources/setup.sh",
+      "resources/verify_step6_completion.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

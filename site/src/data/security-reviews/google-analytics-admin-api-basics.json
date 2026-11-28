@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-analytics-admin-api-basics",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "8627e99296abafccd1e178e0ef1272ecea9582c3080cbac586c41cb2d9addf8c",
+  "contentHash": "11a43b209b6f385362bddc08cd02f930920952779d8a917ae6367150195980b3",
+  "reviewedAt": "2026-11-28T16:38:28.808Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dotnet.md",
+      "references/go.md",
+      "references/java.md",
+      "references/nodejs.md",
+      "references/php.md",
+      "references/python.md",
+      "references/ruby.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

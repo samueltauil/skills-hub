@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-trace-querying",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "503446011ca7515bc7a823c49daa414c6bc13c272cd40b121b8d9c123534a951",
+  "contentHash": "e9330c3291ff0668a2d0dffec10a2899f15ab83207c4523f9b9297c4b8bc63f6",
+  "reviewedAt": "2026-11-28T13:51:25.578Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/formatting/a2ui/single_span/display.a2ui.json",
+      "assets/formatting/a2ui/trace_chart/display.a2ui.json",
+      "assets/formatting/a2ui/trace_flow/display.a2ui.json",
+      "assets/formatting/a2ui/traces_heat_map/display.a2ui.json",
+      "assets/formatting/ascii/single_span/display.txt",
+      "assets/formatting/ascii/trace_chart/display.txt",
+      "assets/formatting/ascii/trace_flow/display.txt",
+      "assets/formatting/ascii/traces_heat_map/display.txt",
+      "assets/queries/billing_errors/SCENARIO.md",
+      "assets/queries/billing_errors/query.txt",
+      "assets/queries/checkout_latency/SCENARIO.md",
+      "assets/queries/checkout_latency/query.txt",
+      "assets/queries/customer_spans/SCENARIO.md",
+      "assets/queries/customer_spans/query.txt",
+      "assets/queries/prod_outliers/SCENARIO.md",
+      "assets/queries/prod_outliers/query.txt",
+      "assets/queries/slow_db/SCENARIO.md",
+      "assets/queries/slow_db/query.txt",
+      "references/api-limits.md",
+      "references/attribution.md",
+      "references/concepts-span.md",
+      "references/concepts-trace.md",
+      "references/console-deep-links.md",
+      "references/conventions-gcp-legacy.md",
+      "references/conventions-gcp.md",
+      "references/conventions-otel-genai.md",
+      "references/conventions-otel-grpc.md",
+      "references/conventions-otel-http.md",
+      "references/conventions-otel.md",
+      "references/conventions.md",
+      "references/correlated-logs.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/decision-tree.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/filter-syntax.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/index.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/knowledge-overview.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/logs-trace-correlation.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability-scopes.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/querying-mcp.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/querying-observability-analytics.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/troubleshoot-latency.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows-overview.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_entire_trace/run.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_entire_trace/src/main.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_entire_trace/test.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_entire_trace/tests/main_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_related_logs/run.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_related_logs/src/log_fetcher.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_related_logs/src/main.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_related_logs/src/observability_scopes.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_related_logs/src/timestamp_utils.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_related_logs/test.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_related_logs/tests/main_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_related_logs/tests/timestamp_utils_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_trace_span/run.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_trace_span/src/main.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_trace_span/test.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/fetch_trace_span/tests/main_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/generate_links/run.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/generate_links/src/main.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/generate_links/test.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/generate_links/tests/main_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/get_trace_project/run.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/get_trace_project/src/main.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/get_trace_project/src/project_resolver.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/get_trace_project/test.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/get_trace_project/tests/integration_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/get_trace_project/tests/project_resolver_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/requirements.txt",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/run.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/src/cleanup_env.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/src/lock_manager.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/src/manage_venv.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/src/path_resolver.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/src/venv_cleaner.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/src/venv_executor.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/src/venv_setup.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/test.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/tests/cleanup_env_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/tests/lock_manager_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/tests/path_resolver_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/run_python_with_deps/tests/venv_setup_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/search_traces/run.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/search_traces/src/main.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/search_traces/src/timestamp_utils.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/search_traces/src/trace_searcher.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/search_traces/test.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/search_traces/tests/main_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/search_traces/tests/timestamp_utils_test.py",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/search_traces/tests/trace_searcher_test.py",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

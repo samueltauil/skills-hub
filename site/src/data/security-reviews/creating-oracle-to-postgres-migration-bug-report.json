@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "creating-oracle-to-postgres-migration-bug-report",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "25616080b0c1c51c4e4fc0adcbf4d89b61456bc9026899584ef0529eae7260de",
+  "contentHash": "e94fedf7edfd8d3b5226f344c6d0cdceb64647241179e4021d66175f241b878d",
+  "reviewedAt": "2026-11-28T14:00:25.893Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/BUG-REPORT-TEMPLATE.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

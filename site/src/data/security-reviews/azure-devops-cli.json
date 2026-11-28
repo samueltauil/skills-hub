@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-devops-cli",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "18deb19f2b130fc28970d165e7dcc3fcb130c97c26faac947b7aeb4a2c4cb143",
+  "contentHash": "5e16f509db0fa30cde410fac29e0f09d1cb228b64c95627c9f9643a8329d7f7d",
+  "reviewedAt": "2026-11-28T13:32:31.234Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/advanced-usage.md",
+      "references/boards-and-iterations.md",
+      "references/long-comments-on-windows.md",
+      "references/org-and-security.md",
+      "references/pipelines-and-builds.md",
+      "references/repos-and-prs.md",
+      "references/variables-and-agents.md",
+      "references/workflows-and-patterns.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

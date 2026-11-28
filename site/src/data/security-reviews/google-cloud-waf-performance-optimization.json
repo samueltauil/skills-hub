@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-waf-performance-optimization",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "2dac309eee86797f952a76e81d1f19d581fd61c12605ab1124ee4b565083feda",
+  "contentHash": "803e2b1e68bc9558351622856d23f4e682f815fe5cf679206e4c25a710cd7a85",
+  "reviewedAt": "2026-11-28T17:00:55.946Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

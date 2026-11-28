@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigquery-migration-sql-translator",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8ebb05bce1fb2a6af5f43c8b2a9ea91edd4752fa8a2d82874828071b286cfac3",
+  "contentHash": "7bbe770f389ac129a87f5104c9823baf74e4ba59510dd16c2593700c6626abc6",
+  "reviewedAt": "2026-11-28T13:38:05.278Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/python_embedded_sql_migrator_template.py",
+      "references/snowflake_gotchas.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/teradata_gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/translation_yaml_config.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "assets/translation_config_examples/environment_example.yaml",
+      "assets/translation_config_examples/experimental_input_formats_example.yaml",
+      "assets/translation_config_examples/experimental_metadata_example.yaml",
+      "assets/translation_config_examples/experimental_object_rewriter_example.yaml",
+      "assets/translation_config_examples/experimental_optimizer_example.yaml",
+      "assets/translation_config_examples/experimental_statement_rewriter_example.yaml",
+      "assets/translation_config_examples/input_formats_example.yaml",
+      "assets/translation_config_examples/metadata_example.yaml",
+      "assets/translation_config_examples/object_rewriter_example.yaml",
+      "assets/translation_config_examples/optimizer_example.yaml",
+      "assets/translation_config_examples/statement_rewriter_example.yaml",
+      "assets/translation_config_schemas/environment.json",
+      "assets/translation_config_schemas/experimental_input_formats.json",
+      "assets/translation_config_schemas/experimental_metadata.json",
+      "assets/translation_config_schemas/experimental_object_rewriter.json",
+      "assets/translation_config_schemas/experimental_optimizer.json",
+      "assets/translation_config_schemas/experimental_statement_rewriter.json",
+      "assets/translation_config_schemas/input_formats.json",
+      "assets/translation_config_schemas/metadata.json",
+      "assets/translation_config_schemas/object_rewriter.json",
+      "assets/translation_config_schemas/optimizer.json",
+      "assets/translation_config_schemas/statement_rewriter.json",
+      "assets/translation_config_schemas/transpiler_config_spec.json",
+      "references/attribution.md",
+      "references/effect_compatibility.md",
+      "references/effect_completeness.md",
+      "references/effect_correctness.md",
+      "references/mcp_config.md",
+      "references/oracle_gotchas.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}
