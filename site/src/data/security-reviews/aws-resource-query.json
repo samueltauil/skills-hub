@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "aws-resource-query",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "bee80eb384782a7c18c6702cbe8ec904957195dade92c0dc7a8f49908bd63f98",
+  "contentHash": "a0fc48b271b36e4e395b8e73fd2872292f1be419e0596e17949d8ed472629e4a",
+  "reviewedAt": "2026-11-28T05:44:35.823Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

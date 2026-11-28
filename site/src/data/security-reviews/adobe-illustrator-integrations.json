@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "adobe-illustrator-integrations",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "224d5762597ab8a34cf5ade4a6ddb25c8717b71376aa042b1b8cb205839dc073",
+  "contentHash": "378e8d02cc7620d880418371f0a7caa501a94f13a42a8763dd2c822b8eda5731",
+  "reviewedAt": "2026-11-28T05:20:05.556Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/automation-and-mcp.md",
+      "references/cep-extensions.md",
+      "references/cpp-plugins.md",
+      "references/publishing-docs.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

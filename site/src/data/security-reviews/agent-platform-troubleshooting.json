@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "skillId": "agent-platform-troubleshooting",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "7f227818b3d82185249512c3c32672e01fc65f1c0b6541aad18f68620025a87c",
+  "contentHash": "769af28bc88ee8b57d123bc965e4e0860af2c5aca3415a132a9eb042f3c84f09",
+  "reviewedAt": "2026-11-28T05:26:12.366Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/agent-gateway.md",
+      "references/agent-identity.md",
+      "references/agent-registry.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/field-manual.md",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "references/known-issues.md",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "references/policies.md",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

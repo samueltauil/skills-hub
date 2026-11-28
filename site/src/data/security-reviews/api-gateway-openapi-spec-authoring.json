@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "api-gateway-openapi-spec-authoring",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "14a5cfe04d5c379fd2b1ac7af14a08ade480216b0836b74e1980b3d00a494f91",
+  "contentHash": "edbf9a3325952b4e04c0b1e38c77e8c3cb649efb9acc788fc4bd923bf6fdfbca",
+  "reviewedAt": "2026-11-28T05:32:57.701Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/api-config-errors.md",
+      "references/attribution.md",
+      "references/openapi-2-to-3-migration.md",
+      "references/openapi-3-extensions-and-limits.md",
+      "scripts/validate_apigw_openapi.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

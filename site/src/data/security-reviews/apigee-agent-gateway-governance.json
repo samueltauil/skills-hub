@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "skillId": "apigee-agent-gateway-governance",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "9fb0cf6e81abd03de88e97fb4b60d0d218d0d6cc4019f53850c9677a9c9c0820",
+  "contentHash": "cac5c90aeeb5350055dd72dffaa4d012a835dc42386fd7b3c5f2b7e0fe9249ca",
+  "reviewedAt": "2026-11-28T05:35:07.852Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/apigee-agent-gateway-governance.example.yaml",
+      "assets/apigee-proxy-template.yaml",
+      "assets/authz-extension.example.yaml",
+      "assets/authz-policy.example.yaml",
+      "assets/feature-identity.yaml",
+      "assets/feature-model-armor.yaml",
+      "assets/feature-normalize.yaml",
+      "assets/feature-semantic-cache.yaml",
+      "assets/feature-token-enforce.yaml",
+      "assets/feature-token-metering.yaml",
+      "references/attribution.md",
+      "references/gotchas.md",
+      "references/modes.md",
+      "references/networking-psc.md",
+      "references/recipes.md",
+      "references/setup.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "scripts/assess_integration.sh",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/compile_check.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/deploy_proxy.sh",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/ensure_apigee_environment.sh",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/ensure_gateway_connectivity.sh",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/ensure_vector_search.sh",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/read_debug_session.sh",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/teardown_vector_search.sh",
+        "reason": "bundle-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "references/verify.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "skillId": "agent-platform-autorater-customization",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "09a0c22f3aa6372209a42584a44d6599b12026999f9319c261ec181b2af22c86",
+  "contentHash": "7215e9864ffe79fdc917c4e6b2d6be32044f0271f57d8d3cecb19ff33264952a",
+  "reviewedAt": "2026-11-28T05:21:15.696Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/converting_trajectories.md",
+      "references/metric_templates.md",
+      "references/multi_turn.md",
+      "references/noise_and_agreement.md",
+      "references/sdk_gotchas.md",
+      "references/writing_checks.md",
+      "scripts/agreement.py",
+      "scripts/build_review_page.py",
+      "scripts/render_agent_data.py",
+      "scripts/run_metrics.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

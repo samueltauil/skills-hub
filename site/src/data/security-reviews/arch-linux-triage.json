@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "arch-linux-triage",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "f5962538609b56795e16e2acec075ca963c54637cb91cca7b035d9bf8add367d",
+  "contentHash": "97b542e5248c502baf82c011617bb73e24e10763e9d8f5aa68eb141f73fcb85b",
+  "reviewedAt": "2026-11-28T05:35:11.101Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

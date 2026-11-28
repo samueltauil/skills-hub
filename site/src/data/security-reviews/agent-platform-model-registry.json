@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "agent-platform-model-registry",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "67c880c7d7f88a01c78617dd19c252a93358fac311df8a70f22f1949d7a8d408",
+  "contentHash": "d4e1e3be6c9108ef5944d70151150a02a816a14128510026080eb72c8a2055e4",
+  "reviewedAt": "2026-11-28T05:23:24.812Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}
