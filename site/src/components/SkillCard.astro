@@ -24,6 +24,7 @@ interface Props {
 const { id, name, description, category, triggers = [], fileCount = 0, verified = false, securityScan, source } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const categoryInfo = getCategory(category);
+const categoryMark = (category || 'general').split('-').map(part => part[0]).join('').slice(0, 2).toUpperCase();
 
 // Convert kebab-case to Title Case
 function formatName(str: string): string {
@@ -39,7 +40,7 @@ const displayName = formatName(name);
 <article class="skill-card card">
   <div class="skill-top">
     <span class="skill-category" title={categoryInfo.name}>
-      <span aria-hidden="true">{categoryInfo.icon}</span>
+      <span class="skill-category-mark" aria-hidden="true">{categoryMark}</span>
       <span class="skill-category-name">{categoryInfo.name}</span>
     </span>
     <div class="skill-badges">
@@ -143,6 +144,22 @@ const displayName = formatName(name);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .skill-category-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.125rem;
+    height: 1.125rem;
+    padding: 0 0.125rem;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-tertiary);
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    font-weight: 600;
+    line-height: 1;
   }
 
   .skill-badges {
