@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "skillId": "acquire-codebase-knowledge",
+  "revision": "deb053cd7fec0e0f404f67cfa380f6bd5d8520ff",
+  "bundleHash": "4709f4e7b40aaaf4f66f6b914f764d77b858acb828a3417177d6b3380690708e",
+  "contentHash": "627431f09424cc0524b86360136df85afa86d71dd0d907f0e6918904be879aa5",
+  "reviewedAt": "2026-11-28T05:04:00.601Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/templates/ARCHITECTURE.md",
+      "assets/templates/CONCERNS.md",
+      "assets/templates/CONVENTIONS.md",
+      "assets/templates/INTEGRATIONS.md",
+      "assets/templates/STACK.md",
+      "assets/templates/STRUCTURE.md",
+      "assets/templates/TESTING.md",
+      "references/inquiry-checkpoints.md",
+      "references/stack-detection.md",
+      "scripts/scan.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}
