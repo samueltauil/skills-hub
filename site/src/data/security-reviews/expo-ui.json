@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "expo-ui",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "1f770dcc8825c5ef56ffd7a7efa1abd3e929c0342f5e5c54a09cb7ac86608e97",
+  "contentHash": "d7df103067b0b9558bea69a5c25cc906bae6957bf28fc62729e64aebc798e95d",
+  "reviewedAt": "2026-11-28T14:20:51.431Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/drop-in-replacements.md",
+      "references/jetpack-compose.md",
+      "references/swift-ui.md",
+      "references/universal.md",
+      "scripts/list-components.js"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

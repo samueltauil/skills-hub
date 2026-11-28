@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-ai",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "cdbfa7632bb15df48c50905d97f2f06d42276e89058cb4bb1924020a6c8f16e4",
+  "contentHash": "2ac82785199b2cc4ce5aa83cd646f971979e60eda4d34075aa6d496e3f210c8f",
+  "reviewedAt": "2026-11-28T13:32:39.430Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/auth-best-practices.md",
+      "references/content-safety/api-preflight-and-diagnostics.md",
+      "references/content-understanding/custom-analyzers.md",
+      "references/content-understanding/diagnostics.md",
+      "references/content-understanding/overview-and-setup.md",
+      "references/document-intelligence/custom-models.md",
+      "references/document-intelligence/preflight-and-diagnostics.md",
+      "references/document-intelligence/without-node.md",
+      "references/foundry-tools/access-and-roles.md",
+      "references/foundry-tools/data-handling.md",
+      "references/foundry-tools/evidence-without-content.md",
+      "references/foundry-tools/private-network.md",
+      "references/foundry-tools/storage-and-studio.md",
+      "references/foundry-tools/without-node.md",
+      "references/sdk/azure-ai-contentsafety-java.md",
+      "references/sdk/azure-ai-contentsafety-py.md",
+      "references/sdk/azure-ai-contentsafety-ts.md",
+      "references/sdk/azure-ai-document-intelligence-dotnet.md",
+      "references/sdk/azure-ai-document-intelligence-ts.md",
+      "references/sdk/azure-ai-openai-dotnet.md",
+      "references/sdk/azure-ai-transcription-py.md",
+      "references/sdk/azure-ai-translation-text-py.md",
+      "references/sdk/azure-ai-translation-ts.md",
+      "references/sdk/azure-ai-vision-imageanalysis-java.md",
+      "references/sdk/azure-ai-vision-imageanalysis-py.md",
+      "references/sdk/azure-search-documents-dotnet.md",
+      "references/sdk/azure-search-documents-py.md",
+      "references/sdk/azure-search-documents-ts.md",
+      "references/search/index-and-query-diagnostics.md",
+      "references/speech/audio-without-node.md",
+      "references/speech/azure-checks.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/speech/collection.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/speech/diagnostics.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/speech/interpretation.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/speech/logging-apis.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/speech/output.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/speech/source-contract.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/speech/transcription-and-audio-preflight.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/speech/without-node.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/translator/document-translation-preflight.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/translator/without-node.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/analyze-speech-sdk-log.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/analyze-speech-sdk-log.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/analyze-speech-sdk-log.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/audit-di-training-set.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/audit-di-training-set.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/audit-di-training-set.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/check-foundry-tools-access.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/check-foundry-tools-access.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/check-foundry-tools-access.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/check-foundry-tools-network.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/check-foundry-tools-network.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/check-foundry-tools-network.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/inspect-document-input.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/inspect-document-input.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/inspect-document-input.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/inspect-speech-audio.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/inspect-speech-audio.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/inspect-speech-audio.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/json-file.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/sanitize-har.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/sanitize-har.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/sanitize-har.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-content-safety-request.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-content-safety-request.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-content-safety-request.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-document-translation.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-document-translation.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-document-translation.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-search-schema.mjs",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-search-schema.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/validate-search-schema.sh",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

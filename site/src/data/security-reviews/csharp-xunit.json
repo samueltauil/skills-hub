@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "csharp-xunit",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "be7e1ffb9944728f5fe245f0999b18aedf30188522d959c899f19e7a1190c275",
+  "contentHash": "a679eed442b7859b1476e4fc4e64d7d5e3aa3d3998b1e1ba0b6aebe4cfcc94c4",
+  "reviewedAt": "2026-11-28T14:00:56.020Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

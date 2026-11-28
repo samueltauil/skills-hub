@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "coverage-analysis",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d41dddb8aa924b5698979f8321e2b5794af0fde49888ded68541f4bb7389b352",
+  "contentHash": "f8de6011f4906ea71a21b92ab13c5375fc9bf07723cff8b43b3acdca2e90d5cc",
+  "reviewedAt": "2026-11-28T13:57:50.891Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/guidelines.md",
+      "references/output-format.md",
+      "references/report-generation.md",
+      "references/setup-discovery.md",
+      "scripts/Compute-CrapScores.ps1",
+      "scripts/CoverageData.ps1",
+      "scripts/Extract-MethodCoverage.ps1"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

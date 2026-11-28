@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "expo-examples",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "20c0c6703cf02fb9b815892a142ba60e69ba3d5298512e03fe1d98da50ea18e4",
+  "contentHash": "784524b60e2f48b3fb7304e724a989a73ddb76e2326721b24bc9df87b5a8b962",
+  "reviewedAt": "2026-11-28T14:19:41.998Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/catalog.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

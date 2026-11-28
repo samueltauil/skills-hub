@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigquery-optimization",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "a7317d2ea0a4c608568f15dd7dd2ce5e95ac27b498ec5b3d6f60689dce0792f1",
+  "contentHash": "f605a38bc090b5630b92503bf177b1220a9e4e8ef0eb72da1b997270aa26ff8e",
+  "reviewedAt": "2026-11-28T13:39:23.882Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/bi_engine.md",
+      "references/capacity_planning_editions.md",
+      "references/materialized_views.md",
+      "references/search_indexes.md",
+      "references/sql_optimization.md",
+      "references/storage_billing_models.md",
+      "references/storage_lifecycle_management.md",
+      "references/table_partitioning_clustering.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

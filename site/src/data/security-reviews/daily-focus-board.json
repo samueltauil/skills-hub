@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "daily-focus-board",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "6c3bc126bafecbbb2f37d62a013bb68d8ac89206949524687a86879236d7710b",
+  "contentHash": "f3ae36cae55abe69fd13f75444cb7793498f7a4a588404fbeed738cba1cd258a",
+  "reviewedAt": "2026-11-28T14:03:41.557Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/board.template.html",
+      "examples/sample-board.html",
+      "references/customize.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": [
+      "references/neurodivergent-design.md",
+      "references/tutorial.md",
+      "scripts/serve-board.ps1"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

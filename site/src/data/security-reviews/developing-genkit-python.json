@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "skillId": "developing-genkit-python",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "da82bebf662b7759f99c0eeedb3f190196da18b03fe65738eb36d45b8cc15ffa",
+  "contentHash": "4605018607284635688e7b9a55410b2f159f027bbb4fde865c028eb00617a90b",
+  "reviewedAt": "2026-11-28T14:09:29.747Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/agents-artifacts.md",
+      "references/agents-background.md",
+      "references/agents-branching.md",
+      "references/agents-custom.md",
+      "references/agents-http.md",
+      "references/agents-human-in-the-loop.md",
+      "references/agents-sessions.md",
+      "references/agents-state.md",
+      "references/agents.md",
+      "references/common-errors.md",
+      "references/dev-workflow.md",
+      "references/dotprompt.md",
+      "references/evals.md",
+      "references/examples.md",
+      "references/fastapi.md",
+      "references/migrating-from-0.12.md",
+      "references/setup.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

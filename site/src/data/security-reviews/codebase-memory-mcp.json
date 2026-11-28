@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "codebase-memory-mcp",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "3bc9a91f30fd3710ca17a01544b21f99fa25b0fdf03481a25e59a3b17cb6aa68",
+  "contentHash": "8e392faaa40e4b9c634e348f03d5f3b9e7fba388927e60b6f3675c7d460e037b",
+  "reviewedAt": "2026-11-28T13:50:39.424Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

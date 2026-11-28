@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "embedding-anisotropy-check",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "02e156748aed34d706039fc187a139f559142bf47079cb219e220ae6e764c264",
+  "contentHash": "25a754c5c697a86fe8d04222f43b2d570f7fb0975b334be9faf2f5f6c69856c9",
+  "reviewedAt": "2026-11-28T14:17:41.605Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "scripts/anisotropy_check.py",
+      "scripts/example_scifact_halves.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

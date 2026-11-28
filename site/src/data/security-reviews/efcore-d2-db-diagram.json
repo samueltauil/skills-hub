@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "efcore-d2-db-diagram",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "c5c3a2fa0438dc3fcf578113c5c60b5497a474b8e17cc0b30f9e71294a4d97d2",
+  "contentHash": "f3ab375bcf54e0fefcf5accc4b8a6c523a51d5880138df21279cf9e4a348dd48",
+  "reviewedAt": "2026-11-28T14:15:22.584Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/d2-erd-style.md",
+      "references/efcore-model-extraction.md",
+      "references/grouping-modes.md",
+      "references/quality-gate.md",
+      "references/relationship-rules.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

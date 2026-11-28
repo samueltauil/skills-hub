@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cli-mastery",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "4553021df7c57943d726bd52bdbd35cb314e307b6cc948805a71604165c1b2a7",
+  "contentHash": "e9f7282ba556e5c9a8ca28d9769e0d5013f4f5eccf97c6ba8f791494042c467c",
+  "reviewedAt": "2026-11-28T13:43:49.904Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/final-exam.md",
+      "references/module-1-slash-commands.md",
+      "references/module-2-keyboard-shortcuts.md",
+      "references/module-3-modes.md",
+      "references/module-4-agents.md",
+      "references/module-5-skills.md",
+      "references/module-6-mcp.md",
+      "references/module-7-advanced.md",
+      "references/module-8-configuration.md",
+      "references/scenarios.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

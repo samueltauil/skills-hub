@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "devops-rollout-plan",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "c9a6f0053f83c2068ac2f20d0459af07129934ebf58d83a752ccd5dc3098631c",
+  "contentHash": "50864bc65af10a3435b9581f63e31a36c2b26b2d71c2ed60b4edb844d4f9f873",
+  "reviewedAt": "2026-11-28T14:07:42.487Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

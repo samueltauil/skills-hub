@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-static-web-apps",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "26b15728ef7ae6bf321b553dc570b259fee423a4a14dbe06e63dfc353e48503c",
+  "contentHash": "4e3d6f800cba5454ec3d9b5a310fd61aa8588df1ec46985915519e5efb9ec416",
+  "reviewedAt": "2026-11-28T13:35:29.072Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

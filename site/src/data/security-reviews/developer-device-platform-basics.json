@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "skillId": "developer-device-platform-basics",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "5acb533e61d1c9f58678f4c37bdf34af9eee9eaee3eef22dc92e2a9d1c4c2f7b",
+  "contentHash": "554e1277dd3c41519eceb0d7171dff17964de61e07302157fc76fb7a129d2b4e",
+  "reviewedAt": "2026-11-28T14:07:09.284Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/cancel_session.md",
+      "references/describe_device.md",
+      "references/list_sessions.md",
+      "references/reserve_device.md",
+      "references/session_status.md",
+      "references/start_adb_forwarder.md",
+      "references/update_session_expiration.md",
+      "references/view_device.md",
+      "scripts/demo_adb_forwarder.py",
+      "scripts/requirements.txt"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

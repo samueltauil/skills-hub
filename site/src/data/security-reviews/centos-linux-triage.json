@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "centos-linux-triage",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "a1267e379be04280ea77245c1434ee24907a93aede9c7c4de88427fc182e7815",
+  "contentHash": "2d7c15cf063452843ac1661a5464c69de6a876092ef7c56ab2169b9240d19c18",
+  "reviewedAt": "2026-11-28T13:42:06.210Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-resource-visualizer",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "4f9d483fdde786494d27e8ec4fc5b5a78611407997c87a96ea3da6625afc655b",
+  "contentHash": "7175bccfeb02bf257fd37dce1266e6e31287bbde3de70e2a3671402ff48e70ee",
+  "reviewedAt": "2026-11-28T13:34:46.619Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md",
+      "assets/template-architecture.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

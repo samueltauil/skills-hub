@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dependabot",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "4803e1291b4e183b7d3612bbda46b9b080383a60fada333d1b04e49b3712bf92",
+  "contentHash": "a2eb8400105e7abae88c385539feb8b6a77334bcea833fef43571c1d9f32dd02",
+  "reviewedAt": "2026-11-28T14:05:43.364Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dependabot-yml-reference.md",
+      "references/example-configs.md",
+      "references/pr-commands.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

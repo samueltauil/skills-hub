@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "copilot-usage-metrics",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "342fd026a70d644cefdc9b289e071a0a2b804d97b8a465671788f8ae00a37f0c",
+  "contentHash": "cc147253280a29fb3e00266a5039536827a2c24827ff37e4ea00f1801637496d",
+  "reviewedAt": "2026-11-28T13:56:19.446Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "get-enterprise-metrics.sh",
+      "get-enterprise-user-metrics.sh",
+      "get-org-metrics.sh",
+      "get-org-user-metrics.sh"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "banner-design",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "6d0e7cc8092810c262c578f41ef6d83c0ead0164db5e68ad4a04e0da90cbd5a2",
+  "contentHash": "1642bea123b77b0c509169edf11ab8d7f2cf26f441e2b0c6339ec0fd456463d8",
+  "reviewedAt": "2026-11-28T13:35:39.508Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/banner-sizes-and-styles.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

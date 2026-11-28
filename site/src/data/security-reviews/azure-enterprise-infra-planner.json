@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-enterprise-infra-planner",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "da26dd15ffd89ff4473c47444eb53f803b059b151eaf3e1ac8e39e12a543ca93",
+  "contentHash": "d15db510b82defe46b2b8e8d2133fc9e4b16851cf7e2ce3800fd6148837a1cfe",
+  "reviewedAt": "2026-11-28T13:32:43.591Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/bicep-generation.md",
+      "references/constraints/README.md",
+      "references/constraints/ai-ml.md",
+      "references/constraints/compute-apps.md",
+      "references/constraints/compute-infra.md",
+      "references/constraints/data-analytics.md",
+      "references/constraints/data-relational.md",
+      "references/constraints/messaging.md",
+      "references/constraints/monitoring.md",
+      "references/constraints/networking-connectivity.md",
+      "references/constraints/networking-core.md",
+      "references/constraints/networking-traffic.md",
+      "references/constraints/security.md",
+      "references/deployment.md",
+      "references/pairing-checks.md",
+      "references/phases/1-extract-insights.md",
+      "references/phases/2-research-best-practices.md",
+      "references/phases/3-research-resources.md",
+      "references/phases/4-generate-plan.md",
+      "references/phases/5-verify.md",
+      "references/phases/6-generate-iac.md",
+      "references/phases/7-deploy.md",
+      "references/referenced-workload.md",
+      "references/resources/README.md",
+      "references/resources/ai-ml.md",
+      "references/resources/compute-apps.md",
+      "references/resources/compute-infra.md",
+      "references/resources/data-analytics.md",
+      "references/resources/data-relational.md",
+      "references/resources/messaging.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/resources/networking-connectivity.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/resources/networking-core.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/resources/networking-traffic.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/resources/security.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/schema.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/terraform-generation.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/verification.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf-checklist.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflow.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "references/resources/monitoring.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

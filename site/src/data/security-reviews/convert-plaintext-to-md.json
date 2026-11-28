@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "convert-plaintext-to-md",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "038d38997d251d3a2b6daa7e3a307856222d80b26f1990d0b63607e4ddffbe9a",
+  "contentHash": "a36e250942a03b2bf4dda0dd323e873668d40337a74f140c3adc4874c27aec2e",
+  "reviewedAt": "2026-11-28T13:55:16.273Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

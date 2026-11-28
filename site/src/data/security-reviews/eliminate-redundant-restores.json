@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "eliminate-redundant-restores",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "1bbcf53160ee2e0135e0a5afa988829060d1ffc62d237b415dbcd899409d55a0",
+  "contentHash": "99eb54fd092ac84d2235f240d63ea2da00a59299e467e969a17a782add811b26",
+  "reviewedAt": "2026-11-28T14:17:08.165Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

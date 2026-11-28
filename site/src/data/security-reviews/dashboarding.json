@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dashboarding",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "933773998dc2c9ba1add1f8e3ebd574cf9a28d3cf186a25d151086b6030f6d70",
+  "contentHash": "d4a8843d5e51a2c380bc98ae41264a9928d819e5303c4a71fe2b02048e0e5275",
+  "reviewedAt": "2026-11-28T14:02:38.058Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/json-schema.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

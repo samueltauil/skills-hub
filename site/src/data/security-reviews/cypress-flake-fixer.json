@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cypress-flake-fixer",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "c307c8ed683006b97aad9e33b5c5db413b18fd7cdd981d318a6699366f2b0821",
+  "contentHash": "990418fba2b3c5dedab588d10a7095c735d161911ea6b088c7e9863452c7c3d2",
+  "reviewedAt": "2026-11-28T14:02:32.062Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/anti-patterns.md",
+      "references/removed-apis.md",
+      "scripts/scan-cypress.mjs"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

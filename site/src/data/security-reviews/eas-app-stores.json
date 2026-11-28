@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "eas-app-stores",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f34ce8f02c90d55ebd9449caa3d6cdad4e957cfa3b00837658a56d0de2b7d63f",
+  "contentHash": "50429306d2f7da955c396e77a3f21ebcc10f1bd7051e1da6c524a141f0e54c69",
+  "reviewedAt": "2026-11-28T14:14:15.427Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/app-store-metadata.md",
+      "references/ios-app-store.md",
+      "references/native-ios.md",
+      "references/play-store.md",
+      "references/testflight.md",
+      "references/workflows.md",
+      "scripts/status-summary.cjs"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

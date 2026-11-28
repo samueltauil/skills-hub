@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "convert-excel-to-md",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8de645b5a906764ac75ea35569be7f3ad17ce2eb7501f527c37e7f940ebef7e8",
+  "contentHash": "b59daedd604d36fd13c530842e4542aeceab601732c7f53d26a0811281c9ac32",
+  "reviewedAt": "2026-11-28T13:55:12.097Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/setup.md",
+      "scripts/convert_excel_to_md.py",
+      "scripts/requirements.txt"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

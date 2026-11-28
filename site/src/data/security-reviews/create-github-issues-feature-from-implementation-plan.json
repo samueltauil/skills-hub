@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "create-github-issues-feature-from-implementation-plan",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "ad4a82db3360e0c9c6e133400ba407b3a27d630e1d7d730270303f04f591306f",
+  "contentHash": "d0cc770a667d5a6aaf723761dfbf24e0f8a02134aaad77732839b1cbf68f2770",
+  "reviewedAt": "2026-11-28T13:58:40.270Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

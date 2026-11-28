@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "django-access-review",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bdf0be8a2d4bb7af6667513c0408c841f73423330b7901f5824e82e6f5ae6851",
+  "contentHash": "eaa79956f4adc02e36f0d4950c677c8e266c2f1ea88de7d7615ac1624fecc6fc",
+  "reviewedAt": "2026-11-28T14:08:44.561Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/django-orm.md",
+      "references/django-views.md",
+      "references/drf-permissions.md",
+      "references/tenant-isolation.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

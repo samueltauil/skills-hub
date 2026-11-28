@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-monitoring-promql-query",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "43123a5e99915fbfed3d358c1272d81abe5e200db6e80057923345045089dddb",
+  "contentHash": "cb79ab42014d0a96b8595da36c0f8f82b826e22df4d6dd5a3897d58d3686a0b5",
+  "reviewedAt": "2026-11-28T13:46:26.570Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/basic_aggregations.md",
+      "references/promql_error_recovery.md",
+      "scripts/validate_promql.py",
+      "scripts/validate_promql_test.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

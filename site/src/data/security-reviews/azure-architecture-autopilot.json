@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-architecture-autopilot",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "fa8e7eb42bb55f7ea1c7cb731c9dd4c7a3211fdc02d6dd0f1233b7c1b23f5074",
+  "contentHash": "f6bd87115c36a5068b50167e0ccc90f7b821f76e1aef45a6e759620af7009d75",
+  "reviewedAt": "2026-11-28T13:32:47.694Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/ai-data.md",
+      "references/architecture-guidance-sources.md",
+      "references/azure-common-patterns.md",
+      "references/azure-dynamic-sources.md",
+      "references/bicep-generator.md",
+      "references/bicep-reviewer.md",
+      "references/phase0-scanner.md",
+      "references/phase1-advisor.md",
+      "scripts/cli.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "scripts/generator.py",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/icons.py",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": [
+      "references/phase4-deployer.md",
+      "references/service-gotchas.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

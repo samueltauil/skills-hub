@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dbt-sf-to-bq-translator",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f94a55cef771f8be6dbc092a02ed5d05465db22c65358bdb95bdfa50339589aa",
+  "contentHash": "c14343444b1f689917046df070353b3672071237d11dccdd872c624b4a4b64db",
+  "reviewedAt": "2026-11-28T14:05:11.007Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/dbt_migration_patterns.md",
+      "scripts/bulk_translate_via_gcloud.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "scripts/dbt_translator.py",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

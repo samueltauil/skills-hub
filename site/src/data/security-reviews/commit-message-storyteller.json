@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "commit-message-storyteller",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "2819a2bb3b2d4e4721413f714f92c6c47c6396fb9f5286a3fdad56f03484df83",
+  "contentHash": "f5b32b6546652a3b60c63ef30778699db9a9c4f3a2a409768892bf0f0e66d422",
+  "reviewedAt": "2026-11-28T13:51:59.554Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/conventional-commits-guide.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

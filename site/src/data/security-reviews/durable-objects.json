@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "durable-objects",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "5f94105d56278cfa91f656b1aaa4c5fa1e486a2d06777daaf2987a97fda9dfb7",
+  "contentHash": "dd1c4cc1fbf88c7bb8ea260b44cc8e34a02e695bb4771b1dbeedc7f69410e710",
+  "reviewedAt": "2026-11-28T14:14:00.240Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/rules.md",
+      "references/skill-feedback.md",
+      "references/testing.md",
+      "references/workers.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

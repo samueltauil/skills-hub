@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-reliability",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f1672d224cb704507aa0a8d6901fc6caa3b4d65e1bcae5bf4c487e695cd595c3",
+  "contentHash": "e1e2d74e1bebbef7b0ba6102da0897baa56adfe853a6ee9269c642459fb5e42b",
+  "reviewedAt": "2026-11-28T13:36:34.476Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/configure-health-probes.md",
+      "references/configure-multi-region.md",
+      "references/configure-storage.md",
+      "references/configure-zone-redundancy.md",
+      "references/health-probe-checks.md",
+      "references/iac-patching-bicep.md",
+      "references/iac-patching-terraform.md",
+      "references/multi-region-checks.md",
+      "references/services/app-service/reliability.md",
+      "references/services/functions/reliability.md",
+      "references/storage-redundancy-checks.md",
+      "references/zone-redundancy-checks.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

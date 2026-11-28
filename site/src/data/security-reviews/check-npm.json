@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "check-npm",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d20dc5dec5ba85a9cb1fa954f6d488d7f7ba2ec67debf3c3eca9863e04028503",
+  "contentHash": "87bb89931f41eeb98ad8513d0a99ea88c0d3540bf8c3c793d0eb31d9f5836550",
+  "reviewedAt": "2026-11-28T13:43:41.507Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/fix-snippets.md",
+      "references/managers.md",
+      "references/protocols.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

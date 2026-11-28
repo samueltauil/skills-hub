@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "create-blazor-project",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "838aa65dd3b4f183558217d5cd3c476cc25b34970cfc80a77866643634496b0d",
+  "contentHash": "9ccf87645e64561d904b3d76f9f539e3cad2adc6697a9460c3142ce06c9227dd",
+  "reviewedAt": "2026-11-28T13:58:05.893Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/agents-md/auto-global.md",
+      "assets/agents-md/auto-per-page.md",
+      "assets/agents-md/server-global.md",
+      "assets/agents-md/server-per-page.md",
+      "assets/agents-md/ssr-none.md",
+      "assets/agents-md/webassembly-global.md",
+      "assets/agents-md/webassembly-per-page.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

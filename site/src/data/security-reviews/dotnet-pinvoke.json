@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dotnet-pinvoke",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "6862d5c24cca41f09b530e4aa1ad19f0f3c75f05d1b009b997fceea4009c9ddb",
+  "contentHash": "7306bf3c6eb42b34616145c2ebe1484c31b02c739d91e22b1f6e5666e05eac65",
+  "reviewedAt": "2026-11-28T14:12:26.940Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/diagnostics.md",
+      "references/type-mapping.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

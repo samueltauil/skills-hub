@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigquery-migration-metadata-extractor",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "d5630222090e35bac5ff5a0b263026bceac645852c28afda557477777c2b8266",
+  "contentHash": "b467bd5180d0dd1e9f0dcb8c525618acc4c34bb331d66c386840775439d60d26",
+  "reviewedAt": "2026-11-28T13:38:44.243Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/extraction_stats_template.py",
+      "references/attribution.md",
+      "references/cloud_extraction.md",
+      "references/extraction_stats_report.md",
+      "references/local_extraction.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

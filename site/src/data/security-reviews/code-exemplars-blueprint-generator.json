@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "code-exemplars-blueprint-generator",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "5c67ea8a5596d69ae81bf9a6376ef0caf5a93303c58ada4e404c51d6b80258ed",
+  "contentHash": "200aae10b7d2c33619b2b5fbc37952261bac272e410e92a80b0c66cb30e05032",
+  "reviewedAt": "2026-11-28T13:49:43.644Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

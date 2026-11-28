@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-monitoring-list-time-series-request",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "a1424b88207796377cead587415862219d69b3cf45aca0b68fa2969b0f012794",
+  "contentHash": "755ef344d187353b5831acc20e637edb32b6e9a32797a4b8184a2eb395292f9e",
+  "reviewedAt": "2026-11-28T13:46:10.527Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/basic_aggregations.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

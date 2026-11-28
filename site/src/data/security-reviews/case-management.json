@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "case-management",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "158ccf9e69a884e24ecb515280c37b085523026a459353cd79b80ccc96834a2f",
+  "contentHash": "c1367ee6156af661ddd4a81fe820e0c56587ebf7e7fa9dff81c9ef0b48eade2a",
+  "reviewedAt": "2026-11-28T13:42:28.935Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/kibana-cases-api.md",
+      "scripts/case-manager.js",
+      "scripts/kibana-client.js"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

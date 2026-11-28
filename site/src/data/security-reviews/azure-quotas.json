@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-quotas",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "656c9cdaa355157f0cc60856bfaa4aeeeb3133b42bcf121fec81173037cf99ed",
+  "contentHash": "d340ea0e755590fbdbd474d267c8a39ceb0f787905fa2f59e2011412ff9e9c03",
+  "reviewedAt": "2026-11-28T13:34:17.794Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/advanced-commands.md",
+      "references/commands.md",
+      "scripts/check-quota.ps1",
+      "scripts/check-quota.sh"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

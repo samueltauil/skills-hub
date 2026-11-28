@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-cloud-migrate",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "6b0c5a9f6c136ca64a64e82c57219b5da86628d70259d8580cfbfe3a10bd2e8e",
+  "contentHash": "2051334c25497b027ffaa1763e1a35c25860a30f9bd860f9c5e07477343205bd",
+  "reviewedAt": "2026-11-28T13:33:57.033Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/services/app-service/app-engine-to-app-service.md",
+      "references/services/app-service/assessment.md",
+      "references/services/app-service/beanstalk-to-app-service.md",
+      "references/services/app-service/code-migration.md",
+      "references/services/app-service/global-rules.md",
+      "references/services/app-service/heroku-to-app-service.md",
+      "references/services/container-apps/assessment-guide.md",
+      "references/services/container-apps/cloudrun-assessment-guide.md",
+      "references/services/container-apps/cloudrun-deployment-guide.md",
+      "references/services/container-apps/cloudrun-to-container-apps.md",
+      "references/services/container-apps/deployment-guide.md",
+      "references/services/container-apps/fargate-assessment-guide.md",
+      "references/services/container-apps/fargate-deployment-guide.md",
+      "references/services/container-apps/fargate-to-container-apps.md",
+      "references/services/container-apps/k8s-to-container-apps.md",
+      "references/services/container-apps/spring-apps-to-aca.md",
+      "references/services/container-apps/spring-assessment-guide.md",
+      "references/services/container-apps/spring-dependency-patterns.md",
+      "references/services/container-apps/spring-deployment-guide.md",
+      "references/services/functions/assessment.md",
+      "references/services/functions/code-migration.md",
+      "references/services/functions/global-rules.md",
+      "references/services/functions/lambda-to-functions.md",
+      "references/services/functions/runtimes/csharp.md",
+      "references/services/functions/runtimes/java.md",
+      "references/services/functions/runtimes/javascript.md",
+      "references/services/functions/runtimes/powershell.md",
+      "references/services/functions/runtimes/python.md",
+      "references/services/functions/runtimes/typescript.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": [
+      "references/workflow-details.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-armor-crs-rule-upgrader",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "25beb0b2fecb1037ff1b4902d9280bf02f9510829a52e7cc18bd832ac78026d0",
+  "contentHash": "613a4b073878df7c59a4d4da2a3e9ec95d32ccb44694d93c5815c70f4d9dd0fc",
+  "reviewedAt": "2026-11-28T13:44:50.528Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/contributing.md",
+      "references/fine_tuning_and_cel.md",
+      "references/gcloud_recipes.md",
+      "references/ruleset_mappings.md",
+      "scripts/upgrade_policy.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

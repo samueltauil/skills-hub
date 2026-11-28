@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-kubernetes",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8b82fb9438c6d08480402edfb21e532eb20e58b188b5144210592684286304da",
+  "contentHash": "b06772c996900b732f6f6a56bd1953bf3e8b74b425b09e11886b4c5a69a2d55e",
+  "reviewedAt": "2026-11-28T13:33:26.253Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "azure-kubernetes-app-deploy/SKILL.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/aspnet-core.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/django.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/express.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/fastapi.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/flask.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/go.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/nestjs.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/nextjs.md",
+      "azure-kubernetes-app-deploy/knowledge-packs/frameworks/spring-boot.md",
+      "azure-kubernetes-app-deploy/phases/quick-deploy.md",
+      "azure-kubernetes-app-deploy/references/base-images.md",
+      "azure-kubernetes-app-deploy/references/detection.md",
+      "azure-kubernetes-app-deploy/references/rollback.md",
+      "azure-kubernetes-app-deploy/references/safeguards.md",
+      "azure-kubernetes-app-deploy/references/workload-identity.md",
+      "azure-kubernetes-app-deploy/templates/dockerfiles/dotnet.Dockerfile",
+      "azure-kubernetes-app-deploy/templates/dockerfiles/go.Dockerfile",
+      "azure-kubernetes-app-deploy/templates/dockerfiles/java.Dockerfile",
+      "azure-kubernetes-app-deploy/templates/dockerfiles/node.Dockerfile",
+      "azure-kubernetes-app-deploy/templates/dockerfiles/python.Dockerfile",
+      "azure-kubernetes-app-deploy/templates/dockerfiles/rust.Dockerfile",
+      "azure-kubernetes-app-deploy/templates/github-actions/deploy.yml",
+      "azure-kubernetes-app-deploy/templates/k8s/configmap.yaml",
+      "azure-kubernetes-app-deploy/templates/k8s/deployment.yaml",
+      "azure-kubernetes-app-deploy/templates/k8s/gateway.yaml",
+      "azure-kubernetes-app-deploy/templates/k8s/hpa.yaml",
+      "azure-kubernetes-app-deploy/templates/k8s/httproute.yaml",
+      "azure-kubernetes-app-deploy/templates/k8s/ingress.yaml",
+      "azure-kubernetes-app-deploy/templates/k8s/namespace.yaml",
+      "azure-kubernetes-app-deploy/templates/k8s/networkpolicy.yaml"
+    ],
+    "omittedFiles": [
+      {
+        "path": "azure-kubernetes-app-deploy/templates/dockerfiles/dotnet.dockerignore",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/dockerfiles/go.dockerignore",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/dockerfiles/java.dockerignore",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/dockerfiles/node.dockerignore",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/dockerfiles/python.dockerignore",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/dockerfiles/rust.dockerignore",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/k8s/pdb.yaml",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/k8s/service.yaml",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/k8s/serviceaccount.yaml",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/mermaid/architecture-diagram.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-app-deploy/templates/mermaid/summary-dashboard.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-automatic-readiness/SKILL.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-automatic-readiness/references/common-fixes.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-automatic-readiness/references/constraint-spec-v1.yaml",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-automatic-readiness/references/mcp-integration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-automatic-readiness/references/migration-guide-summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "azure-kubernetes-automatic-readiness/scripts/sanitize-readiness-input.jq",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "references/azure-aks-autoscaler.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/azure-aks-nap-readiness.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/azure-aks-rightsizing.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/azure-aks-spot.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/azure-aks-vpa.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/cli-reference.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/optional-aks-operations.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

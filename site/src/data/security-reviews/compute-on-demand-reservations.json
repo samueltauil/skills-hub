@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "compute-on-demand-reservations",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "f2bcece15a27ef6f538c1dce3f1702bb76cb9d41c1b4b477c72a286cf14f3bf1",
+  "contentHash": "53f90f580c2fc19408223e300ab5efd03f9c717822e3bbea3f11e96186bac513",
+  "reviewedAt": "2026-11-28T13:52:31.367Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

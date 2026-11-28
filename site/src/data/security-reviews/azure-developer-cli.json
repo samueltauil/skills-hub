@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-developer-cli",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "08e1e8d571e93edd91b7620ed6fe5da89ec8754d8fa81e8c4c9181b6d56fc9a9",
+  "contentHash": "06cdc1a0d8a12cc093496f26817f7d7298ab99785e6c533fac7c89a08e67c5ba",
+  "reviewedAt": "2026-11-28T13:32:16.719Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "examples/azure.yaml",
+      "references/iac-and-environments.md",
+      "references/official-docs.md",
+      "references/project-structure.md",
+      "references/security-cicd-operations.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "diagnose-ci-gate",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "cdf6b6031e70444978546481e9227f122f372954f3395b7b0ecb7da958256d4a",
+  "contentHash": "386fa40520ceca3d025e783286a61065e7fed1d520d82de910f8f14488cf7cad",
+  "reviewedAt": "2026-11-28T14:08:12.997Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/validation.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

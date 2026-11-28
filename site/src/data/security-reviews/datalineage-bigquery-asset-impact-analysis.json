@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "datalineage-bigquery-asset-impact-analysis",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8d4b96a877720d3a46acf0afa57530f0c767018cde5a1fbc8aff0c4fe16271de",
+  "contentHash": "61410684f9ce1fec8695d49bb55082e483e1222cbd64d3c1fd874526f951328f",
+  "reviewedAt": "2026-11-28T14:03:42.042Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/mcp-usage.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

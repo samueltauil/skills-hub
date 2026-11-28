@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "compute-mig-autoscaling-troubleshooting",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "c1d7ff8e30a0a9b400d693f5a36eb2e8b72c1633e725700c8a525f77e7349c98",
+  "contentHash": "248c058686ea9f889f551022ffdd0a361caf459344b6fb6b884e214321ccab2d",
+  "reviewedAt": "2026-11-28T13:52:20.930Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "breakdown-epic-pm",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "4c82a3b1d2a6780b52d0d4a79a0e6a68611b576f42fcc84744478761e6d41d26",
+  "contentHash": "8eeb49575a6cb95bce00bead4bc27672c861e1e2275d618249834190a8b751b1",
+  "reviewedAt": "2026-11-28T13:41:01.735Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

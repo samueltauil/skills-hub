@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "content-management-systems",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "add8814ce394d7d9aa97956d01351bf828a69e71fa52f88840d3e91f088edd41",
+  "contentHash": "45b1899f57b56de048513424f96b564332ca3f02b2b2ed9ed971d193a9198730",
+  "reviewedAt": "2026-11-28T13:53:24.110Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/cms-platform-workflows.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

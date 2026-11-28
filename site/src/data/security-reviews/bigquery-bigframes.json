@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigquery-bigframes",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "a0a99d96222cf72ff1016d9f262b6a6a9f723690db0e884399b445af1cb6c035",
+  "contentHash": "2b46dbd54a807efaf0b17f506229c813247ca030a58be8367e0e28e70b301c74",
+  "reviewedAt": "2026-11-28T13:37:11.741Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/linear_regression.md",
+      "references/logistic_regression.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

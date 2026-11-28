@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-run-alert-configuration",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "7e069ab339a663f6512d7d57dc6840fee7681f8b22f3d15a73d6c106f563dd28",
+  "contentHash": "ef8c46567a81617d767f134f273f91ed0c40f280b488e8daa183693a5e8a28cb",
+  "reviewedAt": "2026-11-28T13:47:58.300Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/jobs.md",
+      "references/services.md",
+      "references/worker_pools.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

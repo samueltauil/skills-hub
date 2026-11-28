@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-app-onboard-prereq",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8de15805be2f9931d677fa2198ff1ffb906435bc6c94e8e571b2d48e122cf816",
+  "contentHash": "5d6ccbe4a17a2dde858062fb8b77b69f93b9e5e983693c188bad3ce63192c855",
+  "reviewedAt": "2026-11-28T13:33:00.652Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/build-check.md",
+      "references/cloud-sdk-migration.md",
+      "references/completeness-check.md",
+      "references/component-mapping.md",
+      "references/dependency-compatibility.md",
+      "references/deployability-check.md",
+      "references/prereq-artifacts.md",
+      "references/prereq-schemas.ts",
+      "references/readiness-gate.md",
+      "references/remediation-protocol.md",
+      "references/session-protocol.md",
+      "references/session-schemas.ts",
+      "references/subagent-starter-scaffold.md",
+      "references/subscription-resolution.md",
+      "references/zero-code-path.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

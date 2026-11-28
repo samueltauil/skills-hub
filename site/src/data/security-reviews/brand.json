@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "skillId": "brand",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "4cbbd21179683b04c8c44e7ba68a7bea75a32e5d0161b967f97beff5a8240d0f",
+  "contentHash": "295296060db477f50d041c49e4c16733e90c73b1541f4aab4fc8ea77c139ead3",
+  "reviewedAt": "2026-11-28T13:41:01.913Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/approval-checklist.md",
+      "references/asset-organization.md",
+      "references/brand-guideline-template.md",
+      "references/color-palette-management.md",
+      "references/consistency-checklist.md",
+      "references/logo-usage-rules.md",
+      "references/messaging-framework.md",
+      "references/typography-specifications.md",
+      "references/update.md",
+      "references/visual-identity.md",
+      "references/voice-framework.md",
+      "scripts/extract-colors.cjs",
+      "scripts/inject-brand-context.cjs",
+      "scripts/sync-brand-to-tokens.cjs",
+      "scripts/tests/test_sync_brand_to_tokens.py",
+      "scripts/validate-asset.cjs",
+      "templates/brand-guidelines-starter.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-logging-cross-project-configuration",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "40eba57ecfb7a279686b24c126ac451d68911b82dfff2c00395204b33b91524c",
+  "contentHash": "330712be5a0397f7235bc6f96af8842dd3408342cf12022ebd3d2fdb977f2204",
+  "reviewedAt": "2026-11-28T13:44:48.903Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

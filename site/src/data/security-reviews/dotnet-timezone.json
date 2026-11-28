@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dotnet-timezone",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bb0ee8346adbcb58dbe2a088bc0a8df4d7d9133595bb3af2f36683f4505bd04c",
+  "contentHash": "6b14d4e8a4842e88c2b2b785888112c24c01a39144aeb62e0aa457035e338bbd",
+  "reviewedAt": "2026-11-28T14:12:25.797Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/code-patterns.md",
+      "references/timezone-index.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-run-basics",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bdf884daa49a6e4ba78edb84a86b9ec5a0b0cdc4c8beb5792956d45b55f4376c",
+  "contentHash": "9b743878b052c62eea06ac2960cddae1d1be18a1ab2526ffb037e2f135da575e",
+  "reviewedAt": "2026-11-28T13:48:08.267Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/cli-usage.md",
+      "references/client-library-usage.md",
+      "references/core-concepts.md",
+      "references/iac-usage.md",
+      "references/iam-security.md",
+      "references/mcp-usage.md",
+      "references/networking.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

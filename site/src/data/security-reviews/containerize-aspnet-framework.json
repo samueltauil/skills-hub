@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "containerize-aspnet-framework",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8a58566cf61cb3ee749a5bae8ef51ccfa96739f6588bb9f580487553c4cc97d7",
+  "contentHash": "7820659cf27112928f7316c1b08d4a853665bd8244f8fc721a57fd1efe468625",
+  "reviewedAt": "2026-11-28T13:56:20.720Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

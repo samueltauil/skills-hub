@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-messaging",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "80beb0889dd2d8cdf402d23003131804126a88fcb6099bb33f71cf38aba20e19",
+  "contentHash": "18f7c04a15dbace5d0fb2c82a139c39be8a41f28c5c499e69d0b6d39b148b306",
+  "reviewedAt": "2026-11-28T13:32:09.772Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-compliance",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "a6a44dc13763ce41a8ce0dff81045aeda308219b20e5b17f2f021c78d56ed4b1",
+  "contentHash": "9e2f930317e074aa2e23c118c83e3d12a9cb7eb8a15e283ebf93a4b68166b6df",
+  "reviewedAt": "2026-11-28T13:32:26.387Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/auth-best-practices.md",
+      "references/azqr-recommendations.md",
+      "references/azqr-remediation-patterns.md",
+      "references/azure-keyvault-expiration-audit.md",
+      "references/azure-quick-review.md",
+      "references/azure-resource-graph.md",
+      "references/sdk/azure-keyvault-certificates-rust.md",
+      "references/sdk/azure-keyvault-keys-rust.md",
+      "references/sdk/azure-keyvault-keys-ts.md",
+      "references/sdk/azure-keyvault-py.md",
+      "references/sdk/azure-keyvault-secrets-rust.md",
+      "references/sdk/azure-keyvault-secrets-ts.md",
+      "references/sdk/azure-security-keyvault-keys-dotnet.md",
+      "references/sdk/azure-security-keyvault-keys-java.md",
+      "references/sdk/azure-security-keyvault-secrets-java.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "drawio",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "6646665575a673595ce0a0b806276ab86dc1b5a2dad06aefeb65a75e0b36af53",
+  "contentHash": "4c783ce83adea012654b308858ab88bda01906f727f8a9e3abfa5c24b0254757",
+  "reviewedAt": "2026-11-28T14:13:43.723Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "scripts/drawio-to-png.mjs",
+      "scripts/package.json"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

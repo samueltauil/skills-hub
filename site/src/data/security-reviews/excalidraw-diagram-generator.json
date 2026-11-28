@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "skillId": "excalidraw-diagram-generator",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8529497ec8f341273c89999eca2862082d92a20b30fcc26f6aa31030361d2426",
+  "contentHash": "e8036086b61a483578f69026c173e665eb912e2e2cb14334ef33f2c36881f50c",
+  "reviewedAt": "2026-11-28T14:19:26.929Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/element-types.md",
+      "references/excalidraw-schema.md",
+      "scripts/README.md",
+      "scripts/add-arrow.py",
+      "scripts/add-icon-to-diagram.py",
+      "scripts/split-excalidraw-library.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "templates/business-flow-swimlane-template.excalidraw",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "templates/class-diagram-template.excalidraw",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "templates/data-flow-diagram-template.excalidraw",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "templates/er-diagram-template.excalidraw",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "templates/flowchart-template.excalidraw",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "templates/mindmap-template.excalidraw",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "templates/relationship-template.excalidraw",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "templates/sequence-diagram-template.excalidraw",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

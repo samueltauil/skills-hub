@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-aigateway",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "099a3ccf96adcc53061ebde14f62ad39f88cfd2aa98857c9776dab7a38955ace",
+  "contentHash": "a09e6318f897b2ce78011d527f53d5e525f21f617477377c3d5b3a64c747b452",
+  "reviewedAt": "2026-11-28T13:31:58.150Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/auth-best-practices.md",
+      "references/patterns.md",
+      "references/policies.md",
+      "references/sdk/azure-ai-contentsafety-py.md",
+      "references/sdk/azure-ai-contentsafety-ts.md",
+      "references/sdk/azure-mgmt-apimanagement-dotnet.md",
+      "references/sdk/azure-mgmt-apimanagement-py.md",
+      "references/troubleshooting.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "convert-to-cpm",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "de94b4b7ef01e1b4290ecb5c9d9faa639bfc619f6451862b8131e7231270da64",
+  "contentHash": "7050fa2b1ef8a8481456ff1f3b029608f10936990e4fbe6f40285057496a04cf",
+  "reviewedAt": "2026-11-28T13:55:09.653Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/audit-complexities.md",
+      "references/baseline-comparison.md",
+      "references/directory-packages-props.md",
+      "references/msbuild-property-handling.md",
+      "references/report-template.md",
+      "references/validation-and-errors.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

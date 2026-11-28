@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "skillId": "dotnet-maui-doctor",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "66f0e9d4d0a37f527a3c1dc3c8a8fa69c2e208c9e02b86030d2c6b1ae0e45525",
+  "contentHash": "3667b2581f16657ddae0267b26fae6166528883a09abbb25da4e8c9c9577d142",
+  "reviewedAt": "2026-11-28T14:12:22.916Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/installation-commands-macos.md",
+      "references/installation-commands-windows.md",
+      "references/installation-commands.md",
+      "references/microsoft-openjdk.md",
+      "references/platform-requirements-linux.md",
+      "references/platform-requirements-macos.md",
+      "references/platform-requirements-windows.md",
+      "references/troubleshooting-macos.md",
+      "references/troubleshooting-windows.md",
+      "references/troubleshooting.md",
+      "references/workload-dependencies-discovery.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

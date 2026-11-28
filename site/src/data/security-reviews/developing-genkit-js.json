@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "skillId": "developing-genkit-js",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "88d759ba07d5a21a58e74d20a4b39eef0558be81248b1eb7dca132e779eaa6ad",
+  "contentHash": "a1d7928e201d316107f542f287bd218392e12214c75585b83c0a0f48f4d6bacf",
+  "reviewedAt": "2026-11-28T14:08:26.804Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/a2ui.md",
+      "references/agents-artifacts.md",
+      "references/agents-background.md",
+      "references/agents-branching.md",
+      "references/agents-custom.md",
+      "references/agents-deployment.md",
+      "references/agents-human-in-the-loop.md",
+      "references/agents-multi-agent.md",
+      "references/agents-sessions.md",
+      "references/agents-state.md",
+      "references/agents.md",
+      "references/best-practices.md",
+      "references/common-errors.md",
+      "references/docs-and-cli.md",
+      "references/dotprompt.md",
+      "references/examples.md",
+      "references/middleware-custom.md",
+      "references/middleware.md",
+      "references/observability.md",
+      "references/setup.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bug-reproduction-brief",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "24018a91702c8581404fa6bdf944616dc6e99dd8cdaf8c8ae8b7c5992e733bf9",
+  "contentHash": "e9242965bd9685a3f5a79d4fd1a3e24c0ba5b2183c60393a6e72aec34dd734da",
+  "reviewedAt": "2026-11-28T13:41:19.983Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

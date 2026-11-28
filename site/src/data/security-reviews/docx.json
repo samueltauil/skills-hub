@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "skillId": "docx",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "90a038cae58ae9b4e04578002478c85d592aab4a8283f89062bce1f93734f96b",
+  "contentHash": "09470ad58c66d1c1f54b4a2f5e1d0c3ac275780e7cdeb7db0bd950cc27447a15",
+  "reviewedAt": "2026-11-28T14:12:41.327Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md",
+      "scripts/__init__.py",
+      "scripts/accept_changes.py",
+      "scripts/comment.py",
+      "scripts/merge_runs.py",
+      "scripts/office/helpers/__init__.py",
+      "scripts/office/helpers/pptx_chart.py",
+      "scripts/office/helpers/pptx_slide.py",
+      "scripts/office/helpers/pptx_theme.py",
+      "scripts/office/soffice.py",
+      "scripts/office/validate.py",
+      "scripts/templates/comments.xml",
+      "scripts/templates/commentsExtended.xml",
+      "scripts/templates/commentsExtensible.xml",
+      "scripts/templates/commentsIds.xml",
+      "scripts/templates/people.xml"
+    ],
+    "omittedFiles": [
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/pml.xsd",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/sml.xsd",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/wml.xsd",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/office/schemas/ISO-IEC29500-4_2016/xml.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ecma/fouth-edition/opc-digSig.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/ecma/fouth-edition/opc-relationships.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/mce/mc.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/microsoft/wml-2010.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/microsoft/wml-2012.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/microsoft/wml-2018.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/microsoft/wml-cex-2018.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/microsoft/wml-cid-2016.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "scripts/office/schemas/microsoft/wml-symex-2015.xsd",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": [
+      "scripts/office/validators/__init__.py",
+      "scripts/office/validators/base.py",
+      "scripts/office/validators/docx.py",
+      "scripts/office/validators/pptx.py",
+      "scripts/office/validators/redlining.py"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

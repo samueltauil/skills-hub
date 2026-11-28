@@ -1,0 +1,591 @@
+{
+  "schemaVersion": 1,
+  "skillId": "azure-prepare",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "9085017062566a921777f9737524eb27e76e525d1d0bce4341a0dabeb43bdc67",
+  "contentHash": "a3855804d42bcd6ec1159b9362979d36a13b5b5cfe9d3c6726c76771fa451a41",
+  "reviewedAt": "2026-11-28T13:33:39.891Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/analyze.md",
+      "references/apim.md",
+      "references/architecture.md",
+      "references/aspire.md",
+      "references/auth-best-practices.md",
+      "references/azure-context.md",
+      "references/functional-verification.md",
+      "references/generate.md",
+      "references/global-rules.md",
+      "references/plan-template.md",
+      "references/recipe-selection.md",
+      "references/recipes/azcli/README.md",
+      "references/recipes/azcli/commands.md",
+      "references/recipes/azcli/scripts.md",
+      "references/recipes/azd/README.md",
+      "references/recipes/azd/aspire.md",
+      "references/recipes/azd/azure-yaml.md",
+      "references/recipes/azd/docker.md",
+      "references/recipes/azd/iac-rules.md",
+      "references/recipes/azd/terraform.md",
+      "references/runtimes/nodejs.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/sdk/azure-appconfiguration-java.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-appconfiguration-py.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-appconfiguration-ts.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-identity-dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-identity-java.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-identity-py.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdk/azure-identity-ts.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/security.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/aks/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/aks/addons.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/aks/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/aks/manifests.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-insights/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/custom-domains.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/deployment-slots.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/networking.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/scaling.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/sku-selection.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/auth/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/auth/source/dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/auth/source/nodejs.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/auth/source/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/composition.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/cosmos/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/cosmos/source/dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/cosmos/source/nodejs.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/cosmos/source/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/redis/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/redis/source/dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/redis/source/nodejs.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/redis/source/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/sql/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/sql/source/dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/sql/source/nodejs.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/recipes/sql/source/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/selection.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/web-api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/app-service/templates/web-app.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/day2-operations.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/environment.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/health-probes.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/networking.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/revisions.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/scaling.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/container-apps/terraform.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/cosmos-db/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/cosmos-db/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/cosmos-db/partitioning.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/cosmos-db/sdk.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/durable-task-scheduler/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/durable-task-scheduler/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/durable-task-scheduler/dotnet.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/durable-task-scheduler/java.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/durable-task-scheduler/javascript.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/durable-task-scheduler/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/event-grid/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/event-grid/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/event-grid/subscriptions.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/foundry/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/foundry/region-availability.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/aspire-containerapps.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/cold-start.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/durable.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/hosting-plans.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/base/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/base/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/base/eval/typescript.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/blob-eventgrid/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/blob-eventgrid/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/blob-eventgrid/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/common/dotnet-entry-point.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/common/error-handling.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/common/health-check.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/common/nodejs-entry-point.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/composition.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/cosmosdb/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/cosmosdb/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/cosmosdb/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/cosmosdb/eval/typescript.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/durable/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/durable/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/durable/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/eventhubs/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/eventhubs/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/eventhubs/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/mcp/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/mcp/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/mcp/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/servicebus/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/servicebus/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/servicebus/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/servicebus/eval/typescript.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/sql/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/sql/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/sql/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/timer/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/timer/eval/python.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/recipes/timer/eval/summary.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/templates/selection.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/functions/terraform.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/key-vault/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/key-vault/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/key-vault/sdk.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/logic-apps/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/logic-apps/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/logic-apps/triggers.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/service-bus/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/service-bus/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/service-bus/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/sql-database/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/sql-database/auth.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/sql-database/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/sql-database/scripts/grant-sql-access.ps1",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/sql-database/scripts/grant-sql-access.sh",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/sql-database/sdk.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/static-web-apps/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/static-web-apps/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/static-web-apps/deployment.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/static-web-apps/region-availability.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/static-web-apps/routing.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/static-web-apps/terraform.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/storage/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/storage/access.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/services/storage/bicep.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/specialized-routing.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "references/recipes/bicep/README.md",
+      "references/recipes/bicep/patterns.md",
+      "references/recipes/terraform/README.md",
+      "references/recipes/terraform/patterns.md",
+      "references/region-availability.md",
+      "references/requirements.md",
+      "references/research.md",
+      "references/resources-limits-quotas.md",
+      "references/scan.md",
+      "references/sdk/azd-deployment.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

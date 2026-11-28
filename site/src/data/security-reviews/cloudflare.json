@@ -1,0 +1,446 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloudflare",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "7834e07cec903059edee1cb4b833a9eb6165251b53d69a3c02c3228418d3986e",
+  "contentHash": "55613910893453ed6c59bf8cbe65164524c68d97d90bec53d3cd4fcbbe62ba42",
+  "reviewedAt": "2026-11-28T13:48:44.209Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/ai-gateway/README.md",
+      "references/ai-gateway/configuration.md",
+      "references/ai-gateway/dynamic-routing.md",
+      "references/ai-gateway/features.md",
+      "references/ai-gateway/sdk-integration.md",
+      "references/ai-gateway/troubleshooting.md",
+      "references/ai-search/README.md",
+      "references/ai-search/api.md",
+      "references/ai-search/configuration.md",
+      "references/ai-search/gotchas.md",
+      "references/ai-search/patterns.md",
+      "references/bindings/README.md",
+      "references/bindings/api.md",
+      "references/bindings/configuration.md",
+      "references/bindings/gotchas.md",
+      "references/bindings/patterns.md",
+      "references/browser-rendering/README.md",
+      "references/browser-rendering/api.md",
+      "references/browser-rendering/configuration.md",
+      "references/browser-rendering/gotchas.md",
+      "references/browser-rendering/patterns.md",
+      "references/containers/README.md",
+      "references/containers/api.md",
+      "references/containers/configuration.md",
+      "references/containers/gotchas.md",
+      "references/containers/patterns.md",
+      "references/cron-triggers/README.md",
+      "references/cron-triggers/api.md",
+      "references/cron-triggers/configuration.md",
+      "references/cron-triggers/gotchas.md",
+      "references/cron-triggers/patterns.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/d1/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/d1/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/hyperdrive/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/images/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/kv/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/miniflare/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages-functions/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/pages/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/queues/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/r2/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/secrets-store/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/skill-feedback.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/static-assets/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/api-live.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/stream/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tail-workers/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/networking.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/tunnel/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/vectorize/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/waf/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workers-ai/patterns.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/README.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/api.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/configuration.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/gotchas.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/workflows/patterns.md",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

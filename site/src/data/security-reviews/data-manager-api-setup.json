@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "data-manager-api-setup",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "156432cf9af1a445a4f8da66412355d68383370b620831d46607a5a676ef4c98",
+  "contentHash": "7622bc7b027a3f8fe99403eed77787b572d4a63254b4f0c387675ac686c6d450",
+  "reviewedAt": "2026-11-28T14:03:17.657Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dotnet.md",
+      "references/java.md",
+      "references/node.md",
+      "references/partner-links.md",
+      "references/php.md",
+      "references/python.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

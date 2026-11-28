@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "skillId": "composition-patterns",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "6ddf0cfa24dbdf118fa599aeffa8dce5d9aa54ec115b93338da204d9d5415478",
+  "contentHash": "16dea37445a32c83386899ca858b1a42a80649e88a76e553b368874be0736fa1",
+  "reviewedAt": "2026-11-28T13:52:19.160Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "AGENTS.md",
+      "README.md",
+      "SKILL.md",
+      "metadata.json",
+      "rules/_sections.md",
+      "rules/_template.md",
+      "rules/architecture-avoid-boolean-props.md",
+      "rules/architecture-compound-components.md",
+      "rules/patterns-children-over-render-props.md",
+      "rules/patterns-explicit-variants.md",
+      "rules/react19-no-forwardref.md",
+      "rules/state-context-interface.md",
+      "rules/state-decouple-implementation.md",
+      "rules/state-lift-state.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

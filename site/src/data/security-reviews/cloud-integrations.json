@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-integrations",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "8d7e5e4c05f354e8287126682212c77d968ecbdb7ff04af85715de3b2063681e",
+  "contentHash": "e37d5d06eccb61c38c2c07fbf043eb7a15a6a9681de5673f7720ae3375208388",
+  "reviewedAt": "2026-11-28T13:44:23.430Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

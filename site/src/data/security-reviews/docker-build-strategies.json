@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "skillId": "docker-build-strategies",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "bb980fef73938d9b62167bce4854d2d5c956045685841cfe437400689fb27c76",
+  "contentHash": "6f42cd7db5eaef41d4abfecac99f963cf534091f9ec812ceae699fd580e9d8b1",
+  "reviewedAt": "2026-11-28T14:10:23.352Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "assets/Dockerfile.go",
+      "checks/verification.md",
+      "evals/docker-build-strategies.md",
+      "references/layer-caching.md",
+      "references/multi-stage-builds.md",
+      "scripts/verify-build.sh",
+      "skill.yaml"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/Dockerfile.nodejs",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/Dockerfile.python",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/dockerignore-example",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

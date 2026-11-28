@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "expo-animation",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "64ec3d8df92f429e8dc57a56271d2c6b39cc5c949966b6dc89336dff181899d7",
+  "contentHash": "dea3a67bc48a8e9b363a02740b99b2a5443b5c89dfe4c90d9ffda367450f8433",
+  "reviewedAt": "2026-11-28T14:19:03.448Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE",
+      "RECIPES.md",
+      "SKILL.md",
+      "agents/openai.yaml"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "compute-resource-availability-troubleshooting",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "001c13d9435b92503a8758b508194174891b052d3093eff6c41f0f9f2d877409",
+  "contentHash": "d6208a1a759146d26ce3d8335d77669d7c1950ce9ba7c12c3b1b1f58c65644fd",
+  "reviewedAt": "2026-11-28T13:52:54.896Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

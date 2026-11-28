@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "skillId": "cloud-logging-finops",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "2aace5faad1e4f08062744c89036457895d75ee845d5d4515bb0122176321c12",
+  "contentHash": "e65d7d32f05e081beea873d45c7e53d6b6c5b9e627a95514d632669e159c9616",
+  "reviewedAt": "2026-11-28T13:48:02.924Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/executive_summary_authoring.md",
+      "scripts/actions.py",
+      "scripts/aggregations.py",
+      "scripts/analytics.py",
+      "scripts/attribution.py",
+      "scripts/billing.py",
+      "scripts/build_report.py",
+      "scripts/collect_logging_data.py",
+      "scripts/constants.py",
+      "scripts/enable_log_analytics.py",
+      "scripts/exclusion_rules.py",
+      "scripts/inventory.py",
+      "scripts/messages.py",
+      "scripts/monitoring.py",
+      "scripts/output.py",
+      "scripts/perf.py",
+      "scripts/pricing.py",
+      "scripts/requirements.txt",
+      "scripts/telemetry_integrity.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/report_template.html",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/provenance.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/waste.py",
+        "reason": "bundle-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "scripts/verify_claim.py"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "ef-core",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "246821f4adc26ad0f1a3c7063c430309308cb01369392c0fd1235bb2d0f05ba8",
+  "contentHash": "dd7631f5c20b44b32f7dfabb5aff1cbc8476c7ee5f836231c9eda797454ea84f",
+  "reviewedAt": "2026-11-28T14:15:20.513Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

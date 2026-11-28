@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "doublecheck",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "be69cc8f62704f1d41be55d26075641b6993f4eb12c8a0ce90e37c25bfc31fd8",
+  "contentHash": "29a52737fd9027eceb7a0339009d947e833ed82b78c9b147c9088cd354f1cc30",
+  "reviewedAt": "2026-11-28T14:13:07.738Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/verification-report-template.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

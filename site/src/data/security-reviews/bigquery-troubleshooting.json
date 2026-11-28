@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "bigquery-troubleshooting",
+  "revision": "fb330b0dca7042db9e26415893d94ecdea7e5677",
+  "bundleHash": "2ff433ab79220294f655becf1958cbed9520453f3628bed0087cedaa1dd68d69",
+  "contentHash": "efcf9539aaab7d033dcabd09fe8e5ff7280477eb587eefdbbe97f75fb7298e21",
+  "reviewedAt": "2026-11-28T13:39:26.530Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/cost_compute_capacity.md",
+      "references/cost_compute_ondemand.md",
+      "references/cost_storage.md",
+      "references/performance_config_changed.md",
+      "references/performance_resource_contention.md",
+      "references/query_plan_execution_graph.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}
