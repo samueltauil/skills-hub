@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-release-radar",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "82d2920faffe9cef169c8088281d805b645a9914300d815bf98f192c09a10f7b",
+  "contentHash": "595ab9c6c5264ba5f55e32825fd318631e165e28c2ebdc6cd2eb09fd5c73fcf0",
+  "reviewedAt": "2026-11-28T16:47:17.497Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "scripts/release_radar.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/catalog.json",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

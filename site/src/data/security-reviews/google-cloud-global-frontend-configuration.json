@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-global-frontend-configuration",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "dba35d4da8a118dde4fb1cf1937f287bc8e976ab24759cd63beb52da984d52a3",
+  "contentHash": "450a072a86fdcb36e5c44906157da3bb7b53719398dc8ebb452436b862f995fd",
+  "reviewedAt": "2026-11-28T16:44:20.046Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/drift-detection.md",
+      "references/gcloud-generation.md",
+      "references/managed-deployment.md",
+      "references/resource-discovery.md",
+      "references/terraform-generation.md",
+      "references/terraform-module.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

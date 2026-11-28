@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-app-onboarding",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "59e44b39247492964ea3837b995cb9f3ad5afbde45ef3c11d060269d81ee6fe5",
+  "contentHash": "f001a60c4a5f7af8b6ecb7d1dd3ecdaf826c2ef143d03a76bdb108e98134af2d",
+  "reviewedAt": "2026-11-28T16:16:55.448Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/Dockerfile",
+      "assets/deployment.yaml",
+      "assets/index.js",
+      "assets/package-lock.json",
+      "assets/package.json",
+      "references/attribution.md",
+      "references/go-example.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

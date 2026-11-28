@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "skillId": "foundry-agentic-loop",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "3ae882e37650be76641fb532c268116ca22d8da8f35efd2803e2121f2549344d",
+  "contentHash": "33e6d4a5b47fd0c716ab173c2e08d34f5b308542ba912d1e160f47785c952c8c",
+  "reviewedAt": "2026-11-28T15:45:19.497Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/agents-md-rapid.md",
+      "assets/agents-md-sdd.md",
+      "assets/deployment-plan-template.md",
+      "assets/devcontainer.json",
+      "assets/loop-template.md",
+      "assets/spec-template.md",
+      "evals/fixtures/improve-history/AGENTS.md",
+      "evals/fixtures/improve-history/docs/LOOP.md",
+      "evals/fixtures/rapid-locked/AGENTS.md",
+      "evals/fixtures/rapid-locked/README.md",
+      "evals/fixtures/sdd-deployed/AGENTS.md",
+      "evals/fixtures/sdd-deployed/docs/spec.md",
+      "evals/fixtures/sdd-deployed/docs/verify.md",
+      "evals/fixtures/sdd-paused/AGENTS.md",
+      "evals/fixtures/sdd-paused/docs/LOOP.md",
+      "evals/fixtures/sdd-paused/docs/spec.md",
+      "evals/fixtures/sdd-paused/docs/verify.md",
+      "evals/fixtures/sdd-paused/src/backend/routing.py",
+      "evals/fixtures/sdd-paused/tests/contract/test_routing.py",
+      "evals/fixtures/team-conventions/AGENTS.md",
+      "references/azd-layout.md",
+      "references/build-skills-catalog.md",
+      "references/check_rbac_preflight.py",
+      "references/copilot-sdk-foundry.md",
+      "references/copilot-sdk-with-toolbox.py",
+      "references/deploy.md",
+      "references/foundry-hosted-agent.md",
+      "references/foundry-iq-grounding.md",
+      "references/foundry-models.md",
+      "references/foundry-toolbox.md",
+      "references/hosted-integration-checkpoint.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "evals/evals.json",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "evals/fixtures/rapid-locked/gitignore",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "references/implement.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/implementation-contract.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/improve.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/observability.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/rapid.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/rbac-contract.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/rbac-preflight.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/reference-architecture.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/run-skills-catalog.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/sdd.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/specify.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "references/verify.md",
+        "reason": "file-limit"
+      },
+      {
+        "path": "scripts/evals.mjs",
+        "reason": "file-limit"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

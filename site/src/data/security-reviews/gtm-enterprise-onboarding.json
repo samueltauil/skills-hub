@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gtm-enterprise-onboarding",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "d29b7f7f41eed8f95788c07b31d4d203065f0c88c3a67ccb091b2540e3a56c2d",
+  "contentHash": "5fe8fe63938dd971a1892bd35b61295de084bd65ec3148fbcb7450edd74e1356",
+  "reviewedAt": "2026-11-28T17:11:43.255Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

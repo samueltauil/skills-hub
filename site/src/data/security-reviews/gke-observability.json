@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-observability",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "d84772c6f5b3062f90c9dc3bd33a33786f41e99b89ebd40e12c856e0eb0dd752",
+  "contentHash": "7d1365e08d94a5fbe4abb6b7d52d5e1e0426775a3264a406e31eb8aae3cedbff",
+  "reviewedAt": "2026-11-28T16:26:50.063Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/cluster-node-pod-health-and-gmp.md",
+      "references/control-plane-metrics-and-storage.md",
+      "references/logging-audit-and-apiserver-traces.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

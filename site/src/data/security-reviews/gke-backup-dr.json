@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-backup-dr",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "17986f6941bb3f34424e8b4d5a2bac33326d91f5899eaabe54559b344a250b6f",
+  "contentHash": "25a2c4e3e13f7426e8d0aba4be61d66e162c18aa22b7ff6590d8a932ad32240d",
+  "reviewedAt": "2026-11-28T16:16:30.297Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

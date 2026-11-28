@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-kueue-troubleshooting",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "a557b54a29abd52473720dffa2fe88fda43858a8fc646b5f4cf59b6dc5b7db33",
+  "contentHash": "e30e6b3fd4c68235f8ddb7dea1ba4c626af193022e386804cf80cc9868e71d34",
+  "reviewedAt": "2026-11-28T16:25:43.472Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/doc-links.md",
+      "references/log-sources.md",
+      "scripts/fair_sharing_facts.py",
+      "scripts/k8s_objects.py",
+      "scripts/kueue_schema.py",
+      "scripts/kueue_schema_registry.py",
+      "scripts/kueue_schema_sources.py",
+      "scripts/kueue_schema_yaml_checks.py",
+      "scripts/kueue_version.py",
+      "scripts/log_envelopes.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "scripts/log_facts.py",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/report_checks.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/snapshot.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/snapshot_facts.py",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/snapshot_loaders.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/trace_logs.py",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "scripts/workload_timeline.py",
+        "reason": "bundle-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "scripts/log_signatures.py",
+      "scripts/log_timeline.py",
+      "scripts/report_output.py",
+      "scripts/topology_facts.py",
+      "scripts/validate_report.py"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

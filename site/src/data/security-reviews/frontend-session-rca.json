@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "frontend-session-rca",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "41e101ddc8070202bcd42235002249ab09cd53458402d7f1444ffbece2b938ff",
+  "contentHash": "da297e64a23586d654d0a3942906f3f678c9d4bbf653954b57b71bb0e611480f",
+  "reviewedAt": "2026-11-28T15:48:34.665Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/dump-format.md",
+      "references/grafana-links.md",
+      "references/signal-catalog.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

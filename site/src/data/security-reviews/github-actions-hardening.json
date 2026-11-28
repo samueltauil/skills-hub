@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "github-actions-hardening",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "4ccdd1f4cda341fe8b06954ae6c07d3f7bdb1c0d770384b000be03b4230a0f96",
+  "contentHash": "a3bc7c7abbbba8ae7d0d75d54c7d1821512b2f93ac5d614542ac99ee1e5f6aab",
+  "reviewedAt": "2026-11-28T16:06:29.440Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/injection.md",
+      "references/permissions-and-tokens.md",
+      "references/report-format.md",
+      "references/supply-chain.md",
+      "references/triggers-and-privilege.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

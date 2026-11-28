@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "fabric-lakehouse",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "0cb91574bf2907b6e5b90b7d9b54084342d2b2d4ad2fee7e7602d050e72be9d9",
+  "contentHash": "4ef2fe4e2fa832522372cb8bd045065895c8de8737222e8c966d59c55d657176",
+  "reviewedAt": "2026-11-28T15:25:22.361Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/getdata.md",
+      "references/pyspark.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

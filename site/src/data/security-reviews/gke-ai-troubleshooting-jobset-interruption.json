@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-ai-troubleshooting-jobset-interruption",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "d2041b3255904f09ceb6a9d703787e20ad9fce1f8ac2cc98ea3d8cdd01536808",
+  "contentHash": "e71dfb6ff6a9584fcbd7ed1f2d047754ccc89f4a9ea33fdc1ab6b9d7ce0c37c8",
+  "reviewedAt": "2026-11-28T16:09:53.580Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/failure_signatures.md",
+      "scripts/validate_queries.sh"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

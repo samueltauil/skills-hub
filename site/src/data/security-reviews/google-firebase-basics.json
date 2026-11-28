@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-firebase-basics",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "c0aaf751acbb977d22052c27f97df660b84f6f3be94ef0fabbb74d2d68bbfb43",
+  "contentHash": "62ee1f616520abf50ad23329fa933fbc940e05fa37dbc492d2e1cd614a4bc4f0",
+  "reviewedAt": "2026-11-28T17:03:22.656Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/android_setup.md",
+      "references/attribution.md",
+      "references/firebase-cli-guide.md",
+      "references/firebase-service-init.md",
+      "references/flutter_setup.md",
+      "references/ios_setup.md",
+      "references/local-env-setup.md",
+      "references/refresh/android_studio.md",
+      "references/refresh/antigravity.md",
+      "references/refresh/claude.md",
+      "references/refresh/gemini-cli.md",
+      "references/refresh/other-agents.md",
+      "references/setup/android_studio.md",
+      "references/setup/antigravity.md",
+      "references/setup/claude_code.md",
+      "references/setup/cursor.md",
+      "references/setup/gemini_cli.md",
+      "references/setup/github_copilot.md",
+      "references/setup/other_agents.md",
+      "references/web_setup.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

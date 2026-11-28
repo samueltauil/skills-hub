@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-alert-configuration",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "3c89491dbdcccb780a62be55b6d4af32e7100c3cb63a36961cfe793661e11401",
+  "contentHash": "d73982b2c0a13f1d586e99c1fd4da694901ebf25fa7e96b6a6bb07502e62b80d",
+  "reviewedAt": "2026-11-28T16:16:48.974Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/gke_configuration_prerequisites.md",
+      "references/metrics_and_alerts_catalog.md",
+      "references/promql_queries.md",
+      "scripts/validate_config.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

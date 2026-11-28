@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gemini-agents-api",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "d2b04a449945a430e719a3d46758a775ec936a66c8a2499398d37e8dedb49ba1",
+  "contentHash": "0c1c9de7a3cc512ef9849a388d2e2cd2b475d69dc2fe826c27a208afc12452ca",
+  "reviewedAt": "2026-11-28T15:52:36.067Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

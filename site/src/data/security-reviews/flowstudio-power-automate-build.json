@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "flowstudio-power-automate-build",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "30f529f2878d57ddb5e05cdb3adc7c9c751d071ca57bcaaaf67d5fbbaf3ada4c",
+  "contentHash": "ad1b496281dca5a729d6ab7e0e960ddac3aa6e76645b68e3d439a4d1104eff50",
+  "reviewedAt": "2026-11-28T15:40:38.195Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/action-patterns-connectors.md",
+      "references/action-patterns-core.md",
+      "references/action-patterns-data.md",
+      "references/build-patterns.md",
+      "references/flow-schema.md",
+      "references/trigger-types.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

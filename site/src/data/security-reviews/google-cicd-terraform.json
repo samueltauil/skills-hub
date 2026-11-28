@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cicd-terraform",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "77003ba735148f1e4ab9e4c9430e7b832a9f689c2770250f226dea895ce99cc2",
+  "contentHash": "8ff5321214bd0b3890d31e1267bd89c92210ab2b3331a6e405973ec9d1507f42",
+  "reviewedAt": "2026-11-28T16:41:03.692Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/gcp-networking-patterns.md",
+      "references/iam-and-security.md",
+      "references/naming-conventions.md",
+      "references/style-and-structure.md",
+      "references/testing-and-mocking.md",
+      "references/troubleshooting-gcp.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

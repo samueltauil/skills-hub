@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-custom-golden-image-discovery",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "c0a4bb215c76fa80575ac9574b1c5acb8113fa13f2c79bbd5481ace1ce57d475",
+  "contentHash": "0e10f8a863b91dc77751106c9c6ff40fb7b71cbf6c05a546bb8776bc4b973213",
+  "reviewedAt": "2026-11-28T16:22:09.045Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

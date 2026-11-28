@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gerrit-code-review",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "fe1c6cbbc1dbb0888e1dadc66b60fbd8487611270b3c8caaf0215726ea37e41b",
+  "contentHash": "c0569bf38f64ef0c27c0d967d58cdb2d7c39ca82f3d2320eac670c1534a2ec74",
+  "reviewedAt": "2026-11-28T16:00:58.503Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/advanced_rest_api.md",
+      "references/cherry_pick.md",
+      "references/hosts.md",
+      "scripts/gerrit.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

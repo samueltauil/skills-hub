@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-scc-query",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "b42348bd5501cd7928367b9a2b825a12f37e5ef7708007fa7cdc4b26db79c2a7",
+  "contentHash": "08749f4ebe27022d947983fe4603e1c091abfb8974b06b3f4e9071e5b0caa6e8",
+  "reviewedAt": "2026-11-28T16:47:24.970Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/finding_schema.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

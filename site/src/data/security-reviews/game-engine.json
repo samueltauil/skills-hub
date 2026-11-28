@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "skillId": "game-engine",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "15427f8fdce2e48bbd64871b2c92736d34fcb55e8accbd08beebc0305f3ce6d6",
+  "contentHash": "53313c5ca59532d511644654fc6c8e74c4ea2d689d0769ff9cb9f653cc79439e",
+  "reviewedAt": "2026-11-28T15:51:42.404Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/2d-maze-game.md",
+      "assets/2d-platform-game.md",
+      "assets/gameBase-template-repo.md",
+      "assets/paddle-game-template.md",
+      "assets/simple-2d-engine.md",
+      "references/3d-web-games.md",
+      "references/algorithms.md",
+      "references/basics.md",
+      "references/game-control-mechanisms.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "references/game-publishing.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "references/techniques.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "references/terminology.md",
+        "reason": "bundle-limit"
+      },
+      {
+        "path": "references/web-apis.md",
+        "reason": "bundle-limit"
+      }
+    ],
+    "unreviewedFiles": [
+      "references/game-engine-core-principles.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

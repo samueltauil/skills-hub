@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gtm-technical-product-pricing",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "250d7cd7adc14d76e4830083fe49712e8c9ae94effc299245adc81bd8bb5eb5a",
+  "contentHash": "74be386ad4aa6ded0dc8a903d11ee3753e9fa11021810d0ef36ad2d2eec4a450",
+  "reviewedAt": "2026-11-28T17:14:23.036Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

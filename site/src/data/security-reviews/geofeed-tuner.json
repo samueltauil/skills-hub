@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "skillId": "geofeed-tuner",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "8f05d6050858469233f8f1fb3c59fca7f150b7fefb3b75b8836d756cad72e4f6",
+  "contentHash": "fc52dae09b220ef9b2e73168bfe814b07eddfa32adc03e822b5c981afaf5c0fa",
+  "reviewedAt": "2026-11-28T15:59:36.189Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/example/01-user-input-rfc8805-feed.csv",
+      "assets/iso3166-1.json",
+      "references/rfc8805.txt"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/iso3166-2.json",
+        "reason": "file-too-large"
+      },
+      {
+        "path": "scripts/templates/index.html",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": [
+      "assets/small-territories.json",
+      "references/snippets-python3.md"
+    ]
+  },
+  "findings": [],
+  "errors": []
+}

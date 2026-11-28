@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-manifest-generation",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "e5cfe6d3793a6b989d9deb62930ae275ac51c5cf3353edb78ca2bcd3a14c3a5d",
+  "contentHash": "6d9d3ce05352f1557c2c3a52de2a9a19fc7511594105c88ba81b7eba2f1f64bc",
+  "reviewedAt": "2026-11-28T16:24:31.454Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/ai-inference.md",
+      "references/attribution.md",
+      "references/basic-workload.md",
+      "references/gateway-api.md",
+      "references/network-policy.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

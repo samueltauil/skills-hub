@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-ai-troubleshooting-tpu-partition-overlap",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "8723f000f3d82a20d2fa12f83be45597068cbdb0b138e203ad1e5abe83e1411d",
+  "contentHash": "7b942d246789e8c9941d5b2dabfe02d69f36bb314ca8e2f0c473c40a26e53cbe",
+  "reviewedAt": "2026-11-28T16:13:15.837Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

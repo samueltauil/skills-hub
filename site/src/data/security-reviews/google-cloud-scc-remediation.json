@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-scc-remediation",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "8ce5eec7addcdab1536b00b98660de6d01f864a76d84ab2749baf419c5fe31b9",
+  "contentHash": "8f8a441bd8b4ac8c26e6e0bd70f041d58cfa01b4db0e2d196ed47f5a467d6f64",
+  "reviewedAt": "2026-11-28T16:47:21.008Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/remediation_iam.md",
+      "references/remediation_misconfig.md",
+      "references/remediation_vuln.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

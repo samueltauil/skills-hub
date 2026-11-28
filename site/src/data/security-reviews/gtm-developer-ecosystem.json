@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gtm-developer-ecosystem",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "941c2c8ea3b6121083fdca4784d00667e8f7ff40308a4db0f977001999b446e5",
+  "contentHash": "3cd2cf2550ca7253299e765b8c94423cdf0159a9c7f1afda3c165c3889ce6b22",
+  "reviewedAt": "2026-11-28T17:11:20.110Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-solution-n-tier-serverless-web-app",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "28a15670d4379afe4209332505ffaaab10aaa9538042e626ff08ee6484ba7f8b",
+  "contentHash": "82b41e006e91ff2fb5627c8bbe46b1dd6f37a11ddb624caf3a9e050a8ba32088",
+  "reviewedAt": "2026-11-28T16:55:42.998Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/output-template.md",
+      "references/attribution.md",
+      "references/non-negotiable-architectural-rules.md",
+      "references/related-guidance.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/main.tf",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

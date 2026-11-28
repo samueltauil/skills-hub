@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-slo-alert-configuration",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "aaf257eaba46355ee7fdaa6196c1089f88c9b5fe10839263d85f8aac1af82147",
+  "contentHash": "329ca27a01cb9f3c3549e5232a5c54894b9c0658e3e1e4fba79df3aec39477cd",
+  "reviewedAt": "2026-11-28T16:49:22.760Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/app_hub_labels.md",
+      "references/attribution.md",
+      "references/promql_templates.md",
+      "references/service_metrics.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

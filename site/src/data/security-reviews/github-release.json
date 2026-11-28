@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "github-release",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "fc32e97e54d137c75500da6c0741c6efb4b551ccc971de8c0ad6114b88b7f068",
+  "contentHash": "8995aeab8ddae772225d29e6141098b8f9fb349a2342e535691e8ce2799e9018",
+  "reviewedAt": "2026-11-28T16:09:29.873Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/commit-classification.md",
+      "references/semver-rules.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

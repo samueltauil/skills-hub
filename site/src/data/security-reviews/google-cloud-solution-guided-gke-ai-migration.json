@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-solution-guided-gke-ai-migration",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "455d87fd9c9ff7accfb0f9f7b1f71b9d732475cc020ec61e387c59b18d526611",
+  "contentHash": "3b88a1a68ba7965879a988e5aadca56c76eaf3b92b2fac3f7559f592b7c4684c",
+  "reviewedAt": "2026-11-28T16:56:00.795Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/ccc-profile.yaml.tmpl",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/gke-inference-gateway.yaml.tmpl",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/model-staging-job.yaml.tmpl",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/storage-config.yaml.tmpl",
+        "reason": "unsupported-content"
+      },
+      {
+        "path": "assets/vllm-deployment.yaml.tmpl",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

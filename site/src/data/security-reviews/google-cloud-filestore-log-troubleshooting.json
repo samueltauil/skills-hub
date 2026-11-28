@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-filestore-log-troubleshooting",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "31254a310008f641bafd2e76f48f5f24f346a8bec3c917849d61576f1aea73d0",
+  "contentHash": "cd2670bfc58efcdee3bce9afedfd47d500c8884c4ae9b3e8bc7f28c87987b783",
+  "reviewedAt": "2026-11-28T16:44:12.994Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/error-signatures.md",
+      "references/logging-and-audit-queries.md",
+      "references/mock-fleet-data.md",
+      "references/network-firewall-spec.md",
+      "scripts/diagnose_lib.py",
+      "scripts/quick_diagnose.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

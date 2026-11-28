@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gemini-omni-flash-api",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "2b08ad0929db031cf8fbb3ad2c95801717f83db2f3d1a6401716876bb78fe965",
+  "contentHash": "a25f0659b2c6f39cb46545445d62773e2dbaad3155acbd87a8afe4d61d030ec2",
+  "reviewedAt": "2026-11-28T15:56:49.017Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "scripts/upload_file.py",
+      "scripts/video/generate_video.py",
+      "scripts/video/inspect_video.py",
+      "scripts/video/prep_video.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

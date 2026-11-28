@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "hf-cloud-python-env-setup",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "83e352902ce235699ff50ce0d4180afd07bef8a9d3bba018f4f39492686a1eed",
+  "contentHash": "93c7c3863f70d1e03bdfa9762a9e437194245f7241059a2412b3fcc6b7dc5334",
+  "reviewedAt": "2026-11-28T17:17:14.206Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "requirements.txt",
+      "scripts/check_versions.py",
+      "scripts/setup_env.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

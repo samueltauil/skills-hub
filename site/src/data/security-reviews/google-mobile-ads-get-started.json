@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-mobile-ads-get-started",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "a10a85c12803a01730fa7bd2fb6de4b8dc9ee9eed4724509f011e657a2dcbbe6",
+  "contentHash": "e99f9662c6c0b607f411fcf5d892422bee47e6f1d744dc0769a2afc5e8cfb3d7",
+  "reviewedAt": "2026-11-28T17:04:22.994Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/android-get-started.md",
+      "references/ios-get-started.md",
+      "references/unity-get-started.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-filestore-auditing",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "9aad9adea871171a4fbdc322db2bee3e9b016d691c3b22bbd760b8f8ceb3b19a",
+  "contentHash": "f6cc41edfdade8938f2ffc3770a1a484b95328271f1c76275dc0db9898848cde",
+  "reviewedAt": "2026-11-28T16:41:43.485Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/audit-rules-matrix.md",
+      "references/backup-dr-governance.md",
+      "references/security-access-governance.md",
+      "references/zone-isolation-pzi-pzs.md",
+      "scripts/filestore_audit.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "from-the-other-side-vega",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "2377eeff6458e9a77dd56947c2e58b1e4de42911c38bb211d557eef44e192320",
+  "contentHash": "7fb30dc3836415a38b3669d706ecc63decca4b3f4219f2eb0a56da2c7df5066f",
+  "reviewedAt": "2026-11-28T15:47:32.255Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

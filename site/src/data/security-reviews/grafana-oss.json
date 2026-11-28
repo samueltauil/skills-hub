@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "skillId": "grafana-oss",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "845b4387b068526ce686ca4916ee8da23a2a8bb1973f2cd28cd7f463931a12df",
+  "contentHash": "24791366e0954841bc4e15a2b8033f763beff46049d9c561e27bd2bd6ecca3a6",
+  "reviewedAt": "2026-11-28T17:07:18.920Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/alerting.md",
+      "references/api.md",
+      "references/config.md",
+      "references/dashboard-json.md",
+      "references/dashboards.md",
+      "references/datasources.md",
+      "references/panel-types.md",
+      "references/panels.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

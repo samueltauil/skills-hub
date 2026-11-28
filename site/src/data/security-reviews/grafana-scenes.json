@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "grafana-scenes",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "04edf6fd60b7f8fbc9e04bd6eed4dd0e222f25b48fa6a34707d5074ddd0c5f7b",
+  "contentHash": "f6cc0b72f28a038a078729ebac9223d87785f0ab1170dbc462b788ac107dacf5",
+  "reviewedAt": "2026-11-28T17:07:37.765Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gh-fix-ci",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "b6e04b55da37a43ff5b8ee1bd3c26712dd1e58913054899254de374a30da8157",
+  "contentHash": "03dab99d7071f481d26329887ceea0b2bebed1b23527718da3f1043fea53578b",
+  "reviewedAt": "2026-11-28T16:01:55.229Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "LICENSE.txt",
+      "SKILL.md",
+      "agents/openai.yaml",
+      "scripts/inspect_pr_checks.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

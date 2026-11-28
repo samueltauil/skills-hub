@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-solution-agentic-analytics-spark-knowledge-catalog",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "278cbf2ddfed44097af161bfba1f0e3904c4c94db58ba99d2ca91f41714d976c",
+  "contentHash": "95f7923a09cd49c0276447d288496bfb7f1b50c448018b34e0c0cd261965f641",
+  "reviewedAt": "2026-11-28T16:50:18.382Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/output-template.md",
+      "references/attribution.md",
+      "references/design-recommendations.md",
+      "references/knowledge-catalog-documentation.md",
+      "references/product-selection-guidance.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

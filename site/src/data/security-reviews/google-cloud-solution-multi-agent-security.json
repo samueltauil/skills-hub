@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-solution-multi-agent-security",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "a746a50a1a38e84f88ddad10f8239744c42c3071632116852395a177f1fcd93b",
+  "contentHash": "fe42e4392bf7828682c2ee90164c0b744cf14c10c3fef9a9ddd0733e5b0bfed3",
+  "reviewedAt": "2026-11-28T16:55:42.951Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/agw-authz-extension.yaml",
+      "assets/agw-authz-policy.yaml",
+      "assets/agw-egress-config-run.yaml",
+      "assets/agw-egress-config.yaml",
+      "assets/agw-ingress-config.yaml",
+      "assets/iap-policy-multi-agent.json",
+      "assets/iap-policy.json",
+      "assets/model-armor-advanced.yaml",
+      "assets/model-armor-config.yaml",
+      "assets/model-armor-payload.json",
+      "assets/sgp-policy.yaml",
+      "references/attribution.md",
+      "scripts/create_gke_dns_record.sh",
+      "scripts/deploy_infrastructure.sh",
+      "scripts/enforce_sgp_patch.sh",
+      "scripts/fix_egress_iap.sh",
+      "scripts/hybrid_vpn_agent.py",
+      "scripts/multi_agent_cloud_run.py",
+      "scripts/register_cloud_run_services.sh",
+      "scripts/validate_ingress_unauth.sh",
+      "scripts/verify_egress_policies.py",
+      "scripts/verify_ingress_auth.sh"
+    ],
+    "omittedFiles": [
+      {
+        "path": "assets/main.tf",
+        "reason": "unsupported-content"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

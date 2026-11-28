@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-storage-troubleshooting",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "72bd5250255cf4cdfbe6727415dbdd385ae65fc9fa40230f803a7f67e97cf984",
+  "contentHash": "6f868436ce666677d7279d0cc301b3f8b43ec394eff59843d2cf0cd3c0d3a7d5",
+  "reviewedAt": "2026-11-28T16:30:09.707Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

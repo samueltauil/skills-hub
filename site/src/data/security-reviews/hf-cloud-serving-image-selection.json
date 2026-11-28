@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "hf-cloud-serving-image-selection",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "1e41ffda27abbbce9fd251e1712048f602d5bcd7595cdf54da8aacfcd400b81e",
+  "contentHash": "41e6d9d7b84b7efc1e9a4e53998cd4da055a3e0468096af522a53d1690e9f924",
+  "reviewedAt": "2026-11-28T17:19:29.835Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/model-to-image.md",
+      "scripts/mirror_image.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

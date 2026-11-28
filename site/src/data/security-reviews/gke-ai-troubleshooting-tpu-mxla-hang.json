@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-ai-troubleshooting-tpu-mxla-hang",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "8ed6b2f589705ed2661f534505dcd4e6c040e6fbcb1b382bb5c11ef2008edbc9",
+  "contentHash": "51e0e183dc8b706a95d1a2df450fa86772b091b321fed7d6ee63b575f567100f",
+  "reviewedAt": "2026-11-28T16:12:14.497Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/path-a-compiler-hlo-divergence.md",
+      "references/path-b-program-queueing-input-stall.md",
+      "references/path-c-hardware-network-faults.md",
+      "references/path-d-no-detected-or-unknown.md",
+      "references/path-e-healthy-telemetry.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

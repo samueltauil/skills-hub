@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "foundry-agent-sync",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "b1013889b4c5af27a9f63bb92aebeab025405a3d8f9a5ef49145e082a368e7b8",
+  "contentHash": "1db96146af58e9dbfe69761b90041c16dea8b81834ee882a012bc87b165638b4",
+  "reviewedAt": "2026-11-28T15:43:27.709Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

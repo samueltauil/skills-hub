@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-solution-event-driven-decoupling",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "351e7c4856e1726d8a79498506c59139bc7d8c3f306aaf7f558592d05d92b405",
+  "contentHash": "825b7086f8ce17809cda101e8968f669be0dd96782d95f0113086dca856819ea",
+  "reviewedAt": "2026-11-28T16:53:14.576Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/phase1-coupling-assessment.md",
+      "references/phase1-outbox-and-bulkheads-go.md",
+      "references/phase2-pubsub-topology-and-sizing.md",
+      "references/phase3-consumer-and-autoscaling.md",
+      "references/phase4-distributed-tracing.md",
+      "references/solution-checklist.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

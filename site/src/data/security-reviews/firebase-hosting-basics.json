@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "firebase-hosting-basics",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "f850adb7bda3913879f7f3d83cd11c7cef78f438a897b04f6eb606ff4c5a2861",
+  "contentHash": "c2c86f6beacf8a464c77a8c3550ac1fba252b694d03918b6f787ea178a840a88",
+  "reviewedAt": "2026-11-28T15:35:19.234Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/configuration.md",
+      "references/deploying.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

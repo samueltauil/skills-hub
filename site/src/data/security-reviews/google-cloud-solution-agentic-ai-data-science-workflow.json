@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-solution-agentic-ai-data-science-workflow",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "58adb47f4ce96104ea0746ac36d38ebb9e72aae3e621609a0e67eb85e17312b5",
+  "contentHash": "d7c56aebab87f4af6acb7f8e0c4cca2129e2082d9d752f23a1fd15853c45afa9",
+  "reviewedAt": "2026-11-28T16:49:49.577Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

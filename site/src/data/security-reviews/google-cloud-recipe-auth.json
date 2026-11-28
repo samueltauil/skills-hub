@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-recipe-auth",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "3b3f7a1a4c4ec447a94c16e3b627fd0078d01c836d9c250a1f8726cdfa717568",
+  "contentHash": "6a9a4a719f7a02ad873b766dc00c7096b9a569ed4583c2c2faac0154566c7b5d",
+  "reviewedAt": "2026-11-28T16:44:37.148Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "hf-cloud-sagemaker-deployment-planner",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "e5e9456ea1c420fa8c665c10a483ff0d7659d4cf10d7fdd41cca52ba22087998",
+  "contentHash": "a9884e831cabafe75a61aadb5534b0ec1dff0fdaf2aa58536b2798b5cc60492f",
+  "reviewedAt": "2026-11-28T17:17:20.766Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

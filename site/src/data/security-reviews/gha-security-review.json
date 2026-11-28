@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gha-security-review",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "65ae8259e361538815961a5b771800d073d7190c20d161966f77fcfc40c808f0",
+  "contentHash": "0c7f8b767ea7f6d79ea409727005ad6e779bef59cfcd39d8603b00705cd38e85",
+  "reviewedAt": "2026-11-28T16:03:57.697Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/ai-prompt-injection-via-ci.md",
+      "references/comment-triggered-commands.md",
+      "references/credential-escalation.md",
+      "references/expression-injection.md",
+      "references/permissions-and-secrets.md",
+      "references/pwn-request.md",
+      "references/real-world-attacks.md",
+      "references/runner-infrastructure.md",
+      "references/supply-chain.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

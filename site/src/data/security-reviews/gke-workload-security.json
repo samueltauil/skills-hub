@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "skillId": "gke-workload-security",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "cd08709207020bcc31d088939113ee64b3c5b87a50e7cd920c5c4f2e03df0960",
+  "contentHash": "265b9ab171145c8ebe5a59986371aed084d2c4e2a15797e1351d8a457204e3a7",
+  "reviewedAt": "2026-11-28T16:34:48.092Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/default-deny-netpol.yaml",
+      "assets/workload-identity-pod.yaml",
+      "references/attribution.md",
+      "scripts/audit_cluster.sh"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

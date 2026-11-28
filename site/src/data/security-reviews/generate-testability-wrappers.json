@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "generate-testability-wrappers",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "b7a975ba81995f3a41461fab2c25c30f2aed2b062f62b5e5118cfbc5b5960614",
+  "contentHash": "f4bc68412afd6cea565ba845d9417cda9f78cade9b638aea9f76b4ec26859982",
+  "reviewedAt": "2026-11-28T15:59:05.748Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

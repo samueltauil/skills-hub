@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "skillId": "google-cloud-networking-observability",
+  "revision": "604d8c7ab66e2117b860e7b025dedb7d8bb0caf0",
+  "bundleHash": "6cc3550ac593f661887fd340cf1f3165d753652afff9ad18e9361a9a9ccf19c0",
+  "contentHash": "d5aa74af411e14ee89a9b46acbc4cb2bc6dbbd5cd49ffcd076c25d8c44c9d5e3",
+  "reviewedAt": "2026-11-28T16:44:45.877Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/cloud-nat-analysis.md",
+      "references/connectivity-tests.md",
+      "references/firewall-analysis.md",
+      "references/mcp-usage.md",
+      "references/metrics-analysis.md",
+      "references/threat-analysis.md",
+      "references/vpc-flow-analysis.md",
+      "references/vpc-flow-logs-cost-estimation.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}
