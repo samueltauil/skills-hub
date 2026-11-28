@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "assuredworkloads-frameworks-author",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "c3086d87ef2934942535446dcf053d2b0c58aa37362bbf94be7bbf9834013345",
+  "contentHash": "f655e9efc35df258e8afd44b655407fa222a5fbc15e7fe6f2c5aba376efea8fe",
+  "reviewedAt": "2026-11-28T05:41:36.680Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "assets/locations.json",
+      "references/attribution.md",
+      "references/gcloud-commands.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

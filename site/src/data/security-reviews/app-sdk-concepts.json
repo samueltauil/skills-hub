@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "skillId": "app-sdk-concepts",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "dc6d8446ada2e78a6f760e2ced60e4c2e9824df45c945c3e21be049d3bd472c8",
+  "contentHash": "fd6ed17637cc49caabe7104be8b372016e153f63354e48389f71a79fda023534",
+  "reviewedAt": "2026-11-28T05:32:24.409Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/cli-reference.md",
+      "references/deployment-modes.md",
+      "references/local-config.md",
+      "references/local-development.md",
+      "references/project-structure.md",
+      "references/specific-config.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

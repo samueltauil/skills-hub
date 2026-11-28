@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "skillId": "agent-platform-alert-configuration",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "510ba54f095b28ecc413a946963fbd500170af1e26335e61273af5fd0aec9a0b",
+  "contentHash": "61aedc2263b29fda6a94be61da85ede5e0085bdfbd4d2e851372f336bcee8bf5",
+  "reviewedAt": "2026-11-28T05:22:32.869Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "incomplete",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/cost_alert_policies.md",
+      "references/has_historical_traffic_data.md",
+      "references/no_historical_traffic_data.md",
+      "references/quality_alert_policies.md",
+      "references/reliability_alert_policies.md",
+      "references/safety_alert_policies.md",
+      "references/security_alert_policies.md",
+      "references/telemetry_enablement.md",
+      "scripts/analyze_traffic.py",
+      "scripts/analyze_traffic_test.py",
+      "scripts/check_telemetry.py",
+      "scripts/check_telemetry_test.py",
+      "scripts/config_utils.py",
+      "scripts/config_utils_test.py",
+      "scripts/create_online_monitor.py",
+      "scripts/create_online_monitor_test.py",
+      "scripts/gather_agent_info.py",
+      "scripts/gather_agent_info_test.py",
+      "scripts/lint_syntax.py",
+      "scripts/list_log_scope_table_names.py",
+      "scripts/list_log_scope_table_names_test.py",
+      "scripts/list_trace_scope_table_names.py",
+      "scripts/list_trace_scope_table_names_test.py",
+      "scripts/requirements.txt",
+      "scripts/scan_duplicates.py",
+      "scripts/scan_duplicates_test.py"
+    ],
+    "omittedFiles": [
+      {
+        "path": "scripts/mock_traffic_data.py",
+        "reason": "file-too-large"
+      }
+    ],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

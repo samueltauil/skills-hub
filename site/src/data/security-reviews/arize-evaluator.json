@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "skillId": "arize-evaluator",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "a6c50e9a4de6cbae5328c1c06dd19ea2a48ee6f74c4f7a21df4af66b8d71b494",
+  "contentHash": "cb396995bf17e5f67773a9045356bb8b6e89d6c3d4f7debd99850a295af2bd46",
+  "reviewedAt": "2026-11-28T05:37:57.624Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/ax-profiles.md",
+      "references/ax-setup.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

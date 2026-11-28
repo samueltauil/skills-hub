@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "agent-owasp-compliance",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "290dda142ba9bb08074d1b8ebcc9a7ef8c81ae4f3bb61d5f62a1e0017f6ba38d",
+  "contentHash": "54779f6cf0df9f9ae1d27ccbb320d35115607b08751fae4304a04de8dabd7e2e",
+  "reviewedAt": "2026-11-28T05:21:05.579Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "ad-campaign-analyzer",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "183b8d9c8d11a510ca55be15dd25b5292cbb71645f7bfc114bf07d7e284c0292",
+  "contentHash": "a1574ee3551221191c6537297e9b4a7733f241f79c9474eb58c9632ea2c6e7da",
+  "reviewedAt": "2026-11-28T05:17:51.108Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

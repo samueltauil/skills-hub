@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "skillId": "agent-platform-tuning",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "a20c6a48bd4be1fcaf0ad3f7498afacec043c12ed1fb356dfb20d8a0eff38ee5",
+  "contentHash": "5860868d7f06e94e8dd8142630ce9e5431d2834a368f56af3133c16d46bd5a0c",
+  "reviewedAt": "2026-11-28T05:25:56.047Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/attribution.md",
+      "references/data_prep.md",
+      "references/hf_datasets.md",
+      "references/models.md",
+      "references/requirements.txt",
+      "references/tuning_guide.md",
+      "scripts/calculate_cost.py",
+      "scripts/cancel_tuning_job.py",
+      "scripts/list_models.py",
+      "scripts/monitor_tuning_job.py",
+      "scripts/prepare_dataset.py",
+      "scripts/tune_open_model.py"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

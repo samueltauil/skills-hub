@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "skillId": "alert-triage",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "159489248f4f409cc82f09000eee468517e490b27b3dee93f237061e4fd8d87b",
+  "contentHash": "3a600a54f75da4460e1b11e194290535f8525c29f0975ceef69e7c5732f8e8a6",
+  "reviewedAt": "2026-11-28T05:28:10.591Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

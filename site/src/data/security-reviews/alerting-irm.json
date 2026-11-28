@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skillId": "alerting-irm",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "95736216a060e12a41a8384584ecb590bce2d78445752340ad78533db059a9e9",
+  "contentHash": "0330feb66da782b5d9e36a4fe5cf96987fb7103baac6f59e1f0ca23fac97f6a6",
+  "reviewedAt": "2026-11-28T05:29:18.371Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "references/alerting.md",
+      "references/irm.md",
+      "references/slo.md"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}

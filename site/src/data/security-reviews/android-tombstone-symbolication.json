@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "skillId": "android-tombstone-symbolication",
+  "revision": "007a938d411a0deb5168bb50831556393a181f40",
+  "bundleHash": "e983fbb0e134205f9c192bd986d0aab5603901a567c88e65d17a8c6e16752759",
+  "contentHash": "0dee02bef3d56799dffb43b3583e9793d98d9490013e0ea3aadd39c113b6492a",
+  "reviewedAt": "2026-11-28T05:29:45.506Z",
+  "model": "copilot/gpt-5.1-codex-mini",
+  "rubricVersion": "1.0.0",
+  "fixture": null,
+  "status": "complete-no-findings",
+  "coverage": {
+    "scope": "catalog-files-only",
+    "reviewedFiles": [
+      "SKILL.md",
+      "scripts/Symbolicate-Tombstone.ps1"
+    ],
+    "omittedFiles": [],
+    "unreviewedFiles": []
+  },
+  "findings": [],
+  "errors": []
+}
