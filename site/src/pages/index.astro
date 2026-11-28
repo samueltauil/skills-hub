@@ -26,7 +26,9 @@ const categories = Object.entries(categoryCounts).map(([id, count]) => ({
 })).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 
 const vscodeAddMarketplace = `https://vscode.dev/redirect?url=${encodeURIComponent(`vscode://chat-plugin/add-marketplace?ref=${encodeURIComponent(MARKETPLACE_REPO)}`)}`;
-const pluginInstallCommands = `copilot plugin marketplace add ${MARKETPLACE_REPO}\ncopilot plugin install <skill-id>@${MARKETPLACE_NAME}`;
+const marketplaceCommand = `copilot plugin marketplace add ${MARKETPLACE_REPO}`;
+const skillInstallCommand = `copilot plugin install <skill-id>@${MARKETPLACE_NAME}`;
+const pluginInstallCommands = `${marketplaceCommand}\n${skillInstallCommand}`;
 
 const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filter(Boolean)).size;
 ---
@@ -127,25 +129,48 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
   </section>
 
   <!-- How to Install -->
-  <section class="section install-section">
+  <section class="section install-section" aria-labelledby="install-heading">
     <div class="container">
-      <h2 class="section-title text-center">How to Install</h2>
-      <p class="section-subtitle text-center">Skills are published as <a href="https://agent-plugins.org" target="_blank" rel="noopener noreferrer">Agent Plugins</a>. Pick whichever install path fits your workflow.</p>
+      <h2 class="section-title text-center" id="install-heading">How to Install</h2>
+      <p class="section-subtitle text-center">Each skill is an <a href="https://agent-plugins.org" target="_blank" rel="noopener noreferrer">Agent Plugin</a>. Install from your terminal or directly in your editor.</p>
 
       <div class="install-steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>GitHub Copilot CLI <span class="step-tag">Recommended</span></h3>
-          <p class="step-desc">Add the marketplace once, then install a skill using its ID. Each skill page includes its exact install command.</p>
-          <pre><code>{pluginInstallCommands}</code></pre>
+        <div class="step cli-install">
+          <div class="install-method"><span>Terminal</span><span class="step-tag">Recommended</span></div>
+          <h3>GitHub Copilot CLI</h3>
+          <p class="step-desc">Add the marketplace once, then choose a skill to install.</p>
+          <ol class="install-checklist">
+            <li>
+              <h4>Add the Skills Hub marketplace</h4>
+              <div class="install-command">
+                <pre><code>{marketplaceCommand}</code></pre>
+                <button type="button" class="install-copy" data-command={marketplaceCommand} aria-label="Copy marketplace command" hidden>Copy</button>
+              </div>
+            </li>
+            <li>
+              <h4>Install your chosen skill</h4>
+              <div class="install-command">
+                <pre><code>{skillInstallCommand}</code></pre>
+                <button type="button" class="install-copy" data-command={skillInstallCommand} aria-label="Copy skill install command" hidden>Copy</button>
+              </div>
+              <p class="step-desc command-hint">Replace <code>&lt;skill-id&gt;</code> with the ID on any <a href={`${import.meta.env.BASE_URL}skills/`}>skill page</a>, where you can also copy its exact command.</p>
+            </li>
+          </ol>
+          <p id="install-copy-status" class="copy-status" role="status" aria-live="polite"></p>
         </div>
-        <div class="step">
-          <div class="step-number">2</div>
+        <div class="step editor-install">
+          <div class="install-method"><span>Editor</span><span class="editor-tag">Stay in VS Code</span></div>
           <h3>Visual Studio Code</h3>
-          <p class="step-desc">Enable <code>chat.plugins.enabled</code>, add the Skills Hub marketplace, then browse and install a plugin from Agent Customizations.</p>
-          <a class="btn btn-secondary btn-sm" href={vscodeAddMarketplace}>Add marketplace to VS Code</a>
+          <p class="step-desc">Browse and install skills without leaving your editor.</p>
+          <ol class="editor-checklist">
+            <li>Enable <code>chat.plugins.enabled</code> in settings.</li>
+            <li>Add the Skills Hub marketplace using the button below.</li>
+            <li>Open <strong>Agent Customizations</strong> to browse and install a plugin.</li>
+          </ol>
+          <a href={vscodeAddMarketplace} class="btn btn-secondary">Add marketplace to VS Code <span aria-hidden="true">→</span></a>
         </div>
       </div>
+      <p class="install-note"><strong>One catalog, two ways to install.</strong> Both options use the same Skills Hub marketplace.</p>
     </div>
   </section>
 </Layout>
@@ -406,36 +431,39 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
 
   .install-steps {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: 1.5rem;
-    max-width: 800px;
+    max-width: 1100px;
     margin: 0 auto;
   }
 
   .step {
+    min-width: 0;
     background-color: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: 1.5rem;
-    min-width: 0;
   }
 
-  .step-number {
-    width: 2rem;
-    height: 2rem;
-    background-color: var(--color-accent);
-    color: white;
-    border-radius: 50%;
+  .install-method {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
     font-weight: 600;
     margin-bottom: 1rem;
   }
 
+  .cli-install { border-top: 2px solid var(--color-accent); }
+  .editor-tag { font-size: 0.6875rem; font-weight: 400; }
+
   .step h3 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
   }
 
   .step-tag {
@@ -449,7 +477,6 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
     color: var(--color-accent);
     border-radius: var(--radius-full, 999px);
     vertical-align: middle;
-    margin-left: 0.375rem;
   }
 
   .step-desc {
@@ -458,15 +485,35 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
     margin-bottom: 0.75rem;
   }
 
-  .step-extra {
-    margin-top: 0.75rem;
-  }
-
   .step pre {
-    font-size: 0.75rem;
+    min-width: 0;
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 0.8125rem;
     margin: 0;
     overflow-x: auto;
   }
+
+  .step code { overflow-wrap: anywhere; }
+  .install-checklist { list-style: none; counter-reset: install; margin-top: 1.5rem; }
+  .install-checklist > li { counter-increment: install; margin-top: 1.25rem; }
+  .install-checklist h4 { display: flex; align-items: center; gap: 0.625rem; font-size: 0.8125rem; font-weight: 500; margin-bottom: 0.75rem; }
+  .install-checklist h4::before { content: counter(install); display: grid; place-items: center; width: 1.5rem; height: 1.5rem; flex-shrink: 0; color: var(--color-accent); background: rgba(88, 166, 255, 0.12); border-radius: 50%; font-size: 0.75rem; }
+  .install-command { display: flex; align-items: flex-start; gap: 0.5rem; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-secondary); }
+  .install-command pre { flex: 1; padding: 0; border: 0; background: transparent; align-self: center; }
+  .install-copy { flex-shrink: 0; padding: 0.375rem 0.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-bg-tertiary); color: var(--color-text); font: inherit; font-size: 0.6875rem; cursor: pointer; }
+  .install-copy[hidden] { display: none; }
+  .install-copy:hover { border-color: var(--color-accent); }
+  .step a:focus-visible, .install-copy:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .command-hint { margin: 0.625rem 0 0; font-size: 0.75rem; }
+  .copy-status { font-size: 0.75rem; color: var(--color-text-secondary); }
+  .copy-status:not(:empty) { margin-top: 0.75rem; }
+  .editor-checklist { padding-left: 1.25rem; color: var(--color-text-secondary); font-size: 0.875rem; margin: 1.5rem 0; }
+  .editor-checklist li { padding-left: 0.25rem; margin-bottom: 0.75rem; }
+  .editor-checklist strong { color: var(--color-text); font-weight: 500; }
+  .install-note { text-align: center; max-width: 700px; margin: 1.5rem auto 0; color: var(--color-text-secondary); font-size: 0.8125rem; overflow-wrap: anywhere; }
+  .install-note strong { color: var(--color-text); }
 
   @media (max-width: 768px) {
     .hero {
@@ -536,6 +583,19 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
     navigator.clipboard.writeText(pluginInstallCommands).then(() => {
       cliCopyBtn.classList.add('copied');
       setTimeout(() => cliCopyBtn.classList.remove('copied'), 2000);
+    });
+  });
+
+  const installCopyStatus = document.getElementById('install-copy-status');
+  document.querySelectorAll('.install-copy').forEach(button => {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.command);
+        installCopyStatus.textContent = 'Command copied to clipboard.';
+      } catch {
+        installCopyStatus.textContent = 'Could not copy. Select the command text and copy it manually.';
+      }
     });
   });
 </script>

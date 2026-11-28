@@ -239,7 +239,7 @@ npm test                  # unit tests
 
 ## Security Scanning
 
-Every skill undergoes a two-pass automated security scan before being published.
+Skills receive automated pattern checks. AI review is optional and is reported separately; neither check certifies that a skill is safe.
 
 ### How it works
 
@@ -252,7 +252,7 @@ Every skill undergoes a two-pass automated security scan before being published.
 
 **Pass 2 — AI deep scan** (opt-in) uses `@github/copilot-sdk` to semantically analyze skills for threats that regex can't catch: obfuscated malware, disguised data exfiltration, and supply chain risks.
 
-Skills that pass the scan receive a **✅ Verified** badge on the catalog and their detail page.
+The existing **Verified** badge reflects the configured scanner's result, not a guarantee of safety or evidence that an AI review ran. Per-skill instruction reviews show their own findings, coverage, and version on the security panel.
 
 ### Running a scan manually
 
@@ -271,6 +271,58 @@ node scripts/scan-skills.js --fail-on-high
 ```
 
 The scan runs automatically every time skills are synced from upstream sources (weekly via [`sync-skills.yml`](.github/workflows/sync-skills.yml)) and can also be triggered manually via the [Enrich & Scan Skills](.github/workflows/enrich-skills.yml) workflow.
+
+### Agentic instruction review pilot
+
+The manual [Skill Security Review](.github/workflows/skill-security-review.md) Agentic Workflow reviews one skill at a time for malicious instructions, prompt injection, credential exposure, and unsafe behavior across supporting files. It is advisory: it does not execute the skill, change the existing scanner's badge, or block catalog updates.
+
+The reviewer receives an inert snapshot of the selected skill's **catalog files**, not an installed skill or plugin. Collection is limited to 32 files, 64 KiB per file, and 256 KiB for the complete input. Missing, unsupported, and over-budget files are recorded as coverage gaps, never silently truncated. Files absent from the catalog and external links are outside the review's coverage.
+
+Reports bind findings to a catalog commit and content hashes. A deterministic validator checks the response schema, file coverage, and exact quoted line ranges before reporting results. The possible outcomes are **complete with findings**, **complete with no findings observed**, **incomplete**, and **error**. A model's assessment can still be wrong even when its evidence passes validation.
+
+Publishing is opt-in. A published review is proposed as a report-only pull request containing `site/src/data/security-reviews/<skill-id>.json`; a maintainer must assess and merge it before it appears on the site. Each skill's **Security Scan** panel shows the review's findings, evidence, coverage, model/rubric, and version. Reports for changed content are marked **Out of date**, and missing or invalid reports are not shown as successful reviews. Evaluation fixtures cannot be published as catalog reviews.
+
+To run the pilot after these workflow files are merged to `main`:
+
+1. Configure the repository's `COPILOT_GITHUB_TOKEN` secret with Copilot Requests access. Model runs use that account's entitlement and usage allowance.
+2. Open **Actions > Skill security review pilot > Run workflow**, select `main`, and enter exactly one of `skill` (a catalog ID) or `fixture` (`case-001` through `case-004`). Leave `publish` disabled for evaluation or artifact-only review.
+3. Download the `skill-security-review` artifact for `report.json` and its safe Markdown summary. The report job also displays the summary in the Actions run. Missing model output and failed runs produce explicit error reports where the reporting job can execute.
+4. For a real skill, enable `publish` only when you want a draft report PR. This uses the workflow's `GITHUB_TOKEN` and requires the repository setting allowing Actions to create pull requests. The publisher revalidates the response from the reviewed catalog revision and refuses to publish if `main` moved during review.
+
+PRs created with `GITHUB_TOKEN` do not automatically trigger ordinary pull-request workflows. Run **Validate Skill Reviews** manually on the report branch before merging if those checks did not start.
+
+Equivalent artifact-only dispatch:
+
+```bash
+gh workflow run skill-security-review.lock.yml --ref main -f skill=git-commit -F publish=false
+```
+
+Use the local helpers to inspect collection and validate a saved model response without invoking a model:
+
+```bash
+node scripts/skill-review.js collect --skill git-commit --output input.json
+node scripts/skill-review.js validate --input input.json --response response.json --output report.json
+node --test scripts/skill-review*.test.js
+```
+
+The response must follow [`skill-review-response.schema.json`](scripts/schemas/skill-review-response.schema.json). Validation also writes `report.json.summary.md`. Missing or malformed responses produce an error report and a nonzero exit code; they never count as a clean review.
+
+Four labeled evaluation cases are available under [`scripts/fixtures/skill-review/`](scripts/fixtures/skill-review/), including ordinary guidance, malicious instructions, benign security teaching, and cross-file attacks. Labels are kept out of the model input:
+
+```bash
+node scripts/skill-review.js collect --fixture case-003 --output input.json
+# Obtain response.json from an actual review of input.json, then validate it:
+node scripts/skill-review.js validate --input input.json --response response.json --output report.json
+node scripts/skill-review.js evaluate --fixture case-003 --report report.json --output evaluation.json
+```
+
+The fixture tests validate the pipeline, not the model's detection accuracy. Run the evaluation cases through the actual workflow and inspect false positives, false negatives, incomplete results, evidence quality, repeatability, and cost before broadening automation or considering enforcement. Keep findings subject to human review.
+
+The [Validate Skill Reviews](.github/workflows/validate-skill-reviews.yml) workflow runs the review tests, checks published evidence against its recorded catalog revision, builds the site, and verifies the generated workflow matches its source. Local integrity checks for published reports require those commits in Git history; CI checks out full history. The pilot uses gh-aw's experimental safe-input tools, so its compiler and runtime are pinned together. Edit the Markdown workflow, not its generated lockfile. Compile with gh-aw v0.44.0 and the pinned runtime action:
+
+```bash
+gh aw compile skill-security-review --strict --validate --action-tag cec1ecf3b97e9a1bbffaedf490a49ce03c1071ba
+```
 
 ## AI Enrichment
 

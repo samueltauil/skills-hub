@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SecurityReview from '../../components/SecurityReview.astro';
 import skillsData from '../../data/skills.json';
 import { categoryMeta } from '../../data/categories';
 import { getMarketplacePlugins, vscodeInstallLink, MARKETPLACE_NAME, MARKETPLACE_REPO } from '../../data/plugins';
@@ -402,14 +403,14 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
               Security Scan
             </h3>
             <div class="scan-status">
-              {skill.securityScan?.verified !== false ? (
+              {skill.securityScan?.verified === true ? (
                 <span class="scan-badge scan-passed">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <polyline points="20 6 9 17 4 12"/>
                   </svg>
-                  Passed
+                  Pattern checks passed
                 </span>
-              ) : (
+              ) : skill.securityScan ? (
                 <span class="scan-badge scan-warning">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                     <path d="M12 9v4M12 17h.01"/>
@@ -417,9 +418,11 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                   </svg>
                   {skill.securityScan.issueCount} issue{skill.securityScan.issueCount !== 1 ? 's' : ''} found
                 </span>
+              ) : (
+                <span class="scan-badge">Pattern scan not available</span>
               )}
             </div>
-            <p class="scan-description">Every skill undergoes a two-pass automated security scan before being published to the Hub.</p>
+            <p class="scan-description">Pattern checks flag known risky constructs. AI instruction reviews are reported separately when available. Neither is a guarantee that a skill is safe.</p>
             {skill.securityScan?.issues && skill.securityScan.issues.length > 0 && (
               <details class="scan-issues-details" open>
                 <summary>View {skill.securityScan.issues.length} issue{skill.securityScan.issues.length !== 1 ? 's' : ''}</summary>
@@ -450,10 +453,11 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                 </div>
               </details>
             )}
+            <SecurityReview skill={skill} />
             <details class="scan-details">
               <summary>How does it work?</summary>
               <div class="scan-details-content">
-                <p><strong>Pass 1 — Pattern analysis</strong> scans every file in the skill against 13 security rules for known dangerous patterns:</p>
+                <p><strong>Pattern analysis</strong> checks the catalog's available skill files against 13 rules for known dangerous patterns:</p>
                 <ul class="scan-checklist">
                   <li>
                     <strong>Script & command detection</strong> — Shell commands, exec/spawn calls, subprocess invocations, and curl-pipe-to-shell patterns.
@@ -471,10 +475,10 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                     <strong>Data exfiltration risks</strong> — Environment variables sent to external URLs, writes to sensitive paths, and SQL injection patterns.
                   </li>
                 </ul>
-                <p style="margin-top: 0.75rem;"><strong>Pass 2 — AI deep scan</strong> uses GitHub Copilot to semantically analyze skill content for threats that regex can't catch:</p>
+                <p style="margin-top: 0.75rem;"><strong>Optional AI instruction review</strong> assesses a recorded version of a skill and cites evidence for concerns that pattern matching may miss:</p>
                 <ul class="scan-checklist">
                   <li>
-                    <strong>Intent analysis</strong> — Detects code that appears benign line-by-line but is malicious in aggregate, such as disguised data exfiltration.
+                    <strong>Intent analysis</strong> — Looks for unauthorized behavior across instructions and supporting files, such as disguised data exfiltration or attempts to manipulate the reviewer.
                   </li>
                   <li>
                     <strong>Social engineering</strong> — Instructions that trick users into running dangerous commands or sharing credentials.
@@ -483,6 +487,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
                     <strong>Supply chain risks</strong> — References to untrusted packages, suspicious download URLs, or dependency confusion patterns.
                   </li>
                 </ul>
+                <p>Check the review's coverage and version before relying on it. Findings require human assessment; incomplete or stale reports are not clean results.</p>
               </div>
             </details>
           </div>

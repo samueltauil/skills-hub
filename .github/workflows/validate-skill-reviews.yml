@@ -1,0 +1,70 @@
+name: Validate Skill Reviews
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/skill-review*'
+      - 'scripts/schemas/skill-review-response.schema.json'
+      - 'scripts/fixtures/skill-review/**'
+      - 'site/src/data/security-reviews*'
+      - 'site/src/data/security-reviews/**'
+      - 'site/src/data/skills.json'
+      - 'site/src/components/SecurityReview.astro'
+      - 'site/src/pages/skills/**'
+      - '.github/workflows/skill-security-review*'
+      - '.github/workflows/validate-skill-reviews.yml'
+      - 'package*.json'
+      - 'site/package*.json'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/skill-review*'
+      - 'scripts/schemas/skill-review-response.schema.json'
+      - 'scripts/fixtures/skill-review/**'
+      - 'site/src/data/security-reviews*'
+      - 'site/src/data/security-reviews/**'
+      - 'site/src/data/skills.json'
+      - 'site/src/components/SecurityReview.astro'
+      - 'site/src/pages/skills/**'
+      - '.github/workflows/skill-security-review*'
+      - '.github/workflows/validate-skill-reviews.yml'
+      - 'package*.json'
+      - 'site/package*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            site/package-lock.json
+      - name: Install dependencies
+        run: npm ci && npm --prefix site ci
+      - name: Test review collection, validation, publishing and panel states
+        run: node --test scripts/skill-review*.test.js
+      - name: Build skill pages with published reports
+        run: npm --prefix site run build
+      - name: Install pinned Agentic Workflows compiler
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh extension install github/gh-aw --pin v0.44.0
+      - name: Validate source and generated workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh aw compile skill-security-review --strict --validate --action-tag cec1ecf3b97e9a1bbffaedf490a49ce03c1071ba
+          git diff --exit-code -- .github/workflows/skill-security-review.lock.yml

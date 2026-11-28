@@ -1,54 +1,258 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import CategoryCard from '../../components/CategoryCard.astro';
-
 import skillsData from '../../data/skills.json';
 import { categoryMeta } from '../../data/categories';
 
-
-// Get categories with skill counts
 const categoryIds = [...new Set(skillsData.skills.map(s => s.category || 'general'))].sort();
-const categories = categoryIds.map(id => ({
-  id,
-  name: categoryMeta[id]?.name || id,
-  description: categoryMeta[id]?.description || `Skills in the ${id} category`,
-  count: skillsData.skills.filter(s => (s.category || 'general') === id).length
-}));
+const categories = categoryIds.map(id => {
+  const skills = skillsData.skills
+    .filter(skill => (skill.category || 'general') === id)
+    .sort((a, b) => a.name.localeCompare(b.name, 'en'));
+  const sources = [...new Set(skills.map(skill => skill.source?.repoName).filter(Boolean))].sort();
+
+  return {
+    id,
+    name: categoryMeta[id]?.name || id,
+    description: categoryMeta[id]?.description || `Explore skills in the ${id} category`,
+    mark: id.split('-').map(part => part[0]).join('').slice(0, 2).toUpperCase(),
+    count: skills.length,
+    sources,
+    previews: skills.slice(0, 3),
+    search: skills.map(skill => skill.name).join(' ')
+  };
+}).sort((a, b) => a.name.localeCompare(b.name, 'en'));
+const sourceCount = new Set(skillsData.skills.map(skill => skill.source?.repoName).filter(Boolean)).size;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Categories" description="Browse skills by category">
+<Layout title="Categories" description="Find skills for your workflow. Explore categories, preview skills, and discover their source repositories.">
   <section class="page-header">
-    <div class="container">
-      <h1>Categories</h1>
-      <p class="text-secondary">Browse {categories.length} skill categories</p>
+    <div class="container header-content">
+      <div>
+        <p class="eyebrow">Explore the catalog</p>
+        <h1>A skill for every workflow</h1>
+        <p class="intro">Start with what you want to do. Explore each category, discover the skills inside, and find the right fit for your next task.</p>
+        <a href={`${baseUrl}skills/`} class="btn btn-secondary">Browse all skills <span aria-hidden="true">→</span></a>
+      </div>
+      <dl class="catalog-stats">
+        <div><dt>Categories</dt><dd>{categories.length}</dd></div>
+        <div><dt>Skills to explore</dt><dd>{skillsData.skills.length}</dd></div>
+        <div><dt>Source repositories</dt><dd>{sourceCount}</dd></div>
+      </dl>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" aria-labelledby="categories-heading">
     <div class="container">
-      <div class="grid grid-2">
+      <div class="section-heading">
+        <div>
+          <h2 id="categories-heading">Explore categories</h2>
+          <p class="text-secondary">From your first commit to your next deployment.</p>
+        </div>
+        <p id="category-results" role="status" aria-live="polite" aria-atomic="true">Showing {categories.length} categories</p>
+      </div>
+      <div class="category-controls" hidden>
+        <div class="search-field">
+          <label for="category-search">Find a category</label>
+          <input id="category-search" type="search" placeholder="Search categories, skill names, or sources..." aria-controls="category-grid" />
+        </div>
+        <div class="sort-field">
+          <label for="category-sort">Sort by</label>
+          <select id="category-sort" aria-controls="category-grid">
+            <option value="name">Name: A–Z</option>
+            <option value="count">Most skills</option>
+            <option value="sources">Most sources</option>
+          </select>
+        </div>
+      </div>
+      <div class="category-grid" id="category-grid">
         {categories.map(category => (
-          <CategoryCard 
-            id={category.id}
-            name={category.name}
-            description={category.description}
-            count={category.count}
-          />
+          <article
+            class="category-detail"
+            aria-labelledby={`title-${category.id}`}
+            data-name={category.name}
+            data-count={category.count}
+            data-sources={category.sources.length}
+            data-search={`${category.name} ${category.description} ${category.sources.join(' ')} ${category.search}`.toLowerCase()}
+          >
+            <div class="card-heading">
+              <span class="category-icon" aria-hidden="true">{category.mark}</span>
+              <span class="skill-count">{category.count} skill{category.count !== 1 ? 's' : ''}</span>
+            </div>
+            <h3 id={`title-${category.id}`}><a href={`${baseUrl}categories/${category.id}/`}>{category.name}</a></h3>
+            <p class="category-description">{category.description}</p>
+            <div class="skill-previews">
+              <h4>A few skills to explore</h4>
+              <ul>
+                {category.previews.map(skill => (
+                  <li>
+                    <a href={`${baseUrl}skills/${skill.id}/`}>
+                      <span class="preview-name">{skill.name}</span>
+                      <span class="preview-description">{skill.description}</span>
+                      <span class="preview-arrow" aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="category-sources">
+              <p>{category.sources.length} source repositor{category.sources.length === 1 ? 'y' : 'ies'}</p>
+              <ul aria-label={`Source repositories for ${category.name}`}>
+                {category.sources.slice(0, 3).map(source => <li>{source}</li>)}
+              </ul>
+              {category.sources.length > 3 && (
+                <details>
+                  <summary>View {category.sources.length - 3} more sources</summary>
+                  <ul>
+                    {category.sources.slice(3).map(source => <li>{source}</li>)}
+                  </ul>
+                </details>
+              )}
+            </div>
+            <a class="explore-link" href={`${baseUrl}categories/${category.id}/`} aria-label={`Explore all ${category.count} skills in ${category.name}`}>
+              Explore category <span aria-hidden="true">→</span>
+            </a>
+          </article>
         ))}
+      </div>
+      <div id="category-empty" class="empty-state" hidden>
+        <h3>No matching categories</h3>
+        <p>Try another category, skill name, or source repository.</p>
+        <button id="clear-search" class="btn btn-secondary" type="button">Clear search</button>
       </div>
     </div>
   </section>
 </Layout>
 
+<script>
+  const search = document.querySelector<HTMLInputElement>('#category-search');
+  const sort = document.querySelector<HTMLSelectElement>('#category-sort');
+  const grid = document.querySelector<HTMLElement>('#category-grid');
+  const results = document.querySelector<HTMLElement>('#category-results');
+  const empty = document.querySelector<HTMLElement>('#category-empty');
+  const controls = document.querySelector<HTMLElement>('.category-controls');
+  const clear = document.querySelector<HTMLButtonElement>('#clear-search');
+
+  if (search && sort && grid && results && empty && controls && clear) {
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('.category-detail'));
+    const update = () => {
+      const query = search.value.trim().toLowerCase();
+      const sorted = [...cards].sort((a, b) => {
+        const byName = (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '', 'en');
+        if (sort.value === 'count' || sort.value === 'sources') {
+          return Number(b.dataset[sort.value]) - Number(a.dataset[sort.value]) || byName;
+        }
+        return byName;
+      });
+      let visible = 0;
+      for (const card of sorted) {
+        card.hidden = !(card.dataset.search ?? '').includes(query);
+        if (!card.hidden) visible++;
+        grid.append(card);
+      }
+      results.textContent = `Showing ${visible} of ${cards.length} categories`;
+      empty.hidden = visible !== 0;
+    };
+
+    controls.hidden = false;
+    search.addEventListener('input', update);
+    sort.addEventListener('change', update);
+    clear.addEventListener('click', () => {
+      search.value = '';
+      update();
+      search.focus();
+    });
+    update();
+  }
+</script>
+
 <style>
+  [hidden] { display: none !important; }
+
   .page-header {
-    padding: 3rem 0 2rem;
-    background-color: var(--color-bg-secondary);
+    padding: 4rem 0;
+    background: radial-gradient(ellipse at top right, rgba(88, 166, 255, 0.12), transparent 65%), var(--color-bg-secondary);
     border-bottom: 1px solid var(--color-border);
   }
 
+  .header-content { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+  .eyebrow { color: var(--color-accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem; }
   .page-header h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .intro { max-width: 620px; color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+  .catalog-stats { display: grid; gap: 1rem; border-left: 1px solid var(--color-border); padding-left: 2rem; }
+  .catalog-stats div { display: flex; flex-direction: column-reverse; }
+  .catalog-stats dt { font-size: 0.8125rem; color: var(--color-text-secondary); }
+  .catalog-stats dd { font-size: 1.75rem; font-weight: 700; line-height: 1.2; }
+  .section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; }
+  .section-heading h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+  #category-results { color: var(--color-text-secondary); font-size: 0.8125rem; flex-shrink: 0; }
+  .category-controls { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+  .search-field { flex: 1; }
+  .sort-field { width: 180px; }
+  label { display: block; font-size: 0.8125rem; font-weight: 500; margin-bottom: 0.5rem; }
+  input, select {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 0.875rem;
+  }
+  input::placeholder { color: var(--color-text-secondary); }
+  a:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+  .category-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .category-detail {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.5rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .category-detail:focus-within { border-color: var(--color-accent); }
+  .card-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .category-icon { display: grid; place-items: center; width: 48px; height: 48px; font-size: 0.875rem; font-weight: 700; color: var(--color-accent); background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-lg); }
+  .skill-count { color: var(--color-accent); background: rgba(88, 166, 255, 0.1); padding: 0.25rem 0.625rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+  .category-detail h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .category-detail h3 a { color: var(--color-text); }
+  .category-detail h3 a:hover { color: var(--color-accent); }
+  .category-description { color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 1.5rem; }
+  .skill-previews { margin-top: auto; }
+  .skill-previews h4, .category-sources p { color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 500; margin-bottom: 0.5rem; }
+  .skill-previews ul, .category-sources ul { list-style: none; }
+  .skill-previews li + li { border-top: 1px solid var(--color-border); }
+  .skill-previews a { display: block; position: relative; padding: 0.75rem 1.5rem 0.75rem 0; }
+  .skill-previews a:hover { text-decoration: none; }
+  .skill-previews a:hover .preview-name { text-decoration: underline; }
+  .preview-name { display: block; font-size: 0.875rem; font-weight: 500; overflow-wrap: anywhere; }
+  .preview-description { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; color: var(--color-text-secondary); font-size: 0.75rem; margin-top: 0.25rem; }
+  .preview-arrow { position: absolute; top: 0.75rem; right: 0; color: var(--color-text-secondary); }
+  .category-sources { padding: 1rem 0; border-top: 1px solid var(--color-border); margin-top: 0.5rem; }
+  .category-sources ul { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+  .category-sources li { font-size: 0.6875rem; padding: 0.125rem 0.5rem; background: var(--color-bg-tertiary); border-radius: var(--radius-sm); overflow-wrap: anywhere; max-width: 100%; }
+  .category-sources summary { cursor: pointer; color: var(--color-accent); font-size: 0.75rem; margin-top: 0.5rem; }
+  .category-sources details ul { margin-top: 0.5rem; }
+  .explore-link { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-border); padding-top: 1rem; font-size: 0.875rem; font-weight: 600; }
+  .empty-state { padding: 3rem 1rem; text-align: center; border: 1px dashed var(--color-border); border-radius: var(--radius-lg); }
+  .empty-state p { color: var(--color-text-secondary); margin: 0.5rem 0 1.5rem; }
+
+  @media (max-width: 767px) {
+    .page-header { padding: 2.5rem 0; }
+    .header-content { grid-template-columns: 1fr; gap: 2rem; }
+    .catalog-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); border-left: 0; border-top: 1px solid var(--color-border); padding: 1.5rem 0 0; }
+    .catalog-stats dt { font-size: 0.75rem; }
+    .section-heading, .category-controls { flex-direction: column; align-items: stretch; }
+    .sort-field { width: 100%; }
+    .category-grid { grid-template-columns: 1fr; }
+    .category-detail { padding: 1.25rem; }
   }
 </style>

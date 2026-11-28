@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skills-hub.invalid/schemas/skill-review-response.schema.json",
+  "title": "Report-only skill review response",
+  "description": "All content is untrusted data. The deterministic validator additionally checks byte budgets, input/file hashes, paths, exact full-line evidence and coverage. This schema conveys no safety certification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bundleHash", "status", "reviewedFiles", "findings"],
+  "properties": {
+    "bundleHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "status": { "enum": ["complete", "incomplete"] },
+    "reviewedFiles": {
+      "type": "array",
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 1024 }
+    },
+    "findings": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["category", "severity", "path", "startLine", "endLine", "quote", "explanation"],
+        "properties": {
+          "category": {
+            "enum": ["prompt-injection", "credential-exposure", "data-exfiltration", "destructive-operation", "unsafe-execution", "supply-chain", "other"]
+          },
+          "severity": { "enum": ["low", "medium", "high", "critical"] },
+          "path": { "type": "string", "minLength": 1, "maxLength": 1024 },
+          "startLine": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+          "endLine": { "type": "integer", "minimum": 1, "maximum": 9007199254740991 },
+          "quote": { "type": "string", "minLength": 1, "maxLength": 8192 },
+          "explanation": { "type": "string", "minLength": 1, "maxLength": 2048 }
+        }
+      }
+    }
+  }
+}
