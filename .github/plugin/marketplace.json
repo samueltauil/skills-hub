@@ -4,7 +4,7 @@
     "name": "samueltauil"
   },
   "metadata": {
-      "description": "Curated catalog of Agent Skills for GitHub Copilot, packaged as individually installable Agent Plugins. See each skill page for security review coverage.",
+    "description": "Curated catalog of Agent Skills for GitHub Copilot, packaged as individually installable Agent Plugins. See each skill page for security review coverage.",
     "version": "1.0.0"
   },
   "plugins": [
