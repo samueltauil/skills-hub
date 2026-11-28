@@ -52,7 +52,7 @@ function sortedSkills(skills) {
 export function discoveryUrls(site, skills) {
   const base = siteUrl(site);
   const paths = [
-    '', 'skills/', 'categories/',
+    '', 'skills/', 'categories/', 'dashboard/',
     ...categoryIds(skills).map(id => `categories/${encodeURIComponent(id)}/`),
     ...sortedSkills(skills).map(skill => `skills/${encodeURIComponent(skill.id)}/`),
   ];
@@ -95,6 +95,7 @@ export function renderLlms(site, skills, categories, full = false) {
     `- ${link('Home', url(''))}`,
     `- ${link('All skills', url('skills/'))}`,
     `- ${link('All categories', url('categories/'))}`,
+    `- ${link('Skills dashboard', url('dashboard/'))}`,
     `- ${link('Sitemap', url('sitemap.xml'))}`,
     `- ${link(full ? 'Catalog index for language models' : 'Full catalog metadata', url(full ? 'llms.txt' : 'llms-full.txt'))}`,
     '',

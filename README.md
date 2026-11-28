@@ -18,6 +18,7 @@
 
 - **Browse by Category** — Skills organized into 12 categories (Testing, DevOps, Documentation, etc.)
 - **Search & Filters** — Search by name, description, tag or source, then narrow by category or source. Filtered views are reflected in the URL so you can share them
+- **Skills Dashboard** — [Explore catalog totals, category/source distributions, and AI review coverage](https://skillshub.space/dashboard/). Counts come from the catalog and validated published reports, not activity estimates or security certifications
 - **Agent Plugins** — Every publishable skill is packaged as an [Agent Plugin](https://agent-plugins.org) and listed in a plugin marketplace you can add to GitHub Copilot CLI or VS Code
 - **One-Click Install** — Copy commands to add skills to your project
 - **CLI Extension** — Install skills directly from the terminal with `gh skills-hub`

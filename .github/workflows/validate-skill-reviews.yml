@@ -6,6 +6,13 @@ on:
     paths:
       - '.gitattributes'
       - 'scripts/skill-review*'
+      - 'scripts/dashboard.test.js'
+      - 'scripts/seo-*.test.js'
+      - 'site/src/data/dashboard.js'
+      - 'site/src/data/seo*.js'
+      - 'site/src/layouts/**'
+      - 'site/src/components/DashboardDistribution.astro'
+      - 'site/src/pages/dashboard.astro'
       - 'scripts/aggregate-skills.js'
       - 'scripts/scan-skills.js'
       - 'scripts/enrich-skills.js'
@@ -33,6 +40,13 @@ on:
     paths:
       - '.gitattributes'
       - 'scripts/skill-review*'
+      - 'scripts/dashboard.test.js'
+      - 'scripts/seo-*.test.js'
+      - 'site/src/data/dashboard.js'
+      - 'site/src/data/seo*.js'
+      - 'site/src/layouts/**'
+      - 'site/src/components/DashboardDistribution.astro'
+      - 'site/src/pages/dashboard.astro'
       - 'scripts/aggregate-skills.js'
       - 'scripts/scan-skills.js'
       - 'scripts/enrich-skills.js'
@@ -80,6 +94,8 @@ jobs:
         run: npm ci && npm --prefix site ci
       - name: Test review collection, validation, publishing and panel states
         run: node --test scripts/skill-review*.test.js
+      - name: Test dashboard aggregation and SEO discovery
+        run: node --test scripts/dashboard.test.js scripts/seo-*.test.js
       - name: Build skill pages with published reports
         run: npm --prefix site run build
       - name: Test rendered security review UI

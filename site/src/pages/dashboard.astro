@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CategoryLogo from '../components/CategoryLogo.astro';
+import DashboardDistribution from '../components/DashboardDistribution.astro';
+import { getCategory } from '../data/categories';
+import { aggregateDashboard, percentage } from '../data/dashboard.js';
+import skillsData from '../data/skills.json';
+
+const published = import.meta.glob('../data/security-reviews/*.json', { eager: true, import: 'default' });
+const reports = Object.fromEntries(Object.entries(published).map(([path, report]) => [
+  path.split('/').pop()!.replace(/\.json$/, ''), report,
+]));
+const dashboard = aggregateDashboard(skillsData.skills, reports);
+const baseUrl = import.meta.env.BASE_URL;
+const number = new Intl.NumberFormat('en-US');
+const percent = new Intl.NumberFormat('en-US', { maximumFractionDigits: 1 });
+const sources = dashboard.sources.map(row => ({
+  ...row, label: row.id === 'unknown' ? 'Not specified' : row.id,
+  href: `${baseUrl}skills/?${new URLSearchParams({ source: row.id })}`,
+}));
+const reviewLabels = {
+  'complete-no-findings': ['Complete · no findings observed', 'Current files reviewed; no concerns reported.'],
+  'complete-with-findings': ['Complete · findings to assess', 'Current files reviewed; inspect the reported concerns.'],
+  incomplete: ['Incomplete', 'Review or file coverage is unfinished.'],
+  stale: ['Out of date', 'Catalog content changed since the review.'],
+  error: ['Failed', 'The review could not finish because of an error.'],
+  invalid: ['Report unavailable', 'Published data did not pass report validation.'],
+  'not-reviewed': ['Not reviewed', 'No published report for this skill.'],
+};
+const reviewRows = Object.entries(dashboard.reviews).map(([status, count]) => ({
+  status, count, percentage: percentage(count, dashboard.skillCount),
+  label: reviewLabels[status][0], description: reviewLabels[status][1],
+}));
+const metrics = [
+  { id: 'skills', label: 'Catalog skills', value: dashboard.skillCount, note: 'Individual skills ready to explore', href: `${baseUrl}skills/` },
+  { id: 'categories', label: 'Categories', value: dashboard.categoryCount, note: 'Areas represented in the catalog', href: `${baseUrl}categories/` },
+  { id: 'sources', label: 'Source repositories', value: dashboard.sourceCount, note: dashboard.unknownSourceCount ? `${number.format(dashboard.unknownSourceCount)} skills have no source label` : 'Distinct catalog repository labels', href: '#sources' },
+  { id: 'files', label: 'Catalog files', value: dashboard.fileCount, note: 'Bundled file entries across all skills', href: '#about-data' },
+];
+---
+
+<Layout
+  title="Skills Dashboard"
+  description="Explore the Skills Hub catalog by category, source repository, and published AI review coverage. Transparent counts from catalog files, not security certifications."
+  pageType="CollectionPage"
+>
+  <section class="dashboard-hero">
+    <div class="container hero-content">
+      <div>
+        <p class="eyebrow">Catalog at a glance</p>
+        <h1>Skills dashboard</h1>
+        <p class="intro">Find your next skill. Understand what’s in the catalog, where it comes from, and how much has an AI review.</p>
+      </div>
+      <a class="btn btn-secondary" href={`${baseUrl}skills/`}>Explore all skills <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <div class="container dashboard">
+    <dl class="metrics" aria-label="Catalog totals">
+      {metrics.map(metric => (
+        <div class="metric" data-metric={metric.id} data-count={metric.value}>
+          <dt><a href={metric.href}>{metric.label}</a></dt>
+          <dd>{number.format(metric.value)}</dd>
+          <dd class="metric-note">{metric.note}</dd>
+        </div>
+      ))}
+    </dl>
+
+    {dashboard.skillCount === 0 && <p class="empty-state">No skills are published yet. Catalog distributions and review coverage will appear here as skills are added.</p>}
+
+    <section class="panel review-panel" aria-labelledby="review-heading">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Published AI reviews</p>
+          <h2 id="review-heading">Review coverage, not a safety score</h2>
+          <p>Validated GitHub Agentic Workflow reports, matched to the current catalog files.</p>
+        </div>
+        <div class="coverage-stat" data-metric="complete-reviews" data-count={dashboard.completeCount}>
+          <strong>{percent.format(dashboard.completePercentage)}<span>%</span></strong>
+          <span>{number.format(dashboard.completeCount)} of {number.format(dashboard.skillCount)} skills have a complete, current review</span>
+        </div>
+      </div>
+      <div class="coverage-bar" aria-hidden="true">
+        {reviewRows.map(row => <span class={row.status} style={`width: ${row.percentage}%`}></span>)}
+      </div>
+      <ul class="review-grid">
+        {reviewRows.map(row => (
+          <li data-review-status={row.status} data-count={row.count}>
+            <div class="review-label"><span class:list={['dot', row.status]} aria-hidden="true"></span><h3>{row.label}</h3></div>
+            <p class="review-value">{number.format(row.count)} <span>· {percent.format(row.percentage)}%</span></p>
+            <p class="review-description">{row.description}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="review-note">A complete review can contain findings. AI reviews can miss issues and are not security certifications. Read each skill’s review and inspect its files before installing.</p>
+    </section>
+
+    <div class="distribution-grid">
+      <section class="panel" aria-labelledby="categories-heading">
+        <div class="panel-heading">
+          <div><h2 id="categories-heading">Explore by category</h2><p>Each skill belongs to one category.</p></div>
+        </div>
+        <ul class="category-list">
+          {dashboard.categories.map(row => (
+            <li data-category={row.id} data-count={row.count}>
+              <a href={`${baseUrl}categories/${encodeURIComponent(row.id)}/`}>
+                <CategoryLogo id={row.id} size={32} />
+                <span class="category-content">
+                  <span class="category-label"><span>{getCategory(row.id).name}</span><span class="row-value">{number.format(row.count)} <span>· {percent.format(row.percentage)}%</span></span></span>
+                  <span class="category-track" aria-hidden="true"><span style={`width: ${row.percentage}%`}></span></span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {dashboard.categories.length === 0 && <p class="muted">No categories to display.</p>}
+      </section>
+
+      <div class="side-panels">
+        <section class="panel" id="sources" aria-labelledby="sources-heading">
+          <div class="panel-heading"><div><h2 id="sources-heading">Where skills come from</h2><p>Browse skills by their source repository.</p></div></div>
+          <DashboardDistribution rows={sources.slice(0, 8)} />
+          {sources.length > 8 && <details class="more-sources"><summary>Show {number.format(sources.length - 8)} more sources</summary><DashboardDistribution rows={sources.slice(8)} /></details>}
+          {sources.length === 0 && <p class="muted">No sources to display.</p>}
+        </section>
+        <section class="panel" aria-labelledby="metadata-heading">
+          <div class="panel-heading"><div><h2 id="metadata-heading">Catalog metadata</h2><p>As recorded in each skill’s catalog entry.</p></div></div>
+          <h3 class="mix-heading">License mix</h3>
+          <DashboardDistribution rows={dashboard.licenses} />
+          <h3 class="mix-heading complexity-heading">Complexity labels</h3>
+          <DashboardDistribution rows={dashboard.complexities} />
+          {dashboard.skillCount === 0 && <p class="muted">No metadata to display.</p>}
+          <p class="metadata-note">Complexity labels are catalog metadata, not measured difficulty. Check the skill’s license and notices for usage terms.</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="data-note" id="about-data" aria-labelledby="data-heading">
+      <h2 id="data-heading">About these numbers</h2>
+      <p>This is a snapshot of the catalog and published reports included in this site build, not live activity. Every percentage uses all {number.format(dashboard.skillCount)} catalog skills as its denominator and is rounded to one decimal place; totals may differ slightly from 100%.</p>
+      <p>File counts include each skill’s bundled file entries, not all files in upstream repositories. Categories without skills are excluded; uncategorized skills use General. Missing source, license, or complexity metadata is shown as “Not specified.” Out-of-date, incomplete, failed, unavailable, and missing reports do not count as complete reviews.</p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .dashboard-hero { padding: 3.5rem 0 3rem; background: radial-gradient(ellipse at top right, rgba(88,166,255,.1), transparent 65%), var(--color-bg-secondary); border-bottom: 1px solid var(--color-border); }
+  .hero-content { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; letter-spacing: -.035em; margin-bottom: .85rem; }
+  .eyebrow { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--color-accent); margin-bottom: .6rem; }
+  .intro { max-width: 640px; color: var(--color-text-secondary); }
+  .hero-content > a { flex-shrink: 0; }
+  .dashboard { padding-top: 2rem; }
+  .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .metric, .panel { background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+  .metric { padding: 1.25rem; }
+  .metric dt { font-size: .875rem; font-weight: 500; }
+  .metric dt a { color: var(--color-text-secondary); }
+  .metric dd { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.3; font-weight: 650; letter-spacing: -.04em; margin: .6rem 0 .3rem; font-variant-numeric: tabular-nums; }
+  .metric dd.metric-note { font-size: .75rem; color: var(--color-text-secondary); font-weight: 400; line-height: 1.6; letter-spacing: normal; margin: 0; }
+  .panel { padding: 1.5rem; min-width: 0; }
+  .panel-heading { display: flex; justify-content: space-between; align-items: start; gap: 2rem; margin-bottom: 1.5rem; }
+  h2 { font-size: 1.2rem; line-height: 1.4; margin-bottom: .4rem; }
+  .panel-heading p:not(.eyebrow), .muted { color: var(--color-text-secondary); font-size: .875rem; }
+  .review-panel { margin-bottom: 1.5rem; }
+  .coverage-stat { max-width: 240px; flex-shrink: 0; text-align: right; }
+  .coverage-stat strong { display: block; font-size: 2.5rem; line-height: 1.2; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .coverage-stat strong span { font-size: 1.25rem; margin-left: .15rem; }
+  .coverage-stat > span { display: block; font-size: .75rem; color: var(--color-text-secondary); margin-top: .4rem; }
+  .coverage-bar { height: 10px; display: flex; background: var(--color-bg-tertiary); border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem; }
+  .complete-no-findings { background: #58a6ff; }
+  .complete-with-findings { background: #bc8cff; }
+  .incomplete { background: #d29922; }
+  .stale { background: #db8b55; }
+  .error { background: #f85149; }
+  .invalid { background: #b1bac4; }
+  .not-reviewed { background: #484f58; }
+  .review-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; list-style: none; }
+  .review-label { display: flex; align-items: baseline; gap: .4rem; }
+  .review-label h3 { font-size: .8125rem; font-weight: 500; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .review-value { font-size: 1.5rem; font-weight: 600; font-variant-numeric: tabular-nums; margin: .35rem 0; }
+  .review-value span { color: var(--color-text-secondary); font-size: .8125rem; font-weight: 400; }
+  .review-description { font-size: .75rem; color: var(--color-text-secondary); }
+  .review-note { border-top: 1px solid var(--color-border); margin-top: 1.5rem; padding-top: 1rem; font-size: .8125rem; color: var(--color-text-secondary); }
+  .distribution-grid { display: grid; grid-template-columns: 1.1fr 1fr; align-items: start; gap: 1.5rem; }
+  .side-panels { display: grid; gap: 1.5rem; min-width: 0; }
+  .category-list { display: grid; gap: 1.2rem; list-style: none; }
+  .category-list a { display: flex; align-items: center; gap: .85rem; }
+  .category-content { display: block; flex: 1; min-width: 0; }
+  .category-label { display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; font-size: .875rem; margin-bottom: .4rem; }
+  .category-label > :first-child { overflow-wrap: anywhere; }
+  .row-value { flex-shrink: 0; color: var(--color-text); font-variant-numeric: tabular-nums; }
+  .row-value span { color: var(--color-text-secondary); }
+  .category-track { display: block; height: 5px; background: var(--color-bg-tertiary); border-radius: 4px; overflow: hidden; }
+  .category-track > span { display: block; height: 100%; background: var(--color-accent); border-radius: inherit; }
+  .more-sources { border-top: 1px solid var(--color-border); padding-top: 1rem; margin-top: 1rem; }
+  summary { cursor: pointer; color: var(--color-accent); font-size: .875rem; }
+  details[open] summary { margin-bottom: 1rem; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; border-radius: 3px; }
+  .mix-heading { font-size: .8125rem; font-weight: 600; margin-bottom: 1rem; }
+  .complexity-heading { margin-top: 1.5rem; }
+  .metadata-note { margin-top: 1.25rem; font-size: .75rem; color: var(--color-text-secondary); }
+  .data-note { margin-top: 2rem; max-width: 920px; }
+  .data-note h2 { font-size: 1rem; }
+  .data-note p { font-size: .8125rem; color: var(--color-text-secondary); margin-top: .5rem; }
+  .empty-state { margin-bottom: 1.5rem; padding: 1rem; border: 1px dashed var(--color-border); border-radius: var(--radius-md); }
+  #sources, #about-data { scroll-margin-top: 6rem; }
+  @media (max-width: 960px) {
+    .metrics, .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .distribution-grid { grid-template-columns: 1fr; }
+    .hero-content { align-items: start; flex-direction: column; gap: 1.25rem; }
+  }
+  @media (max-width: 480px) {
+    .dashboard-hero { padding: 2rem 0; }
+    .panel { padding: 1rem; }
+    .metric { padding: 1rem; }
+    .panel-heading { flex-direction: column; gap: 1rem; }
+    .coverage-stat { text-align: left; max-width: none; }
+    .category-label { flex-wrap: wrap; gap: .1rem .6rem; }
+    .review-grid { gap: 1rem; }
+  }
+</style>

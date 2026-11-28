@@ -63,6 +63,7 @@ test('review CI runs rendered UI tests after building and covers pipeline and UI
   assert.ok(buildIndex >= 0);
   assert.ok(runs.indexOf('node --test site/tests/*.test.js') > buildIndex);
   assert.ok(runs.includes('node --test scripts/skill-review*.test.js'));
+  assert.ok(runs.includes('node --test scripts/dashboard.test.js scripts/seo-*.test.js'));
   const requiredPaths = [
     'scripts/skill-review*', 'scripts/aggregate-skills.js', 'scripts/scan-skills.js',
     'scripts/enrich-skills.js', 'scripts/build-plugins.js', '.github/plugin/marketplace.json',
@@ -70,6 +71,9 @@ test('review CI runs rendered UI tests after building and covers pipeline and UI
     'site/src/data/skills.json', 'site/src/components/SecurityReview.astro',
     'site/src/components/SkillCard.astro', 'site/src/pages/index.astro',
     'site/src/pages/categories/**', 'site/src/pages/skills/**', 'site/tests/**',
+    'scripts/dashboard.test.js', 'scripts/seo-*.test.js', 'site/src/data/dashboard.js',
+    'site/src/data/seo*.js', 'site/src/layouts/**',
+    'site/src/components/DashboardDistribution.astro', 'site/src/pages/dashboard.astro',
     '.github/workflows/skill-security-review*', '.github/workflows/validate-skill-reviews.yml',
     '.github/workflows/enrich-skills.yml', '.github/workflows/sync-skills.yml',
     'package*.json', 'site/package*.json',
