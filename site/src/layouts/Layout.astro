@@ -1,15 +1,23 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
+import { createMetadata, serializeJsonLd, SITE_NAME } from '../data/seo.js';
 
 interface Props {
   title: string;
   description?: string;
+  pageType?: 'WebPage' | 'CollectionPage';
+  breadcrumbs?: { name: string; path: string }[];
+  skill?: { name: string; description: string; sourceUrl?: string };
 }
 
-const { title, description = 'Discover and install curated GitHub Copilot skills to supercharge your development workflow.' } = Astro.props;
+const { title, description, pageType, breadcrumbs, skill } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const path = Astro.url.pathname;
 const section = path.startsWith(`${baseUrl}skills`) ? 'skills' : path.startsWith(`${baseUrl}categories`) ? 'categories' : path === baseUrl ? 'home' : '';
+const metadata = createMetadata({
+  site: Astro.site, pageUrl: Astro.url, baseUrl, title, description, pageType, breadcrumbs, skill,
+});
 ---
 
 <!doctype html>
@@ -17,9 +25,29 @@ const section = path.startsWith(`${baseUrl}skills`) ? 'skills' : path.startsWith
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={metadata.description} />
+    <link rel="canonical" href={metadata.canonical} />
+    <link rel="describedby" href={new URL(`${baseUrl}llms.txt`, Astro.site).href} type="text/plain" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={metadata.title} />
+    <meta property="og:description" content={metadata.description} />
+    <meta property="og:url" content={metadata.canonical} />
+    <meta property="og:image" content={metadata.image} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Copilot Skills Hub — discover and install Agent Skills for GitHub Copilot" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={metadata.title} />
+    <meta name="twitter:description" content={metadata.description} />
+    <meta name="twitter:image" content={metadata.image} />
+    <meta name="twitter:image:alt" content="Copilot Skills Hub — discover and install Agent Skills for GitHub Copilot" />
+    <script type="application/ld+json" set:html={serializeJsonLd(metadata.jsonLd)} />
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
-    <title>{title} | Copilot Skills Hub</title>
+    <title>{metadata.title}</title>
+    <Analytics />
   </head>
   <body>
     <header class="header">

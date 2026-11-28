@@ -33,7 +33,10 @@ const pluginInstallCommands = `${marketplaceCommand}\n${skillInstallCommand}`;
 const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filter(Boolean)).size;
 ---
 
-<Layout title="Home">
+<Layout
+  title="Agent Skills for GitHub Copilot"
+  description={`Explore ${skillsData.skills.length} curated Agent Skills for GitHub Copilot. Browse categories, inspect source files, and install skills as Agent Plugins in your terminal or editor.`}
+>
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg">

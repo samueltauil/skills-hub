@@ -38,7 +38,16 @@ const categorySkills = skills
   .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
-<Layout title={category.name} description={category.description}>
+<Layout
+  title={`${category.name} Skills`}
+  description={`${category.description}. Browse ${categorySkills.length} GitHub Copilot skills in this category and explore their source files and installation instructions.`}
+  pageType="CollectionPage"
+  breadcrumbs={[
+    { name: 'Home', path: baseUrl },
+    { name: 'Categories', path: `${baseUrl}categories/` },
+    { name: category.name, path: Astro.url.pathname },
+  ]}
+>
   <section class="page-header">
     <div class="container">
       <nav class="breadcrumb">

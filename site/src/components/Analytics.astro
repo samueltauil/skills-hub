@@ -1,0 +1,15 @@
+---
+import { getAnalyticsConfig, getAnalyticsScript } from './analytics-config.js';
+
+const { measurementId, googleVerification, bingVerification } = getAnalyticsConfig(import.meta.env);
+const pageUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+---
+
+{googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+{bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
+{measurementId && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
+    <script is:inline set:html={getAnalyticsScript(measurementId, pageUrl)}></script>
+  </>
+)}
