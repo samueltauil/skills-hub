@@ -17,11 +17,11 @@
 ### Features
 
 - **Browse by Category** — Skills organized into 12 categories (Testing, DevOps, Documentation, etc.)
-- **Search & Filters** — Search by name, description, tag or source, then narrow by category, source or verified status. Filtered views are reflected in the URL so you can share them
+- **Search & Filters** — Search by name, description, tag or source, then narrow by category or source. Filtered views are reflected in the URL so you can share them
 - **Agent Plugins** — Every publishable skill is packaged as an [Agent Plugin](https://agent-plugins.org) and listed in a plugin marketplace you can add to GitHub Copilot CLI or VS Code
 - **One-Click Install** — Copy commands to add skills to your project
 - **CLI Extension** — Install skills directly from the terminal with `gh skills-hub`
-- **Security Scanning** — Two-pass security scanner (regex + AI) validates every skill
+- **Security Reviews** — Evidence-validated Agentic Workflow reviews with explicit findings, coverage gaps, and out-of-date states
 - **Skill Details** — See what each skill does, its triggers, and example usage
 
 ## Browse Skills
@@ -142,8 +142,8 @@ skills-hub/
 ├── skills/
 │   ├── schema.json       # Skill metadata schema
 │   ├── registry.json     # Manually curated skills subset
-│   └── security-rules.yml # Security scan rules
-├── scripts/              # Build, scan, enrichment and plugin scripts
+│   └── security-rules.yml # Legacy standalone diagnostic rules
+├── scripts/              # Build, review validation, enrichment and plugin scripts
 │   └── schemas/          # Vendored Agent Plugins JSON schema
 ├── sources/              # Upstream skill sources (git submodules)
 ├── gh-skills-hub         # GitHub CLI extension
@@ -209,14 +209,12 @@ Run from the repository root:
 | Script | Description |
 |--------|-------------|
 | `npm run aggregate` | Aggregate skills from submodule sources into `site/src/data/skills.json` |
-| `npm run scan` | Run regex security scan on all skills; updates `verified` field |
-| `npm run scan:ai` | Run regex + AI security scan (requires `GITHUB_TOKEN` and Copilot CLI) |
 | `npm run enrich` | AI-enrich skill metadata using `@github/copilot-sdk` (requires Copilot CLI) |
 | `npm run build:plugins` | Regenerate `plugins/` and `.github/plugin/marketplace.json` from `skills.json` |
 | `npm run check:plugins` | Fail if the generated plugins or marketplace are out of date |
 | `npm run validate:plugins` | Validate the marketplace and every plugin against the Agent Plugins spec |
-| `npm test` | Run the plugin tooling unit tests |
-| `npm run build` | Aggregate + scan + build and validate plugins + build the Astro site |
+| `npm test` | Run plugin tooling and security review pipeline tests |
+| `npm run build` | Aggregate + build and validate plugins + build the Astro site |
 | `npm run dev` | Aggregate + start local dev server |
 
 ## Agent Plugins
@@ -237,44 +235,17 @@ npm run check:plugins     # verify nothing is stale
 npm test                  # unit tests
 ```
 
-## Security Scanning
+## Security Reviews
 
-Skills receive automated pattern checks. AI review is optional and is reported separately; neither check certifies that a skill is safe.
+Published security assessments come only from the [Skill Security Review](.github/workflows/skill-security-review.md) Agentic Workflow and its trusted evidence validator. A review is advisory, not a safety certification. Skills without a valid current report remain unreviewed, invalid, or out of date as applicable; missing coverage is never a successful review.
 
-### How it works
+Aggregation, production builds, upstream sync, and metadata enrichment do not run the legacy regex/SDK scanner or publish its `verified` / `securityScan` fields. Aggregation preserves skill files independently of reviews. Content changes invalidate older review hashes rather than silently carrying forward a safety claim.
 
-**Pass 1 — Pattern analysis** scans all skill files against 13 regex-based rules defined in [`skills/security-rules.yml`](skills/security-rules.yml):
-- Shell command execution, eval, and unsafe deserialization
-- Prompt injection markers and social engineering phrases
-- Hardcoded secrets, credentials, and sensitive file access
-- Base64 decode-and-execute, environment variable exfiltration
-- Path traversal, SQL injection, and curl-pipe-to-shell patterns
+The retired [`scripts/scan-skills.js`](scripts/scan-skills.js) remains available only for standalone diagnostics (`node scripts/scan-skills.js --output my-report.json`). Its output is not accepted as a published review, and `--update-skills` fails without changing the catalog. The old `npm run scan` and `npm run scan:ai` publication commands have been removed. Existing legacy fields in a catalog snapshot are historical data, not review evidence; no bulk catalog regeneration is needed to retire their publication.
 
-**Pass 2 — AI deep scan** (opt-in) uses `@github/copilot-sdk` to semantically analyze skills for threats that regex can't catch: obfuscated malware, disguised data exfiltration, and supply chain risks.
+### Agentic instruction review
 
-The existing **Verified** badge reflects the configured scanner's result, not a guarantee of safety or evidence that an AI review ran. Per-skill instruction reviews show their own findings, coverage, and version on the security panel.
-
-### Running a scan manually
-
-```bash
-# Regex scan (default — runs as part of build)
-npm run scan
-
-# Regex + AI scan (requires GITHUB_TOKEN)
-GITHUB_TOKEN=ghp_... npm run scan:ai
-
-# Scan only (no write-back)
-node scripts/scan-skills.js --output my-report.json
-
-# Fail CI on high-severity findings
-node scripts/scan-skills.js --fail-on-high
-```
-
-The scan runs automatically every time skills are synced from upstream sources (weekly via [`sync-skills.yml`](.github/workflows/sync-skills.yml)) and can also be triggered manually via the [Enrich & Scan Skills](.github/workflows/enrich-skills.yml) workflow.
-
-### Agentic instruction review pilot
-
-The manual [Skill Security Review](.github/workflows/skill-security-review.md) Agentic Workflow reviews one skill at a time for malicious instructions, prompt injection, credential exposure, and unsafe behavior across supporting files. It is advisory: it does not execute the skill, change the existing scanner's badge, or block catalog updates.
+The manual Agentic Workflow reviews one skill at a time for malicious instructions, prompt injection, credential exposure, and unsafe behavior across supporting files. It does not execute the skill or block catalog updates.
 
 The reviewer receives an inert snapshot of the selected skill's **catalog files**, not an installed skill or plugin. Collection is limited to 32 files, 64 KiB per file, and 256 KiB for the complete input. Missing, unsupported, and over-budget files are recorded as coverage gaps, never silently truncated. Files absent from the catalog and external links are outside the review's coverage.
 

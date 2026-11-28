@@ -8,7 +8,6 @@ import skillsData from '../../data/skills.json';
 
 const PAGE_SIZE = 48;
 const skills = [...skillsData.skills].sort((a, b) => a.name.localeCompare(b.name));
-const verifiedCount = skills.filter(s => s.verified).length;
 
 function countBy<T>(items: T[], key: (item: T) => string) {
   const counts = new Map<string, number>();
@@ -43,7 +42,8 @@ function searchText(skill: (typeof skills)[number]) {
       <h1>Browse Skills</h1>
       <p class="text-secondary">
         Discover {skills.length} curated skills for GitHub Copilot from {sources.length} sources.
-        Skills are security scanned and installable as <a href="https://agent-plugins.org" target="_blank" rel="noopener noreferrer">Agent Plugins</a>.
+        Install skills as <a href="https://agent-plugins.org" target="_blank" rel="noopener noreferrer">Agent Plugins</a>.
+        Check each skill’s security review before installing.
       </p>
     </div>
   </section>
@@ -82,10 +82,6 @@ function searchText(skill: (typeof skills)[number]) {
               <option value="source">Source</option>
             </select>
           </label>
-          <label class="filter-toggle">
-            <input type="checkbox" id="verified-filter" name="verified" />
-            <span>Verified only <span class="toggle-count">({verifiedCount})</span></span>
-          </label>
         </div>
       </form>
 
@@ -106,7 +102,6 @@ function searchText(skill: (typeof skills)[number]) {
             data-search={searchText(skill)}
             data-category={skill.category || 'general'}
             data-source={skill.source?.repoName || 'unknown'}
-            data-verified={skill.verified ? 'true' : 'false'}
             data-files={skill.files?.length || 0}
           >
             <SkillCard
@@ -115,8 +110,6 @@ function searchText(skill: (typeof skills)[number]) {
               description={skill.description}
               category={skill.category || 'general'}
               fileCount={skill.files?.length || 0}
-              verified={skill.verified}
-              securityScan={skill.securityScan}
               source={skill.source}
             />
           </div>
@@ -199,33 +192,9 @@ function searchText(skill: (typeof skills)[number]) {
     border-color: var(--color-text-secondary);
   }
 
-  .filter-select:focus-visible,
-  .filter-toggle:focus-within {
+  .filter-select:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
-  }
-
-  .filter-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 0.75rem;
-    font-size: 0.875rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background-color: var(--color-bg);
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .filter-toggle input {
-    accent-color: var(--color-success);
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .toggle-count {
-    color: var(--color-text-secondary);
   }
 
   .results-bar {
@@ -310,7 +279,6 @@ function searchText(skill: (typeof skills)[number]) {
   const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
   const sourceFilter = document.getElementById('source-filter') as HTMLSelectElement;
   const sortFilter = document.getElementById('sort-filter') as HTMLSelectElement;
-  const verifiedFilter = document.getElementById('verified-filter') as HTMLInputElement;
   const resultsCount = document.getElementById('results-count') as HTMLElement;
   const clearButton = document.getElementById('clear-filters') as HTMLButtonElement;
   const noResults = document.getElementById('no-results') as HTMLElement;
@@ -334,7 +302,6 @@ function searchText(skill: (typeof skills)[number]) {
   if (selectHasValue(sourceFilter, initialSource)) sourceFilter.value = initialSource;
   const initialSort = params.get('sort') || 'name';
   if (selectHasValue(sortFilter, initialSort)) sortFilter.value = initialSort;
-  verifiedFilter.checked = params.get('verified') === '1';
 
   function syncUrl() {
     const next = new URLSearchParams();
@@ -342,7 +309,6 @@ function searchText(skill: (typeof skills)[number]) {
     if (q) next.set('q', q);
     if (categoryFilter.value) next.set('category', categoryFilter.value);
     if (sourceFilter.value) next.set('source', sourceFilter.value);
-    if (verifiedFilter.checked) next.set('verified', '1');
     if (sortFilter.value !== 'name') next.set('sort', sortFilter.value);
     const query = next.toString();
     history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}`);
@@ -373,7 +339,6 @@ function searchText(skill: (typeof skills)[number]) {
     const terms = searchInput.value.toLowerCase().split(/\s+/).filter(Boolean);
     const category = categoryFilter.value;
     const source = sourceFilter.value;
-    const verifiedOnly = verifiedFilter.checked;
 
     let matched = 0;
     let shown = 0;
@@ -382,8 +347,7 @@ function searchText(skill: (typeof skills)[number]) {
       const matches =
         terms.every(term => text.includes(term)) &&
         (!category || item.dataset.category === category) &&
-        (!source || item.dataset.source === source) &&
-        (!verifiedOnly || item.dataset.verified === 'true');
+        (!source || item.dataset.source === source);
 
       item.classList.toggle('hidden', !matches);
       item.classList.toggle('is-paged', matches && matched >= limit);
@@ -398,7 +362,7 @@ function searchText(skill: (typeof skills)[number]) {
       ? `Showing ${shown} of ${total} skills`
       : `Showing ${shown} of ${matched} matching skills (${total} total)`;
 
-    const filtered = terms.length > 0 || !!category || !!source || verifiedOnly;
+    const filtered = terms.length > 0 || !!category || !!source;
     clearButton.hidden = !filtered && sortFilter.value === 'name';
     noResults.hidden = matched !== 0;
     loadMoreWrap.hidden = matched <= limit;
@@ -411,7 +375,6 @@ function searchText(skill: (typeof skills)[number]) {
     categoryFilter.value = '';
     sourceFilter.value = '';
     sortFilter.value = 'name';
-    verifiedFilter.checked = false;
     render();
     searchInput.focus();
   }
@@ -430,7 +393,6 @@ function searchText(skill: (typeof skills)[number]) {
   categoryFilter.addEventListener('change', () => render());
   sourceFilter.addEventListener('change', () => render());
   sortFilter.addEventListener('change', () => render());
-  verifiedFilter.addEventListener('change', () => render());
   clearButton.addEventListener('click', clearFilters);
   noResultsClear.addEventListener('click', clearFilters);
   loadMore.addEventListener('click', () => {

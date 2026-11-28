@@ -1,5 +1,5 @@
 ---
-import { getSecurityReview } from '../data/security-reviews.js';
+import { getSecurityReview, summarizeSecurityReview } from '../data/security-reviews.js';
 
 interface Props {
   skill: {
@@ -14,15 +14,8 @@ const { skill } = Astro.props;
 const reports = import.meta.glob('../data/security-reviews/*.json', { eager: true, import: 'default' });
 const review = getSecurityReview(reports[`../data/security-reviews/${skill.id}.json`], skill);
 const report = review.report;
-const labels = {
-  'not-reviewed': 'Not reviewed',
-  invalid: 'Report unavailable',
-  stale: 'Out of date',
-  'complete-with-findings': 'Findings reported',
-  'complete-no-findings': 'No findings observed',
-  incomplete: 'Incomplete review',
-  error: 'Review failed',
-};
+const summary = summarizeSecurityReview(review);
+const headingId = `security-review-${skill.id}`;
 const categoryLabels: Record<string, string> = {
   'prompt-injection': 'Prompt injection',
   'credential-exposure': 'Credential exposure',
@@ -32,87 +25,122 @@ const categoryLabels: Record<string, string> = {
   'supply-chain': 'Supply chain',
   other: 'Other concern',
 };
+const actions: Record<string, string> = {
+  'prompt-injection': 'Check for instructions that override your request or permissions. Remove or reject unauthorized instructions.',
+  'credential-exposure': 'Check which credentials are read or shared. Do not provide secrets to untrusted instructions.',
+  'data-exfiltration': 'Verify the destination and data being sent. Do not authorize unexpected transfers.',
+  'destructive-operation': 'Check the target and scope of changes. Back up data and require confirmation before destructive actions.',
+  'unsafe-execution': 'Inspect the command or code before running it. Avoid executing untrusted downloads.',
+  'supply-chain': 'Verify the package or download source and version before installing.',
+  other: 'Check the cited instructions against your intended task and permissions before proceeding.',
+};
+const severityOrder = { critical: 0, high: 1, medium: 2, low: 3 };
+const findings = [...(report?.findings ?? [])].sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
 ---
 
-<section class="instruction-review" aria-labelledby="instruction-review-heading">
-  <h4 id="instruction-review-heading">AI instruction review</h4>
-  <span class:list={['review-status', { attention: !['not-reviewed', 'complete-no-findings'].includes(review.status) }]}>
-    {labels[review.status]}
-  </span>
+<section class="security-review" aria-labelledby={headingId} data-review-status={review.status}>
+  <header class="review-header">
+    <h2 id={headingId}>Security review</h2>
+    <span class="review-status">{summary.label}</span>
+  </header>
   <p class="review-message">{review.message}</p>
-  {report && (
-    <>
-      <dl class="review-meta">
-        <div>
-          <dt>Reviewed</dt>
-          <dd><time datetime={report.reviewedAt}>{new Date(report.reviewedAt).toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' })}</time></dd>
-        </div>
-        <div><dt>Model</dt><dd>{report.model}</dd></div>
-        <div><dt>Rubric</dt><dd>{report.rubricVersion}</dd></div>
-        <div><dt>Catalog commit</dt><dd><code title={report.revision ?? ''}>{report.revision?.slice(0, 12)}</code></dd></div>
-        <div><dt>Content hash</dt><dd><code title={report.contentHash ?? ''}>{report.contentHash?.slice(0, 12)}</code></dd></div>
-      </dl>
-      {report.findings.length > 0 && (
-        <div class="review-findings">
-          <h5>{report.findings.length} finding{report.findings.length === 1 ? '' : 's'} to assess</h5>
-          {report.findings.map(finding => (
-            <details class="review-finding">
-              <summary><span class={`finding-severity severity-${finding.severity}`}>{finding.severity}</span> {categoryLabels[finding.category]}</summary>
-              <p class="finding-location"><code>{finding.path}</code> · lines {finding.startLine}–{finding.endLine}</p>
-              <p class="finding-explanation">{finding.explanation}</p>
-              <h6>Cited evidence</h6>
+  <p class="review-overview">
+    <span>{summary.coverage}</span>
+    {report && (
+      <span> · <time datetime={report.reviewedAt}>{new Date(report.reviewedAt).toLocaleDateString('en-US', { dateStyle: 'medium', timeZone: 'UTC' })}</time> (UTC)</span>
+    )}
+    {summary.gaps > 0 && <span> · {summary.gaps} not reviewed</span>}
+  </p>
+
+  {findings.length > 0 && (
+    <div class="review-findings">
+      <h3>{review.status === 'stale' ? 'Previous review: ' : ''}{findings.length} finding{findings.length === 1 ? '' : 's'} to assess</h3>
+      <p class="finding-guidance">These are AI-reported concerns, not confirmed vulnerabilities.</p>
+      <ol class="findings-list">
+        {findings.map(finding => (
+          <li class="review-finding">
+            <h4><span class={`finding-severity severity-${finding.severity}`}>{finding.severity}</span> {categoryLabels[finding.category]}</h4>
+            <p class="finding-location"><code>{finding.path}</code> · lines {finding.startLine}–{finding.endLine}</p>
+            <p class="finding-explanation">{finding.explanation}</p>
+            <p class="finding-action"><strong>Before installing:</strong> {actions[finding.category]}</p>
+            <details class="finding-details">
+              <summary>View cited evidence</summary>
               <pre class="finding-evidence"><code>{finding.quote}</code></pre>
             </details>
-          ))}
-        </div>
-      )}
-      <details class="review-coverage">
-        <summary>Coverage: {report.coverage.reviewedFiles.length} file{report.coverage.reviewedFiles.length === 1 ? '' : 's'} reviewed</summary>
-        <p>Limited to files available in the catalog snapshot. External links and upstream files absent from the catalog were not inspected.</p>
-        {report.coverage.reviewedFiles.length > 0 && (
-          <><h5>Reviewed files</h5><ul>{report.coverage.reviewedFiles.map(file => <li><code>{file}</code></li>)}</ul></>
-        )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  )}
+
+  <details class="review-details">
+    <summary>Review details{summary.gaps > 0 ? ' and coverage gaps' : ''}</summary>
+    <p>AI instruction review via <a href="https://github.com/samueltauil/skills-hub/blob/main/.github/workflows/skill-security-review.md">GitHub Agentic Workflows</a>.
+      Reviews inspect a recorded catalog snapshot; they do not execute skill files. AI can miss risks or report false positives.</p>
+    <p>Coverage is limited to catalog files. External links and upstream files absent from the catalog were not inspected.</p>
+    {report && (
+      <>
+        <dl class="review-meta">
+          <div><dt>Model</dt><dd>{report.model}</dd></div>
+          <div><dt>Rubric</dt><dd>{report.rubricVersion}</dd></div>
+          <div><dt>Catalog commit</dt><dd><code>{report.revision}</code></dd></div>
+          <div><dt>Content hash</dt><dd><code>{report.contentHash}</code></dd></div>
+        </dl>
         {report.coverage.omittedFiles.length > 0 && (
-          <><h5>Omitted files</h5><ul>{report.coverage.omittedFiles.map(file => <li><code>{file.path}</code>: {file.reason.replaceAll('-', ' ')}</li>)}</ul></>
+          <><h3>Omitted files</h3><ul>{report.coverage.omittedFiles.map(file => <li><code>{file.path}</code>: {file.reason.replaceAll('-', ' ')}</li>)}</ul></>
         )}
         {report.coverage.unreviewedFiles.length > 0 && (
-          <><h5>Not reviewed</h5><ul>{report.coverage.unreviewedFiles.map(file => <li><code>{file}</code></li>)}</ul></>
+          <><h3>Not reviewed</h3><ul>{report.coverage.unreviewedFiles.map(file => <li><code>{file}</code></li>)}</ul></>
         )}
-      </details>
-      {report.errors.length > 0 && (
-        <details class="review-errors">
-          <summary>Review errors</summary>
-          <ul>{report.errors.map(error => <li>{error}</li>)}</ul>
-        </details>
-      )}
-      <a class="report-link" href={`https://github.com/samueltauil/skills-hub/blob/main/site/src/data/security-reviews/${skill.id}.json`}>View report JSON</a>
-    </>
-  )}
+        {report.coverage.reviewedFiles.length > 0 && (
+          <details class="reviewed-files">
+            <summary>Reviewed files ({report.coverage.reviewedFiles.length})</summary>
+            <ul>{report.coverage.reviewedFiles.map(file => <li><code>{file}</code></li>)}</ul>
+          </details>
+        )}
+        {report.errors.length > 0 && (
+          <><h3>Review errors</h3><ul>{report.errors.map(error => <li>{error}</li>)}</ul></>
+        )}
+        <a class="report-link" href={`https://github.com/samueltauil/skills-hub/blob/main/site/src/data/security-reviews/${skill.id}.json`}>View full report (JSON)</a>
+      </>
+    )}
+  </details>
 </section>
 
 <style>
-  .instruction-review { margin: 1.25rem 0; padding: 1.25rem 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); min-width: 0; }
-  h4 { font-size: 0.875rem; margin-bottom: 0.625rem; }
-  h5, h6 { font-size: 0.75rem; font-weight: 600; margin: 0.75rem 0 0.375rem; }
-  .review-status { display: inline-block; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); background: var(--color-bg-tertiary); color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 600; }
-  .review-status.attention { color: var(--color-warning); background: rgba(210, 153, 34, 0.12); }
-  .review-message { margin: 0.75rem 0; font-size: 0.75rem; color: var(--color-text-secondary); line-height: 1.6; }
-  .review-meta { font-size: 0.6875rem; margin: 0.75rem 0; }
-  .review-meta div { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 0.5rem; margin-bottom: 0.375rem; }
-  dt { color: var(--color-text-secondary); }
-  dd, li, .finding-explanation { overflow-wrap: anywhere; unicode-bidi: plaintext; }
-  .review-finding { margin: 0.5rem 0; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); }
-  summary { cursor: pointer; font-size: 0.75rem; color: var(--color-accent); }
-  summary:focus-visible, a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
-  .finding-severity { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-secondary); }
+  .security-review { min-width: 0; padding: clamp(1rem, 3vw, 1.5rem); margin-bottom: 2rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-bg-secondary); overflow-wrap: anywhere; }
+  .review-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1rem; margin: 1rem 0 0.5rem; }
+  h4 { font-size: 0.875rem; line-height: 1.6; }
+  .review-status { padding: 0.25rem 0.625rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-bg-tertiary); font-size: 0.8125rem; font-weight: 600; }
+  [data-review-status="complete-with-findings"] .review-status,
+  [data-review-status="stale"] .review-status,
+  [data-review-status="incomplete"] .review-status,
+  [data-review-status="error"] .review-status { color: var(--color-warning); }
+  p, li, dd { font-size: 0.875rem; line-height: 1.6; }
+  p { margin-top: 0.75rem; }
+  .review-message { color: var(--color-text); }
+  .review-overview, .finding-guidance, .finding-location, .review-details { color: var(--color-text-secondary); }
+  .review-overview, .finding-location { font-size: 0.8125rem; }
+  .findings-list { list-style: none; padding: 0; }
+  .review-finding { min-width: 0; margin-top: 0.75rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+  .finding-severity { display: inline-block; margin-right: 0.375rem; font-size: 0.75rem; text-transform: uppercase; }
   .severity-critical, .severity-high { color: var(--color-danger); }
   .severity-medium { color: var(--color-warning); }
-  .finding-location { margin-top: 0.75rem; font-size: 0.6875rem; overflow-wrap: anywhere; color: var(--color-text-secondary); }
-  .finding-explanation { margin-top: 0.5rem; font-size: 0.75rem; }
-  .finding-evidence { white-space: pre-wrap; overflow-wrap: anywhere; unicode-bidi: plaintext; max-height: 16rem; padding: 0.625rem; font-size: 0.6875rem; }
+  .finding-location, .finding-explanation, .finding-evidence, dd, li { unicode-bidi: plaintext; }
+  .finding-evidence { max-width: 100%; padding: 0.75rem; margin-top: 0.5rem; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.8125rem; }
+  .finding-evidence code { white-space: inherit; }
+  .finding-details, .review-details, .reviewed-files { margin-top: 1rem; }
+  .review-details { border-top: 1px solid var(--color-border); padding-top: 0.75rem; }
+  summary { cursor: pointer; padding: 0.375rem 0; color: var(--color-accent); font-size: 0.875rem; }
+  summary:focus-visible, a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .review-meta { margin-top: 1rem; }
+  .review-meta div { display: grid; grid-template-columns: minmax(0, 8rem) minmax(0, 1fr); gap: 0.5rem; margin-top: 0.5rem; }
+  dt { font-size: 0.8125rem; }
+  dd { min-width: 0; }
   code { overflow-wrap: anywhere; }
-  .review-coverage, .review-errors { margin: 0.75rem 0; }
-  .review-coverage p, li { font-size: 0.6875rem; color: var(--color-text-secondary); margin-top: 0.5rem; }
-  ul { padding-left: 1rem; }
-  .report-link { display: inline-block; font-size: 0.75rem; margin-top: 0.5rem; }
+  ul { padding-left: 1.25rem; margin-top: 0.5rem; }
+  .report-link { display: inline-block; margin-top: 1rem; }
+  @media (max-width: 480px) { .review-meta div { grid-template-columns: minmax(0, 1fr); gap: 0.125rem; } }
 </style>

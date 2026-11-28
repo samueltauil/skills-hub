@@ -99,8 +99,6 @@ const sourceCount = new Set(skillsData.skills.map(s => s.source?.repoName).filte
             description={skill.description}
             category={skill.category}
             fileCount={skill.files?.length || 0}
-            verified={skill.verified}
-            securityScan={skill.securityScan}
             source={skill.source}
           />
         ))}
