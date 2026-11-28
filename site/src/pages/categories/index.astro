@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import CategoryLogo from '../../components/CategoryLogo.astro';
 import skillsData from '../../data/skills.json';
 import { categoryMeta } from '../../data/categories';
 
@@ -14,7 +15,6 @@ const categories = categoryIds.map(id => {
     id,
     name: categoryMeta[id]?.name || id,
     description: categoryMeta[id]?.description || `Explore skills in the ${id} category`,
-    mark: id.split('-').map(part => part[0]).join('').slice(0, 2).toUpperCase(),
     count: skills.length,
     sources,
     previews: skills.slice(0, 3),
@@ -76,7 +76,7 @@ const baseUrl = import.meta.env.BASE_URL;
             data-search={`${category.name} ${category.description} ${category.sources.join(' ')} ${category.search}`.toLowerCase()}
           >
             <div class="card-heading">
-              <span class="category-icon" aria-hidden="true">{category.mark}</span>
+              <CategoryLogo id={category.id} size={48} />
               <span class="skill-count">{category.count} skill{category.count !== 1 ? 's' : ''}</span>
             </div>
             <h3 id={`title-${category.id}`}><a href={`${baseUrl}categories/${category.id}/`}>{category.name}</a></h3>
@@ -220,7 +220,6 @@ const baseUrl = import.meta.env.BASE_URL;
   }
   .category-detail:focus-within { border-color: var(--color-accent); }
   .card-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-  .category-icon { display: grid; place-items: center; width: 48px; height: 48px; font-size: 0.875rem; font-weight: 700; color: var(--color-accent); background: rgba(88, 166, 255, 0.1); border-radius: var(--radius-lg); }
   .skill-count { color: var(--color-accent); background: rgba(88, 166, 255, 0.1); padding: 0.25rem 0.625rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
   .category-detail h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
   .category-detail h3 a { color: var(--color-text); }

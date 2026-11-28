@@ -1,4 +1,6 @@
 ---
+import CategoryLogo from './CategoryLogo.astro';
+
 interface Props {
   id: string;
   name: string;
@@ -7,12 +9,11 @@ interface Props {
 }
 
 const { id, name, description, count } = Astro.props;
-const mark = id.split('-').map(part => part[0]).join('').slice(0, 2).toUpperCase();
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <a href={`${baseUrl}categories/${id}/`} class="category-card card">
-  <div class="category-icon" aria-hidden="true">{mark}</div>
+  <CategoryLogo id={id} size={40} />
   <div class="category-content">
     <h3 class="category-name">{name}</h3>
     <p class="category-description">{description}</p>
@@ -38,22 +39,6 @@ const baseUrl = import.meta.env.BASE_URL;
   .category-card:hover {
     text-decoration: none;
     transform: translateY(-2px);
-  }
-
-  .category-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-bg-tertiary);
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    flex-shrink: 0;
   }
 
   .category-content {

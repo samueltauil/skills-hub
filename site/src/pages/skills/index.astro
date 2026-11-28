@@ -60,7 +60,7 @@ function searchText(skill: (typeof skills)[number]) {
             <select id="category-filter" class="filter-select" name="category">
               <option value="">All categories</option>
               {categories.map(cat => (
-                <option value={cat.id}>{cat.icon} {cat.name} ({cat.count})</option>
+                <option value={cat.id}>{cat.name} ({cat.count})</option>
               ))}
             </select>
           </label>

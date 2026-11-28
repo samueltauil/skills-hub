@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SecurityReview from '../../components/SecurityReview.astro';
+import CategoryLogo from '../../components/CategoryLogo.astro';
 import skillsData from '../../data/skills.json';
 import { categoryMeta } from '../../data/categories';
 import { getMarketplacePlugins, vscodeInstallLink, MARKETPLACE_NAME, MARKETPLACE_REPO } from '../../data/plugins';
@@ -58,7 +59,7 @@ interface Props {
 }
 
 const { skill } = Astro.props;
-const category = categoryMeta[skill.category] || { name: skill.category, icon: '📁' };
+const category = categoryMeta[skill.category] || { name: skill.category };
 const baseUrl = import.meta.env.BASE_URL;
 
 const complexityColors = {
@@ -175,7 +176,7 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
         
         <div class="skill-meta">
           <a href={`${baseUrl}categories/${skill.category}/`} class="meta-item">
-            <span class="meta-icon">{category.icon}</span>
+            <CategoryLogo id={skill.category} size={24} />
             <span>{category.name}</span>
           </a>
           <a href={skill.source.repo} target="_blank" rel="noopener noreferrer" class="meta-item">
@@ -670,10 +671,6 @@ const allFilesJson = JSON.stringify(skill.files.map(f => ({
   .meta-item:hover {
     color: var(--color-accent);
     text-decoration: none;
-  }
-
-  .meta-icon {
-    font-size: 1.25rem;
   }
 
   .license-badge {

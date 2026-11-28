@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SkillCard from '../../components/SkillCard.astro';
+import CategoryLogo from '../../components/CategoryLogo.astro';
 import skillsData from '../../data/skills.json';
 import { categoryMeta } from '../../data/categories';
 
@@ -14,7 +15,6 @@ export function getStaticPaths() {
       category: {
         id,
         name: categoryMeta[id]?.name || id,
-        icon: categoryMeta[id]?.icon || '📁',
         description: categoryMeta[id]?.description || `Skills in the ${id} category`
       }
     }
@@ -27,7 +27,6 @@ interface Props {
   category: {
     id: string;
     name: string;
-    icon: string;
     description: string;
   };
 }
@@ -51,7 +50,7 @@ const categorySkills = skills
       </nav>
       
       <div class="category-header">
-        <span class="category-icon">{category.icon}</span>
+        <CategoryLogo id={category.id} size={56} />
         <div>
           <h1>{category.name}</h1>
           <p class="text-secondary">{category.description}</p>
@@ -120,11 +119,6 @@ const categorySkills = skills
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-  }
-
-  .category-icon {
-    font-size: 3rem;
-    line-height: 1;
   }
 
   .category-header h1 {

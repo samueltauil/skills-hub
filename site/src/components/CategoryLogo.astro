@@ -1,0 +1,25 @@
+---
+import { categoryMeta } from '../data/categories';
+
+interface Props {
+  id?: string;
+  size?: number;
+}
+
+const { id = 'general', size = 32 } = Astro.props;
+const logo = Object.hasOwn(categoryMeta, id) ? id : 'general';
+---
+
+<img
+  class="category-logo"
+  src={`${import.meta.env.BASE_URL}images/categories/${logo}.svg`}
+  data-category-logo={logo}
+  width={size}
+  height={size}
+  alt=""
+  aria-hidden="true"
+/>
+
+<style>
+  .category-logo { display: block; flex-shrink: 0; aspect-ratio: 1; }
+</style>
